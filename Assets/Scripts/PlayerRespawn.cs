@@ -19,7 +19,13 @@ public class PlayerRespawn : MonoBehaviour
     {
         if (other.CompareTag("Hazard"))
         {
-            transform.position = currentCheckpoint.position;
+            StartCoroutine(HandleSpikeHit());
+        }
+
+        if (other.CompareTag("Checkpoint"))
+        {
+            currentCheckpoint = other.transform;
+            Debug.Log("Progress Saved at: " + other.gameObject.name);
         }
     }
 
