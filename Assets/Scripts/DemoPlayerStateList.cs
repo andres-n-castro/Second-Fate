@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerStateList : MonoBehaviour
+public class DemoPlayerStateList : MonoBehaviour
 {
     public bool jumping;
     
