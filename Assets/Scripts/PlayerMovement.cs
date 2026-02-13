@@ -20,19 +20,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpHangGravity;
     public float defaultGravity;
 
-    public void Move(Rigidbody2D rb, float xAxis)
+    public void Move(Rigidbody2D rb, float xAxis, Animator anim)
     {
         rb.linearVelocity = new Vector2(walkspeed * xAxis, rb.linearVelocity.y);
+        anim.SetBool("Walking", rb.linearVelocity.x != 0 && Grounded());
     }
 
-    public void Jump(Rigidbody2D rb, PlayerStates playerStates)
+    public void Jump(Rigidbody2D rb, bool isJumping, Animator anim)
     {
 
         //coyote timer check tied to ground check
         if(Grounded() && rb.linearVelocity.y <= 0)
         {
             coyoteTimeCounter = coyoteTime;
-            playerStates.isJumping = false;
+            isJumping = false;
         }
         else
         {
@@ -49,18 +50,18 @@ public class PlayerMovement : MonoBehaviour
            jumpTimeCounter -= Time.deltaTime; 
         }
 
-        if(!playerStates.isJumping)
+        if(!isJumping)
         {
             if(coyoteTimeCounter > 0 && jumpTimeCounter > 0)
             { 
                 rb.linearVelocity = new Vector3(rb.linearVelocity.x, JumpForce); 
-                playerStates.isJumping = true;
+                isJumping = true;
                 jumpTimeCounter = 0;
                 coyoteTimeCounter = 0;
             }
         }
 
-        if(playerStates.isJumping && Mathf.Abs(rb.linearVelocity.y) < jumpHangThreshold)
+        if(isJumping && Mathf.Abs(rb.linearVelocity.y) < jumpHangThreshold)
         {
             rb.gravityScale = defaultGravity * jumpHangGravity;
         }
@@ -73,6 +74,8 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f); 
         }
+
+        anim.SetBool("Jumping", isJumping);
 
     }
 
@@ -115,6 +118,18 @@ public class PlayerMovement : MonoBehaviour
         Vector3 leftPos = groundCheck.position + new Vector3(-groundLengthX, 0, 0);
         Gizmos.DrawLine(leftPos, leftPos + downDir);
 
+    }
+
+    public void Flip(float xAxis)
+    {
+        if(xAxis < 0)
+        {
+            transform.localScale = new Vector2(-1, transform.localScale.y);
+        }
+        else if (xAxis > 0)
+        {
+            transform.localScale = new Vector2(1, transform.localScale.y);            
+        }
     }
 
 }

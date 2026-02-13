@@ -137,8 +137,9 @@ GameObject:
   - component: {fileID: 226467671}
   - component: {fileID: 226467672}
   - component: {fileID: 226467673}
+  - component: {fileID: 226467674}
   m_Layer: 6
-  m_Name: player
+  m_Name: Vidar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -230,7 +231,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 12
+  m_GravityScale: 9.8
   m_Material: {fileID: 6200000, guid: d1479689d3fd001448cab0523fcd04ce, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -290,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede5a6bdf9589e64ea6308426a0900c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpForce: 38
+  JumpForce: 33
   walkspeed: 12
   whatIsGround:
     serializedVersion: 2
@@ -303,7 +304,7 @@ MonoBehaviour:
   coyoteTime: 0.1
   jumpHangThreshold: 2
   jumpHangGravity: 0.5
-  defaultGravity: 0
+  defaultGravity: 15
 --- !u!114 &226467671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,6 +444,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.8090699, y: 1.3487285}
   m_EdgeRadius: 0
+--- !u!95 &226467674
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226467661}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d789094841327044a9654d93759af9a1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &477654652
 GameObject:
   m_ObjectHideFlags: 0

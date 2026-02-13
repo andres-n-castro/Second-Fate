@@ -47,13 +47,17 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         GetInputs();
+        playerMovement.Flip(xAxis);
         playerMovement.MaxFall(rb);
-        playerMovement.Move(rb, xAxis);
-        playerMovement.Jump(rb, playerStates);
+        playerMovement.Move(rb, xAxis, anim);
+        playerMovement.Jump(rb, playerStates.isJumping, anim);
+        
+        playerAttack.Attack(playerStates.isAttacking, anim);
     }
     
     private void GetInputs()
     {
         xAxis = Input.GetAxisRaw("Horizontal");
+        playerStates.isAttacking = Input.GetMouseButtonDown(0);
     }
 }
