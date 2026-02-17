@@ -25,6 +25,15 @@ public class Health : MonoBehaviour, IDamageable
     /// <summary> Fires once when health reaches zero. </summary>
     public event Action OnDeath;
 
+    /// <summary> Fires (damage, knockbackForce) on every hit. Lets entities handle knockback themselves. </summary>
+    public event Action<int, Vector2> OnDamageTaken;
+
+    /// <summary>
+    /// When true, TakeDamage skips built-in knockback.
+    /// Set by entities that handle knockback in their OnDamageTaken handler.
+    /// </summary>
+    [HideInInspector] public bool handleKnockbackExternally;
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -39,9 +48,10 @@ public class Health : MonoBehaviour, IDamageable
         currentHealth = Mathf.Max(currentHealth, 0);
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        OnDamageTaken?.Invoke(damage, knockbackForce);
 
-        // Apply knockback if rigidbody exists
-        if (rb != null && knockbackForce != Vector2.zero)
+        // Apply knockback if rigidbody exists (unless handled externally)
+        if (!handleKnockbackExternally && rb != null && knockbackForce != Vector2.zero)
         {
             rb.AddForce(knockbackForce, ForceMode2D.Impulse);
         }
