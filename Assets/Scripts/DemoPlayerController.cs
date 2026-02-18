@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class DemoPlayerController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [Header("Horizontal Movement Settings")]
@@ -20,12 +20,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float coyoteTime;
 
 
-    private PlayerStateList pState;
+    private DemoPlayerStateList pState;
     private Rigidbody2D rb;
     private float xAxis;
     Animator anim;
 
-    public static PlayerController Instance;
+    public static DemoPlayerController Instance;
 
     private void Awake()
     {
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        pState = GetComponent<PlayerStateList>();
+        pState = GetComponent<DemoPlayerStateList>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
