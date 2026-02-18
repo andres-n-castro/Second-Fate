@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
+  handleKnockbackExternally: 0
 --- !u!114 &480256309692124546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,15 +223,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89fef23cc1f4d194f9c1408f179da09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  profile: {fileID: 11400000, guid: c8e942ee487de6e4eb51ef63bf44832a, type: 2}
   groundCheck: {fileID: 7192065574375498414}
   wallCheck: {fileID: 445228758238229899}
-  groundCheckDistance: 1
-  wallCheckDistance: 0.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  idleDuration: 1.5
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &8935203391001784119
 GameObject:
   m_ObjectHideFlags: 0
