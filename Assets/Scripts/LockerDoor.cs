@@ -2,23 +2,21 @@ using UnityEngine;
 
 public class LockerDoor : MonoBehaviour
 {
+    public string doorID;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (TutorialManager.Instance.hasTutorialKey)
+            if (TutorialManager.Instance.HasKey(doorID))
             {
-                UnlockDoor();
+                Debug.Log($"Door {doorID} unlocked!");
+                Destroy(gameObject);
             }
             else
             {
-                Debug.Log("The locker is locked. Finish tutorial");
+                Debug.Log("Door is locked. You need a specific key.");
             }
         }
-    }
-
-    void UnlockDoor()
-    {
-        gameObject.SetActive(false);
     }
 }
