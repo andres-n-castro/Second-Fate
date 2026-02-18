@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133d3640feead734598e9768a8c524d3, type: 3}
+  m_Name: DraugrProfile
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  flySpeed: 0
+  approachSpeed: 0
+  roamSpeed: 0
+  roamRadius: 0
+  roamChangeInterval: 0
+  aggroRange: 6
+  deaggroRange: 10
+  attackRange: 0
+  groundCheckDistance: 1
+  wallCheckDistance: 0.5
+  knockbackForceX: 5
+  knockbackForceY: 2
+  hitstunDuration: 0.25
+  hitstunDrag: 8
+  minAttackCooldown: 0
+  maxAttackCooldown: 0
+  attacks: []
+  phase2HealthPercent: 0.5
+  phaseTransitionDuration: 2
+  erraticIntensity: 3
+  hoverHeight: 3
+  chaseSpeed: 3.5
+  acquireTargetDelay: 0.3
+  loseTargetDelay: 0.5
+  giveUpPauseDuration: 1
+  dashWindowSeconds: 5
+  dashWeightBoostPerDash: 0.15
+  baseDashWeight: 1
