@@ -20,7 +20,7 @@ public class FallenWarriorSpirit : EnemyBase
     [SerializeField] private AttackHitbox dashHitbox;
 
     // State references
-    public FWSHoverPatrolState PatrolState { get; private set; }
+    public FWSPatrolState PatrolState { get; private set; }
     public FWSEngageDecisionState EngageDecisionState { get; private set; }
     public FWSDashAttackState DashAttackState { get; private set; }
     public FWSRepositionState RepositionState { get; private set; }
@@ -42,7 +42,7 @@ public class FallenWarriorSpirit : EnemyBase
 
     protected override void InitializeStates()
     {
-        PatrolState = new FWSHoverPatrolState(this);
+        PatrolState = new FWSPatrolState(this);
         EngageDecisionState = new FWSEngageDecisionState(this);
         DashAttackState = new FWSDashAttackState(this);
         RepositionState = new FWSRepositionState(this);
@@ -66,6 +66,56 @@ public class FallenWarriorSpirit : EnemyBase
     {
         if (dashHitbox != null) dashHitbox.Deactivate();
         FSM.ChangeState(DeadState);
+    }
+
+    /// <summary>
+    /// Shared obstacle-aware target sampling used by both Patrol and Reposition states.
+    /// Samples candidates around 'center' within 'radius'. Returns true if a valid
+    /// target was found, false if all samples were blocked (caller should use fallback).
+    /// </summary>
+    public bool TryPickValidTarget(Vector2 center, float radius, out Vector2 result)
+    {
+        Vector2 pos = transform.position;
+        LayerMask blockMask = GroundLayer | ObstacleLayer;
+        float clearance = Profile.patrolTargetClearanceRadius;
+        int samples = Profile.patrolTargetSampleCount;
+
+        for (int i = 0; i < samples; i++)
+        {
+            Vector2 candidate = center + Random.insideUnitCircle * radius;
+
+            if (Physics2D.OverlapCircle(candidate, clearance, blockMask) != null)
+                continue;
+
+            Vector2 toCandidate = candidate - pos;
+            float dist = toCandidate.magnitude;
+            if (dist > 0.1f)
+            {
+                RaycastHit2D hit = Physics2D.CircleCast(
+                    pos, clearance, toCandidate.normalized, dist, blockMask);
+                if (hit.collider != null)
+                    continue;
+            }
+
+            result = candidate;
+            return true;
+        }
+
+        result = pos + new Vector2(0f, 0.5f);
+        return false;
+    }
+
+    /// <summary>
+    /// Checks if a straight-line path from current position in 'direction' for 'distance'
+    /// is clear of obstacles. Optional castRadius overrides the default patrol clearance.
+    /// </summary>
+    public bool IsPathClear(Vector2 direction, float distance, float castRadius = -1f)
+    {
+        LayerMask blockMask = GroundLayer | ObstacleLayer;
+        float radius = castRadius >= 0f ? castRadius : Profile.patrolTargetClearanceRadius;
+        RaycastHit2D hit = Physics2D.CircleCast(
+            transform.position, radius, direction.normalized, distance, blockMask);
+        return hit.collider == null;
     }
 
     private void OnDrawGizmosSelected()

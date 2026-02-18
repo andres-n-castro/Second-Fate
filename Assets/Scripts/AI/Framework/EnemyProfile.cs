@@ -54,14 +54,18 @@ public class EnemyProfile : ScriptableObject
     public float dashWindowSeconds = 5f;
     public float dashWeightBoostPerDash = 0.15f;
     public float baseDashWeight = 1f;
+    public float dashStopShortDistance = 1f;
+    public float dashPathCastRadius = 0.2f;
 
-    [Header("FWS Hover Patrol")]
+    [Header("FWS Patrol & Reposition")]
     public float patrolArriveThreshold = 0.5f;
     public float patrolSmoothing = 5f;
     public int patrolTargetSampleCount = 8;
     public float patrolTargetClearanceRadius = 0.4f;
     public float stuckSeconds = 0.5f;
     public float stuckMinProgress = 0.3f;
+    public float repositionDistance = 4f;
+    public float repositionDecisionCooldown = 0.4f;
 }
 
 [Serializable]

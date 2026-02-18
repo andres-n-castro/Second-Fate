@@ -1,11 +1,11 @@
 using UnityEngine;
 
 // ---------------------------------------------------------------
-//  FWSHoverPatrolState
+//  FWSPatrolState
 //  Wander within roamRadius of home position. Obstacle-aware target
 //  sampling, smoothed velocity, stuck detection with recovery.
 // ---------------------------------------------------------------
-public class FWSHoverPatrolState : EnemyState
+public class FWSPatrolState : EnemyState
 {
     private FallenWarriorSpirit fws;
     private Vector2 roamTarget;
@@ -19,7 +19,7 @@ public class FWSHoverPatrolState : EnemyState
     private float facingHoldTimer;
     private const float FacingHoldDuration = 0.15f;
 
-    public FWSHoverPatrolState(FallenWarriorSpirit fws) : base(fws)
+    public FWSPatrolState(FallenWarriorSpirit fws) : base(fws)
     {
         this.fws = fws;
     }
@@ -110,39 +110,7 @@ public class FWSHoverPatrolState : EnemyState
     private void PickNewRoamTarget()
     {
         roamTimer = owner.Profile.roamChangeInterval;
-        Vector2 pos = owner.transform.position;
-        LayerMask blockMask = owner.GroundLayer | owner.ObstacleLayer;
-        float radius = owner.Profile.roamRadius;
-        float clearance = owner.Profile.patrolTargetClearanceRadius;
-        int samples = owner.Profile.patrolTargetSampleCount;
-
-        for (int i = 0; i < samples; i++)
-        {
-            Vector2 candidate = fws.HomePosition + Random.insideUnitCircle * radius;
-
-            // Reject if candidate overlaps an obstacle
-            if (Physics2D.OverlapCircle(candidate, clearance, blockMask) != null)
-                continue;
-
-            // Reject if path to candidate is blocked
-            Vector2 toCandidate = candidate - pos;
-            float dist = toCandidate.magnitude;
-            if (dist > 0.1f)
-            {
-                RaycastHit2D hit = Physics2D.CircleCast(
-                    pos, clearance, toCandidate.normalized, dist, blockMask);
-                if (hit.collider != null)
-                    continue;
-            }
-
-            roamTarget = candidate;
-            stuckTimer = 0f;
-            lastDistToTarget = float.MaxValue;
-            return;
-        }
-
-        // All samples blocked — hover slightly above current position as safe fallback
-        roamTarget = pos + new Vector2(0f, 0.5f);
+        fws.TryPickValidTarget(fws.HomePosition, owner.Profile.roamRadius, out roamTarget);
         stuckTimer = 0f;
         lastDistToTarget = float.MaxValue;
     }
@@ -150,12 +118,13 @@ public class FWSHoverPatrolState : EnemyState
 
 // ---------------------------------------------------------------
 //  FWSEngageDecisionState
-//  Chooses between dash attack and reposition based on adaptive
-//  weighting from player dash tracking. Deaggros if player leaves range.
+//  Brief pause before choosing dash attack or reposition.
+//  Prevents rapid state-cycling by holding for a cooldown period.
 // ---------------------------------------------------------------
 public class FWSEngageDecisionState : EnemyState
 {
     private FallenWarriorSpirit fws;
+    private float cooldownTimer;
 
     public FWSEngageDecisionState(FallenWarriorSpirit fws) : base(fws)
     {
@@ -164,12 +133,14 @@ public class FWSEngageDecisionState : EnemyState
 
     public override void Enter()
     {
-        owner.StopAll();
         owner.FacePlayer();
+        cooldownTimer = owner.Profile.repositionDecisionCooldown;
     }
 
     public override void FixedTick()
     {
+        float dt = Time.fixedDeltaTime;
+
         // Deaggro check
         if (!owner.Ctx.isPlayerInDeaggroRange)
         {
@@ -185,6 +156,14 @@ public class FWSEngageDecisionState : EnemyState
             owner.FSM.ChangeState(fws.PatrolState);
             return;
         }
+
+        // Smoothly decelerate during decision pause instead of hard stop
+        owner.Rb.linearVelocity = Vector2.Lerp(
+            owner.Rb.linearVelocity, Vector2.zero, owner.Profile.patrolSmoothing * dt);
+
+        // Wait out cooldown before making a decision
+        cooldownTimer -= dt;
+        if (cooldownTimer > 0f) return;
 
         // Compute adaptive dash weight
         float dashWeight = owner.Profile.baseDashWeight
@@ -208,7 +187,9 @@ public class FWSEngageDecisionState : EnemyState
 // ---------------------------------------------------------------
 //  FWSDashAttackState
 //  Timer-based attack: Windup → Active (dash) → Recovery.
-//  Hitbox activates during Active phase. Interruptible by hitstun/death.
+//  Dashes to an intercept point that stops short of the player so
+//  walls behind the player don't block the path check.
+//  Mid-dash wall detection ends the dash gracefully on collision.
 // ---------------------------------------------------------------
 public class FWSDashAttackState : EnemyState
 {
@@ -218,6 +199,7 @@ public class FWSDashAttackState : EnemyState
     private Phase phase;
     private float timer;
     private Vector2 dashDirection;
+    private float dashSpeed;
 
     public FWSDashAttackState(FallenWarriorSpirit fws) : base(fws)
     {
@@ -230,7 +212,6 @@ public class FWSDashAttackState : EnemyState
         owner.StopAll();
         owner.FacePlayer();
 
-        // Get attack definition for timing
         AttackDefinition atk = GetDashAttack();
         timer = atk != null ? atk.windupDuration : 0.5f;
 
@@ -244,7 +225,7 @@ public class FWSDashAttackState : EnemyState
         switch (phase)
         {
             case Phase.Windup:
-                // Cancel dash if LOS lost during windup — don't dash into walls
+                // Cancel dash if LOS lost during windup
                 if (!owner.Ctx.hasLineOfSightToPlayer)
                 {
                     fws.HomePosition = owner.transform.position;
@@ -255,19 +236,44 @@ public class FWSDashAttackState : EnemyState
                 if (timer <= 0f)
                 {
                     // Lock dash direction at end of windup
+                    Vector2 enemyPos = owner.transform.position;
                     if (owner.Ctx.playerTransform != null)
                     {
                         dashDirection = ((Vector2)owner.Ctx.playerTransform.position
-                            - (Vector2)owner.transform.position).normalized;
+                            - enemyPos).normalized;
                     }
                     else
                     {
                         dashDirection = Vector2.right * owner.FacingDirection;
                     }
 
-                    phase = Phase.Active;
                     AttackDefinition atk = GetDashAttack();
-                    timer = atk != null ? atk.dashDuration : 0.3f;
+                    dashSpeed = atk != null ? atk.dashSpeed : 15f;
+                    float fullDashDist = dashSpeed * (atk != null ? atk.dashDuration : 0.3f);
+                    float playerDist = owner.Ctx.playerDistance;
+                    float stopShort = owner.Profile.dashStopShortDistance;
+                    float castRadius = owner.Profile.dashPathCastRadius;
+
+                    // Intercept distance: stop short of the player, clamped to max dash range
+                    float interceptDist = Mathf.Min(fullDashDist, Mathf.Max(0f, playerDist - stopShort));
+
+                    // Too close to dash meaningfully — reposition instead
+                    if (interceptDist < 0.5f)
+                    {
+                        owner.FSM.ChangeState(fws.RepositionState);
+                        return;
+                    }
+
+                    // Path check to intercept point (not through the player into the wall behind)
+                    if (!fws.IsPathClear(dashDirection, interceptDist, castRadius))
+                    {
+                        owner.FSM.ChangeState(fws.RepositionState);
+                        return;
+                    }
+
+                    phase = Phase.Active;
+                    // Scale dash duration to intercept distance
+                    timer = interceptDist / dashSpeed;
 
                     if (fws.DashHitbox != null) fws.DashHitbox.Activate();
                     if (owner.Anim != null) owner.Anim.SetTrigger("Dash");
@@ -275,18 +281,19 @@ public class FWSDashAttackState : EnemyState
                 break;
 
             case Phase.Active:
-                owner.MoveDirection(dashDirection, GetDashAttack()?.dashSpeed ?? 15f);
+                // Mid-dash wall check — lookahead 2 frames for early termination
+                float lookAhead = dashSpeed * Time.fixedDeltaTime * 2f;
+                if (!fws.IsPathClear(dashDirection, lookAhead, owner.Profile.dashPathCastRadius))
+                {
+                    EndDash();
+                    break;
+                }
+
+                owner.MoveDirection(dashDirection, dashSpeed);
 
                 if (timer <= 0f)
                 {
-                    if (fws.DashHitbox != null) fws.DashHitbox.Deactivate();
-                    owner.StopAll();
-
-                    phase = Phase.Recovery;
-                    AttackDefinition atk = GetDashAttack();
-                    timer = atk != null ? atk.recoveryDuration : 0.3f;
-
-                    owner.StartCooldown("Dash");
+                    EndDash();
                 }
                 break;
 
@@ -305,6 +312,18 @@ public class FWSDashAttackState : EnemyState
         owner.StopAll();
     }
 
+    private void EndDash()
+    {
+        if (fws.DashHitbox != null) fws.DashHitbox.Deactivate();
+        owner.StopAll();
+
+        phase = Phase.Recovery;
+        AttackDefinition atk = GetDashAttack();
+        timer = atk != null ? atk.recoveryDuration : 0.3f;
+
+        owner.StartCooldown("Dash");
+    }
+
     private AttackDefinition GetDashAttack()
     {
         if (owner.Profile.attacks == null) return null;
@@ -319,15 +338,23 @@ public class FWSDashAttackState : EnemyState
 
 // ---------------------------------------------------------------
 //  FWSRepositionState
-//  Fly to a random offset around the player (biased upward).
-//  Then transitions back to EngageDecision.
+//  Fly to an obstacle-aware offset around the player (biased upward).
+//  Smoothed velocity, stuck detection with recovery, facing hysteresis.
 // ---------------------------------------------------------------
 public class FWSRepositionState : EnemyState
 {
     private FallenWarriorSpirit fws;
     private Vector2 repositionTarget;
-    private float timer;
     private float maxTime;
+    private float timer;
+
+    // Stuck detection
+    private float stuckTimer;
+    private float lastDistToTarget;
+
+    // Facing hysteresis
+    private float facingHoldTimer;
+    private const float FacingHoldDuration = 0.15f;
 
     public FWSRepositionState(FallenWarriorSpirit fws) : base(fws)
     {
@@ -336,55 +363,102 @@ public class FWSRepositionState : EnemyState
 
     public override void Enter()
     {
-        float repositionDistance = 4f;
-        float repositionSpeed = owner.Profile.flySpeed;
-
-        // Pick a random offset around player, biased upward
-        if (owner.Ctx.playerTransform != null)
-        {
-            Vector2 offset = Random.insideUnitCircle.normalized * repositionDistance;
-            offset.y = Mathf.Abs(offset.y) + 1f;
-            repositionTarget = (Vector2)owner.Ctx.playerTransform.position + offset;
-        }
-        else
-        {
-            repositionTarget = (Vector2)owner.transform.position + Random.insideUnitCircle * repositionDistance;
-        }
-
-        maxTime = repositionDistance / repositionSpeed + 0.5f;
+        PickRepositionTarget();
+        stuckTimer = 0f;
+        lastDistToTarget = float.MaxValue;
+        facingHoldTimer = 0f;
         timer = 0f;
+
+        float dist = owner.Profile.repositionDistance;
+        maxTime = dist / owner.Profile.flySpeed + 0.5f;
     }
 
     public override void FixedTick()
     {
-        timer += Time.fixedDeltaTime;
+        float dt = Time.fixedDeltaTime;
+        timer += dt;
 
-        // Bail out if player is gone or no longer reachable
+        // Bail out if player is gone or LOS lost
         if (!owner.Ctx.isPlayerInDeaggroRange || !owner.Ctx.hasLineOfSightToPlayer)
         {
-            owner.StopAll();
             fws.HomePosition = owner.transform.position;
             owner.FSM.ChangeState(fws.PatrolState);
             return;
         }
 
-        Vector2 dir = repositionTarget - (Vector2)owner.transform.position;
-        if (dir.magnitude < 0.5f || timer >= maxTime)
+        Vector2 pos = owner.transform.position;
+        Vector2 toTarget = repositionTarget - pos;
+        float distToTarget = toTarget.magnitude;
+
+        // Arrived or timed out
+        if (distToTarget < owner.Profile.patrolArriveThreshold || timer >= maxTime)
         {
-            owner.StopAll();
             owner.FSM.ChangeState(fws.EngageDecisionState);
             return;
         }
 
-        Vector2 moveDir = owner.AvoidObstacles(dir.normalized);
-        owner.MoveDirection(moveDir, owner.Profile.flySpeed);
+        // Stuck detection: not making progress toward target
+        float progress = lastDistToTarget - distToTarget;
+        lastDistToTarget = distToTarget;
 
-        if (Mathf.Abs(moveDir.x) > 0.01f)
-            owner.FaceDirection(moveDir.x > 0 ? 1 : -1);
+        if (progress < owner.Profile.stuckMinProgress * dt)
+        {
+            stuckTimer += dt;
+            if (stuckTimer >= owner.Profile.stuckSeconds)
+            {
+                // Re-sample a new target instead of buzzing in place
+                PickRepositionTarget();
+                stuckTimer = 0f;
+                lastDistToTarget = float.MaxValue;
+                return;
+            }
+        }
+        else
+        {
+            stuckTimer = 0f;
+        }
+
+        // Smoothed movement — lerp velocity instead of hard-setting
+        Vector2 desiredVel = (toTarget / distToTarget) * owner.Profile.flySpeed;
+        owner.Rb.linearVelocity = Vector2.Lerp(
+            owner.Rb.linearVelocity, desiredVel, owner.Profile.patrolSmoothing * dt);
+
+        // Facing with hysteresis
+        facingHoldTimer -= dt;
+        if (facingHoldTimer <= 0f)
+        {
+            float velX = owner.Rb.linearVelocity.x;
+            if (Mathf.Abs(velX) > 0.2f)
+            {
+                int newFacing = velX > 0 ? 1 : -1;
+                if (newFacing != owner.FacingDirection)
+                {
+                    owner.FaceDirection(newFacing);
+                    facingHoldTimer = FacingHoldDuration;
+                }
+            }
+        }
     }
 
     public override void Exit()
     {
         owner.StopAll();
+    }
+
+    private void PickRepositionTarget()
+    {
+        float dist = owner.Profile.repositionDistance;
+        Vector2 center = owner.Ctx.playerTransform != null
+            ? (Vector2)owner.Ctx.playerTransform.position + new Vector2(0f, 1f)
+            : (Vector2)owner.transform.position;
+
+        if (!fws.TryPickValidTarget(center, dist, out repositionTarget))
+        {
+            // Fallback: stay near current position, slightly above
+            repositionTarget = (Vector2)owner.transform.position + new Vector2(0f, 1f);
+        }
+
+        stuckTimer = 0f;
+        lastDistToTarget = float.MaxValue;
     }
 }
