@@ -1,8 +1,11 @@
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Event for AI perception to track player dashes
+    public static event Action OnPlayerDashed;
+
     [Header("Horizontal Movement Settings")]
     [SerializeField] float walkspeed = 10;
 
@@ -135,6 +138,14 @@ public class PlayerController : MonoBehaviour
         {
             jumpBufferCounter = jumpBufferCounter - Time.deltaTime * 10;
         }
+    }
+
+    /// <summary>
+    /// Call this when dash is implemented to notify AI perception systems.
+    /// </summary>
+    public static void FireDashEvent()
+    {
+        OnPlayerDashed?.Invoke();
     }
 
 }
