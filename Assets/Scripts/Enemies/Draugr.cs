@@ -8,24 +8,36 @@ using UnityEngine;
 ///   - Detects player on same platform with hysteresis, then chases.
 ///   - Gives up at ledges or when player leaves range, with lockout pause.
 ///   - Turns around at ledges and walls during patrol.
+///   - Attacks player with a melee strike when in range.
 ///   - Damageable via the Health component. Takes knockback during hitstun.
 ///   - Can be knocked off platforms during hitstun (ledge checks disabled).
 ///
 /// Required components: Rigidbody2D, Collider2D, Health.
-/// Optional: Animator (uses "Walking" bool, "Die" trigger).
+/// Optional: Animator (uses "Walking" bool, "Die", "MeleeWindup", "MeleeAttack" triggers).
 ///
-/// Child Transforms needed in inspector:
-///   - groundCheck — positioned at the front-bottom edge for ledge detection
-///   - wallCheck   — positioned at the front-center for wall detection
+/// Child objects/transforms needed in inspector:
+///   - groundCheck  — positioned at the front-bottom edge for ledge detection
+///   - wallCheck    — positioned at the front-center for wall detection
+///   - meleeHitbox  — AttackHitbox child object; configure damage/knockback/targetLayers there
+///
+/// EnemyProfile attacks array must contain one entry named "Melee" with the
+/// desired windupDuration, activeDuration, recoveryDuration, and cooldown.
 /// </summary>
 public class Draugr : EnemyBase
 {
+    [Header("Combat")]
+    [SerializeField] private AttackHitbox meleeHitbox;
+
     // State references (public for state cross-references)
     public DraugrPatrolState PatrolState { get; private set; }
     public DraugrChaseState ChaseState { get; private set; }
     public DraugrGiveUpState GiveUpState { get; private set; }
+    public DraugrMeleeAttackState MeleeAttackState { get; private set; }
     public GroundHitstunState HitstunState { get; private set; }
     public GroundDeadState DeadState { get; private set; }
+
+    // Hitbox accessor for states
+    public AttackHitbox MeleeHitbox => meleeHitbox;
 
     // Hysteresis timers (accessible by states)
     public float AcquireTargetTimer { get; set; }
@@ -36,6 +48,7 @@ public class Draugr : EnemyBase
         PatrolState = new DraugrPatrolState(this);
         ChaseState = new DraugrChaseState(this);
         GiveUpState = new DraugrGiveUpState(this);
+        MeleeAttackState = new DraugrMeleeAttackState(this);
         HitstunState = new GroundHitstunState(this);
         DeadState = new GroundDeadState(this);
 
@@ -48,7 +61,10 @@ public class Draugr : EnemyBase
 
         ApplyKnockback(knockback);
 
-        HitstunState.ReturnState = FSM.CurrentState;
+        // Don't return to the attack state after hitstun — go back to chase instead
+        HitstunState.ReturnState = FSM.CurrentState == MeleeAttackState
+            ? (IState)ChaseState
+            : FSM.CurrentState;
         FSM.ChangeState(HitstunState);
     }
 
@@ -91,6 +107,26 @@ public class Draugr : EnemyBase
                 bool hasLOS = Ctx != null && Ctx.hasLineOfSightToPlayer;
                 Gizmos.color = hasLOS ? Color.cyan : Color.magenta;
                 Gizmos.DrawLine(eyePos, playerEye);
+            }
+
+            // Facing deadzone — blue vertical lines either side of center
+            if (Profile.draugrFacingDeadzoneX > 0f)
+            {
+                Gizmos.color = Color.blue;
+                Vector2 dz = transform.position;
+                Gizmos.DrawLine(dz + new Vector2(-Profile.draugrFacingDeadzoneX, -0.5f),
+                                dz + new Vector2(-Profile.draugrFacingDeadzoneX,  0.5f));
+                Gizmos.DrawLine(dz + new Vector2( Profile.draugrFacingDeadzoneX, -0.5f),
+                                dz + new Vector2( Profile.draugrFacingDeadzoneX,  0.5f));
+            }
+
+            // Player-above threshold — white horizontal line above Draugr
+            if (Profile.playerAboveThresholdY > 0f)
+            {
+                Gizmos.color = Color.white;
+                Vector2 ab = transform.position;
+                Gizmos.DrawLine(ab + new Vector2(-0.5f, Profile.playerAboveThresholdY),
+                                ab + new Vector2( 0.5f, Profile.playerAboveThresholdY));
             }
         }
     }

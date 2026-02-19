@@ -130,8 +130,9 @@ public class DraugrChaseState : EnemyState
         }
 
         // Check lose conditions with hysteresis
-        bool shouldLose = !owner.Ctx.isPlayerOnSamePlatform
-            || !owner.Ctx.isPlayerInDeaggroRange
+        // isPlayerOnSamePlatform intentionally excluded — lose target on LOS/range only,
+        // not because the player stepped on an obstacle. Wall check handles movement naturally.
+        bool shouldLose = !owner.Ctx.isPlayerInDeaggroRange
             || !owner.Ctx.hasLineOfSightToPlayer;
 
         if (shouldLose)
@@ -146,6 +147,28 @@ public class DraugrChaseState : EnemyState
         else
         {
             draugr.LoseTargetTimer = 0f;
+        }
+
+        // Melee attack trigger — all conditions must be met
+        if (owner.Ctx.hasLineOfSightToPlayer
+            && owner.Ctx.isPlayerOnSamePlatform
+            && owner.Ctx.isGrounded
+            && owner.Ctx.isPlayerInAttackRange
+            && owner.IsAttackReady("Melee"))
+        {
+            owner.FSM.ChangeState(draugr.MeleeAttackState);
+            return;
+        }
+
+        // Player directly overhead on the same platform — hold position, don't thrash horizontally
+        // All three required: same platform + within horizontal deadzone + above Y threshold
+        if (owner.Ctx.isPlayerOnSamePlatform
+            && owner.Ctx.playerRelativePos.y > owner.Profile.playerAboveThresholdY
+            && Mathf.Abs(owner.Ctx.playerRelativePos.x) < owner.Profile.draugrFacingDeadzoneX)
+        {
+            owner.StopHorizontal();
+            if (owner.Anim != null) owner.Anim.SetBool("Walking", false);
+            return;
         }
 
         // Ledge/wall avoidance — stop at edges, don't walk off
@@ -172,8 +195,11 @@ public class DraugrChaseState : EnemyState
         }
         else
         {
-            // Chase the player directly
-            owner.FacePlayer();
+            // Deadzone-aware facing — only flip when player is clearly to one side
+            float relX = owner.Ctx.playerRelativePos.x;
+            if (Mathf.Abs(relX) >= owner.Profile.draugrFacingDeadzoneX)
+                owner.FaceDirection(relX > 0 ? 1 : -1);
+
             owner.MoveGround(owner.Profile.chaseSpeed);
         }
         if (owner.Anim != null) owner.Anim.SetBool("Walking", true);
@@ -223,5 +249,103 @@ public class DraugrGiveUpState : EnemyState
         {
             owner.FSM.ChangeState(draugr.PatrolState);
         }
+    }
+}
+
+// ---------------------------------------------------------------
+//  DraugrMeleeAttackState
+//  Timer-based melee: Windup → Active (hitbox on) → Recovery.
+//  Enemy stops and faces player for the full duration.
+//  After recovery, returns to Chase if still aggro, GiveUp if
+//  player left platform/range, Patrol otherwise.
+// ---------------------------------------------------------------
+public class DraugrMeleeAttackState : EnemyState
+{
+    private enum Phase { Windup, Active, Recovery }
+
+    private Draugr draugr;
+    private Phase phase;
+    private float timer;
+
+    public DraugrMeleeAttackState(Draugr draugr) : base(draugr)
+    {
+        this.draugr = draugr;
+    }
+
+    public override void Enter()
+    {
+        phase = Phase.Windup;
+        owner.StopHorizontal();
+        owner.FacePlayer();
+
+        AttackDefinition atk = GetMeleeAttack();
+        timer = atk != null ? atk.windupDuration : 0.3f;
+
+        if (owner.Anim != null) owner.Anim.SetTrigger("MeleeWindup");
+    }
+
+    public override void FixedTick()
+    {
+        timer -= Time.fixedDeltaTime;
+
+        switch (phase)
+        {
+            case Phase.Windup:
+                if (timer <= 0f)
+                {
+                    phase = Phase.Active;
+                    AttackDefinition atk = GetMeleeAttack();
+                    timer = atk != null ? atk.activeDuration : 0.2f;
+
+                    if (draugr.MeleeHitbox != null) draugr.MeleeHitbox.Activate();
+                    if (owner.Anim != null) owner.Anim.SetTrigger("MeleeAttack");
+                }
+                break;
+
+            case Phase.Active:
+                if (timer <= 0f)
+                {
+                    if (draugr.MeleeHitbox != null) draugr.MeleeHitbox.Deactivate();
+                    owner.StartCooldown("Melee");
+
+                    phase = Phase.Recovery;
+                    AttackDefinition atk = GetMeleeAttack();
+                    timer = atk != null ? atk.recoveryDuration : 0.4f;
+                }
+                break;
+
+            case Phase.Recovery:
+                if (timer <= 0f)
+                    TransitionPostAttack();
+                break;
+        }
+    }
+
+    public override void Exit()
+    {
+        // Safety net: deactivate hitbox if interrupted mid-active (e.g. hitstun)
+        if (draugr.MeleeHitbox != null) draugr.MeleeHitbox.Deactivate();
+        owner.StopHorizontal();
+    }
+
+    private void TransitionPostAttack()
+    {
+        if (owner.Ctx.isPlayerInAggroRange && owner.Ctx.isPlayerOnSamePlatform)
+            owner.FSM.ChangeState(draugr.ChaseState);
+        else if (owner.Ctx.isPlayerInDeaggroRange)
+            owner.FSM.ChangeState(draugr.GiveUpState);
+        else
+            owner.FSM.ChangeState(draugr.PatrolState);
+    }
+
+    private AttackDefinition GetMeleeAttack()
+    {
+        if (owner.Profile.attacks == null) return null;
+        for (int i = 0; i < owner.Profile.attacks.Length; i++)
+        {
+            if (owner.Profile.attacks[i].attackName == "Melee")
+                return owner.Profile.attacks[i];
+        }
+        return null;
     }
 }

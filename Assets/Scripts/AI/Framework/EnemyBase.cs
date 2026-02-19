@@ -33,6 +33,9 @@ public abstract class EnemyBase : MonoBehaviour
     private float[] attackCooldownTimers;
     private float defaultDrag;
 
+    // Contact damage
+    private float _lastContactDamageTime = -999f;
+
     protected virtual void Awake()
     {
         Rb = GetComponent<Rigidbody2D>();
@@ -229,6 +232,55 @@ public abstract class EnemyBase : MonoBehaviour
                 return;
             }
         }
+    }
+
+    // ---------------------------------------------------------------
+    //  Contact Damage
+    // ---------------------------------------------------------------
+
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        TryApplyContactDamage(collision.collider);
+    }
+
+    protected virtual void OnCollisionStay2D(Collision2D collision)
+    {
+        TryApplyContactDamage(collision.collider);
+    }
+
+    private void TryApplyContactDamage(Collider2D other)
+    {
+        if (!profile.enableContactDamage) return;
+        if (profile.contactRequiresEnemyAlive && Ctx.isDead) return;
+        if (Time.time - _lastContactDamageTime < profile.contactCooldownSeconds) return;
+
+        if (PlayerController.Instance == null) return;
+        if (other.gameObject != PlayerController.Instance.gameObject) return;
+
+        Health playerHealth = other.GetComponent<Health>();
+        if (playerHealth == null || playerHealth.IsDead) return;
+
+        // Knockback direction: push player away from enemy center
+        float dirX = other.transform.position.x - transform.position.x;
+        float knockDir = Mathf.Abs(dirX) > 0.01f ? Mathf.Sign(dirX) : 1f;
+        Vector2 knockback = new Vector2(knockDir * profile.contactKnockbackX, profile.contactKnockbackY);
+
+        // Damage via Health (pass zero knockback — we apply it directly below)
+        playerHealth.TakeDamage(profile.contactDamage, Vector2.zero);
+
+        // Apply knockback directly to player rb and suppress Move() for the duration
+        Rigidbody2D playerRb = other.attachedRigidbody;
+        if (playerRb != null)
+            playerRb.linearVelocity = knockback;
+
+        PlayerStateList pState = PlayerController.Instance.GetComponent<PlayerStateList>();
+        if (pState != null)
+        {
+            pState.isKnockbacked = true;
+            pState.knockbackTimer = 0.3f;
+        }
+
+        _lastContactDamageTime = Time.time;
     }
 
     // ---------------------------------------------------------------

@@ -23,6 +23,10 @@ MonoBehaviour:
   attackRange: 0
   groundCheckDistance: 1
   wallCheckDistance: 1
+  losEyeOffsetY: 0.5
+  losCastRadius: 0.1
+  requireLOSForAggro: 1
+  requireLOSForAttack: 1
   knockbackForceX: 4
   knockbackForceY: 1
   hitstunDuration: 0.2
@@ -42,6 +46,12 @@ MonoBehaviour:
     hitCount: 1
     hitInterval: 0
     selectionWeight: 1
+  enableContactDamage: 1
+  contactDamage: 1
+  contactKnockbackX: 4
+  contactKnockbackY: 3
+  contactCooldownSeconds: 0.8
+  contactRequiresEnemyAlive: 1
   phase2HealthPercent: 0.5
   phaseTransitionDuration: 2
   erraticIntensity: 3
@@ -50,6 +60,18 @@ MonoBehaviour:
   acquireTargetDelay: 0.3
   loseTargetDelay: 0.5
   giveUpPauseDuration: 1
+  draugrFacingDeadzoneX: 0.3
+  playerAboveThresholdY: 0.6
   dashWindowSeconds: 5
   dashWeightBoostPerDash: 0.15
   baseDashWeight: 1
+  dashStopShortDistance: 1
+  dashPathCastRadius: 0.2
+  patrolArriveThreshold: 0.5
+  patrolSmoothing: 5
+  patrolTargetSampleCount: 8
+  patrolTargetClearanceRadius: 0.4
+  stuckSeconds: 0.5
+  stuckMinProgress: 0.3
+  repositionDistance: 4
+  repositionDecisionCooldown: 0.4

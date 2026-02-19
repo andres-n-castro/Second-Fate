@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         GetInputs();
         UpdateJumpVariables();
+        UpdateKnockback();
         Flip();
         Move();
         Jump();
@@ -79,8 +80,17 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        rb.linearVelocity = new Vector2(walkspeed * xAxis, rb.linearVelocity.y); 
+        if (pState.isKnockbacked) return;
+        rb.linearVelocity = new Vector2(walkspeed * xAxis, rb.linearVelocity.y);
         anim.SetBool("Walking", rb.linearVelocity.x != 0 && Grounded());
+    }
+
+    private void UpdateKnockback()
+    {
+        if (!pState.isKnockbacked) return;
+        pState.knockbackTimer -= Time.deltaTime;
+        if (pState.knockbackTimer <= 0f)
+            pState.isKnockbacked = false;
     }
 
 

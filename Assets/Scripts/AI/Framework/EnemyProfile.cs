@@ -38,6 +38,14 @@ public class EnemyProfile : ScriptableObject
     public float maxAttackCooldown = 1.5f;
     public AttackDefinition[] attacks;
 
+    [Header("Contact Damage")]
+    public bool enableContactDamage = false;
+    public int contactDamage = 1;
+    public float contactKnockbackX = 6f;
+    public float contactKnockbackY = 4f;
+    public float contactCooldownSeconds = 0.8f;
+    public bool contactRequiresEnemyAlive = true;
+
     [Header("Boss-Specific")]
     public float phase2HealthPercent = 0.5f;
     public float phaseTransitionDuration = 2f;
@@ -49,6 +57,8 @@ public class EnemyProfile : ScriptableObject
     public float acquireTargetDelay = 0.3f;
     public float loseTargetDelay = 0.5f;
     public float giveUpPauseDuration = 1f;
+    public float draugrFacingDeadzoneX = 0.3f;
+    public float playerAboveThresholdY = 0.6f;
 
     [Header("FWS Adaptive Dash")]
     public float dashWindowSeconds = 5f;
