@@ -36,7 +36,7 @@ public class DraugrPatrolState : EnemyState
             draugr.AcquireTargetTimer += Time.fixedDeltaTime;
             if (draugr.AcquireTargetTimer >= owner.Profile.acquireTargetDelay)
             {
-                owner.FSM.ChangeState(draugr.ChaseState);
+                owner.FSM.ChangeState(draugr.CombatSuper); // cross: NonCombat → Combat
                 return;
             }
         }
@@ -122,10 +122,10 @@ public class DraugrChaseState : EnemyState
 
     public override void FixedTick()
     {
-        // Player dead or null → Patrol
+        // Player dead or null → NonCombat
         if (owner.Ctx.playerTransform == null)
         {
-            owner.FSM.ChangeState(draugr.PatrolState);
+            owner.FSM.ChangeState(draugr.NonCombatSuper); // cross: Combat → NonCombat
             return;
         }
 
@@ -140,7 +140,7 @@ public class DraugrChaseState : EnemyState
             draugr.LoseTargetTimer += Time.fixedDeltaTime;
             if (draugr.LoseTargetTimer >= owner.Profile.loseTargetDelay)
             {
-                owner.FSM.ChangeState(draugr.GiveUpState);
+                draugr.CombatSuper.ForceSubState(draugr.GiveUpState); // within Combat
                 return;
             }
         }
@@ -156,7 +156,7 @@ public class DraugrChaseState : EnemyState
             && owner.Ctx.isPlayerInAttackRange
             && owner.IsAttackReady("Melee"))
         {
-            owner.FSM.ChangeState(draugr.MeleeAttackState);
+            draugr.CombatSuper.ForceSubState(draugr.MeleeAttackState); // within Combat
             return;
         }
 
@@ -247,7 +247,7 @@ public class DraugrGiveUpState : EnemyState
         timer -= Time.fixedDeltaTime;
         if (timer <= 0f)
         {
-            owner.FSM.ChangeState(draugr.PatrolState);
+            owner.FSM.ChangeState(draugr.NonCombatSuper); // cross: Combat → NonCombat
         }
     }
 }
@@ -331,11 +331,11 @@ public class DraugrMeleeAttackState : EnemyState
     private void TransitionPostAttack()
     {
         if (owner.Ctx.isPlayerInAggroRange && owner.Ctx.isPlayerOnSamePlatform)
-            owner.FSM.ChangeState(draugr.ChaseState);
+            draugr.CombatSuper.ForceSubState(draugr.ChaseState);   // within Combat
         else if (owner.Ctx.isPlayerInDeaggroRange)
-            owner.FSM.ChangeState(draugr.GiveUpState);
+            draugr.CombatSuper.ForceSubState(draugr.GiveUpState);  // within Combat
         else
-            owner.FSM.ChangeState(draugr.PatrolState);
+            owner.FSM.ChangeState(draugr.NonCombatSuper);          // cross: Combat → NonCombat
     }
 
     private AttackDefinition GetMeleeAttack()

@@ -19,11 +19,17 @@ public class FallenWarriorSpirit : EnemyBase
     [Header("FWS References")]
     [SerializeField] private AttackHitbox dashHitbox;
 
-    // State references
+    // Outer FSM superstates
+    public NonCombatSuperState NonCombatSuper { get; private set; }
+    public CombatSuperState CombatSuper { get; private set; }
+
+    // Substates (public for cross-references inside superstates)
     public FWSPatrolState PatrolState { get; private set; }
     public FWSEngageDecisionState EngageDecisionState { get; private set; }
     public FWSDashAttackState DashAttackState { get; private set; }
     public FWSRepositionState RepositionState { get; private set; }
+
+    // Outer override states
     public AirHitstunState HitstunState { get; private set; }
     public AirDeadState DeadState { get; private set; }
 
@@ -49,7 +55,13 @@ public class FallenWarriorSpirit : EnemyBase
         HitstunState = new AirHitstunState(this);
         DeadState = new AirDeadState(this);
 
-        FSM.ChangeState(PatrolState);
+        NonCombatSuper = new NonCombatSuperState(this);
+        NonCombatSuper.SetInitialSubState(PatrolState);
+
+        CombatSuper = new CombatSuperState(this);
+        CombatSuper.SetInitialSubState(EngageDecisionState);
+
+        FSM.ChangeState(NonCombatSuper);
     }
 
     protected override void HandleDamageTaken(int damage, Vector2 knockback)
@@ -58,7 +70,9 @@ public class FallenWarriorSpirit : EnemyBase
 
         ApplyKnockback(knockback);
 
-        HitstunState.ReturnState = FSM.CurrentState;
+        HitstunState.ReturnState = Ctx.isPlayerInAggroRange
+            ? (IState)CombatSuper
+            : NonCombatSuper;
         FSM.ChangeState(HitstunState);
     }
 

@@ -28,11 +28,17 @@ public class Draugr : EnemyBase
     [Header("Combat")]
     [SerializeField] private AttackHitbox meleeHitbox;
 
-    // State references (public for state cross-references)
+    // Outer FSM superstates
+    public NonCombatSuperState NonCombatSuper { get; private set; }
+    public CombatSuperState CombatSuper { get; private set; }
+
+    // Substates (public for cross-references inside superstates)
     public DraugrPatrolState PatrolState { get; private set; }
     public DraugrChaseState ChaseState { get; private set; }
     public DraugrGiveUpState GiveUpState { get; private set; }
     public DraugrMeleeAttackState MeleeAttackState { get; private set; }
+
+    // Outer override states
     public GroundHitstunState HitstunState { get; private set; }
     public GroundDeadState DeadState { get; private set; }
 
@@ -52,7 +58,13 @@ public class Draugr : EnemyBase
         HitstunState = new GroundHitstunState(this);
         DeadState = new GroundDeadState(this);
 
-        FSM.ChangeState(PatrolState);
+        NonCombatSuper = new NonCombatSuperState(this);
+        NonCombatSuper.SetInitialSubState(PatrolState);
+
+        CombatSuper = new CombatSuperState(this);
+        CombatSuper.SetInitialSubState(ChaseState);
+
+        FSM.ChangeState(NonCombatSuper);
     }
 
     protected override void HandleDamageTaken(int damage, Vector2 knockback)
@@ -61,10 +73,9 @@ public class Draugr : EnemyBase
 
         ApplyKnockback(knockback);
 
-        // Don't return to the attack state after hitstun — go back to chase instead
-        HitstunState.ReturnState = FSM.CurrentState == MeleeAttackState
-            ? (IState)ChaseState
-            : FSM.CurrentState;
+        HitstunState.ReturnState = (Ctx.isPlayerInAggroRange && Ctx.isPlayerOnSamePlatform)
+            ? (IState)CombatSuper
+            : NonCombatSuper;
         FSM.ChangeState(HitstunState);
     }
 

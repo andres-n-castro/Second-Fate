@@ -34,8 +34,6 @@ public class EnemyProfile : ScriptableObject
     public float hitstunDrag = 8f;
 
     [Header("Attack System")]
-    public float minAttackCooldown = 0.5f;
-    public float maxAttackCooldown = 1.5f;
     public AttackDefinition[] attacks;
 
     [Header("Contact Damage")]
@@ -47,6 +45,8 @@ public class EnemyProfile : ScriptableObject
     public bool contactRequiresEnemyAlive = true;
 
     [Header("Boss-Specific")]
+    public float minAttackCooldown = 0.5f;
+    public float maxAttackCooldown = 1.5f;
     public float phase2HealthPercent = 0.5f;
     public float phaseTransitionDuration = 2f;
     public float erraticIntensity = 3f;

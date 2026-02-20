@@ -37,7 +37,7 @@ public class FWSPatrolState : EnemyState
         // Check for player detection
         if (owner.Ctx.isPlayerInAggroRange)
         {
-            owner.FSM.ChangeState(fws.EngageDecisionState);
+            owner.FSM.ChangeState(fws.CombatSuper); // cross: NonCombat → Combat
             return;
         }
 
@@ -145,7 +145,7 @@ public class FWSEngageDecisionState : EnemyState
         if (!owner.Ctx.isPlayerInDeaggroRange)
         {
             fws.HomePosition = owner.transform.position;
-            owner.FSM.ChangeState(fws.PatrolState);
+            owner.FSM.ChangeState(fws.NonCombatSuper); // cross: Combat → NonCombat
             return;
         }
 
@@ -153,7 +153,7 @@ public class FWSEngageDecisionState : EnemyState
         if (!owner.Ctx.hasLineOfSightToPlayer)
         {
             fws.HomePosition = owner.transform.position;
-            owner.FSM.ChangeState(fws.PatrolState);
+            owner.FSM.ChangeState(fws.NonCombatSuper); // cross: Combat → NonCombat
             return;
         }
 
@@ -175,11 +175,11 @@ public class FWSEngageDecisionState : EnemyState
 
         if (roll < dashWeight && owner.IsAttackReady("Dash"))
         {
-            owner.FSM.ChangeState(fws.DashAttackState);
+            fws.CombatSuper.ForceSubState(fws.DashAttackState);    // within Combat
         }
         else
         {
-            owner.FSM.ChangeState(fws.RepositionState);
+            fws.CombatSuper.ForceSubState(fws.RepositionState);    // within Combat
         }
     }
 }
@@ -229,7 +229,7 @@ public class FWSDashAttackState : EnemyState
                 if (!owner.Ctx.hasLineOfSightToPlayer)
                 {
                     fws.HomePosition = owner.transform.position;
-                    owner.FSM.ChangeState(fws.PatrolState);
+                    owner.FSM.ChangeState(fws.NonCombatSuper); // cross: Combat → NonCombat
                     return;
                 }
 
@@ -260,14 +260,14 @@ public class FWSDashAttackState : EnemyState
                     // Too close to dash meaningfully — reposition instead
                     if (interceptDist < 0.5f)
                     {
-                        owner.FSM.ChangeState(fws.RepositionState);
+                        fws.CombatSuper.ForceSubState(fws.RepositionState); // within Combat
                         return;
                     }
 
                     // Path check to intercept point (not through the player into the wall behind)
                     if (!fws.IsPathClear(dashDirection, interceptDist, castRadius))
                     {
-                        owner.FSM.ChangeState(fws.RepositionState);
+                        fws.CombatSuper.ForceSubState(fws.RepositionState); // within Combat
                         return;
                     }
 
@@ -300,7 +300,7 @@ public class FWSDashAttackState : EnemyState
             case Phase.Recovery:
                 if (timer <= 0f)
                 {
-                    owner.FSM.ChangeState(fws.EngageDecisionState);
+                    fws.CombatSuper.ForceSubState(fws.EngageDecisionState); // within Combat
                 }
                 break;
         }
@@ -382,7 +382,7 @@ public class FWSRepositionState : EnemyState
         if (!owner.Ctx.isPlayerInDeaggroRange || !owner.Ctx.hasLineOfSightToPlayer)
         {
             fws.HomePosition = owner.transform.position;
-            owner.FSM.ChangeState(fws.PatrolState);
+            owner.FSM.ChangeState(fws.NonCombatSuper); // cross: Combat → NonCombat
             return;
         }
 
@@ -393,7 +393,7 @@ public class FWSRepositionState : EnemyState
         // Arrived or timed out
         if (distToTarget < owner.Profile.patrolArriveThreshold || timer >= maxTime)
         {
-            owner.FSM.ChangeState(fws.EngageDecisionState);
+            fws.CombatSuper.ForceSubState(fws.EngageDecisionState); // within Combat
             return;
         }
 
