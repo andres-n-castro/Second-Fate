@@ -80,7 +80,11 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if (pState.isKnockbacked) return;
+        if (pState.isKnockbacked) 
+        { 
+            //Debug.Log($"Movement blocked - knockback active, timer={pState.knockbackTimer}"); 
+            return; 
+        }
         rb.linearVelocity = new Vector2(walkspeed * xAxis, rb.linearVelocity.y);
         anim.SetBool("Walking", rb.linearVelocity.x != 0 && Grounded());
     }
@@ -90,7 +94,10 @@ public class PlayerController : MonoBehaviour
         if (!pState.isKnockbacked) return;
         pState.knockbackTimer -= Time.deltaTime;
         if (pState.knockbackTimer <= 0f)
+        {
             pState.isKnockbacked = false;
+            //Debug.Log("Knockback ended");
+        }
     }
 
 

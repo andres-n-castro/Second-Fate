@@ -266,12 +266,16 @@ public abstract class EnemyBase : MonoBehaviour
         Vector2 knockback = new Vector2(knockDir * profile.contactKnockbackX, profile.contactKnockbackY);
 
         // Damage via Health (pass zero knockback — we apply it directly below)
+        //Debug.Log($"Contact damage: force=({profile.contactKnockbackX}, {profile.contactKnockbackY}), dir={knockDir}");
         playerHealth.TakeDamage(profile.contactDamage, Vector2.zero);
 
         // Apply knockback directly to player rb and suppress Move() for the duration
         Rigidbody2D playerRb = other.attachedRigidbody;
         if (playerRb != null)
+        {
             playerRb.linearVelocity = knockback;
+            Debug.Log($"Contact knockback applied: velocity={playerRb.linearVelocity}");
+        }
 
         PlayerStateList pState = PlayerController.Instance.GetComponent<PlayerStateList>();
         if (pState != null)

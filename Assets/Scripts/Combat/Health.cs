@@ -54,10 +54,12 @@ public class Health : MonoBehaviour, IDamageable
         if (!handleKnockbackExternally && rb != null && knockbackForce != Vector2.zero)
         {
             rb.AddForce(knockbackForce, ForceMode2D.Impulse);
+            //Debug.Log($"Health AddForce knockback: {knockbackForce}");
         }
 
         if (currentHealth <= 0)
         {
+            Debug.Log($"{gameObject.name} has died");
             OnDeath?.Invoke();
         }
     }

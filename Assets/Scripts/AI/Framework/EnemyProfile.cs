@@ -59,6 +59,8 @@ public class EnemyProfile : ScriptableObject
     public float giveUpPauseDuration = 1f;
     public float draugrFacingDeadzoneX = 0.3f;
     public float playerAboveThresholdY = 0.6f;
+    public float draugrStuckTimeout = 1.0f;
+    public float draugrMinProgressThreshold = 0.05f;
 
     [Header("FWS Adaptive Dash")]
     public float dashWindowSeconds = 5f;

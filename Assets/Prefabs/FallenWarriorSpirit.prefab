@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7269561907639740113}
   - component: {fileID: 6754233573337149767}
   - component: {fileID: 3869796221833419296}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: DashHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,6 @@ GameObject:
   - component: {fileID: 8307217087622657931}
   - component: {fileID: 8144637399000850052}
   - component: {fileID: 6157200043621568539}
-  - component: {fileID: 1034476743722444527}
   - component: {fileID: 6227841449435708307}
   - component: {fileID: 7531633401594946189}
   m_Layer: 7
@@ -221,28 +220,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   handleKnockbackExternally: 0
---- !u!95 &1034476743722444527
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6372044751141115011}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &6227841449435708307
 SpriteRenderer:
   m_ObjectHideFlags: 0

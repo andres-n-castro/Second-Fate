@@ -109,6 +109,8 @@ public class DraugrPatrolState : EnemyState
 public class DraugrChaseState : EnemyState
 {
     private Draugr draugr;
+    private float stuckTimer;
+    private float lastX;
 
     public DraugrChaseState(Draugr draugr) : base(draugr)
     {
@@ -118,6 +120,8 @@ public class DraugrChaseState : EnemyState
     public override void Enter()
     {
         draugr.LoseTargetTimer = 0f;
+        stuckTimer = 0f;
+        lastX = owner.transform.position.x;
     }
 
     public override void FixedTick()
@@ -158,6 +162,23 @@ public class DraugrChaseState : EnemyState
         {
             draugr.CombatSuper.ForceSubState(draugr.MeleeAttackState); // within Combat
             return;
+        }
+
+        // Stuck detection — if no meaningful horizontal progress, accumulate timer
+        float currentX = owner.transform.position.x;
+        if (Mathf.Abs(currentX - lastX) < owner.Profile.draugrMinProgressThreshold)
+        {
+            stuckTimer += Time.fixedDeltaTime;
+            if (stuckTimer >= owner.Profile.draugrStuckTimeout)
+            {
+                draugr.CombatSuper.ForceSubState(draugr.GiveUpState);
+                return;
+            }
+        }
+        else
+        {
+            stuckTimer = 0f;
+            lastX = currentX;
         }
 
         // Player directly overhead on the same platform — hold position, don't thrash horizontally

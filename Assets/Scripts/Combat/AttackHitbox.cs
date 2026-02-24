@@ -65,5 +65,6 @@ public class AttackHitbox : MonoBehaviour
         Vector2 kb = new Vector2(direction.x * knockbackForce.x, knockbackForce.y);
 
         target.TakeDamage(damage, kb);
+        //Debug.Log($"Hitbox hit: damage={damage}, knockback={kb}");
     }
 }
