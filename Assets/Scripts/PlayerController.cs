@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<PlayerMovement>();
         anim = GetComponent<Animator>();
-        playerMovement = GetComponent<PlayerMovement>();
         playerAttack = GetComponent<PlayerAttack>();
         playerStats = GetComponent<PlayerStats>();
         playerStates = GetComponent<PlayerStates>();
@@ -47,7 +46,7 @@ public class PlayerController : MonoBehaviour
         playerMovement.Flip(xAxis);
         playerMovement.MaxFall(rb);
         playerMovement.Move(rb, xAxis, anim);
-        playerMovement.Jump(rb, playerStates.isJumping, anim);
+        playerMovement.Jump(rb, ref playerStates.isJumping, anim);
         
         playerAttack.Attack(playerStates.isAttacking, anim, yAxis, playerMovement);
     }

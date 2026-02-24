@@ -15,21 +15,24 @@ public class PlayerAttack : MonoBehaviour
         if (isAttacking && timeSinceAttack >= attackCooldown)
         {
             timeSinceAttack = 0; 
-            anim.SetTrigger("Attacking");
 
             if(yAxis == 0 || yAxis < 0 && playerMovement.Grounded())
             {
+                anim.SetTrigger("Attacking");
                 Hit(sideAttackTransform, sideAttackArea);
             }
             else if (yAxis > 0)
             {
+                anim.SetTrigger("UpAttack");
                 Hit(upAttackTransform, upAttackArea);
             }
             else if(yAxis < 0 && !playerMovement.Grounded())
             {
+                anim.SetTrigger("DownAttack");
                 Hit(downAttackTransform, downAttackArea);
             }
         }
+
     }
 
     private void Hit(Transform attackTransform, Vector2 attackArea)
