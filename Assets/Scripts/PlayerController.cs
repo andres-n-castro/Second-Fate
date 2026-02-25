@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private PlayerStates playerStates;
     private float xAxis, yAxis;
 
+    [SerializeField] public float timeScale;
 
     void Awake()
     {
@@ -49,6 +50,8 @@ public class PlayerController : MonoBehaviour
         playerMovement.Jump(rb, ref playerStates.isJumping, anim);
         
         playerAttack.Attack(playerStates.isAttacking, anim, yAxis, playerMovement);
+
+        Time.timeScale = timeScale;
     }
     
     private void GetInputs()
