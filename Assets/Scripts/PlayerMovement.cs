@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         //coyote timer check tied to ground check
-        if(Grounded() && rb.linearVelocity.y <= 0)
+        if(Grounded() && rb.linearVelocity.y <= 0.1f)
         {
             coyoteTimeCounter = coyoteTime;
             isJumping = false;
@@ -126,12 +126,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if(xAxis < 0)
         {
-            transform.localScale = new Vector2(-1, transform.localScale.y);
+            transform.localScale = new Vector3(-1f, transform.localScale.y, 1f);
         }
         else if (xAxis > 0)
         {
-            transform.localScale = new Vector2(1, transform.localScale.y);            
+            transform.localScale = new Vector3(1f, transform.localScale.y, 1f);
         }
-    }
 
+    }
 }
