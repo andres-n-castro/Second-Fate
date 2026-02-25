@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class PlayerController : MonoBehaviour
+public class DemoPlayerController : MonoBehaviour
 {
     // Event for AI perception to track player dashes
     public static event Action OnPlayerDashed;
@@ -23,12 +23,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float coyoteTime;
 
 
-    private PlayerStateList pState;
+    private DemoPlayerStateList pState;
     private Rigidbody2D rb;
     private float xAxis;
     Animator anim;
 
-    public static PlayerController Instance;
+    public static DemoPlayerController Instance;
 
     private void Awake()
     {
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        pState = GetComponent<PlayerStateList>();
+        pState = GetComponent<DemoPlayerStateList>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }

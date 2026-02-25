@@ -44,10 +44,9 @@ GameObject:
   - component: {fileID: 4561531547772252649}
   - component: {fileID: 5964204608503779383}
   - component: {fileID: 3496947404433007714}
-  - component: {fileID: 407831974107536815}
   - component: {fileID: 363337110733960922}
-  - component: {fileID: -5424933927628813081}
-  m_Layer: 6
+  - component: {fileID: 1609372905375801527}
+  m_Layer: 0
   m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 7842624047805741824}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5610896, y: -1.027, z: 0}
+  m_LocalPosition: {x: 0.5610896, y: -1.027, z: 0.012864511}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -220,21 +219,6 @@ MonoBehaviour:
   groundCheckX: 0.5
   jumpForce: 45
   coyoteTime: 0.1
---- !u!114 &407831974107536815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7842624047805741824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66ec7c77acb530c4db39801d1d15e160, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumping: 0
-  isKnockbacked: 0
-  knockbackTimer: 0
 --- !u!95 &363337110733960922
 Animator:
   serializedVersion: 7
@@ -257,7 +241,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-5424933927628813081
+--- !u!114 &1609372905375801527
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -266,8 +250,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7842624047805741824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e5bcc32e947684ea6d3ad710f54fde, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d778475840f7464a86448e752f0193f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  handleKnockbackExternally: 0
+  jumping: 0
