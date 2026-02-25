@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         //coyote timer check tied to ground check
-        if(Grounded() && rb.linearVelocity.y <= 0)
+        if(Grounded() && rb.linearVelocity.y <= 0.1f)
         {
             coyoteTimeCounter = coyoteTime;
             isJumping = false;
