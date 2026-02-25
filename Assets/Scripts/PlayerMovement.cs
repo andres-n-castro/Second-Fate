@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("Walking", rb.linearVelocity.x != 0 && Grounded());
     }
 
-    public void Jump(Rigidbody2D rb, bool isJumping, Animator anim)
+    public void Jump(Rigidbody2D rb, ref bool isJumping, Animator anim)
     {
 
         //coyote timer check tied to ground check
@@ -76,6 +76,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         anim.SetBool("Jumping", isJumping);
+        anim.SetFloat("yVelocity", rb.linearVelocity.y);
+        anim.SetBool("isGrounded", Grounded());
 
     }
 

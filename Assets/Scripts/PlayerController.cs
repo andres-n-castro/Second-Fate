@@ -1,9 +1,6 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 [RequireComponent(typeof(PlayerAttack))]
-[RequireComponent(typeof(PlayerStats))]
-[RequireComponent(typeof(PlayerStates))]
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private PlayerAttack playerAttack;
     private PlayerStats playerStats;
     private PlayerStates playerStates;
-    private float xAxis;
+    private float xAxis, yAxis;
 
 
     void Awake()
@@ -35,7 +32,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<PlayerMovement>();
         anim = GetComponent<Animator>();
-        playerMovement = GetComponent<PlayerMovement>();
         playerAttack = GetComponent<PlayerAttack>();
         playerStats = GetComponent<PlayerStats>();
         playerStates = GetComponent<PlayerStates>();
@@ -50,14 +46,15 @@ public class PlayerController : MonoBehaviour
         playerMovement.Flip(xAxis);
         playerMovement.MaxFall(rb);
         playerMovement.Move(rb, xAxis, anim);
-        playerMovement.Jump(rb, playerStates.isJumping, anim);
+        playerMovement.Jump(rb, ref playerStates.isJumping, anim);
         
-        playerAttack.Attack(playerStates.isAttacking, anim);
+        playerAttack.Attack(playerStates.isAttacking, anim, yAxis, playerMovement);
     }
     
     private void GetInputs()
     {
         xAxis = Input.GetAxisRaw("Horizontal");
+        yAxis = Input.GetAxisRaw("Vertical");
         playerStates.isAttacking = Input.GetMouseButtonDown(0);
     }
 }
