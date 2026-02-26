@@ -1,0 +1,1209 @@
+fileFormatVersion: 2
+guid: 0b7862f75a0d28c4e99dc19edf23fe26
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8612586997103246199
+    second: bluewindflame_0
+  - first:
+      213: 5512840898183862257
+    second: bluewindflame_1
+  - first:
+      213: 6332290179610103205
+    second: bluewindflame_2
+  - first:
+      213: 4986211687306818645
+    second: bluewindflame_3
+  - first:
+      213: 2762679365916837353
+    second: bluewindflame_4
+  - first:
+      213: 7509519392025970426
+    second: bluewindflame_5
+  - first:
+      213: 249070141121769141
+    second: bluewindflame_6
+  - first:
+      213: -2203448892478130283
+    second: bluewindflame_7
+  - first:
+      213: 3190764652073937701
+    second: bluewindflame_8
+  - first:
+      213: 4427949747175626161
+    second: bluewindflame_9
+  - first:
+      213: 5848160363481440037
+    second: bluewindflame_10
+  - first:
+      213: 6424537058886311395
+    second: bluewindflame_11
+  - first:
+      213: 5704549297498210032
+    second: bluewindflame_12
+  - first:
+      213: -886644502049235704
+    second: bluewindflame_13
+  - first:
+      213: -4134318426437895266
+    second: bluewindflame_14
+  - first:
+      213: 2317073948487062850
+    second: bluewindflame_15
+  - first:
+      213: -8725146175816106768
+    second: bluewindflame_16
+  - first:
+      213: 4499209299817407128
+    second: bluewindflame_17
+  - first:
+      213: 2897740779033619128
+    second: bluewindflame_18
+  - first:
+      213: 4815346605232297556
+    second: bluewindflame_19
+  - first:
+      213: -6276399228016865264
+    second: bluewindflame_20
+  - first:
+      213: -4079897135647104292
+    second: bluewindflame_21
+  - first:
+      213: -3732359931199858071
+    second: bluewindflame_22
+  - first:
+      213: 8629898451285325252
+    second: bluewindflame_23
+  - first:
+      213: 603128060175629910
+    second: bluewindflame_24
+  - first:
+      213: 378800221556019836
+    second: bluewindflame_25
+  - first:
+      213: -1934191252994248447
+    second: bluewindflame_26
+  - first:
+      213: -4384881984552281298
+    second: bluewindflame_27
+  - first:
+      213: -2832500921919098908
+    second: bluewindflame_28
+  - first:
+      213: -8624617347457092330
+    second: bluewindflame_29
+  - first:
+      213: -5254993698947911237
+    second: bluewindflame_30
+  - first:
+      213: 3378075645437847486
+    second: bluewindflame_31
+  - first:
+      213: 8646775901660601649
+    second: bluewindflame_32
+  - first:
+      213: 3043307413133749398
+    second: bluewindflame_33
+  - first:
+      213: 2193165416628362252
+    second: bluewindflame_34
+  - first:
+      213: 8420624398803949592
+    second: bluewindflame_35
+  - first:
+      213: 7058973847937863117
+    second: bluewindflame_36
+  - first:
+      213: -8701412381069017739
+    second: bluewindflame_37
+  - first:
+      213: 5703692472667329968
+    second: bluewindflame_38
+  - first:
+      213: -6172533679627835218
+    second: bluewindflame_39
+  - first:
+      213: 116159075905250669
+    second: bluewindflame_40
+  - first:
+      213: 4300140538399016195
+    second: bluewindflame_41
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bluewindflame_0
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 1402
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9844380f1c1f97880800000000000000
+      internalID: -8612586997103246199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_1
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 1426
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f79e7fa69b818c40800000000000000
+      internalID: 5512840898183862257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_2
+      rect:
+        serializedVersion: 2
+        x: 2158
+        y: 1414
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5adca525e50d0e750800000000000000
+      internalID: 6332290179610103205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_3
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 1155
+        width: 217
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 554f2dc8c15923540800000000000000
+      internalID: 4986211687306818645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_4
+      rect:
+        serializedVersion: 2
+        x: 2177
+        y: 1154
+        width: 221
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e546c9fe32075620800000000000000
+      internalID: 2762679365916837353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_5
+      rect:
+        serializedVersion: 2
+        x: 2508
+        y: 1389
+        width: 18
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af68d93991c273860800000000000000
+      internalID: 7509519392025970426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_6
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 1292
+        width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5be28b549ffd47300800000000000000
+      internalID: 249070141121769141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_7
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 1175
+        width: 113
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 597fc1b18e6cb61e0800000000000000
+      internalID: -2203448892478130283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_8
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 1167
+        width: 143
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52b6db0bb8fd74c20800000000000000
+      internalID: 3190764652073937701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_9
+      rect:
+        serializedVersion: 2
+        x: 1145
+        y: 1158
+        width: 161
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b51fa3b5dc337d30800000000000000
+      internalID: 4427949747175626161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_10
+      rect:
+        serializedVersion: 2
+        x: 1487
+        y: 1156
+        width: 194
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52f94de9dd6d82150800000000000000
+      internalID: 5848160363481440037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_11
+      rect:
+        serializedVersion: 2
+        x: 2531
+        y: 1153
+        width: 218
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ed50499a6a882950800000000000000
+      internalID: 6424537058886311395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_12
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 1177
+        width: 87
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0feb511bc51aa2f40800000000000000
+      internalID: 5704549297498210032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_13
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 1034
+        width: 16
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80d5d45e58102b3f0800000000000000
+      internalID: -886644502049235704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_14
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 1049
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9b31d3bb43ff96c0800000000000000
+      internalID: -4134318426437895266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_15
+      rect:
+        serializedVersion: 2
+        x: 1336
+        y: 1053
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24512e1da76e72020800000000000000
+      internalID: 2317073948487062850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_16
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 1027
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fc7f19e7cd0ae680800000000000000
+      internalID: -8725146175816106768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_17
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 777
+        width: 216
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89220c53507607e30800000000000000
+      internalID: 4499209299817407128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_18
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 777
+        width: 224
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ba6679b2e7d63820800000000000000
+      internalID: 2897740779033619128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_19
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 777
+        width: 219
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4561143893c83d240800000000000000
+      internalID: 4815346605232297556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_20
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 776
+        width: 225
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 010d489e720c5e8a0800000000000000
+      internalID: -6276399228016865264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_21
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 966
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd2ee9ddb2b4167c0800000000000000
+      internalID: -4079897135647104292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_22
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 777
+        width: 218
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96a5eeeda6ef33cc0800000000000000
+      internalID: -3732359931199858071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_23
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 985
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c53e841bee83c770800000000000000
+      internalID: 8629898451285325252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_24
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 776
+        width: 217
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65eb6d476cdbe5800800000000000000
+      internalID: 603128060175629910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_25
+      rect:
+        serializedVersion: 2
+        x: 2180
+        y: 777
+        width: 217
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c729fa66bc4c14500800000000000000
+      internalID: 378800221556019836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_26
+      rect:
+        serializedVersion: 2
+        x: 2532
+        y: 778
+        width: 216
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1013c9d9d4f5825e0800000000000000
+      internalID: -1934191252994248447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_27
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 402
+        width: 218
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2b50c03115c523c0800000000000000
+      internalID: -4384881984552281298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_28
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 403
+        width: 228
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4efab033b6fe0b8d0800000000000000
+      internalID: -2832500921919098908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_29
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 402
+        width: 217
+        height: 208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 615f529b7343f4880800000000000000
+      internalID: -8624617347457092330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_30
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 402
+        width: 231
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb13b4da2138217b0800000000000000
+      internalID: -5254993698947911237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_31
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 402
+        width: 218
+        height: 208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb7a8b6d6e551ee20800000000000000
+      internalID: 3378075645437847486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_32
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 401
+        width: 216
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13d53e6bed48ff770800000000000000
+      internalID: 8646775901660601649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_33
+      rect:
+        serializedVersion: 2
+        x: 2180
+        y: 403
+        width: 216
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69c6626d7fffb3a20800000000000000
+      internalID: 3043307413133749398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_34
+      rect:
+        serializedVersion: 2
+        x: 2532
+        y: 403
+        width: 215
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0c1ec79350bf6e10800000000000000
+      internalID: 2193165416628362252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_35
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 30
+        width: 217
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81852bdb6411cd470800000000000000
+      internalID: 8420624398803949592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_36
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 20
+        width: 216
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcdcb1d805386f160800000000000000
+      internalID: 7058973847937863117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_37
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 29
+        width: 218
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57df13e9a8f5e3780800000000000000
+      internalID: -8701412381069017739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_38
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 28
+        width: 219
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b5d76d9516972f40800000000000000
+      internalID: 5703692472667329968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_39
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 26
+        width: 200
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea8e5a56251c65aa0800000000000000
+      internalID: -6172533679627835218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_40
+      rect:
+        serializedVersion: 2
+        x: 1837
+        y: 22
+        width: 199
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6525c8601eac9100800000000000000
+      internalID: 116159075905250669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluewindflame_41
+      rect:
+        serializedVersion: 2
+        x: 2655
+        y: 46
+        width: 99
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 305c78b590b2dab30800000000000000
+      internalID: 4300140538399016195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      bluewindflame_0: -8612586997103246199
+      bluewindflame_1: 5512840898183862257
+      bluewindflame_10: 5848160363481440037
+      bluewindflame_11: 6424537058886311395
+      bluewindflame_12: 5704549297498210032
+      bluewindflame_13: -886644502049235704
+      bluewindflame_14: -4134318426437895266
+      bluewindflame_15: 2317073948487062850
+      bluewindflame_16: -8725146175816106768
+      bluewindflame_17: 4499209299817407128
+      bluewindflame_18: 2897740779033619128
+      bluewindflame_19: 4815346605232297556
+      bluewindflame_2: 6332290179610103205
+      bluewindflame_20: -6276399228016865264
+      bluewindflame_21: -4079897135647104292
+      bluewindflame_22: -3732359931199858071
+      bluewindflame_23: 8629898451285325252
+      bluewindflame_24: 603128060175629910
+      bluewindflame_25: 378800221556019836
+      bluewindflame_26: -1934191252994248447
+      bluewindflame_27: -4384881984552281298
+      bluewindflame_28: -2832500921919098908
+      bluewindflame_29: -8624617347457092330
+      bluewindflame_3: 4986211687306818645
+      bluewindflame_30: -5254993698947911237
+      bluewindflame_31: 3378075645437847486
+      bluewindflame_32: 8646775901660601649
+      bluewindflame_33: 3043307413133749398
+      bluewindflame_34: 2193165416628362252
+      bluewindflame_35: 8420624398803949592
+      bluewindflame_36: 7058973847937863117
+      bluewindflame_37: -8701412381069017739
+      bluewindflame_38: 5703692472667329968
+      bluewindflame_39: -6172533679627835218
+      bluewindflame_4: 2762679365916837353
+      bluewindflame_40: 116159075905250669
+      bluewindflame_41: 4300140538399016195
+      bluewindflame_5: 7509519392025970426
+      bluewindflame_6: 249070141121769141
+      bluewindflame_7: -2203448892478130283
+      bluewindflame_8: 3190764652073937701
+      bluewindflame_9: 4427949747175626161
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
