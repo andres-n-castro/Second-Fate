@@ -302,7 +302,7 @@ public class DraugrMeleeAttackState : EnemyState
         AttackDefinition atk = GetMeleeAttack();
         timer = atk != null ? atk.windupDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("MeleeWindup");
+        if (owner.Anim != null) owner.Anim.SetTrigger("MeleeAttack");
     }
 
     public override void FixedTick()
@@ -319,7 +319,6 @@ public class DraugrMeleeAttackState : EnemyState
                     timer = atk != null ? atk.activeDuration : 0.2f;
 
                     if (draugr.MeleeHitbox != null) draugr.MeleeHitbox.Activate();
-                    if (owner.Anim != null) owner.Anim.SetTrigger("MeleeAttack");
                 }
                 break;
 

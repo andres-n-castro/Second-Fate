@@ -1,11 +1,15 @@
 using UnityEngine;
+using System;
+
 [RequireComponent(typeof(PlayerMovement))]
 [RequireComponent(typeof(PlayerAttack))]
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private PlayerController Instance;
+    public static PlayerController Instance;
+
+    // Event for AI perception to track player dashes
+    public static event Action OnPlayerDashed;
     private Rigidbody2D rb;
     private Animator anim;
     private PlayerMovement playerMovement;
@@ -14,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private PlayerStates playerStates;
     private float xAxis, yAxis;
 
-    [SerializeField] public float timeScale;
+    [SerializeField] public float timeScale = 1f;
 
     void Awake()
     {
@@ -43,15 +47,30 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        UpdateKnockback();
         GetInputs();
         playerMovement.Flip(xAxis);
         playerMovement.MaxFall(rb);
-        playerMovement.Move(rb, xAxis, anim);
-        playerMovement.Jump(rb, ref playerStates.isJumping, anim);
-        
+
+        if (!playerStates.isKnockbacked)
+        {
+            playerMovement.Move(rb, xAxis, anim);
+            playerMovement.Jump(rb, ref playerStates.isJumping, anim);
+        }
+
         playerAttack.Attack(playerStates.isAttacking, anim, yAxis, playerMovement);
 
         Time.timeScale = timeScale;
+    }
+
+    private void UpdateKnockback()
+    {
+        if (!playerStates.isKnockbacked) return;
+        playerStates.knockbackTimer -= Time.deltaTime;
+        if (playerStates.knockbackTimer <= 0f)
+        {
+            playerStates.isKnockbacked = false;
+        }
     }
     
     private void GetInputs()
@@ -59,5 +78,13 @@ public class PlayerController : MonoBehaviour
         xAxis = Input.GetAxisRaw("Horizontal");
         yAxis = Input.GetAxisRaw("Vertical");
         playerStates.isAttacking = Input.GetMouseButtonDown(0);
+    }
+
+    /// <summary>
+    /// Call this when dash is implemented to notify AI perception systems.
+    /// </summary>
+    public static void FireDashEvent()
+    {
+        OnPlayerDashed?.Invoke();
     }
 }

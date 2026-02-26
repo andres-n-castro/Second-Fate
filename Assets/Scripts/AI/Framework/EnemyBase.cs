@@ -277,7 +277,7 @@ public abstract class EnemyBase : MonoBehaviour
             Debug.Log($"Contact knockback applied: velocity={playerRb.linearVelocity}");
         }
 
-        PlayerStateList pState = PlayerController.Instance.GetComponent<PlayerStateList>();
+        PlayerStates pState = PlayerController.Instance.GetComponent<PlayerStates>();
         if (pState != null)
         {
             pState.isKnockbacked = true;

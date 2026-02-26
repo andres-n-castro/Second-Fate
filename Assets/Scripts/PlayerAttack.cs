@@ -8,7 +8,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Vector2 sideAttackArea, upAttackArea, downAttackArea;
 
     [SerializeField] LayerMask attackLayer;
-    
+    [SerializeField] private int attackDamage = 1;
+    [SerializeField] private Vector2 knockbackForce = new Vector2(5f, 2f);
+
     public void Attack(bool isAttacking, Animator anim, float yAxis, PlayerMovement playerMovement)
     {
         timeSinceAttack += Time.deltaTime;
@@ -39,11 +41,18 @@ public class PlayerAttack : MonoBehaviour
     {
         Collider2D[] objectsToHit = Physics2D.OverlapBoxAll(attackTransform.position, attackArea, 0, attackLayer);
 
-        if(objectsToHit.Length > 0)
+        for (int i = 0; i < objectsToHit.Length; i++)
         {
-            Debug.Log("Hit");
+            IDamageable target = objectsToHit[i].GetComponent<IDamageable>();
+            if (target == null)
+                target = objectsToHit[i].GetComponentInParent<IDamageable>();
+
+            if (target == null) continue;
+
+            Vector2 direction = (objectsToHit[i].transform.position - attackTransform.position).normalized;
+            Vector2 kb = new Vector2(direction.x * knockbackForce.x, knockbackForce.y);
+            target.TakeDamage(attackDamage, kb);
         }
-        
     }
 
     private void OnDrawGizmos()

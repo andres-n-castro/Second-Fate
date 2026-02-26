@@ -73,6 +73,7 @@ public class ValkP2Super : HierarchicalState
 
     public override void Enter()
     {
+        Debug.Log("Valkyrie: Entering Phase 2");
         // Boss becomes airborne in Phase 2
         owner.Rb.gravityScale = 0f;
         RequestedP2Attack = null;

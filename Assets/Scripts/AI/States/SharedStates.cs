@@ -18,7 +18,11 @@ public class GroundHitstunState : EnemyState
         owner.Ctx.isHitstunned = true;
         timer = owner.Profile.hitstunDuration;
 
-        if (owner.Anim != null) owner.Anim.SetBool("Walking", false);
+        if (owner.Anim != null)
+        {
+            owner.Anim.SetBool("Walking", false);
+            owner.Anim.SetTrigger("Hitstun");
+        }
     }
 
     public override void FixedTick()
