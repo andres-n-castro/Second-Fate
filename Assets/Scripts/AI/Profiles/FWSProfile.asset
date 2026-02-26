@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133d3640feead734598e9768a8c524d3, type: 3}
+  m_Name: FWSProfile
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  flySpeed: 6
+  approachSpeed: 0
+  roamSpeed: 2
+  roamRadius: 3
+  roamChangeInterval: 2
+  aggroRange: 8
+  deaggroRange: 12
+  attackRange: 0
+  groundCheckDistance: 1
+  wallCheckDistance: 1
+  losEyeOffsetY: 0.5
+  losCastRadius: 0.1
+  requireLOSForAggro: 1
+  requireLOSForAttack: 1
+  knockbackForceX: 4
+  knockbackForceY: 1
+  hitstunDuration: 0.2
+  hitstunDrag: 6
+  minAttackCooldown: 0.5
+  maxAttackCooldown: 1.5
+  attacks:
+  - attackName: Dash
+    damage: 1
+    knockbackForce: 5
+    windupDuration: 0.5
+    activeDuration: 0.3
+    recoveryDuration: 0.3
+    cooldown: 1
+    dashSpeed: 15
+    dashDuration: 0.3
+    hitCount: 1
+    hitInterval: 0
+    selectionWeight: 1
+  enableContactDamage: 1
+  contactDamage: 1
+  contactKnockbackX: 4
+  contactKnockbackY: 3
+  contactCooldownSeconds: 0.8
+  contactRequiresEnemyAlive: 1
+  phase2HealthPercent: 0.5
+  phaseTransitionDuration: 2
+  erraticIntensity: 3
+  hoverHeight: 3
+  chaseSpeed: 3.5
+  acquireTargetDelay: 0.3
+  loseTargetDelay: 0.5
+  giveUpPauseDuration: 1
+  draugrFacingDeadzoneX: 0.3
+  playerAboveThresholdY: 0.6
+  dashWindowSeconds: 5
+  dashWeightBoostPerDash: 0.15
+  baseDashWeight: 1
+  dashStopShortDistance: 1
+  dashPathCastRadius: 0.2
+  patrolArriveThreshold: 0.5
+  patrolSmoothing: 5
+  patrolTargetSampleCount: 8
+  patrolTargetClearanceRadius: 0.4
+  stuckSeconds: 0.5
+  stuckMinProgress: 0.3
+  repositionDistance: 4
+  repositionDecisionCooldown: 0.4

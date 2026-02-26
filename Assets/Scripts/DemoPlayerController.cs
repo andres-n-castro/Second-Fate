@@ -1,8 +1,11 @@
 using UnityEngine;
+using System;
 
 public class DemoPlayerController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Event for AI perception to track player dashes
+    public static event Action OnPlayerDashed;
+
     [Header("Horizontal Movement Settings")]
     [SerializeField] float walkspeed = 10;
 
@@ -52,6 +55,7 @@ public class DemoPlayerController : MonoBehaviour
     {
         GetInputs();
         UpdateJumpVariables();
+        UpdateKnockback();
         Flip();
         Move();
         Jump();
@@ -76,8 +80,24 @@ public class DemoPlayerController : MonoBehaviour
 
     private void Move()
     {
-        rb.linearVelocity = new Vector2(walkspeed * xAxis, rb.linearVelocity.y); 
+        if (pState.isKnockbacked) 
+        { 
+            //Debug.Log($"Movement blocked - knockback active, timer={pState.knockbackTimer}"); 
+            return; 
+        }
+        rb.linearVelocity = new Vector2(walkspeed * xAxis, rb.linearVelocity.y);
         anim.SetBool("Walking", rb.linearVelocity.x != 0 && Grounded());
+    }
+
+    private void UpdateKnockback()
+    {
+        if (!pState.isKnockbacked) return;
+        pState.knockbackTimer -= Time.deltaTime;
+        if (pState.knockbackTimer <= 0f)
+        {
+            pState.isKnockbacked = false;
+            //Debug.Log("Knockback ended");
+        }
     }
 
 
@@ -135,6 +155,14 @@ public class DemoPlayerController : MonoBehaviour
         {
             jumpBufferCounter = jumpBufferCounter - Time.deltaTime * 10;
         }
+    }
+
+    /// <summary>
+    /// Call this when dash is implemented to notify AI perception systems.
+    /// </summary>
+    public static void FireDashEvent()
+    {
+        OnPlayerDashed?.Invoke();
     }
 
 }

@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133d3640feead734598e9768a8c524d3, type: 3}
+  m_Name: DraugrProfile
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  flySpeed: 0
+  approachSpeed: 0
+  roamSpeed: 0
+  roamRadius: 0
+  roamChangeInterval: 0
+  aggroRange: 6
+  deaggroRange: 10
+  attackRange: 0
+  groundCheckDistance: 1
+  wallCheckDistance: 0.5
+  losEyeOffsetY: 0.5
+  losCastRadius: 0.1
+  requireLOSForAggro: 1
+  requireLOSForAttack: 1
+  knockbackForceX: 5
+  knockbackForceY: 2
+  hitstunDuration: 0.25
+  hitstunDrag: 8
+  minAttackCooldown: 0
+  maxAttackCooldown: 0
+  attacks:
+  - attackName: Melee
+    damage: 1
+    knockbackForce: 0
+    windupDuration: 0.35
+    activeDuration: 0.15
+    recoveryDuration: 0.5
+    cooldown: 1.5
+    dashSpeed: 0
+    dashDuration: 0
+    hitCount: 0
+    hitInterval: 0
+    selectionWeight: 0
+  enableContactDamage: 1
+  contactDamage: 1
+  contactKnockbackX: 6
+  contactKnockbackY: 4
+  contactCooldownSeconds: 0.8
+  contactRequiresEnemyAlive: 1
+  phase2HealthPercent: 0.5
+  phaseTransitionDuration: 2
+  erraticIntensity: 3
+  hoverHeight: 3
+  chaseSpeed: 3.5
+  acquireTargetDelay: 0.3
+  loseTargetDelay: 0.5
+  giveUpPauseDuration: 1
+  draugrFacingDeadzoneX: 0.3
+  playerAboveThresholdY: 0.6
+  dashWindowSeconds: 5
+  dashWeightBoostPerDash: 0.15
+  baseDashWeight: 1
+  dashStopShortDistance: 1
+  dashPathCastRadius: 0.2
+  patrolArriveThreshold: 0.5
+  patrolSmoothing: 5
+  patrolTargetSampleCount: 8
+  patrolTargetClearanceRadius: 0.4
+  stuckSeconds: 0.5
+  stuckMinProgress: 0.3
+  repositionDistance: 4
+  repositionDecisionCooldown: 0.4
