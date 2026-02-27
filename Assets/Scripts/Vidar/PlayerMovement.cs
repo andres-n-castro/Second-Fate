@@ -134,4 +134,19 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
+    public void Dash()
+    {
+        
+    }
+
+    public void DoubleJump()
+    {
+        
+    }
+
+    public void WallJump()
+    {
+        
+    }
 }

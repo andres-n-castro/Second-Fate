@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private PlayerAttack playerAttack;
     private PlayerStats playerStats;
     private PlayerStates playerStates;
+    public SpriteRenderer spriteRenderer;
     private float xAxis, yAxis;
 
     [SerializeField] public float timeScale = 1f;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
         playerAttack = GetComponent<PlayerAttack>();
         playerStats = GetComponent<PlayerStats>();
         playerStates = GetComponent<PlayerStates>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         playerMovement.defaultGravity = rb.gravityScale;
 
@@ -63,6 +65,16 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = timeScale;
     }
 
+    public void KnockBack(Vector2 force, float timer)
+    {
+        playerStates.isKnockbacked = true;
+        playerStates.knockbackTimer = timer;
+
+        rb.linearVelocity = Vector2.zero;
+
+        rb.AddForce(force, ForceMode2D.Impulse);
+    }
+
     private void UpdateKnockback()
     {
         if (!playerStates.isKnockbacked) return;
@@ -78,13 +90,5 @@ public class PlayerController : MonoBehaviour
         xAxis = Input.GetAxisRaw("Horizontal");
         yAxis = Input.GetAxisRaw("Vertical");
         playerStates.isAttacking = Input.GetMouseButtonDown(0);
-    }
-
-    /// <summary>
-    /// Call this when dash is implemented to notify AI perception systems.
-    /// </summary>
-    public static void FireDashEvent()
-    {
-        OnPlayerDashed?.Invoke();
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class PlayerAttack : MonoBehaviour
     private void Hit(Transform attackTransform, Vector2 attackArea)
     {
         Collider2D[] objectsToHit = Physics2D.OverlapBoxAll(attackTransform.position, attackArea, 0, attackLayer);
+        List<IDamageable> alreadyHit = new List<IDamageable>();
 
         for (int i = 0; i < objectsToHit.Length; i++)
         {
@@ -47,11 +49,14 @@ public class PlayerAttack : MonoBehaviour
             if (target == null)
                 target = objectsToHit[i].GetComponentInParent<IDamageable>();
 
-            if (target == null) continue;
+            if (target == null || alreadyHit.Contains(target)) continue;
+
+            alreadyHit.Add(target);
 
             Vector2 direction = (objectsToHit[i].transform.position - attackTransform.position).normalized;
             Vector2 kb = new Vector2(direction.x * knockbackForce.x, knockbackForce.y);
             target.TakeDamage(attackDamage, kb);
+            Debug.Log($"Sword hit {objectsToHit[i].name}!\n Hitbox hit: knockback={kb} ");
         }
     }
 

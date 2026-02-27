@@ -45,6 +45,7 @@ public class Health : MonoBehaviour, IDamageable
         if (IsDead) return;
 
         currentHealth -= damage;
+        Debug.Log($"{gameObject.name} took {damage} damage! HP left: {currentHealth}");
         currentHealth = Mathf.Max(currentHealth, 0);
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
@@ -54,7 +55,6 @@ public class Health : MonoBehaviour, IDamageable
         if (!handleKnockbackExternally && rb != null && knockbackForce != Vector2.zero)
         {
             rb.AddForce(knockbackForce, ForceMode2D.Impulse);
-            //Debug.Log($"Health AddForce knockback: {knockbackForce}");
         }
 
         if (currentHealth <= 0)

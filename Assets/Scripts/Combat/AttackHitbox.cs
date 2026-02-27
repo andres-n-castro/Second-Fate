@@ -16,7 +16,7 @@ public class AttackHitbox : MonoBehaviour
 {
     [Header("Damage Settings")]
     [SerializeField] private int damage = 1;
-    [SerializeField] private Vector2 knockbackForce = new Vector2(5f, 2f);
+    [SerializeField] private Vector2 knockbackForce = new Vector2(5f, 4f);
     [SerializeField] private LayerMask targetLayers;
 
     private HashSet<IDamageable> hitTargets = new HashSet<IDamageable>();
@@ -65,6 +65,5 @@ public class AttackHitbox : MonoBehaviour
         Vector2 kb = new Vector2(direction.x * knockbackForce.x, knockbackForce.y);
 
         target.TakeDamage(damage, kb);
-        //Debug.Log($"Hitbox hit: damage={damage}, knockback={kb}");
     }
 }

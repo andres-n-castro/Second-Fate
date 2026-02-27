@@ -254,35 +254,20 @@ public abstract class EnemyBase : MonoBehaviour
         if (profile.contactRequiresEnemyAlive && Ctx.isDead) return;
         if (Time.time - _lastContactDamageTime < profile.contactCooldownSeconds) return;
 
-        if (PlayerController.Instance == null) return;
-        if (other.gameObject != PlayerController.Instance.gameObject) return;
+        // 1. Look for the IDamageable interface instead of "Health.cs"
+        IDamageable target = other.GetComponent<IDamageable>();
+        if (target == null)
+            target = other.GetComponentInParent<IDamageable>();
 
-        Health playerHealth = other.GetComponent<Health>();
-        if (playerHealth == null || playerHealth.IsDead) return;
+        if (target == null) return;
 
-        // Knockback direction: push player away from enemy center
+        // 2. Calculate the knockback direction
         float dirX = other.transform.position.x - transform.position.x;
         float knockDir = Mathf.Abs(dirX) > 0.01f ? Mathf.Sign(dirX) : 1f;
         Vector2 knockback = new Vector2(knockDir * profile.contactKnockbackX, profile.contactKnockbackY);
 
-        // Damage via Health (pass zero knockback — we apply it directly below)
-        //Debug.Log($"Contact damage: force=({profile.contactKnockbackX}, {profile.contactKnockbackY}), dir={knockDir}");
-        playerHealth.TakeDamage(profile.contactDamage, Vector2.zero);
-
-        // Apply knockback directly to player rb and suppress Move() for the duration
-        Rigidbody2D playerRb = other.attachedRigidbody;
-        if (playerRb != null)
-        {
-            playerRb.linearVelocity = knockback;
-            Debug.Log($"Contact knockback applied: velocity={playerRb.linearVelocity}");
-        }
-
-        PlayerStates pState = PlayerController.Instance.GetComponent<PlayerStates>();
-        if (pState != null)
-        {
-            pState.isKnockbacked = true;
-            pState.knockbackTimer = 0.3f;
-        }
+        // 3. Send the damage and let the target's script (PlayerManager) handle the rest!
+        target.TakeDamage(profile.contactDamage, knockback);
 
         _lastContactDamageTime = Time.time;
     }
