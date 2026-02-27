@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private int JumpForce = 45;
-    [SerializeField] private int walkspeed = 20;
+    [SerializeField] private int walkspeed = 10;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundLengthY = 0.1f;
