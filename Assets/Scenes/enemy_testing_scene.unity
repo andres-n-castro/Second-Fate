@@ -603,6 +603,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.108
       objectReference: {fileID: 0}
+    - target: {fileID: 3978086069148884822, guid: efebabd8431d6b64eb99b75ba695b11b, type: 3}
+      propertyPath: walkspeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4069348176465958162, guid: efebabd8431d6b64eb99b75ba695b11b, type: 3}
       propertyPath: m_Name
       value: Vidar
