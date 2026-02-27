@@ -8,5 +8,5 @@ public class PlayerStates : MonoBehaviour
     public bool isKnockbacked;
     public float knockbackTimer;
     public bool isInvincible;
-    public float invincibilityTimer;
+    public float invincibilityTimer = 0.25f;
 }

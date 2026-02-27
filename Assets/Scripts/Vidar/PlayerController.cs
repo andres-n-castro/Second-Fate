@@ -50,12 +50,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         UpdateKnockback();
-        GetInputs();
         playerMovement.Flip(xAxis);
         playerMovement.MaxFall(rb);
 
         if (!playerStates.isKnockbacked)
         {
+            GetInputs();
             playerMovement.Move(rb, xAxis, anim);
             playerMovement.Jump(rb, ref playerStates.isJumping, anim);
         }
