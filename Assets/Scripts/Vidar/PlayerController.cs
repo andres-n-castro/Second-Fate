@@ -89,6 +89,6 @@ public class PlayerController : MonoBehaviour
     {
         xAxis = Input.GetAxisRaw("Horizontal");
         yAxis = Input.GetAxisRaw("Vertical");
-        playerStates.isAttacking = Input.GetMouseButtonDown(0);
+        playerStates.isAttacking = Input.GetButtonDown("Player Attack");
     }
 }
