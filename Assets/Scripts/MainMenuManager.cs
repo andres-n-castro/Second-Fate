@@ -25,7 +25,7 @@ public class MainMenuManager : MonoBehaviour
     public Sprite[] levelBackgrounds;
     public float loaderSlideDuration = 0.8f;
     private bool isLevelLoading = false;
-
+    private bool isPaused = false;
     void Start()
     {
         if (levelLoaderPanel != null)
@@ -49,6 +49,12 @@ public class MainMenuManager : MonoBehaviour
             quitButton.onClick.AddListener(OnQuitClicked);
 
         EventSystem.current.SetSelectedGameObject(startButton.gameObject);
+
+        // If this menu starts active, pause the game immediately
+        if (gameObject.activeSelf)
+        {
+            PauseGame();
+        }
     }
 
     void Update()
@@ -73,19 +79,38 @@ public class MainMenuManager : MonoBehaviour
         }
 
         // Space to click
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Escape) && !isLevelLoading)
         {
-            GameObject selected = EventSystem.current.currentSelectedGameObject;
-            if (selected != null)
-            {
-                Button button = selected.GetComponent<Button>();
-                if (button != null) button.onClick.Invoke();
-            }
+            if (isPaused) ResumeGame();
+            else PauseGame();
         }
+
+        if (isLevelLoading || !isPaused) return;
     }
 
+public void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0f; // This freezes physics and animations
+        gameObject.SetActive(true);
+        
+        // Force the EventSystem to focus on the start button for keyboard/controller support
+        if (startButton != null)
+            EventSystem.current.SetSelectedGameObject(startButton.gameObject);
+            
+        // Optional: Cursor.lockState = CursorLockMode.None; 
+        // Optional: Cursor.visible = true;
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1f; // Resumes the game world
+        gameObject.SetActive(false);
+    }
     public void OnStartClicked()
     {
+        Time.timeScale = 1f;
         if (!isLevelLoading) StartCoroutine(TransitionToLevel());
     }
 
@@ -98,29 +123,31 @@ public class MainMenuManager : MonoBehaviour
     }
 
     IEnumerator TransitionToLevel()
+{
+    isLevelLoading = true;
+
+    // 1. Show the Level Loader
+    if (levelLoaderPanel != null)
     {
-        isLevelLoading = true;
-
-        if (levelLoaderImage != null && levelBackgrounds.Length > 0)
-        {
-            levelLoaderImage.sprite = levelBackgrounds[0];
-            levelLoaderImage.color = Color.white;
-        }
-
-        if (levelLoaderPanel != null)
-        {
-            levelLoaderPanel.gameObject.SetActive(true);
-            if (biomeNameText != null) biomeNameText.text = "Traveling to: Midgard...";
-            yield return StartCoroutine(SlidePanel(levelLoaderPanel, 0, loaderSlideDuration));
-        }
-
-        yield return new WaitForSeconds(0.2f);
-        if (loadingSpinner != null) loadingSpinner.SetActive(true);
-        yield return new WaitForSeconds(2.0f);
-
-        // Load first level
-        SceneManager.LoadScene("Level1"); // Change to your first level scene name
+        levelLoaderPanel.gameObject.SetActive(true);
+        if (biomeNameText != null) biomeNameText.text = "Traveling to: Midgard...";
+        yield return StartCoroutine(SlidePanel(levelLoaderPanel, 0, loaderSlideDuration));
     }
+
+    // 2. IMPORTANT: Hide the Main Menu elements behind the loader
+    // This stops them from "coexisting" with the game once it loads
+    if (startButton != null) startButton.transform.parent.gameObject.SetActive(false); 
+    // Or use a direct reference to your 'MenuContent' object
+
+    yield return new WaitForSeconds(0.2f);
+    if (loadingSpinner != null) loadingSpinner.SetActive(true);
+    yield return new WaitForSeconds(2.0f);
+
+    // 3. Load the level
+    // Since this script is likely on a prefab, ensure you don't have 'DontDestroyOnLoad' 
+    // on the UI if you want it to disappear completely.
+    SceneManager.LoadScene("tutorial_hub"); 
+}
 
     IEnumerator SlidePanel(RectTransform panel, float targetX, float duration)
     {

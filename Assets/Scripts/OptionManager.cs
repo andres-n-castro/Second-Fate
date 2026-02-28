@@ -78,6 +78,8 @@ public class OptionsManager : MonoBehaviour
 
         isOptionsOpen = true;
 
+        Time.timeScale = 0f;
+
         StartCoroutine(SlidePanel(optionsPanel, 0, 40f,optionsSlideDuration));
         StartCoroutine(FadeDimmer(true));
 
@@ -94,13 +96,15 @@ public class OptionsManager : MonoBehaviour
     }
     IEnumerator CloseOptionsSequence()
     {
+        Time.timeScale = 1f;
         StartCoroutine(SlidePanel(optionsPanel, -Screen.width, 40f, optionsSlideDuration));
         StartCoroutine(FadeDimmer(false));
-        yield return new WaitForSeconds(optionsSlideDuration);
+        yield return new WaitForSecondsRealtime(optionsSlideDuration);
     }
-    void ReturnToMainMenu()
+    public void ReturnToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1f; // Ensure time is running before loading main menu
+        SceneManager.LoadScene("main_menu_scene");
     }
 
     IEnumerator FadeDimmer(bool fadeIn)
@@ -111,7 +115,7 @@ public class OptionsManager : MonoBehaviour
         float t = 0f;
         while (t < optionsSlideDuration)
         {
-            t += Time.deltaTime;
+            t += Time.unscaledDeltaTime;
             optionsDimmer.alpha = fadeIn ? t / optionsSlideDuration : 1f - (t / optionsSlideDuration);
             yield return null;
         }
@@ -127,7 +131,7 @@ public class OptionsManager : MonoBehaviour
 
         while (t < duration)
         {
-            t += Time.deltaTime;
+            t += Time.unscaledDeltaTime;
             float smooth = Mathf.SmoothStep(0f, 1f, t / duration);
             panel.anchoredPosition = Vector2.Lerp(start, end, smooth);
             yield return null;
