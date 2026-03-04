@@ -5,7 +5,6 @@ public class UIManager : MonoBehaviour
 {
 
     public static UIManager Instance;
-
     public static UIStates uiManagerCurrentState;
     public static event Action<UIStates> UIStateChanged;
 
@@ -22,10 +21,10 @@ public class UIManager : MonoBehaviour
     void UpdateUIState(UIStates newState)
     {
         if(uiManagerCurrentState == newState) return;
+
         uiManagerCurrentState = newState;
 
         UIStateChanged?.Invoke(newState);
-        
     }
 
     public enum UIStates
@@ -38,12 +37,13 @@ public class UIManager : MonoBehaviour
         optionsMenuUI,
         merchantMenutUI,
         bonfireMenuUI,
+        
 
     } 
 
     void OnEnable()
     {
-        
+        PlayerController.OnInputInventory += UpdateUIState;
     }
 
     void OnDisable()

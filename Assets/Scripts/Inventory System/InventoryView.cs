@@ -4,7 +4,7 @@ using UnityEngine;
 public class InventoryView : MonoBehaviour
 {
     
-    public static event Action OpenInventoryEvent;
+    //public static event Action OpenInventoryEvent;
 
     void Start()
     {

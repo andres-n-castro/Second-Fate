@@ -1,11 +1,13 @@
+using UnityEditor.Timeline;
 using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
 private InventoryController Instance;
-    public GameObject inventoryMenu;
+    public GameObject inventoryCanvas;
     public ItemPickup itemPickup;
     public InventoryModel inventoryModel;
+    public InventoryView inventoryView;
 
     void Awake()
     {
@@ -19,15 +21,18 @@ private InventoryController Instance;
 
     }
 
-    void OpenInventoryMenu()
+    void OpenInventoryUI(UIManager.UIStates currentState)
     {
-        //logic for opening Inventory UI
+        if(currentState == UIManager.UIStates.inventoryUI)
+        {
+            
+        }
     }
 
     void OnEnable()
     {
         ItemPickup.PickUpItem += inventoryModel.AddItem;
-        UIManager.UIStateChanged += OpenInventoryMenu;
+        UIManager.UIStateChanged += OpenInventoryUI;
     }
 
     void OnDisable()
