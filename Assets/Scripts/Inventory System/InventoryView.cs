@@ -1,27 +1,14 @@
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryView : MonoBehaviour
 {
-    private InventoryManager Instance;
-    public GameObject inventoryMenu;
-    private bool inventoryMenuActivated;
-
-    void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        Instance = this;
-
-    }
-
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
     }
 
-    
+    /*
     void Update()
     {
 
@@ -40,4 +27,5 @@ public class InventoryManager : MonoBehaviour
             inventoryMenuActivated = false;
         }
     }
+    */
 }
