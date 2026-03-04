@@ -19,10 +19,15 @@ private InventoryController Instance;
 
     }
 
+    void OpenInventoryMenu()
+    {
+        //logic for opening Inventory UI
+    }
 
     void OnEnable()
     {
         ItemPickup.PickUpItem += inventoryModel.AddItem;
+        UIManager.UIStateChanged += OpenInventoryMenu;
     }
 
     void OnDisable()
