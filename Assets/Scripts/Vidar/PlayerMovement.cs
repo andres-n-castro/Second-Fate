@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         //coyote timer check tied to ground check
-        if(Grounded() && rb.linearVelocity.y <= 0.1f)
+        if (Grounded() && rb.linearVelocity.y <= 0.1f)
         {
             coyoteTimeCounter = coyoteTime;
             isJumping = false;
@@ -40,28 +40,30 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
+        if (Input.GetKey(KeyCode.S)) return;
+
         //jump buffer tied to jump input
-        if(Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
-           jumpTimeCounter = jumpTimeBuffer; 
+            jumpTimeCounter = jumpTimeBuffer;
         }
         else
         {
-           jumpTimeCounter -= Time.deltaTime; 
+            jumpTimeCounter -= Time.deltaTime;
         }
 
-        if(!isJumping)
+        if (!isJumping)
         {
-            if(coyoteTimeCounter > 0 && jumpTimeCounter > 0)
-            { 
-                rb.linearVelocity = new Vector3(rb.linearVelocity.x, JumpForce); 
+            if (coyoteTimeCounter > 0 && jumpTimeCounter > 0)
+            {
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, JumpForce);
                 isJumping = true;
                 jumpTimeCounter = 0;
                 coyoteTimeCounter = 0;
             }
         }
 
-        if(isJumping && Mathf.Abs(rb.linearVelocity.y) < jumpHangThreshold)
+        if (isJumping && Mathf.Abs(rb.linearVelocity.y) < jumpHangThreshold)
         {
             rb.gravityScale = defaultGravity * jumpHangGravity;
         }
@@ -70,9 +72,9 @@ public class PlayerMovement : MonoBehaviour
             rb.gravityScale = defaultGravity;
         }
 
-        if(Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0)
+        if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0)
         {
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f); 
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
 
         anim.SetBool("Jumping", isJumping);
@@ -85,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Physics2D.Raycast(groundCheck.position, Vector2.down, groundLengthY, whatIsGround)
         || Physics2D.Raycast(groundCheck.position + new Vector3(groundLengthX, 0, 0), Vector2.down, groundLengthY, whatIsGround)
-        || Physics2D.Raycast(groundCheck.position + new Vector3(-groundLengthX,0,0), Vector2.down, groundLengthY, whatIsGround))
+        || Physics2D.Raycast(groundCheck.position + new Vector3(-groundLengthX, 0, 0), Vector2.down, groundLengthY, whatIsGround))
         {
             return true;
         }
@@ -95,7 +97,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void MaxFall(Rigidbody2D rb)
     {
-        if(rb.linearVelocity.y < 0){
+        if (rb.linearVelocity.y < 0)
+        {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Max(rb.linearVelocity.y, -maxFallVelocity));
         }
     }
@@ -124,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Flip(float xAxis)
     {
-        if(xAxis < 0)
+        if (xAxis < 0)
         {
             transform.localScale = new Vector3(-1f, transform.localScale.y, 1f);
         }
@@ -137,16 +140,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void Dash()
     {
-        
+
     }
 
     public void DoubleJump()
     {
-        
+
     }
 
     public void WallJump()
     {
-        
+
     }
 }
