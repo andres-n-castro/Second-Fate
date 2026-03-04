@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 5002829574089365646}
   - component: {fileID: 599270320724757340}
   - component: {fileID: 6199249075161248855}
+  - component: {fileID: 6032026495228990185}
   m_Layer: 6
   m_Name: Vidar
   m_TagString: Untagged
@@ -291,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d728c957470c65e4abea17893eeaa51f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeScale: 1
 --- !u!114 &5002829574089365646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +308,8 @@ MonoBehaviour:
   isJumping: 0
   isAttacking: 0
   isDead: 0
+  isKnockbacked: 0
+  knockbackTimer: 0
 --- !u!61 &599270320724757340
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -374,6 +378,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6032026495228990185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348176465958162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e5bcc32e947684ea6d3ad710f54fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  handleKnockbackExternally: 0
 --- !u!1 &6323018574185074532
 GameObject:
   m_ObjectHideFlags: 0
