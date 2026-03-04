@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47629482c05e1744b95c37db6a0fa58, type: 3}
   m_Name: Scroll 1
   m_EditorClassIdentifier: 
-  itemName: 
-  itemSprite: {fileID: 0}
-  itemInfo: 
+  itemName: Scroll 1
+  itemSprite: {fileID: -1273118238573756723, guid: b589014f887b4ec419c30e8d3ff7f6e3, type: 3}
+  itemInfo: Random text inside of scroll
