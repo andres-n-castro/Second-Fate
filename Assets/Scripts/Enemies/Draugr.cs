@@ -45,9 +45,18 @@ public class Draugr : EnemyBase
     // Hitbox accessor for states
     public AttackHitbox MeleeHitbox => meleeHitbox;
 
+    // Animation parameter names matching Draugr_Animations
+    public override string AnimWalking => "Draugr_Walking";
+    public override string AnimAttack => "Draugr_Attack";
+    public override string AnimHitstun => "Draugr_Takes_Damage";
+    public override string AnimDeath => "Draugr_Dies";
+
     // Hysteresis timers (accessible by states)
     public float AcquireTargetTimer { get; set; }
     public float LoseTargetTimer { get; set; }
+
+    // Re-aggro suppression after stuck give-up (world time when aggro is allowed again)
+    public float ReaggroAllowedTime { get; set; }
 
     protected override void InitializeStates()
     {

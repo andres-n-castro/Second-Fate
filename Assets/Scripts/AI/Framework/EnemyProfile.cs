@@ -61,6 +61,18 @@ public class EnemyProfile : ScriptableObject
     public float playerAboveThresholdY = 0.6f;
     public float draugrStuckTimeout = 1.0f;
     public float draugrMinProgressThreshold = 0.05f;
+    public float reaggroCooldown = 3f;
+
+    [Header("Valkyrie P2 Attack Selection")]
+    public float valkPlungeMinAbovePlayerY = 2f;
+    public float valkPlungeMaxHorizontalOffset = 4f;
+    public float valkPlungeWeightMultiplier = 5f;
+    public float valkSlashRange = 4f;
+    public float valkSlashMaxVerticalOffset = 2f;
+    public float valkSlashWeightMultiplier = 3f;
+    public float valkFlurryPreferredRangeMin = 3f;
+    public float valkFlurryPreferredRangeMax = 7f;
+    public float valkFlurryWeightMultiplier = 3f;
 
     [Header("FWS Adaptive Dash")]
     public float dashWindowSeconds = 5f;

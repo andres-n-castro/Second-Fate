@@ -215,7 +215,7 @@ public class FWSDashAttackState : EnemyState
         AttackDefinition atk = GetDashAttack();
         timer = atk != null ? atk.windupDuration : 0.5f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Windup");
+        if (owner.Anim != null) owner.Anim.SetTrigger(owner.AnimAttack);
     }
 
     public override void FixedTick()
@@ -276,7 +276,7 @@ public class FWSDashAttackState : EnemyState
                     timer = interceptDist / dashSpeed;
 
                     if (fws.DashHitbox != null) fws.DashHitbox.Activate();
-                    if (owner.Anim != null) owner.Anim.SetTrigger("Dash");
+                    if (owner.Anim != null) owner.Anim.SetTrigger(owner.AnimAttack);
                 }
                 break;
 

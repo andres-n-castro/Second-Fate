@@ -20,7 +20,7 @@ MonoBehaviour:
   roamChangeInterval: 0
   aggroRange: 6
   deaggroRange: 10
-  attackRange: 0
+  attackRange: 1.6
   groundCheckDistance: 1
   wallCheckDistance: 0.5
   losEyeOffsetY: 0.5
@@ -31,8 +31,6 @@ MonoBehaviour:
   knockbackForceY: 2
   hitstunDuration: 0.25
   hitstunDrag: 8
-  minAttackCooldown: 0
-  maxAttackCooldown: 0
   attacks:
   - attackName: Melee
     damage: 1
@@ -52,6 +50,8 @@ MonoBehaviour:
   contactKnockbackY: 4
   contactCooldownSeconds: 0.8
   contactRequiresEnemyAlive: 1
+  minAttackCooldown: 0
+  maxAttackCooldown: 0
   phase2HealthPercent: 0.5
   phaseTransitionDuration: 2
   erraticIntensity: 3
@@ -62,6 +62,18 @@ MonoBehaviour:
   giveUpPauseDuration: 1
   draugrFacingDeadzoneX: 0.3
   playerAboveThresholdY: 0.6
+  draugrStuckTimeout: 1
+  draugrMinProgressThreshold: 0.05
+  reaggroCooldown: 3.5
+  valkPlungeMinAbovePlayerY: 2
+  valkPlungeMaxHorizontalOffset: 4
+  valkPlungeWeightMultiplier: 5
+  valkSlashRange: 4
+  valkSlashMaxVerticalOffset: 2
+  valkSlashWeightMultiplier: 3
+  valkFlurryPreferredRangeMin: 3
+  valkFlurryPreferredRangeMax: 7
+  valkFlurryWeightMultiplier: 3
   dashWindowSeconds: 5
   dashWeightBoostPerDash: 0.15
   baseDashWeight: 1

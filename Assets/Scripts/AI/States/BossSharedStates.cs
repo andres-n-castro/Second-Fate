@@ -60,7 +60,7 @@ public class BossDeadState : EnemyState
         if (enableGravityOnDeath)
             owner.Rb.gravityScale = 1f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Die");
+        if (owner.Anim != null) owner.Anim.SetTrigger(owner.AnimDeath);
 
         foreach (Collider2D col in owner.GetComponents<Collider2D>())
         {

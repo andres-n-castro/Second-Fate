@@ -31,11 +31,9 @@ MonoBehaviour:
   knockbackForceY: 1
   hitstunDuration: 0.2
   hitstunDrag: 6
-  minAttackCooldown: 0.5
-  maxAttackCooldown: 1.5
   attacks:
   - attackName: Dash
-    damage: 1
+    damage: 0
     knockbackForce: 5
     windupDuration: 0.5
     activeDuration: 0.3
@@ -52,6 +50,8 @@ MonoBehaviour:
   contactKnockbackY: 3
   contactCooldownSeconds: 0.8
   contactRequiresEnemyAlive: 1
+  minAttackCooldown: 0.5
+  maxAttackCooldown: 1.5
   phase2HealthPercent: 0.5
   phaseTransitionDuration: 2
   erraticIntensity: 3
@@ -62,6 +62,18 @@ MonoBehaviour:
   giveUpPauseDuration: 1
   draugrFacingDeadzoneX: 0.3
   playerAboveThresholdY: 0.6
+  draugrStuckTimeout: 1
+  draugrMinProgressThreshold: 0.05
+  reaggroCooldown: 3
+  valkPlungeMinAbovePlayerY: 2
+  valkPlungeMaxHorizontalOffset: 4
+  valkPlungeWeightMultiplier: 5
+  valkSlashRange: 4
+  valkSlashMaxVerticalOffset: 2
+  valkSlashWeightMultiplier: 3
+  valkFlurryPreferredRangeMin: 3
+  valkFlurryPreferredRangeMax: 7
+  valkFlurryWeightMultiplier: 3
   dashWindowSeconds: 5
   dashWeightBoostPerDash: 0.15
   baseDashWeight: 1

@@ -30,8 +30,9 @@ public class DraugrPatrolState : EnemyState
 
     public override void FixedTick()
     {
-        // Check for player detection with hysteresis
-        if (owner.Ctx.isPlayerInAggroRange && owner.Ctx.isPlayerOnSamePlatform)
+        // Check for player detection with hysteresis (suppressed during reaggro cooldown)
+        if (Time.time >= draugr.ReaggroAllowedTime
+            && owner.Ctx.isPlayerInAggroRange && owner.Ctx.isPlayerOnSamePlatform)
         {
             draugr.AcquireTargetTimer += Time.fixedDeltaTime;
             if (draugr.AcquireTargetTimer >= owner.Profile.acquireTargetDelay)
@@ -82,12 +83,12 @@ public class DraugrPatrolState : EnemyState
 
         // Walk forward
         owner.MoveGround(owner.Profile.moveSpeed);
-        if (owner.Anim != null) owner.Anim.SetBool("Walking", true);
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, true);
     }
 
     public override void Exit()
     {
-        if (owner.Anim != null) owner.Anim.SetBool("Walking", false);
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
     }
 
     private void StartIdle()
@@ -96,7 +97,7 @@ public class DraugrPatrolState : EnemyState
         idleTimer = IdleDuration;
         owner.FlipFacing();
         owner.StopHorizontal();
-        if (owner.Anim != null) owner.Anim.SetBool("Walking", false);
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
     }
 }
 
@@ -171,6 +172,7 @@ public class DraugrChaseState : EnemyState
             stuckTimer += Time.fixedDeltaTime;
             if (stuckTimer >= owner.Profile.draugrStuckTimeout)
             {
+                draugr.ReaggroAllowedTime = Time.time + owner.Profile.reaggroCooldown;
                 draugr.CombatSuper.ForceSubState(draugr.GiveUpState);
                 return;
             }
@@ -188,7 +190,7 @@ public class DraugrChaseState : EnemyState
             && Mathf.Abs(owner.Ctx.playerRelativePos.x) < owner.Profile.draugrFacingDeadzoneX)
         {
             owner.StopHorizontal();
-            if (owner.Anim != null) owner.Anim.SetBool("Walking", false);
+            if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
             return;
         }
 
@@ -196,7 +198,7 @@ public class DraugrChaseState : EnemyState
         if (owner.Ctx.nearLedgeAhead || owner.Ctx.nearWallAhead)
         {
             owner.StopHorizontal();
-            if (owner.Anim != null) owner.Anim.SetBool("Walking", false);
+            if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
             return;
         }
 
@@ -223,12 +225,12 @@ public class DraugrChaseState : EnemyState
 
             owner.MoveGround(owner.Profile.chaseSpeed);
         }
-        if (owner.Anim != null) owner.Anim.SetBool("Walking", true);
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, true);
     }
 
     public override void Exit()
     {
-        if (owner.Anim != null) owner.Anim.SetBool("Walking", false);
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
     }
 }
 
@@ -260,7 +262,7 @@ public class DraugrGiveUpState : EnemyState
             owner.FaceDirection(lastDir.x > 0 ? 1 : -1);
         }
 
-        if (owner.Anim != null) owner.Anim.SetBool("Walking", false);
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
     }
 
     public override void FixedTick()
@@ -302,7 +304,7 @@ public class DraugrMeleeAttackState : EnemyState
         AttackDefinition atk = GetMeleeAttack();
         timer = atk != null ? atk.windupDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("MeleeAttack");
+        if (owner.Anim != null) owner.Anim.SetTrigger(owner.AnimAttack);
     }
 
     public override void FixedTick()

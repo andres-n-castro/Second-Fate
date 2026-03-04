@@ -36,6 +36,12 @@ public class FallenWarriorSpirit : EnemyBase
     // Home position for roaming
     public Vector2 HomePosition { get; set; }
 
+    // Animation parameter names matching FWS animations
+    public override string AnimWalking => "FWS_Flying";
+    public override string AnimAttack => "FWS_Attack";
+    public override string AnimHitstun => "FWS_Takes_Damage";
+    public override string AnimDeath => "FWS_Dies";
+
     // Hitbox accessor for states
     public AttackHitbox DashHitbox => dashHitbox;
 
