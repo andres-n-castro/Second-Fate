@@ -8,9 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/tutorial_hub.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 0
-    path: Assets/Scenes/pracitce_scene.unity
-    guid: f8227122c72343c428f3fe14fd639063
+  - enabled: 1
+    path: Assets/Scenes/biome1.unity
+    guid: 2318a510117a90244a6aabfb9f549eb3
+  - enabled: 1
+    path: Assets/Scenes/biome2.unity
+    guid: 2118884d2e7befe4ab99f6099101f118
+  - enabled: 1
+    path: Assets/Scenes/biome3_fight.unity
+    guid: f8f2df1834ed4ca4bb738eb6df1fb196
   - enabled: 1
     path: Assets/Scenes/main_menu_scene.unity
     guid: d8d7c7e3e2ef95e4a8136cfc6b35a288
