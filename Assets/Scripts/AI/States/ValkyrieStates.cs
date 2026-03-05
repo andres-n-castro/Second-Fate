@@ -97,32 +97,73 @@ public class ValkP2Super : HierarchicalState
     }
 
     // ----- Behavior Tree Construction -----
-    // The BT checks cooldowns and weights, then sets RequestedP2Attack.
+    // The BT checks cooldowns, positional context, and weights, then sets RequestedP2Attack.
     // It does NOT move rigidbodies or toggle hitboxes.
+    //
+    // Context-aware weight system:
+    //   Each attack starts with its base selectionWeight from the profile.
+    //   If the current spatial conditions match the attack's ideal scenario,
+    //   its weight is multiplied by a contextual boost (e.g. 3-5x).
+    //   Attacks that don't match any condition keep their base weight,
+    //   so they can still be picked — just less likely.
+    //
+    //   playerRelativePos = playerPos - bossPos
+    //     playerRelativePos.y < 0 → boss is ABOVE player
+    //     playerRelativePos.y > 0 → player is ABOVE boss
     private void BuildBehaviorTree()
     {
-        // Weighted random selector: pick from ready attacks using selectionWeight
         attackSelectorBT = new BTAction(ctx =>
         {
             if (RequestedP2Attack != null) return BTStatus.Failure; // already pending
 
-            // Build weighted list of ready attacks
+            // Spatial data
+            float dx = Mathf.Abs(owner.Ctx.playerRelativePos.x);
+            float dy = owner.Ctx.playerRelativePos.y; // negative = boss above player
+            float dist = owner.Ctx.playerDistance;
+            EnemyProfile p = owner.Profile;
+
+            // Build weighted list of ready attacks with contextual multipliers
             List<(IState state, float weight)> candidates = new List<(IState, float)>();
 
-            AttackDefinition slashDef = valk.GetAttackDef("P2Slash");
-            AttackDefinition flurryDef = valk.GetAttackDef("P2Flurry");
+            // --- Plunge: boss above player, reasonable horizontal alignment ---
             AttackDefinition plungeDef = valk.GetAttackDef("P2Plunge");
-
-            if (slashDef != null && owner.IsAttackReady("P2Slash"))
-                candidates.Add((ErraticSlashState, slashDef.selectionWeight));
-            if (flurryDef != null && owner.IsAttackReady("P2Flurry"))
-                candidates.Add((ErraticFlurryState, flurryDef.selectionWeight));
             if (plungeDef != null && owner.IsAttackReady("P2Plunge"))
-                candidates.Add((PlungeState, plungeDef.selectionWeight));
+            {
+                float w = plungeDef.selectionWeight;
+                bool abovePlayer = -dy >= p.valkPlungeMinAbovePlayerY;
+                bool horizontalOk = dx <= p.valkPlungeMaxHorizontalOffset;
+                if (abovePlayer && horizontalOk)
+                    w *= p.valkPlungeWeightMultiplier;
+                candidates.Add((PlungeState, w));
+            }
 
-            if (candidates.Count == 0) return BTStatus.Failure; // nothing ready
+            // --- Erratic Slash: close range, roughly same height ---
+            AttackDefinition slashDef = valk.GetAttackDef("P2Slash");
+            if (slashDef != null && owner.IsAttackReady("P2Slash"))
+            {
+                float w = slashDef.selectionWeight;
+                bool closeRange = dist <= p.valkSlashRange;
+                bool sameHeight = Mathf.Abs(dy) <= p.valkSlashMaxVerticalOffset;
+                if (closeRange && sameHeight)
+                    w *= p.valkSlashWeightMultiplier;
+                candidates.Add((ErraticSlashState, w));
+            }
 
-            // Weighted random selection
+            // --- Erratic Flurry: medium range / lateral pressure ---
+            AttackDefinition flurryDef = valk.GetAttackDef("P2Flurry");
+            if (flurryDef != null && owner.IsAttackReady("P2Flurry"))
+            {
+                float w = flurryDef.selectionWeight;
+                bool inBand = dist >= p.valkFlurryPreferredRangeMin
+                           && dist <= p.valkFlurryPreferredRangeMax;
+                if (inBand)
+                    w *= p.valkFlurryWeightMultiplier;
+                candidates.Add((ErraticFlurryState, w));
+            }
+
+            if (candidates.Count == 0) return BTStatus.Failure; // nothing ready → stay in hover
+
+            // Weighted random selection among valid candidates
             float totalWeight = 0f;
             for (int i = 0; i < candidates.Count; i++)
                 totalWeight += candidates[i].weight;
@@ -167,7 +208,7 @@ public class ValkP1ApproachState : EnemyState
     public override void Enter()
     {
         //Debug.Log("Valkyrie P1 Approach entered");
-        if (owner.Anim != null) owner.Anim.SetBool("Walking", true);
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, true);
     }
 
     public override void FixedTick()
@@ -193,7 +234,7 @@ public class ValkP1ApproachState : EnemyState
 
     public override void Exit()
     {
-        if (owner.Anim != null) owner.Anim.SetBool("Walking", false);
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
         owner.StopHorizontal();
     }
 }

@@ -26,12 +26,49 @@ public class DraugrPatrolState : EnemyState
         stuckTimer = 0f;
         isIdle = false;
         draugr.AcquireTargetTimer = 0f;
+
+        // Face toward the player's last known position so patrol walks that way
+        float dirToLastSeen = owner.Ctx.lastSeenPlayerPos.x - owner.transform.position.x;
+        if (Mathf.Abs(dirToLastSeen) > 0.1f)
+            owner.FaceDirection(dirToLastSeen > 0 ? 1 : -1);
     }
 
     public override void FixedTick()
     {
         // Check for player detection with hysteresis
-        if (owner.Ctx.isPlayerInAggroRange && owner.Ctx.isPlayerOnSamePlatform)
+        bool aggroConditions = owner.Ctx.isPlayerInAggroRange && owner.Ctx.isPlayerOnSamePlatform;
+
+        // Blocked-path lockout: suppress re-aggro during lockout timer.
+        // After lockout expires, also check that the path toward the player
+        // is not still blocked by the same obstacle (wall/ledge in chase direction).
+        if (aggroConditions && draugr.BlockedReaggroLockUntil > 0f)
+        {
+            if (Time.time < draugr.BlockedReaggroLockUntil)
+            {
+                // Lockout still active — suppress
+                aggroConditions = false;
+            }
+            else
+            {
+                // Lockout expired — check if path toward player is still blocked
+                float dirToPlayer = owner.Ctx.playerRelativePos.x;
+                bool playerAhead = Mathf.Abs(dirToPlayer) > 0.1f
+                    && Mathf.Sign(dirToPlayer) == owner.FacingDirection;
+
+                if (playerAhead && (owner.Ctx.nearWallAhead || owner.Ctx.nearLedgeAhead))
+                {
+                    // Still blocked — keep suppressing
+                    aggroConditions = false;
+                }
+                else
+                {
+                    // Path is clear — clear the lockout permanently
+                    draugr.BlockedReaggroLockUntil = 0f;
+                }
+            }
+        }
+
+        if (aggroConditions)
         {
             draugr.AcquireTargetTimer += Time.fixedDeltaTime;
             if (draugr.AcquireTargetTimer >= owner.Profile.acquireTargetDelay)
@@ -82,12 +119,12 @@ public class DraugrPatrolState : EnemyState
 
         // Walk forward
         owner.MoveGround(owner.Profile.moveSpeed);
-        if (owner.Anim != null) owner.Anim.SetBool("Walking", true);
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, true);
     }
 
     public override void Exit()
     {
-        if (owner.Anim != null) owner.Anim.SetBool("Walking", false);
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
     }
 
     private void StartIdle()
@@ -96,7 +133,7 @@ public class DraugrPatrolState : EnemyState
         idleTimer = IdleDuration;
         owner.FlipFacing();
         owner.StopHorizontal();
-        if (owner.Anim != null) owner.Anim.SetBool("Walking", false);
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
     }
 }
 
@@ -164,6 +201,16 @@ public class DraugrChaseState : EnemyState
             return;
         }
 
+        // Backstep — player too close but melee on cooldown
+        if (owner.Ctx.playerDistance < owner.Profile.draugrBackstepTriggerDistance
+            && !owner.IsAttackReady("Melee")
+            && owner.Ctx.isGrounded
+            && Time.time >= draugr.BackstepAllowedTime)
+        {
+            draugr.CombatSuper.ForceSubState(draugr.BackstepState);
+            return;
+        }
+
         // Stuck detection — if no meaningful horizontal progress, accumulate timer
         float currentX = owner.transform.position.x;
         if (Mathf.Abs(currentX - lastX) < owner.Profile.draugrMinProgressThreshold)
@@ -171,6 +218,7 @@ public class DraugrChaseState : EnemyState
             stuckTimer += Time.fixedDeltaTime;
             if (stuckTimer >= owner.Profile.draugrStuckTimeout)
             {
+                draugr.BlockedReaggroLockUntil = Time.time + owner.Profile.draugrBlockedReaggroCooldown;
                 draugr.CombatSuper.ForceSubState(draugr.GiveUpState);
                 return;
             }
@@ -188,7 +236,7 @@ public class DraugrChaseState : EnemyState
             && Mathf.Abs(owner.Ctx.playerRelativePos.x) < owner.Profile.draugrFacingDeadzoneX)
         {
             owner.StopHorizontal();
-            if (owner.Anim != null) owner.Anim.SetBool("Walking", false);
+            if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
             return;
         }
 
@@ -196,7 +244,7 @@ public class DraugrChaseState : EnemyState
         if (owner.Ctx.nearLedgeAhead || owner.Ctx.nearWallAhead)
         {
             owner.StopHorizontal();
-            if (owner.Anim != null) owner.Anim.SetBool("Walking", false);
+            if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
             return;
         }
 
@@ -223,12 +271,12 @@ public class DraugrChaseState : EnemyState
 
             owner.MoveGround(owner.Profile.chaseSpeed);
         }
-        if (owner.Anim != null) owner.Anim.SetBool("Walking", true);
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, true);
     }
 
     public override void Exit()
     {
-        if (owner.Anim != null) owner.Anim.SetBool("Walking", false);
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
     }
 }
 
@@ -260,7 +308,7 @@ public class DraugrGiveUpState : EnemyState
             owner.FaceDirection(lastDir.x > 0 ? 1 : -1);
         }
 
-        if (owner.Anim != null) owner.Anim.SetBool("Walking", false);
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
     }
 
     public override void FixedTick()
@@ -302,12 +350,13 @@ public class DraugrMeleeAttackState : EnemyState
         AttackDefinition atk = GetMeleeAttack();
         timer = atk != null ? atk.windupDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("MeleeAttack");
+        if (owner.Anim != null) owner.Anim.SetTrigger(owner.AnimAttack);
     }
 
     public override void FixedTick()
     {
         timer -= Time.fixedDeltaTime;
+        owner.StopHorizontal(); // Hold position — don't let player push during attack
 
         switch (phase)
         {
@@ -367,5 +416,94 @@ public class DraugrMeleeAttackState : EnemyState
                 return owner.Profile.attacks[i];
         }
         return null;
+    }
+}
+
+// ---------------------------------------------------------------
+//  DraugrBackstepState
+//  Brief backward movement to create spacing when player is too close
+//  and melee is on cooldown. Keeps facing the player. Respects ledge
+//  and wall checks. After timer, returns to Chase.
+// ---------------------------------------------------------------
+public class DraugrBackstepState : EnemyState
+{
+    private Draugr draugr;
+    private float timer;
+    private int retreatDir;
+
+    public DraugrBackstepState(Draugr draugr) : base(draugr)
+    {
+        this.draugr = draugr;
+    }
+
+    public override void Enter()
+    {
+        timer = owner.Profile.draugrBackstepDuration;
+
+        // Face the player, retreat opposite
+        owner.FacePlayer();
+        retreatDir = -owner.FacingDirection;
+
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, true);
+    }
+
+    public override void FixedTick()
+    {
+        // Exit once melee is ready again
+        if (owner.IsAttackReady("Melee"))
+        {
+            TransitionOut();
+            return;
+        }
+
+        // Keep facing the player
+        owner.FacePlayer();
+        retreatDir = -owner.FacingDirection;
+
+        // Ledge/wall behind — stop moving but keep waiting out the timer
+        if (owner.Ctx.nearLedgeAhead || owner.Ctx.nearWallAhead)
+        {
+            // Check behind by temporarily looking that way
+            // Since groundCheck/wallCheck are relative to facing, and we're
+            // moving opposite to facing, we check if we'd walk off by flipping
+            // briefly. Instead, just stop and hold position.
+            owner.StopHorizontal();
+            if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
+            return;
+        }
+
+        // Check behind for ledge/wall by raycasting in retreat direction
+        RaycastHit2D wallBehind = Physics2D.Raycast(
+            owner.transform.position,
+            Vector2.right * retreatDir,
+            owner.Profile.wallCheckDistance,
+            owner.GroundLayer);
+
+        if (wallBehind.collider != null)
+        {
+            owner.StopHorizontal();
+            if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
+            return;
+        }
+
+        // Move backward
+        owner.Rb.linearVelocity = new Vector2(
+            retreatDir * owner.Profile.draugrBackstepSpeed,
+            owner.Rb.linearVelocity.y);
+    }
+
+    public override void Exit()
+    {
+        owner.StopHorizontal();
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
+        draugr.BackstepAllowedTime = Time.time + owner.Profile.draugrBackstepCooldown;
+    }
+
+    private void TransitionOut()
+    {
+        if (owner.Ctx.isPlayerInAggroRange && owner.Ctx.isPlayerOnSamePlatform)
+            draugr.CombatSuper.ForceSubState(draugr.ChaseState);
+        else
+            draugr.CombatSuper.ForceSubState(draugr.GiveUpState);
     }
 }

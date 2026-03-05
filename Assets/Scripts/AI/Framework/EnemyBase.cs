@@ -28,6 +28,13 @@ public abstract class EnemyBase : MonoBehaviour
     public LayerMask ObstacleLayer => obstacleLayer;
 
     public int FacingDirection { get; private set; } = 1;
+    private float baseScaleX;
+
+    // Animation parameter names — override in subclasses to match each enemy's animator
+    public virtual string AnimWalking => "Walking";
+    public virtual string AnimAttack => "Attack";
+    public virtual string AnimHitstun => "Hitstun";
+    public virtual string AnimDeath => "Die";
 
     // Attack cooldowns
     private float[] attackCooldownTimers;
@@ -41,6 +48,7 @@ public abstract class EnemyBase : MonoBehaviour
         Rb = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
         Health = GetComponent<Health>();
+        baseScaleX = Mathf.Abs(transform.localScale.x);
     }
 
     protected virtual void Start()
@@ -134,7 +142,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (dir == 0) return;
         FacingDirection = dir > 0 ? 1 : -1;
-        transform.localScale = new Vector2(FacingDirection, transform.localScale.y);
+        transform.localScale = new Vector2(FacingDirection * baseScaleX, transform.localScale.y);
     }
 
     public void FlipFacing()
@@ -291,7 +299,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         StopAll();
 
-        if (Anim != null) Anim.SetTrigger("Die");
+        if (Anim != null) Anim.SetTrigger(AnimDeath);
 
         foreach (Collider2D col in GetComponents<Collider2D>())
         {

@@ -165,11 +165,17 @@ public class FWSEngageDecisionState : EnemyState
         cooldownTimer -= dt;
         if (cooldownTimer > 0f) return;
 
+        // Check if a valid reposition target exists (not too close to / through the player)
+        bool canReposition = fws.RepositionState.TryPrepareTarget();
+
         // Compute adaptive dash weight
         float dashWeight = owner.Profile.baseDashWeight
             + owner.Ctx.playerDashCountRecent * owner.Profile.dashWeightBoostPerDash;
-        float repositionWeight = 1f;
+        float repositionWeight = canReposition ? 1f : 0f;
         float totalWeight = dashWeight + repositionWeight;
+
+        // If neither option is available, just wait and retry next cooldown
+        if (totalWeight <= 0f) return;
 
         float roll = Random.value * totalWeight;
 
@@ -177,7 +183,7 @@ public class FWSEngageDecisionState : EnemyState
         {
             fws.CombatSuper.ForceSubState(fws.DashAttackState);    // within Combat
         }
-        else
+        else if (canReposition)
         {
             fws.CombatSuper.ForceSubState(fws.RepositionState);    // within Combat
         }
@@ -215,7 +221,7 @@ public class FWSDashAttackState : EnemyState
         AttackDefinition atk = GetDashAttack();
         timer = atk != null ? atk.windupDuration : 0.5f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Windup");
+        if (owner.Anim != null) owner.Anim.SetTrigger(owner.AnimAttack);
     }
 
     public override void FixedTick()
@@ -276,7 +282,7 @@ public class FWSDashAttackState : EnemyState
                     timer = interceptDist / dashSpeed;
 
                     if (fws.DashHitbox != null) fws.DashHitbox.Activate();
-                    if (owner.Anim != null) owner.Anim.SetTrigger("Dash");
+                    if (owner.Anim != null) owner.Anim.SetTrigger(owner.AnimAttack);
                 }
                 break;
 
@@ -356,18 +362,31 @@ public class FWSRepositionState : EnemyState
     private float facingHoldTimer;
     private const float FacingHoldDuration = 0.15f;
 
+    private bool targetReady;
+
     public FWSRepositionState(FallenWarriorSpirit fws) : base(fws)
     {
         this.fws = fws;
     }
 
+    /// <summary>
+    /// Pre-validates and caches a reposition target. Called by EngageDecisionState
+    /// before committing to this state. Returns true if a valid target was found.
+    /// </summary>
+    public bool TryPrepareTarget()
+    {
+        targetReady = PickRepositionTarget();
+        return targetReady;
+    }
+
     public override void Enter()
     {
-        PickRepositionTarget();
+        // Target was already validated by TryPrepareTarget — use it
         stuckTimer = 0f;
         lastDistToTarget = float.MaxValue;
         facingHoldTimer = 0f;
         timer = 0f;
+        targetReady = false;
 
         float dist = owner.Profile.repositionDistance;
         maxTime = dist / owner.Profile.flySpeed + 0.5f;
@@ -445,20 +464,24 @@ public class FWSRepositionState : EnemyState
         owner.StopAll();
     }
 
-    private void PickRepositionTarget()
+    private bool PickRepositionTarget()
     {
         float dist = owner.Profile.repositionDistance;
-        Vector2 center = owner.Ctx.playerTransform != null
+
+        // First pass: sample around the player (normal reposition)
+        Vector2 playerCenter = owner.Ctx.playerTransform != null
             ? (Vector2)owner.Ctx.playerTransform.position + new Vector2(0f, 1f)
             : (Vector2)owner.transform.position;
 
-        if (!fws.TryPickValidTarget(center, dist, out repositionTarget))
-        {
-            // Fallback: stay near current position, slightly above
-            repositionTarget = (Vector2)owner.transform.position + new Vector2(0f, 1f);
-        }
+        bool valid = fws.TryPickRepositionTarget(playerCenter, dist, out repositionTarget);
+
+        // Second pass: sample around self to retreat away — skip path-through-player check
+        // since the target is far from the player and we just need to create distance
+        if (!valid)
+            valid = fws.TryPickRepositionTarget((Vector2)owner.transform.position, dist, out repositionTarget, false);
 
         stuckTimer = 0f;
         lastDistToTarget = float.MaxValue;
+        return valid;
     }
 }

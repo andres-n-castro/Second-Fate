@@ -116,6 +116,15 @@ MonoBehaviour:
   phaseTransitionDuration: 2
   erraticIntensity: 3
   hoverHeight: 3
+  valkPlungeMinAbovePlayerY: 2
+  valkPlungeMaxHorizontalOffset: 4
+  valkPlungeWeightMultiplier: 5
+  valkSlashRange: 4
+  valkSlashMaxVerticalOffset: 2
+  valkSlashWeightMultiplier: 3
+  valkFlurryPreferredRangeMin: 3
+  valkFlurryPreferredRangeMax: 7
+  valkFlurryWeightMultiplier: 3
   chaseSpeed: 3.5
   acquireTargetDelay: 0.3
   loseTargetDelay: 0.5
