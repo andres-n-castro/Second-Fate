@@ -8,6 +8,8 @@ public class PlayerStats : MonoBehaviour
     [Header("Health System")]
     public int maxHealth = 4;
     public int currentHealth;
+    public Health playerHealthComponent;
+    public GameObject[] fullHearts;
 
     [Header("Powers System")]
     public bool hasDoubleJump = false;
@@ -23,7 +25,10 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth;
+        if (playerHealthComponent != null)
+        {
+            playerHealthComponent.InitializeHealth(currentHealth, maxHealth);
+        }
     }
 
     void Update()
@@ -47,13 +52,37 @@ public class PlayerStats : MonoBehaviour
         currencyCountText.text = currentCurrency.ToString();
     }
 
+    void SyncHealthForSaving(int newCurrentHealth, int newMaxHealth)
+    {
+        currentHealth = newCurrentHealth;
+        maxHealth = newMaxHealth;
+
+        for (int i = 0; i < fullHearts.Length; i++)
+        {
+            if (fullHearts[i] != null)
+            {
+                fullHearts[i].SetActive(i < currentHealth);
+            }
+        }
+    }
+
     void OnEnable()
     {
         CurrencyPickup.PickupCurrency += IncreaseCurrency;
+
+        if (playerHealthComponent != null)
+        {
+            playerHealthComponent.OnHealthChanged += SyncHealthForSaving;
+        }
     }
 
     void OnDisable()
     {
         CurrencyPickup.PickupCurrency -= IncreaseCurrency;
+
+        if(playerHealthComponent != null)
+        {
+            playerHealthComponent.OnHealthChanged -= SyncHealthForSaving;
+        }
     }
 }
