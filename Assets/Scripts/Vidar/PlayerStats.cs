@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -16,8 +17,9 @@ public class PlayerStats : MonoBehaviour
     public List<bool> Charms;
 
     [Header("Currency System")]
-
+    public TextMeshProUGUI currencyCountText;
     public int currentCurrency;
+
 
     void Start()
     {
@@ -26,7 +28,7 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
-        
+        UpdateDisplayCurrencyCount();
     }
 
     void IncreaseCurrency()
@@ -38,6 +40,11 @@ public class PlayerStats : MonoBehaviour
     void DecreaseCurrency(int amount)
     {
         currentCurrency -= amount;
+    }
+
+    void UpdateDisplayCurrencyCount()
+    {
+        currencyCountText.text = currentCurrency.ToString();
     }
 
     void OnEnable()
