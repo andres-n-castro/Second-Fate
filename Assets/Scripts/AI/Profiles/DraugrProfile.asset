@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133d3640feead734598e9768a8c524d3, type: 3}
   m_Name: DraugrProfile
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 2.5
   flySpeed: 0
   approachSpeed: 0
   roamSpeed: 0
@@ -34,7 +34,7 @@ MonoBehaviour:
   attacks:
   - attackName: Melee
     damage: 1
-    knockbackForce: 0
+    knockbackForce: 4
     windupDuration: 0.35
     activeDuration: 0.15
     recoveryDuration: 0.5
@@ -56,7 +56,7 @@ MonoBehaviour:
   phaseTransitionDuration: 2
   erraticIntensity: 3
   hoverHeight: 3
-  chaseSpeed: 3.5
+  chaseSpeed: 4
   acquireTargetDelay: 0.3
   loseTargetDelay: 0.5
   giveUpPauseDuration: 1
@@ -64,7 +64,11 @@ MonoBehaviour:
   playerAboveThresholdY: 0.6
   draugrStuckTimeout: 1
   draugrMinProgressThreshold: 0.05
-  reaggroCooldown: 3.5
+  draugrBlockedReaggroCooldown: 3
+  draugrBackstepTriggerDistance: 1.6
+  draugrBackstepDuration: 0.3
+  draugrBackstepSpeed: 2.5
+  draugrBackstepCooldown: 1.5
   valkPlungeMinAbovePlayerY: 2
   valkPlungeMaxHorizontalOffset: 4
   valkPlungeWeightMultiplier: 5
@@ -87,3 +91,5 @@ MonoBehaviour:
   stuckMinProgress: 0.3
   repositionDistance: 4
   repositionDecisionCooldown: 0.4
+  fwsMinRepositionDistFromPlayer: 1.5
+  fwsPlayerPathExclusionRadius: 1.2

@@ -61,7 +61,11 @@ public class EnemyProfile : ScriptableObject
     public float playerAboveThresholdY = 0.6f;
     public float draugrStuckTimeout = 1.0f;
     public float draugrMinProgressThreshold = 0.05f;
-    public float reaggroCooldown = 3f;
+    public float draugrBlockedReaggroCooldown = 3f;
+    public float draugrBackstepTriggerDistance = 1.0f;
+    public float draugrBackstepDuration = 0.3f;
+    public float draugrBackstepSpeed = 2.5f;
+    public float draugrBackstepCooldown = 1.5f;
 
     [Header("Valkyrie P2 Attack Selection")]
     public float valkPlungeMinAbovePlayerY = 2f;
@@ -90,6 +94,8 @@ public class EnemyProfile : ScriptableObject
     public float stuckMinProgress = 0.3f;
     public float repositionDistance = 4f;
     public float repositionDecisionCooldown = 0.4f;
+    public float fwsMinRepositionDistFromPlayer = 1.5f;
+    public float fwsPlayerPathExclusionRadius = 1.2f;
 }
 
 [Serializable]

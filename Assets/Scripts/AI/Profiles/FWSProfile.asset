@@ -27,8 +27,8 @@ MonoBehaviour:
   losCastRadius: 0.1
   requireLOSForAggro: 1
   requireLOSForAttack: 1
-  knockbackForceX: 4
-  knockbackForceY: 1
+  knockbackForceX: 5
+  knockbackForceY: 2
   hitstunDuration: 0.2
   hitstunDrag: 6
   attacks:
@@ -46,8 +46,8 @@ MonoBehaviour:
     selectionWeight: 1
   enableContactDamage: 1
   contactDamage: 1
-  contactKnockbackX: 4
-  contactKnockbackY: 3
+  contactKnockbackX: 6
+  contactKnockbackY: 4
   contactCooldownSeconds: 0.8
   contactRequiresEnemyAlive: 1
   minAttackCooldown: 0.5
@@ -64,7 +64,11 @@ MonoBehaviour:
   playerAboveThresholdY: 0.6
   draugrStuckTimeout: 1
   draugrMinProgressThreshold: 0.05
-  reaggroCooldown: 3
+  draugrBlockedReaggroCooldown: 3
+  draugrBackstepTriggerDistance: 1
+  draugrBackstepDuration: 0.3
+  draugrBackstepSpeed: 2.5
+  draugrBackstepCooldown: 1.5
   valkPlungeMinAbovePlayerY: 2
   valkPlungeMaxHorizontalOffset: 4
   valkPlungeWeightMultiplier: 5
@@ -77,7 +81,7 @@ MonoBehaviour:
   dashWindowSeconds: 5
   dashWeightBoostPerDash: 0.15
   baseDashWeight: 1
-  dashStopShortDistance: 1
+  dashStopShortDistance: 0
   dashPathCastRadius: 0.2
   patrolArriveThreshold: 0.5
   patrolSmoothing: 5
@@ -87,3 +91,5 @@ MonoBehaviour:
   stuckMinProgress: 0.3
   repositionDistance: 4
   repositionDecisionCooldown: 0.4
+  fwsMinRepositionDistFromPlayer: 2
+  fwsPlayerPathExclusionRadius: 1.5
