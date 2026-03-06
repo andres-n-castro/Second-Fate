@@ -67,7 +67,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.2078827, y: -0.51970357}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -77,7 +77,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.7483753, y: 1.8731066}
   m_EdgeRadius: 0
 --- !u!114 &3869796221833419296
 MonoBehaviour:
@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 6157200043621568539}
   - component: {fileID: 6227841449435708307}
   - component: {fileID: 7531633401594946189}
+  - component: {fileID: 1316126191925516210}
   m_Layer: 7
   m_Name: FallenWarriorSpirit
   m_TagString: Untagged
@@ -126,8 +127,8 @@ Transform:
   m_GameObject: {fileID: 6372044751141115011}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.2113903, y: 5, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7269561907639740113}
@@ -145,7 +146,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 200
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -194,17 +195,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.14551854, y: -0.56128097}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 4, y: 4.6666665}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.2888691, y: 2.7877846}
   m_EdgeRadius: 0
 --- !u!114 &6157200043621568539
 MonoBehaviour:
@@ -264,9 +265,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 6db596305ae01cb458f1251a2316503a, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_FlipX: 0
+  m_Sprite: {fileID: 21300000, guid: fa8f7687784c47f4695f862657735759, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -297,3 +298,25 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   dashHitbox: {fileID: 3869796221833419296}
+--- !u!95 &1316126191925516210
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6372044751141115011}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5fff9a2d05498ea40a16cdda12c4c6b1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

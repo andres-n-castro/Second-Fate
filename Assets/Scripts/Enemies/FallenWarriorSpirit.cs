@@ -36,6 +36,12 @@ public class FallenWarriorSpirit : EnemyBase
     // Home position for roaming
     public Vector2 HomePosition { get; set; }
 
+    // Animation parameter names matching FWS animations
+    public override string AnimWalking => "FWS_Flying";
+    public override string AnimAttack => "FWS_Attack";
+    public override string AnimHitstun => "FWS_Takes_Damage";
+    public override string AnimDeath => "FWS_Dies";
+
     // Hitbox accessor for states
     public AttackHitbox DashHitbox => dashHitbox;
 
@@ -120,6 +126,58 @@ public class FallenWarriorSpirit : EnemyBase
     }
 
     /// <summary>
+    /// Reposition-specific target sampling that rejects candidates too close to the player.
+    /// When checkPathThroughPlayer is true, also rejects candidates whose travel path
+    /// passes through the player. Set to false for retreat passes (flying away from player).
+    /// </summary>
+    public bool TryPickRepositionTarget(Vector2 center, float radius, out Vector2 result, bool checkPathThroughPlayer = true)
+    {
+        Vector2 pos = transform.position;
+        Vector2 playerPos = Ctx.playerTransform != null
+            ? (Vector2)Ctx.playerTransform.position
+            : pos;
+        LayerMask blockMask = GroundLayer | ObstacleLayer;
+        float clearance = Profile.patrolTargetClearanceRadius;
+        float minPlayerDist = Profile.fwsMinRepositionDistFromPlayer;
+        float pathExclusionSq = Profile.fwsPlayerPathExclusionRadius * Profile.fwsPlayerPathExclusionRadius;
+        int samples = Profile.patrolTargetSampleCount;
+
+        for (int i = 0; i < samples; i++)
+        {
+            Vector2 candidate = center + Random.insideUnitCircle * radius;
+
+            // Reject if target too close to player
+            if ((candidate - playerPos).sqrMagnitude < minPlayerDist * minPlayerDist)
+                continue;
+
+            // Reject if path to target passes through player
+            if (checkPathThroughPlayer && SegmentPointDistSq(pos, candidate, playerPos) < pathExclusionSq)
+                continue;
+
+            // Reject if overlapping obstacle
+            if (Physics2D.OverlapCircle(candidate, clearance, blockMask) != null)
+                continue;
+
+            // Reject if path is blocked by obstacle
+            Vector2 toCandidate = candidate - pos;
+            float dist = toCandidate.magnitude;
+            if (dist > 0.1f)
+            {
+                RaycastHit2D hit = Physics2D.CircleCast(
+                    pos, clearance, toCandidate.normalized, dist, blockMask);
+                if (hit.collider != null)
+                    continue;
+            }
+
+            result = candidate;
+            return true;
+        }
+
+        result = pos + new Vector2(0f, 0.5f);
+        return false;
+    }
+
+    /// <summary>
     /// Checks if a straight-line path from current position in 'direction' for 'distance'
     /// is clear of obstacles. Optional castRadius overrides the default patrol clearance.
     /// </summary>
@@ -130,6 +188,19 @@ public class FallenWarriorSpirit : EnemyBase
         RaycastHit2D hit = Physics2D.CircleCast(
             transform.position, radius, direction.normalized, distance, blockMask);
         return hit.collider == null;
+    }
+
+    /// <summary>
+    /// Squared distance from point P to the closest point on segment AB.
+    /// </summary>
+    private static float SegmentPointDistSq(Vector2 a, Vector2 b, Vector2 p)
+    {
+        Vector2 ab = b - a;
+        float abLenSq = ab.sqrMagnitude;
+        if (abLenSq < 0.0001f) return (p - a).sqrMagnitude;
+        float t = Mathf.Clamp01(Vector2.Dot(p - a, ab) / abLenSq);
+        Vector2 closest = a + ab * t;
+        return (p - closest).sqrMagnitude;
     }
 
     private void OnDrawGizmosSelected()

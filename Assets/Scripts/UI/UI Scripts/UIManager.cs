@@ -18,10 +18,14 @@ public class UIManager : MonoBehaviour
         Instance = this;
     }
 
+    void Start()
+    {
+         UIStateChanged?.Invoke(UIStates.playerUI);
+    }
+
     void UpdateUIState(UIStates newState)
     {
-        if(uiManagerCurrentState == newState) return;
-
+        Debug.Log(newState);
         uiManagerCurrentState = newState;
 
         UIStateChanged?.Invoke(newState);
@@ -48,6 +52,6 @@ public class UIManager : MonoBehaviour
 
     void OnDisable()
     {
-        
+        PlayerController.OnInputInventory -= UpdateUIState;
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133d3640feead734598e9768a8c524d3, type: 3}
   m_Name: DraugrProfile
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 2.5
   flySpeed: 0
   approachSpeed: 0
   roamSpeed: 0
@@ -20,7 +20,7 @@ MonoBehaviour:
   roamChangeInterval: 0
   aggroRange: 6
   deaggroRange: 10
-  attackRange: 0
+  attackRange: 1.6
   groundCheckDistance: 1
   wallCheckDistance: 0.5
   losEyeOffsetY: 0.5
@@ -31,12 +31,10 @@ MonoBehaviour:
   knockbackForceY: 2
   hitstunDuration: 0.25
   hitstunDrag: 8
-  minAttackCooldown: 0
-  maxAttackCooldown: 0
   attacks:
   - attackName: Melee
     damage: 1
-    knockbackForce: 0
+    knockbackForce: 4
     windupDuration: 0.35
     activeDuration: 0.15
     recoveryDuration: 0.5
@@ -52,16 +50,34 @@ MonoBehaviour:
   contactKnockbackY: 4
   contactCooldownSeconds: 0.8
   contactRequiresEnemyAlive: 1
+  minAttackCooldown: 0
+  maxAttackCooldown: 0
   phase2HealthPercent: 0.5
   phaseTransitionDuration: 2
   erraticIntensity: 3
   hoverHeight: 3
-  chaseSpeed: 3.5
+  chaseSpeed: 4
   acquireTargetDelay: 0.3
   loseTargetDelay: 0.5
   giveUpPauseDuration: 1
   draugrFacingDeadzoneX: 0.3
   playerAboveThresholdY: 0.6
+  draugrStuckTimeout: 1
+  draugrMinProgressThreshold: 0.05
+  draugrBlockedReaggroCooldown: 3
+  draugrBackstepTriggerDistance: 1.6
+  draugrBackstepDuration: 0.3
+  draugrBackstepSpeed: 2.5
+  draugrBackstepCooldown: 1.5
+  valkPlungeMinAbovePlayerY: 2
+  valkPlungeMaxHorizontalOffset: 4
+  valkPlungeWeightMultiplier: 5
+  valkSlashRange: 4
+  valkSlashMaxVerticalOffset: 2
+  valkSlashWeightMultiplier: 3
+  valkFlurryPreferredRangeMin: 3
+  valkFlurryPreferredRangeMax: 7
+  valkFlurryWeightMultiplier: 3
   dashWindowSeconds: 5
   dashWeightBoostPerDash: 0.15
   baseDashWeight: 1
@@ -75,3 +91,5 @@ MonoBehaviour:
   stuckMinProgress: 0.3
   repositionDistance: 4
   repositionDecisionCooldown: 0.4
+  fwsMinRepositionDistFromPlayer: 1.5
+  fwsPlayerPathExclusionRadius: 1.2

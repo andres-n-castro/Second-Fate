@@ -37,6 +37,7 @@ public class Draugr : EnemyBase
     public DraugrChaseState ChaseState { get; private set; }
     public DraugrGiveUpState GiveUpState { get; private set; }
     public DraugrMeleeAttackState MeleeAttackState { get; private set; }
+    public DraugrBackstepState BackstepState { get; private set; }
 
     // Outer override states
     public GroundHitstunState HitstunState { get; private set; }
@@ -45,9 +46,21 @@ public class Draugr : EnemyBase
     // Hitbox accessor for states
     public AttackHitbox MeleeHitbox => meleeHitbox;
 
+    // Animation parameter names matching Draugr_Animations
+    public override string AnimWalking => "Draugr_Walking";
+    public override string AnimAttack => "Draugr_Attack";
+    public override string AnimHitstun => "Draugr_Takes_Damage";
+    public override string AnimDeath => "Draugr_Dies";
+
     // Hysteresis timers (accessible by states)
     public float AcquireTargetTimer { get; set; }
     public float LoseTargetTimer { get; set; }
+
+    // Blocked-path re-aggro lockout (world time when aggro is allowed again after obstacle block)
+    public float BlockedReaggroLockUntil { get; set; }
+
+    // Backstep cooldown (world time when backstep is allowed again)
+    public float BackstepAllowedTime { get; set; }
 
     protected override void InitializeStates()
     {
@@ -55,6 +68,7 @@ public class Draugr : EnemyBase
         ChaseState = new DraugrChaseState(this);
         GiveUpState = new DraugrGiveUpState(this);
         MeleeAttackState = new DraugrMeleeAttackState(this);
+        BackstepState = new DraugrBackstepState(this);
         HitstunState = new GroundHitstunState(this);
         DeadState = new GroundDeadState(this);
 

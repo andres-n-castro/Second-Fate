@@ -10,7 +10,7 @@ public class CurrencyPickup : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PickupCurrency?.Invoke();
-            gameObject.SetActive(false);
+            Destroy(gameObject);
             Debug.Log("player picked up currency!");
         }
     }
