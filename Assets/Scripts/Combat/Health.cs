@@ -33,6 +33,7 @@ public class Health : MonoBehaviour, IDamageable
     /// Set by entities that handle knockback in their OnDamageTaken handler.
     /// </summary>
     [HideInInspector] public bool handleKnockbackExternally;
+    [HideInInspector] public bool isInvulnerable;
 
     private void Awake()
     {
@@ -42,7 +43,7 @@ public class Health : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage, Vector2 knockbackForce)
     {
-        if (IsDead) return;
+        if (IsDead || isInvulnerable) return;
 
         currentHealth -= damage;
         Debug.Log($"{gameObject.name} took {damage} damage! HP left: {currentHealth}");

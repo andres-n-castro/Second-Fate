@@ -15,6 +15,7 @@ public class PhaseTransitionState : EnemyState
     public override void Enter()
     {
         owner.StopAll();
+        if (owner.Health != null) owner.Health.isInvulnerable = true;
         timer = owner.Profile.phaseTransitionDuration;
 
         if (owner.Anim != null) owner.Anim.SetTrigger("PhaseTransition");
@@ -28,6 +29,11 @@ public class PhaseTransitionState : EnemyState
         {
             owner.FSM.ChangeState(NextPhaseState);
         }
+    }
+
+    public override void Exit()
+    {
+        if (owner.Health != null) owner.Health.isInvulnerable = false;
     }
 }
 

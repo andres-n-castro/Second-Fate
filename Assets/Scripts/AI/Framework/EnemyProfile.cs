@@ -32,6 +32,7 @@ public class EnemyProfile : ScriptableObject
     public float knockbackForceY = 2f;
     public float hitstunDuration = 0.25f;
     public float hitstunDrag = 8f;
+    public float postHitstunInvulnerabilityDuration = 0.3f;
 
     [Header("Attack System")]
     public AttackDefinition[] attacks;
