@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: 62d55bfbd9e09314bb6b9f5c99ac2030
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5956041676036211795
+    second: sprite-max-px-9 (2)_0
+  - first:
+      213: -6516735720253322833
+    second: sprite-max-px-9 (2)_1
+  - first:
+      213: -199936060218092774
+    second: sprite-max-px-9 (2)_2
+  - first:
+      213: 8440620756565708105
+    second: sprite-max-px-9 (2)_3
+  - first:
+      213: -5192570896771755209
+    second: sprite-max-px-9 (2)_4
+  - first:
+      213: 588169154373486754
+    second: sprite-max-px-9 (2)_5
+  - first:
+      213: -8275547864856842069
+    second: sprite-max-px-9 (2)_6
+  - first:
+      213: -2620163804402942669
+    second: sprite-max-px-9 (2)_7
+  - first:
+      213: 2238523394957503754
+    second: sprite-max-px-9 (2)_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: valkyrie_idle00
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1034
+        width: 545
+        height: 453
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3548f8f095c18a250800000000000000
+      internalID: 5956041676036211795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_idle01
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 1034
+        width: 596
+        height: 434
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa9833bb367ef85a0800000000000000
+      internalID: -6516735720253322833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_idle02
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 1033
+        width: 461
+        height: 430
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a13d8e8663fa93df0800000000000000
+      internalID: -199936060218092774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_idle03
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 530
+        width: 548
+        height: 453
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94d43e69bdb132570800000000000000
+      internalID: 8440620756565708105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_idle04
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 530
+        width: 597
+        height: 438
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73353e2e74840f7b0800000000000000
+      internalID: -5192570896771755209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_idle05
+      rect:
+        serializedVersion: 2
+        x: 1405
+        y: 529
+        width: 468
+        height: 432
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a8064acab8992800800000000000000
+      internalID: 588169154373486754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_idle06
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 26
+        width: 557
+        height: 454
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba037790019572d80800000000000000
+      internalID: -8275547864856842069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_idle07
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 26
+        width: 568
+        height: 432
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33df931f6ee43abd0800000000000000
+      internalID: -2620163804402942669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_idle08
+      rect:
+        serializedVersion: 2
+        x: 1388
+        y: 26
+        width: 371
+        height: 477
+      alignment: 9
+      pivot: {x: 1.2837566, y: 0.0015264747}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0de7d1ea25d01f10800000000000000
+      internalID: 2238523394957503754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e8ca6f4d642f614aab84e4a2310db51
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      valkyrie_idle00: 5956041676036211795
+      valkyrie_idle01: -6516735720253322833
+      valkyrie_idle02: -199936060218092774
+      valkyrie_idle03: 8440620756565708105
+      valkyrie_idle04: -5192570896771755209
+      valkyrie_idle05: 588169154373486754
+      valkyrie_idle06: -8275547864856842069
+      valkyrie_idle07: -2620163804402942669
+      valkyrie_idle08: 2238523394957503754
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
