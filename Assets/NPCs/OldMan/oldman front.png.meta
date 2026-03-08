@@ -64,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -78,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,7 +102,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -130,13 +130,13 @@ TextureImporter:
       name: oldman front_0
       rect:
         serializedVersion: 2
-        x: 411
-        y: 418
-        width: 141
-        height: 198
-      alignment: 9
-      pivot: {x: 0.49159804, y: 0.5377866}
-      border: {x: 0, y: 0, z: 0, w: 5}
+        x: 12
+        y: 1
+        width: 739
+        height: 1023
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -152,10 +152,10 @@ TextureImporter:
       name: oldman front_1
       rect:
         serializedVersion: 2
-        x: 237
-        y: 423
-        width: 148
-        height: 200
+        x: 238
+        y: 424
+        width: 146
+        height: 198
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,10 +174,10 @@ TextureImporter:
       name: oldman front_2
       rect:
         serializedVersion: 2
-        x: 305
-        y: 619
-        width: 24
-        height: 6
+        x: 306
+        y: 620
+        width: 22
+        height: 4
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,10 +196,10 @@ TextureImporter:
       name: oldman front_3
       rect:
         serializedVersion: 2
-        x: 582
-        y: 423
-        width: 147
-        height: 201
+        x: 583
+        y: 424
+        width: 145
+        height: 197
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +218,10 @@ TextureImporter:
       name: oldman front_4
       rect:
         serializedVersion: 2
-        x: 644
-        y: 619
-        width: 18
-        height: 6
+        x: 645
+        y: 620
+        width: 16
+        height: 4
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,10 +240,10 @@ TextureImporter:
       name: oldman front_5
       rect:
         serializedVersion: 2
-        x: 751
-        y: 423
-        width: 149
-        height: 202
+        x: 752
+        y: 424
+        width: 146
+        height: 195
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,10 +262,10 @@ TextureImporter:
       name: oldman front_6
       rect:
         serializedVersion: 2
-        x: 234
-        y: 423
-        width: 151
-        height: 196
+        x: 777
+        y: 3
+        width: 746
+        height: 1021
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,10 +284,10 @@ TextureImporter:
       name: oldman front_7
       rect:
         serializedVersion: 2
-        x: 930
-        y: 422
-        width: 147
-        height: 203
+        x: 828
+        y: 620
+        width: 9
+        height: 4
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -306,10 +306,10 @@ TextureImporter:
       name: oldman front_8
       rect:
         serializedVersion: 2
-        x: 1181
-        y: 619
-        width: 15
-        height: 6
+        x: 838
+        y: 620
+        width: 18
+        height: 4
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -328,10 +328,10 @@ TextureImporter:
       name: oldman front_9
       rect:
         serializedVersion: 2
-        x: 995
-        y: 403
-        width: 6
-        height: 6
+        x: 934
+        y: 423
+        width: 140
+        height: 196
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -346,11 +346,77 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: oldman front_10
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 620
+        width: 39
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcf5b87b1b212ce4e839dfa4f8e418cd
+      internalID: 1064740423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oldman front_11
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 404
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09b1234c5f0e93b408736122c89b0d9f
+      internalID: -1013949983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: oldman front_12
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 422
+        width: 145
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a7dc9d462208c04384f3c04b9ff2809
+      internalID: -1817657800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e1deec7819221794b8f541e14c1ec7bc
+    spriteID: b645c147a1b04d344bf677fdf8ddbd50
     internalID: 0
     vertices: []
     indices: 
@@ -362,6 +428,9 @@ TextureImporter:
     nameFileIdTable:
       oldman front_0: -3205792975775174020
       oldman front_1: -8094532104482934532
+      oldman front_10: 1064740423
+      oldman front_11: -1013949983
+      oldman front_12: -1817657800
       oldman front_2: 5480842573942137524
       oldman front_3: -7706340699464880913
       oldman front_4: -6987771105690243613

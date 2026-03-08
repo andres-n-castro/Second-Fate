@@ -15,10 +15,15 @@ MonoBehaviour:
   npcName: Old Man
   npcPortrait: {fileID: 21300000, guid: 6dec5c53ddfb4414b95f16b2cdde7280, type: 3}
   dialogueLines:
-  - Hey brother
-  - Imma need ur help soon...
-  autoProgressLines: 0100
-  autoProgressDelay: 1.5
-  typeSpeed: 0.05
-  voiceSound: {fileID: 8300000, guid: 00d1cd3ce92e1034ebdb6b6424d1f6d9, type: 3}
+  - "\"Strange\u2026 the air shifts when you approach.\""
+  - '"I have not felt that in many years."'
+  - "\"Most travelers wander these ruins lost\u2026 yet you walk as though the land
+    remembers you.\""
+  - "\"Ragnarok killed the gods and shattered the realms\u2026 or so we believed.\""
+  - '"And yet when I look at you, I feel something ancient stirring."'
+  - "\"Hmm\u2026 perhaps these charms will reveal the truth.\""
+  autoProgressLines: 01010101010100
+  autoProgressDelay: 4
+  typeSpeed: 0.5
+  voiceSound: {fileID: 0}
   voicePitch: 1
