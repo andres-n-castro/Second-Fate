@@ -67,7 +67,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -81,7 +81,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,7 +105,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -130,227 +130,227 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: headbutt_0
+      name: valkyrie_headthrust_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 399
+        width: 131
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c29fcda2d1a4744d8767ed8ea87f26a
+      internalID: 842497270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_headthrust_1
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 396
+        width: 234
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76186ebf921b9b849b49a04d3a10207e
+      internalID: 1215286164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_headthrust_2
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 223
+        width: 363
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d217f9430018f4788c751ecb92f1b4
+      internalID: 1259235754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_headthrust_3
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 397
+        width: 217
+        height: 170
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3a15fe9c7b8609428fb81eb05894ad2
+      internalID: 1672735706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_headthrust_4
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 381
+        width: 8
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d818f8983213e84468bf16a864a3596b
+      internalID: 2070050290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_headthrust_5
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 224
+        width: 195
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af828a0da1493da4fba6dda3368c771a
+      internalID: 452847144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_headthrust_6
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 223
+        width: 320
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21bfa498985b35e41b1da7a7259861a1
+      internalID: -1735502356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_headthrust_7
       rect:
         serializedVersion: 2
         x: 63
-        y: 398
-        width: 133
-        height: 150
+        y: 51
+        width: 276
+        height: 160
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a4293255183778030800000000000000
-      internalID: 3496890634992849482
+      spriteID: 55382ba00446f41479837d87e9beabdc
+      internalID: -1265179812
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: headbutt_1
+      name: valkyrie_headthrust_8
       rect:
         serializedVersion: 2
-        x: 325
-        y: 395
-        width: 236
-        height: 155
+        x: 435
+        y: 51
+        width: 262
+        height: 148
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c1f8d7390af09d070800000000000000
-      internalID: 8131547784537804572
+      spriteID: 9d562f223592763409a949f48dedd4bf
+      internalID: 1267278638
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: punch_1
+      name: valkyrie_headthrust_9
       rect:
         serializedVersion: 2
-        x: 631
-        y: 222
-        width: 365
-        height: 178
+        x: 765
+        y: 55
+        width: 125
+        height: 143
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 06b963dfec2a690e0800000000000000
-      internalID: -2263442752811918496
+      spriteID: dbbcaa37c69913b40b2005f55d7e7dc6
+      internalID: 717377688
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: headbutt_2
-      rect:
-        serializedVersion: 2
-        x: 742
-        y: 396
-        width: 219
-        height: 172
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f47cb73a2b6a502b0800000000000000
-      internalID: -5618901673897638065
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Untitled (41)_4
-      rect:
-        serializedVersion: 2
-        x: 1023
-        y: 471
-        width: 1
-        height: 1
-      alignment: 9
-      pivot: {x: 3.744024, y: 6.5780816}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5ee95f08a61c54f60800000000000000
-      internalID: 8018027374777310949
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: headbutt_4
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 223
-        width: 197
-        height: 158
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dacdfa71b31a81070800000000000000
-      internalID: 8077383206861528237
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: punch_0
-      rect:
-        serializedVersion: 2
-        x: 293
-        y: 222
-        width: 322
-        height: 161
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 35e15d620a867c8b0800000000000000
-      internalID: -5132018213309833645
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: punch_2
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 50
-        width: 278
-        height: 162
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3b0e7c9103eab8730800000000000000
-      internalID: 4002484215463010483
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: headbutt_3
-      rect:
-        serializedVersion: 2
-        x: 434
-        y: 50
-        width: 264
-        height: 150
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 486d3585c22deed80800000000000000
-      internalID: -8219401182002293116
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: defaultposition
-      rect:
-        serializedVersion: 2
-        x: 764
-        y: 54
-        width: 127
-        height: 145
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 777509db0d7d6bfb0800000000000000
-      internalID: -4632277875170453641
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Untitled (41)_10
+      name: valkyrie_headthrust_10
       rect:
         serializedVersion: 2
         x: 964
@@ -358,15 +358,15 @@ TextureImporter:
         width: 37
         height: 38
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 535355c74d7d5d060800000000000000
-      internalID: 6977720505299449141
+      spriteID: d22499b6799c1b84ab6e5dabf3b52a45
+      internalID: 1972039283
       vertices: []
       indices: 
       edges: []
@@ -385,17 +385,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Untitled (41)_10: 6977720505299449141
-      Untitled (41)_4: 8018027374777310949
-      defaultposition: -4632277875170453641
-      headbutt_0: 3496890634992849482
-      headbutt_1: 8131547784537804572
-      headbutt_2: -5618901673897638065
-      headbutt_3: -8219401182002293116
-      headbutt_4: 8077383206861528237
-      punch_0: -5132018213309833645
-      punch_1: -2263442752811918496
-      punch_2: 4002484215463010483
+      valkyrie_headthrust_0: 842497270
+      valkyrie_headthrust_1: 1215286164
+      valkyrie_headthrust_10: 1972039283
+      valkyrie_headthrust_2: 1259235754
+      valkyrie_headthrust_3: 1672735706
+      valkyrie_headthrust_4: 2070050290
+      valkyrie_headthrust_5: 452847144
+      valkyrie_headthrust_6: -1735502356
+      valkyrie_headthrust_7: -1265179812
+      valkyrie_headthrust_8: 1267278638
+      valkyrie_headthrust_9: 717377688
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

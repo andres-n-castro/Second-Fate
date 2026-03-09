@@ -61,7 +61,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 90
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -99,7 +99,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -124,177 +124,199 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Untitled (62)_0
+      name: valkyrie-plunge-v1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 533
-        width: 279
-        height: 427
+        x: 22
+        y: 787
+        width: 10
+        height: 7
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3d61654c22242bcb0800000000000000
-      internalID: -4849741131634305325
+      spriteID: d4951ab8d3a1a2640a12faf5a067b66b
+      internalID: -858699618
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled (62)_1
+      name: valkyrie-plunge-v1_1
       rect:
         serializedVersion: 2
-        x: 310
-        y: 480
-        width: 248
-        height: 480
+        x: 24
+        y: 600
+        width: 282
+        height: 324
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 2, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3df2142feef3c9500800000000000000
-      internalID: 404268362055626707
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Untitled (62)_2
-      rect:
-        serializedVersion: 2
-        x: 558
-        y: 480
-        width: 279
-        height: 480
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4acfc89d4a4320110800000000000000
-      internalID: 1225599931227372708
+      spriteID: 18f56333fac8ee0429995bec1feb2bc4
+      internalID: 1806797177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled (62)_3
+      name: valkyrie-plunge-v1_2
       rect:
         serializedVersion: 2
-        x: 837
-        y: 480
-        width: 279
-        height: 480
+        x: 308
+        y: 575
+        width: 233
+        height: 337
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 77bb29926c8a45700800000000000000
-      internalID: 528232625363663735
+      spriteID: 58531ac0a1b823a44b2582a56ea1976d
+      internalID: -1315878199
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled (62)_4
+      name: valkyrie-plunge-v1_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 279
-        height: 480
+        x: 592
+        y: 551
+        width: 231
+        height: 373
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 91b177a0bafa57900800000000000000
-      internalID: 681644067766344473
+      spriteID: 5a916ea83e475c04294218aa81e60b75
+      internalID: -1223994384
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled (62)_5
+      name: valkyrie-plunge-v1_4
       rect:
         serializedVersion: 2
-        x: 279
-        y: 0
-        width: 279
-        height: 480
+        x: 848
+        y: 506
+        width: 221
+        height: 428
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4bd473dfada10c1e0800000000000000
-      internalID: -2179712691793867340
+      spriteID: 85980a873b83f7f479585c0ecad603dc
+      internalID: 413451220
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled (62)_6
+      name: valkyrie-plunge-v1_5
       rect:
         serializedVersion: 2
-        x: 558
-        y: 0
+        x: 31
+        y: 104
+        width: 232
+        height: 406
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c01e43e0916b9ff4990e377d6cc2dda9
+      internalID: -1104643778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-plunge-v1_6
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 149
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f13a7e3c74118654dba94b34fc8fdeb4
+      internalID: -1203184406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-plunge-v1_7
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 41
+        width: 563
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b951798ab7bc5b4080e162688621bb3
+      internalID: 642606290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-plunge-v1_8
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 100
         width: 270
-        height: 480
+        height: 340
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8343512d4f8d7a7e0800000000000000
-      internalID: -1754194983829294024
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Untitled (62)_7
-      rect:
-        serializedVersion: 2
-        x: 840
-        y: 0
-        width: 276
-        height: 480
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a8525dcad448a72e0800000000000000
-      internalID: -2127242404832139894
+      spriteID: 31d61dd272a0ac843acc2b729686d5b7
+      internalID: 1485017598
       vertices: []
       indices: 
       edges: []
@@ -313,14 +335,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Untitled (62)_0: -4849741131634305325
-      Untitled (62)_1: 404268362055626707
-      Untitled (62)_2: 1225599931227372708
-      Untitled (62)_3: 528232625363663735
-      Untitled (62)_4: 681644067766344473
-      Untitled (62)_5: -2179712691793867340
-      Untitled (62)_6: -1754194983829294024
-      Untitled (62)_7: -2127242404832139894
+      valkyrie-plunge-v1_0: -858699618
+      valkyrie-plunge-v1_1: 1806797177
+      valkyrie-plunge-v1_2: -1315878199
+      valkyrie-plunge-v1_3: -1223994384
+      valkyrie-plunge-v1_4: 413451220
+      valkyrie-plunge-v1_5: -1104643778
+      valkyrie-plunge-v1_6: -1203184406
+      valkyrie-plunge-v1_7: 642606290
+      valkyrie-plunge-v1_8: 1485017598
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -18,7 +18,7 @@ public class PhaseTransitionState : EnemyState
         if (owner.Health != null) owner.Health.isInvulnerable = true;
         timer = owner.Profile.phaseTransitionDuration;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("PhaseTransition");
+        if (owner.Anim != null) owner.Anim.SetTrigger("Valk_Phase_Transition");
     }
 
     public override void FixedTick()

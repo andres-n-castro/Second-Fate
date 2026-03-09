@@ -31,9 +31,10 @@ MonoBehaviour:
   knockbackForceY: 0
   hitstunDuration: 0
   hitstunDrag: 0
+  postHitstunInvulnerabilityDuration: 0.3
   attacks:
   - attackName: Slash
-    damage: 2
+    damage: 1
     knockbackForce: 6
     windupDuration: 0.35
     activeDuration: 0.15
@@ -57,7 +58,7 @@ MonoBehaviour:
     hitInterval: 0.15
     selectionWeight: 1
   - attackName: Thrust
-    damage: 2
+    damage: 1
     knockbackForce: 8
     windupDuration: 0.45
     activeDuration: 0.25
@@ -69,7 +70,7 @@ MonoBehaviour:
     hitInterval: 0.15
     selectionWeight: 0.8
   - attackName: P2Slash
-    damage: 2
+    damage: 1
     knockbackForce: 7
     windupDuration: 0.25
     activeDuration: 0.15
@@ -81,7 +82,7 @@ MonoBehaviour:
     hitInterval: 0.15
     selectionWeight: 1.5
   - attackName: P2Flurry
-    damage: 2
+    damage: 1
     knockbackForce: 5
     windupDuration: 0.2
     activeDuration: 0.5
@@ -93,7 +94,7 @@ MonoBehaviour:
     hitInterval: 0.12
     selectionWeight: 1
   - attackName: P2Plunge
-    damage: 3
+    damage: 1
     knockbackForce: 10
     windupDuration: 0.5
     activeDuration: 0.3
@@ -116,6 +117,19 @@ MonoBehaviour:
   phaseTransitionDuration: 2
   erraticIntensity: 3
   hoverHeight: 3
+  chaseSpeed: 3.5
+  acquireTargetDelay: 0.3
+  loseTargetDelay: 0.5
+  giveUpPauseDuration: 1
+  draugrFacingDeadzoneX: 0.3
+  playerAboveThresholdY: 0.6
+  draugrStuckTimeout: 1
+  draugrMinProgressThreshold: 0.05
+  draugrBlockedReaggroCooldown: 3
+  draugrBackstepTriggerDistance: 1
+  draugrBackstepDuration: 0.3
+  draugrBackstepSpeed: 2.5
+  draugrBackstepCooldown: 1.5
   valkPlungeMinAbovePlayerY: 2
   valkPlungeMaxHorizontalOffset: 4
   valkPlungeWeightMultiplier: 5
@@ -125,12 +139,6 @@ MonoBehaviour:
   valkFlurryPreferredRangeMin: 3
   valkFlurryPreferredRangeMax: 7
   valkFlurryWeightMultiplier: 3
-  chaseSpeed: 3.5
-  acquireTargetDelay: 0.3
-  loseTargetDelay: 0.5
-  giveUpPauseDuration: 1
-  draugrFacingDeadzoneX: 0.3
-  playerAboveThresholdY: 0.6
   dashWindowSeconds: 5
   dashWeightBoostPerDash: 0.15
   baseDashWeight: 1
@@ -144,3 +152,5 @@ MonoBehaviour:
   stuckMinProgress: 0.3
   repositionDistance: 4
   repositionDecisionCooldown: 0.4
+  fwsMinRepositionDistFromPlayer: 1.5
+  fwsPlayerPathExclusionRadius: 1.2

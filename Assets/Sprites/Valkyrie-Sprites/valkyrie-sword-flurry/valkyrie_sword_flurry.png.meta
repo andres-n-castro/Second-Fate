@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 55
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -124,10 +124,10 @@ TextureImporter:
       name: valkyrie_sword_flurry_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 380
-        width: 217
-        height: 172
+        x: 16
+        y: 381
+        width: 215
+        height: 170
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,10 +146,10 @@ TextureImporter:
       name: valkyrie_sword_flurry_1
       rect:
         serializedVersion: 2
-        x: 261
-        y: 381
-        width: 246
-        height: 172
+        x: 262
+        y: 382
+        width: 244
+        height: 170
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: valkyrie_sword_flurry_2
       rect:
         serializedVersion: 2
-        x: 519
-        y: 381
-        width: 247
-        height: 172
+        x: 520
+        y: 382
+        width: 245
+        height: 170
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,10 +190,10 @@ TextureImporter:
       name: valkyrie_sword_flurry_3
       rect:
         serializedVersion: 2
-        x: 776
-        y: 381
-        width: 232
-        height: 172
+        x: 777
+        y: 382
+        width: 230
+        height: 170
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,10 +212,10 @@ TextureImporter:
       name: valkyrie_sword_flurry_4
       rect:
         serializedVersion: 2
-        x: 11
-        y: 203
-        width: 232
-        height: 171
+        x: 12
+        y: 204
+        width: 230
+        height: 169
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,10 +234,10 @@ TextureImporter:
       name: valkyrie_sword_flurry_5
       rect:
         serializedVersion: 2
-        x: 258
-        y: 203
-        width: 238
-        height: 172
+        x: 259
+        y: 204
+        width: 236
+        height: 170
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,10 +256,10 @@ TextureImporter:
       name: valkyrie_sword_flurry_6
       rect:
         serializedVersion: 2
-        x: 518
-        y: 203
-        width: 239
-        height: 171
+        x: 519
+        y: 204
+        width: 237
+        height: 169
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,10 +278,10 @@ TextureImporter:
       name: valkyrie_sword_flurry_7
       rect:
         serializedVersion: 2
-        x: 269
-        y: 21
-        width: 227
-        height: 176
+        x: 270
+        y: 22
+        width: 225
+        height: 174
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d8b4117d28818cb419e207ae86578df8
     internalID: 0
     vertices: []
     indices: 
