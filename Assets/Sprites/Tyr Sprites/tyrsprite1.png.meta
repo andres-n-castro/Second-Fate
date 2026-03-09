@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: 9649c9472b2f1894e84be65d1444d37a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2190609298286613164
+    second: tyrsprite1_0
+  - first:
+      213: 4474730066246519759
+    second: tyrsprite1_1
+  - first:
+      213: -1243587742409443536
+    second: tyrsprite1_2
+  - first:
+      213: 9072928817257709475
+    second: tyrsprite1_3
+  - first:
+      213: 4592728697768131722
+    second: tyrsprite1_4
+  - first:
+      213: 6215428860411570468
+    second: tyrsprite1_5
+  - first:
+      213: -8169788942751966067
+    second: tyrsprite1_6
+  - first:
+      213: 8599365779465414598
+    second: tyrsprite1_7
+  - first:
+      213: -3693142637906960383
+    second: tyrsprite1_8
+  - first:
+      213: -7348659476305248116
+    second: tyrsprite1_9
+  - first:
+      213: 9114074663134609607
+    second: tyrsprite1_10
+  - first:
+      213: 2362350897000623461
+    second: tyrsprite1_11
+  - first:
+      213: -145144005970366735
+    second: tyrsprite1_12
+  - first:
+      213: 320419498238845815
+    second: tyrsprite1_13
+  - first:
+      213: 3309596126475555051
+    second: tyrsprite1_14
+  - first:
+      213: -2393339390597251034
+    second: tyrsprite1_15
+  - first:
+      213: -3042925982158011233
+    second: tyrsprite1_16
+  - first:
+      213: -5348038930593387032
+    second: tyrsprite1_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tyrsprite1_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1024
+        width: 446
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca29a0aec8b966e10800000000000000
+      internalID: 2190609298286613164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_1
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 1025
+        width: 455
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcb4260894f691e30800000000000000
+      internalID: 4474730066246519759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_2
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 1025
+        width: 457
+        height: 461
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 037b7ae7983edbee0800000000000000
+      internalID: -1243587742409443536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_3
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 1024
+        width: 461
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3affc0950b489ed70800000000000000
+      internalID: 9072928817257709475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_4
+      rect:
+        serializedVersion: 2
+        x: 1900
+        y: 1023
+        width: 449
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8c3634da66acbf30800000000000000
+      internalID: 4592728697768131722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_5
+      rect:
+        serializedVersion: 2
+        x: 2363
+        y: 1023
+        width: 453
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 429ea872e93a14650800000000000000
+      internalID: 6215428860411570468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_6
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 517
+        width: 451
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8cda51fd341f9e80800000000000000
+      internalID: -8169788942751966067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_7
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 518
+        width: 458
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c7afa27d95175770800000000000000
+      internalID: 8599365779465414598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_8
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 517
+        width: 454
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 100e4b286525fbcc0800000000000000
+      internalID: -3693142637906960383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_9
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 517
+        width: 454
+        height: 463
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8084832421540a90800000000000000
+      internalID: -7348659476305248116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_10
+      rect:
+        serializedVersion: 2
+        x: 1889
+        y: 517
+        width: 459
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c0c6802e92bb7e70800000000000000
+      internalID: 9114074663134609607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_11
+      rect:
+        serializedVersion: 2
+        x: 2378
+        y: 517
+        width: 438
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56d2c82ef91c8c020800000000000000
+      internalID: 2362350897000623461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_12
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 33
+        width: 437
+        height: 372
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1feebdaab485cfdf0800000000000000
+      internalID: -145144005970366735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_13
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 37
+        width: 419
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 773a2a306db527400800000000000000
+      internalID: 320419498238845815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_14
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 37
+        width: 430
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be0959c542c0eed20800000000000000
+      internalID: 3309596126475555051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_15
+      rect:
+        serializedVersion: 2
+        x: 1442
+        y: 37
+        width: 431
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6204084318629ced0800000000000000
+      internalID: -2393339390597251034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_16
+      rect:
+        serializedVersion: 2
+        x: 1893
+        y: 37
+        width: 463
+        height: 382
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f944aabf0fa55c5d0800000000000000
+      internalID: -3042925982158011233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyrsprite1_17
+      rect:
+        serializedVersion: 2
+        x: 2405
+        y: 37
+        width: 411
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ed65018de2f7c5b0800000000000000
+      internalID: -5348038930593387032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      tyrsprite1_0: 2190609298286613164
+      tyrsprite1_1: 4474730066246519759
+      tyrsprite1_10: 9114074663134609607
+      tyrsprite1_11: 2362350897000623461
+      tyrsprite1_12: -145144005970366735
+      tyrsprite1_13: 320419498238845815
+      tyrsprite1_14: 3309596126475555051
+      tyrsprite1_15: -2393339390597251034
+      tyrsprite1_16: -3042925982158011233
+      tyrsprite1_17: -5348038930593387032
+      tyrsprite1_2: -1243587742409443536
+      tyrsprite1_3: 9072928817257709475
+      tyrsprite1_4: 4592728697768131722
+      tyrsprite1_5: 6215428860411570468
+      tyrsprite1_6: -8169788942751966067
+      tyrsprite1_7: 8599365779465414598
+      tyrsprite1_8: -3693142637906960383
+      tyrsprite1_9: -7348659476305248116
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
