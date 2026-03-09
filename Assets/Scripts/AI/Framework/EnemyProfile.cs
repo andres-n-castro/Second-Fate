@@ -46,6 +46,7 @@ public class EnemyProfile : ScriptableObject
     public bool contactRequiresEnemyAlive = true;
 
     [Header("Boss-Specific")]
+    public float bossIntroDuration = 1.0f;
     public float minAttackCooldown = 0.5f;
     public float maxAttackCooldown = 1.5f;
     public float phase2HealthPercent = 0.5f;

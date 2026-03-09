@@ -50,6 +50,7 @@ public class ValkyrieBoss : EnemyBase
     public override string AnimDeath => "Valk_Dies";
 
     // Outer FSM states
+    public BossIntroState IntroState { get; private set; }
     public ValkP1Super P1Super { get; private set; }
     public ValkP2Super P2Super { get; private set; }
     public PhaseTransitionState PhaseTransition { get; private set; }
@@ -91,12 +92,14 @@ public class ValkyrieBoss : EnemyBase
 
     protected override void InitializeStates()
     {
+        IntroState = new BossIntroState(this);
         P1Super = new ValkP1Super(this);
         P2Super = new ValkP2Super(this);
         PhaseTransition = new PhaseTransitionState(this);
         DeadState = new BossDeadState(this, DisableAllHitboxes, enableGravityOnDeath: true);
 
-        FSM.ChangeState(P1Super);
+        IntroState.NextState = P1Super;
+        FSM.ChangeState(IntroState);
     }
 
     protected override void HandleDamageTaken(int damage, Vector2 knockback)
