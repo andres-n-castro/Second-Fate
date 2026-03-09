@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 599270320724757340}
   - component: {fileID: 6199249075161248855}
   - component: {fileID: 6032026495228990185}
+  - component: {fileID: 1042511115556309349}
   m_Layer: 6
   m_Name: Vidar
   m_TagString: Untagged
@@ -233,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpForce: 33
-  walkspeed: 12
+  walkspeed: 10
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -284,9 +285,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 4
   currentHealth: 0
+  playerHealthComponent: {fileID: 0}
+  fullHearts: []
   hasDoubleJump: 0
   hasDash: 0
   Charms: 
+  currencyCountText: {fileID: 0}
+  currentCurrency: 0
 --- !u!114 &521181045092576934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d728c957470c65e4abea17893eeaa51f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHud: {fileID: 0}
   spriteRenderer: {fileID: 0}
   timeScale: 1
 --- !u!114 &5002829574089365646
@@ -402,6 +408,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   handleKnockbackExternally: 0
+--- !u!114 &1042511115556309349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348176465958162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb15f6069c28814492836ab1a2d2175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCheckpoint: {fileID: 0}
+  fadeDelay: 0.2
 --- !u!1 &6323018574185074532
 GameObject:
   m_ObjectHideFlags: 0

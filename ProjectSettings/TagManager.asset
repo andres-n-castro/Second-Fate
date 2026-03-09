@@ -4,10 +4,10 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - NPC
   - Hazard
   - Checkpoint
   - OneWay
+  - NPC
   layers:
   - Default
   - TransparentFX
