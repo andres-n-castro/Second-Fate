@@ -71,4 +71,12 @@ public class Health : MonoBehaviour, IDamageable
         currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
+
+    public void InitializeHealth(int savedCurrentHealth, int savedMaxHealth)
+    {
+        maxHealth = savedMaxHealth;
+        currentHealth = savedCurrentHealth;
+
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
 }

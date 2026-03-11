@@ -172,6 +172,6 @@ public class AirDeadState : EnemyState
 
         if (owner.Anim != null) owner.Anim.SetTrigger(owner.AnimDeath);
 
-        Object.Destroy(owner.gameObject, 2f);
+        Object.Destroy(owner.gameObject, 1.5f);
     }
 }

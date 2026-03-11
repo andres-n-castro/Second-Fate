@@ -109,9 +109,10 @@ public class BossDeadState : EnemyState
 
         foreach (Collider2D col in owner.GetComponents<Collider2D>())
         {
-            col.enabled = false;
+            if (col.isTrigger)
+                col.enabled = false;
         }
 
-        Object.Destroy(owner.gameObject, 2f);
+        Object.Destroy(owner.gameObject, 1.5f);
     }
 }

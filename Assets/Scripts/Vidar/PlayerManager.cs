@@ -36,6 +36,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
         if (playerStates.isDead || playerStates.isInvincible) return;
 
         playerStats.currentHealth -= damage;
+        playerStats.UpdateHeartsDisplay();
         Debug.Log($"Player hit! Masks left: {playerStats.currentHealth}");
         Debug.Log($"Hitbox hit: damage={damage}, knockback={knockbackForce}");
 
@@ -76,5 +77,5 @@ public class PlayerManager : MonoBehaviour, IDamageable
         playerStates.isInvincible = false;
 
     }
-    
+
 }

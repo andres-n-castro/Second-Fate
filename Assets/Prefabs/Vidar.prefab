@@ -111,10 +111,11 @@ GameObject:
   - component: {fileID: 5002829574089365646}
   - component: {fileID: 599270320724757340}
   - component: {fileID: 6199249075161248855}
-  - component: {fileID: 675493990671570619}
+  - component: {fileID: 1042511115556309349}
+  - component: {fileID: 6759045260311799466}
   m_Layer: 6
   m_Name: Vidar
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +129,7 @@ Transform:
   m_GameObject: {fileID: 4069348176465958162}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.541732, y: 1.7537819, z: 0}
+  m_LocalPosition: {x: -28.99, y: -0.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -233,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpForce: 33
-  walkspeed: 12
+  walkspeed: 10
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -283,10 +284,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 4
-  currentHealth: 0
+  currentHealth: 4
+  playerHealthComponent: {fileID: 0}
+  fullHearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   hasDoubleJump: 0
   hasDash: 0
   Charms: 
+  currencyCountText: {fileID: 0}
+  currentCurrency: 0
 --- !u!114 &521181045092576934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d728c957470c65e4abea17893eeaa51f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHud: {fileID: 0}
   spriteRenderer: {fileID: 0}
   timeScale: 1
 --- !u!114 &5002829574089365646
@@ -354,7 +364,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.038080126, y: -0.1521697}
+  m_Offset: {x: -0.040851593, y: -0.1521697}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -364,7 +374,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.93950623, y: 1.3758993}
+  m_Size: {x: 0.9816055, y: 1.3758993}
   m_EdgeRadius: 0
 --- !u!95 &6199249075161248855
 Animator:
@@ -388,7 +398,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &675493990671570619
+--- !u!114 &1042511115556309349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348176465958162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb15f6069c28814492836ab1a2d2175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCheckpoint: {fileID: 0}
+  fadeDelay: 0.2
+--- !u!114 &6759045260311799466
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
