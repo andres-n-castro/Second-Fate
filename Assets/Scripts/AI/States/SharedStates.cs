@@ -20,8 +20,8 @@ public class GroundHitstunState : EnemyState
 
         if (owner.Anim != null)
         {
-            owner.Anim.SetBool("Walking", false);
-            owner.Anim.SetTrigger("Hitstun");
+            owner.Anim.SetBool(owner.AnimWalking, false);
+            owner.Anim.SetTrigger(owner.AnimHitstun);
         }
     }
 
@@ -128,11 +128,12 @@ public class GroundDeadState : EnemyState
         owner.Ctx.isDead = true;
         owner.RestoreDrag();
         owner.StopAll();
+        owner.Rb.gravityScale = 0f;
 
         if (owner.Anim != null)
         {
-            owner.Anim.SetBool("Walking", false);
-            owner.Anim.SetTrigger("Die");
+            owner.Anim.SetBool(owner.AnimWalking, false);
+            owner.Anim.SetTrigger(owner.AnimDeath);
         }
 
         foreach (Collider2D col in owner.GetComponents<Collider2D>())
@@ -159,7 +160,7 @@ public class AirDeadState : EnemyState
         owner.StopAll();
         owner.Rb.gravityScale = 1f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Die");
+        if (owner.Anim != null) owner.Anim.SetTrigger(owner.AnimDeath);
 
         foreach (Collider2D col in owner.GetComponents<Collider2D>())
         {

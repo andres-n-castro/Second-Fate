@@ -10,20 +10,20 @@ public class InventoryModel : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        ItemSlotData newItem = new()
+        ItemSlotData newItemData = new()
         {
             itemData = item,
             isRead = false
         };
-        inventoryItems.Add(newItem);
+        inventoryItems.Add(newItemData);
 
-        OnItemAdded?.Invoke(newItem);
+        OnItemAdded?.Invoke(newItemData);
     }
 
-    public void RemoveItem(ItemSlotData item)
+    public void RemoveItem(ItemSlotData itemData)
     {
-        if(inventoryItems.Remove(item))
-            OnItemRemoved?.Invoke(item);
+        if(inventoryItems.Remove(itemData))
+            OnItemRemoved?.Invoke(itemData);
     }
 
     public List<ItemSlotData> RetrieveInventoryItems()

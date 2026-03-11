@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 
     // Event for AI perception to track player dashes
     public static event Action OnPlayerDashed;
+    public static event Action<UIManager.UIStates> OnInputInventory;
+    public GameObject playerHud;
     private Rigidbody2D rb;
     private Animator anim;
     private PlayerMovement playerMovement;
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
         playerStates = GetComponent<PlayerStates>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
 
         playerMovement.defaultGravity = rb.gravityScale;
 
@@ -87,8 +90,53 @@ public class PlayerController : MonoBehaviour
     
     private void GetInputs()
     {
+        //movement input
         xAxis = Input.GetAxisRaw("Horizontal");
         yAxis = Input.GetAxisRaw("Vertical");
+
+        //attack input
         playerStates.isAttacking = Input.GetButtonDown("Player Attack");
+
+        //Inventory menu open input
+        if (Input.GetButtonDown("Open Inventory"))
+        {
+            Debug.Log("create button pressed!");
+            
+            if(UIManager.uiManagerCurrentState == UIManager.UIStates.inventoryUI)
+            {
+                Debug.Log("sending playerUI state to turn off inventory!");
+                OnInputInventory?.Invoke(UIManager.UIStates.playerUI);
+            }
+            else
+            {
+                Debug.Log("sending inventoryUI state to turn on inventory!");
+                OnInputInventory?.Invoke(UIManager.UIStates.inventoryUI);
+            }
+
+        }
+
+
+    }
+
+    void DisplayPlayerHud(UIManager.UIStates currentUIState)
+    {
+        if (currentUIState == UIManager.UIStates.playerUI)
+        {
+            playerHud.SetActive(true);
+        }
+        else
+        {
+            playerHud.SetActive(false);
+        }
+    }
+
+    void OnEnable()
+    {
+        UIManager.UIStateChanged += DisplayPlayerHud;
+    }
+
+    void OnDisable()
+    {
+        UIManager.UIStateChanged -= DisplayPlayerHud;
     }
 }
