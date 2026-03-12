@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Enemy Collision Settings")]
     [SerializeField] private LayerMask whatIsEnemy;
-    [SerializeField] private float enemyCheckDistance = 0.6f; // Adjust this so it barely pokes out of your collider
+    [SerializeField] private float enemyCheckDistance = 0.6f;
 
     public void Move(Rigidbody2D rb, float xAxis, Animator anim)
     {
@@ -47,7 +47,6 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector2(walkspeed * adjustedXAxis, rb.linearVelocity.y);
         anim.SetBool("Walking", rb.linearVelocity.x != 0 && Grounded());
     }
-
     public void Jump(Rigidbody2D rb, ref bool isJumping, Animator anim)
     {
 
@@ -80,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
                 isJumping = true;
                 jumpTimeCounter = 0;
                 coyoteTimeCounter = 0;
+                anim.SetTrigger("JumpTrigger");
             }
         }
 
@@ -102,7 +102,6 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("isGrounded", Grounded());
 
     }
-
     public bool Grounded()
     {
         if (Physics2D.Raycast(groundCheck.position, Vector2.down, groundLengthY, whatIsGround)
@@ -114,14 +113,12 @@ public class PlayerMovement : MonoBehaviour
 
         return false;
     }
-
     public void MaxFall(Rigidbody2D rb)
     {
         if(rb.linearVelocity.y < 0){
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Max(rb.linearVelocity.y, -maxFallVelocity));
         }
     }
-
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -147,30 +144,28 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawLine(transform.position, (Vector2)transform.position + (checkDirection * enemyCheckDistance));
 
     }
-
     public void Flip(float xAxis)
     {
-        if(xAxis < 0)
+        float flipThreshold = 0.4f;
+
+        if(xAxis < -flipThreshold)
         {
             transform.localScale = new Vector3(-1f, transform.localScale.y, 1f);
         }
-        else if (xAxis > 0)
+        else if (xAxis > flipThreshold)
         {
             transform.localScale = new Vector3(1f, transform.localScale.y, 1f);
         }
 
     }
-
     public void Dash()
     {
         
     }
-
     public void DoubleJump()
     {
         
     }
-
     public void WallJump()
     {
         
