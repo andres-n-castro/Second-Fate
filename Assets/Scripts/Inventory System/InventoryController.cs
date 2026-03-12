@@ -1,5 +1,7 @@
 using System;
+#if UNITY_EDITOR
 using UnityEditor.Timeline;
+#endif
 using UnityEngine;
 
 public class InventoryController : MonoBehaviour
@@ -26,7 +28,7 @@ public class InventoryController : MonoBehaviour
 
     void OpenInventoryUI(UIManager.UIStates currentState)
     {
-        if(currentState == UIManager.UIStates.inventoryUI)
+        if (currentState == UIManager.UIStates.inventoryUI)
         {
             Debug.Log("Succesfully entered inventory menu state!");
             inventoryCanvas.SetActive(true);
