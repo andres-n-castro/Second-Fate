@@ -85,12 +85,11 @@ public class Draugr : EnemyBase
     {
         if (Ctx.isDead) return;
 
-        ApplyKnockback(knockback);
-
         HitstunState.ReturnState = (Ctx.isPlayerInAggroRange && Ctx.isPlayerOnSamePlatform)
             ? (IState)CombatSuper
             : NonCombatSuper;
         FSM.ChangeState(HitstunState);
+        ApplyKnockback(knockback);
     }
 
     protected override void HandleDeath()

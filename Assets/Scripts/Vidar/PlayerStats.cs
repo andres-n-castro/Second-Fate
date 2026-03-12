@@ -25,6 +25,9 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
+        if (currentHealth <= 0)
+            currentHealth = maxHealth;
+
         if (playerHealthComponent != null)
         {
             playerHealthComponent.InitializeHealth(currentHealth, maxHealth);
@@ -49,14 +52,12 @@ public class PlayerStats : MonoBehaviour
 
     void UpdateDisplayCurrencyCount()
     {
-        currencyCountText.text = currentCurrency.ToString();
+        if (currencyCountText != null)
+            currencyCountText.text = currentCurrency.ToString();
     }
 
-    void SyncHealthForSaving(int newCurrentHealth, int newMaxHealth)
+    public void UpdateHeartsDisplay()
     {
-        currentHealth = newCurrentHealth;
-        maxHealth = newMaxHealth;
-
         for (int i = 0; i < fullHearts.Length; i++)
         {
             if (fullHearts[i] != null)
@@ -64,6 +65,13 @@ public class PlayerStats : MonoBehaviour
                 fullHearts[i].SetActive(i < currentHealth);
             }
         }
+    }
+
+    void SyncHealthForSaving(int newCurrentHealth, int newMaxHealth)
+    {
+        currentHealth = newCurrentHealth;
+        maxHealth = newMaxHealth;
+        UpdateHeartsDisplay();
     }
 
     void OnEnable()

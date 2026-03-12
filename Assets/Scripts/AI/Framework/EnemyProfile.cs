@@ -32,6 +32,7 @@ public class EnemyProfile : ScriptableObject
     public float knockbackForceY = 2f;
     public float hitstunDuration = 0.25f;
     public float hitstunDrag = 8f;
+    public float postHitstunInvulnerabilityDuration = 0.3f;
 
     [Header("Attack System")]
     public AttackDefinition[] attacks;
@@ -45,6 +46,7 @@ public class EnemyProfile : ScriptableObject
     public bool contactRequiresEnemyAlive = true;
 
     [Header("Boss-Specific")]
+    public float bossIntroDuration = 1.0f;
     public float minAttackCooldown = 0.5f;
     public float maxAttackCooldown = 1.5f;
     public float phase2HealthPercent = 0.5f;
@@ -66,6 +68,22 @@ public class EnemyProfile : ScriptableObject
     public float draugrBackstepDuration = 0.3f;
     public float draugrBackstepSpeed = 2.5f;
     public float draugrBackstepCooldown = 1.5f;
+
+    [Header("Valkyrie P1 Range Bands")]
+    public float p1CloseRange = 2.0f;
+    public float p1MidRange = 4.0f;
+    public float p1MaxEngageRange = 6.0f;
+    public float p1OptimalSpacing = 3.5f;
+
+    [Header("Valkyrie P1 Thrust Gap-Close")]
+    public float p1ThrustCloseGapMinRange = 3.5f;
+    public float p1ThrustCloseGapMaxRange = 6.0f;
+    public float p1ThrustCloseGapChance = 0.15f;
+    public float p1GapCloseRunSpeed = 6.0f;
+
+    [Header("Valkyrie P1 Slash Micro-Lunge")]
+    public float p1SlashMicroLungeSpeed = 3.0f;
+    public float p1SlashMicroLungeDuration = 0.2f;
 
     [Header("Valkyrie P2 Attack Selection")]
     public float valkPlungeMinAbovePlayerY = 2f;

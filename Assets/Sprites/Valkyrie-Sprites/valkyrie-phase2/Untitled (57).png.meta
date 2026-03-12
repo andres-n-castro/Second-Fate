@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 70
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -124,12 +124,12 @@ TextureImporter:
       name: Untitled (57)_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 548
-        width: 261
-        height: 301
+        x: 21
+        y: 549
+        width: 259
+        height: 299
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -146,12 +146,12 @@ TextureImporter:
       name: Untitled (57)_1
       rect:
         serializedVersion: 2
-        x: 280
-        y: 544
-        width: 257
-        height: 294
+        x: 281
+        y: 545
+        width: 255
+        height: 292
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -168,12 +168,12 @@ TextureImporter:
       name: Untitled (57)_2
       rect:
         serializedVersion: 2
-        x: 545
-        y: 544
-        width: 245
-        height: 273
+        x: 546
+        y: 545
+        width: 248
+        height: 271
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -190,12 +190,12 @@ TextureImporter:
       name: Untitled (57)_3
       rect:
         serializedVersion: 2
-        x: 795
-        y: 524
-        width: 229
-        height: 224
+        x: 792
+        y: 525
+        width: 232
+        height: 222
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -212,12 +212,12 @@ TextureImporter:
       name: Untitled (57)_4
       rect:
         serializedVersion: 2
-        x: 28
-        y: 96
-        width: 243
-        height: 209
+        x: 29
+        y: 97
+        width: 249
+        height: 207
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -234,12 +234,12 @@ TextureImporter:
       name: Untitled (57)_5
       rect:
         serializedVersion: 2
-        x: 279
-        y: 79
-        width: 243
-        height: 311
+        x: 271
+        y: 80
+        width: 262
+        height: 309
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -256,12 +256,12 @@ TextureImporter:
       name: Untitled (57)_6
       rect:
         serializedVersion: 2
-        x: 533
-        y: 83
-        width: 231
-        height: 316
+        x: 522
+        y: 84
+        width: 248
+        height: 314
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -278,12 +278,12 @@ TextureImporter:
       name: Untitled (57)_7
       rect:
         serializedVersion: 2
-        x: 772
-        y: 94
-        width: 240
-        height: 311
+        x: 765
+        y: 95
+        width: 246
+        height: 309
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
