@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using System.Security.Cryptography.X509Certificates;
+using System.Collections;
 
 /// <summary>
 /// Manages health for any entity (player, enemy, boss).
@@ -13,7 +15,7 @@ public class Health : MonoBehaviour, IDamageable
 
     private int currentHealth;
     private Rigidbody2D rb;
-
+    private SpriteRenderer sprite;
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
     public bool IsDead => currentHealth <= 0;
@@ -40,6 +42,7 @@ public class Health : MonoBehaviour, IDamageable
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(int damage, Vector2 knockbackForce)
@@ -50,8 +53,8 @@ public class Health : MonoBehaviour, IDamageable
         Debug.Log($"{gameObject.name} took {damage} damage! HP left: {currentHealth}");
         currentHealth = Mathf.Max(currentHealth, 0);
 
+        StartCoroutine(Flash(0.1f));
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
-        Debug.Log("flag 0");
         OnDamageTaken?.Invoke(damage, knockbackForce);
 
         // Apply knockback if rigidbody exists (unless handled externally)
@@ -80,5 +83,12 @@ public class Health : MonoBehaviour, IDamageable
         currentHealth = savedCurrentHealth;
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
+private IEnumerator Flash(float duration)
+    {
+        sprite.material.SetFloat("_FlashAmount", 1f);
+        yield return new WaitForSeconds(duration);
+        sprite.material.SetFloat("_FlashAmount", 0f);
     }
 }
