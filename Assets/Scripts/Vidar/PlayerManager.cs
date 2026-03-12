@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerStats))]
 [RequireComponent(typeof(PlayerStates))]
 
-public class PlayerManager : MonoBehaviour, IDamageable
+public class PlayerManager : MonoBehaviour
 {
 
     public static PlayerManager Instance;
@@ -22,36 +22,12 @@ public class PlayerManager : MonoBehaviour, IDamageable
         }
 
         Instance = this;
-    }
 
-    void Start()
-    {
         playerController = GetComponent<PlayerController>();
         playerStats = GetComponent<PlayerStats>();
         playerStates = GetComponent<PlayerStates>();
     }
 
-    public void TakeDamage(int damage, Vector2 knockbackForce)
-    {
-        if (playerStates.isDead || playerStates.isInvincible) return;
-
-        playerStats.currentHealth -= damage;
-        Debug.Log($"Player hit! Masks left: {playerStats.currentHealth}");
-        Debug.Log($"Hitbox hit: damage={damage}, knockback={knockbackForce}");
-
-        if(playerStats.currentHealth <= 0)
-        {
-            //call function to trigger death hit effect
-            playerController.KnockBack(knockbackForce, 0.25f);
-            Die();
-        }
-
-        else
-        {
-            playerController.KnockBack(knockbackForce, 0.25f);
-            StartCoroutine(IFrameSubRoutine(playerStates.invincibilityTimer));
-        }
-    }
 
     public void Die()
     {
@@ -63,6 +39,11 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public IEnumerator IFrameSubRoutine(float iFrameTimer)
     {
         playerStates.isInvincible = true;
+
+        // NEW: Tell Health to block damage
+        if (playerStats.playerHealthComponent != null)
+            playerStats.playerHealthComponent.isInvulnerable = true;
+
         float timer = 0f;
         float flashDelay = 0.1f;
 
@@ -72,9 +53,48 @@ public class PlayerManager : MonoBehaviour, IDamageable
             yield return new WaitForSeconds(flashDelay);
             timer += flashDelay;
         }
+
         playerController.spriteRenderer.enabled = true;
         playerStates.isInvincible = false;
 
+            // NEW: Tell Health it can take damage again
+        if (playerStats.playerHealthComponent != null)
+            playerStats.playerHealthComponent.isInvulnerable = false;
+
+
+    }
+
+    
+    // This replaces your old TakeDamage function
+    private void HandleDamage(int damage, Vector2 knockbackForce)
+    {
+        Debug.Log("flag 1");
+        if (playerStates.isDead) return;
+
+        Debug.Log("flag 2");
+        // Trigger your specific player reactions
+        PlayerController.Instance.TriggerHitStop(0.1f);
+        playerController.KnockBack(knockbackForce, 0.25f);
+        StartCoroutine(IFrameSubRoutine(playerStates.invincibilityTimer));
+        
+        // (Note: Health.cs already checks for death and updates the UI math)
     }
     
+
+    void OnEnable()
+    {
+        // Listen for when Health takes damage
+        if (playerStats.playerHealthComponent != null)
+        {
+            playerStats.playerHealthComponent.OnDamageTaken += HandleDamage;
+        }
+    }
+
+    void OnDisable()
+    {
+        if (playerStats.playerHealthComponent != null)
+        {
+            playerStats.playerHealthComponent.OnDamageTaken -= HandleDamage;
+        }
+    }
 }

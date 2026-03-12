@@ -20,9 +20,31 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpHangGravity;
     public float defaultGravity;
 
+    [Header("Enemy Collision Settings")]
+    [SerializeField] private LayerMask whatIsEnemy;
+    [SerializeField] private float enemyCheckDistance = 0.6f; // Adjust this so it barely pokes out of your collider
+
     public void Move(Rigidbody2D rb, float xAxis, Animator anim)
     {
-        rb.linearVelocity = new Vector2(walkspeed * xAxis, rb.linearVelocity.y);
+
+        float adjustedXAxis = xAxis;
+
+        // If the player is trying to move left or right...
+        if (xAxis != 0)
+        {
+            Vector2 checkDirection = xAxis > 0 ? Vector2.right : Vector2.left;
+            
+            // Cast a short invisible ray forward from the center of the player
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, checkDirection, enemyCheckDistance, whatIsEnemy);
+
+            // If the ray hits an enemy, cancel the horizontal movement speed so we don't push them!
+            if (hit.collider != null)
+            {
+                adjustedXAxis = 0; 
+            }
+        }
+
+        rb.linearVelocity = new Vector2(walkspeed * adjustedXAxis, rb.linearVelocity.y);
         anim.SetBool("Walking", rb.linearVelocity.x != 0 && Grounded());
     }
 
@@ -119,6 +141,10 @@ public class PlayerMovement : MonoBehaviour
         // 3. Left Ray (-groundLengthX)
         Vector3 leftPos = groundCheck.position + new Vector3(-groundLengthX, 0, 0);
         Gizmos.DrawLine(leftPos, leftPos + downDir);
+
+        Gizmos.color = Color.yellow;
+        Vector2 checkDirection = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
+        Gizmos.DrawLine(transform.position, (Vector2)transform.position + (checkDirection * enemyCheckDistance));
 
     }
 

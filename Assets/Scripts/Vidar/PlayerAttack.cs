@@ -56,6 +56,7 @@ public class PlayerAttack : MonoBehaviour
             Vector2 direction = (objectsToHit[i].transform.position - attackTransform.position).normalized;
             Vector2 kb = new Vector2(direction.x * knockbackForce.x, knockbackForce.y);
             target.TakeDamage(attackDamage, kb);
+            PlayerController.Instance.TriggerHitStop(0.1f);
             Debug.Log($"Sword hit {objectsToHit[i].name}!\n Hitbox hit: knockback={kb} ");
         }
     }

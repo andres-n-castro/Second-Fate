@@ -19,6 +19,8 @@ public class Health : MonoBehaviour, IDamageable
     public bool IsDead => currentHealth <= 0;
     public float HealthPercent => (float)currentHealth / maxHealth;
 
+    public bool isInvulnerable;
+
     /// <summary> Fires (currentHealth, maxHealth) whenever HP changes. </summary>
     public event Action<int, int> OnHealthChanged;
 
@@ -32,7 +34,7 @@ public class Health : MonoBehaviour, IDamageable
     /// When true, TakeDamage skips built-in knockback.
     /// Set by entities that handle knockback in their OnDamageTaken handler.
     /// </summary>
-    [HideInInspector] public bool handleKnockbackExternally;
+    public bool handleKnockbackExternally;
 
     private void Awake()
     {
@@ -42,13 +44,14 @@ public class Health : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage, Vector2 knockbackForce)
     {
-        if (IsDead) return;
+        if (IsDead || isInvulnerable) return;
 
         currentHealth -= damage;
         Debug.Log($"{gameObject.name} took {damage} damage! HP left: {currentHealth}");
         currentHealth = Mathf.Max(currentHealth, 0);
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        Debug.Log("flag 0");
         OnDamageTaken?.Invoke(damage, knockbackForce);
 
         // Apply knockback if rigidbody exists (unless handled externally)
