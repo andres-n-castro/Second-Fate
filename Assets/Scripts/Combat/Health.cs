@@ -60,23 +60,20 @@ public class Health : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0)
         {
-            Debug.Log(gameObject.name + " has reached 0 HP in Health.cs");
+            // 1. Try to find the PlayerManager
+            PlayerManager pm = GetComponent<PlayerManager>();
 
-            // 1. Try the Instance first (The most reliable way)
-            if (PlayerManager.Instance != null)
+            // If it's the player, use the special Die() logic
+            if (pm != null)
             {
-                Debug.Log("Found PlayerManager via Instance! Calling Die()...");
-                PlayerManager.Instance.Die();
-            }
-            // 2. Fallback: Search the object hierarchy
-            else if (GetComponentInParent<PlayerManager>() != null)
-            {
-                GetComponentInParent<PlayerManager>().Die();
+                Debug.Log("Player reached 0 HP, calling PlayerManager.Die()");
+                pm.Die();
             }
             else
             {
-                Debug.LogWarning("CRITICAL: Could not find PlayerManager anywhere!");
-                OnDeath?.Invoke();
+                // 2. If it's NOT the player (it's an enemy!), use standard death
+                Debug.Log(gameObject.name + " (Enemy/NPC) has died!");
+                OnDeath?.Invoke(); // This is what enemies listen to for their death animations/destruction
             }
         }
     }
