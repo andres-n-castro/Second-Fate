@@ -46,6 +46,7 @@ public class Health : MonoBehaviour, IDamageable
 
         currentHealth -= damage;
         Debug.Log($"{gameObject.name} took {damage} damage! HP left: {currentHealth}");
+        Debug.Log($"<color=orange>DAMAGE DETECTED:</color> {gameObject.name} was hit. HP is now {currentHealth}. My Instance ID is: {this.GetInstanceID()}");
         currentHealth = Mathf.Max(currentHealth, 0);
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
@@ -59,8 +60,24 @@ public class Health : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0)
         {
-            Debug.Log($"{gameObject.name} has died");
-            OnDeath?.Invoke();
+            Debug.Log(gameObject.name + " has reached 0 HP in Health.cs");
+
+            // 1. Try the Instance first (The most reliable way)
+            if (PlayerManager.Instance != null)
+            {
+                Debug.Log("Found PlayerManager via Instance! Calling Die()...");
+                PlayerManager.Instance.Die();
+            }
+            // 2. Fallback: Search the object hierarchy
+            else if (GetComponentInParent<PlayerManager>() != null)
+            {
+                GetComponentInParent<PlayerManager>().Die();
+            }
+            else
+            {
+                Debug.LogWarning("CRITICAL: Could not find PlayerManager anywhere!");
+                OnDeath?.Invoke();
+            }
         }
     }
 

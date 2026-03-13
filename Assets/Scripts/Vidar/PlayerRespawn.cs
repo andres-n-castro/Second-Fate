@@ -29,18 +29,33 @@ public class PlayerRespawn : MonoBehaviour
         }
     }
 
-    IEnumerator HandleSpikeHit()
+    public void RespawnPlayer()
+    {
+        StartCoroutine(HandleSpikeHit());
+    }
+
+    public IEnumerator HandleSpikeHit()
     {
         rb.simulated = false;
         rb.linearVelocity = Vector2.zero;
+
+        // CLEAR ALL STATES so the player isn't stuck "dead" or "knockbacked"
+        PlayerStates states = GetComponent<PlayerStates>();
+        states.isKnockbacked = false;
+        states.isDead = true; // Stay "dead" during the fade/teleport
 
         yield return new WaitForSeconds(fadeDelay);
 
         if (currentCheckpoint != null)
         {
             transform.position = currentCheckpoint.position;
+            rb.position = currentCheckpoint.position;
         }
 
+        // Wait for physics to catch up
+        yield return new WaitForFixedUpdate();
+
         rb.simulated = true;
+        states.isDead = false; // NOW they can move again
     }
 }

@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     void Awake()
     {
-        if(Instance != null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
@@ -29,6 +29,13 @@ public class PlayerManager : MonoBehaviour, IDamageable
         playerController = GetComponent<PlayerController>();
         playerStats = GetComponent<PlayerStats>();
         playerStates = GetComponent<PlayerStates>();
+
+        Health hp = GetComponent<Health>();
+        if (hp != null)
+        {
+            // This tells the Health script: "When you die, run my Die() function"
+            hp.OnDeath += Die;
+        }
     }
 
     public void TakeDamage(int damage, Vector2 knockbackForce)
@@ -39,7 +46,9 @@ public class PlayerManager : MonoBehaviour, IDamageable
         Debug.Log($"Player hit! Masks left: {playerStats.currentHealth}");
         Debug.Log($"Hitbox hit: damage={damage}, knockback={knockbackForce}");
 
-        if(playerStats.currentHealth <= 0)
+        playerStats.SyncHealthForSaving(playerStats.currentHealth, playerStats.maxHealth);
+
+        if (playerStats.currentHealth <= 0)
         {
             //call function to trigger death hit effect
             playerController.KnockBack(knockbackForce, 0.25f);
@@ -55,9 +64,31 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        // 1. Check if we're already dead to prevent loops
+        if (playerStates.isDead) return;
         playerStates.isDead = true;
-        Debug.Log("Player Died!");
-        //shout to the game manager to reset the game
+
+        Debug.Log("PLAYER MANAGER: Die() confirmed. Resetting...");
+
+        // 2. Reset the hearts in PlayerStats
+        playerStats.currentHealth = playerStats.maxHealth;
+
+        // 3. Force the Heart UI objects to turn back on
+        playerStats.SyncHealthForSaving(playerStats.maxHealth, playerStats.maxHealth);
+
+        // 4. Reset the Health script internal numbers so IsDead becomes false
+        Health hp = GetComponent<Health>();
+        if (hp != null)
+        {
+            hp.InitializeHealth(playerStats.maxHealth, playerStats.maxHealth);
+        }
+
+        // 5. Run the Teleport
+        PlayerRespawn respawnScript = GetComponent<PlayerRespawn>();
+        if (respawnScript != null)
+        {
+            StartCoroutine(respawnScript.HandleSpikeHit());
+        }
     }
 
     public IEnumerator IFrameSubRoutine(float iFrameTimer)
@@ -66,7 +97,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
         float timer = 0f;
         float flashDelay = 0.1f;
 
-        while(timer < iFrameTimer)
+        while (timer < iFrameTimer)
         {
             playerController.spriteRenderer.enabled = !playerController.spriteRenderer.enabled;
             yield return new WaitForSeconds(flashDelay);
@@ -76,5 +107,5 @@ public class PlayerManager : MonoBehaviour, IDamageable
         playerStates.isInvincible = false;
 
     }
-    
+
 }
