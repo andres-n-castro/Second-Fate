@@ -29,28 +29,14 @@ public class ValkyrieBoss : EnemyBase
     [SerializeField] private AttackHitbox flurryHitbox;
     [SerializeField] private AttackHitbox thrustHitbox;
     [SerializeField] private AttackHitbox plungeHitbox;
-    [SerializeField] private AttackHitbox erraticSlashHitbox;
-    [SerializeField] private AttackHitbox erraticFlurryHitbox;
 
     // Hitbox accessors for states
     public AttackHitbox SlashHitbox => slashHitbox;
     public AttackHitbox FlurryHitbox => flurryHitbox;
     public AttackHitbox ThrustHitbox => thrustHitbox;
     public AttackHitbox PlungeHitbox => plungeHitbox;
-    public AttackHitbox ErraticSlashHitbox => erraticSlashHitbox;
-    public AttackHitbox ErraticFlurryHitbox => erraticFlurryHitbox;
-
-    // Cached hitbox reach (computed once in Start from child localPosition + collider extents)
-    public float SlashReach { get; private set; }
-    public float FlurryReach { get; private set; }
-    public float ThrustReach { get; private set; }
-
-    // Animation parameter names matching Valkyrie animator
-    public override string AnimWalking => "Valk_Walking";
-    public override string AnimDeath => "Valk_Dies";
 
     // Outer FSM states
-    public BossIntroState IntroState { get; private set; }
     public ValkP1Super P1Super { get; private set; }
     public ValkP2Super P2Super { get; private set; }
     public PhaseTransitionState PhaseTransition { get; private set; }
@@ -59,47 +45,14 @@ public class ValkyrieBoss : EnemyBase
     // Phase tracking
     private bool isPhase2;
 
-    protected override void Start()
-    {
-        base.Start();
-
-        // Compute hitbox reach from child transforms + collider extents
-        SlashReach = ComputeHitboxReach(slashHitbox);
-        FlurryReach = ComputeHitboxReach(flurryHitbox);
-        ThrustReach = ComputeHitboxReach(thrustHitbox);
-    }
-
-    /// <summary>
-    /// Reads child localPosition.x + BoxCollider2D half-width to get the
-    /// maximum forward reach of a hitbox relative to the boss origin.
-    /// Falls back to a default if the hitbox or collider is missing.
-    /// </summary>
-    private float ComputeHitboxReach(AttackHitbox hitbox)
-    {
-        if (hitbox == null) return 1f;
-
-        float localX = Mathf.Abs(hitbox.transform.localPosition.x);
-        var box = hitbox.GetComponent<BoxCollider2D>();
-        if (box != null)
-            return localX + box.size.x * 0.5f;
-
-        var col = hitbox.GetComponent<Collider2D>();
-        if (col != null)
-            return localX + col.bounds.extents.x;
-
-        return localX + 0.5f;
-    }
-
     protected override void InitializeStates()
     {
-        IntroState = new BossIntroState(this);
         P1Super = new ValkP1Super(this);
         P2Super = new ValkP2Super(this);
         PhaseTransition = new PhaseTransitionState(this);
         DeadState = new BossDeadState(this, DisableAllHitboxes, enableGravityOnDeath: true);
 
-        IntroState.NextState = P1Super;
-        FSM.ChangeState(IntroState);
+        FSM.ChangeState(P1Super);
     }
 
     protected override void HandleDamageTaken(int damage, Vector2 knockback)
@@ -149,8 +102,6 @@ public class ValkyrieBoss : EnemyBase
         if (flurryHitbox != null) flurryHitbox.Deactivate();
         if (thrustHitbox != null) thrustHitbox.Deactivate();
         if (plungeHitbox != null) plungeHitbox.Deactivate();
-        if (erraticSlashHitbox != null) erraticSlashHitbox.Deactivate();
-        if (erraticFlurryHitbox != null) erraticFlurryHitbox.Deactivate();
     }
 
     private void OnDrawGizmosSelected()
@@ -187,17 +138,6 @@ public class ValkyrieBoss : EnemyBase
             Gizmos.color = Color.white;
             Vector3 hoverPos = transform.position + Vector3.up * Profile.hoverHeight;
             Gizmos.DrawLine(hoverPos + Vector3.left * 0.5f, hoverPos + Vector3.right * 0.5f);
-
-            // P1 Range Bands
-            // Close range (green)
-            Gizmos.color = new Color(0f, 1f, 0f, 0.3f);
-            Gizmos.DrawWireSphere(transform.position, Profile.p1CloseRange);
-            // Mid range (cyan)
-            Gizmos.color = new Color(0f, 1f, 1f, 0.3f);
-            Gizmos.DrawWireSphere(transform.position, Profile.p1MidRange);
-            // Max engage range (magenta)
-            Gizmos.color = new Color(1f, 0f, 1f, 0.3f);
-            Gizmos.DrawWireSphere(transform.position, Profile.p1MaxEngageRange);
         }
 
         // LOS ray to player (cyan = clear, magenta = blocked)

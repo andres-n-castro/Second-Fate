@@ -74,17 +74,17 @@ public class FallenWarriorSpirit : EnemyBase
     {
         if (Ctx.isDead) return;
 
+        ApplyKnockback(knockback);
+
         HitstunState.ReturnState = Ctx.isPlayerInAggroRange
             ? (IState)CombatSuper
             : NonCombatSuper;
         FSM.ChangeState(HitstunState);
-        ApplyKnockback(knockback);
     }
 
     protected override void HandleDeath()
     {
         if (dashHitbox != null) dashHitbox.Deactivate();
-        FacePlayer();
         FSM.ChangeState(DeadState);
     }
 

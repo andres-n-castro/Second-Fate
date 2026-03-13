@@ -111,11 +111,11 @@ GameObject:
   - component: {fileID: 5002829574089365646}
   - component: {fileID: 599270320724757340}
   - component: {fileID: 6199249075161248855}
+  - component: {fileID: 6032026495228990185}
   - component: {fileID: 1042511115556309349}
-  - component: {fileID: 6759045260311799466}
   m_Layer: 6
   m_Name: Vidar
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,7 +129,7 @@ Transform:
   m_GameObject: {fileID: 4069348176465958162}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.99, y: -0.41, z: 0}
+  m_LocalPosition: {x: -35.282787, y: -3.3748813, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -206,7 +206,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 9.8
@@ -284,13 +284,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 4
-  currentHealth: 4
+  currentHealth: 0
   playerHealthComponent: {fileID: 0}
-  fullHearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  fullHearts: []
   hasDoubleJump: 0
   hasDash: 0
   Charms: 
@@ -364,7 +360,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.040851593, y: -0.1521697}
+  m_Offset: {x: 0.038080126, y: -0.1521697}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -374,7 +370,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.9816055, y: 1.3758993}
+  m_Size: {x: 0.93950623, y: 1.3758993}
   m_EdgeRadius: 0
 --- !u!95 &6199249075161248855
 Animator:
@@ -398,6 +394,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6032026495228990185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348176465958162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e5bcc32e947684ea6d3ad710f54fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  handleKnockbackExternally: 0
 --- !u!114 &1042511115556309349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,21 +422,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCheckpoint: {fileID: 0}
   fadeDelay: 0.2
---- !u!114 &6759045260311799466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4069348176465958162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 839634abe93a2a94e9dbe5bcf06d6d87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerController: {fileID: 521181045092576934}
-  playerStats: {fileID: 5027713525974910737}
-  playerStates: {fileID: 5002829574089365646}
 --- !u!1 &6323018574185074532
 GameObject:
   m_ObjectHideFlags: 0

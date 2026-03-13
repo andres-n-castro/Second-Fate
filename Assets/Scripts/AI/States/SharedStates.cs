@@ -16,7 +16,6 @@ public class GroundHitstunState : EnemyState
     public override void Enter()
     {
         owner.Ctx.isHitstunned = true;
-        if (owner.Health != null) owner.Health.isInvulnerable = true;
         timer = owner.Profile.hitstunDuration;
 
         if (owner.Anim != null)
@@ -59,7 +58,6 @@ public class GroundHitstunState : EnemyState
     public override void Exit()
     {
         owner.Ctx.isHitstunned = false;
-        owner.StartPostHitstunInvulnerability();
     }
 }
 
@@ -77,14 +75,7 @@ public class AirHitstunState : EnemyState
     public override void Enter()
     {
         owner.Ctx.isHitstunned = true;
-        if (owner.Health != null) owner.Health.isInvulnerable = true;
         timer = owner.Profile.hitstunDuration;
-
-        if (owner.Anim != null)
-        {
-            owner.Anim.SetBool(owner.AnimWalking, false);
-            owner.Anim.SetTrigger(owner.AnimHitstun);
-        }
     }
 
     public override void FixedTick()
@@ -121,7 +112,6 @@ public class AirHitstunState : EnemyState
     public override void Exit()
     {
         owner.Ctx.isHitstunned = false;
-        owner.StartPostHitstunInvulnerability();
     }
 }
 
@@ -172,6 +162,11 @@ public class AirDeadState : EnemyState
 
         if (owner.Anim != null) owner.Anim.SetTrigger(owner.AnimDeath);
 
-        Object.Destroy(owner.gameObject, 1.5f);
+        foreach (Collider2D col in owner.GetComponents<Collider2D>())
+        {
+            col.enabled = false;
+        }
+
+        Object.Destroy(owner.gameObject, 2f);
     }
 }

@@ -73,7 +73,9 @@ public class PlayerController : MonoBehaviour
         playerStates.isKnockbacked = true;
         playerStates.knockbackTimer = timer;
 
-        rb.linearVelocity = force;
+        rb.linearVelocity = Vector2.zero;
+
+        rb.AddForce(force, ForceMode2D.Impulse);
     }
 
     private void UpdateKnockback()

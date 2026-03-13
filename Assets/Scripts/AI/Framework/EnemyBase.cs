@@ -40,9 +40,6 @@ public abstract class EnemyBase : MonoBehaviour
     private float[] attackCooldownTimers;
     private float defaultDrag;
 
-    // Post-hitstun invulnerability
-    private float invulnerabilityTimer;
-
     // Contact damage
     private float _lastContactDamageTime = -999f;
 
@@ -91,14 +88,6 @@ public abstract class EnemyBase : MonoBehaviour
                 if (attackCooldownTimers[i] > 0f)
                     attackCooldownTimers[i] -= Time.deltaTime;
             }
-        }
-
-        // Tick post-hitstun invulnerability
-        if (invulnerabilityTimer > 0f)
-        {
-            invulnerabilityTimer -= Time.deltaTime;
-            if (invulnerabilityTimer <= 0f && Health != null)
-                Health.isInvulnerable = false;
         }
     }
 
@@ -201,13 +190,9 @@ public abstract class EnemyBase : MonoBehaviour
             dir = -FacingDirection;
         }
 
-        Rb.linearVelocity = new Vector2(dir * profile.knockbackForceX, profile.knockbackForceY);
+        Rb.linearVelocity = new Vector2(0f, Rb.linearVelocity.y);
+        Rb.AddForce(new Vector2(dir * profile.knockbackForceX, profile.knockbackForceY), ForceMode2D.Impulse);
         Rb.linearDamping = profile.hitstunDrag;
-    }
-
-    public void StartPostHitstunInvulnerability()
-    {
-        invulnerabilityTimer = profile.postHitstunInvulnerabilityDuration;
     }
 
     public void RestoreDrag()

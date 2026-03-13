@@ -29,9 +29,8 @@ MonoBehaviour:
   requireLOSForAttack: 1
   knockbackForceX: 5
   knockbackForceY: 2
-  hitstunDuration: 0.25
+  hitstunDuration: 0.2
   hitstunDrag: 6
-  postHitstunInvulnerabilityDuration: 0.8
   attacks:
   - attackName: Dash
     damage: 0
