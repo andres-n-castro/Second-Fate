@@ -153,7 +153,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -282,8 +282,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
-  handleKnockbackExternally: 0
   isInvulnerable: 0
+  handleKnockbackExternally: 0
 --- !u!114 &3586221187697758507
 MonoBehaviour:
   m_ObjectHideFlags: 0

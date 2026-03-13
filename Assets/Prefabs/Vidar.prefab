@@ -348,8 +348,8 @@ MonoBehaviour:
   defaultGravity: 9.8
   whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 0
-  enemyCheckDistance: 0.6
+    m_Bits: 128
+  enemyCheckDistance: 0.7
 --- !u!114 &917325215450374454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHud: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 8817541976399323753}
   timeScale: 1
 --- !u!114 &5002829574089365646
 MonoBehaviour:
@@ -422,7 +422,7 @@ MonoBehaviour:
   isAttacking: 0
   isDead: 0
   isKnockbacked: 0
-  knockbackTimer: 0.1
+  knockbackTimer: 0
   isInvincible: 0
   invincibilityTimer: 0.1
 --- !u!61 &599270320724757340
