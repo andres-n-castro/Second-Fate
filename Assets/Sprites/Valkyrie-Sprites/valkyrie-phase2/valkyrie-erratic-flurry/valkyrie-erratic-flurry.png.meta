@@ -1,0 +1,819 @@
+fileFormatVersion: 2
+guid: 017d6f7d66dbd8b4eb688979719e37e8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4026512447842421622
+    second: Untitled (61)_0
+  - first:
+      213: -4498420871115680743
+    second: Untitled (61)_1
+  - first:
+      213: 3325726887387418002
+    second: Untitled (61)_2
+  - first:
+      213: 1515811369557180125
+    second: Untitled (61)_3
+  - first:
+      213: -506645994577518928
+    second: Untitled (61)_4
+  - first:
+      213: -1773094424323272951
+    second: Untitled (61)_5
+  - first:
+      213: -9177157412200945751
+    second: Untitled (61)_6
+  - first:
+      213: 5765581046045772441
+    second: Untitled (61)_7
+  - first:
+      213: 2107640275178536777
+    second: Untitled (61)_8
+  - first:
+      213: -1987653649483329458
+    second: Untitled (61)_9
+  - first:
+      213: -343962897478138499
+    second: Untitled (61)_10
+  - first:
+      213: 953654988010126292
+    second: Untitled (61)_11
+  - first:
+      213: 4201279976089888593
+    second: Untitled (61)_12
+  - first:
+      213: 2132208486160570987
+    second: Untitled (61)_13
+  - first:
+      213: 6577866941674910406
+    second: Untitled (61)_14
+  - first:
+      213: 8434926451907171572
+    second: Untitled (61)_15
+  - first:
+      213: -489416394067676904
+    second: Untitled (61)_16
+  - first:
+      213: -3791057603583906178
+    second: Untitled (61)_17
+  - first:
+      213: -5097818380523648010
+    second: Untitled (61)_18
+  - first:
+      213: 7146218939108403405
+    second: Untitled (61)_19
+  - first:
+      213: 5369543007623447254
+    second: Untitled (61)_20
+  - first:
+      213: 2828996289021271343
+    second: Untitled (61)_21
+  - first:
+      213: -8019376756915474180
+    second: Untitled (61)_22
+  - first:
+      213: 2347721055184603866
+    second: Untitled (61)_23
+  - first:
+      213: 4125173622098369388
+    second: Untitled (61)_24
+  - first:
+      213: 5378097876411778991
+    second: Untitled (61)_25
+  - first:
+      213: 3469587338088402297
+    second: Untitled (61)_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 50
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 741
+        width: 62
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 043c0b688a79934478801c51e019860c
+      internalID: 847680397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_1
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 745
+        width: 37
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8878353a513658344944f5322aea85cc
+      internalID: 852001099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_2
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 764
+        width: 18
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4ef3b4ba3c0603428bc119cefa0099b
+      internalID: 1568648120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_3
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 756
+        width: 47
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12c502b87c8e10b4c87accf2b0cdf6dd
+      internalID: 1298286749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_4
+      rect:
+        serializedVersion: 2
+        x: 1325
+        y: 751
+        width: 50
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 172c30ca4b70a544498fd4ff7b39c380
+      internalID: -2013121190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_5
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 595
+        width: 168
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc256017ce590041a35bcb613b129c1
+      internalID: -17020401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_6
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 601
+        width: 247
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfb7b9211280da640ad1b4fba7bd65fd
+      internalID: 498080751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_7
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 601
+        width: 227
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b941732edea5ce4e88d597eba19fd3c
+      internalID: -733716458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_8
+      rect:
+        serializedVersion: 2
+        x: 1028
+        y: 741
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31f058404a4dcf14d8b3e3fb493d3f54
+      internalID: -1051401242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_9
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 601
+        width: 219
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08dab14a3eac332479685f0863763b1f
+      internalID: 1100047334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_10
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 408
+        width: 235
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a938fcffb025214390e1b55e8693d3d
+      internalID: 54556046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 397
+        width: 272
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8620eb32ceb2cc3429af9270d72e45f0
+      internalID: 1727313267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_12
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 389
+        width: 322
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c718e36b2e861164ebda301812ffaa72
+      internalID: 1219655529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_13
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 385
+        width: 339
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d222eb4c601a4ae49b667191220915be
+      internalID: 486284624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_14
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 192
+        width: 344
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f93e967a050bc6f419a8e44c8dd2f7ef
+      internalID: 1798986662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_15
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 193
+        width: 276
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c594f11bdadfcbd4e82d19afb9a9026f
+      internalID: -2035257540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_16
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 192
+        width: 316
+        height: 191
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 757b581b0812f6e449b9604a2e46b420
+      internalID: -1087549347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_17
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 194
+        width: 256
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f76d9ac8f70bf044b2b8a64dcae1318
+      internalID: -558381057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_18
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 0
+        width: 255
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b9d9cbdcc851ff4eb535b422d1fdbbd
+      internalID: 1167381119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_19
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 4
+        width: 228
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e3f6be5a2f3b074ba964a7c591f9b7e
+      internalID: 682429633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_20
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 176
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7f00536773efa34c968388cd2f82d2e
+      internalID: -2004756396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_21
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 23
+        width: 222
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0111c5e378a53aa42a72874dcf79feab
+      internalID: -99815223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_22
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 24
+        width: 102
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 477ff6d10f485e346b46264d85dfdbb2
+      internalID: 1759279186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_23
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 65
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b816775e611721044bb3697d4cd9a306
+      internalID: 858868601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_24
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 52
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b167a492e125c040b6f22459c5cbf18
+      internalID: -1337576751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_25
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 53
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c3dc077c8f6b0c418677af424f43bf4
+      internalID: -213968938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie-erratic-flurry_26
+      rect:
+        serializedVersion: 2
+        x: 1316
+        y: 32
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92343b064ca2bb54f9ee10aa3e16b094
+      internalID: -515477511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 437ef55bf5903104d870f8f47d6fb2fd
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      valkyrie-erratic-flurry_0: 847680397
+      valkyrie-erratic-flurry_1: 852001099
+      valkyrie-erratic-flurry_10: 54556046
+      valkyrie-erratic-flurry_11: 1727313267
+      valkyrie-erratic-flurry_12: 1219655529
+      valkyrie-erratic-flurry_13: 486284624
+      valkyrie-erratic-flurry_14: 1798986662
+      valkyrie-erratic-flurry_15: -2035257540
+      valkyrie-erratic-flurry_16: -1087549347
+      valkyrie-erratic-flurry_17: -558381057
+      valkyrie-erratic-flurry_18: 1167381119
+      valkyrie-erratic-flurry_19: 682429633
+      valkyrie-erratic-flurry_2: 1568648120
+      valkyrie-erratic-flurry_20: -2004756396
+      valkyrie-erratic-flurry_21: -99815223
+      valkyrie-erratic-flurry_22: 1759279186
+      valkyrie-erratic-flurry_23: 858868601
+      valkyrie-erratic-flurry_24: -1337576751
+      valkyrie-erratic-flurry_25: -213968938
+      valkyrie-erratic-flurry_26: -515477511
+      valkyrie-erratic-flurry_3: 1298286749
+      valkyrie-erratic-flurry_4: -2013121190
+      valkyrie-erratic-flurry_5: -17020401
+      valkyrie-erratic-flurry_6: 498080751
+      valkyrie-erratic-flurry_7: -733716458
+      valkyrie-erratic-flurry_8: -1051401242
+      valkyrie-erratic-flurry_9: 1100047334
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
