@@ -20,38 +20,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpHangGravity;
     public float defaultGravity;
 
-    [Header("Enemy Collision Settings")]
-    [SerializeField] private LayerMask whatIsEnemy;
-    [SerializeField] private float enemyCheckDistance = 0.6f;
-
     public void Move(Rigidbody2D rb, float xAxis, Animator anim)
     {
-
-        float adjustedXAxis = xAxis;
-
-        // If the player is trying to move left or right...
-        if (xAxis != 0)
-        {
-            Vector2 checkDirection = xAxis > 0 ? Vector2.right : Vector2.left;
-            
-            // Cast a short invisible ray forward from the center of the player
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, checkDirection, enemyCheckDistance, whatIsEnemy);
-
-            // If the ray hits an enemy, cancel the horizontal movement speed so we don't push them!
-            if (hit.collider != null)
-            {
-                adjustedXAxis = 0; 
-            }
-        }
-
-        rb.linearVelocity = new Vector2(walkspeed * adjustedXAxis, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(walkspeed * xAxis, rb.linearVelocity.y);
         anim.SetBool("Walking", rb.linearVelocity.x != 0 && Grounded());
     }
+
     public void Jump(Rigidbody2D rb, ref bool isJumping, Animator anim)
     {
 
         //coyote timer check tied to ground check
-        if(Grounded() && rb.linearVelocity.y <= 0.1f)
+        if (Grounded() && rb.linearVelocity.y <= 0.1f)
         {
             coyoteTimeCounter = coyoteTime;
             isJumping = false;
@@ -61,29 +40,30 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
+        if (Input.GetKey(KeyCode.S)) return;
+
         //jump buffer tied to jump input
-        if(Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
-           jumpTimeCounter = jumpTimeBuffer; 
+            jumpTimeCounter = jumpTimeBuffer;
         }
         else
         {
-           jumpTimeCounter -= Time.deltaTime; 
+            jumpTimeCounter -= Time.deltaTime;
         }
 
-        if(!isJumping)
+        if (!isJumping)
         {
-            if(coyoteTimeCounter > 0 && jumpTimeCounter > 0)
-            { 
-                rb.linearVelocity = new Vector3(rb.linearVelocity.x, JumpForce); 
+            if (coyoteTimeCounter > 0 && jumpTimeCounter > 0)
+            {
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, JumpForce);
                 isJumping = true;
                 jumpTimeCounter = 0;
                 coyoteTimeCounter = 0;
-                anim.SetTrigger("JumpTrigger");
             }
         }
 
-        if(isJumping && Mathf.Abs(rb.linearVelocity.y) < jumpHangThreshold)
+        if (isJumping && Mathf.Abs(rb.linearVelocity.y) < jumpHangThreshold)
         {
             rb.gravityScale = defaultGravity * jumpHangGravity;
         }
@@ -92,9 +72,9 @@ public class PlayerMovement : MonoBehaviour
             rb.gravityScale = defaultGravity;
         }
 
-        if(Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0)
+        if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0)
         {
-            rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f); 
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
 
         anim.SetBool("Jumping", isJumping);
@@ -102,23 +82,27 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("isGrounded", Grounded());
 
     }
+
     public bool Grounded()
     {
         if (Physics2D.Raycast(groundCheck.position, Vector2.down, groundLengthY, whatIsGround)
         || Physics2D.Raycast(groundCheck.position + new Vector3(groundLengthX, 0, 0), Vector2.down, groundLengthY, whatIsGround)
-        || Physics2D.Raycast(groundCheck.position + new Vector3(-groundLengthX,0,0), Vector2.down, groundLengthY, whatIsGround))
+        || Physics2D.Raycast(groundCheck.position + new Vector3(-groundLengthX, 0, 0), Vector2.down, groundLengthY, whatIsGround))
         {
             return true;
         }
 
         return false;
     }
+
     public void MaxFall(Rigidbody2D rb)
     {
-        if(rb.linearVelocity.y < 0){
+        if (rb.linearVelocity.y < 0)
+        {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Max(rb.linearVelocity.y, -maxFallVelocity));
         }
     }
+
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -139,35 +123,33 @@ public class PlayerMovement : MonoBehaviour
         Vector3 leftPos = groundCheck.position + new Vector3(-groundLengthX, 0, 0);
         Gizmos.DrawLine(leftPos, leftPos + downDir);
 
-        Gizmos.color = Color.yellow;
-        Vector2 checkDirection = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
-        Gizmos.DrawLine(transform.position, (Vector2)transform.position + (checkDirection * enemyCheckDistance));
-
     }
+
     public void Flip(float xAxis)
     {
-        float flipThreshold = 0.4f;
-
-        if(xAxis < -flipThreshold)
+        if (xAxis < 0)
         {
             transform.localScale = new Vector3(-1f, transform.localScale.y, 1f);
         }
-        else if (xAxis > flipThreshold)
+        else if (xAxis > 0)
         {
             transform.localScale = new Vector3(1f, transform.localScale.y, 1f);
         }
 
     }
+
     public void Dash()
     {
-        
+
     }
+
     public void DoubleJump()
     {
-        
+
     }
+
     public void WallJump()
     {
-        
+
     }
 }

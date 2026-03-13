@@ -1,7 +1,5 @@
 using UnityEngine;
 using System;
-using System.Collections;
-
 
 [RequireComponent(typeof(PlayerMovement))]
 [RequireComponent(typeof(PlayerAttack))]
@@ -21,7 +19,6 @@ public class PlayerController : MonoBehaviour
     private PlayerStats playerStats;
     private PlayerStates playerStates;
     public SpriteRenderer spriteRenderer;
-    private bool isHitStopping = false;
     private float xAxis, yAxis;
 
     [SerializeField] public float timeScale = 1f;
@@ -132,25 +129,6 @@ public class PlayerController : MonoBehaviour
             playerHud.SetActive(false);
         }
     }
-
-    // Call this from anywhere to freeze the game
-    public void TriggerHitStop(float duration)
-    {
-        if (isHitStopping) return; // Prevents overlapping hitstops from breaking the timer
-        StartCoroutine(HitStopRoutine(duration));
-    }
-
-    public IEnumerator HitStopRoutine(float duration)
-    {
-        isHitStopping = true;
-        timeScale = 0f; // Freeze the game
-        
-        yield return new WaitForSecondsRealtime(duration); // Wait in real-world milliseconds
-        
-        timeScale = 1f; // Unfreeze
-        isHitStopping = false;
-    }
-
 
     void OnEnable()
     {
