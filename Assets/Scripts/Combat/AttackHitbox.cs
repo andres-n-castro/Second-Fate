@@ -65,5 +65,9 @@ public class AttackHitbox : MonoBehaviour
         Vector2 kb = new Vector2(direction.x * knockbackForce.x, knockbackForce.y);
 
         target.TakeDamage(damage, kb);
+
+        // Trigger the hit stop exactly when the collider connects!
+        PlayerController.Instance.TriggerHitStop(0.1f);
+        Debug.Log($"Hitbox connected with {other.name}! Hitstop triggered.");
     }
 }

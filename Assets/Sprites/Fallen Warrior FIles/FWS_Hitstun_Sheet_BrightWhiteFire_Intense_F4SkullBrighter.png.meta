@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: f7263809abeaee746ac7f49c5b434107
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -217556271185800381
+    second: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_0
+  - first:
+      213: -8968994441771223186
+    second: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_1
+  - first:
+      213: -5912510279939542424
+    second: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_2
+  - first:
+      213: -4615675123280237896
+    second: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_3
+  - first:
+      213: -5185132509004571445
+    second: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_4
+  - first:
+      213: 5654171562136517648
+    second: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_5
+  - first:
+      213: -8123414175653354705
+    second: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_6
+  - first:
+      213: -3160382498947912732
+    second: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_7
+  - first:
+      213: 2499923279818846677
+    second: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 24
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 8
+        width: 68
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 343df4959b51bfcf0800000000000000
+      internalID: -217556271185800381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_1
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 3
+        width: 68
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e67f5c1331bb78380800000000000000
+      internalID: -8968994441771223186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 8
+        width: 68
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 862bb59e93b82fda0800000000000000
+      internalID: -5912510279939542424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_3
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 9
+        width: 68
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ba26462ee3d1ffb0800000000000000
+      internalID: -4615675123280237896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_4
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 7
+        width: 68
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bccd37f7475ba08b0800000000000000
+      internalID: -5185132509004571445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_5
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 8
+        width: 68
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01c33442417a77e40800000000000000
+      internalID: 5654171562136517648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_6
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 8
+        width: 68
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f232fc0d8d5d34f80800000000000000
+      internalID: -8123414175653354705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_7
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 8
+        width: 68
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eb29d39cd01424d0800000000000000
+      internalID: -3160382498947912732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_8
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 3
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d1f4535af281b220800000000000000
+      internalID: 2499923279818846677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5b4fc1e416b63234eb4623cd78bbb561
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_0: -217556271185800381
+      FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_1: -8968994441771223186
+      FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_2: -5912510279939542424
+      FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_3: -4615675123280237896
+      FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_4: -5185132509004571445
+      FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_5: 5654171562136517648
+      FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_6: -8123414175653354705
+      FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_7: -3160382498947912732
+      FWS_Hitstun_Sheet_BrightWhiteFire_Intense_F4SkullBrighter_8: 2499923279818846677
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
