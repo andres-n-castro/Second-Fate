@@ -20,17 +20,39 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpHangGravity;
     public float defaultGravity;
 
+    private float groundedRecallTimer;
+
     public void Move(Rigidbody2D rb, float xAxis, Animator anim)
     {
-        rb.linearVelocity = new Vector2(walkspeed * xAxis, rb.linearVelocity.y);
-        anim.SetBool("Walking", rb.linearVelocity.x != 0 && Grounded());
+        Vector2 pVelocity = Vector2.zero;
+
+        // We use GetComponent here to make sure we are grabbing the rider on THIS player
+        if (TryGetComponent<PlatformRider>(out var rider))
+        {
+            pVelocity = rider.GetPlatformVelocity();
+        }
+
+        // This is the critical math: 
+        // (Walk Input) + (Platform Speed)
+        float targetX = (walkspeed * xAxis) + pVelocity.x;
+
+        // Apply the combined velocity to the Rigidbody
+        rb.linearVelocity = new Vector2(targetX, rb.linearVelocity.y);
+
+        // Optional: Debug to see if the player script sees the speed
+        if (pVelocity.x != 0)
+        {
+            Debug.Log("Player Move adding platform speed: " + pVelocity.x);
+        }
+
+        anim.SetBool("Walking", xAxis != 0 && Grounded());
     }
 
     public void Jump(Rigidbody2D rb, ref bool isJumping, Animator anim)
     {
 
         //coyote timer check tied to ground check
-        if (Grounded() && rb.linearVelocity.y <= 0.1f)
+        if (Grounded() && rb.linearVelocity.y <= 0.5f)
         {
             coyoteTimeCounter = coyoteTime;
             isJumping = false;
@@ -77,9 +99,20 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
 
-        anim.SetBool("Jumping", isJumping);
-        anim.SetFloat("yVelocity", rb.linearVelocity.y);
-        anim.SetBool("isGrounded", Grounded());
+        if (Grounded())
+        {
+            groundedRecallTimer = 0.1f;
+        }
+        else
+        {
+            groundedRecallTimer -= Time.deltaTime;
+        }
+
+        anim.SetBool("isGrounded", groundedRecallTimer > 0);
+        anim.SetBool("Jumping", isJumping && groundedRecallTimer <= 0);
+        // anim.SetBool("Jumping", isJumping);
+        // anim.SetFloat("yVelocity", rb.linearVelocity.y);
+        // anim.SetBool("isGrounded", Grounded());
 
     }
 

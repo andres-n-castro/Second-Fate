@@ -8,6 +8,7 @@ TagManager:
   - Checkpoint
   - OneWay
   - NPC
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
