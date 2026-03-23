@@ -22,9 +22,20 @@ public class MovingPlatform : MonoBehaviour
         rb.linearVelocity = direction * speed;
 
         // 3. Check if we are close enough to the target to switch
-        if (Vector2.Distance(transform.position, targetPos) < 0.1f)
+        if (Vector2.Distance(transform.position, targetPos) < 0.3f)
         {
             targetPos = (targetPos == posA.position) ? posB.position : posA.position;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (posA != null && posB != null)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(posA.position, posB.position);
+            Gizmos.DrawWireCube(posA.position, transform.localScale);
+            Gizmos.DrawWireCube(posB.position, transform.localScale);
         }
     }
 }

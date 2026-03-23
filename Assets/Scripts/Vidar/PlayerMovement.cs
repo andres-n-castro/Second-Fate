@@ -39,12 +39,6 @@ public class PlayerMovement : MonoBehaviour
         // Apply the combined velocity to the Rigidbody
         rb.linearVelocity = new Vector2(targetX, rb.linearVelocity.y);
 
-        // Optional: Debug to see if the player script sees the speed
-        if (pVelocity.x != 0)
-        {
-            Debug.Log("Player Move adding platform speed: " + pVelocity.x);
-        }
-
         anim.SetBool("Walking", xAxis != 0 && Grounded());
     }
 
@@ -52,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
         //coyote timer check tied to ground check
-        if (Grounded() && rb.linearVelocity.y <= 0.5f)
+        if (Grounded() && (rb.linearVelocity.y <= 0.5f || TryGetComponent<PlatformRider>(out var r) && r.GetPlatformVelocity().y > 0))
         {
             coyoteTimeCounter = coyoteTime;
             isJumping = false;
@@ -78,7 +72,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (coyoteTimeCounter > 0 && jumpTimeCounter > 0)
             {
-                rb.linearVelocity = new Vector3(rb.linearVelocity.x, JumpForce);
+                float extraYVelocity = 0;
+                if (TryGetComponent<PlatformRider>(out var rider))
+                {
+                    extraYVelocity = Mathf.Max(0, rider.GetPlatformVelocity().y);
+                }
+                rb.linearVelocity = new Vector3(rb.linearVelocity.x, JumpForce + extraYVelocity);
                 isJumping = true;
                 jumpTimeCounter = 0;
                 coyoteTimeCounter = 0;

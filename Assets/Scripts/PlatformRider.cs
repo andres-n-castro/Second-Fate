@@ -32,7 +32,6 @@ public class PlatformRider : MonoBehaviour
         {
             // We use the platform's velocity (ensure the platform's RB is Kinematic or has its own movement script)
             platformVelocity = activePlatformRb.linearVelocity;
-            Debug.Log("Standing on platform! Speed: " + platformVelocity.x);
         }
     }
 
