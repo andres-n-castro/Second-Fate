@@ -18,11 +18,13 @@ public class EnemyPerception2D
         this.profile = owner.Profile;
 
         PlayerController.OnPlayerDashed += OnPlayerDashed;
+        PlayerController.OnPlayerAttacked += OnPlayerAttacked;
     }
 
     public void Cleanup()
     {
         PlayerController.OnPlayerDashed -= OnPlayerDashed;
+        PlayerController.OnPlayerAttacked -= OnPlayerAttacked;
     }
 
     public void Update()
@@ -30,6 +32,7 @@ public class EnemyPerception2D
         UpdatePlayerInfo();
         UpdateEnvironment();
         UpdateDashTracking();
+        ctx.timeSincePlayerAttacked += Time.fixedDeltaTime;
     }
 
     private void UpdatePlayerInfo()
@@ -193,5 +196,10 @@ public class EnemyPerception2D
     private void OnPlayerDashed()
     {
         dashTimestamps.Enqueue(Time.time);
+    }
+
+    private void OnPlayerAttacked()
+    {
+        ctx.timeSincePlayerAttacked = 0f;
     }
 }

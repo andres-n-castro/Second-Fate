@@ -15,7 +15,9 @@ using UnityEngine;
 /// Outer FSM: ValkP1Super → PhaseTransition → ValkP2Super → BossDeadState.
 ///
 /// Required components: Rigidbody2D, Collider2D, Health.
-/// Child references: slashHitbox, flurryHitbox, thrustHitbox, plungeHitbox
+/// Child references: slashHitbox, flurryHitbox, thrustHitbox, plungeHitbox,
+///     plungeLandingHitbox, erraticSlashHitbox, erraticSlashLowHitbox,
+///     erraticSlashBurstHitbox, erraticFlurryHitbox
 ///     (each an AttackHitbox on a child GO with trigger collider).
 /// Optional: Animator (triggers listed in ValkyrieStates.cs).
 ///
@@ -29,7 +31,10 @@ public class ValkyrieBoss : EnemyBase
     [SerializeField] private AttackHitbox flurryHitbox;
     [SerializeField] private AttackHitbox thrustHitbox;
     [SerializeField] private AttackHitbox plungeHitbox;
+    [SerializeField] private AttackHitbox plungeLandingHitbox;
     [SerializeField] private AttackHitbox erraticSlashHitbox;
+    [SerializeField] private AttackHitbox erraticSlashLowHitbox;
+    [SerializeField] private AttackHitbox erraticSlashBurstHitbox;
     [SerializeField] private AttackHitbox erraticFlurryHitbox;
 
     // Hitbox accessors for states
@@ -37,7 +42,10 @@ public class ValkyrieBoss : EnemyBase
     public AttackHitbox FlurryHitbox => flurryHitbox;
     public AttackHitbox ThrustHitbox => thrustHitbox;
     public AttackHitbox PlungeHitbox => plungeHitbox;
+    public AttackHitbox PlungeLandingHitbox => plungeLandingHitbox;
     public AttackHitbox ErraticSlashHitbox => erraticSlashHitbox;
+    public AttackHitbox ErraticSlashLowHitbox => erraticSlashLowHitbox;
+    public AttackHitbox ErraticSlashBurstHitbox => erraticSlashBurstHitbox;
     public AttackHitbox ErraticFlurryHitbox => erraticFlurryHitbox;
 
     // Cached hitbox reach (computed once in Start from child localPosition + collider extents)
@@ -95,7 +103,7 @@ public class ValkyrieBoss : EnemyBase
         IntroState = new BossIntroState(this);
         P1Super = new ValkP1Super(this);
         P2Super = new ValkP2Super(this);
-        PhaseTransition = new PhaseTransitionState(this);
+        PhaseTransition = new PhaseTransitionState(this, "Valk_Phase_Transition");
         DeadState = new BossDeadState(this, DisableAllHitboxes, enableGravityOnDeath: true);
 
         IntroState.NextState = P1Super;
@@ -149,7 +157,10 @@ public class ValkyrieBoss : EnemyBase
         if (flurryHitbox != null) flurryHitbox.Deactivate();
         if (thrustHitbox != null) thrustHitbox.Deactivate();
         if (plungeHitbox != null) plungeHitbox.Deactivate();
+        if (plungeLandingHitbox != null) plungeLandingHitbox.Deactivate();
         if (erraticSlashHitbox != null) erraticSlashHitbox.Deactivate();
+        if (erraticSlashLowHitbox != null) erraticSlashLowHitbox.Deactivate();
+        if (erraticSlashBurstHitbox != null) erraticSlashBurstHitbox.Deactivate();
         if (erraticFlurryHitbox != null) erraticFlurryHitbox.Deactivate();
     }
 
