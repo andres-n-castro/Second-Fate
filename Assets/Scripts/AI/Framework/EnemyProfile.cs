@@ -96,6 +96,18 @@ public class EnemyProfile : ScriptableObject
     public float valkFlurryPreferredRangeMax = 7f;
     public float valkFlurryWeightMultiplier = 3f;
 
+    [Header("Tyr Range Bands")]
+    public float tyrCloseRange = 2.0f;
+    public float tyrMaxEngageRange = 5.0f;
+
+    [Header("Tyr P2 Reactive Behavior")]
+    public float tyrReactiveBlockWindow = 1.0f;
+    public float tyrBlockWeightMultiplier = 4f;
+    public float tyrSlamRange = 3.0f;
+    public float tyrSlamWeightMultiplier = 3f;
+    public float tyrFlurryRange = 2.5f;
+    public float tyrFlurryWeightMultiplier = 3f;
+
     [Header("FWS Adaptive Dash")]
     public float dashWindowSeconds = 5f;
     public float dashWeightBoostPerDash = 0.15f;
