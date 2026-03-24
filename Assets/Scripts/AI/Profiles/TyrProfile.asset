@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: TyrProfile
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  flySpeed: 5
+  flySpeed: 0
   approachSpeed: 3
   roamSpeed: 2
   roamRadius: 3
   roamChangeInterval: 2
-  aggroRange: 8
-  deaggroRange: 12
+  aggroRange: 10
+  deaggroRange: 15
   attackRange: 3
   groundCheckDistance: 1
   wallCheckDistance: 0.5
@@ -27,21 +27,81 @@ MonoBehaviour:
   losCastRadius: 0.1
   requireLOSForAggro: 1
   requireLOSForAttack: 1
-  knockbackForceX: 5
-  knockbackForceY: 2
-  hitstunDuration: 0.25
-  hitstunDrag: 8
+  knockbackForceX: 0
+  knockbackForceY: 0
+  hitstunDuration: 0
+  hitstunDrag: 0
   postHitstunInvulnerabilityDuration: 0.3
-  attacks: []
-  enableContactDamage: 0
+  attacks:
+  - attackName: SpearThrust
+    damage: 1
+    knockbackForce: 8
+    windupDuration: 0.4
+    activeDuration: 0.3
+    recoveryDuration: 0.5
+    cooldown: 1.5
+    dashSpeed: 8
+    dashDuration: 0
+    hitCount: 1
+    hitInterval: 0.15
+    selectionWeight: 1.5
+  - attackName: SpearFlurry
+    damage: 1
+    knockbackForce: 4
+    windupDuration: 0.3
+    activeDuration: 0.6
+    recoveryDuration: 0.5
+    cooldown: 2
+    dashSpeed: 0
+    dashDuration: 0
+    hitCount: 3
+    hitInterval: 0.15
+    selectionWeight: 1
+  - attackName: ShieldBlock
+    damage: 0
+    knockbackForce: 0
+    windupDuration: 0.2
+    activeDuration: 1
+    recoveryDuration: 0.3
+    cooldown: 2
+    dashSpeed: 0
+    dashDuration: 0
+    hitCount: 1
+    hitInterval: 0.15
+    selectionWeight: 1
+  - attackName: ShieldSlam
+    damage: 1
+    knockbackForce: 10
+    windupDuration: 0.5
+    activeDuration: 0.3
+    recoveryDuration: 0.6
+    cooldown: 2.5
+    dashSpeed: 4
+    dashDuration: 0
+    hitCount: 1
+    hitInterval: 0.15
+    selectionWeight: 1
+  - attackName: ShieldFlurry
+    damage: 1
+    knockbackForce: 5
+    windupDuration: 0.3
+    activeDuration: 0.6
+    recoveryDuration: 0.5
+    cooldown: 2
+    dashSpeed: 0
+    dashDuration: 0
+    hitCount: 3
+    hitInterval: 0.15
+    selectionWeight: 1
+  enableContactDamage: 1
   contactDamage: 1
-  contactKnockbackX: 6
+  contactKnockbackX: 7
   contactKnockbackY: 4
   contactCooldownSeconds: 0.8
   contactRequiresEnemyAlive: 1
   bossIntroDuration: 1
-  minAttackCooldown: 0.5
-  maxAttackCooldown: 1.5
+  minAttackCooldown: 0.3
+  maxAttackCooldown: 1
   phase2HealthPercent: 0.5
   phaseTransitionDuration: 2
   erraticIntensity: 3
