@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // =================================================================
 //  PHASE 1 SUPER STATE
 //  Hierarchical state that owns a sub-FSM for grounded combat.
-//  Sub-states: P1Approach, P1Decision, P1Slash, P1Flurry, P1Thrust.
+//  Sub-states: P1Approach, P1Decision, P1Slash, P1Flurry, P1Thrust, P1GapClose.
 // =================================================================
 public class ValkP1Super : HierarchicalState
 {
@@ -16,6 +16,7 @@ public class ValkP1Super : HierarchicalState
     public ValkP1SlashState SlashState { get; private set; }
     public ValkP1FlurryState FlurryState { get; private set; }
     public ValkP1ThrustState ThrustState { get; private set; }
+    public ValkP1GapCloseState GapCloseState { get; private set; }
 
     public ValkP1Super(ValkyrieBoss valk) : base(valk)
     {
@@ -26,6 +27,7 @@ public class ValkP1Super : HierarchicalState
         SlashState = new ValkP1SlashState(valk, this);
         FlurryState = new ValkP1FlurryState(valk, this);
         ThrustState = new ValkP1ThrustState(valk, this);
+        GapCloseState = new ValkP1GapCloseState(valk, this);
     }
 
     public override void Enter()
@@ -213,7 +215,6 @@ public class ValkP1ApproachState : EnemyState
 
     public override void FixedTick()
     {
-        //Debug.Log($"Approach: playerTransform={owner.Ctx.playerTransform}, nearLedge={owner.Ctx.nearLedgeAhead}, nearWall={owner.Ctx.nearWallAhead}");
         owner.FacePlayer();
 
         // Ledge/wall avoidance: stop at edges
@@ -225,8 +226,9 @@ public class ValkP1ApproachState : EnemyState
 
         owner.MoveGround(owner.Profile.approachSpeed);
 
-        // In attack range — go to decision
-        if (owner.Ctx.isPlayerInAttackRange && owner.Ctx.hasLineOfSightToPlayer)
+        // Within max engage range and LOS — go to decision
+        if (owner.Ctx.playerDistance <= owner.Profile.p1MaxEngageRange
+            && owner.Ctx.hasLineOfSightToPlayer)
         {
             p1.ChangeSubState(p1.DecisionState);
         }
@@ -247,6 +249,7 @@ public class ValkP1DecisionState : EnemyState
     private ValkyrieBoss valk;
     private ValkP1Super p1;
     private float pauseTimer;
+    private bool isStalking;
 
     public ValkP1DecisionState(ValkyrieBoss valk, ValkP1Super p1) : base(valk)
     {
@@ -256,63 +259,268 @@ public class ValkP1DecisionState : EnemyState
 
     public override void Enter()
     {
-        owner.StopHorizontal();
         owner.FacePlayer();
+        isStalking = false;
         pauseTimer = Random.Range(owner.Profile.minAttackCooldown, owner.Profile.maxAttackCooldown);
     }
 
     public override void FixedTick()
     {
-        pauseTimer -= Time.fixedDeltaTime;
-        if (pauseTimer > 0f) return;
+        owner.FacePlayer();
 
-        // Player moved out of range — re-approach
-        if (!owner.Ctx.isPlayerInAttackRange)
+        // While waiting, stalk toward player if not already close
+        if (pauseTimer > 0f)
+        {
+            pauseTimer -= Time.fixedDeltaTime;
+            bool shouldStalk = owner.Ctx.playerDistance > owner.Profile.p1CloseRange
+                && !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead;
+
+            if (shouldStalk)
+            {
+                if (!isStalking)
+                {
+                    isStalking = true;
+                    if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, true);
+                }
+                owner.MoveGround(owner.Profile.approachSpeed);
+            }
+            else
+            {
+                if (isStalking)
+                {
+                    isStalking = false;
+                    if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
+                }
+                owner.StopHorizontal();
+            }
+            return;
+        }
+
+        if (isStalking)
+        {
+            isStalking = false;
+            if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
+        }
+        owner.StopHorizontal();
+
+        float dist = owner.Ctx.playerDistance;
+        EnemyProfile p = owner.Profile;
+
+        // Player moved beyond max engage range — walk closer
+        if (dist > p.p1MaxEngageRange || !owner.Ctx.hasLineOfSightToPlayer)
         {
             p1.ChangeSubState(p1.ApproachState);
             return;
         }
 
-        // Weighted attack selection from ready attacks
+        // Build candidate list using hitbox-derived reach
         List<(IState state, float weight)> candidates = new List<(IState, float)>();
 
         AttackDefinition slashDef = valk.GetAttackDef("Slash");
         AttackDefinition flurryDef = valk.GetAttackDef("Flurry");
         AttackDefinition thrustDef = valk.GetAttackDef("Thrust");
 
+        // Slash effective range: hitbox reach + tolerance + micro-lunge travel
         if (slashDef != null && owner.IsAttackReady("Slash"))
-            candidates.Add((p1.SlashState, slashDef.selectionWeight));
-        if (flurryDef != null && owner.IsAttackReady("Flurry"))
-            candidates.Add((p1.FlurryState, flurryDef.selectionWeight));
-        if (thrustDef != null && owner.IsAttackReady("Thrust"))
-            candidates.Add((p1.ThrustState, thrustDef.selectionWeight));
-
-        if (candidates.Count == 0)
         {
-            // Nothing ready — wait a bit longer
-            pauseTimer = 0.3f;
+            float microLungeTravel = p.p1SlashMicroLungeSpeed * p.p1SlashMicroLungeDuration;
+            float slashEffective = valk.SlashReach + 0.3f + microLungeTravel;
+            if (dist <= slashEffective)
+                candidates.Add((p1.SlashState, slashDef.selectionWeight));
+        }
+
+        // Flurry effective range: hitbox reach + tolerance (close range only)
+        if (flurryDef != null && owner.IsAttackReady("Flurry"))
+        {
+            float flurryEffective = valk.FlurryReach + 0.3f;
+            if (dist <= flurryEffective)
+                candidates.Add((p1.FlurryState, flurryDef.selectionWeight));
+        }
+
+        // Thrust effective range: hitbox reach + tolerance + dash travel
+        // Only eligible within mid range — beyond that, gap-close mechanic handles it
+        // Weight scales down linearly as player gets closer (full weight at midRange, 20% at point-blank)
+        if (thrustDef != null && owner.IsAttackReady("Thrust") && dist <= p.p1MidRange)
+        {
+            float thrustTravel = thrustDef.dashSpeed * thrustDef.activeDuration;
+            float thrustEffective = valk.ThrustReach + 0.3f + thrustTravel;
+            if (dist <= thrustEffective)
+            {
+                float closeness = 1f - Mathf.Clamp01(dist / p.p1MidRange);
+                float thrustWeight = thrustDef.selectionWeight * Mathf.Lerp(1f, 0.2f, closeness);
+                candidates.Add((p1.ThrustState, thrustWeight));
+            }
+        }
+
+        // If only thrust can reach, gap-close into slash/flurry competes as an option
+        bool onlyThrustCanReach = candidates.Count == 1 && candidates[0].state == p1.ThrustState;
+        if (onlyThrustCanReach)
+        {
+            // Gap-close at 60% of thrust weight so thrust is favored (~62/38 split)
+            candidates.Add((p1.GapCloseState, candidates[0].weight * 0.6f));
+        }
+
+        if (candidates.Count > 0)
+        {
+            // Weighted random pick
+            float totalWeight = 0f;
+            for (int i = 0; i < candidates.Count; i++)
+                totalWeight += candidates[i].weight;
+
+            float roll = Random.value * totalWeight;
+            float cumulative = 0f;
+            for (int i = 0; i < candidates.Count; i++)
+            {
+                cumulative += candidates[i].weight;
+                if (roll <= cumulative)
+                {
+                    p1.ChangeSubState(candidates[i].state);
+                    return;
+                }
+            }
+            p1.ChangeSubState(candidates[candidates.Count - 1].state);
+            return;
+        }
+
+        // No attack can reach — walk closer, occasionally gap-close
+        if (!TryThrustGapClose(dist, p))
+            p1.ChangeSubState(p1.ApproachState);
+    }
+
+    /// <summary>
+    /// Attempts a thrust gap-close if the player is in the gap-close range band
+    /// and the random roll succeeds. Returns true if thrust was initiated.
+    /// </summary>
+    private bool TryThrustGapClose(float dist, EnemyProfile p)
+    {
+        if (dist >= p.p1ThrustCloseGapMinRange && dist <= p.p1ThrustCloseGapMaxRange
+            && owner.IsAttackReady("Thrust")
+            && Random.value < p.p1ThrustCloseGapChance)
+        {
+            p1.ChangeSubState(p1.GapCloseState);
+            return true;
+        }
+        return false;
+    }
+
+    public override void Exit()
+    {
+        if (isStalking && owner.Anim != null)
+            owner.Anim.SetBool(owner.AnimWalking, false);
+        owner.StopHorizontal();
+    }
+}
+
+// ---------------------------------------------------------------
+//  P1 Gap Close — Sprint toward player, then launch a pre-chosen attack.
+//  Attack is picked on enter so the boss sprints until in range for
+//  that specific attack (not just whichever has longest reach).
+// ---------------------------------------------------------------
+public class ValkP1GapCloseState : EnemyState
+{
+    private ValkyrieBoss valk;
+    private ValkP1Super p1;
+    private IState chosenAttack;
+    private float targetRange;
+
+    public ValkP1GapCloseState(ValkyrieBoss valk, ValkP1Super p1) : base(valk)
+    {
+        this.valk = valk;
+        this.p1 = p1;
+    }
+
+    public override void Enter()
+    {
+        Debug.Log("Valkyrie: P1 Gap Close");
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, true);
+        PickAttack();
+    }
+
+    public override void FixedTick()
+    {
+        owner.FacePlayer();
+
+        // Abort if we hit a ledge/wall
+        if (owner.Ctx.nearLedgeAhead || owner.Ctx.nearWallAhead)
+        {
+            owner.StopHorizontal();
+            p1.ChangeSubState(p1.DecisionState);
+            return;
+        }
+
+        // Sprint toward player
+        owner.MoveGround(owner.Profile.p1GapCloseRunSpeed);
+
+        // In range for the chosen attack — launch it
+        if (owner.Ctx.playerDistance <= targetRange && owner.Ctx.hasLineOfSightToPlayer)
+        {
+            p1.ChangeSubState(chosenAttack);
+            return;
+        }
+
+        // Player escaped too far — fall back to approach
+        if (owner.Ctx.playerDistance > owner.Profile.p1ThrustCloseGapMaxRange * 1.5f)
+        {
+            p1.ChangeSubState(p1.ApproachState);
+        }
+    }
+
+    public override void Exit()
+    {
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
+        owner.StopHorizontal();
+    }
+
+    private void PickAttack()
+    {
+        EnemyProfile p = owner.Profile;
+        List<(IState state, float weight, float range)> options = new List<(IState, float, float)>();
+
+        // Gap-close only picks slash or flurry — thrust is handled separately in Decision
+        AttackDefinition slashDef = valk.GetAttackDef("Slash");
+        if (slashDef != null && owner.IsAttackReady("Slash"))
+        {
+            float microLungeTravel = p.p1SlashMicroLungeSpeed * p.p1SlashMicroLungeDuration;
+            float slashEffective = valk.SlashReach + 0.3f + microLungeTravel;
+            options.Add((p1.SlashState, slashDef.selectionWeight, slashEffective));
+        }
+
+        AttackDefinition flurryDef = valk.GetAttackDef("Flurry");
+        if (flurryDef != null && owner.IsAttackReady("Flurry"))
+        {
+            float flurryEffective = valk.FlurryReach + 0.3f;
+            options.Add((p1.FlurryState, flurryDef.selectionWeight, flurryEffective));
+        }
+
+        if (options.Count == 0)
+        {
+            // Neither slash nor flurry ready — fall back to slash with default range
+            chosenAttack = p1.SlashState;
+            targetRange = valk.SlashReach + 0.3f;
             return;
         }
 
         // Weighted random pick
         float totalWeight = 0f;
-        for (int i = 0; i < candidates.Count; i++)
-            totalWeight += candidates[i].weight;
+        for (int i = 0; i < options.Count; i++)
+            totalWeight += options[i].weight;
 
         float roll = Random.value * totalWeight;
         float cumulative = 0f;
-        for (int i = 0; i < candidates.Count; i++)
+        for (int i = 0; i < options.Count; i++)
         {
-            cumulative += candidates[i].weight;
+            cumulative += options[i].weight;
             if (roll <= cumulative)
             {
-                p1.ChangeSubState(candidates[i].state);
+                chosenAttack = options[i].state;
+                targetRange = options[i].range;
                 return;
             }
         }
 
-        // Fallback
-        p1.ChangeSubState(candidates[candidates.Count - 1].state);
+        var last = options[options.Count - 1];
+        chosenAttack = last.state;
+        targetRange = last.range;
     }
 }
 
@@ -327,6 +535,7 @@ public class ValkP1SlashState : EnemyState
     private ValkP1Super p1;
     private Phase phase;
     private float timer;
+    private float microLungeTimer;
 
     public ValkP1SlashState(ValkyrieBoss valk, ValkP1Super p1) : base(valk)
     {
@@ -342,9 +551,13 @@ public class ValkP1SlashState : EnemyState
         owner.FacePlayer();
 
         AttackDefinition atk = valk.GetAttackDef("Slash");
-        timer = atk != null ? atk.windupDuration : 0.4f;
+        float windupDur = atk != null ? atk.windupDuration : 0.4f;
+        timer = windupDur;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("SlashWindup");
+        // Micro-lunge: slide forward during early windup (capped to windup duration)
+        microLungeTimer = Mathf.Min(owner.Profile.p1SlashMicroLungeDuration, windupDur);
+
+        if (owner.Anim != null) owner.Anim.SetTrigger("Valk_Slash");
     }
 
     public override void FixedTick()
@@ -354,14 +567,27 @@ public class ValkP1SlashState : EnemyState
         switch (phase)
         {
             case Phase.Windup:
+                // Micro-lunge: slide forward unless near ledge/wall
+                if (microLungeTimer > 0f)
+                {
+                    microLungeTimer -= Time.fixedDeltaTime;
+                    if (!owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead)
+                        owner.MoveGround(owner.Profile.p1SlashMicroLungeSpeed);
+                    else
+                        owner.StopHorizontal();
+
+                    if (microLungeTimer <= 0f)
+                        owner.StopHorizontal();
+                }
+
                 if (timer <= 0f)
                 {
+                    owner.StopHorizontal();
                     phase = Phase.Active;
                     AttackDefinition atk = valk.GetAttackDef("Slash");
                     timer = atk != null ? atk.activeDuration : 0.2f;
 
                     if (valk.SlashHitbox != null) valk.SlashHitbox.Activate();
-                    if (owner.Anim != null) owner.Anim.SetTrigger("SlashAttack");
                 }
                 break;
 
@@ -394,7 +620,8 @@ public class ValkP1SlashState : EnemyState
 
     private void ReturnToDecisionOrApproach()
     {
-        if (owner.Ctx.isPlayerInAttackRange)
+        if (owner.Ctx.playerDistance <= owner.Profile.p1MaxEngageRange
+            && owner.Ctx.hasLineOfSightToPlayer)
             p1.ChangeSubState(p1.DecisionState);
         else
             p1.ChangeSubState(p1.ApproachState);
@@ -431,7 +658,7 @@ public class ValkP1FlurryState : EnemyState
         AttackDefinition atk = valk.GetAttackDef("Flurry");
         timer = atk != null ? atk.windupDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("FlurryWindup");
+        if (owner.Anim != null) owner.Anim.SetTrigger("Valk_Flurry");
     }
 
     public override void FixedTick()
@@ -450,7 +677,6 @@ public class ValkP1FlurryState : EnemyState
                     hitIntervalTimer = 0f;
 
                     if (valk.FlurryHitbox != null) valk.FlurryHitbox.Activate();
-                    if (owner.Anim != null) owner.Anim.SetTrigger("FlurryAttack");
                 }
                 break;
 
@@ -497,7 +723,8 @@ public class ValkP1FlurryState : EnemyState
 
     private void ReturnToDecisionOrApproach()
     {
-        if (owner.Ctx.isPlayerInAttackRange)
+        if (owner.Ctx.playerDistance <= owner.Profile.p1MaxEngageRange
+            && owner.Ctx.hasLineOfSightToPlayer)
             p1.ChangeSubState(p1.DecisionState);
         else
             p1.ChangeSubState(p1.ApproachState);
@@ -532,7 +759,7 @@ public class ValkP1ThrustState : EnemyState
         AttackDefinition atk = valk.GetAttackDef("Thrust");
         timer = atk != null ? atk.windupDuration : 0.5f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("ThrustWindup");
+        if (owner.Anim != null) owner.Anim.SetTrigger("Valk_Thrust");
     }
 
     public override void FixedTick()
@@ -553,7 +780,6 @@ public class ValkP1ThrustState : EnemyState
                     owner.MoveGround(thrustSpeed);
 
                     if (valk.ThrustHitbox != null) valk.ThrustHitbox.Activate();
-                    if (owner.Anim != null) owner.Anim.SetTrigger("ThrustAttack");
                 }
                 break;
 
@@ -588,7 +814,8 @@ public class ValkP1ThrustState : EnemyState
 
     private void ReturnToDecisionOrApproach()
     {
-        if (owner.Ctx.isPlayerInAttackRange)
+        if (owner.Ctx.playerDistance <= owner.Profile.p1MaxEngageRange
+            && owner.Ctx.hasLineOfSightToPlayer)
             p1.ChangeSubState(p1.DecisionState);
         else
             p1.ChangeSubState(p1.ApproachState);
@@ -756,7 +983,7 @@ public class ValkP2ErraticSlashState : EnemyState
         AttackDefinition atk = valk.GetAttackDef("P2Slash");
         timer = atk != null ? atk.windupDuration : 0.4f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("SlashWindup");
+        if (owner.Anim != null) owner.Anim.SetTrigger("Valk_ErraticSlash");
     }
 
     public override void FixedTick()
@@ -781,15 +1008,14 @@ public class ValkP2ErraticSlashState : EnemyState
                     AttackDefinition atk = valk.GetAttackDef("P2Slash");
                     timer = atk != null ? atk.activeDuration : 0.2f;
 
-                    if (valk.SlashHitbox != null) valk.SlashHitbox.Activate();
-                    if (owner.Anim != null) owner.Anim.SetTrigger("SlashAttack");
+                    if (valk.ErraticSlashHitbox != null) valk.ErraticSlashHitbox.Activate();
                 }
                 break;
 
             case Phase.Active:
                 if (timer <= 0f)
                 {
-                    if (valk.SlashHitbox != null) valk.SlashHitbox.Deactivate();
+                    if (valk.ErraticSlashHitbox != null) valk.ErraticSlashHitbox.Deactivate();
 
                     phase = Phase.Recovery;
                     AttackDefinition atk = valk.GetAttackDef("P2Slash");
@@ -814,7 +1040,7 @@ public class ValkP2ErraticSlashState : EnemyState
 
     public override void Exit()
     {
-        if (valk.SlashHitbox != null) valk.SlashHitbox.Deactivate();
+        if (valk.ErraticSlashHitbox != null) valk.ErraticSlashHitbox.Deactivate();
         owner.StopAll();
     }
 }
@@ -851,7 +1077,7 @@ public class ValkP2ErraticFlurryState : EnemyState
         AttackDefinition atk = valk.GetAttackDef("P2Flurry");
         timer = atk != null ? atk.windupDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("FlurryWindup");
+        if (owner.Anim != null) owner.Anim.SetTrigger("Valk_ErraticFlurry");
     }
 
     public override void FixedTick()
@@ -878,8 +1104,7 @@ public class ValkP2ErraticFlurryState : EnemyState
                     hitsRemaining = atk != null ? atk.hitCount : 3;
                     hitIntervalTimer = 0f;
 
-                    if (valk.FlurryHitbox != null) valk.FlurryHitbox.Activate();
-                    if (owner.Anim != null) owner.Anim.SetTrigger("FlurryAttack");
+                    if (valk.ErraticFlurryHitbox != null) valk.ErraticFlurryHitbox.Activate();
                 }
                 break;
 
@@ -888,10 +1113,10 @@ public class ValkP2ErraticFlurryState : EnemyState
                 hitIntervalTimer -= Time.fixedDeltaTime;
                 if (hitIntervalTimer <= 0f && hitsRemaining > 0)
                 {
-                    if (valk.FlurryHitbox != null)
+                    if (valk.ErraticFlurryHitbox != null)
                     {
-                        valk.FlurryHitbox.Deactivate();
-                        valk.FlurryHitbox.Activate();
+                        valk.ErraticFlurryHitbox.Deactivate();
+                        valk.ErraticFlurryHitbox.Activate();
                     }
                     hitsRemaining--;
                     AttackDefinition atk = valk.GetAttackDef("P2Flurry");
@@ -900,7 +1125,7 @@ public class ValkP2ErraticFlurryState : EnemyState
 
                 if (timer <= 0f)
                 {
-                    if (valk.FlurryHitbox != null) valk.FlurryHitbox.Deactivate();
+                    if (valk.ErraticFlurryHitbox != null) valk.ErraticFlurryHitbox.Deactivate();
 
                     phase = Phase.Recovery;
                     AttackDefinition atk = valk.GetAttackDef("P2Flurry");
@@ -924,7 +1149,7 @@ public class ValkP2ErraticFlurryState : EnemyState
 
     public override void Exit()
     {
-        if (valk.FlurryHitbox != null) valk.FlurryHitbox.Deactivate();
+        if (valk.ErraticFlurryHitbox != null) valk.ErraticFlurryHitbox.Deactivate();
         owner.StopAll();
     }
 }
@@ -965,7 +1190,7 @@ public class ValkP2PlungeState : EnemyState
         AttackDefinition atk = valk.GetAttackDef("P2Plunge");
         timer = atk != null ? atk.windupDuration : 0.6f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("PlungeRise");
+        if (owner.Anim != null) owner.Anim.SetTrigger("Valk_Plunge");
     }
 
     public override void FixedTick()
@@ -992,7 +1217,6 @@ public class ValkP2PlungeState : EnemyState
                     timer = atk != null ? atk.activeDuration + 1f : 2f;
 
                     if (valk.PlungeHitbox != null) valk.PlungeHitbox.Activate();
-                    if (owner.Anim != null) owner.Anim.SetTrigger("PlungeDive");
                 }
                 break;
 
@@ -1043,7 +1267,5 @@ public class ValkP2PlungeState : EnemyState
         timer = atk != null ? atk.recoveryDuration : 0.8f;
 
         owner.StartCooldown("P2Plunge");
-
-        if (owner.Anim != null) owner.Anim.SetTrigger("PlungeLand");
     }
 }

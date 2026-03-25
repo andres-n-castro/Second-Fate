@@ -1,5 +1,7 @@
 using UnityEngine;
 using System;
+using System.Security.Cryptography.X509Certificates;
+using System.Collections;
 
 /// <summary>
 /// Manages health for any entity (player, enemy, boss).
@@ -13,11 +15,13 @@ public class Health : MonoBehaviour, IDamageable
 
     private int currentHealth;
     private Rigidbody2D rb;
-
+    private SpriteRenderer sprite;
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
     public bool IsDead => currentHealth <= 0;
     public float HealthPercent => (float)currentHealth / maxHealth;
+
+    public bool isInvulnerable;
 
     /// <summary> Fires (currentHealth, maxHealth) whenever HP changes. </summary>
     public event Action<int, int> OnHealthChanged;
@@ -32,22 +36,24 @@ public class Health : MonoBehaviour, IDamageable
     /// When true, TakeDamage skips built-in knockback.
     /// Set by entities that handle knockback in their OnDamageTaken handler.
     /// </summary>
-    [HideInInspector] public bool handleKnockbackExternally;
+    public bool handleKnockbackExternally;
 
     private void Awake()
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(int damage, Vector2 knockbackForce)
     {
-        if (IsDead) return;
+        if (IsDead || isInvulnerable) return;
 
         currentHealth -= damage;
         Debug.Log($"{gameObject.name} took {damage} damage! HP left: {currentHealth}");
         currentHealth = Mathf.Max(currentHealth, 0);
 
+        StartCoroutine(Flash(0.1f));
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
         OnDamageTaken?.Invoke(damage, knockbackForce);
 
@@ -77,5 +83,12 @@ public class Health : MonoBehaviour, IDamageable
         currentHealth = savedCurrentHealth;
 
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
+private IEnumerator Flash(float duration)
+    {
+        sprite.material.SetFloat("_FlashAmount", 1f);
+        yield return new WaitForSeconds(duration);
+        sprite.material.SetFloat("_FlashAmount", 0f);
     }
 }

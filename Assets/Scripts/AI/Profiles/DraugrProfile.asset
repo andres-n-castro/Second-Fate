@@ -31,6 +31,7 @@ MonoBehaviour:
   knockbackForceY: 2
   hitstunDuration: 0.25
   hitstunDrag: 8
+  postHitstunInvulnerabilityDuration: 0.3
   attacks:
   - attackName: Melee
     damage: 1

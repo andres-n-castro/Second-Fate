@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: 62d55bfbd9e09314bb6b9f5c99ac2030
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5956041676036211795
+    second: sprite-max-px-9 (2)_0
+  - first:
+      213: -6516735720253322833
+    second: sprite-max-px-9 (2)_1
+  - first:
+      213: -199936060218092774
+    second: sprite-max-px-9 (2)_2
+  - first:
+      213: 8440620756565708105
+    second: sprite-max-px-9 (2)_3
+  - first:
+      213: -5192570896771755209
+    second: sprite-max-px-9 (2)_4
+  - first:
+      213: 588169154373486754
+    second: sprite-max-px-9 (2)_5
+  - first:
+      213: -8275547864856842069
+    second: sprite-max-px-9 (2)_6
+  - first:
+      213: -2620163804402942669
+    second: sprite-max-px-9 (2)_7
+  - first:
+      213: 2238523394957503754
+    second: sprite-max-px-9 (2)_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 150
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: valkyrie_idle_attempt6_0
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 1035
+        width: 543
+        height: 451
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b384c595a5d2caa4a871dacfaf581194
+      internalID: 1471062421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_idle_attempt6_1
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1035
+        width: 594
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1187c2f348739c0458cbb1d22b27ebe0
+      internalID: -1615250510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_idle_attempt6_2
+      rect:
+        serializedVersion: 2
+        x: 1414
+        y: 1034
+        width: 459
+        height: 428
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18c3082171304bd4e874616b01d73826
+      internalID: -1033018308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_idle_attempt6_3
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 531
+        width: 546
+        height: 451
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ca0019983f45564a9e10d48d01e5067
+      internalID: 1119546063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_idle_attempt6_4
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 531
+        width: 595
+        height: 436
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86d5c0a4ac9831a4e9f6b8bfe778d01f
+      internalID: 782773834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_idle_attempt6_5
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 530
+        width: 466
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdba5e27157e2874b83b13422fc7d7c0
+      internalID: -339865169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_idle_attempt6_6
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 27
+        width: 555
+        height: 452
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 751cf06bf23f6e04c8a24ca90d828c5d
+      internalID: -1654524984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_idle_attempt6_7
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 27
+        width: 566
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0cc510aee1efd946b8710789081f9f3
+      internalID: -514205883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_idle_attempt6_8
+      rect:
+        serializedVersion: 2
+        x: 1389
+        y: 27
+        width: 369
+        height: 475
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e530b0670c98f845b2e6aca186702a2
+      internalID: 36385727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e8ca6f4d642f614aab84e4a2310db51
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      valkyrie_idle_attempt6_0: 1471062421
+      valkyrie_idle_attempt6_1: -1615250510
+      valkyrie_idle_attempt6_2: -1033018308
+      valkyrie_idle_attempt6_3: 1119546063
+      valkyrie_idle_attempt6_4: 782773834
+      valkyrie_idle_attempt6_5: -339865169
+      valkyrie_idle_attempt6_6: -1654524984
+      valkyrie_idle_attempt6_7: -514205883
+      valkyrie_idle_attempt6_8: 36385727
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
