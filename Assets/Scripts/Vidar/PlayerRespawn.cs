@@ -29,7 +29,7 @@ public class PlayerRespawn : MonoBehaviour
         }
     }
 
-    IEnumerator HandleSpikeHit()
+    public IEnumerator HandleSpikeHit()
     {
         rb.simulated = false;
         rb.linearVelocity = Vector2.zero;

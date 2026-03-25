@@ -67,7 +67,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    void SyncHealthForSaving(int newCurrentHealth, int newMaxHealth)
+    public void SyncHealthForSaving(int newCurrentHealth, int newMaxHealth)
     {
         currentHealth = newCurrentHealth;
         maxHealth = newMaxHealth;
@@ -88,7 +88,7 @@ public class PlayerStats : MonoBehaviour
     {
         CurrencyPickup.PickupCurrency -= IncreaseCurrency;
 
-        if(playerHealthComponent != null)
+        if (playerHealthComponent != null)
         {
             playerHealthComponent.OnHealthChanged -= SyncHealthForSaving;
         }

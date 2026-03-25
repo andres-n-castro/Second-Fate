@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
 
     void Awake()
     {
-        if(Instance != null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
@@ -31,9 +31,26 @@ public class PlayerManager : MonoBehaviour
 
     public void Die()
     {
+        if (playerStates.isDead) return;
         playerStates.isDead = true;
         Debug.Log("Player Died!");
-        //shout to the game manager to reset the game
+
+        // 1. Reset Health in Stats (Hearts)
+        playerStats.currentHealth = playerStats.maxHealth;
+        playerStats.SyncHealthForSaving(playerStats.maxHealth, playerStats.maxHealth);
+
+        // 2. Reset Health in the Health Component (Logic)
+        if (playerStats.playerHealthComponent != null)
+        {
+            playerStats.playerHealthComponent.InitializeHealth(playerStats.maxHealth, playerStats.maxHealth);
+        }
+
+        // 3. Teleport
+        PlayerRespawn respawnScript = GetComponent<PlayerRespawn>();
+        if (respawnScript != null)
+        {
+            StartCoroutine(respawnScript.HandleSpikeHit());
+        }
     }
 
     public IEnumerator IFrameSubRoutine(float iFrameTimer)
@@ -47,7 +64,7 @@ public class PlayerManager : MonoBehaviour
         float timer = 0f;
         float flashDelay = 0.1f;
 
-        while(timer < iFrameTimer)
+        while (timer < iFrameTimer)
         {
             playerController.spriteRenderer.enabled = !playerController.spriteRenderer.enabled;
             yield return new WaitForSeconds(flashDelay);
@@ -57,14 +74,14 @@ public class PlayerManager : MonoBehaviour
         playerController.spriteRenderer.enabled = true;
         playerStates.isInvincible = false;
 
-            // NEW: Tell Health it can take damage again
+        // NEW: Tell Health it can take damage again
         if (playerStats.playerHealthComponent != null)
             playerStats.playerHealthComponent.isInvulnerable = false;
 
 
     }
 
-    
+
     // This replaces your old TakeDamage function
     private void HandleDamage(int damage, Vector2 knockbackForce)
     {
@@ -76,10 +93,10 @@ public class PlayerManager : MonoBehaviour
         PlayerController.Instance.TriggerHitStop(0.1f);
         playerController.KnockBack(knockbackForce, 0.25f);
         StartCoroutine(IFrameSubRoutine(playerStates.invincibilityTimer));
-        
+
         // (Note: Health.cs already checks for death and updates the UI math)
     }
-    
+
 
     void OnEnable()
     {
@@ -87,6 +104,7 @@ public class PlayerManager : MonoBehaviour
         if (playerStats.playerHealthComponent != null)
         {
             playerStats.playerHealthComponent.OnDamageTaken += HandleDamage;
+            playerStats.playerHealthComponent.OnDeath += Die;
         }
     }
 
@@ -95,6 +113,7 @@ public class PlayerManager : MonoBehaviour
         if (playerStats.playerHealthComponent != null)
         {
             playerStats.playerHealthComponent.OnDamageTaken -= HandleDamage;
+            playerStats.playerHealthComponent.OnDeath -= Die;
         }
     }
 }

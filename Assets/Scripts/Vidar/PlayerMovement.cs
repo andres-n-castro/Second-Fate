@@ -46,8 +46,18 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        rb.linearVelocity = new Vector2(walkspeed * adjustedXAxis, rb.linearVelocity.y);
-        anim.SetBool("Walking", rb.linearVelocity.x != 0 && Grounded());
+        // so player does not fall off moving platform when standing still
+        Vector2 platformVelocity = Vector2.zero;
+        if (TryGetComponent<PlatformRider>(out var rider))
+        {
+            platformVelocity = rider.GetPlatformVelocity();
+        }
+
+        float targetX = (walkspeed * adjustedXAxis) + platformVelocity.x;
+
+        rb.linearVelocity = new Vector2(targetX, rb.linearVelocity.y);
+
+        anim.SetBool("Walking", (walkspeed * adjustedXAxis) != 0 && Grounded());
     }
     public void Jump(Rigidbody2D rb, ref bool isJumping, Animator anim)
     {
