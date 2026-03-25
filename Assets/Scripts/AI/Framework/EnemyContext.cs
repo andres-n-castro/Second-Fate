@@ -19,6 +19,9 @@ public class EnemyContext
     public int playerDashCountRecent;
     public float playerDashRate;
 
+    // Player attack tracking (generic — used by bosses for reactive behavior)
+    public float timeSincePlayerAttacked = 999f;
+
     // Self state
     public bool isGrounded;
     public bool nearWallAhead;

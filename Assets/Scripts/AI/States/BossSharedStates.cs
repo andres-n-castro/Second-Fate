@@ -48,8 +48,12 @@ public class PhaseTransitionState : EnemyState
 {
     public IState NextPhaseState { get; set; }
     private float timer;
+    private string animTrigger;
 
-    public PhaseTransitionState(EnemyBase owner) : base(owner) { }
+    public PhaseTransitionState(EnemyBase owner, string animTrigger) : base(owner)
+    {
+        this.animTrigger = animTrigger;
+    }
 
     public override void Enter()
     {
@@ -57,7 +61,7 @@ public class PhaseTransitionState : EnemyState
         if (owner.Health != null) owner.Health.isInvulnerable = true;
         timer = owner.Profile.phaseTransitionDuration;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Valk_Phase_Transition");
+        if (owner.Anim != null) owner.Anim.SetTrigger(animTrigger);
     }
 
     public override void FixedTick()

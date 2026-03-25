@@ -967,6 +967,14 @@ public class ValkP2ErraticSlashState : EnemyState
     private float timer;
     private Vector2 erraticOffset;
 
+    // Animation-synced hitbox cycling (erraticslashv5: 6 frames at 10 FPS)
+    // Frame 0 (0-0.1s):   windup swirl — no hitbox
+    // Frame 1-2 (0.1-0.3s): horizontal slash + wide sweep — forward hitbox
+    // Frame 3-4 (0.3-0.5s): downward sweep + low ground sweep — low hitbox
+    // Frame 5 (0.5-0.6s):   energy burst — burst hitbox (AoE)
+    private float activeElapsed;
+    private int currentSlashPhase; // -1=none, 0=forward, 1=low, 2=burst
+
     public ValkP2ErraticSlashState(ValkyrieBoss valk, ValkP2Super p2) : base(valk)
     {
         this.valk = valk;
@@ -979,11 +987,10 @@ public class ValkP2ErraticSlashState : EnemyState
         phase = Phase.Windup;
         owner.FacePlayer();
         erraticOffset = Random.insideUnitCircle * owner.Profile.erraticIntensity;
+        currentSlashPhase = -1;
 
         AttackDefinition atk = valk.GetAttackDef("P2Slash");
-        timer = atk != null ? atk.windupDuration : 0.4f;
-
-        if (owner.Anim != null) owner.Anim.SetTrigger("Valk_ErraticSlash");
+        timer = atk != null ? atk.windupDuration : 0.25f;
     }
 
     public override void FixedTick()
@@ -1005,21 +1012,26 @@ public class ValkP2ErraticSlashState : EnemyState
                 {
                     owner.StopAll();
                     phase = Phase.Active;
+                    activeElapsed = 0f;
                     AttackDefinition atk = valk.GetAttackDef("P2Slash");
-                    timer = atk != null ? atk.activeDuration : 0.2f;
+                    timer = atk != null ? atk.activeDuration : 0.6f;
 
-                    if (valk.ErraticSlashHitbox != null) valk.ErraticSlashHitbox.Activate();
+                    // Trigger animation at Active start so frames sync with hitboxes
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Valk_ErraticSlash");
                 }
                 break;
 
             case Phase.Active:
+                activeElapsed += Time.fixedDeltaTime;
+                UpdateSlashHitbox();
+
                 if (timer <= 0f)
                 {
-                    if (valk.ErraticSlashHitbox != null) valk.ErraticSlashHitbox.Deactivate();
+                    DeactivateAllSlashHitboxes();
 
                     phase = Phase.Recovery;
                     AttackDefinition atk = valk.GetAttackDef("P2Slash");
-                    timer = atk != null ? atk.recoveryDuration : 0.5f;
+                    timer = atk != null ? atk.recoveryDuration : 0.35f;
 
                     owner.StartCooldown("P2Slash");
                 }
@@ -1040,8 +1052,52 @@ public class ValkP2ErraticSlashState : EnemyState
 
     public override void Exit()
     {
-        if (valk.ErraticSlashHitbox != null) valk.ErraticSlashHitbox.Deactivate();
+        DeactivateAllSlashHitboxes();
         owner.StopAll();
+    }
+
+    /// <summary>
+    /// Cycles through hitbox zones to match the erratic slash animation frames.
+    /// Each zone activates fresh (clearing hit tracking) so each slash phase
+    /// can hit the player independently.
+    /// </summary>
+    private void UpdateSlashHitbox()
+    {
+        int targetPhase;
+        if (activeElapsed < 0.1f)
+            targetPhase = -1; // frame 0: windup swirl, no hitbox
+        else if (activeElapsed < 0.3f)
+            targetPhase = 0;  // frames 1-2: forward slash + wide sweep
+        else if (activeElapsed < 0.5f)
+            targetPhase = 1;  // frames 3-4: downward + low ground sweep
+        else
+            targetPhase = 2;  // frame 5: energy burst AoE
+
+        if (targetPhase == currentSlashPhase) return;
+
+        DeactivateAllSlashHitboxes();
+        currentSlashPhase = targetPhase;
+
+        switch (targetPhase)
+        {
+            case 0:
+                if (valk.ErraticSlashHitbox != null) valk.ErraticSlashHitbox.Activate();
+                break;
+            case 1:
+                if (valk.ErraticSlashLowHitbox != null) valk.ErraticSlashLowHitbox.Activate();
+                break;
+            case 2:
+                if (valk.ErraticSlashBurstHitbox != null) valk.ErraticSlashBurstHitbox.Activate();
+                break;
+        }
+    }
+
+    private void DeactivateAllSlashHitboxes()
+    {
+        if (valk.ErraticSlashHitbox != null) valk.ErraticSlashHitbox.Deactivate();
+        if (valk.ErraticSlashLowHitbox != null) valk.ErraticSlashLowHitbox.Deactivate();
+        if (valk.ErraticSlashBurstHitbox != null) valk.ErraticSlashBurstHitbox.Deactivate();
+        currentSlashPhase = -1;
     }
 }
 
@@ -1075,9 +1131,7 @@ public class ValkP2ErraticFlurryState : EnemyState
         erraticOffset = Random.insideUnitCircle * owner.Profile.erraticIntensity;
 
         AttackDefinition atk = valk.GetAttackDef("P2Flurry");
-        timer = atk != null ? atk.windupDuration : 0.3f;
-
-        if (owner.Anim != null) owner.Anim.SetTrigger("Valk_ErraticFlurry");
+        timer = atk != null ? atk.windupDuration : 0.2f;
     }
 
     public override void FixedTick()
@@ -1100,10 +1154,12 @@ public class ValkP2ErraticFlurryState : EnemyState
                     owner.StopAll();
                     phase = Phase.Active;
                     AttackDefinition atk = valk.GetAttackDef("P2Flurry");
-                    timer = atk != null ? atk.activeDuration : 0.6f;
-                    hitsRemaining = atk != null ? atk.hitCount : 3;
+                    timer = atk != null ? atk.activeDuration : 0.867f;
+                    hitsRemaining = atk != null ? atk.hitCount : 4;
                     hitIntervalTimer = 0f;
 
+                    // Trigger animation at Active start so vortex frames sync with hitbox
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Valk_ErraticFlurry");
                     if (valk.ErraticFlurryHitbox != null) valk.ErraticFlurryHitbox.Activate();
                 }
                 break;
@@ -1160,7 +1216,7 @@ public class ValkP2ErraticFlurryState : EnemyState
 // ---------------------------------------------------------------
 public class ValkP2PlungeState : EnemyState
 {
-    private enum Phase { Rise, Dive, Recovery }
+    private enum Phase { Rise, Dive, LandingImpact, Recovery }
 
     private ValkyrieBoss valk;
     private ValkP2Super p2;
@@ -1169,6 +1225,11 @@ public class ValkP2PlungeState : EnemyState
     private float riseHeight;
     private float riseStartY;
     private Vector2 plungeTarget;
+
+    // Landing impact duration (sphere frames 6-9: 4 frames at 12 FPS = 0.333s)
+    private const float LandingImpactDuration = 0.333f;
+    // Normalized time for energy sphere start in the plunge animation (frame 6 of 12)
+    private const float NormSphereStart = 0.5f;
 
     public ValkP2PlungeState(ValkyrieBoss valk, ValkP2Super p2) : base(valk)
     {
@@ -1188,9 +1249,13 @@ public class ValkP2PlungeState : EnemyState
 
         // Rise duration — use windup as rise time
         AttackDefinition atk = valk.GetAttackDef("P2Plunge");
-        timer = atk != null ? atk.windupDuration : 0.6f;
+        timer = atk != null ? atk.windupDuration : 0.333f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Valk_Plunge");
+        if (owner.Anim != null)
+        {
+            owner.Anim.speed = 1f;
+            owner.Anim.SetTrigger("Valk_Plunge");
+        }
     }
 
     public override void FixedTick()
@@ -1213,8 +1278,11 @@ public class ValkP2PlungeState : EnemyState
 
                     phase = Phase.Dive;
                     AttackDefinition atk = valk.GetAttackDef("P2Plunge");
-                    // Generous dive timer — ends on ground contact or timeout
+                    // Safety timeout — normally ends on ground contact well before this
                     timer = atk != null ? atk.activeDuration + 1f : 2f;
+
+                    // Freeze animation on dive frame so it doesn't play ahead during variable-length dive
+                    if (owner.Anim != null) owner.Anim.speed = 0f;
 
                     if (valk.PlungeHitbox != null) valk.PlungeHitbox.Activate();
                 }
@@ -1231,13 +1299,25 @@ public class ValkP2PlungeState : EnemyState
                 if (diveSpeed <= 0f) diveSpeed = 18f;
                 owner.MoveDirection(diveDir, diveSpeed);
 
-                // Check for ground contact — use a short raycast down
-                RaycastHit2D groundHit = Physics2D.Raycast(
-                    owner.transform.position, Vector2.down, 0.5f, owner.GroundLayer);
+                // Ground detection: body collider extends ~1.57 units below transform,
+                // so the old 0.5f raycast never reached the ground.
+                // Use physics contact and perception ground check instead.
+                bool hitGround = owner.Rb.IsTouchingLayers(owner.GroundLayer)
+                    || owner.Ctx.isGrounded;
 
-                if (groundHit.collider != null || timer <= 0f)
+                if (hitGround || timer <= 0f)
                 {
                     EndPlunge();
+                }
+                break;
+
+            case Phase.LandingImpact:
+                if (timer <= 0f)
+                {
+                    if (valk.PlungeLandingHitbox != null) valk.PlungeLandingHitbox.Deactivate();
+                    phase = Phase.Recovery;
+                    AttackDefinition atk = valk.GetAttackDef("P2Plunge");
+                    timer = atk != null ? atk.recoveryDuration : 0.8f;
                 }
                 break;
 
@@ -1254,17 +1334,40 @@ public class ValkP2PlungeState : EnemyState
     public override void Exit()
     {
         if (valk.PlungeHitbox != null) valk.PlungeHitbox.Deactivate();
+        if (valk.PlungeLandingHitbox != null) valk.PlungeLandingHitbox.Deactivate();
+        // Always restore animator speed in case we froze it during dive
+        if (owner.Anim != null) owner.Anim.speed = 1f;
         owner.StopAll();
     }
 
     private void EndPlunge()
     {
+        // Deactivate descent hitbox
         if (valk.PlungeHitbox != null) valk.PlungeHitbox.Deactivate();
         owner.StopAll();
 
-        phase = Phase.Recovery;
-        AttackDefinition atk = valk.GetAttackDef("P2Plunge");
-        timer = atk != null ? atk.recoveryDuration : 0.8f;
+        // Resume animation and snap to energy sphere start (frame 6)
+        if (owner.Anim != null)
+        {
+            owner.Anim.speed = 1f;
+            owner.Anim.Play("Valk_Plunge", 0, NormSphereStart);
+            owner.Anim.Update(0f); // Force immediate evaluation so the snap takes effect this frame
+        }
+
+        // Landing impact phase — energy sphere visual (frames 6-9)
+        if (valk.PlungeLandingHitbox != null)
+        {
+            valk.PlungeLandingHitbox.Activate();
+            phase = Phase.LandingImpact;
+            timer = LandingImpactDuration;
+        }
+        else
+        {
+            // No landing hitbox assigned — skip straight to recovery
+            phase = Phase.Recovery;
+            AttackDefinition atk = valk.GetAttackDef("P2Plunge");
+            timer = atk != null ? atk.recoveryDuration : 0.8f;
+        }
 
         owner.StartCooldown("P2Plunge");
     }

@@ -10,8 +10,9 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
 
-    // Event for AI perception to track player dashes
+    // Events for AI perception to track player actions
     public static event Action OnPlayerDashed;
+    public static event Action OnPlayerAttacked;
     public static event Action<UIManager.UIStates> OnInputInventory;
     public GameObject playerHud;
     private Rigidbody2D rb;
@@ -97,6 +98,8 @@ public class PlayerController : MonoBehaviour
 
         //attack input
         playerStates.isAttacking = Input.GetButtonDown("Player Attack");
+        if (playerStates.isAttacking)
+            OnPlayerAttacked?.Invoke();
 
         //Inventory menu open input
         if (Input.GetButtonDown("Open Inventory"))
