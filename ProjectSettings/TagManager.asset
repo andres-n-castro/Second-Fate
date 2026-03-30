@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - Hazard
+  - Checkpoint
+  - OneWay
   - NPC
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
@@ -12,9 +16,9 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Attackable
+  - OneWay
   - 
   - 
   - 
