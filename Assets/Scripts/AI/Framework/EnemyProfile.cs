@@ -4,10 +4,11 @@ using System;
 [CreateAssetMenu(menuName = "AI/Enemy Profile")]
 public class EnemyProfile : ScriptableObject
 {
-    [Header("Movement")]
+    [Header("Ground Movement")]
     public float moveSpeed = 2f;
+
+    [Header("Flying Movement")]
     public float flySpeed = 5f;
-    public float approachSpeed = 3f;
     public float roamSpeed = 2f;
     public float roamRadius = 3f;
     public float roamChangeInterval = 2f;
@@ -45,29 +46,49 @@ public class EnemyProfile : ScriptableObject
     public float contactCooldownSeconds = 0.8f;
     public bool contactRequiresEnemyAlive = true;
 
-    [Header("Boss-Specific")]
-    public float bossIntroDuration = 1.0f;
-    public float minAttackCooldown = 0.5f;
-    public float maxAttackCooldown = 1.5f;
-    public float phase2HealthPercent = 0.5f;
-    public float phaseTransitionDuration = 2f;
-    public float erraticIntensity = 3f;
-    public float hoverHeight = 3f;
-
-    [Header("Draugr Chase")]
+    [Header("Ground Chase")]
     public float chaseSpeed = 3.5f;
     public float acquireTargetDelay = 0.3f;
     public float loseTargetDelay = 0.5f;
     public float giveUpPauseDuration = 1f;
-    public float draugrFacingDeadzoneX = 0.3f;
+    public float facingDeadzoneX = 0.3f;
     public float playerAboveThresholdY = 0.6f;
-    public float draugrStuckTimeout = 1.0f;
-    public float draugrMinProgressThreshold = 0.05f;
-    public float draugrBlockedReaggroCooldown = 3f;
-    public float draugrBackstepTriggerDistance = 1.0f;
-    public float draugrBackstepDuration = 0.3f;
-    public float draugrBackstepSpeed = 2.5f;
-    public float draugrBackstepCooldown = 1.5f;
+    public float stuckTimeout = 1.0f;
+    public float minProgressThreshold = 0.05f;
+    public float blockedReaggroCooldown = 3f;
+
+    [Header("Backstep (Draugr)")]
+    public float backstepTriggerDistance = 1.0f;
+    public float backstepDuration = 0.3f;
+    public float backstepSpeed = 2.5f;
+    public float backstepCooldown = 1.5f;
+
+    [Header("Flying Dash Attack")]
+    public float dashWindowSeconds = 5f;
+    public float dashWeightBoostPerDash = 0.15f;
+    public float baseDashWeight = 1f;
+    public float dashStopShortDistance = 1f;
+    public float dashPathCastRadius = 0.2f;
+
+    [Header("Flying Patrol & Reposition")]
+    public float patrolArriveThreshold = 0.5f;
+    public float patrolSmoothing = 5f;
+    public int patrolTargetSampleCount = 8;
+    public float patrolTargetClearanceRadius = 0.4f;
+    public float stuckSeconds = 0.5f;
+    public float stuckMinProgress = 0.3f;
+    public float repositionDistance = 4f;
+    public float repositionDecisionCooldown = 0.4f;
+    public float fwsMinRepositionDistFromPlayer = 1.5f;
+    public float fwsPlayerPathExclusionRadius = 1.2f;
+
+    [Header("Boss")]
+    public float bossIntroDuration = 1.0f;
+    public float approachSpeed = 3f;
+    public float minAttackCooldown = 0.5f;
+    public float maxAttackCooldown = 1.5f;
+    public float phase2HealthPercent = 0.5f;
+    public float phaseTransitionDuration = 2f;
 
     [Header("Valkyrie P1 Range Bands")]
     public float p1CloseRange = 2.0f;
@@ -84,6 +105,10 @@ public class EnemyProfile : ScriptableObject
     [Header("Valkyrie P1 Slash Micro-Lunge")]
     public float p1SlashMicroLungeSpeed = 3.0f;
     public float p1SlashMicroLungeDuration = 0.2f;
+
+    [Header("Valkyrie P2")]
+    public float erraticIntensity = 3f;
+    public float hoverHeight = 3f;
 
     [Header("Valkyrie P2 Attack Selection")]
     public float valkPlungeMinAbovePlayerY = 2f;
@@ -107,25 +132,6 @@ public class EnemyProfile : ScriptableObject
     public float tyrSlamWeightMultiplier = 3f;
     public float tyrFlurryRange = 2.5f;
     public float tyrFlurryWeightMultiplier = 3f;
-
-    [Header("FWS Adaptive Dash")]
-    public float dashWindowSeconds = 5f;
-    public float dashWeightBoostPerDash = 0.15f;
-    public float baseDashWeight = 1f;
-    public float dashStopShortDistance = 1f;
-    public float dashPathCastRadius = 0.2f;
-
-    [Header("FWS Patrol & Reposition")]
-    public float patrolArriveThreshold = 0.5f;
-    public float patrolSmoothing = 5f;
-    public int patrolTargetSampleCount = 8;
-    public float patrolTargetClearanceRadius = 0.4f;
-    public float stuckSeconds = 0.5f;
-    public float stuckMinProgress = 0.3f;
-    public float repositionDistance = 4f;
-    public float repositionDecisionCooldown = 0.4f;
-    public float fwsMinRepositionDistFromPlayer = 1.5f;
-    public float fwsPlayerPathExclusionRadius = 1.2f;
 }
 
 [Serializable]

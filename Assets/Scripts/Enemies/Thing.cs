@@ -1,56 +1,46 @@
 using UnityEngine;
 
 /// <summary>
-/// Draugr — Basic ground enemy using the AI framework.
+/// Thing — Fast ground-based chase enemy derived from Draugr behavior,
+/// with all attack and backstep logic removed.
 ///
 /// Behavior:
-///   - Patrols back and forth on platforms at a slow speed.
-///   - Detects player on same platform with hysteresis, then chases.
+///   - Patrols back and forth on platforms at moveSpeed.
+///   - Detects player on same platform with hysteresis, then chases at chaseSpeed.
 ///   - Gives up at ledges or when player leaves range, with lockout pause.
 ///   - Turns around at ledges and walls during patrol.
-///   - Attacks player with a melee strike when in range.
-///   - Damageable via the Health component. Takes knockback during hitstun.
-///   - Can be knocked off platforms during hitstun (ledge checks disabled).
+///   - NO melee attack. NO backstep. Purely chase-pressure.
+///   - Damageable via Health. Takes knockback during hitstun.
 ///
 /// Required components: Rigidbody2D, Collider2D, Health.
-/// Optional: Animator (uses "Walking" bool, "Die", "MeleeWindup", "MeleeAttack" triggers).
+/// Optional: Animator (uses "Thing_Walking" bool, "Thing_Takes_Damage", "Thing_Dies" triggers).
 ///
 /// Child objects/transforms needed in inspector:
 ///   - groundCheck  — positioned at the front-bottom edge for ledge detection
 ///   - wallCheck    — positioned at the front-center for wall detection
-///   - meleeHitbox  — AttackHitbox child object; configure damage/knockback/targetLayers there
 ///
-/// EnemyProfile attacks array must contain one entry named "Melee" with the
-/// desired windupDuration, activeDuration, recoveryDuration, and cooldown.
+/// EnemyProfile should have a higher chaseSpeed than Draugr and NO attacks defined.
 /// </summary>
-public class Draugr : EnemyBase
+public class Thing : EnemyBase
 {
-    [Header("Combat")]
-    [SerializeField] private AttackHitbox meleeHitbox;
-
     // Outer FSM superstates
     public NonCombatSuperState NonCombatSuper { get; private set; }
     public CombatSuperState CombatSuper { get; private set; }
 
-    // Substates (public for cross-references inside superstates)
-    public DraugrPatrolState PatrolState { get; private set; }
-    public DraugrChaseState ChaseState { get; private set; }
-    public DraugrGiveUpState GiveUpState { get; private set; }
-    public DraugrMeleeAttackState MeleeAttackState { get; private set; }
-    public DraugrBackstepState BackstepState { get; private set; }
+    // Substates
+    public ThingPatrolState PatrolState { get; private set; }
+    public ThingChaseState ChaseState { get; private set; }
+    public ThingGiveUpState GiveUpState { get; private set; }
 
     // Outer override states
     public GroundHitstunState HitstunState { get; private set; }
     public GroundDeadState DeadState { get; private set; }
 
-    // Hitbox accessor for states
-    public AttackHitbox MeleeHitbox => meleeHitbox;
-
-    // Animation parameter names matching Draugr_Animations
-    public override string AnimWalking => "Draugr_Walking";
-    public override string AnimAttack => "Draugr_Attack";
-    public override string AnimHitstun => "Draugr_Takes_Damage";
-    public override string AnimDeath => "Draugr_Dies";
+    // Animation parameter names
+    public override string AnimWalking => "Thing_Walking";
+    public override string AnimAttack => "Thing_Attack";
+    public override string AnimHitstun => "Thing_Takes_Damage";
+    public override string AnimDeath => "Thing_Dies";
 
     // Hysteresis timers (accessible by states)
     public float AcquireTargetTimer { get; set; }
@@ -59,16 +49,11 @@ public class Draugr : EnemyBase
     // Blocked-path re-aggro lockout (world time when aggro is allowed again after obstacle block)
     public float BlockedReaggroLockUntil { get; set; }
 
-    // Backstep cooldown (world time when backstep is allowed again)
-    public float BackstepAllowedTime { get; set; }
-
     protected override void InitializeStates()
     {
-        PatrolState = new DraugrPatrolState(this);
-        ChaseState = new DraugrChaseState(this);
-        GiveUpState = new DraugrGiveUpState(this);
-        MeleeAttackState = new DraugrMeleeAttackState(this);
-        BackstepState = new DraugrBackstepState(this);
+        PatrolState = new ThingPatrolState(this);
+        ChaseState = new ThingChaseState(this);
+        GiveUpState = new ThingGiveUpState(this);
         HitstunState = new GroundHitstunState(this);
         DeadState = new GroundDeadState(this);
 
@@ -123,7 +108,7 @@ public class Draugr : EnemyBase
             Gizmos.color = new Color(1f, 0.5f, 0f);
             Gizmos.DrawWireSphere(transform.position, Profile.deaggroRange);
 
-            // LOS ray (green = clear, red = blocked)
+            // LOS ray (cyan = clear, magenta = blocked)
             if (PlayerController.Instance != null)
             {
                 Vector2 eyePos = (Vector2)transform.position + new Vector2(0f, Profile.losEyeOffsetY);
@@ -133,7 +118,7 @@ public class Draugr : EnemyBase
                 Gizmos.DrawLine(eyePos, playerEye);
             }
 
-            // Facing deadzone — blue vertical lines either side of center
+            // Facing deadzone — blue vertical lines
             if (Profile.facingDeadzoneX > 0f)
             {
                 Gizmos.color = Color.blue;
@@ -144,7 +129,7 @@ public class Draugr : EnemyBase
                                 dz + new Vector2( Profile.facingDeadzoneX,  0.5f));
             }
 
-            // Player-above threshold — white horizontal line above Draugr
+            // Player-above threshold — white horizontal line
             if (Profile.playerAboveThresholdY > 0f)
             {
                 Gizmos.color = Color.white;

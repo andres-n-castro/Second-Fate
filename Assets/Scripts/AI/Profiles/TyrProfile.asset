@@ -110,15 +110,15 @@ MonoBehaviour:
   acquireTargetDelay: 0.3
   loseTargetDelay: 0.5
   giveUpPauseDuration: 1
-  draugrFacingDeadzoneX: 0.3
+  facingDeadzoneX: 0.3
   playerAboveThresholdY: 0.6
-  draugrStuckTimeout: 1
-  draugrMinProgressThreshold: 0.05
-  draugrBlockedReaggroCooldown: 3
-  draugrBackstepTriggerDistance: 1
-  draugrBackstepDuration: 0.3
-  draugrBackstepSpeed: 2.5
-  draugrBackstepCooldown: 1.5
+  stuckTimeout: 1
+  minProgressThreshold: 0.05
+  blockedReaggroCooldown: 3
+  backstepTriggerDistance: 1
+  backstepDuration: 0.3
+  backstepSpeed: 2.5
+  backstepCooldown: 1.5
   p1CloseRange: 2
   p1MidRange: 4
   p1MaxEngageRange: 6
