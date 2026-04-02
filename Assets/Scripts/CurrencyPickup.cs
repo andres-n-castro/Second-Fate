@@ -3,15 +3,25 @@ using UnityEngine;
 
 public class CurrencyPickup : MonoBehaviour
 {
-    public static event Action PickupCurrency;
+    public int currencyAmount = 1;
+    public static event Action<int> OnCurrencyPickedUp;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        CheckPickup(other.gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        CheckPickup(collision.gameObject);
+    }
+
+    private void CheckPickup(GameObject otherObject)
+    {
+        if (otherObject.CompareTag("Player"))
         {
-            PickupCurrency?.Invoke();
+            OnCurrencyPickedUp?.Invoke(currencyAmount);
             Destroy(gameObject);
-            Debug.Log("player picked up currency!");
         }
     }
 }

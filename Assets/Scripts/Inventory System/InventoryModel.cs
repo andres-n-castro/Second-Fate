@@ -10,11 +10,22 @@ public class InventoryModel : MonoBehaviour
 
     public void AddItem(Item item)
     {
+        foreach (ItemSlotData existingSlot in inventoryItems)
+        {
+            if (existingSlot.itemData == item)
+            {
+                existingSlot.amount += 1;
+                return;
+            }
+        }
+
         ItemSlotData newItemData = new()
         {
             itemData = item,
-            isRead = false
+            isRead = false,
+            amount = 1
         };
+
         inventoryItems.Add(newItemData);
 
         OnItemAdded?.Invoke(newItemData);
@@ -37,4 +48,5 @@ public class ItemSlotData
 {
     public Item itemData;
     public bool isRead;
+    public int amount;
 }

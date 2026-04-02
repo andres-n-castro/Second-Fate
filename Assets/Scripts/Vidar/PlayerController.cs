@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
 
     // Event for AI perception to track player dashes
     public static event Action OnPlayerDashed;
-    public static event Action<UIManager.UIStates> OnInputInventory;
     public GameObject playerHud;
     private Rigidbody2D rb;
     private Animator anim;
@@ -68,7 +67,13 @@ public class PlayerController : MonoBehaviour
 
         playerAttack.Attack(playerStates.isAttacking, anim, yAxis, playerMovement);
 
-        Time.timeScale = timeScale;
+        if (GameManager.Instance == null ||
+            GameManager.Instance.currentState == GameManager.GameState.Exploration ||
+            GameManager.Instance.currentState == GameManager.GameState.BossFight ||
+            GameManager.Instance.currentState == GameManager.GameState.Respawning)
+        {
+            Time.timeScale = timeScale;
+        }
     }
 
     public void KnockBack(Vector2 force, float timer)
@@ -91,43 +96,46 @@ public class PlayerController : MonoBehaviour
     
     private void GetInputs()
     {
-        //movement input
-        xAxis = Input.GetAxisRaw("Horizontal");
-        yAxis = Input.GetAxisRaw("Vertical");
+        bool canControlCharacter = GameManager.Instance == null ||
+            GameManager.Instance.currentState == GameManager.GameState.Exploration ||
+            GameManager.Instance.currentState == GameManager.GameState.BossFight;
 
-        //attack input
-        playerStates.isAttacking = Input.GetButtonDown("Player Attack");
-
-        //Inventory menu open input
-        if (Input.GetButtonDown("Open Inventory"))
+        if (canControlCharacter)
         {
-            Debug.Log("create button pressed!");
-            
-            if(UIManager.uiManagerCurrentState == UIManager.UIStates.inventoryUI)
-            {
-                Debug.Log("sending playerUI state to turn off inventory!");
-                OnInputInventory?.Invoke(UIManager.UIStates.playerUI);
-            }
-            else
-            {
-                Debug.Log("sending inventoryUI state to turn on inventory!");
-                OnInputInventory?.Invoke(UIManager.UIStates.inventoryUI);
-            }
-
-        }
-
-
-    }
-
-    void DisplayPlayerHud(UIManager.UIStates currentUIState)
-    {
-        if (currentUIState == UIManager.UIStates.playerUI)
-        {
-            playerHud.SetActive(true);
+            xAxis = Input.GetAxisRaw("Horizontal");
+            yAxis = Input.GetAxisRaw("Vertical");
+            playerStates.isAttacking = Input.GetButtonDown("Player Attack");
         }
         else
         {
-            playerHud.SetActive(false);
+            xAxis = 0f;
+            yAxis = 0f;
+            playerStates.isAttacking = false;
+        }
+
+        if (GameManager.Instance != null && Input.GetButtonDown("Open Inventory"))
+        {
+            if (GameManager.Instance.currentState == GameManager.GameState.Exploration)
+            {
+                GameManager.Instance.ChangeState(GameManager.GameState.InventoryMenu);
+            }
+            else if (GameManager.Instance.currentState == GameManager.GameState.InventoryMenu)
+            {
+                GameManager.Instance.RestorePreviousState();
+            }
+        }
+
+        if (GameManager.Instance != null && Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameManager.Instance.currentState == GameManager.GameState.Exploration ||
+                GameManager.Instance.currentState == GameManager.GameState.BossFight)
+            {
+                GameManager.Instance.ChangeState(GameManager.GameState.Paused);
+            }
+            else if (GameManager.Instance.currentState == GameManager.GameState.Paused)
+            {
+                GameManager.Instance.RestorePreviousState();
+            }
         }
     }
 
@@ -147,16 +155,5 @@ public class PlayerController : MonoBehaviour
         
         timeScale = 1f; // Unfreeze
         isHitStopping = false;
-    }
-
-
-    void OnEnable()
-    {
-        UIManager.UIStateChanged += DisplayPlayerHud;
-    }
-
-    void OnDisable()
-    {
-        UIManager.UIStateChanged -= DisplayPlayerHud;
     }
 }
