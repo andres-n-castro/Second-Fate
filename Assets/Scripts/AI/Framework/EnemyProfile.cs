@@ -82,6 +82,15 @@ public class EnemyProfile : ScriptableObject
     public float fwsMinRepositionDistFromPlayer = 1.5f;
     public float fwsPlayerPathExclusionRadius = 1.2f;
 
+    [Header("Rock Golem")]
+    public float projectileSpeed = 8f;
+
+    [Header("Magma Salamander")]
+    public float jumpForce = 14f;
+    public float jumpForwardForce = 3f;
+    public float jumpHeightThreshold = 1.5f;
+    public float jumpCooldown = 2f;
+
     [Header("Boss")]
     public float bossIntroDuration = 1.0f;
     public float approachSpeed = 3f;
