@@ -24,11 +24,15 @@ public class InventoryView : MonoBehaviour
 
         infoPanel.SetActive(false);
 
+        Debug.Log("DrawInventory called! Fetching items...");
         List<ItemSlotData> inventory = InventoryController.Instance.inventoryModel.RetrieveInventoryItems();
+        Debug.Log($"Items found in model: {inventory.Count}");
 
         foreach (ItemSlotData slotData in inventory)
         {
             GameObject newSlot = Instantiate(itemSlotPrefab, gridContainer);
+            Debug.Log($"Spawning UI slot for: {slotData.itemData.itemName}");
+            newSlot.transform.localScale = Vector3.one;
             ItemSlot itemSlot = newSlot.GetComponent<ItemSlot>();
             itemSlot.Setup(slotData, UpdateInfoPanel);
         }
