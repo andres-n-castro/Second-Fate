@@ -8,6 +8,7 @@ TagManager:
   - Checkpoint
   - OneWay
   - NPC
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Player
   - Attackable
   - OneWay
-  - 
-  - 
+  - MapItems
+  - BackgroundArt
   - 
   - 
   - 

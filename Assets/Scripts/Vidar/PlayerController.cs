@@ -10,8 +10,14 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
 
-    // Event for AI perception to track player dashes
+    [Header("Audio")]
+    public AudioSource sfxSource;
+    public AudioClip swordSwingSound;
+
+    // Events for AI perception to track player actions
     public static event Action OnPlayerDashed;
+    public static event Action OnPlayerAttacked;
+    public static event Action<UIManager.UIStates> OnInputInventory;
     public GameObject playerHud;
     private Rigidbody2D rb;
     private Animator anim;
@@ -33,7 +39,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-           Instance = this; 
+            Instance = this;
         }
     }
 
@@ -93,7 +99,7 @@ public class PlayerController : MonoBehaviour
             playerStates.isKnockbacked = false;
         }
     }
-    
+
     private void GetInputs()
     {
         bool canControlCharacter = GameManager.Instance == null ||
@@ -105,7 +111,12 @@ public class PlayerController : MonoBehaviour
             xAxis = Input.GetAxisRaw("Horizontal");
             yAxis = Input.GetAxisRaw("Vertical");
             playerStates.isAttacking = Input.GetButtonDown("Player Attack");
+        }        if (playerStates.isAttacking)
+        {
+            OnPlayerAttacked?.Invoke();
         }
+
+
         else
         {
             xAxis = 0f;
@@ -150,10 +161,32 @@ public class PlayerController : MonoBehaviour
     {
         isHitStopping = true;
         timeScale = 0f; // Freeze the game
-        
+
         yield return new WaitForSecondsRealtime(duration); // Wait in real-world milliseconds
-        
+
         timeScale = 1f; // Unfreeze
         isHitStopping = false;
+    }
+
+
+    void OnEnable()
+    {
+        UIManager.UIStateChanged += DisplayPlayerHud;
+    }
+
+    void OnDisable()
+    {
+        UIManager.UIStateChanged -= DisplayPlayerHud;
+    }
+
+    public void PlaySwingSound()
+    {
+        if (sfxSource.isPlaying) return;
+
+        if (sfxSource != null && swordSwingSound != null)
+        {
+            sfxSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+            sfxSource.PlayOneShot(swordSwingSound);
+        }
     }
 }
