@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerHitbox: 0
+  causesPlayerBounce: 0
   damage: 1
   knockbackForce: {x: 5, y: 4}
   targetLayers:
@@ -189,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayerHitbox: 0
+  causesPlayerBounce: 0
   damage: 1
   knockbackForce: {x: 5, y: 4}
   targetLayers:
@@ -217,6 +219,11 @@ GameObject:
   - component: {fileID: 8373966071862457301}
   - component: {fileID: 5018943049880396234}
   - component: {fileID: 6747101455839077299}
+  - component: {fileID: 7420861484981444341}
+  - component: {fileID: 8723161818874798191}
+  - component: {fileID: 8908824029192141879}
+  - component: {fileID: 7232008355658141364}
+  - component: {fileID: 3775746025695359038}
   m_Layer: 6
   m_Name: Vidar
   m_TagString: Player
@@ -341,7 +348,7 @@ MonoBehaviour:
   walkspeed: 10
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 264
   groundCheck: {fileID: 7035009867426231644}
   groundLengthY: 0.1
   groundLengthX: 0.4
@@ -351,7 +358,7 @@ MonoBehaviour:
   jumpHangThreshold: 2
   jumpHangGravity: 0.5
   defaultGravity: 9.8
-  dashForce: 20
+  dashForce: 30
   dashDuration: 0.2
   dashCooldown: 1
   whatIsEnemy:
@@ -371,6 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 0.1
+  verticalAttackThreshold: 0.5
   sideHitbox: {fileID: 3870816164235377968}
   upHitbox: {fileID: 248779772361304298}
   downHitbox: {fileID: 1475694763970511265}
@@ -413,8 +421,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d728c957470c65e4abea17893eeaa51f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxSource: {fileID: 5018943049880396234}
+  sfxSource: {fileID: 3775746025695359038}
   swordSwingSound: {fileID: 8300000, guid: ae440a880cd081b4ab2d101f3fbd17cd, type: 3}
+  pogoBounceForce: 30
   playerHud: {fileID: 0}
   spriteRenderer: {fileID: 8817541976399323753}
   timeScale: 1
@@ -666,6 +675,157 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 90d7b28a299aab04484854d0fb9acc8d, type: 2}
   - {fileID: 11400000, guid: 005226afbbb129749bf3339afd67a3fd, type: 2}
   equippedCharms: []
+--- !u!114 &7420861484981444341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348176465958162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb15f6069c28814492836ab1a2d2175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCheckpoint: {fileID: 0}
+  fadeDelay: 0.2
+--- !u!114 &8723161818874798191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348176465958162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f172ebd8f7ddbd841bf89b88559440ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropDelay: 0.3
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &8908824029192141879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348176465958162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 087e693e4688d484aa2ac27066158a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7232008355658141364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348176465958162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b425cdc497f4d694caf6e2e90de5971e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &3775746025695359038
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348176465958162}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: ae440a880cd081b4ab2d101f3fbd17cd, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6323018574185074532
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,7 +948,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b527565a29f3c44a506503fb89a50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerHitbox: 0
+  isPlayerHitbox: 1
+  causesPlayerBounce: 1
   damage: 1
   knockbackForce: {x: 5, y: 4}
   targetLayers:
