@@ -147,7 +147,6 @@ public class PlayerManager : MonoBehaviour
         if (playerStats.playerHealthComponent != null)
         {
             playerStats.playerHealthComponent.OnDamageTaken += HandleDamage;
-            playerStats.playerHealthComponent.OnDeath += Die;
         }
     }
 
@@ -156,7 +155,6 @@ public class PlayerManager : MonoBehaviour
         if (playerStats.playerHealthComponent != null)
         {
             playerStats.playerHealthComponent.OnDamageTaken -= HandleDamage;
-            playerStats.playerHealthComponent.OnDeath -= Die;
         }
     }
 }

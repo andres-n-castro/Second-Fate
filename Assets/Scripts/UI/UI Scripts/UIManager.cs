@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class UIManager : MonoBehaviour
     public GameObject pauseCanvas;
     public GameObject bonfireCanvas;
     public GameObject deathCanvas;
+
+    [Header("Death Menu")]
+    public GameObject deathMenuPanel;
+    public GameObject retryButtonObject;
+
     public GameObject abilityUnlockPanel;
     public Image abilityIcon;
     public TextMeshProUGUI abilityDescriptionText;
@@ -42,6 +48,11 @@ public class UIManager : MonoBehaviour
             abilityUnlockPanel.SetActive(false);
         }
 
+        if (deathMenuPanel != null)
+        {
+            deathMenuPanel.SetActive(false);
+        }
+
         if (GameManager.Instance != null)
         {
             HandleGameStateChange(GameManager.Instance.currentState);
@@ -52,12 +63,14 @@ public class UIManager : MonoBehaviour
     {
         GameManager.OnStateChanged += HandleGameStateChange;
         GameManager.OnDashUnlocked += ShowDashUnlockedUI;
+        GameManager.OnPlayerDied += ShowDeathMenu;
     }
 
     void OnDisable()
     {
         GameManager.OnStateChanged -= HandleGameStateChange;
         GameManager.OnDashUnlocked -= ShowDashUnlockedUI;
+        GameManager.OnPlayerDied -= ShowDeathMenu;
     }
 
     private void HandleGameStateChange(GameManager.GameState state)
@@ -83,6 +96,9 @@ public class UIManager : MonoBehaviour
             case GameManager.GameState.Respawning:
                 if (deathCanvas != null) deathCanvas.SetActive(true);
                 break;
+            case GameManager.GameState.Death:
+                if (deathMenuPanel != null) deathMenuPanel.SetActive(true);
+                break;
         }
     }
 
@@ -93,6 +109,7 @@ public class UIManager : MonoBehaviour
         if (pauseCanvas != null) pauseCanvas.SetActive(false);
         if (bonfireCanvas != null) bonfireCanvas.SetActive(false);
         if (deathCanvas != null) deathCanvas.SetActive(false);
+        if (deathMenuPanel != null) deathMenuPanel.SetActive(false);
     }
 
     public IEnumerator FadeToBlack(float duration)
@@ -163,5 +180,32 @@ public class UIManager : MonoBehaviour
         }
 
         Time.timeScale = 1f;
+    }
+
+    private void ShowDeathMenu()
+    {
+        if (deathMenuPanel != null)
+        {
+            deathMenuPanel.SetActive(true);
+        }
+
+        if (EventSystem.current != null && retryButtonObject != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(retryButtonObject);
+        }
+    }
+
+    public void OnRetryClicked()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.RetryFromCheckpoint();
+        }
+
+        if (deathMenuPanel != null)
+        {
+            deathMenuPanel.SetActive(false);
+        }
     }
 }

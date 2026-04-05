@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
         Paused,
         InventoryMenu,
         BonfireMenu,
-        Respawning
+        Respawning,
+        Death
     }
 
     public enum AlignmentType
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public static event Action<GameState> OnStateChanged;
     public static event Action OnDashUnlocked;
+    public static event Action OnPlayerDied;
 
     public GameState currentState { get; private set; } = GameState.Exploration;
 
@@ -80,6 +82,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Exploration:
             case GameState.BossFight:
+            case GameState.Death:
                 Time.timeScale = 1f;
                 break;
         }
@@ -105,6 +108,19 @@ public class GameManager : MonoBehaviour
     public void UnlockDashAbility()
     {
         OnDashUnlocked?.Invoke();
+    }
+
+    public void TriggerDeathMenu()
+    {
+        OnPlayerDied?.Invoke();
+        ChangeState(GameState.Death);
+    }
+
+    public void RetryFromCheckpoint()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        ChangeState(GameState.Exploration);
     }
 
     private IEnumerator RespawnSequence()

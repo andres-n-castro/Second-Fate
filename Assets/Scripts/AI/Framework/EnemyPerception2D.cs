@@ -37,7 +37,7 @@ public class EnemyPerception2D
 
     private void UpdatePlayerInfo()
     {
-        Transform player = PlayerController.Instance != null
+        Transform player = (PlayerController.Instance != null && PlayerController.Instance.enabled)
             ? PlayerController.Instance.transform
             : null;
 

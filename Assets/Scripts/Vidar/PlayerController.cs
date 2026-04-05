@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Combat Settings")]
     public float pogoBounceForce = 15f;
+    public float deathAnimationLength = 1.5f;
 
     // Events for AI perception to track player actions
     public static event Action OnPlayerDashed;
@@ -58,12 +59,29 @@ public class PlayerController : MonoBehaviour
 
         playerMovement.defaultGravity = rb.gravityScale;
 
+        if (playerStats != null && playerStats.playerHealthComponent != null)
+        {
+            playerStats.playerHealthComponent.OnDeath += HandlePlayerDeath;
+        }
+    }
+
+    void OnDisable()
+    {
+        if (playerStats != null && playerStats.playerHealthComponent != null)
+        {
+            playerStats.playerHealthComponent.OnDeath -= HandlePlayerDeath;
+        }
     }
 
     void Update()
     {
         UpdateKnockback();
         playerMovement.TickTimers();
+        if (playerStates != null && playerStates.isDead)
+        {
+            return;
+        }
+
         playerMovement.Flip(xAxis);
         playerMovement.MaxFall(rb);
 
@@ -164,6 +182,47 @@ public class PlayerController : MonoBehaviour
     public void NotifyDashTriggered()
     {
         OnPlayerDashed?.Invoke();
+    }
+
+    private void HandlePlayerDeath()
+    {
+        if (playerStates != null && playerStates.isDead)
+        {
+            return;
+        }
+
+        StartCoroutine(DeathRoutine());
+    }
+
+    private IEnumerator DeathRoutine()
+    {
+        if (playerStates != null)
+        {
+            playerStates.isDead = true;
+        }
+
+        if (anim != null)
+        {
+            anim.SetTrigger("Death");
+        }
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.simulated = false;
+        }
+
+        yield return new WaitForSeconds(deathAnimationLength);
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.TriggerDeathMenu();
+        }
+
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null) sr.enabled = false;
+
+        this.enabled = false;
     }
 
     public void ExecutePogoBounce()
