@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b527565a29f3c44a506503fb89a50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerHitbox: 0
   damage: 1
   knockbackForce: {x: 5, y: 4}
   targetLayers:
@@ -187,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b527565a29f3c44a506503fb89a50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerHitbox: 0
   damage: 1
   knockbackForce: {x: 5, y: 4}
   targetLayers:
@@ -391,6 +393,7 @@ MonoBehaviour:
   hasDoubleJump: 0
   hasDash: 0
   Charms: 
+  maxCharmSlots: 2
   currencyCountText: {fileID: 0}
   currentCurrency: 0
 --- !u!114 &521181045092576934
@@ -760,6 +763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b527565a29f3c44a506503fb89a50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerHitbox: 0
   damage: 1
   knockbackForce: {x: 5, y: 4}
   targetLayers:

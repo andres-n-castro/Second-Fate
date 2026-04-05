@@ -86,14 +86,14 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0
+  - time: 0.13333334
     functionName: EnableSideHitbox
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.2
+  - time: 0.26666668
     functionName: DisableSideHitbox
     data: 
     objectReferenceParameter: {fileID: 0}

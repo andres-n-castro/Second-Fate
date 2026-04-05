@@ -110,6 +110,16 @@ public class GameManager : MonoBehaviour
 
         PlayerController.Instance.transform.position = currentRespawnPoint;
         PlayerManager.Instance.playerStats.currentHealth = PlayerManager.Instance.playerStats.maxHealth;
+        PlayerManager.Instance.playerStats.SyncHealthForSaving(PlayerManager.Instance.playerStats.maxHealth, PlayerManager.Instance.playerStats.maxHealth);
+
+        if (PlayerManager.Instance.playerStats.playerHealthComponent != null)
+        {
+            PlayerManager.Instance.playerStats.playerHealthComponent.InitializeHealth(
+                PlayerManager.Instance.playerStats.maxHealth,
+                PlayerManager.Instance.playerStats.maxHealth);
+        }
+
+        PlayerManager.Instance.playerStates.isDead = false;
 
         yield return StartCoroutine(UIManager.Instance.FadeToClear(1f));
         // TODO: Trigger the World Reset logic (respawning non-boss enemies).

@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     // Events for AI perception to track player actions
     public static event Action OnPlayerDashed;
     public static event Action OnPlayerAttacked;
-    public static event Action<UIManager.UIStates> OnInputInventory;
     public GameObject playerHud;
     private Rigidbody2D rb;
     private Animator anim;
@@ -61,6 +60,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         UpdateKnockback();
+        playerMovement.TickTimers();
         playerMovement.Flip(xAxis);
         playerMovement.MaxFall(rb);
 
@@ -111,17 +111,17 @@ public class PlayerController : MonoBehaviour
             xAxis = Input.GetAxisRaw("Horizontal");
             yAxis = Input.GetAxisRaw("Vertical");
             playerStates.isAttacking = Input.GetButtonDown("Player Attack");
-        }        if (playerStates.isAttacking)
-        {
-            OnPlayerAttacked?.Invoke();
         }
-
-
         else
         {
             xAxis = 0f;
             yAxis = 0f;
             playerStates.isAttacking = false;
+        }
+
+        if (playerStates.isAttacking)
+        {
+            OnPlayerAttacked?.Invoke();
         }
 
         if (GameManager.Instance != null && Input.GetButtonDown("Open Inventory"))
@@ -166,17 +166,6 @@ public class PlayerController : MonoBehaviour
 
         timeScale = 1f; // Unfreeze
         isHitStopping = false;
-    }
-
-
-    void OnEnable()
-    {
-        UIManager.UIStateChanged += DisplayPlayerHud;
-    }
-
-    void OnDisable()
-    {
-        UIManager.UIStateChanged -= DisplayPlayerHud;
     }
 
     public void PlaySwingSound()

@@ -44,6 +44,18 @@ public class Bonfire : MonoBehaviour
             GameManager.Instance.UnlockBonfire(bonfireID);
             GameManager.Instance.currentRespawnPoint = transform.position;
             PlayerManager.Instance.playerStats.currentHealth = PlayerManager.Instance.playerStats.maxHealth;
+            PlayerManager.Instance.playerStats.SyncHealthForSaving(
+                PlayerManager.Instance.playerStats.maxHealth,
+                PlayerManager.Instance.playerStats.maxHealth);
+
+            if (PlayerManager.Instance.playerStats.playerHealthComponent != null)
+            {
+                PlayerManager.Instance.playerStats.playerHealthComponent.InitializeHealth(
+                    PlayerManager.Instance.playerStats.maxHealth,
+                    PlayerManager.Instance.playerStats.maxHealth);
+            }
+
+            PlayerManager.Instance.ResetProtectionCharmCharges();
 
             // TODO: Call World Reset logic (Respawn all non-boss enemies).
 

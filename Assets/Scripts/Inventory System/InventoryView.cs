@@ -15,11 +15,18 @@ public class InventoryView : MonoBehaviour
     public TextMeshProUGUI itemDescriptionText;
     public Image itemBigIcon;
 
+    void OnEnable()
+    {
+        DrawInventory();
+    }
+
     public void DrawInventory()
     {
         for (int i = gridContainer.childCount - 1; i >= 0; i--)
         {
-            Destroy(gridContainer.GetChild(i).gameObject);
+            Transform child = gridContainer.GetChild(i);
+            child.gameObject.SetActive(false);
+            Destroy(child.gameObject);
         }
 
         infoPanel.SetActive(false);
@@ -27,14 +34,30 @@ public class InventoryView : MonoBehaviour
         Debug.Log("DrawInventory called! Fetching items...");
         List<ItemSlotData> inventory = InventoryController.Instance.inventoryModel.RetrieveInventoryItems();
         Debug.Log($"Items found in model: {inventory.Count}");
+        GameObject firstNewSlot = null;
 
-        foreach (ItemSlotData slotData in inventory)
+        for (int i = 0; i < inventory.Count; i++)
         {
+            ItemSlotData slotData = inventory[i];
             GameObject newSlot = Instantiate(itemSlotPrefab, gridContainer);
             Debug.Log($"Spawning UI slot for: {slotData.itemData.itemName}");
             newSlot.transform.localScale = Vector3.one;
             ItemSlot itemSlot = newSlot.GetComponent<ItemSlot>();
             itemSlot.Setup(slotData, UpdateInfoPanel);
+
+            if (i == 0)
+            {
+                firstNewSlot = newSlot;
+            }
+        }
+
+        if (firstNewSlot != null)
+        {
+            MenuTabManager menuTabManager = FindFirstObjectByType<MenuTabManager>();
+            if (menuTabManager != null)
+            {
+                menuTabManager.SetFirstInventorySlot(firstNewSlot);
+            }
         }
     }
 

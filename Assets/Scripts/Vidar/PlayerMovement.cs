@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private int JumpForce = 45;
     [SerializeField] private int walkspeed = 10;
+    [SerializeField] private float dashCooldown = 1f;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundLengthY = 0.1f;
@@ -21,10 +22,22 @@ public class PlayerMovement : MonoBehaviour
     public float defaultGravity;
 
     private float groundedRecallTimer;
+    private float dashCooldownTimer;
+    private bool hasUsedCharmDoubleJump;
 
     [Header("Enemy Collision Settings")]
     [SerializeField] private LayerMask whatIsEnemy;
     [SerializeField] private float enemyCheckDistance = 0.6f;
+
+    private const float AgilityDashMultiplier = 0.5f;
+
+    public void TickTimers()
+    {
+        if (dashCooldownTimer > 0f)
+        {
+            dashCooldownTimer -= Time.deltaTime;
+        }
+    }
 
     public void Move(Rigidbody2D rb, float xAxis, Animator anim)
     {
@@ -61,12 +74,15 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Jump(Rigidbody2D rb, ref bool isJumping, Animator anim)
     {
+        bool isGrounded = Grounded();
+        bool jumpPressed = Input.GetButtonDown("Jump");
 
         //coyote timer check tied to ground check
-        if (Grounded() && (rb.linearVelocity.y <= 0.5f || TryGetComponent<PlatformRider>(out var r) && r.GetPlatformVelocity().y > 0))
+        if (isGrounded && (rb.linearVelocity.y <= 0.5f || TryGetComponent<PlatformRider>(out var r) && r.GetPlatformVelocity().y > 0))
         {
             coyoteTimeCounter = coyoteTime;
             isJumping = false;
+            hasUsedCharmDoubleJump = false;
         }
         else
         {
@@ -74,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //jump buffer tied to jump input
-        if (Input.GetButtonDown("Jump"))
+        if (jumpPressed)
         {
             jumpTimeCounter = jumpTimeBuffer;
         }
@@ -100,6 +116,22 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        bool canCharmDoubleJump =
+            jumpPressed &&
+            !isGrounded &&
+            !hasUsedCharmDoubleJump &&
+            CharmManager.Instance != null &&
+            CharmManager.Instance.IsCharmEquipped("DoubleJump");
+
+        if (canCharmDoubleJump)
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, JumpForce);
+            isJumping = true;
+            hasUsedCharmDoubleJump = true;
+            jumpTimeCounter = 0f;
+            anim.SetTrigger("JumpTrigger");
+        }
+
         if (isJumping && Mathf.Abs(rb.linearVelocity.y) < jumpHangThreshold)
         {
             rb.gravityScale = defaultGravity * jumpHangGravity;
@@ -114,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
 
-        if (Grounded())
+        if (isGrounded)
         {
             groundedRecallTimer = 0.1f;
         }
@@ -189,7 +221,17 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Dash()
     {
+        if (dashCooldownTimer > 0f)
+        {
+            return;
+        }
 
+        dashCooldownTimer = dashCooldown;
+
+        if (CharmManager.Instance != null && CharmManager.Instance.IsCharmEquipped("Agility"))
+        {
+            dashCooldownTimer *= AgilityDashMultiplier;
+        }
     }
     public void DoubleJump()
     {
