@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: e6493a190df2bd6469cffd0ef3b17500
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8949919273913412524
+    second: tyr-idle-v2_0
+  - first:
+      213: 7286686100530569564
+    second: tyr-idle-v2_1
+  - first:
+      213: -4190623657860387522
+    second: tyr-idle-v2_2
+  - first:
+      213: -783792780577664097
+    second: tyr-idle-v2_3
+  - first:
+      213: -7841267095564165684
+    second: tyr-idle-v2_4
+  - first:
+      213: -2522444645396835271
+    second: tyr-idle-v2_5
+  - first:
+      213: -2490854058137062887
+    second: tyr-idle-v2_6
+  - first:
+      213: -2625491101963458784
+    second: tyr-idle-v2_7
+  - first:
+      213: 8943320668877664510
+    second: tyr-idle-v2_8
+  - first:
+      213: 4723850617693832619
+    second: tyr-idle-v2_9
+  - first:
+      213: 5231854170081803918
+    second: tyr-idle-v2_10
+  - first:
+      213: 6828127574107634079
+    second: tyr-idle-v2_11
+  - first:
+      213: -8981157249560145955
+    second: tyr-idle-v2_12
+  - first:
+      213: 725216694875741920
+    second: tyr-idle-v2_13
+  - first:
+      213: 8407826793733086444
+    second: tyr-idle-v2_14
+  - first:
+      213: 7219684124914782871
+    second: tyr-idle-v2_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tyr-idle-v2_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 831
+        width: 159
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45418fdc6df7bc380800000000000000
+      internalID: -8949919273913412524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-idle-v2_1
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 831
+        width: 161
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c51a6e3e6628f1560800000000000000
+      internalID: 7286686100530569564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-idle-v2_2
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 831
+        width: 161
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3d22ed6cf9e7d5c0800000000000000
+      internalID: -4190623657860387522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-idle-v2_3
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 831
+        width: 160
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9317286e986f15f0800000000000000
+      internalID: -783792780577664097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-idle-v2_4
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 575
+        width: 159
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccd50f31f193e2390800000000000000
+      internalID: -7841267095564165684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-idle-v2_5
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 575
+        width: 159
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9341981a5f97efcd0800000000000000
+      internalID: -2522444645396835271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-idle-v2_6
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 575
+        width: 158
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91276656e65be6dd0800000000000000
+      internalID: -2490854058137062887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-idle-v2_7
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 575
+        width: 158
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 027e482d0c1609bd0800000000000000
+      internalID: -2625491101963458784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-idle-v2_8
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 319
+        width: 158
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef0bcdcb3ce0d1c70800000000000000
+      internalID: 8943320668877664510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-idle-v2_9
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 319
+        width: 159
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba586a7db1d7e8140800000000000000
+      internalID: 4723850617693832619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-idle-v2_10
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 319
+        width: 158
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8e3f5ce5a74b9840800000000000000
+      internalID: 5231854170081803918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-idle-v2_11
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 319
+        width: 159
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f993cb70ad162ce50800000000000000
+      internalID: 6828127574107634079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-idle-v2_12
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 63
+        width: 159
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddf0b04d0158c5380800000000000000
+      internalID: -8981157249560145955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-idle-v2_13
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 63
+        width: 159
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ee504bddbc701a00800000000000000
+      internalID: 725216694875741920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-idle-v2_14
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 63
+        width: 161
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cecd87d1ce99ea470800000000000000
+      internalID: 8407826793733086444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-idle-v2_15
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 63
+        width: 161
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7929218c578713460800000000000000
+      internalID: 7219684124914782871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      tyr-idle-v2_0: -8949919273913412524
+      tyr-idle-v2_1: 7286686100530569564
+      tyr-idle-v2_10: 5231854170081803918
+      tyr-idle-v2_11: 6828127574107634079
+      tyr-idle-v2_12: -8981157249560145955
+      tyr-idle-v2_13: 725216694875741920
+      tyr-idle-v2_14: 8407826793733086444
+      tyr-idle-v2_15: 7219684124914782871
+      tyr-idle-v2_2: -4190623657860387522
+      tyr-idle-v2_3: -783792780577664097
+      tyr-idle-v2_4: -7841267095564165684
+      tyr-idle-v2_5: -2522444645396835271
+      tyr-idle-v2_6: -2490854058137062887
+      tyr-idle-v2_7: -2625491101963458784
+      tyr-idle-v2_8: 8943320668877664510
+      tyr-idle-v2_9: 4723850617693832619
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
