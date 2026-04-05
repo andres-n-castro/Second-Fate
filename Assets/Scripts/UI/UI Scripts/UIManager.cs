@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +14,9 @@ public class UIManager : MonoBehaviour
     public GameObject pauseCanvas;
     public GameObject bonfireCanvas;
     public GameObject deathCanvas;
+    public GameObject abilityUnlockPanel;
+    public Image abilityIcon;
+    public TextMeshProUGUI abilityDescriptionText;
     public CanvasGroup fadeScreenGroup;
 
     void Awake()
@@ -32,6 +37,11 @@ public class UIManager : MonoBehaviour
             fadeScreenGroup.alpha = 0f;
         }
 
+        if (abilityUnlockPanel != null)
+        {
+            abilityUnlockPanel.SetActive(false);
+        }
+
         if (GameManager.Instance != null)
         {
             HandleGameStateChange(GameManager.Instance.currentState);
@@ -41,11 +51,13 @@ public class UIManager : MonoBehaviour
     void OnEnable()
     {
         GameManager.OnStateChanged += HandleGameStateChange;
+        GameManager.OnDashUnlocked += ShowDashUnlockedUI;
     }
 
     void OnDisable()
     {
         GameManager.OnStateChanged -= HandleGameStateChange;
+        GameManager.OnDashUnlocked -= ShowDashUnlockedUI;
     }
 
     private void HandleGameStateChange(GameManager.GameState state)
@@ -121,5 +133,35 @@ public class UIManager : MonoBehaviour
         }
 
         fadeScreenGroup.alpha = 0f;
+    }
+
+    private void ShowDashUnlockedUI()
+    {
+        if (PlayerManager.Instance != null && PlayerManager.Instance.playerStats != null)
+        {
+            PlayerManager.Instance.playerStats.canDash = true;
+        }
+
+        if (abilityDescriptionText != null)
+        {
+            abilityDescriptionText.text = "Dash unlocked! Press Shift or Circle to dash.";
+        }
+
+        if (abilityUnlockPanel != null)
+        {
+            abilityUnlockPanel.SetActive(true);
+        }
+
+        Time.timeScale = 0f;
+    }
+
+    public void CloseAbilityUI()
+    {
+        if (abilityUnlockPanel != null)
+        {
+            abilityUnlockPanel.SetActive(false);
+        }
+
+        Time.timeScale = 1f;
     }
 }

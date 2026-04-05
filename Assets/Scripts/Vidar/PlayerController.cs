@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     public AudioSource sfxSource;
     public AudioClip swordSwingSound;
 
+    [Header("Combat Settings")]
+    public float pogoBounceForce = 15f;
+
     // Events for AI perception to track player actions
     public static event Action OnPlayerDashed;
     public static event Action OnPlayerAttacked;
@@ -124,6 +127,14 @@ public class PlayerController : MonoBehaviour
             OnPlayerAttacked?.Invoke();
         }
 
+        bool dashPressed = Input.GetKeyDown(KeyCode.LeftShift) ||
+            Input.GetButtonDown("Player Dash") ||
+            Input.GetKeyDown(KeyCode.JoystickButton2);
+        if (canControlCharacter && dashPressed && PlayerManager.Instance != null && PlayerManager.Instance.playerMovement != null)
+        {
+            PlayerManager.Instance.playerMovement.AttemptDash();
+        }
+
         if (GameManager.Instance != null && Input.GetButtonDown("Open Inventory"))
         {
             if (GameManager.Instance.currentState == GameManager.GameState.Exploration)
@@ -147,6 +158,43 @@ public class PlayerController : MonoBehaviour
             {
                 GameManager.Instance.RestorePreviousState();
             }
+        }
+    }
+
+    public void NotifyDashTriggered()
+    {
+        OnPlayerDashed?.Invoke();
+    }
+
+    public void ExecutePogoBounce()
+    {
+        if (rb != null)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, pogoBounceForce);
+
+            if (playerStates != null)
+            {
+                playerStates.isJumping = true;
+            }
+
+            if (anim != null)
+            {
+                anim.SetTrigger("JumpTrigger");
+            }
+
+            StartCoroutine(PogoInvulnerabilityRoutine());
+
+            Debug.Log("Pogo Bounce Executed! Velocity set to: " + pogoBounceForce);
+        }
+    }
+
+    private IEnumerator PogoInvulnerabilityRoutine()
+    {
+        if (playerStats != null && playerStats.playerHealthComponent != null)
+        {
+            playerStats.playerHealthComponent.isInvulnerable = true;
+            yield return new WaitForSeconds(0.15f);
+            playerStats.playerHealthComponent.isInvulnerable = false;
         }
     }
 

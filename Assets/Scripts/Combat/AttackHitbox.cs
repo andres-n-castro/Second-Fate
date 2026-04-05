@@ -16,6 +16,7 @@ public class AttackHitbox : MonoBehaviour
 {
     [Header("Damage Settings")]
     [SerializeField] private bool isPlayerHitbox = false;
+    [SerializeField] private bool causesPlayerBounce = false;
     [SerializeField] private int damage = 1;
     [SerializeField] private Vector2 knockbackForce = new Vector2(5f, 4f);
     [SerializeField] private LayerMask targetLayers;
@@ -74,6 +75,10 @@ public class AttackHitbox : MonoBehaviour
 
         // Trigger the hit stop exactly when the collider connects!
         PlayerController.Instance.TriggerHitStop(0.1f);
-        Debug.Log($"Hitbox connected with {other.name}! Hitstop triggered.");
+        if (isPlayerHitbox && causesPlayerBounce && PlayerController.Instance != null)
+        {
+            PlayerController.Instance.ExecutePogoBounce();
+        }
+        Debug.Log($"Hitbox '{gameObject.name}' hit {other.name}! isPlayer: {isPlayerHitbox}, causesBounce: {causesPlayerBounce}");
     }
 }

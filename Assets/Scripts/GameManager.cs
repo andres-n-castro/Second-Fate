@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
     public static event Action<GameState> OnStateChanged;
+    public static event Action OnDashUnlocked;
 
     public GameState currentState { get; private set; } = GameState.Exploration;
 
@@ -99,6 +100,11 @@ public class GameManager : MonoBehaviour
     public void HandlePlayerDeath()
     {
         StartCoroutine(RespawnSequence());
+    }
+
+    public void UnlockDashAbility()
+    {
+        OnDashUnlocked?.Invoke();
     }
 
     private IEnumerator RespawnSequence()

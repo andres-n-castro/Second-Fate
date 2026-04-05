@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
 
     public static PlayerManager Instance;
     public PlayerController playerController;
+    public PlayerMovement playerMovement;
     public PlayerStats playerStats;
     public PlayerStates playerStates;
     public int protectionHitsRemaining = MaxProtectionHits;
@@ -32,6 +33,7 @@ public class PlayerManager : MonoBehaviour
         Instance = this;
 
         playerController = GetComponent<PlayerController>();
+        playerMovement = GetComponent<PlayerMovement>();
         playerStats = GetComponent<PlayerStats>();
         playerStates = GetComponent<PlayerStates>();
     }

@@ -32,6 +32,12 @@ public class InventoryView : MonoBehaviour
         infoPanel.SetActive(false);
 
         Debug.Log("DrawInventory called! Fetching items...");
+        if (InventoryController.Instance == null || InventoryController.Instance.inventoryModel == null)
+        {
+            Debug.LogWarning("InventoryController or Model is not initialized yet. Skipping DrawInventory.");
+            return;
+        }
+
         List<ItemSlotData> inventory = InventoryController.Instance.inventoryModel.RetrieveInventoryItems();
         Debug.Log($"Items found in model: {inventory.Count}");
         GameObject firstNewSlot = null;

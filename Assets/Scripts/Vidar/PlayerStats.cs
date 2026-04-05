@@ -15,6 +15,9 @@ public class PlayerStats : MonoBehaviour
     public bool hasDoubleJump = false;
     public bool hasDash = false;
 
+    [Header("Unlockable Abilities")]
+    public bool canDash = false;
+
     [Header("Charms System")]
     public List<bool> Charms;
     public int maxCharmSlots = 2;

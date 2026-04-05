@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -5,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private int JumpForce = 45;
     [SerializeField] private int walkspeed = 10;
-    [SerializeField] private float dashCooldown = 1f;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundLengthY = 0.1f;
@@ -22,14 +22,29 @@ public class PlayerMovement : MonoBehaviour
     public float defaultGravity;
 
     private float groundedRecallTimer;
-    private float dashCooldownTimer;
     private bool hasUsedCharmDoubleJump;
+    private Rigidbody2D rb;
+    private Animator animator;
+
+    [Header("Dash Settings")]
+    public float dashForce = 20f;
+    public float dashDuration = 0.2f;
+    public float dashCooldown = 1.0f;
+
+    private bool isDashing;
+    private float dashCooldownTimer;
 
     [Header("Enemy Collision Settings")]
     [SerializeField] private LayerMask whatIsEnemy;
     [SerializeField] private float enemyCheckDistance = 0.6f;
 
     private const float AgilityDashMultiplier = 0.5f;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
 
     public void TickTimers()
     {
@@ -41,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(Rigidbody2D rb, float xAxis, Animator anim)
     {
+        if (isDashing)
+        {
+            anim.SetBool("Walking", false);
+            return;
+        }
 
         float adjustedXAxis = xAxis;
 
@@ -74,6 +94,11 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Jump(Rigidbody2D rb, ref bool isJumping, Animator anim)
     {
+        if (isDashing)
+        {
+            return;
+        }
+
         bool isGrounded = Grounded();
         bool jumpPressed = Input.GetButtonDown("Jump");
 
@@ -158,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("isGrounded", groundedRecallTimer > 0);
         anim.SetBool("Jumping", isJumping && groundedRecallTimer <= 0);
         // anim.SetBool("Jumping", isJumping);
-        // anim.SetFloat("yVelocity", rb.linearVelocity.y);
+        anim.SetFloat("yVelocity", rb.linearVelocity.y);
         // anim.SetBool("isGrounded", Grounded());
 
     }
@@ -221,13 +246,55 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Dash()
     {
-        if (dashCooldownTimer > 0f)
+        AttemptDash();
+    }
+
+    public void AttemptDash()
+    {
+        if (PlayerManager.Instance == null ||
+            PlayerManager.Instance.playerStats == null ||
+            !PlayerManager.Instance.playerStats.canDash ||
+            dashCooldownTimer > 0f ||
+            isDashing)
         {
             return;
         }
 
-        dashCooldownTimer = dashCooldown;
+        StartCoroutine(DashRoutine());
+    }
 
+    private IEnumerator DashRoutine()
+    {
+        isDashing = true;
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Dash");
+        }
+
+        if (PlayerController.Instance != null)
+        {
+            PlayerController.Instance.NotifyDashTriggered();
+        }
+
+        float originalGravity = rb != null ? rb.gravityScale : defaultGravity;
+        if (rb != null)
+        {
+            rb.gravityScale = 0f;
+            float facingDirection = transform.localScale.x >= 0f ? 1f : -1f;
+            rb.linearVelocity = new Vector2(facingDirection * dashForce, 0f);
+        }
+
+        yield return new WaitForSeconds(dashDuration);
+
+        if (rb != null)
+        {
+            rb.gravityScale = originalGravity;
+            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+        }
+
+        isDashing = false;
+        dashCooldownTimer = dashCooldown;
         if (CharmManager.Instance != null && CharmManager.Instance.IsCharmEquipped("Agility"))
         {
             dashCooldownTimer *= AgilityDashMultiplier;
