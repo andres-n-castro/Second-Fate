@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class PlayerAttack : MonoBehaviour
 {[SerializeField] private float attackCooldown = 0.4f; // Slightly longer for Souls-like pacing
+    [SerializeField] private float verticalAttackThreshold = 0.5f;
     private float timeSinceAttack; 
 
     [Header("Hitbox References")]
@@ -10,24 +11,35 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private AttackHitbox upHitbox;
     [SerializeField] private AttackHitbox downHitbox;
 
+    private const float HasteAttackMultiplier = 0.7f;
+
     public void Attack(bool isAttacking, Animator anim, float yAxis, PlayerMovement playerMovement)
     {
         timeSinceAttack += Time.deltaTime;
-        
-        if (isAttacking && timeSinceAttack >= attackCooldown)
+
+        float currentAttackCooldown = attackCooldown;
+        if (CharmManager.Instance != null && CharmManager.Instance.IsCharmEquipped("Haste"))
+        {
+            currentAttackCooldown *= HasteAttackMultiplier;
+        }
+
+        if (isAttacking && timeSinceAttack >= currentAttackCooldown)
         {
             timeSinceAttack = 0; 
 
             // Just trigger the animations here! No damage calculation.
-            if(yAxis == 0 || (yAxis < 0 && playerMovement.Grounded()))
+            bool intentIsUp = yAxis > verticalAttackThreshold;
+            bool intentIsDown = yAxis < -verticalAttackThreshold;
+
+            if ((!intentIsUp && !intentIsDown) || (intentIsDown && playerMovement.Grounded()))
             {
-                anim.SetTrigger("Attacking");
+                anim.SetTrigger("Attacking"); // Side Attack
             }
-            else if (yAxis > 0)
+            else if (intentIsUp)
             {
                 anim.SetTrigger("UpAttack");
             }
-            else if(yAxis < 0 && !playerMovement.Grounded())
+            else if (intentIsDown && !playerMovement.Grounded())
             {
                 anim.SetTrigger("DownAttack");
             }

@@ -15,8 +15,12 @@ public class PlayerStats : MonoBehaviour
     public bool hasDoubleJump = false;
     public bool hasDash = false;
 
+    [Header("Unlockable Abilities")]
+    public bool canDash = false;
+
     [Header("Charms System")]
     public List<bool> Charms;
+    public int maxCharmSlots = 2;
 
     [Header("Currency System")]
     public TextMeshProUGUI currencyCountText;
@@ -27,6 +31,8 @@ public class PlayerStats : MonoBehaviour
     {
         if (currentHealth <= 0)
             currentHealth = maxHealth;
+
+        UpdateCharmCapacity();
 
         if (playerHealthComponent != null)
         {
@@ -39,9 +45,9 @@ public class PlayerStats : MonoBehaviour
         UpdateDisplayCurrencyCount();
     }
 
-    void IncreaseCurrency()
+    void AddCurrency(int amount)
     {
-        currentCurrency += 1;
+        currentCurrency += amount;
         Debug.Log("Current player currency count:" + currentCurrency);
     }
 
@@ -54,6 +60,18 @@ public class PlayerStats : MonoBehaviour
     {
         if (currencyCountText != null)
             currencyCountText.text = currentCurrency.ToString();
+    }
+
+    public void UpdateCharmCapacity()
+    {
+        if (GameManager.Instance != null && GameManager.Instance.globalGoodMultiplier > 1.0f)
+        {
+            maxCharmSlots = 3;
+        }
+        else
+        {
+            maxCharmSlots = 2;
+        }
     }
 
     public void UpdateHeartsDisplay()
@@ -76,7 +94,7 @@ public class PlayerStats : MonoBehaviour
 
     void OnEnable()
     {
-        CurrencyPickup.PickupCurrency += IncreaseCurrency;
+        CurrencyPickup.OnCurrencyPickedUp += AddCurrency;
 
         if (playerHealthComponent != null)
         {
@@ -86,7 +104,7 @@ public class PlayerStats : MonoBehaviour
 
     void OnDisable()
     {
-        CurrencyPickup.PickupCurrency -= IncreaseCurrency;
+        CurrencyPickup.OnCurrencyPickedUp -= AddCurrency;
 
         if (playerHealthComponent != null)
         {

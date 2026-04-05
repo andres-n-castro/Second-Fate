@@ -5,14 +5,18 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerController))]
 [RequireComponent(typeof(PlayerStats))]
 [RequireComponent(typeof(PlayerStates))]
+[RequireComponent(typeof(CharmManager))]
 
 public class PlayerManager : MonoBehaviour
 {
+    private const int MaxProtectionHits = 2;
 
     public static PlayerManager Instance;
     public PlayerController playerController;
+    public PlayerMovement playerMovement;
     public PlayerStats playerStats;
     public PlayerStates playerStates;
+    public int protectionHitsRemaining = MaxProtectionHits;
 
     void Awake()
     {
@@ -21,9 +25,15 @@ public class PlayerManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if (GetComponent<CharmManager>() == null)
+        {
+            gameObject.AddComponent<CharmManager>();
+        }
+
         Instance = this;
 
         playerController = GetComponent<PlayerController>();
+        playerMovement = GetComponent<PlayerMovement>();
         playerStats = GetComponent<PlayerStats>();
         playerStates = GetComponent<PlayerStates>();
     }
@@ -35,22 +45,39 @@ public class PlayerManager : MonoBehaviour
         playerStates.isDead = true;
         Debug.Log("Player Died!");
 
-        // 1. Reset Health in Stats (Hearts)
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.HandlePlayerDeath();
+            return;
+        }
+
+        // Fallback for scenes without a GameManager instance.
+        StartCoroutine(HandleLocalRespawn());
+    }
+
+    private IEnumerator HandleLocalRespawn()
+    {
         playerStats.currentHealth = playerStats.maxHealth;
         playerStats.SyncHealthForSaving(playerStats.maxHealth, playerStats.maxHealth);
 
-        // 2. Reset Health in the Health Component (Logic)
         if (playerStats.playerHealthComponent != null)
         {
             playerStats.playerHealthComponent.InitializeHealth(playerStats.maxHealth, playerStats.maxHealth);
         }
 
-        // 3. Teleport
         PlayerRespawn respawnScript = GetComponent<PlayerRespawn>();
         if (respawnScript != null)
         {
-            StartCoroutine(respawnScript.HandleSpikeHit());
+            yield return StartCoroutine(respawnScript.HandleSpikeHit());
         }
+
+        ResetProtectionCharmCharges();
+        playerStates.isDead = false;
+    }
+
+    public void ResetProtectionCharmCharges()
+    {
+        protectionHitsRemaining = MaxProtectionHits;
     }
 
     public IEnumerator IFrameSubRoutine(float iFrameTimer)
@@ -85,10 +112,26 @@ public class PlayerManager : MonoBehaviour
     // This replaces your old TakeDamage function
     private void HandleDamage(int damage, Vector2 knockbackForce)
     {
-        Debug.Log("flag 1");
         if (playerStates.isDead) return;
 
-        Debug.Log("flag 2");
+        if (CharmManager.Instance != null &&
+            CharmManager.Instance.IsCharmEquipped("Protection") &&
+            protectionHitsRemaining > 0)
+        {
+            protectionHitsRemaining--;
+
+            int restoredHealth = Mathf.Min(playerStats.currentHealth + damage, playerStats.maxHealth);
+            playerStats.SyncHealthForSaving(restoredHealth, playerStats.maxHealth);
+
+            if (playerStats.playerHealthComponent != null)
+            {
+                playerStats.playerHealthComponent.InitializeHealth(restoredHealth, playerStats.maxHealth);
+            }
+
+            StartCoroutine(IFrameSubRoutine(playerStates.invincibilityTimer));
+            return;
+        }
+
         // Trigger your specific player reactions
         PlayerController.Instance.TriggerHitStop(0.1f);
         playerController.KnockBack(knockbackForce, 0.25f);

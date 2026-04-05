@@ -6,6 +6,10 @@ public abstract class EnemyBase : MonoBehaviour
     [Header("Profile")]
     [SerializeField] private EnemyProfile profile;
 
+    [Header("Economy")]
+    [SerializeField] private int baseCurrencyDrop = 10;
+    private int currentCurrencyDrop;
+
     [Header("Environment Checks")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform wallCheck;
@@ -75,6 +79,16 @@ public abstract class EnemyBase : MonoBehaviour
         }
 
         InitializeStates();
+
+        if (GameManager.Instance != null)
+        {
+            if (Health != null) Health.ScaleMaxHealth(GameManager.Instance.globalBadMultiplier);
+            currentCurrencyDrop = Mathf.RoundToInt(baseCurrencyDrop * GameManager.Instance.globalBadMultiplier);
+        }
+        else
+        {
+            currentCurrencyDrop = baseCurrencyDrop;
+        }
     }
 
     protected abstract void InitializeStates();
@@ -321,6 +335,7 @@ public abstract class EnemyBase : MonoBehaviour
             col.enabled = false;
         }
 
+        // TODO: Tell PlayerManager to add 'currentCurrencyDrop' to the player's wallet, or instantiate physical currency drops.
         Destroy(gameObject, 2f);
     }
 

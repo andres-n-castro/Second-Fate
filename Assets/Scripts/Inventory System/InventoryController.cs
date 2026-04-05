@@ -1,14 +1,9 @@
 using System;
-#if UNITY_EDITOR
-using UnityEditor.Timeline;
-#endif
 using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
     public static InventoryController Instance;
-    public GameObject inventoryCanvas;
-    public ItemPickup itemPickup;
 
     [HideInInspector]
     public InventoryModel inventoryModel;
@@ -16,41 +11,45 @@ public class InventoryController : MonoBehaviour
 
     void Awake()
     {
+        // 1. If another instance exists, destroy this one and STOP executing.
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+
         Instance = this;
 
+        // 2. Safely grab components
         inventoryModel = GetComponent<InventoryModel>();
-
-    }
-
-    void OpenInventoryUI(UIManager.UIStates currentState)
-    {
-        if (currentState == UIManager.UIStates.inventoryUI)
-        {
-            Debug.Log("Succesfully entered inventory menu state!");
-            inventoryCanvas.SetActive(true);
-            Debug.Log("Succesfully opened menu!");
-        }
-        else
-        {
-            Debug.Log("Succesfully entered turn off inventory menu state section!");
-            inventoryCanvas.SetActive(false);
-            Debug.Log("Succesfully turned off inventory menu!");
-        }
+        if (inventoryView == null) inventoryView = GetComponent<InventoryView>();
     }
 
     void OnEnable()
     {
-        //ItemPickup.PickUpItem += inventoryModel.AddItem;
-        UIManager.UIStateChanged += OpenInventoryUI;
+        // 3. Bulletproof subscriptions
+        if (inventoryModel != null)
+        {
+            ItemPickup.PickUpItem += inventoryModel.AddItem;
+        }
+
+        if (inventoryView != null)
+        {
+            UIManager.OnInventoryToggled += inventoryView.DrawInventory;
+        }
     }
 
     void OnDisable()
     {
-        //ItemPickup.PickUpItem -= inventoryModel.AddItem;
-        UIManager.UIStateChanged -= OpenInventoryUI;
+        // 4. Bulletproof un-subscriptions
+        if (inventoryModel != null)
+        {
+            ItemPickup.PickUpItem -= inventoryModel.AddItem;
+        }
+
+        if (inventoryView != null)
+        {
+            UIManager.OnInventoryToggled -= inventoryView.DrawInventory;
+        }
     }
 }

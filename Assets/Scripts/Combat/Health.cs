@@ -85,6 +85,13 @@ public class Health : MonoBehaviour, IDamageable
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
+    public void ScaleMaxHealth(float multiplier)
+    {
+        maxHealth = Mathf.RoundToInt(maxHealth * multiplier);
+        currentHealth = maxHealth;
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
 private IEnumerator Flash(float duration)
     {
         sprite.material.SetFloat("_FlashAmount", 1f);
