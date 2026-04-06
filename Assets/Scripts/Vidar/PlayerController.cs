@@ -165,7 +165,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (GameManager.Instance != null && Input.GetKeyDown(KeyCode.Escape))
+        bool pausePressed = Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton9);
+        if (GameManager.Instance != null && pausePressed)
         {
             if (GameManager.Instance.currentState == GameManager.GameState.Exploration ||
                 GameManager.Instance.currentState == GameManager.GameState.BossFight)

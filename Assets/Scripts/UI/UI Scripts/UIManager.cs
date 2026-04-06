@@ -12,7 +12,11 @@ public class UIManager : MonoBehaviour
 
     public GameObject playerHUDCanvas;
     public GameObject inventoryCanvas;
+
+    [Header("Pause Menu")]
     public GameObject pauseCanvas;
+    public GameObject resumeButtonObject;
+
     public GameObject bonfireCanvas;
     public GameObject deathCanvas;
 
@@ -89,6 +93,11 @@ public class UIManager : MonoBehaviour
                 break;
             case GameManager.GameState.Paused:
                 if (pauseCanvas != null) pauseCanvas.SetActive(true);
+                if (EventSystem.current != null && resumeButtonObject != null)
+                {
+                    EventSystem.current.SetSelectedGameObject(null);
+                    EventSystem.current.SetSelectedGameObject(resumeButtonObject);
+                }
                 break;
             case GameManager.GameState.BonfireMenu:
                 if (bonfireCanvas != null) bonfireCanvas.SetActive(true);
