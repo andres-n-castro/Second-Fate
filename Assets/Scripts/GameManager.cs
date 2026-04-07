@@ -169,6 +169,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public List<string> GetImbuedBonfireIDs()
+    {
+        return new List<string>(imbuedBonfires.Keys);
+    }
+
+    public List<int> GetImbuedBonfireAlignments()
+    {
+        List<int> alignments = new List<int>();
+        foreach (AlignmentType alignment in imbuedBonfires.Values)
+        {
+            alignments.Add((int)alignment);
+        }
+
+        return alignments;
+    }
+
+    public void ClearBonfireSaveState()
+    {
+        unlockedBonfires.Clear();
+        imbuedBonfires.Clear();
+        globalGoodMultiplier = 1.0f;
+        globalBadMultiplier = 1.0f;
+    }
+
     public void FastTravelTo(string bonfireID)
     {
         StartCoroutine(FastTravelSequence(bonfireID));
