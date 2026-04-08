@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
-{
+{   
     [SerializeField] private int JumpForce = 45;
     [SerializeField] private int walkspeed = 10;
     [SerializeField] private LayerMask whatIsGround;
@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpHangGravity;
     public float defaultGravity;
 
+    private PlayerFreeze playerFreeze;
+
     private float groundedRecallTimer;
 
     [Header("Enemy Collision Settings")]
@@ -28,6 +30,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(Rigidbody2D rb, float xAxis, Animator anim)
     {
+        if (playerFreeze == null)
+            playerFreeze = GetComponent<PlayerFreeze>();
+
+        if (playerFreeze != null && playerFreeze.isFrozen)
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            anim.SetBool("Walking", false);
+            return;
+        }
 
         float adjustedXAxis = xAxis;
 
@@ -59,8 +70,17 @@ public class PlayerMovement : MonoBehaviour
 
         anim.SetBool("Walking", (walkspeed * adjustedXAxis) != 0 && Grounded());
     }
+
     public void Jump(Rigidbody2D rb, ref bool isJumping, Animator anim)
     {
+        if (playerFreeze == null)
+            playerFreeze = GetComponent<PlayerFreeze>();
+
+        if (playerFreeze != null && playerFreeze.isFrozen)
+        {
+            anim.SetBool("Jumping", false);
+            return;
+        }
 
         //coyote timer check tied to ground check
         if (Grounded() && (rb.linearVelocity.y <= 0.5f || TryGetComponent<PlatformRider>(out var r) && r.GetPlatformVelocity().y > 0))
@@ -130,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
         // anim.SetBool("isGrounded", Grounded());
 
     }
+
     public bool Grounded()
     {
         if (Physics2D.Raycast(groundCheck.position, Vector2.down, groundLengthY, whatIsGround)
@@ -141,6 +162,7 @@ public class PlayerMovement : MonoBehaviour
 
         return false;
     }
+
     public void MaxFall(Rigidbody2D rb)
     {
         if (rb.linearVelocity.y < 0)
@@ -148,6 +170,7 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Max(rb.linearVelocity.y, -maxFallVelocity));
         }
     }
+
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -173,6 +196,7 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawLine(transform.position, (Vector2)transform.position + (checkDirection * enemyCheckDistance));
 
     }
+
     public void Flip(float xAxis)
     {
         float flipThreshold = 0.4f;
@@ -187,14 +211,17 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
     public void Dash()
     {
 
     }
+
     public void DoubleJump()
     {
 
     }
+
     public void WallJump()
     {
 
