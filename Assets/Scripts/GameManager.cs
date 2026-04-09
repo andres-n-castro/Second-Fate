@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public static event Action<GameState> OnStateChanged;
     public static event Action OnDashUnlocked;
     public static event Action OnPlayerDied;
+    public event Action OnWorldReset;
 
     public GameState currentState { get; private set; } = GameState.Exploration;
 
@@ -114,6 +115,11 @@ public class GameManager : MonoBehaviour
     {
         OnPlayerDied?.Invoke();
         ChangeState(GameState.Death);
+    }
+
+    public void TriggerWorldReset()
+    {
+        OnWorldReset?.Invoke();
     }
 
     public void RetryFromCheckpoint()

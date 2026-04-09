@@ -1877,6 +1877,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a86f1f0b06de23469588dd4b9d9af93, type: 3}
+--- !u!1 &874821542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2317992834906453310, guid: 592e011944ceeff4fafe16fcc2614be4, type: 3}
+  m_PrefabInstance: {fileID: 325096076126344856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &926395641 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4859483802487849522, guid: 1a86f1f0b06de23469588dd4b9d9af93, type: 3}
@@ -1914,6 +1919,7 @@ MonoBehaviour:
   playerHUDCanvas: {fileID: 1019441623}
   inventoryCanvas: {fileID: 1063641716}
   pauseCanvas: {fileID: 0}
+  resumeButtonObject: {fileID: 0}
   bonfireCanvas: {fileID: 0}
   deathCanvas: {fileID: 926395641}
   deathMenuPanel: {fileID: 926395641}
@@ -2141,9 +2147,21 @@ PrefabInstance:
       value: Vidar
       objectReference: {fileID: 0}
     - target: {fileID: 5027713525974910737, guid: efebabd8431d6b64eb99b75ba695b11b, type: 3}
+      propertyPath: maxHealth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027713525974910737, guid: efebabd8431d6b64eb99b75ba695b11b, type: 3}
+      propertyPath: currentHealth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027713525974910737, guid: efebabd8431d6b64eb99b75ba695b11b, type: 3}
       propertyPath: currencyCountText
       value: 
       objectReference: {fileID: 1870617959}
+    - target: {fileID: 5027713525974910737, guid: efebabd8431d6b64eb99b75ba695b11b, type: 3}
+      propertyPath: fullHearts.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5027713525974910737, guid: efebabd8431d6b64eb99b75ba695b11b, type: 3}
       propertyPath: 'fullHearts.Array.data[0]'
       value: 
@@ -2160,6 +2178,14 @@ PrefabInstance:
       propertyPath: 'fullHearts.Array.data[3]'
       value: 
       objectReference: {fileID: 1126101963}
+    - target: {fileID: 5027713525974910737, guid: efebabd8431d6b64eb99b75ba695b11b, type: 3}
+      propertyPath: 'fullHearts.Array.data[4]'
+      value: 
+      objectReference: {fileID: 874821542}
+    - target: {fileID: 5027713525974910737, guid: efebabd8431d6b64eb99b75ba695b11b, type: 3}
+      propertyPath: 'fullHearts.Array.data[5]'
+      value: 
+      objectReference: {fileID: 874821542}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

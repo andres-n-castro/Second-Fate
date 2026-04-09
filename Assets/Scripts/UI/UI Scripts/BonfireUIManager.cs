@@ -128,6 +128,8 @@ public class BonfireUIManager : MonoBehaviour
             GameManager.Instance.currentRespawnPoint = activeBonfire.transform.position;
         }
 
+        GameManager.Instance.TriggerWorldReset();
+
         if (SaveManager.Instance != null) SaveManager.Instance.SaveGame(0);
 
         GameManager.Instance.RestorePreviousState();
