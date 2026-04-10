@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5495067214054382254}
   - component: {fileID: 431196092312233083}
+  - component: {fileID: 5170489122950427786}
+  - component: {fileID: 535721923152968432}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -46,5 +48,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRespawnPoint: {x: 0, y: 0}
   lastInteractedBonfireID: 
+  lastRestedBonfireID: 
   masterBonfireRegistry: []
   unlockedBonfires: []
+--- !u!114 &5170489122950427786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4556676292132913171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e146718fa8cc2046be96d83733e615c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allItems: []
+  allCharms: []
+--- !u!114 &535721923152968432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4556676292132913171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab31fd8a6f555c4ca458833cd29a709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentSaveData:
+    lastRestedBonfireID: 
+    currentSceneName: TutorialScene
+    currentHealth: 0
+    maxHealth: 0
+    currentCurrency: 0
+    lootedInteractableIDs: []
+    defeatedBossIDs: []
+    unlockedBonfires: []
+    imbuedBonfireIDs: []
+    imbuedBonfireAlignments: 
+    unlockedCharmIDs: []
+    equippedCharmIDs: []
+    hasDash: 0
+    hasDoubleJump: 0
+    inventoryItemIDs: []
+    inventoryItemAmounts: 
+    inventoryItemReadStates: 

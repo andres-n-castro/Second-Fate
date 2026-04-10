@@ -95,6 +95,7 @@ public class Draugr : EnemyBase
     protected override void HandleDeath()
     {
         FSM.ChangeState(DeadState);
+        base.HandleDeath();
     }
 
     private void OnDrawGizmosSelected()

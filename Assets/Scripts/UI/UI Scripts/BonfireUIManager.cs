@@ -3,6 +3,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+[System.Serializable]
+public class FastTravelButtonMap
+{
+    public Button uiButton;
+    public string targetBonfireID;
+    public string targetSceneName;
+}
+
 public class BonfireUIManager : MonoBehaviour
 {
     [Header("Items")]
@@ -20,6 +28,10 @@ public class BonfireUIManager : MonoBehaviour
     public GameObject goodAlignmentBtn;
     public GameObject restBtn;
     public GameObject closeFastTravelBtn;
+    public GameObject fastTravelButtonObject;
+
+    [Header("Fast Travel UI Generation")]
+    public List<FastTravelButtonMap> fastTravelButtons = new List<FastTravelButtonMap>();
 
     [Header("Alignment Buttons")]
     public Button goodBtnComponent;
@@ -32,6 +44,12 @@ public class BonfireUIManager : MonoBehaviour
 
         if (currentAlignment != GameManager.AlignmentType.None)
         {
+            bool allowFastTravel = currentAlignment == GameManager.AlignmentType.TreeEssence;
+            if (fastTravelButtonObject != null)
+            {
+                fastTravelButtonObject.SetActive(allowFastTravel);
+            }
+
             ShowPanel(litBonfirePanel, restBtn);
         }
         else
@@ -92,6 +110,11 @@ public class BonfireUIManager : MonoBehaviour
         Bonfire activeBonfire = Object.FindFirstObjectByType<Bonfire>();
         if (activeBonfire != null) activeBonfire.UpdateVisualState();
 
+        if (CharmManager.Instance != null)
+        {
+            CharmManager.Instance.EnforceEquippedCharmLimit();
+        }
+
         if (SaveManager.Instance != null) SaveManager.Instance.SaveGame(0);
 
         GameManager.Instance.RestorePreviousState();
@@ -113,6 +136,7 @@ public class BonfireUIManager : MonoBehaviour
 
     public void Rest()
     {
+        GameManager.Instance.lastRestedBonfireID = GameManager.Instance.lastInteractedBonfireID;
         PlayerManager.Instance.playerStats.currentHealth = PlayerManager.Instance.playerStats.maxHealth;
         PlayerManager.Instance.playerStats.SyncHealthForSaving(PlayerManager.Instance.playerStats.maxHealth, PlayerManager.Instance.playerStats.maxHealth);
 
@@ -128,6 +152,11 @@ public class BonfireUIManager : MonoBehaviour
             GameManager.Instance.currentRespawnPoint = activeBonfire.transform.position;
         }
 
+        if (CharmManager.Instance != null)
+        {
+            CharmManager.Instance.EnforceEquippedCharmLimit();
+        }
+
         GameManager.Instance.TriggerWorldReset();
 
         if (SaveManager.Instance != null) SaveManager.Instance.SaveGame(0);
@@ -137,7 +166,34 @@ public class BonfireUIManager : MonoBehaviour
 
     public void OpenFastTravelMenu()
     {
-        ShowPanel(fastTravelPanel, closeFastTravelBtn);
+        GameObject firstValidButton = null;
+
+        foreach (FastTravelButtonMap map in fastTravelButtons)
+        {
+            if (map.uiButton == null) continue;
+
+            map.uiButton.onClick.RemoveAllListeners();
+
+            bool isUnlocked = GameManager.Instance.unlockedBonfires.Contains(map.targetBonfireID);
+
+            if (map.targetBonfireID == GameManager.Instance.lastInteractedBonfireID)
+            {
+                isUnlocked = false;
+            }
+
+            map.uiButton.interactable = isUnlocked;
+
+            if (isUnlocked)
+            {
+                string targetBonfireID = map.targetBonfireID;
+                string targetSceneName = map.targetSceneName;
+                map.uiButton.onClick.AddListener(() => GameManager.Instance.FastTravelTo(targetBonfireID, targetSceneName));
+
+                if (firstValidButton == null) firstValidButton = map.uiButton.gameObject;
+            }
+        }
+
+        ShowPanel(fastTravelPanel, firstValidButton != null ? firstValidButton : closeFastTravelBtn);
     }
 
     public void CloseMenu()

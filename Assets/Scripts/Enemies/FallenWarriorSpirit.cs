@@ -86,6 +86,7 @@ public class FallenWarriorSpirit : EnemyBase
         if (dashHitbox != null) dashHitbox.Deactivate();
         FacePlayer();
         FSM.ChangeState(DeadState);
+        base.HandleDeath();
     }
 
     /// <summary>

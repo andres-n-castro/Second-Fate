@@ -8,6 +8,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     [Header("Economy")]
     [SerializeField] private int baseCurrencyDrop = 10;
+    public GameObject coinPrefab;
     private int currentCurrencyDrop;
 
     [Header("Environment Checks")]
@@ -80,15 +81,7 @@ public abstract class EnemyBase : MonoBehaviour
 
         InitializeStates();
 
-        if (GameManager.Instance != null)
-        {
-            if (Health != null) Health.ScaleMaxHealth(GameManager.Instance.globalBadMultiplier);
-            currentCurrencyDrop = Mathf.RoundToInt(baseCurrencyDrop * GameManager.Instance.globalBadMultiplier);
-        }
-        else
-        {
-            currentCurrencyDrop = baseCurrencyDrop;
-        }
+        currentCurrencyDrop = baseCurrencyDrop;
     }
 
     protected abstract void InitializeStates();
@@ -328,6 +321,11 @@ public abstract class EnemyBase : MonoBehaviour
     {
         StopAll();
 
+        currentCurrencyDrop = GameManager.Instance != null &&
+            GameManager.Instance.GetActiveAlignment() == GameManager.AlignmentType.CreatureBlood
+            ? 30
+            : 10;
+
         if (Anim != null) Anim.SetTrigger(AnimDeath);
 
         foreach (Collider2D col in GetComponents<Collider2D>())
@@ -335,7 +333,31 @@ public abstract class EnemyBase : MonoBehaviour
             col.enabled = false;
         }
 
-        // TODO: Tell PlayerManager to add 'currentCurrencyDrop' to the player's wallet, or instantiate physical currency drops.
+        if (coinPrefab != null)
+        {
+            int valuePerCoin = 2;
+            if (GameManager.Instance != null && GameManager.Instance.GetActiveAlignment() == GameManager.AlignmentType.CreatureBlood)
+            {
+                valuePerCoin = 6;
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                GameObject spawnedCoin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
+
+                CurrencyPickup pickupScript = spawnedCoin.GetComponent<CurrencyPickup>();
+                if (pickupScript != null) pickupScript.currencyValue = valuePerCoin;
+
+                Rigidbody2D rb = spawnedCoin.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    float randomX = UnityEngine.Random.Range(-3f, 3f);
+                    float randomY = UnityEngine.Random.Range(3f, 6f);
+                    rb.AddForce(new Vector2(randomX, randomY), ForceMode2D.Impulse);
+                }
+            }
+        }
+
         Destroy(gameObject, 2f);
     }
 

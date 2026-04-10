@@ -69,7 +69,7 @@ public class AttackHitbox : MonoBehaviour
         int finalDamage = damage;
         if (isPlayerHitbox && GameManager.Instance != null)
         {
-            finalDamage = Mathf.RoundToInt(damage * GameManager.Instance.globalGoodMultiplier);
+            finalDamage = GameManager.Instance.GetActiveAlignment() == GameManager.AlignmentType.TreeEssence ? 2 : 1;
         }
         target.TakeDamage(finalDamage, kb);
 

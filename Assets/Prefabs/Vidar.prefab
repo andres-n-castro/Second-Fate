@@ -389,10 +389,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229c7b982491f594e93289a1270bc699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
-  currentHealth: 4
+  maxHealth: 5
+  currentHealth: 5
   playerHealthComponent: {fileID: 6032026495228990185}
   fullHearts:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -541,7 +542,7 @@ MonoBehaviour:
   playerMovement: {fileID: 3978086069148884822}
   playerStats: {fileID: 5027713525974910737}
   playerStates: {fileID: 5002829574089365646}
-  protectionHitsRemaining: 2
+  protectionHitsRemaining: 0
 --- !u!114 &8373966071862457301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,6 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405bfd8011cf3f0459605931c25ed5e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultMaxCharms: 1
   unlockedCharms:
   - {fileID: 11400000, guid: 720459df681f13149ae85dbad33ff41f, type: 2}
   - {fileID: 11400000, guid: 3973a50ebcf93794a9d41980e9586779, type: 2}

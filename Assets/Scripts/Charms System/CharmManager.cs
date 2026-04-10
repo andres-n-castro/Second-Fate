@@ -6,6 +6,9 @@ public class CharmManager : MonoBehaviour
 {
     public static CharmManager Instance;
 
+    [Header("Capacity")]
+    public int defaultMaxCharms = 1;
+
     public List<CharmData> unlockedCharms = new List<CharmData>();
     public List<CharmData> equippedCharms = new List<CharmData>();
 
@@ -42,12 +45,7 @@ public class CharmManager : MonoBehaviour
             return true;
         }
 
-        if (PlayerManager.Instance == null || PlayerManager.Instance.playerStats == null)
-        {
-            return false;
-        }
-
-        if (equippedCharms.Count >= PlayerManager.Instance.playerStats.maxCharmSlots)
+        if (equippedCharms.Count >= GetMaxCharmSlots())
         {
             return false;
         }
@@ -77,5 +75,32 @@ public class CharmManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public int GetMaxCharmSlots()
+    {
+        if (GameManager.Instance != null &&
+            GameManager.Instance.GetActiveAlignment() == GameManager.AlignmentType.CreatureBlood)
+        {
+            return defaultMaxCharms + 1;
+        }
+
+        return defaultMaxCharms;
+    }
+
+    public void ValidateEquippedCharms()
+    {
+        int max = GetMaxCharmSlots();
+        while (equippedCharms.Count > max)
+        {
+            CharmData charmToDrop = equippedCharms[equippedCharms.Count - 1];
+            equippedCharms.RemoveAt(equippedCharms.Count - 1);
+            Debug.Log($"Unequipped {charmToDrop.name} due to lost slot.");
+        }
+    }
+
+    public void EnforceEquippedCharmLimit()
+    {
+        ValidateEquippedCharms();
     }
 }

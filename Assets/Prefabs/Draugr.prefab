@@ -122,6 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b527565a29f3c44a506503fb89a50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerHitbox: 0
+  causesPlayerBounce: 0
   damage: 1
   knockbackForce: {x: 5, y: 2}
   targetLayers:
@@ -323,6 +325,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: c8e942ee487de6e4eb51ef63bf44832a, type: 2}
+  baseCurrencyDrop: 10
+  coinPrefab: {fileID: 3793789415224784273, guid: 57c1c479742e7a84097a97d62615b3b6, type: 3}
   groundCheck: {fileID: 5382814415021426512}
   wallCheck: {fileID: 2950593330845929865}
   groundLayer:

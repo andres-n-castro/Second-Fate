@@ -38,7 +38,7 @@ public class SaveManager : MonoBehaviour
 
         if (GameManager.Instance != null)
         {
-            currentSaveData.lastRestedBonfireID = GameManager.Instance.lastInteractedBonfireID;
+            currentSaveData.lastRestedBonfireID = GameManager.Instance.lastRestedBonfireID;
             currentSaveData.currentSceneName = SceneManager.GetActiveScene().name;
             currentSaveData.unlockedBonfires = new List<string>(GameManager.Instance.unlockedBonfires);
             currentSaveData.imbuedBonfireIDs = GameManager.Instance.GetImbuedBonfireIDs();
@@ -112,6 +112,7 @@ public class SaveManager : MonoBehaviour
 
             if (GameManager.Instance != null)
             {
+                GameManager.Instance.lastRestedBonfireID = currentSaveData.lastRestedBonfireID;
                 GameManager.Instance.lastInteractedBonfireID = currentSaveData.lastRestedBonfireID;
                 GameManager.Instance.ClearBonfireSaveState();
 
@@ -160,6 +161,8 @@ public class SaveManager : MonoBehaviour
                         CharmManager.Instance.EquipCharm(charm);
                     }
                 }
+
+                CharmManager.Instance.EnforceEquippedCharmLimit();
             }
 
             if (InventoryController.Instance != null &&

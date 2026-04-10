@@ -134,6 +134,7 @@ public class ValkyrieBoss : EnemyBase
     {
         DisableAllHitboxes();
         FSM.ChangeState(DeadState);
+        base.HandleDeath();
     }
 
     /// <summary>
