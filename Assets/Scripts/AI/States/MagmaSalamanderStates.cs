@@ -35,8 +35,13 @@ public class SalamanderPatrolState : EnemyState
 
     public override void FixedTick()
     {
-        // Check for player detection with hysteresis
-        bool aggroConditions = owner.Ctx.isPlayerInAggroRange && owner.Ctx.isPlayerOnSamePlatform;
+        // Proximity-based sensing: bypass LOS gating (salamander is a sensing
+        // elemental, not a vision hunter). Still requires the player to be on
+        // the same platform — jumping over obstacles only happens once already
+        // aggro'd and chasing, never as the initial aggro trigger.
+        bool aggroConditions =
+            owner.Ctx.playerDistance <= owner.Profile.aggroRange
+            && owner.Ctx.isPlayerOnSamePlatform;
 
         // Blocked-path lockout: suppress re-aggro during lockout timer.
         // After lockout expires, also check that the path toward the player
@@ -171,9 +176,10 @@ public class SalamanderChaseState : EnemyState
             return;
         }
 
-        // Check lose conditions with hysteresis
-        bool shouldLose = !owner.Ctx.isPlayerInDeaggroRange
-            || !owner.Ctx.hasLineOfSightToPlayer;
+        // Check lose conditions with hysteresis.
+        // Salamander is a proximity sensor — don't drop target just because
+        // an obstacle blocks LOS. Only lose on raw deaggro distance.
+        bool shouldLose = !owner.Ctx.isPlayerInDeaggroRange;
 
         if (shouldLose)
         {

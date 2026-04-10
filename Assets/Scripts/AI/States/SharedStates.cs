@@ -143,6 +143,9 @@ public class GroundDeadState : EnemyState
         if (owner.Anim != null)
         {
             owner.Anim.SetBool(owner.AnimWalking, false);
+            // Clear any pending hitstun trigger from the same-frame damage event
+            // so the AnyState→Hitstun transition can't steal us out of the death state.
+            owner.Anim.ResetTrigger(owner.AnimHitstun);
             owner.Anim.SetTrigger(owner.AnimDeath);
         }
 
@@ -170,7 +173,11 @@ public class AirDeadState : EnemyState
         owner.StopAll();
         owner.Rb.gravityScale = 1f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger(owner.AnimDeath);
+        if (owner.Anim != null)
+        {
+            owner.Anim.ResetTrigger(owner.AnimHitstun);
+            owner.Anim.SetTrigger(owner.AnimDeath);
+        }
 
         Object.Destroy(owner.gameObject, 1.5f);
     }

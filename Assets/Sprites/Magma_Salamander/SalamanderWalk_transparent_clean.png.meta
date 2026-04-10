@@ -1,0 +1,325 @@
+fileFormatVersion: 2
+guid: c31c8359dfa39d84e9d28d7db2da9346
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8522167713253363432
+    second: SalamanderWalk_transparent_clean_0
+  - first:
+      213: 7507606498585863448
+    second: SalamanderWalk_transparent_clean_1
+  - first:
+      213: -1954017439487127320
+    second: SalamanderWalk_transparent_clean_2
+  - first:
+      213: -4705519788746266548
+    second: SalamanderWalk_transparent_clean_3
+  - first:
+      213: -3802722085563072202
+    second: SalamanderWalk_transparent_clean_4
+  - first:
+      213: 1826672686321466209
+    second: SalamanderWalk_transparent_clean_5
+  - first:
+      213: -2113108789860635955
+    second: SalamanderWalk_transparent_clean_6
+  - first:
+      213: -9057764320611082353
+    second: SalamanderWalk_transparent_clean_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 250
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SalamanderWalk_transparent_clean_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 838
+        width: 478
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ee05c00262d44670800000000000000
+      internalID: 8522167713253363432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SalamanderWalk_transparent_clean_1
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 837
+        width: 478
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 815ef9d5550603860800000000000000
+      internalID: 7507606498585863448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SalamanderWalk_transparent_clean_2
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 836
+        width: 476
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e0937add7fe1e4e0800000000000000
+      internalID: -1954017439487127320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SalamanderWalk_transparent_clean_3
+      rect:
+        serializedVersion: 2
+        x: 1561
+        y: 837
+        width: 459
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c48253cdea2a2beb0800000000000000
+      internalID: -4705519788746266548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SalamanderWalk_transparent_clean_4
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 265
+        width: 475
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6310b7e29640a3bc0800000000000000
+      internalID: -3802722085563072202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SalamanderWalk_transparent_clean_5
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 265
+        width: 483
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16b791d4125a95910800000000000000
+      internalID: 1826672686321466209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SalamanderWalk_transparent_clean_6
+      rect:
+        serializedVersion: 2
+        x: 1037
+        y: 266
+        width: 485
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcae99850cabca2e0800000000000000
+      internalID: -2113108789860635955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SalamanderWalk_transparent_clean_7
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 266
+        width: 441
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8fd4ca275b5c4280800000000000000
+      internalID: -9057764320611082353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      SalamanderWalk_transparent_clean_0: 8522167713253363432
+      SalamanderWalk_transparent_clean_1: 7507606498585863448
+      SalamanderWalk_transparent_clean_2: -1954017439487127320
+      SalamanderWalk_transparent_clean_3: -4705519788746266548
+      SalamanderWalk_transparent_clean_4: -3802722085563072202
+      SalamanderWalk_transparent_clean_5: 1826672686321466209
+      SalamanderWalk_transparent_clean_6: -2113108789860635955
+      SalamanderWalk_transparent_clean_7: -9057764320611082353
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
