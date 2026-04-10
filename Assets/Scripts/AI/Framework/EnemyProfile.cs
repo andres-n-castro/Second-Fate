@@ -141,6 +141,42 @@ public class EnemyProfile : ScriptableObject
     public float tyrSlamWeightMultiplier = 3f;
     public float tyrFlurryRange = 2.5f;
     public float tyrFlurryWeightMultiplier = 3f;
+
+    [Header("Surtr Range Bands")]
+    public float surtrCloseRange = 2.5f;
+    public float surtrMidRange = 5.0f;
+    public float surtrMaxEngageRange = 7.0f;
+
+    [Header("Surtr P1 Attack Selection")]
+    public float surtrSweepMaxRange = 5.0f;
+    public float surtrSweepMinRange = 1.5f;
+    public float surtrSweepWeightMultiplier = 2f;
+    public float surtrThrustMaxRange = 3.5f;
+    public float surtrThrustWeightMultiplier = 2f;
+    public float surtrFireBreathMaxRange = 4.0f;
+    public float surtrFireBreathWeightMultiplier = 2f;
+
+    [Header("Surtr Lava Sweep")]
+    public float surtrSweepProjectileSpeed = 8f;
+
+    [Header("Surtr P2")]
+    public float surtrP2MinAttackCooldown = 0.3f;
+    public float surtrP2MaxAttackCooldown = 0.9f;
+    public float surtrEruptionInterval = 3.0f;
+    public int surtrEruptionProjectileCount = 3;
+    public float surtrEruptionSpreadAngle = 60f;
+    public float surtrEruptionProjectileSpeed = 7f;
+    public float surtrGroundedThrustStuckDuration = 1.5f;
+    public int surtrVomitProjectileCount = 5;
+    public float surtrVomitSpreadAngle = 90f;
+    public float surtrVomitProjectileSpeed = 6f;
+
+    [Header("Surtr P2 Attack Selection")]
+    public float surtrGroundedThrustRange = 3.5f;
+    public float surtrGroundedThrustWeightMultiplier = 3f;
+    public float surtrVomitMaxRange = 6.0f;
+    public float surtrVomitMinRange = 2.0f;
+    public float surtrVomitWeightMultiplier = 2f;
 }
 
 [Serializable]
