@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47629482c05e1744b95c37db6a0fa58, type: 3}
+  m_Name: Creature Blood
+  m_EditorClassIdentifier: 
+  itemName: Creature Blood
+  itemSprite: {fileID: -9135061618777851922, guid: c91047b196c095d499b6b1bd892de2cd, type: 3}
+  itemInfo: 'Blood extracted from the remains of an unrecognizable corpse seeped
+    in pain. It swirls within itself and if one were to peer close enough they might
+    even hear the faintest sounds of screaming. '

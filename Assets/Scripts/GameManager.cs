@@ -12,6 +12,14 @@ public struct BonfireTravelData
     public Vector2 spawnPosition;
 }
 
+[Serializable]
+public struct BonfireLocation
+{
+    public string bonfireID;
+    public string displayName;
+    public string sceneName;
+}
+
 public class GameManager : MonoBehaviour
 {
     public enum GameState
@@ -21,7 +29,8 @@ public class GameManager : MonoBehaviour
         Paused,
         InventoryMenu,
         BonfireMenu,
-        Respawning
+        Respawning,
+        Death
     }
 
     public enum AlignmentType
@@ -34,6 +43,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public static event Action<GameState> OnStateChanged;
     public static event Action OnDashUnlocked;
+    public static event Action OnPlayerDied;
+    public event Action OnWorldReset;
 
     public GameState currentState { get; private set; } = GameState.Exploration;
 
@@ -41,6 +52,12 @@ public class GameManager : MonoBehaviour
 
     public Vector2 currentRespawnPoint;
     public string lastInteractedBonfireID;
+    public string lastRestedBonfireID;
+
+    [Header("Fast Travel Registry")]
+    public List<BonfireLocation> masterBonfireList = new List<BonfireLocation>();
+    public string pendingTeleportBonfireID = "";
+
     public List<BonfireTravelData> masterBonfireRegistry;
     public List<string> unlockedBonfires = new List<string>();
 
@@ -59,6 +76,33 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        if (SaveManager.Instance != null)
+        {
+            SaveManager.Instance.LoadGame(0);
+        }
+
+        Bonfire[] bonfires = UnityEngine.Object.FindFirstObjectByType<Bonfire>() != null
+            ? UnityEngine.Object.FindObjectsByType<Bonfire>(FindObjectsSortMode.None)
+            : new Bonfire[0];
+
+        foreach (Bonfire b in bonfires)
+        {
+            b.UpdateVisualState();
+        }
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void ChangeState(GameState newState)
@@ -80,6 +124,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Exploration:
             case GameState.BossFight:
+            case GameState.Death:
                 Time.timeScale = 1f;
                 break;
         }
@@ -105,6 +150,24 @@ public class GameManager : MonoBehaviour
     public void UnlockDashAbility()
     {
         OnDashUnlocked?.Invoke();
+    }
+
+    public void TriggerDeathMenu()
+    {
+        OnPlayerDied?.Invoke();
+        ChangeState(GameState.Death);
+    }
+
+    public void TriggerWorldReset()
+    {
+        OnWorldReset?.Invoke();
+    }
+
+    public void RetryFromCheckpoint()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        ChangeState(GameState.Exploration);
     }
 
     private IEnumerator RespawnSequence()
@@ -145,6 +208,16 @@ public class GameManager : MonoBehaviour
         return AlignmentType.None;
     }
 
+    public AlignmentType GetActiveAlignment()
+    {
+        if (string.IsNullOrEmpty(lastInteractedBonfireID))
+        {
+            return AlignmentType.None;
+        }
+
+        return GetBonfireAlignment(lastInteractedBonfireID);
+    }
+
     public void UnlockBonfire(string bonfireID)
     {
         if (!unlockedBonfires.Contains(bonfireID))
@@ -153,49 +226,83 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void FastTravelTo(string bonfireID)
+    public List<string> GetImbuedBonfireIDs()
     {
-        StartCoroutine(FastTravelSequence(bonfireID));
+        return new List<string>(imbuedBonfires.Keys);
     }
 
-    private IEnumerator FastTravelSequence(string bonfireID)
+    public List<int> GetImbuedBonfireAlignments()
     {
-        bool foundTarget = false;
-        BonfireTravelData targetData = default;
-
-        foreach (BonfireTravelData bonfireData in masterBonfireRegistry)
+        List<int> alignments = new List<int>();
+        foreach (AlignmentType alignment in imbuedBonfires.Values)
         {
-            if (bonfireData.bonfireID == bonfireID)
+            alignments.Add((int)alignment);
+        }
+
+        return alignments;
+    }
+
+    public void ClearBonfireSaveState()
+    {
+        unlockedBonfires.Clear();
+        imbuedBonfires.Clear();
+        globalGoodMultiplier = 1.0f;
+        globalBadMultiplier = 1.0f;
+    }
+
+    public void FastTravelTo(string bonfireID)
+    {
+        foreach (BonfireLocation location in masterBonfireList)
+        {
+            if (location.bonfireID == bonfireID)
             {
-                targetData = bonfireData;
-                foundTarget = true;
-                break;
+                FastTravelTo(bonfireID, location.sceneName);
+                return;
             }
         }
+    }
 
-        if (!foundTarget)
+    public void FastTravelTo(string bonfireID, string targetSceneName)
+    {
+        pendingTeleportBonfireID = bonfireID;
+        if (SaveManager.Instance != null)
         {
-            yield break;
+            SaveManager.Instance.currentSaveData.lastRestedBonfireID = bonfireID;
+            SaveManager.Instance.SaveGame(0);
         }
 
-        currentState = GameState.Respawning;
-        OnStateChanged?.Invoke(currentState);
+        SceneManager.LoadScene(targetSceneName);
+    }
 
-        yield return StartCoroutine(UIManager.Instance.FadeToBlack(1f));
-
-        if (SceneManager.GetActiveScene().name != targetData.sceneName)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (!string.IsNullOrEmpty(pendingTeleportBonfireID))
         {
-            yield return SceneManager.LoadSceneAsync(targetData.sceneName);
+            Bonfire[] bonfires = FindObjectsByType<Bonfire>(FindObjectsSortMode.None);
+            foreach (Bonfire b in bonfires)
+            {
+                if (b.bonfireID == pendingTeleportBonfireID)
+                {
+                    if (PlayerManager.Instance != null)
+                    {
+                        PlayerManager.Instance.transform.position = b.transform.position;
+                        currentRespawnPoint = b.transform.position;
+                        lastInteractedBonfireID = b.bonfireID;
+                        lastRestedBonfireID = b.bonfireID;
+
+                        if (SaveManager.Instance != null)
+                        {
+                            SaveManager.Instance.currentSaveData.lastRestedBonfireID = b.bonfireID;
+                            SaveManager.Instance.SaveGame(0);
+                        }
+                    }
+                    break;
+                }
+            }
+
+            pendingTeleportBonfireID = "";
+            TriggerWorldReset();
         }
-
-        PlayerController.Instance.transform.position = targetData.spawnPosition;
-        currentRespawnPoint = targetData.spawnPosition;
-
-        yield return StartCoroutine(UIManager.Instance.FadeToClear(1f));
-
-        currentState = GameState.Exploration;
-        Time.timeScale = 1f;
-        OnStateChanged?.Invoke(currentState);
     }
 
     public void SetBonfireAlignment(string bonfireID, AlignmentType type)

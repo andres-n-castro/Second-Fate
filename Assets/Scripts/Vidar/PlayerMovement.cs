@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public float defaultGravity;
 
     private float groundedRecallTimer;
-    private bool hasUsedCharmDoubleJump;
+    private bool canDoubleJump;
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
         {
             coyoteTimeCounter = coyoteTime;
             isJumping = false;
-            hasUsedCharmDoubleJump = false;
+            canDoubleJump = true;
         }
         else
         {
@@ -135,24 +135,26 @@ public class PlayerMovement : MonoBehaviour
                 }
                 rb.linearVelocity = new Vector3(rb.linearVelocity.x, JumpForce + extraYVelocity);
                 isJumping = true;
+                canDoubleJump = true;
                 jumpTimeCounter = 0;
                 coyoteTimeCounter = 0;
                 anim.SetTrigger("JumpTrigger");
             }
         }
 
-        bool canCharmDoubleJump =
+        bool canExecuteDoubleJump =
             jumpPressed &&
             !isGrounded &&
-            !hasUsedCharmDoubleJump &&
-            CharmManager.Instance != null &&
-            CharmManager.Instance.IsCharmEquipped("DoubleJump");
+            canDoubleJump &&
+            PlayerManager.Instance != null &&
+            PlayerManager.Instance.playerStats != null &&
+            PlayerManager.Instance.playerStats.unlockedDoubleJump;
 
-        if (canCharmDoubleJump)
+        if (canExecuteDoubleJump)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, JumpForce);
             isJumping = true;
-            hasUsedCharmDoubleJump = true;
+            canDoubleJump = false;
             jumpTimeCounter = 0f;
             anim.SetTrigger("JumpTrigger");
         }
@@ -295,7 +297,7 @@ public class PlayerMovement : MonoBehaviour
 
         isDashing = false;
         dashCooldownTimer = dashCooldown;
-        if (CharmManager.Instance != null && CharmManager.Instance.IsCharmEquipped("Agility"))
+        if (CharmManager.Instance != null && CharmManager.Instance.HasCharmEffect(CharmEffect.Agility))
         {
             dashCooldownTimer *= AgilityDashMultiplier;
         }

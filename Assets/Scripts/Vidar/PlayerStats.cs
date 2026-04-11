@@ -17,6 +17,7 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Unlockable Abilities")]
     public bool canDash = false;
+    public bool unlockedDoubleJump = true; // TODO: Tie to Boss Defeat later
 
     [Header("Charms System")]
     public List<bool> Charms;
@@ -45,12 +46,6 @@ public class PlayerStats : MonoBehaviour
         UpdateDisplayCurrencyCount();
     }
 
-    void AddCurrency(int amount)
-    {
-        currentCurrency += amount;
-        Debug.Log("Current player currency count:" + currentCurrency);
-    }
-
     void DecreaseCurrency(int amount)
     {
         currentCurrency -= amount;
@@ -64,14 +59,7 @@ public class PlayerStats : MonoBehaviour
 
     public void UpdateCharmCapacity()
     {
-        if (GameManager.Instance != null && GameManager.Instance.globalGoodMultiplier > 1.0f)
-        {
-            maxCharmSlots = 3;
-        }
-        else
-        {
-            maxCharmSlots = 2;
-        }
+        maxCharmSlots = 2;
     }
 
     public void UpdateHeartsDisplay()
@@ -94,8 +82,6 @@ public class PlayerStats : MonoBehaviour
 
     void OnEnable()
     {
-        CurrencyPickup.OnCurrencyPickedUp += AddCurrency;
-
         if (playerHealthComponent != null)
         {
             playerHealthComponent.OnHealthChanged += SyncHealthForSaving;
@@ -104,8 +90,6 @@ public class PlayerStats : MonoBehaviour
 
     void OnDisable()
     {
-        CurrencyPickup.OnCurrencyPickedUp -= AddCurrency;
-
         if (playerHealthComponent != null)
         {
             playerHealthComponent.OnHealthChanged -= SyncHealthForSaving;

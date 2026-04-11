@@ -15,4 +15,5 @@ MonoBehaviour:
   charmID: agility_charm
   charmName: Agility
   charmIcon: {fileID: -7071226820329886080, guid: 43e1c2554a83cae4795318bfc2c1b99b, type: 3}
+  charmEffect: 2
   description: Reduces cooldown for dash ability

@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8c74c3cc6aa99347a4b387898af3f69, type: 3}
-  m_Name: Charm_Double_Jump
+  m_Name: Charm_Crit_Chance
   m_EditorClassIdentifier: 
-  charmID: double_jump_charm
-  charmName: Double Jump
-  charmIcon: {fileID: -7015024805763899571, guid: 801463ebebefb064d857e304e80ce85d, type: 3}
-  description: Allows player to jump once again in the air
+  charmID: crit_chance_charm
+  charmName: Crit Chance
+  charmIcon: {fileID: 1014038847968675300, guid: 81c05a0d41f26c844bdbb955a0280d81, type: 3}
+  charmEffect: 4
+  description: Allows a 10% chance do to an extra hit point upon any attack

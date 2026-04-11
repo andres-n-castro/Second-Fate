@@ -39,6 +39,7 @@ public class CharmUIManager : MonoBehaviour
             return;
         }
 
+        CharmManager.Instance.ValidateEquippedCharms();
         selectedEquipSlot = null;
         ClearChildren(topSlotsPanel);
         ClearChildren(bottomInventoryPanel);
@@ -46,9 +47,9 @@ public class CharmUIManager : MonoBehaviour
         List<Selectable> newTopSelectables = new List<Selectable>();
         List<Selectable> newBottomSelectables = new List<Selectable>();
 
-        if (topSlotsPanel != null && PlayerManager.Instance != null && PlayerManager.Instance.playerStats != null)
+        if (topSlotsPanel != null)
         {
-            int maxSlots = PlayerManager.Instance.playerStats.maxCharmSlots;
+            int maxSlots = CharmManager.Instance.GetMaxCharmSlots();
 
             for (int i = 0; i < maxSlots; i++)
             {
