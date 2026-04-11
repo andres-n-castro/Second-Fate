@@ -49,6 +49,14 @@ MonoBehaviour:
   currentRespawnPoint: {x: 0, y: 0}
   lastInteractedBonfireID: 
   lastRestedBonfireID: 
+  masterBonfireList:
+  - bonfireID: Tutorial_Bonfire
+    displayName: Tutorial
+    sceneName: tutorial_hub
+  - bonfireID: Midgard_Caves_Bonfire
+    displayName: Midgard
+    sceneName: biome1_subarea1
+  pendingTeleportBonfireID: 
   masterBonfireRegistry: []
   unlockedBonfires: []
 --- !u!114 &5170489122950427786
@@ -77,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab31fd8a6f555c4ca458833cd29a709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSandboxMode: 0
   currentSaveData:
     lastRestedBonfireID: 
     currentSceneName: TutorialScene

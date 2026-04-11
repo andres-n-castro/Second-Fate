@@ -49,6 +49,18 @@ public class Health : MonoBehaviour, IDamageable
     {
         if (IsDead || isInvulnerable) return;
 
+        if (gameObject.CompareTag("Player") && CharmManager.Instance != null)
+        {
+            if (CharmManager.Instance.HasCharmEffect(CharmEffect.Protection))
+            {
+                if (UnityEngine.Random.value <= 0.50f)
+                {
+                    Debug.Log("Protection Charm Activated! Damage Negated.");
+                    return;
+                }
+            }
+        }
+
         currentHealth -= damage;
         Debug.Log($"{gameObject.name} took {damage} damage! HP left: {currentHealth}");
         currentHealth = Mathf.Max(currentHealth, 0);

@@ -17,6 +17,7 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Unlockable Abilities")]
     public bool canDash = false;
+    public bool unlockedDoubleJump = true; // TODO: Tie to Boss Defeat later
 
     [Header("Charms System")]
     public List<bool> Charms;

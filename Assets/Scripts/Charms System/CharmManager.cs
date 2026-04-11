@@ -77,6 +77,36 @@ public class CharmManager : MonoBehaviour
         return false;
     }
 
+    public bool HasCharmEffect(CharmEffect typeToCheck)
+    {
+        foreach (CharmData charm in equippedCharms)
+        {
+            if (charm == null)
+            {
+                continue;
+            }
+
+            if (charm.charmEffect == typeToCheck || MatchesLegacyEffect(charm, typeToCheck))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool MatchesLegacyEffect(CharmData charm, CharmEffect typeToCheck)
+    {
+        return typeToCheck switch
+        {
+            CharmEffect.Haste => charm.charmID == "Haste",
+            CharmEffect.Agility => charm.charmID == "Agility",
+            CharmEffect.Protection => charm.charmID == "Protection",
+            CharmEffect.CritChance => charm.charmID == "CritChance" || charm.charmID == "DoubleJump",
+            _ => false
+        };
+    }
+
     public int GetMaxCharmSlots()
     {
         if (GameManager.Instance != null &&

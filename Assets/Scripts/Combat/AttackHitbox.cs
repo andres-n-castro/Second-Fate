@@ -67,10 +67,15 @@ public class AttackHitbox : MonoBehaviour
         Vector2 kb = new Vector2(direction.x * knockbackForce.x, knockbackForce.y);
 
         int finalDamage = damage;
-        if (isPlayerHitbox && GameManager.Instance != null)
+        if (isPlayerHitbox)
         {
-            finalDamage = GameManager.Instance.GetActiveAlignment() == GameManager.AlignmentType.TreeEssence ? 2 : 1;
+            PlayerAttack playerAttack = GetComponentInParent<PlayerAttack>();
+            if (playerAttack != null)
+            {
+                finalDamage = playerAttack.GetCurrentSwingDamage();
+            }
         }
+
         target.TakeDamage(finalDamage, kb);
 
         // Trigger the hit stop exactly when the collider connects!

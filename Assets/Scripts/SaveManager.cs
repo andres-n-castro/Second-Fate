@@ -7,6 +7,9 @@ public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance { get; private set; }
 
+    [Header("Testing Tools")]
+    public bool isSandboxMode = false;
+
     public GameData currentSaveData = new GameData();
     private int currentSlotIndex = 0;
 
@@ -23,6 +26,8 @@ public class SaveManager : MonoBehaviour
 
     public void SaveGame(int slotIndex)
     {
+        if (isSandboxMode) return;
+
         currentSlotIndex = slotIndex;
         currentSaveData = new GameData();
 
@@ -87,6 +92,13 @@ public class SaveManager : MonoBehaviour
 
     public bool LoadGame(int slotIndex)
     {
+        if (isSandboxMode)
+        {
+            Debug.LogWarning("Sandbox Mode Active: Loading a blank slate.");
+            currentSaveData = new GameData();
+            return true;
+        }
+
         string path = GetSavePath(slotIndex);
         if (File.Exists(path))
         {

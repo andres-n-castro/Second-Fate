@@ -9,14 +9,11 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    private const int MaxProtectionHits = 2;
-
     public static PlayerManager Instance;
     public PlayerController playerController;
     public PlayerMovement playerMovement;
     public PlayerStats playerStats;
     public PlayerStates playerStates;
-    public int protectionHitsRemaining = MaxProtectionHits;
 
     void Awake()
     {
@@ -71,13 +68,11 @@ public class PlayerManager : MonoBehaviour
             yield return StartCoroutine(respawnScript.HandleSpikeHit());
         }
 
-        ResetProtectionCharmCharges();
         playerStates.isDead = false;
     }
 
     public void ResetProtectionCharmCharges()
     {
-        protectionHitsRemaining = MaxProtectionHits;
     }
 
     public IEnumerator IFrameSubRoutine(float iFrameTimer)
@@ -113,24 +108,6 @@ public class PlayerManager : MonoBehaviour
     private void HandleDamage(int damage, Vector2 knockbackForce)
     {
         if (playerStates.isDead) return;
-
-        if (CharmManager.Instance != null &&
-            CharmManager.Instance.IsCharmEquipped("Protection") &&
-            protectionHitsRemaining > 0)
-        {
-            protectionHitsRemaining--;
-
-            int restoredHealth = Mathf.Min(playerStats.currentHealth + damage, playerStats.maxHealth);
-            playerStats.SyncHealthForSaving(restoredHealth, playerStats.maxHealth);
-
-            if (playerStats.playerHealthComponent != null)
-            {
-                playerStats.playerHealthComponent.InitializeHealth(restoredHealth, playerStats.maxHealth);
-            }
-
-            StartCoroutine(IFrameSubRoutine(playerStates.invincibilityTimer));
-            return;
-        }
 
         // Trigger your specific player reactions
         PlayerController.Instance.TriggerHitStop(0.1f);
