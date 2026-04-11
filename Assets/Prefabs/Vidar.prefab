@@ -401,6 +401,7 @@ MonoBehaviour:
   hasDoubleJump: 0
   hasDash: 1
   canDash: 1
+  unlockedDoubleJump: 1
   Charms: 
   maxCharmSlots: 1
   currencyCountText: {fileID: 0}
@@ -542,7 +543,6 @@ MonoBehaviour:
   playerMovement: {fileID: 3978086069148884822}
   playerStats: {fileID: 5027713525974910737}
   playerStates: {fileID: 5002829574089365646}
-  protectionHitsRemaining: 0
 --- !u!114 &8373966071862457301
 MonoBehaviour:
   m_ObjectHideFlags: 0
