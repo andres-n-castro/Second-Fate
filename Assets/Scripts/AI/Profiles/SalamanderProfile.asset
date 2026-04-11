@@ -17,8 +17,8 @@ MonoBehaviour:
   roamSpeed: 0
   roamRadius: 0
   roamChangeInterval: 0
-  aggroRange: 7
-  deaggroRange: 10
+  aggroRange: 8
+  deaggroRange: 12
   attackRange: 3
   groundCheckDistance: 1
   wallCheckDistance: 0.5
