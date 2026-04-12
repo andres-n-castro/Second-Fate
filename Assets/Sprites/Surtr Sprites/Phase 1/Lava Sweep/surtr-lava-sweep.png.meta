@@ -1,0 +1,299 @@
+fileFormatVersion: 2
+guid: 9b7792c7be650a848bed2fd1573b5db7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7746032590948980521
+    second: ddd46f8c-e376-4d31-bd53-7d9dc744c791-jukebox-bg-removed_0
+  - first:
+      213: 7152469649370951424
+    second: ddd46f8c-e376-4d31-bd53-7d9dc744c791-jukebox-bg-removed_1
+  - first:
+      213: -1126856782491928308
+    second: ddd46f8c-e376-4d31-bd53-7d9dc744c791-jukebox-bg-removed_2
+  - first:
+      213: 6257234472297547594
+    second: ddd46f8c-e376-4d31-bd53-7d9dc744c791-jukebox-bg-removed_3
+  - first:
+      213: -6393785854863718730
+    second: ddd46f8c-e376-4d31-bd53-7d9dc744c791-jukebox-bg-removed_4
+  - first:
+      213: -8293380210914321022
+    second: ddd46f8c-e376-4d31-bd53-7d9dc744c791-jukebox-bg-removed_5
+  - first:
+      213: -1013604424391648258
+    second: ddd46f8c-e376-4d31-bd53-7d9dc744c791-jukebox-bg-removed_6
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: surtr-ls-1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 676
+        width: 247
+        height: 338
+      alignment: 9
+      pivot: {x: 0.08783365, y: 0.8573623}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d823e51660908490800000000000000
+      internalID: -7746032590948980521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty1
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 987
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00fa48d204da24360800000000000000
+      internalID: 7152469649370951424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-ls-2
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 676
+        width: 296
+        height: 292
+      alignment: 9
+      pivot: {x: 0.00814376, y: 0.9888548}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0934d60ab99c50f0800000000000000
+      internalID: -1126856782491928308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-ls-3
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 676
+        width: 240
+        height: 294
+      alignment: 9
+      pivot: {x: 0, y: 0.98401356}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a47cf9da99926d650800000000000000
+      internalID: 6257234472297547594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-ls-4
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 374
+        width: 404
+        height: 282
+      alignment: 9
+      pivot: {x: 0.008055479, y: 1.040176}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b64ee604a5b447a0800000000000000
+      internalID: -6393785854863718730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-ls-5
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 369
+        width: 417
+        height: 285
+      alignment: 9
+      pivot: {x: 0.13151364, y: 1.0482122}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28d923d63aef7ec80800000000000000
+      internalID: -8293380210914321022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-ls-6
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 19
+        width: 432
+        height: 315
+      alignment: 9
+      pivot: {x: 0.09457935, y: 0.9850792}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efb1f557524fee1f0800000000000000
+      internalID: -1013604424391648258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f6e3b9addfdf70342a04747906c565f0
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      empty1: 7152469649370951424
+      surtr-ls-1: -7746032590948980521
+      surtr-ls-2: -1126856782491928308
+      surtr-ls-3: 6257234472297547594
+      surtr-ls-4: -6393785854863718730
+      surtr-ls-5: -8293380210914321022
+      surtr-ls-6: -1013604424391648258
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
