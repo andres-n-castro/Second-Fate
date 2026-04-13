@@ -41,7 +41,7 @@ public class Draugr : EnemyBase
 
     // Outer override states
     public GroundHitstunState HitstunState { get; private set; }
-    public GroundDeadState DeadState { get; private set; }
+    public FallingDeadState DeadState { get; private set; }
 
     // Hitbox accessor for states
     public AttackHitbox MeleeHitbox => meleeHitbox;
@@ -70,7 +70,7 @@ public class Draugr : EnemyBase
         MeleeAttackState = new DraugrMeleeAttackState(this);
         BackstepState = new DraugrBackstepState(this);
         HitstunState = new GroundHitstunState(this);
-        DeadState = new GroundDeadState(this);
+        DeadState = new FallingDeadState(this);
 
         NonCombatSuper = new NonCombatSuperState(this);
         NonCombatSuper.SetInitialSubState(PatrolState);

@@ -126,6 +126,44 @@ public class AirHitstunState : EnemyState
 }
 
 // ---------------------------------------------------------------
+//  FallingDeadState
+//  Stop horizontal movement, play die anim, keep gravity so the
+//  corpse falls to the ground. Ignores collision with the player
+//  so the body can't block movement, but keeps colliders active
+//  so it lands on platforms.
+// ---------------------------------------------------------------
+public class FallingDeadState : EnemyState
+{
+    public FallingDeadState(EnemyBase owner) : base(owner) { }
+
+    public override void Enter()
+    {
+        owner.Ctx.isDead = true;
+        owner.RestoreDrag();
+        owner.StopHorizontal();
+
+        if (owner.Anim != null)
+        {
+            owner.Anim.SetBool(owner.AnimWalking, false);
+            owner.Anim.ResetTrigger(owner.AnimHitstun);
+            owner.Anim.SetTrigger(owner.AnimDeath);
+        }
+
+        // Ignore collision with the player so the corpse doesn't block them
+        if (PlayerController.Instance != null)
+        {
+            Collider2D[] playerCols = PlayerController.Instance.GetComponents<Collider2D>();
+            Collider2D[] enemyCols = owner.GetComponents<Collider2D>();
+            for (int i = 0; i < enemyCols.Length; i++)
+                for (int j = 0; j < playerCols.Length; j++)
+                    UnityEngine.Physics2D.IgnoreCollision(enemyCols[i], playerCols[j]);
+        }
+
+        Object.Destroy(owner.gameObject, 1.5f);
+    }
+}
+
+// ---------------------------------------------------------------
 //  GroundDeadState
 //  Stop movement, play die anim, disable colliders, destroy.
 // ---------------------------------------------------------------
@@ -147,6 +185,16 @@ public class GroundDeadState : EnemyState
             // so the AnyState→Hitstun transition can't steal us out of the death state.
             owner.Anim.ResetTrigger(owner.AnimHitstun);
             owner.Anim.SetTrigger(owner.AnimDeath);
+        }
+
+        // Ignore collision with the player so the corpse doesn't block them
+        if (PlayerController.Instance != null)
+        {
+            Collider2D[] playerCols = PlayerController.Instance.GetComponents<Collider2D>();
+            Collider2D[] enemyCols = owner.GetComponents<Collider2D>();
+            for (int i = 0; i < enemyCols.Length; i++)
+                for (int j = 0; j < playerCols.Length; j++)
+                    UnityEngine.Physics2D.IgnoreCollision(enemyCols[i], playerCols[j]);
         }
 
         foreach (Collider2D col in owner.GetComponents<Collider2D>())

@@ -1059,9 +1059,29 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 436075719143282445, guid: 7773249ba5b05a44287b45785abbcbf8, type: 3}
+      propertyPath: m_Size.x
+      value: 1.8985434
+      objectReference: {fileID: 0}
+    - target: {fileID: 436075719143282445, guid: 7773249ba5b05a44287b45785abbcbf8, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5583911
+      objectReference: {fileID: 0}
+    - target: {fileID: 436075719143282445, guid: 7773249ba5b05a44287b45785abbcbf8, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.014728308
+      objectReference: {fileID: 0}
+    - target: {fileID: 436075719143282445, guid: 7773249ba5b05a44287b45785abbcbf8, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.011782885
+      objectReference: {fileID: 0}
     - target: {fileID: 3314618244624987299, guid: 7773249ba5b05a44287b45785abbcbf8, type: 3}
       propertyPath: m_Name
       value: MagmaSalamander
+      objectReference: {fileID: 0}
+    - target: {fileID: 3314618244624987299, guid: 7773249ba5b05a44287b45785abbcbf8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4269605116085205011, guid: 7773249ba5b05a44287b45785abbcbf8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1102,6 +1122,14 @@ PrefabInstance:
     - target: {fileID: 4269605116085205011, guid: 7773249ba5b05a44287b45785abbcbf8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208064377597240343, guid: 7773249ba5b05a44287b45785abbcbf8, type: 3}
+      propertyPath: m_Size.x
+      value: 1.88978
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208064377597240343, guid: 7773249ba5b05a44287b45785abbcbf8, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.005587578
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -25,6 +25,7 @@ public class RockGolemPatrolState : EnemyState
     {
         stuckTimer = 0f;
         isIdle = false;
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, true);
     }
 
     public override void FixedTick()

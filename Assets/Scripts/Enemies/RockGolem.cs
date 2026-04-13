@@ -44,7 +44,7 @@ public class RockGolem : EnemyBase
 
     // Outer override states
     public GroundHitstunState HitstunState { get; private set; }
-    public GroundDeadState DeadState { get; private set; }
+    public FallingDeadState DeadState { get; private set; }
 
     // Prefab/spawn accessors for states
     public GameObject RockPrefab => rockPrefab;
@@ -63,7 +63,7 @@ public class RockGolem : EnemyBase
         ThrowState = new RockGolemThrowState(this);
         GiveUpState = new RockGolemGiveUpState(this);
         HitstunState = new GroundHitstunState(this);
-        DeadState = new GroundDeadState(this);
+        DeadState = new FallingDeadState(this);
 
         NonCombatSuper = new NonCombatSuperState(this);
         NonCombatSuper.SetInitialSubState(PatrolState);

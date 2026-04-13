@@ -43,7 +43,7 @@ public class MagmaSalamander : EnemyBase
 
     // Outer override states
     public GroundHitstunState HitstunState { get; private set; }
-    public GroundDeadState DeadState { get; private set; }
+    public FallingDeadState DeadState { get; private set; }
 
     // Hitbox accessor for states
     public AttackHitbox LaunchHitbox => launchHitbox;
@@ -73,7 +73,7 @@ public class MagmaSalamander : EnemyBase
         LaunchState = new SalamanderLaunchState(this);
         GiveUpState = new SalamanderGiveUpState(this);
         HitstunState = new GroundHitstunState(this);
-        DeadState = new GroundDeadState(this);
+        DeadState = new FallingDeadState(this);
 
         NonCombatSuper = new NonCombatSuperState(this);
         NonCombatSuper.SetInitialSubState(PatrolState);

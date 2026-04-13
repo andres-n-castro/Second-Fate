@@ -1,34 +1,25 @@
 fileFormatVersion: 2
-guid: 04ab4a251e5374a47aaee1ac8acf7f87
+guid: 139b151df3384c44183c6ff194fe628c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1880466633932526428
-    second: MS_Death_Sheet_0
+      213: -6658018586921659507
+    second: Rock_Golem_Sheet_First6_0
   - first:
-      213: -1073435388300729375
-    second: MS_Death_Sheet_1
+      213: -4799265194537366408
+    second: Rock_Golem_Sheet_First6_1
   - first:
-      213: -8166138784635521935
-    second: MS_Death_Sheet_2
+      213: -3441445020061459436
+    second: Rock_Golem_Sheet_First6_2
   - first:
-      213: -3723714065142388258
-    second: MS_Death_Sheet_3
+      213: -6297099136897005530
+    second: Rock_Golem_Sheet_First6_3
   - first:
-      213: -6806824965138093409
-    second: MS_Death_Sheet_4
+      213: 2642933363099560719
+    second: Rock_Golem_Sheet_First6_4
   - first:
-      213: 731412277998610883
-    second: MS_Death_Sheet_5
-  - first:
-      213: 3858046215590044632
-    second: MS_Death_Sheet_6
-  - first:
-      213: 2243940732559086185
-    second: MS_Death_Sheet_7
-  - first:
-      213: -7934563673647620696
-    second: MS_Death_Sheet_8
+      213: 23421737711460759
+    second: Rock_Golem_Sheet_First6_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 250
+  spritePixelsToUnits: 115
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -124,155 +115,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MS_Death_Sheet_0
+      name: Rock_Golem_Sheet_First6_0
       rect:
         serializedVersion: 2
-        x: 34
-        y: 90
-        width: 480
-        height: 170
+        x: 16
+        y: 466
+        width: 449
+        height: 396
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c53d58fb072c81a10800000000000000
-      internalID: 1880466633932526428
+      spriteID: d831692fe57f993a0800000000000000
+      internalID: -6658018586921659507
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MS_Death_Sheet_1
+      name: Rock_Golem_Sheet_First6_1
       rect:
         serializedVersion: 2
-        x: 544
-        y: 90
-        width: 482
-        height: 156
+        x: 467
+        y: 466
+        width: 436
+        height: 396
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e3600f93346a11f0800000000000000
-      internalID: -1073435388300729375
+      spriteID: 87c44b0bbb5956db0800000000000000
+      internalID: -4799265194537366408
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MS_Death_Sheet_2
+      name: Rock_Golem_Sheet_First6_2
       rect:
         serializedVersion: 2
-        x: 1052
-        y: 90
-        width: 486
-        height: 136
+        x: 905
+        y: 466
+        width: 432
+        height: 394
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 174724b9a0c0cae80800000000000000
-      internalID: -8166138784635521935
+      spriteID: 41c1331ecf78d30d0800000000000000
+      internalID: -3441445020061459436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MS_Death_Sheet_3
+      name: Rock_Golem_Sheet_First6_3
       rect:
         serializedVersion: 2
-        x: 1558
-        y: 90
-        width: 492
-        height: 112
+        x: 39
+        y: 18
+        width: 438
+        height: 396
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ed9ef0e69c5b25cc0800000000000000
-      internalID: -3723714065142388258
+      spriteID: 628c5ddc2b53c98a0800000000000000
+      internalID: -6297099136897005530
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MS_Death_Sheet_4
+      name: Rock_Golem_Sheet_First6_4
       rect:
         serializedVersion: 2
-        x: 2060
-        y: 90
-        width: 502
-        height: 86
+        x: 475
+        y: 18
+        width: 428
+        height: 396
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f9aeea022cc4981a0800000000000000
-      internalID: -6806824965138093409
+      spriteID: f0be39014e59da420800000000000000
+      internalID: 2642933363099560719
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MS_Death_Sheet_5
+      name: Rock_Golem_Sheet_First6_5
       rect:
         serializedVersion: 2
-        x: 2566
-        y: 90
-        width: 1026
-        height: 56
+        x: 903
+        y: 18
+        width: 434
+        height: 396
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c96776779f762a00800000000000000
-      internalID: 731412277998610883
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MS_Death_Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 3588
-        y: 90
-        width: 508
-        height: 38
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8d3e84f97988a8530800000000000000
-      internalID: 3858046215590044632
+      spriteID: 791605442f5335000800000000000000
+      internalID: 23421737711460759
       vertices: []
       indices: 
       edges: []
@@ -281,7 +250,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 579be3e851d776c4b8c2efc422fcdc13
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -291,13 +260,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MS_Death_Sheet_0: 1880466633932526428
-      MS_Death_Sheet_1: -1073435388300729375
-      MS_Death_Sheet_2: -8166138784635521935
-      MS_Death_Sheet_3: -3723714065142388258
-      MS_Death_Sheet_4: -6806824965138093409
-      MS_Death_Sheet_5: 731412277998610883
-      MS_Death_Sheet_6: 3858046215590044632
+      Rock_Golem_Sheet_First6_0: -6658018586921659507
+      Rock_Golem_Sheet_First6_1: -4799265194537366408
+      Rock_Golem_Sheet_First6_2: -3441445020061459436
+      Rock_Golem_Sheet_First6_3: -6297099136897005530
+      Rock_Golem_Sheet_First6_4: 2642933363099560719
+      Rock_Golem_Sheet_First6_5: 23421737711460759
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

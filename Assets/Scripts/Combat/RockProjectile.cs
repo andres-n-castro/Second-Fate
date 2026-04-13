@@ -14,7 +14,7 @@ using UnityEngine;
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
-public class RockProjectile : MonoBehaviour
+public class RockProjectile : MonoBehaviour, IDamageable
 {
     [Header("Damage")]
     [SerializeField] private int damage = 1;
@@ -48,6 +48,11 @@ public class RockProjectile : MonoBehaviour
         }
 
         Destroy(gameObject, maxLifetime);
+    }
+
+    public void TakeDamage(int damage, Vector2 knockbackForce)
+    {
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

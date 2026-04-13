@@ -1,34 +1,34 @@
 fileFormatVersion: 2
-guid: 04ab4a251e5374a47aaee1ac8acf7f87
+guid: e7cc33143c83eac4a9266afbe1abf659
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1880466633932526428
-    second: MS_Death_Sheet_0
+      213: 7221521211387328205
+    second: RG_Throw_Sheet_0
   - first:
-      213: -1073435388300729375
-    second: MS_Death_Sheet_1
+      213: -9215096239555515513
+    second: RG_Throw_Sheet_1
   - first:
-      213: -8166138784635521935
-    second: MS_Death_Sheet_2
+      213: 521953645828258683
+    second: RG_Throw_Sheet_2
   - first:
-      213: -3723714065142388258
-    second: MS_Death_Sheet_3
+      213: 4881363885425092562
+    second: RG_Throw_Sheet_3
   - first:
-      213: -6806824965138093409
-    second: MS_Death_Sheet_4
+      213: -5149220973781208078
+    second: RG_Throw_Sheet_4
   - first:
-      213: 731412277998610883
-    second: MS_Death_Sheet_5
+      213: -1348107950167304677
+    second: RG_Throw_Sheet_5
   - first:
-      213: 3858046215590044632
-    second: MS_Death_Sheet_6
+      213: 9161801249678313410
+    second: RG_Throw_Sheet_6
   - first:
-      213: 2243940732559086185
-    second: MS_Death_Sheet_7
+      213: -3798549865656152790
+    second: RG_Throw_Sheet_7
   - first:
-      213: -7934563673647620696
-    second: MS_Death_Sheet_8
+      213: 8429877039792692744
+    second: RG_Throw_Sheet_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 250
+  spritePixelsToUnits: 75
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -124,155 +124,199 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MS_Death_Sheet_0
+      name: RG_Throw_Sheet_0
       rect:
         serializedVersion: 2
-        x: 34
-        y: 90
-        width: 480
-        height: 170
+        x: 19
+        y: 11
+        width: 271
+        height: 246
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c53d58fb072c81a10800000000000000
-      internalID: 1880466633932526428
+      spriteID: dc6b0bec74ff73460800000000000000
+      internalID: 7221521211387328205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MS_Death_Sheet_1
+      name: RG_Throw_Sheet_1
       rect:
         serializedVersion: 2
-        x: 544
-        y: 90
-        width: 482
-        height: 156
+        x: 379
+        y: 11
+        width: 231
+        height: 248
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e3600f93346a11f0800000000000000
-      internalID: -1073435388300729375
+      spriteID: 78b61463bc66d1080800000000000000
+      internalID: -9215096239555515513
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MS_Death_Sheet_2
+      name: RG_Throw_Sheet_2
       rect:
         serializedVersion: 2
-        x: 1052
-        y: 90
-        width: 486
-        height: 136
+        x: 727
+        y: 11
+        width: 217
+        height: 261
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 174724b9a0c0cae80800000000000000
-      internalID: -8166138784635521935
+      spriteID: b7b30d0531a5e3700800000000000000
+      internalID: 521953645828258683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MS_Death_Sheet_3
+      name: RG_Throw_Sheet_3
       rect:
         serializedVersion: 2
-        x: 1558
-        y: 90
-        width: 492
-        height: 112
+        x: 1029
+        y: 11
+        width: 292
+        height: 261
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ed9ef0e69c5b25cc0800000000000000
-      internalID: -3723714065142388258
+      spriteID: 2d7ee2a57961eb340800000000000000
+      internalID: 4881363885425092562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MS_Death_Sheet_4
+      name: RG_Throw_Sheet_4
       rect:
         serializedVersion: 2
-        x: 2060
-        y: 90
-        width: 502
-        height: 86
+        x: 1369
+        y: 11
+        width: 292
+        height: 261
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f9aeea022cc4981a0800000000000000
-      internalID: -6806824965138093409
+      spriteID: 2f3b7cb5eca4a88b0800000000000000
+      internalID: -5149220973781208078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MS_Death_Sheet_5
+      name: RG_Throw_Sheet_5
       rect:
         serializedVersion: 2
-        x: 2566
-        y: 90
-        width: 1026
-        height: 56
+        x: 1660
+        y: 215
+        width: 40
+        height: 41
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c96776779f762a00800000000000000
-      internalID: 731412277998610883
+      spriteID: b16d56f36fe8a4de0800000000000000
+      internalID: -1348107950167304677
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MS_Death_Sheet_6
+      name: RG_Throw_Sheet_6
       rect:
         serializedVersion: 2
-        x: 3588
-        y: 90
-        width: 508
-        height: 38
+        x: 1739
+        y: 11
+        width: 231
+        height: 248
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8d3e84f97988a8530800000000000000
-      internalID: 3858046215590044632
+      spriteID: 2c74ecdf1b1452f70800000000000000
+      internalID: 9161801249678313410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Throw_Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 2059
+        y: 11
+        width: 271
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2d05f3d507d84bc0800000000000000
+      internalID: -3798549865656152790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Throw_Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 2399
+        y: 11
+        width: 271
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80e90191180fcf470800000000000000
+      internalID: 8429877039792692744
       vertices: []
       indices: 
       edges: []
@@ -281,7 +325,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 579be3e851d776c4b8c2efc422fcdc13
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -291,13 +335,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MS_Death_Sheet_0: 1880466633932526428
-      MS_Death_Sheet_1: -1073435388300729375
-      MS_Death_Sheet_2: -8166138784635521935
-      MS_Death_Sheet_3: -3723714065142388258
-      MS_Death_Sheet_4: -6806824965138093409
-      MS_Death_Sheet_5: 731412277998610883
-      MS_Death_Sheet_6: 3858046215590044632
+      RG_Throw_Sheet_0: 7221521211387328205
+      RG_Throw_Sheet_1: -9215096239555515513
+      RG_Throw_Sheet_2: 521953645828258683
+      RG_Throw_Sheet_3: 4881363885425092562
+      RG_Throw_Sheet_4: -5149220973781208078
+      RG_Throw_Sheet_5: -1348107950167304677
+      RG_Throw_Sheet_6: 9161801249678313410
+      RG_Throw_Sheet_7: -3798549865656152790
+      RG_Throw_Sheet_8: 8429877039792692744
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
