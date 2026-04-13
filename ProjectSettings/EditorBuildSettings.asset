@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/biome1_subarea1.unity
     guid: 2318a510117a90244a6aabfb9f549eb3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/biome2.unity
     guid: 2118884d2e7befe4ab99f6099101f118
   - enabled: 1
