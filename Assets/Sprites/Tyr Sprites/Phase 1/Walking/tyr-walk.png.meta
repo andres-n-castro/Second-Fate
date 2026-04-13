@@ -1,0 +1,325 @@
+fileFormatVersion: 2
+guid: c480741eff799364c9357a33afd9b2c0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -110909396253261038
+    second: 0658c341-8306-4f51-8eff-351124e40262-jukebox-bg-removed_0
+  - first:
+      213: -411065860878887828
+    second: 0658c341-8306-4f51-8eff-351124e40262-jukebox-bg-removed_1
+  - first:
+      213: 5866711076201893916
+    second: 0658c341-8306-4f51-8eff-351124e40262-jukebox-bg-removed_2
+  - first:
+      213: -7928727230419085491
+    second: 0658c341-8306-4f51-8eff-351124e40262-jukebox-bg-removed_3
+  - first:
+      213: -6063612064755272881
+    second: 0658c341-8306-4f51-8eff-351124e40262-jukebox-bg-removed_4
+  - first:
+      213: -8169860932198718078
+    second: 0658c341-8306-4f51-8eff-351124e40262-jukebox-bg-removed_5
+  - first:
+      213: 4438637584499726048
+    second: 0658c341-8306-4f51-8eff-351124e40262-jukebox-bg-removed_6
+  - first:
+      213: -7093755994212777379
+    second: 0658c341-8306-4f51-8eff-351124e40262-jukebox-bg-removed_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tyr-walk-1
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 683
+        width: 249
+        height: 336
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2134212ed78f57ef0800000000000000
+      internalID: -110909396253261038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-walk-2
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 686
+        width: 257
+        height: 332
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c64160707c99b4af0800000000000000
+      internalID: -411065860878887828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-walk-3
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 683
+        width: 257
+        height: 336
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c101dd004aeba6150800000000000000
+      internalID: 5866711076201893916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-walk-4
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 350
+        width: 266
+        height: 317
+      alignment: 9
+      pivot: {x: 0.07203964, y: 1.0453373}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4757e5979087f190800000000000000
+      internalID: -7928727230419085491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-walk-5
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 351
+        width: 256
+        height: 318
+      alignment: 9
+      pivot: {x: 0.08323499, y: 1.0301299}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f433d7814f8b9dba0800000000000000
+      internalID: -6063612064755272881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-walk-6
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 345
+        width: 253
+        height: 322
+      alignment: 9
+      pivot: {x: 0.009467445, y: 1.0148778}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28524f794c2de9e80800000000000000
+      internalID: -8169860932198718078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-walk-7
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 8
+        width: 265
+        height: 339
+      alignment: 9
+      pivot: {x: 0.06327253, y: 1.0000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e6ddcebd55399d30800000000000000
+      internalID: 4438637584499726048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dont_use
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 8
+        width: 264
+        height: 333
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5246a1f18aed8d90800000000000000
+      internalID: -7093755994212777379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c3cf1208bf5d2bb4b890caf2de1de464
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      dont_use: -7093755994212777379
+      tyr-walk-1: -110909396253261038
+      tyr-walk-2: -411065860878887828
+      tyr-walk-3: 5866711076201893916
+      tyr-walk-4: -7928727230419085491
+      tyr-walk-5: -6063612064755272881
+      tyr-walk-6: -8169860932198718078
+      tyr-walk-7: 4438637584499726048
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

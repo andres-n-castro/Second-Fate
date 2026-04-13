@@ -1,0 +1,299 @@
+fileFormatVersion: 2
+guid: 23e1cf9ed7b097545884558843ddabd1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 402540978955702826
+    second: d7766d49-c380-4bc8-be98-b061db3f6732-jukebox-bg-removed_0
+  - first:
+      213: -2651549927790890638
+    second: d7766d49-c380-4bc8-be98-b061db3f6732-jukebox-bg-removed_1
+  - first:
+      213: -152804002317574999
+    second: d7766d49-c380-4bc8-be98-b061db3f6732-jukebox-bg-removed_2
+  - first:
+      213: -6084430586740421283
+    second: d7766d49-c380-4bc8-be98-b061db3f6732-jukebox-bg-removed_3
+  - first:
+      213: 3185309207159701729
+    second: d7766d49-c380-4bc8-be98-b061db3f6732-jukebox-bg-removed_4
+  - first:
+      213: -1948044780775231403
+    second: d7766d49-c380-4bc8-be98-b061db3f6732-jukebox-bg-removed_5
+  - first:
+      213: 558948719658385245
+    second: d7766d49-c380-4bc8-be98-b061db3f6732-jukebox-bg-removed_6
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: surtr-death-1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 543
+        width: 396
+        height: 448
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a22513a33ec169500800000000000000
+      internalID: 402540978955702826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty2
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 979
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 271bfc1a36dc33bd0800000000000000
+      internalID: -2651549927790890638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-death-2
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 533
+        width: 385
+        height: 445
+      alignment: 9
+      pivot: {x: 0.00000023779931, y: 1.0070417}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ac5a99c19121edf0800000000000000
+      internalID: -152804002317574999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty1
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 820
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5dc0d83e92cf8ba0800000000000000
+      internalID: -6084430586740421283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-death-3
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 7
+        width: 329
+        height: 478
+      alignment: 9
+      pivot: {x: 0.00000002318965, y: 1.0229433}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e00980f8dd743c20800000000000000
+      internalID: 3185309207159701729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-death-
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 25
+        width: 430
+        height: 135
+      alignment: 9
+      pivot: {x: -0.0109299775, y: 3.3442333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 550b653d79727f4e0800000000000000
+      internalID: -1948044780775231403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty3
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 80
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5fb5ea26e8c1c700800000000000000
+      internalID: 558948719658385245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 0a2c7eb92b9ad0a4491003de6b5fe9bd
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      empty1: -6084430586740421283
+      empty2: -2651549927790890638
+      empty3: 558948719658385245
+      surtr-death-: -1948044780775231403
+      surtr-death-1: 402540978955702826
+      surtr-death-2: -152804002317574999
+      surtr-death-3: 3185309207159701729
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

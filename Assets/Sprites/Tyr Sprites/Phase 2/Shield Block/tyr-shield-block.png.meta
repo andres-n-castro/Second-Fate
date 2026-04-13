@@ -1,61 +1,64 @@
 fileFormatVersion: 2
-guid: 9649c9472b2f1894e84be65d1444d37a
+guid: 1f4f0ae24a06a61488baa453a2064ab4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2190609298286613164
-    second: tyrsprite1_0
+      213: -5380449763428238265
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_0
   - first:
-      213: 4474730066246519759
-    second: tyrsprite1_1
+      213: -569531793938548362
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_1
   - first:
-      213: -1243587742409443536
-    second: tyrsprite1_2
+      213: 5898338298120840332
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_2
   - first:
-      213: 9072928817257709475
-    second: tyrsprite1_3
+      213: 3681100798097304824
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_3
   - first:
-      213: 4592728697768131722
-    second: tyrsprite1_4
+      213: 1287806929643406158
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_4
   - first:
-      213: 6215428860411570468
-    second: tyrsprite1_5
+      213: -8217155045305207587
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_5
   - first:
-      213: -8169788942751966067
-    second: tyrsprite1_6
+      213: -7687376620120665221
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_6
   - first:
-      213: 8599365779465414598
-    second: tyrsprite1_7
+      213: -3134147036617213957
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_7
   - first:
-      213: -3693142637906960383
-    second: tyrsprite1_8
+      213: -7136611363275641347
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_8
   - first:
-      213: -7348659476305248116
-    second: tyrsprite1_9
+      213: 7675953012517041691
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_9
   - first:
-      213: 9114074663134609607
-    second: tyrsprite1_10
+      213: -9201390590468882053
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_10
   - first:
-      213: 2362350897000623461
-    second: tyrsprite1_11
+      213: -5433882092187697892
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_11
   - first:
-      213: -145144005970366735
-    second: tyrsprite1_12
+      213: -3407575712308175246
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_12
   - first:
-      213: 320419498238845815
-    second: tyrsprite1_13
+      213: 6310649597541539343
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_13
   - first:
-      213: 3309596126475555051
-    second: tyrsprite1_14
+      213: 3988925547567161380
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_14
   - first:
-      213: -2393339390597251034
-    second: tyrsprite1_15
+      213: 3638075448580994997
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_15
   - first:
-      213: -3042925982158011233
-    second: tyrsprite1_16
+      213: -6296241009528851905
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_16
   - first:
-      213: -5348038930593387032
-    second: tyrsprite1_17
+      213: 2738641517092712616
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_17
+  - first:
+      213: 2231439770784051732
+    second: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_18
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -151,397 +154,419 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tyrsprite1_0
+      name: shield-block-1
       rect:
         serializedVersion: 2
-        x: 13
-        y: 1024
+        x: 8
+        y: 614
+        width: 313
+        height: 349
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74c760f627dc455b0800000000000000
+      internalID: -5380449763428238265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty14
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 871
+        width: 7
+        height: 151
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6797006d9dd9818f0800000000000000
+      internalID: -569531793938548362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield-block-2
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 614
+        width: 269
+        height: 349
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8423907e6b1bd150800000000000000
+      internalID: 5898338298120840332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield-block-3
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 615
+        width: 289
+        height: 347
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fc2ffc2ca5e51330800000000000000
+      internalID: 3681100798097304824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty13
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 871
+        width: 6
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e438ea454953fd110800000000000000
+      internalID: 1287806929643406158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty2
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 969
+        width: 31
+        height: 53
+      alignment: 9
+      pivot: {x: 0.5, y: 1.0626509}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd4364cc50dc6fd80800000000000000
+      internalID: -8217155045305207587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty1
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 968
+        width: 25
+        height: 20
+      alignment: 9
+      pivot: {x: 0.5, y: 1.7556031}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b73901781b3f05590800000000000000
+      internalID: -7687376620120665221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty3
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 563
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf7769820e54184d0800000000000000
+      internalID: -3134147036617213957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty6
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 561
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfd60f7c6c9a5fc90800000000000000
+      internalID: -7136611363275641347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_9
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 546
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b16faaf8896768a60800000000000000
+      internalID: 7675953012517041691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield-block-4
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 39
         width: 446
-        height: 463
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ca29a0aec8b966e10800000000000000
-      internalID: 2190609298286613164
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tyrsprite1_1
-      rect:
-        serializedVersion: 2
-        x: 473
-        y: 1025
-        width: 455
-        height: 462
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fcb4260894f691e30800000000000000
-      internalID: 4474730066246519759
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tyrsprite1_2
-      rect:
-        serializedVersion: 2
-        x: 944
-        y: 1025
-        width: 457
-        height: 461
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 037b7ae7983edbee0800000000000000
-      internalID: -1243587742409443536
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tyrsprite1_3
-      rect:
-        serializedVersion: 2
-        x: 1413
-        y: 1024
-        width: 461
-        height: 465
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3affc0950b489ed70800000000000000
-      internalID: 9072928817257709475
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tyrsprite1_4
-      rect:
-        serializedVersion: 2
-        x: 1900
-        y: 1023
-        width: 449
-        height: 465
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a8c3634da66acbf30800000000000000
-      internalID: 4592728697768131722
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tyrsprite1_5
-      rect:
-        serializedVersion: 2
-        x: 2363
-        y: 1023
-        width: 453
-        height: 465
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 429ea872e93a14650800000000000000
-      internalID: 6215428860411570468
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tyrsprite1_6
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 517
-        width: 451
         height: 464
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d8cda51fd341f9e80800000000000000
-      internalID: -8169788942751966067
+      spriteID: b710b7f42081e4080800000000000000
+      internalID: -9201390590468882053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tyrsprite1_7
+      name: empty4
       rect:
         serializedVersion: 2
-        x: 468
-        y: 518
-        width: 458
-        height: 464
+        x: 302
+        y: 536
+        width: 68
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6c7afa27d95175770800000000000000
-      internalID: 8599365779465414598
+      spriteID: c1dbbcfe609f694b0800000000000000
+      internalID: -5433882092187697892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tyrsprite1_8
+      name: empty5
       rect:
         serializedVersion: 2
-        x: 946
-        y: 517
-        width: 454
-        height: 465
+        x: 414
+        y: 525
+        width: 41
+        height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 100e4b286525fbcc0800000000000000
-      internalID: -3693142637906960383
+      spriteID: 27e5f9a91fbd5b0d0800000000000000
+      internalID: -3407575712308175246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tyrsprite1_9
+      name: shield-block-5
       rect:
         serializedVersion: 2
-        x: 1420
-        y: 517
-        width: 454
-        height: 463
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 513
+        y: 36
+        width: 371
+        height: 448
+      alignment: 1
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c8084832421540a90800000000000000
-      internalID: -7348659476305248116
+      spriteID: f0edc6baf5ee39750800000000000000
+      internalID: 6310649597541539343
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tyrsprite1_10
+      name: empty7
       rect:
         serializedVersion: 2
-        x: 1889
-        y: 517
-        width: 459
-        height: 465
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 480
+        y: 500
+        width: 33
+        height: 48
+      alignment: 9
+      pivot: {x: 1.0231684, y: 0.761584}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c0c6802e92bb7e70800000000000000
-      internalID: 9114074663134609607
+      spriteID: 420a83ab6a28b5730800000000000000
+      internalID: 3988925547567161380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tyrsprite1_11
+      name: empty11
       rect:
         serializedVersion: 2
-        x: 2378
-        y: 517
-        width: 438
-        height: 464
+        x: 483
+        y: 181
+        width: 8
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 56d2c82ef91c8c020800000000000000
-      internalID: 2362350897000623461
+      spriteID: 5b77dba585a0d7230800000000000000
+      internalID: 3638075448580994997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tyrsprite1_12
+      name: empty12
       rect:
         serializedVersion: 2
-        x: 14
-        y: 33
-        width: 437
-        height: 372
+        x: 448
+        y: 159
+        width: 6
+        height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1feebdaab485cfdf0800000000000000
-      internalID: -145144005970366735
+      spriteID: f3239c629224f98a0800000000000000
+      internalID: -6296241009528851905
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tyrsprite1_13
+      name: empty9
       rect:
         serializedVersion: 2
-        x: 477
-        y: 37
-        width: 419
-        height: 371
+        x: 235
+        y: 8
+        width: 18
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 773a2a306db527400800000000000000
-      internalID: 320419498238845815
+      spriteID: 8a0b27923fb910620800000000000000
+      internalID: 2738641517092712616
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tyrsprite1_14
+      name: empty10
       rect:
         serializedVersion: 2
-        x: 981
-        y: 37
-        width: 430
-        height: 371
+        x: 704
+        y: 9
+        width: 15
+        height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be0959c542c0eed20800000000000000
-      internalID: 3309596126475555051
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tyrsprite1_15
-      rect:
-        serializedVersion: 2
-        x: 1442
-        y: 37
-        width: 431
-        height: 371
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6204084318629ced0800000000000000
-      internalID: -2393339390597251034
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tyrsprite1_16
-      rect:
-        serializedVersion: 2
-        x: 1893
-        y: 37
-        width: 463
-        height: 382
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f944aabf0fa55c5d0800000000000000
-      internalID: -3042925982158011233
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tyrsprite1_17
-      rect:
-        serializedVersion: 2
-        x: 2405
-        y: 37
-        width: 411
-        height: 393
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8ed65018de2f7c5b0800000000000000
-      internalID: -5348038930593387032
+      spriteID: 412334b16aaa7fe10800000000000000
+      internalID: 2231439770784051732
       vertices: []
       indices: 
       edges: []
@@ -550,7 +575,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c1c40c78692c7c147a7f583574d3844a
     internalID: 0
     vertices: []
     indices: 
@@ -560,24 +585,25 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tyrsprite1_0: 2190609298286613164
-      tyrsprite1_1: 4474730066246519759
-      tyrsprite1_10: 9114074663134609607
-      tyrsprite1_11: 2362350897000623461
-      tyrsprite1_12: -145144005970366735
-      tyrsprite1_13: 320419498238845815
-      tyrsprite1_14: 3309596126475555051
-      tyrsprite1_15: -2393339390597251034
-      tyrsprite1_16: -3042925982158011233
-      tyrsprite1_17: -5348038930593387032
-      tyrsprite1_2: -1243587742409443536
-      tyrsprite1_3: 9072928817257709475
-      tyrsprite1_4: 4592728697768131722
-      tyrsprite1_5: 6215428860411570468
-      tyrsprite1_6: -8169788942751966067
-      tyrsprite1_7: 8599365779465414598
-      tyrsprite1_8: -3693142637906960383
-      tyrsprite1_9: -7348659476305248116
+      1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_9: 7675953012517041691
+      empty1: -7687376620120665221
+      empty10: 2231439770784051732
+      empty11: 3638075448580994997
+      empty12: -6296241009528851905
+      empty13: 1287806929643406158
+      empty14: -569531793938548362
+      empty2: -8217155045305207587
+      empty3: -3134147036617213957
+      empty4: -5433882092187697892
+      empty5: -3407575712308175246
+      empty6: -7136611363275641347
+      empty7: 3988925547567161380
+      empty9: 2738641517092712616
+      shield-block-1: -5380449763428238265
+      shield-block-2: 5898338298120840332
+      shield-block-3: 3681100798097304824
+      shield-block-4: -9201390590468882053
+      shield-block-5: 6310649597541539343
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
