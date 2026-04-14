@@ -70,7 +70,7 @@ public class TyrBoss : EnemyBase
         float localX = Mathf.Abs(hitbox.transform.localPosition.x);
         var box = hitbox.GetComponent<BoxCollider2D>();
         if (box != null)
-            return localX + box.size.x * 0.5f;
+            return localX + box.offset.x + box.size.x * 0.5f;
 
         var col = hitbox.GetComponent<Collider2D>();
         if (col != null)

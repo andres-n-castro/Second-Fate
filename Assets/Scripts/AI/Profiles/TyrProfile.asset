@@ -60,8 +60,8 @@ MonoBehaviour:
   - attackName: ShieldBlock
     damage: 0
     knockbackForce: 0
-    windupDuration: 0.2
-    activeDuration: 1
+    windupDuration: 0.5
+    activeDuration: 0.875
     recoveryDuration: 0.3
     cooldown: 2
     dashSpeed: 0
@@ -72,11 +72,11 @@ MonoBehaviour:
   - attackName: ShieldSlam
     damage: 1
     knockbackForce: 10
-    windupDuration: 0.5
+    windupDuration: 0.3
     activeDuration: 0.3
     recoveryDuration: 0.6
     cooldown: 2.5
-    dashSpeed: 4
+    dashSpeed: 8
     dashDuration: 0
     hitCount: 1
     hitInterval: 0.15

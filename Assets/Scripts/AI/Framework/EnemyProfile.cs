@@ -85,6 +85,11 @@ public class EnemyProfile : ScriptableObject
     [Header("Rock Golem")]
     public float projectileSpeed = 8f;
 
+    [Header("Gravity")]
+    public float maxFallVelocity = 28f;
+    public float jumpHangThreshold = 2f;
+    public float jumpHangGravityMultiplier = 0.5f;
+
     [Header("Magma Salamander")]
     public float jumpForce = 14f;
     public float jumpForwardForce = 3f;

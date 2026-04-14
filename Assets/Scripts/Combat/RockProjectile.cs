@@ -24,6 +24,9 @@ public class RockProjectile : MonoBehaviour, IDamageable
     [Header("Lifetime")]
     [SerializeField] private float maxLifetime = 5f;
 
+    [Header("Gravity")]
+    [SerializeField] private float maxFallVelocity = 28f;
+
     private Rigidbody2D rb;
 
     private void Awake()
@@ -48,6 +51,16 @@ public class RockProjectile : MonoBehaviour, IDamageable
         }
 
         Destroy(gameObject, maxLifetime);
+    }
+
+    private void FixedUpdate()
+    {
+        if (rb.linearVelocity.y < 0f)
+        {
+            rb.linearVelocity = new Vector2(
+                rb.linearVelocity.x,
+                Mathf.Max(rb.linearVelocity.y, -maxFallVelocity));
+        }
     }
 
     public void TakeDamage(int damage, Vector2 knockbackForce)

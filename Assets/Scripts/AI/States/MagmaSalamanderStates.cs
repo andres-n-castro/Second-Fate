@@ -320,12 +320,28 @@ public class SalamanderJumpState : EnemyState
             return;
         }
 
+        // Jump hang gravity — reduce gravity near the apex, same as Vidar
+        if (Mathf.Abs(owner.Rb.linearVelocity.y) < owner.Profile.jumpHangThreshold)
+        {
+            owner.SetJumpHangGravity();
+        }
+        else
+        {
+            owner.RestoreGravity();
+        }
+
         // Landed — return to chase
         if (owner.Ctx.isGrounded)
         {
+            owner.RestoreGravity();
             salamander.JumpCooldownUntil = Time.time + owner.Profile.jumpCooldown;
             salamander.CombatSuper.ForceSubState(salamander.ChaseState); // within Combat
         }
+    }
+
+    public override void Exit()
+    {
+        owner.RestoreGravity();
     }
 }
 
