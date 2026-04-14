@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
         Paused,
         InventoryMenu,
         BonfireMenu,
+        ShopMenu,
         Respawning,
         Death
     }
@@ -120,6 +121,7 @@ public class GameManager : MonoBehaviour
             case GameState.Paused:
             case GameState.InventoryMenu:
             case GameState.BonfireMenu:
+            case GameState.ShopMenu:
                 Time.timeScale = 0f;
                 break;
             case GameState.Exploration:

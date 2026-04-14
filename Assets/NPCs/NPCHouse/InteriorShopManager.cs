@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Manages the shop grid panel: item selection, detail display, purchase flow.
+/// Uses the real currency from PlayerManager.Instance.playerStats.currentCurrency.
+/// </summary>
 public class InteriorShopManager : MonoBehaviour
 {
     [Header("Panels")]
@@ -25,11 +29,12 @@ public class InteriorShopManager : MonoBehaviour
     public Button yesButton;
     public Button noButton;
     public Button okButton;
-    public Button exitButton;
     public Button buyButton;
+    public Button backButton;
 
-    [Header("Placeholder Currency")]
-    public int currentCurrency = 200;
+    [Header("Back Navigation")]
+    [Tooltip("Reference to the InteriorMenuController so the Back button can return to the main menu.")]
+    public InteriorMenuController menuController;
 
     private ShopItemButton selectedItem;
 
@@ -41,18 +46,34 @@ public class InteriorShopManager : MonoBehaviour
         if (yesButton != null) yesButton.onClick.AddListener(OnYesClicked);
         if (noButton != null) noButton.onClick.AddListener(OnNoClicked);
         if (okButton != null) okButton.onClick.AddListener(OnOkClicked);
-        if (exitButton != null) exitButton.onClick.AddListener(CloseShop);
         if (buyButton != null) buyButton.onClick.AddListener(OnBuyClicked);
+        if (backButton != null) backButton.onClick.AddListener(OnBackClicked);
 
         ClearDetailPanel();
         UpdateCurrencyUI();
     }
+
+    void OnEnable()
+    {
+        // Refresh currency display every time the shop panel is shown
+        UpdateCurrencyUI();
+        ClearDetailPanel();
+        selectedItem = null;
+    }
+
+    // ------------------------------------------------------------------
+    // Item Selection
+    // ------------------------------------------------------------------
 
     public void SelectItem(ShopItemButton item)
     {
         selectedItem = item;
         UpdateDetailPanel(item);
     }
+
+    // ------------------------------------------------------------------
+    // Purchase Flow
+    // ------------------------------------------------------------------
 
     void OnBuyClicked()
     {
@@ -74,9 +95,12 @@ public class InteriorShopManager : MonoBehaviour
         if (confirmPurchasePanel != null)
             confirmPurchasePanel.SetActive(false);
 
-        if (currentCurrency >= selectedItem.price)
+        int playerCurrency = GetPlayerCurrency();
+
+        if (playerCurrency >= selectedItem.price)
         {
-            currentCurrency -= selectedItem.price;
+            // Deduct from the real currency
+            SetPlayerCurrency(playerCurrency - selectedItem.price);
             UpdateCurrencyUI();
 
             if (purchaseMessageText != null)
@@ -111,21 +135,50 @@ public class InteriorShopManager : MonoBehaviour
             purchaseMessagePanel.SetActive(false);
     }
 
-    void CloseShop()
+    // ------------------------------------------------------------------
+    // Back Button — returns to the interaction menu
+    // ------------------------------------------------------------------
+
+    void OnBackClicked()
     {
+        // Close any open sub-panels first
         if (confirmPurchasePanel != null) confirmPurchasePanel.SetActive(false);
         if (purchaseMessagePanel != null) purchaseMessagePanel.SetActive(false);
-        if (shopPanel != null) shopPanel.SetActive(false);
 
         selectedItem = null;
         ClearDetailPanel();
+
+        if (menuController != null)
+            menuController.BackToMenu();
+    }
+
+    // ------------------------------------------------------------------
+    // Currency Helpers — reads/writes PlayerManager.Instance.playerStats
+    // ------------------------------------------------------------------
+
+    private int GetPlayerCurrency()
+    {
+        if (PlayerManager.Instance != null && PlayerManager.Instance.playerStats != null)
+            return PlayerManager.Instance.playerStats.currentCurrency;
+
+        return 0;
+    }
+
+    private void SetPlayerCurrency(int amount)
+    {
+        if (PlayerManager.Instance != null && PlayerManager.Instance.playerStats != null)
+            PlayerManager.Instance.playerStats.currentCurrency = amount;
     }
 
     void UpdateCurrencyUI()
     {
         if (currencyText != null)
-            currencyText.text = "Coins: " + currentCurrency;
+            currencyText.text = "Coins: " + GetPlayerCurrency();
     }
+
+    // ------------------------------------------------------------------
+    // Detail Panel
+    // ------------------------------------------------------------------
 
     void UpdateDetailPanel(ShopItemButton item)
     {

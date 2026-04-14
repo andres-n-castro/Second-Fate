@@ -343,7 +343,7 @@ MonoBehaviour:
   walkspeed: 10
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 264
   groundCheck: {fileID: 7035009867426231644}
   groundLengthY: 0.1
   groundLengthX: 0.4

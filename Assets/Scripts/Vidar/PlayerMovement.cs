@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpHangGravity;
     public float defaultGravity;
 
-    private PlayerFreeze playerFreeze;
 
     private float groundedRecallTimer;
     private bool canDoubleJump;
@@ -81,18 +80,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (playerFreeze == null)
-        {
-            playerFreeze = GetComponent<PlayerFreeze>();
-        }
-
-        if (playerFreeze != null && playerFreeze.isFrozen)
-        {
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-            anim.SetBool("Walking", false);
-
-            return;
-        }
 
         // so player does not fall off moving platform when standing still
         Vector2 platformVelocity = Vector2.zero;
@@ -114,16 +101,6 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (playerFreeze == null)
-        {
-            playerFreeze = GetComponent<PlayerFreeze>();
-        }
-
-        if (playerFreeze != null && playerFreeze.isFrozen)
-        {
-            anim.SetBool("Jumping", false);
-            return;
-        }
 
         bool isGrounded = Grounded();
         bool jumpPressed = Input.GetButtonDown("Jump");
