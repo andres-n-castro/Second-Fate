@@ -79,9 +79,12 @@ MonoBehaviour:
   fwsMinRepositionDistFromPlayer: 1.5
   fwsPlayerPathExclusionRadius: 1.2
   projectileSpeed: 8
-  jumpForce: 14
-  jumpForwardForce: 3
-  jumpHeightThreshold: 1.5
+  maxFallVelocity: 28
+  jumpHangThreshold: 2
+  jumpHangGravityMultiplier: 0.5
+  jumpForce: 20
+  jumpForwardForce: 10
+  jumpHeightThreshold: 5
   jumpCooldown: 2
   bossIntroDuration: 1
   approachSpeed: 3

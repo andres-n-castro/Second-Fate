@@ -1099,6 +1099,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tyr
       objectReference: {fileID: 0}
+    - target: {fileID: 4855009401576971506, guid: cef3c1c031beb3a4791cce574f37201e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5278456877469855912, guid: cef3c1c031beb3a4791cce574f37201e, type: 3}
       propertyPath: m_Size.x
       value: 1.94
@@ -1115,6 +1119,30 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.119054794
       objectReference: {fileID: 0}
+    - target: {fileID: 6568690956731899362, guid: cef3c1c031beb3a4791cce574f37201e, type: 3}
+      propertyPath: p2BodyColliderSize.x
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6568690956731899362, guid: cef3c1c031beb3a4791cce574f37201e, type: 3}
+      propertyPath: p2BodyColliderSize.y
+      value: 2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6568690956731899362, guid: cef3c1c031beb3a4791cce574f37201e, type: 3}
+      propertyPath: p2BodyColliderOffset.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6568690956731899362, guid: cef3c1c031beb3a4791cce574f37201e, type: 3}
+      propertyPath: p2BodyColliderOffset.y
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191431900886029885, guid: cef3c1c031beb3a4791cce574f37201e, type: 3}
+      propertyPath: m_Size.x
+      value: 2.114849
+      objectReference: {fileID: 0}
+    - target: {fileID: 8191431900886029885, guid: cef3c1c031beb3a4791cce574f37201e, type: 3}
+      propertyPath: m_Offset.x
+      value: 1.1574244
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1130,7 +1158,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 185935491549645268, guid: 7773249ba5b05a44287b45785abbcbf8, type: 3}
       propertyPath: m_GravityScale
-      value: 1
+      value: 9.8
       objectReference: {fileID: 0}
     - target: {fileID: 436075719143282445, guid: 7773249ba5b05a44287b45785abbcbf8, type: 3}
       propertyPath: m_Size.x
@@ -1154,7 +1182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3314618244624987299, guid: 7773249ba5b05a44287b45785abbcbf8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4269605116085205011, guid: 7773249ba5b05a44287b45785abbcbf8, type: 3}
       propertyPath: m_LocalPosition.x

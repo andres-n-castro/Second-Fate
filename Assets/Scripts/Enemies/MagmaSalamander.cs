@@ -65,6 +65,25 @@ public class MagmaSalamander : EnemyBase
     // Jump cooldown (world time when jump is allowed again)
     public float JumpCooldownUntil { get; set; }
 
+    // Jump tracking — gravity is managed in FixedUpdate like Vidar
+    public bool IsJumping { get; set; }
+
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+
+        // Gravity management every frame, matching Vidar's pattern:
+        // jump hang gravity is the exception, default gravity is the rule.
+        if (IsJumping && Mathf.Abs(Rb.linearVelocity.y) < Profile.jumpHangThreshold)
+        {
+            SetJumpHangGravity();
+        }
+        else
+        {
+            RestoreGravity();
+        }
+    }
+
     protected override void InitializeStates()
     {
         PatrolState = new SalamanderPatrolState(this);

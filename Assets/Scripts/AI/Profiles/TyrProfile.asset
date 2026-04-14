@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   flySpeed: 0
-  approachSpeed: 3
   roamSpeed: 2
   roamRadius: 3
   roamChangeInterval: 2
@@ -36,8 +35,8 @@ MonoBehaviour:
   - attackName: SpearThrust
     damage: 1
     knockbackForce: 8
-    windupDuration: 0.4
-    activeDuration: 0.3
+    windupDuration: 0.25
+    activeDuration: 0.25
     recoveryDuration: 0.5
     cooldown: 1.5
     dashSpeed: 8
@@ -48,8 +47,8 @@ MonoBehaviour:
   - attackName: SpearFlurry
     damage: 1
     knockbackForce: 4
-    windupDuration: 0.3
-    activeDuration: 0.6
+    windupDuration: 0.083
+    activeDuration: 0.417
     recoveryDuration: 0.5
     cooldown: 2
     dashSpeed: 0
@@ -61,7 +60,7 @@ MonoBehaviour:
     damage: 0
     knockbackForce: 0
     windupDuration: 0.5
-    activeDuration: 0.875
+    activeDuration: 0.9
     recoveryDuration: 0.3
     cooldown: 2
     dashSpeed: 0
@@ -72,8 +71,8 @@ MonoBehaviour:
   - attackName: ShieldSlam
     damage: 1
     knockbackForce: 10
-    windupDuration: 0.3
-    activeDuration: 0.3
+    windupDuration: 0.25
+    activeDuration: 0.25
     recoveryDuration: 0.6
     cooldown: 2.5
     dashSpeed: 8
@@ -84,8 +83,8 @@ MonoBehaviour:
   - attackName: ShieldFlurry
     damage: 1
     knockbackForce: 5
-    windupDuration: 0.3
-    activeDuration: 0.6
+    windupDuration: 0.1
+    activeDuration: 0.4
     recoveryDuration: 0.5
     cooldown: 2
     dashSpeed: 0
@@ -99,13 +98,6 @@ MonoBehaviour:
   contactKnockbackY: 4
   contactCooldownSeconds: 0.8
   contactRequiresEnemyAlive: 1
-  bossIntroDuration: 1
-  minAttackCooldown: 0.3
-  maxAttackCooldown: 1
-  phase2HealthPercent: 0.5
-  phaseTransitionDuration: 2
-  erraticIntensity: 3
-  hoverHeight: 3
   chaseSpeed: 3.5
   acquireTargetDelay: 0.3
   loseTargetDelay: 0.5
@@ -119,6 +111,35 @@ MonoBehaviour:
   backstepDuration: 0.3
   backstepSpeed: 2.5
   backstepCooldown: 1.5
+  dashWindowSeconds: 5
+  dashWeightBoostPerDash: 0.15
+  baseDashWeight: 1
+  dashStopShortDistance: 1
+  dashPathCastRadius: 0.2
+  patrolArriveThreshold: 0.5
+  patrolSmoothing: 5
+  patrolTargetSampleCount: 8
+  patrolTargetClearanceRadius: 0.4
+  stuckSeconds: 0.5
+  stuckMinProgress: 0.3
+  repositionDistance: 4
+  repositionDecisionCooldown: 0.4
+  fwsMinRepositionDistFromPlayer: 1.5
+  fwsPlayerPathExclusionRadius: 1.2
+  projectileSpeed: 8
+  maxFallVelocity: 28
+  jumpHangThreshold: 2
+  jumpHangGravityMultiplier: 0.5
+  jumpForce: 14
+  jumpForwardForce: 3
+  jumpHeightThreshold: 1.5
+  jumpCooldown: 2
+  bossIntroDuration: 1
+  approachSpeed: 3
+  minAttackCooldown: 0.3
+  maxAttackCooldown: 1
+  phase2HealthPercent: 0.5
+  phaseTransitionDuration: 2
   p1CloseRange: 2
   p1MidRange: 4
   p1MaxEngageRange: 6
@@ -129,6 +150,8 @@ MonoBehaviour:
   p1GapCloseRunSpeed: 6
   p1SlashMicroLungeSpeed: 3
   p1SlashMicroLungeDuration: 0.2
+  erraticIntensity: 3
+  hoverHeight: 3
   valkPlungeMinAbovePlayerY: 2
   valkPlungeMaxHorizontalOffset: 4
   valkPlungeWeightMultiplier: 5
@@ -146,18 +169,29 @@ MonoBehaviour:
   tyrSlamWeightMultiplier: 3
   tyrFlurryRange: 2.5
   tyrFlurryWeightMultiplier: 3
-  dashWindowSeconds: 5
-  dashWeightBoostPerDash: 0.15
-  baseDashWeight: 1
-  dashStopShortDistance: 1
-  dashPathCastRadius: 0.2
-  patrolArriveThreshold: 0.5
-  patrolSmoothing: 5
-  patrolTargetSampleCount: 8
-  patrolTargetClearanceRadius: 0.4
-  stuckSeconds: 0.5
-  stuckMinProgress: 0.3
-  repositionDistance: 4
-  repositionDecisionCooldown: 0.4
-  fwsMinRepositionDistFromPlayer: 1.5
-  fwsPlayerPathExclusionRadius: 1.2
+  surtrCloseRange: 2.5
+  surtrMidRange: 5
+  surtrMaxEngageRange: 7
+  surtrSweepMaxRange: 5
+  surtrSweepMinRange: 1.5
+  surtrSweepWeightMultiplier: 2
+  surtrThrustMaxRange: 3.5
+  surtrThrustWeightMultiplier: 2
+  surtrFireBreathMaxRange: 4
+  surtrFireBreathWeightMultiplier: 2
+  surtrSweepProjectileSpeed: 8
+  surtrP2MinAttackCooldown: 0.3
+  surtrP2MaxAttackCooldown: 0.9
+  surtrEruptionInterval: 3
+  surtrEruptionProjectileCount: 3
+  surtrEruptionSpreadAngle: 60
+  surtrEruptionProjectileSpeed: 7
+  surtrGroundedThrustStuckDuration: 1.5
+  surtrVomitProjectileCount: 5
+  surtrVomitSpreadAngle: 90
+  surtrVomitProjectileSpeed: 6
+  surtrGroundedThrustRange: 3.5
+  surtrGroundedThrustWeightMultiplier: 3
+  surtrVomitMaxRange: 6
+  surtrVomitMinRange: 2
+  surtrVomitWeightMultiplier: 2

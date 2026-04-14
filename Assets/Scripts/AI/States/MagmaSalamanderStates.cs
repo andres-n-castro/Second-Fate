@@ -242,9 +242,21 @@ public class SalamanderChaseState : EnemyState
             return;
         }
 
-        // Ledge/wall avoidance — stop at edges, don't walk off
+        // Ledge/wall avoidance — if player is ahead, jump toward them
+        // instead of stopping. Otherwise stop at the edge.
         if (owner.Ctx.nearLedgeAhead || owner.Ctx.nearWallAhead)
         {
+            bool playerIsAhead = Mathf.Abs(owner.Ctx.playerRelativePos.x) > 0.1f
+                && Mathf.Sign(owner.Ctx.playerRelativePos.x) == owner.FacingDirection;
+
+            if (playerIsAhead
+                && owner.Ctx.isGrounded
+                && Time.time >= salamander.JumpCooldownUntil)
+            {
+                salamander.CombatSuper.ForceSubState(salamander.JumpState);
+                return;
+            }
+
             owner.StopHorizontal();
             if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
             return;
@@ -292,6 +304,7 @@ public class SalamanderJumpState : EnemyState
 {
     private MagmaSalamander salamander;
     private bool hasLeftGround;
+    private float distanceToPlayerAtLaunch;
 
     public SalamanderJumpState(MagmaSalamander salamander) : base(salamander)
     {
@@ -301,7 +314,9 @@ public class SalamanderJumpState : EnemyState
     public override void Enter()
     {
         hasLeftGround = false;
+        salamander.IsJumping = true;
         owner.FacePlayer();
+        distanceToPlayerAtLaunch = owner.Ctx.playerDistance;
 
         // Apply jump impulse — upward + forward toward player
         float forwardForce = owner.FacingDirection * owner.Profile.jumpForwardForce;
@@ -320,28 +335,26 @@ public class SalamanderJumpState : EnemyState
             return;
         }
 
-        // Jump hang gravity — reduce gravity near the apex, same as Vidar
-        if (Mathf.Abs(owner.Rb.linearVelocity.y) < owner.Profile.jumpHangThreshold)
-        {
-            owner.SetJumpHangGravity();
-        }
-        else
-        {
-            owner.RestoreGravity();
-        }
-
-        // Landed — return to chase
+        // Landed
         if (owner.Ctx.isGrounded)
         {
-            owner.RestoreGravity();
+            salamander.IsJumping = false;
             salamander.JumpCooldownUntil = Time.time + owner.Profile.jumpCooldown;
-            salamander.CombatSuper.ForceSubState(salamander.ChaseState); // within Combat
+
+            // If the jump didn't get us closer to the player, give up
+            if (owner.Ctx.playerDistance >= distanceToPlayerAtLaunch)
+            {
+                owner.FSM.ChangeState(salamander.NonCombatSuper);
+                return;
+            }
+
+            salamander.CombatSuper.ForceSubState(salamander.ChaseState);
         }
     }
 
     public override void Exit()
     {
-        owner.RestoreGravity();
+        salamander.IsJumping = false;
     }
 }
 
