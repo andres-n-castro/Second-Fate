@@ -90,7 +90,14 @@ public class PlayerMovement : MonoBehaviour
 
         float targetX = (walkspeed * adjustedXAxis) + platformVelocity.x;
 
-        rb.linearVelocity = new Vector2(targetX, rb.linearVelocity.y);
+        // Match platform's vertical velocity when grounded to stay locked to the platform
+        float targetY = rb.linearVelocity.y;
+        if (Grounded() && Mathf.Abs(platformVelocity.y) > 0.01f)
+        {
+            targetY = platformVelocity.y;
+        }
+
+        rb.linearVelocity = new Vector2(targetX, targetY);
 
         anim.SetBool("Walking", (walkspeed * adjustedXAxis) != 0 && Grounded());
     }
@@ -105,8 +112,16 @@ public class PlayerMovement : MonoBehaviour
         bool isGrounded = Grounded();
         bool jumpPressed = Input.GetButtonDown("Jump");
 
+        // Calculate Y velocity relative to platform so platform motion
+        // doesn't interfere with ground state detection
+        float relativeYVelocity = rb.linearVelocity.y;
+        if (TryGetComponent<PlatformRider>(out var r))
+        {
+            relativeYVelocity -= r.GetPlatformVelocity().y;
+        }
+
         //coyote timer check tied to ground check
-        if (isGrounded && (rb.linearVelocity.y <= 0.5f || TryGetComponent<PlatformRider>(out var r) && r.GetPlatformVelocity().y > 0))
+        if (isGrounded && relativeYVelocity <= 0.5f)
         {
             coyoteTimeCounter = coyoteTime;
             isJumping = false;

@@ -8,18 +8,19 @@ public class PlatformRider : MonoBehaviour
 
     void Start() => rb = GetComponent<Rigidbody2D>();
 
-    // This gets the velocity of the platform the player is standing on
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("MovingPlatform"))
+        Rigidbody2D otherRb = collision.collider.attachedRigidbody;
+        if (otherRb != null && otherRb.gameObject.CompareTag("MovingPlatform"))
         {
-            activePlatformRb = collision.gameObject.GetComponent<Rigidbody2D>();
+            activePlatformRb = otherRb;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("MovingPlatform"))
+        Rigidbody2D otherRb = collision.collider.attachedRigidbody;
+        if (otherRb != null && otherRb.gameObject.CompareTag("MovingPlatform"))
         {
             activePlatformRb = null;
             platformVelocity = Vector2.zero;
@@ -30,10 +31,10 @@ public class PlatformRider : MonoBehaviour
     {
         if (activePlatformRb != null)
         {
-            // We use the platform's velocity (ensure the platform's RB is Kinematic or has its own movement script)
             platformVelocity = activePlatformRb.linearVelocity;
         }
     }
 
     public Vector2 GetPlatformVelocity() => platformVelocity;
 }
+
