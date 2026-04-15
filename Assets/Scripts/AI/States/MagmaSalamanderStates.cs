@@ -12,9 +12,13 @@ public class SalamanderPatrolState : EnemyState
     private float stuckTimer;
     private bool isIdle;
     private float idleTimer;
+    private int stallCount;
+    private float lastProgressX;
+    private int partialSupportFrames;
 
     private const float IdleDuration = 0.2f;
     private const float StuckThreshold = 0.3f;
+    private const int MaxStallsBeforeLock = 2;
 
     public SalamanderPatrolState(MagmaSalamander salamander) : base(salamander)
     {
@@ -25,6 +29,9 @@ public class SalamanderPatrolState : EnemyState
     {
         stuckTimer = 0f;
         isIdle = false;
+        stallCount = 0;
+        lastProgressX = owner.transform.position.x;
+        partialSupportFrames = 0;
         salamander.AcquireTargetTimer = 0f;
 
         // Face toward the player's last known position so patrol walks that way
@@ -87,6 +94,38 @@ public class SalamanderPatrolState : EnemyState
             salamander.AcquireTargetTimer = 0f;
         }
 
+        // ── Partial-overhang recovery ──
+        // If not grounded by raycast but vertical velocity has settled near
+        // zero for several consecutive frames, the collider is physically
+        // resting on a surface edge. Walk toward ground to regain full footing
+        // before normal patrol logic (which would flip endlessly at ledges).
+        if (!owner.Ctx.isGrounded && Mathf.Abs(owner.Rb.linearVelocity.y) < 0.3f)
+            partialSupportFrames++;
+        else
+            partialSupportFrames = 0;
+
+        if (partialSupportFrames >= 3)
+        {
+            bool groundAhead = HasGroundAhead();
+            bool groundBehind = HasGroundBehind();
+
+            if (groundAhead)
+            {
+                owner.MoveGround(owner.Profile.moveSpeed);
+            }
+            else if (groundBehind)
+            {
+                owner.FlipFacing();
+                owner.MoveGround(owner.Profile.moveSpeed);
+            }
+            else
+            {
+                owner.StopHorizontal();
+            }
+            if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, groundAhead || groundBehind);
+            return;
+        }
+
         // Idle pause after turning
         if (isIdle)
         {
@@ -125,6 +164,13 @@ public class SalamanderPatrolState : EnemyState
         // Walk forward
         owner.MoveGround(owner.Profile.moveSpeed);
         if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, true);
+
+        // Reset stall counter when making real progress
+        if (Mathf.Abs(owner.transform.position.x - lastProgressX) > 0.3f)
+        {
+            stallCount = 0;
+            lastProgressX = owner.transform.position.x;
+        }
     }
 
     public override void Exit()
@@ -136,9 +182,47 @@ public class SalamanderPatrolState : EnemyState
     {
         isIdle = true;
         idleTimer = IdleDuration;
+        stallCount++;
+
+        // After repeated stalls, jump to free the collider from the ledge edge
+        // instead of flipping endlessly. Only jump if actually grounded.
+        if (stallCount >= MaxStallsBeforeLock)
+        {
+            stallCount = 0;
+            if (owner.Ctx.isGrounded)
+            {
+                owner.FacePlayer();
+                owner.Rb.linearVelocity = new Vector2(
+                    owner.FacingDirection * owner.Profile.jumpForwardForce,
+                    owner.Profile.jumpForce);
+            }
+            return;
+        }
+
         owner.FlipFacing();
         owner.StopHorizontal();
         if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
+    }
+
+    private bool HasGroundAhead()
+    {
+        Vector2 origin = owner.GroundCheck != null
+            ? (Vector2)owner.GroundCheck.position
+            : (Vector2)owner.transform.position + new Vector2(owner.FacingDirection * 0.5f, 0f);
+        return Physics2D.Raycast(origin, Vector2.down, owner.Profile.groundCheckDistance, owner.GroundLayer);
+    }
+
+    private bool HasGroundBehind()
+    {
+        if (owner.GroundCheck == null)
+        {
+            Vector2 fallback = (Vector2)owner.transform.position + new Vector2(-owner.FacingDirection * 0.5f, 0f);
+            return Physics2D.Raycast(fallback, Vector2.down, owner.Profile.groundCheckDistance, owner.GroundLayer);
+        }
+        Vector2 gcWorld = owner.GroundCheck.position;
+        Vector2 center = owner.transform.position;
+        float mirroredX = center.x - (gcWorld.x - center.x);
+        return Physics2D.Raycast(new Vector2(mirroredX, gcWorld.y), Vector2.down, owner.Profile.groundCheckDistance, owner.GroundLayer);
     }
 }
 
@@ -154,6 +238,7 @@ public class SalamanderChaseState : EnemyState
     private MagmaSalamander salamander;
     private float stuckTimer;
     private float lastX;
+    private int partialSupportFrames;
 
     public SalamanderChaseState(MagmaSalamander salamander) : base(salamander)
     {
@@ -165,6 +250,7 @@ public class SalamanderChaseState : EnemyState
         salamander.LoseTargetTimer = 0f;
         stuckTimer = 0f;
         lastX = owner.transform.position.x;
+        partialSupportFrames = 0;
     }
 
     public override void FixedTick()
@@ -214,13 +300,85 @@ public class SalamanderChaseState : EnemyState
             return;
         }
 
-        // Stuck detection — if no meaningful horizontal progress, accumulate timer
+        // ── Partial-overhang recovery ──
+        // If not grounded by raycast but vertical velocity has settled near
+        // zero for several consecutive frames, the collider is physically
+        // resting on a surface edge (partial support). Walk toward the
+        // nearest direction with ground to regain full footing.
+        if (!owner.Ctx.isGrounded && Mathf.Abs(owner.Rb.linearVelocity.y) < 0.3f)
+            partialSupportFrames++;
+        else
+            partialSupportFrames = 0;
+
+        if (partialSupportFrames >= 3)
+        {
+            bool groundAhead = HasGroundAhead();
+            bool groundBehind = HasGroundBehind();
+
+            if (groundAhead)
+            {
+                owner.MoveGround(owner.Profile.moveSpeed);
+            }
+            else if (groundBehind)
+            {
+                owner.FlipFacing();
+                owner.MoveGround(owner.Profile.moveSpeed);
+            }
+            else
+            {
+                owner.StopHorizontal();
+            }
+            if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, groundAhead || groundBehind);
+            return;
+        }
+
+        // ── Ledge/wall avoidance ──
+        // Must run BEFORE stuck detection so the salamander waits for jump
+        // cooldown on the ledge instead of the stuck timer giving up early.
+        if (owner.Ctx.nearLedgeAhead || owner.Ctx.nearWallAhead)
+        {
+            owner.FacePlayer();
+
+            // Wall blocks the path toward the player — give up
+            if (HasWallAhead())
+            {
+                salamander.BlockedReaggroLockUntil = Time.time + owner.Profile.blockedReaggroCooldown;
+                salamander.CombatSuper.ForceSubState(salamander.GiveUpState);
+                return;
+            }
+
+            // If ground exists ahead (FacePlayer turned us away from a ledge),
+            // fall through to normal chase.
+            if (HasGroundAhead())
+            {
+                // Ground exists, no wall — chase normally below
+            }
+            else if (owner.Ctx.isGrounded && Time.time >= salamander.JumpCooldownUntil)
+            {
+                // Grounded with jump ready — jump toward player over the ledge
+                salamander.CombatSuper.ForceSubState(salamander.JumpState);
+                return;
+            }
+            else
+            {
+                // Wait for jump cooldown or grounded state
+                owner.StopHorizontal();
+                if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
+                return;
+            }
+        }
+
+        // Stuck detection — if no meaningful horizontal progress, accumulate timer.
+        // When stuck, try jumping toward the player to get unstuck (e.g. caught on
+        // a ledge edge). Only give up if the jump is on cooldown or not grounded.
         float currentX = owner.transform.position.x;
         if (Mathf.Abs(currentX - lastX) < owner.Profile.minProgressThreshold)
         {
             stuckTimer += Time.fixedDeltaTime;
             if (stuckTimer >= owner.Profile.stuckTimeout)
             {
+                stuckTimer = 0f;
+
                 salamander.BlockedReaggroLockUntil = Time.time + owner.Profile.blockedReaggroCooldown;
                 salamander.CombatSuper.ForceSubState(salamander.GiveUpState);
                 return;
@@ -237,26 +395,6 @@ public class SalamanderChaseState : EnemyState
             && owner.Ctx.playerRelativePos.y > owner.Profile.playerAboveThresholdY
             && Mathf.Abs(owner.Ctx.playerRelativePos.x) < owner.Profile.facingDeadzoneX)
         {
-            owner.StopHorizontal();
-            if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
-            return;
-        }
-
-        // Ledge/wall avoidance — if player is ahead, jump toward them
-        // instead of stopping. Otherwise stop at the edge.
-        if (owner.Ctx.nearLedgeAhead || owner.Ctx.nearWallAhead)
-        {
-            bool playerIsAhead = Mathf.Abs(owner.Ctx.playerRelativePos.x) > 0.1f
-                && Mathf.Sign(owner.Ctx.playerRelativePos.x) == owner.FacingDirection;
-
-            if (playerIsAhead
-                && owner.Ctx.isGrounded
-                && Time.time >= salamander.JumpCooldownUntil)
-            {
-                salamander.CombatSuper.ForceSubState(salamander.JumpState);
-                return;
-            }
-
             owner.StopHorizontal();
             if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
             return;
@@ -292,6 +430,48 @@ public class SalamanderChaseState : EnemyState
     {
         if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
     }
+
+    /// <summary>
+    /// Fresh ground check in the current facing direction using GroundCheck position.
+    /// Called after FacePlayer may have flipped the facing, so GroundCheck.position
+    /// reflects the new front edge immediately.
+    /// </summary>
+    private bool HasGroundAhead()
+    {
+        Vector2 origin = owner.GroundCheck != null
+            ? (Vector2)owner.GroundCheck.position
+            : (Vector2)owner.transform.position + new Vector2(owner.FacingDirection * 0.5f, 0f);
+        return Physics2D.Raycast(origin, Vector2.down, owner.Profile.groundCheckDistance, owner.GroundLayer);
+    }
+
+    /// <summary>
+    /// Fresh ground check behind the enemy (mirrored GroundCheck position).
+    /// </summary>
+    private bool HasGroundBehind()
+    {
+        if (owner.GroundCheck == null)
+        {
+            Vector2 fallback = (Vector2)owner.transform.position + new Vector2(-owner.FacingDirection * 0.5f, 0f);
+            return Physics2D.Raycast(fallback, Vector2.down, owner.Profile.groundCheckDistance, owner.GroundLayer);
+        }
+        Vector2 gcWorld = owner.GroundCheck.position;
+        Vector2 center = owner.transform.position;
+        float mirroredX = center.x - (gcWorld.x - center.x);
+        return Physics2D.Raycast(new Vector2(mirroredX, gcWorld.y), Vector2.down, owner.Profile.groundCheckDistance, owner.GroundLayer);
+    }
+
+    /// <summary>
+    /// Fresh wall check in the current facing direction using WallCheck position.
+    /// Called after FacePlayer so it reflects the direction the salamander will jump.
+    /// </summary>
+    private bool HasWallAhead()
+    {
+        Vector2 origin = owner.WallCheck != null
+            ? (Vector2)owner.WallCheck.position
+            : (Vector2)owner.transform.position;
+        return Physics2D.Raycast(origin, Vector2.right * owner.FacingDirection,
+            owner.Profile.wallCheckDistance, owner.GroundLayer);
+    }
 }
 
 // ---------------------------------------------------------------
@@ -304,7 +484,13 @@ public class SalamanderJumpState : EnemyState
 {
     private MagmaSalamander salamander;
     private bool hasLeftGround;
+    private bool hasPeaked;
     private float distanceToPlayerAtLaunch;
+    private float airTimer;
+    private float settledTimer;
+
+    private const float SettledVelocityThreshold = 0.5f;
+    private const float SettledDuration = 0.15f;
 
     public SalamanderJumpState(MagmaSalamander salamander) : base(salamander)
     {
@@ -314,6 +500,9 @@ public class SalamanderJumpState : EnemyState
     public override void Enter()
     {
         hasLeftGround = false;
+        hasPeaked = false;
+        airTimer = 0f;
+        settledTimer = 0f;
         salamander.IsJumping = true;
         owner.FacePlayer();
         distanceToPlayerAtLaunch = owner.Ctx.playerDistance;
@@ -335,8 +524,33 @@ public class SalamanderJumpState : EnemyState
             return;
         }
 
-        // Landed
-        if (owner.Ctx.isGrounded)
+        airTimer += Time.fixedDeltaTime;
+
+        // Track peak — once velocity turns downward, we've peaked
+        if (!hasPeaked && owner.Rb.linearVelocity.y < 0f)
+            hasPeaked = true;
+
+        // Primary landing: raycast-based grounded check
+        bool landed = owner.Ctx.isGrounded;
+
+        // Fallback landing: after peaking, if vertical velocity has settled
+        // near zero for a sustained period, the collider is physically resting
+        // on a surface edge even though the center-point raycast missed.
+        if (!landed && hasPeaked)
+        {
+            if (Mathf.Abs(owner.Rb.linearVelocity.y) < SettledVelocityThreshold)
+            {
+                settledTimer += Time.fixedDeltaTime;
+                if (settledTimer >= SettledDuration)
+                    landed = true;
+            }
+            else
+            {
+                settledTimer = 0f;
+            }
+        }
+
+        if (landed)
         {
             salamander.IsJumping = false;
             salamander.JumpCooldownUntil = Time.time + owner.Profile.jumpCooldown;

@@ -82,9 +82,9 @@ MonoBehaviour:
   maxFallVelocity: 28
   jumpHangThreshold: 2
   jumpHangGravityMultiplier: 0.5
-  jumpForce: 20
+  jumpForce: 25
   jumpForwardForce: 10
-  jumpHeightThreshold: 5
+  jumpHeightThreshold: 4
   jumpCooldown: 2
   bossIntroDuration: 1
   approachSpeed: 3

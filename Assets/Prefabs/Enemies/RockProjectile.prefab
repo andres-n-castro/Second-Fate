@@ -171,3 +171,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxLifetime: 5
+  maxFallVelocity: 28
