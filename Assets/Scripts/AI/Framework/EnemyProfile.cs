@@ -182,6 +182,52 @@ public class EnemyProfile : ScriptableObject
     public float surtrVomitMaxRange = 6.0f;
     public float surtrVomitMinRange = 2.0f;
     public float surtrVomitWeightMultiplier = 2f;
+
+    [Header("Odin Range Bands")]
+    public float odinCloseRange = 2.5f;
+    public float odinMidRange = 5.0f;
+    public float odinMaxEngageRange = 8.0f;
+    public float odinOptimalSpacing = 5.0f;
+
+    [Header("Odin P1 Attack Selection")]
+    public float odinStaffProjectileMaxRange = 7.0f;
+    public float odinStaffProjectileMinRange = 3.0f;
+    public float odinStaffProjectileWeightMultiplier = 2f;
+    public float odinGroundSpikesMaxRange = 6.0f;
+    public float odinGroundSpikesWeightMultiplier = 2f;
+    public float odinStaffMeleeMaxRange = 3.0f;
+    public float odinStaffMeleeWeightMultiplier = 3f;
+
+    [Header("Odin Projectile")]
+    public float odinProjectileSpeed = 8f;
+    public float odinProjectileCurveDelay = 0.3f;
+    public float odinProjectileCurveStrength = 4f;
+    public float odinProjectileLifetime = 5f;
+
+    [Header("Odin Ground Spikes")]
+    public int odinSpikeCount = 5;
+    public float odinSpikeSpacing = 1.5f;
+    public float odinSpikeDelay = 0.15f;
+    public float odinSpikeActiveDuration = 0.5f;
+
+    [Header("Odin P2")]
+    public float odinP2MinAttackCooldown = 0.3f;
+    public float odinP2MaxAttackCooldown = 0.8f;
+    public int odinTripleProjectileCount = 3;
+    public float odinTripleProjectileSpreadAngle = 30f;
+    public int odinConsecutiveSpikeWaves = 3;
+    public float odinConsecutiveSpikeWaveDelay = 0.4f;
+    public float odinSlashProjectileSpeed = 10f;
+    public float odinSlashProjectileHeight = 1.0f;
+
+    [Header("Odin P2 Attack Selection")]
+    public float odinTripleProjectileMaxRange = 8.0f;
+    public float odinTripleProjectileMinRange = 3.0f;
+    public float odinTripleProjectileWeightMultiplier = 2f;
+    public float odinConsecutiveSpikesMaxRange = 6.0f;
+    public float odinConsecutiveSpikesWeightMultiplier = 2f;
+    public float odinLargeSlashMaxRange = 5.0f;
+    public float odinLargeSlashWeightMultiplier = 3f;
 }
 
 [Serializable]
