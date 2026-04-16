@@ -56,6 +56,9 @@ MonoBehaviour:
   - bonfireID: Midgard_Caves_Bonfire
     displayName: Midgard
     sceneName: biome1_subarea1
+  - bonfireID: Swamp_Bonfire
+    displayName: Swamp
+    sceneName: biome1_subarea2
   pendingTeleportBonfireID: 
   masterBonfireRegistry: []
   unlockedBonfires: []

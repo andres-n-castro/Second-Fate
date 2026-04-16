@@ -11,8 +11,8 @@ public class PlatformDrop : MonoBehaviour
 
     void Update()
     {
-        // Check for 'S' + 'Space'
-        if (Input.GetKey(KeyCode.S) && Input.GetKeyDown(KeyCode.Space))
+        // Check for 'S' to drop through platform
+        if (Input.GetKeyDown(KeyCode.S))
         {
             if (CheckForPlatform())
             {
