@@ -286,15 +286,23 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 637
-        y: 646
+        y: 652
         width: 382
-        height: 69
+        height: 63
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 11, y: 5, z: 11, w: 8}
       customData: 
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: 180, y: -12.5}
+        - {x: 180, y: 20.5}
+        - {x: 35, y: 20.5}
+        - {x: -158, y: 19.5}
+        - {x: -181, y: 19.5}
+        - {x: -181, y: -10.5}
+        - {x: -181, y: -24.5}
+        - {x: 180, y: -23.5}
       tessellationDetail: 0
       bones: []
       spriteID: 870302f56adcb4820800000000000000
@@ -307,10 +315,10 @@ TextureImporter:
       name: lava_tiles_7
       rect:
         serializedVersion: 2
-        x: 637
-        y: 518
-        width: 382
-        height: 74
+        x: 650
+        y: 529
+        width: 359
+        height: 51
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

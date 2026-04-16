@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2, y: 3.2286475, z: -0.021414464}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4300360275963622466}
@@ -218,6 +218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 2ba720b168ec0964faab795699713cdd, type: 2}
+  baseCurrencyDrop: 10
+  coinPrefab: {fileID: 0}
   groundCheck: {fileID: 4300360275963622466}
   wallCheck: {fileID: 4636725294003091579}
   groundLayer:
@@ -325,7 +327,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.015414, y: -0.019267678}
+  m_Offset: {x: 0.0068166256, y: 0.012262344}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -335,7 +337,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.9094329, y: 0.5195935}
+  m_Size: {x: 1.9266276, y: 0.70877457}
   m_EdgeRadius: 0
 --- !u!114 &7828855682876285091
 MonoBehaviour:
@@ -349,6 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b527565a29f3c44a506503fb89a50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerHitbox: 0
+  causesPlayerBounce: 0
   damage: 1
   knockbackForce: {x: 6, y: 4}
   targetLayers:
@@ -379,7 +383,7 @@ Transform:
   m_GameObject: {fileID: 9130560515562316012}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.107, y: -0.326, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

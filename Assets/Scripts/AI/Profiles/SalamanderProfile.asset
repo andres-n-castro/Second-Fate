@@ -82,10 +82,10 @@ MonoBehaviour:
   maxFallVelocity: 28
   jumpHangThreshold: 2
   jumpHangGravityMultiplier: 0.5
-  jumpForce: 25
-  jumpForwardForce: 10
-  jumpHeightThreshold: 4
-  jumpCooldown: 2
+  jumpForce: 12
+  jumpForwardForce: 3
+  jumpHeightThreshold: 5
+  jumpCooldown: 1
   bossIntroDuration: 1
   approachSpeed: 3
   minAttackCooldown: 0.5
@@ -147,3 +147,37 @@ MonoBehaviour:
   surtrVomitMaxRange: 6
   surtrVomitMinRange: 2
   surtrVomitWeightMultiplier: 2
+  odinCloseRange: 2.5
+  odinMidRange: 5
+  odinMaxEngageRange: 8
+  odinOptimalSpacing: 5
+  odinStaffProjectileMaxRange: 7
+  odinStaffProjectileMinRange: 3
+  odinStaffProjectileWeightMultiplier: 2
+  odinGroundSpikesMaxRange: 6
+  odinGroundSpikesWeightMultiplier: 2
+  odinStaffMeleeMaxRange: 3
+  odinStaffMeleeWeightMultiplier: 3
+  odinProjectileSpeed: 8
+  odinProjectileCurveDelay: 0.3
+  odinProjectileCurveStrength: 4
+  odinProjectileLifetime: 5
+  odinSpikeCount: 5
+  odinSpikeSpacing: 1.5
+  odinSpikeDelay: 0.15
+  odinSpikeActiveDuration: 0.5
+  odinP2MinAttackCooldown: 0.3
+  odinP2MaxAttackCooldown: 0.8
+  odinTripleProjectileCount: 3
+  odinTripleProjectileSpreadAngle: 30
+  odinConsecutiveSpikeWaves: 3
+  odinConsecutiveSpikeWaveDelay: 0.4
+  odinSlashProjectileSpeed: 10
+  odinSlashProjectileHeight: 1
+  odinTripleProjectileMaxRange: 8
+  odinTripleProjectileMinRange: 3
+  odinTripleProjectileWeightMultiplier: 2
+  odinConsecutiveSpikesMaxRange: 6
+  odinConsecutiveSpikesWeightMultiplier: 2
+  odinLargeSlashMaxRange: 5
+  odinLargeSlashWeightMultiplier: 3
