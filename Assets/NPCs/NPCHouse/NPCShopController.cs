@@ -7,6 +7,9 @@ using UnityEngine;
 ///
 /// Press M during Exploration → opens the shop and pauses the game.
 /// Press M (or click Leave) while the shop is open → closes it and resumes play.
+///
+/// A proximity popup (e.g. "Press M to enter") is shown when the player
+/// enters the trigger collider on this GameObject, and hidden when they leave.
 /// </summary>
 public class NPCShopController : MonoBehaviour
 {
@@ -17,15 +20,26 @@ public class NPCShopController : MonoBehaviour
     [Tooltip("The interior menu that manages Talk / Shop / Leave sub-panels.")]
     [SerializeField] private InteriorMenuController menuController;
 
+    [Header("Proximity Popup")]
+    [Tooltip("A UI text object (e.g. 'Press M to enter') shown when the player is near the house. Drag a Text / TextMeshPro GameObject here.")]
+    [SerializeField] private GameObject proximityPopup;
+
     [Header("Settings")]
     [Tooltip("Key used to open / close the shop.")]
     [SerializeField] private KeyCode toggleKey = KeyCode.M;
+
+    /// <summary>Tracks whether the player is currently inside the trigger zone.</summary>
+    private bool playerInRange;
 
     void Start()
     {
         // Make sure the canvas is off at the start
         if (shopCanvas != null)
             shopCanvas.SetActive(false);
+
+        // Hide the popup at the start
+        if (proximityPopup != null)
+            proximityPopup.SetActive(false);
     }
 
     void Update()
@@ -35,7 +49,7 @@ public class NPCShopController : MonoBehaviour
 
         var state = GameManager.Instance.currentState;
 
-        if (state == GameManager.GameState.Exploration)
+        if (state == GameManager.GameState.Exploration && playerInRange)
         {
             OpenShop();
         }
@@ -45,11 +59,39 @@ public class NPCShopController : MonoBehaviour
         }
     }
 
+    // ────────────────────── Trigger Detection ──────────────────────
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        playerInRange = true;
+
+        if (proximityPopup != null)
+            proximityPopup.SetActive(true);
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        playerInRange = false;
+
+        if (proximityPopup != null)
+            proximityPopup.SetActive(false);
+    }
+
+    // ────────────────────── Shop Open / Close ──────────────────────
+
     /// <summary>
     /// Opens the full-screen shop, pauses the game, and shows the cursor.
     /// </summary>
     public void OpenShop()
     {
+        // Hide the popup while the shop is open
+        if (proximityPopup != null)
+            proximityPopup.SetActive(false);
+
         if (shopCanvas != null)
             shopCanvas.SetActive(true);
 
@@ -78,5 +120,9 @@ public class NPCShopController : MonoBehaviour
         // Restore the previous game state (Exploration)
         if (GameManager.Instance != null)
             GameManager.Instance.RestorePreviousState();
+
+        // Re-show the popup if the player is still in range
+        if (playerInRange && proximityPopup != null)
+            proximityPopup.SetActive(true);
     }
 }

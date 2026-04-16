@@ -20,12 +20,13 @@ public class InteriorMenuController : MonoBehaviour
 
     [Header("Dialogue UI")]
     [SerializeField] private TMP_Text dialogueText;
-    [SerializeField] private TMP_Text nameText;
-    [SerializeField] private Image portraitImage;
 
     [Header("Dialogue Data")]
-    [Tooltip("The NPC dialogue ScriptableObject to use for the Talk option.")]
-    [SerializeField] private NPCDialogue dialogueData;
+    [Tooltip("List of NPC dialogues to rotate through each time the player clicks Talk.")]
+    [SerializeField] private NPCDialogue[] dialogueRotation;
+
+    /// <summary>Index into dialogueRotation — advances each time Talk is pressed.</summary>
+    private int currentDialogueIndex;
 
     [Header("Typing Settings")]
     [SerializeField] private float typingDelay = 0.03f;
@@ -72,6 +73,10 @@ public class InteriorMenuController : MonoBehaviour
         if (dialoguePanel != null) dialoguePanel.SetActive(true);
 
         StartDialogue();
+
+        // Advance to the next dialogue for the next Talk press
+        if (dialogueRotation != null && dialogueRotation.Length > 0)
+            currentDialogueIndex = (currentDialogueIndex + 1) % dialogueRotation.Length;
     }
 
     /// <summary>
@@ -124,23 +129,27 @@ public class InteriorMenuController : MonoBehaviour
     // Dialogue typewriter — uses WaitForSecondsRealtime (works while paused)
     // ------------------------------------------------------------------
 
+    /// <summary>Returns the current NPCDialogue from the rotation (or null).</summary>
+    private NPCDialogue CurrentDialogue
+    {
+        get
+        {
+            if (dialogueRotation == null || dialogueRotation.Length == 0) return null;
+            return dialogueRotation[currentDialogueIndex % dialogueRotation.Length];
+        }
+    }
+
     private void StartDialogue()
     {
         StopDialogue();
 
+        NPCDialogue dialogueData = CurrentDialogue;
         if (dialogueData == null) return;
-
-        // Set NPC name and portrait
-        if (nameText != null)
-            nameText.text = dialogueData.npcName;
-
-        if (portraitImage != null)
-            portraitImage.sprite = dialogueData.npcPortrait;
 
         if (npcVoice != null)
             npcVoice.PlayStartTalk();
 
-        dialogueCoroutine = StartCoroutine(RunDialogue());
+        dialogueCoroutine = StartCoroutine(RunDialogue(dialogueData));
     }
 
     private void StopDialogue()
@@ -158,7 +167,7 @@ public class InteriorMenuController : MonoBehaviour
             dialogueText.text = "";
     }
 
-    private IEnumerator RunDialogue()
+    private IEnumerator RunDialogue(NPCDialogue dialogueData)
     {
         if (dialogueData == null || dialogueData.dialogueLines == null)
             yield break;
