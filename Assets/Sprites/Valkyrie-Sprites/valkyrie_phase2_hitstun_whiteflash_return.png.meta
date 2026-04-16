@@ -1,0 +1,325 @@
+fileFormatVersion: 2
+guid: 72571b8f67aeeb645bb237e15fd414dc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1042788269683171933
+    second: valkyrie_phase2_hitstun_whiteflash_return_0
+  - first:
+      213: -2195631200499497249
+    second: valkyrie_phase2_hitstun_whiteflash_return_1
+  - first:
+      213: -2287861134140863882
+    second: valkyrie_phase2_hitstun_whiteflash_return_2
+  - first:
+      213: 5317529947725128731
+    second: valkyrie_phase2_hitstun_whiteflash_return_3
+  - first:
+      213: -8770391742440247493
+    second: valkyrie_phase2_hitstun_whiteflash_return_4
+  - first:
+      213: -5201217856453424155
+    second: valkyrie_phase2_hitstun_whiteflash_return_5
+  - first:
+      213: -7073709000709026838
+    second: valkyrie_phase2_hitstun_whiteflash_return_6
+  - first:
+      213: 4115282026462333342
+    second: valkyrie_phase2_hitstun_whiteflash_return_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 70
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: valkyrie_phase2_hitstun_whiteflash_return_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 548
+        width: 261
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ad1799f7954781f0800000000000000
+      internalID: -1042788269683171933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_phase2_hitstun_whiteflash_return_1
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 544
+        width: 257
+        height: 294
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd6867c5e0d8781e0800000000000000
+      internalID: -2195631200499497249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_phase2_hitstun_whiteflash_return_2
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 544
+        width: 250
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67a8c1c8b62ef30e0800000000000000
+      internalID: -2287861134140863882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_phase2_hitstun_whiteflash_return_3
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 524
+        width: 233
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1468a06059abc940800000000000000
+      internalID: 5317529947725128731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_phase2_hitstun_whiteflash_return_4
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 96
+        width: 251
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3f64d28d2f494680800000000000000
+      internalID: -8770391742440247493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_phase2_hitstun_whiteflash_return_5
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 79
+        width: 264
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ebcca2baef81d7b0800000000000000
+      internalID: -5201217856453424155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_phase2_hitstun_whiteflash_return_6
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 83
+        width: 250
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeb4148542325dd90800000000000000
+      internalID: -7073709000709026838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valkyrie_phase2_hitstun_whiteflash_return_7
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 94
+        width: 248
+        height: 311
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9946d9033b6c1930800000000000000
+      internalID: 4115282026462333342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      valkyrie_phase2_hitstun_whiteflash_return_0: -1042788269683171933
+      valkyrie_phase2_hitstun_whiteflash_return_1: -2195631200499497249
+      valkyrie_phase2_hitstun_whiteflash_return_2: -2287861134140863882
+      valkyrie_phase2_hitstun_whiteflash_return_3: 5317529947725128731
+      valkyrie_phase2_hitstun_whiteflash_return_4: -8770391742440247493
+      valkyrie_phase2_hitstun_whiteflash_return_5: -5201217856453424155
+      valkyrie_phase2_hitstun_whiteflash_return_6: -7073709000709026838
+      valkyrie_phase2_hitstun_whiteflash_return_7: 4115282026462333342
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

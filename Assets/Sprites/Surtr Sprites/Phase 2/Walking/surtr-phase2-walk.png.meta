@@ -1,0 +1,400 @@
+fileFormatVersion: 2
+guid: af5007f48f65bf64dbdd4ec218e24305
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8625510396834529073
+    second: 1f4e9022-9005-4557-9cf6-a5583027e0ef-jukebox-bg-removed_0
+  - first:
+      213: 5818885414750184209
+    second: 1f4e9022-9005-4557-9cf6-a5583027e0ef-jukebox-bg-removed_1
+  - first:
+      213: 972186875595856660
+    second: 1f4e9022-9005-4557-9cf6-a5583027e0ef-jukebox-bg-removed_2
+  - first:
+      213: -1352556740996855213
+    second: 1f4e9022-9005-4557-9cf6-a5583027e0ef-jukebox-bg-removed_3
+  - first:
+      213: 8935488115983288271
+    second: 1f4e9022-9005-4557-9cf6-a5583027e0ef-jukebox-bg-removed_4
+  - first:
+      213: 3882600495428482140
+    second: 1f4e9022-9005-4557-9cf6-a5583027e0ef-jukebox-bg-removed_5
+  - first:
+      213: -2810111022626121047
+    second: 1f4e9022-9005-4557-9cf6-a5583027e0ef-jukebox-bg-removed_6
+  - first:
+      213: -9004546516025026699
+    second: 1f4e9022-9005-4557-9cf6-a5583027e0ef-jukebox-bg-removed_7
+  - first:
+      213: 9182927663987765851
+    second: 1f4e9022-9005-4557-9cf6-a5583027e0ef-jukebox-bg-removed_8
+  - first:
+      213: 1166915371400451446
+    second: 1f4e9022-9005-4557-9cf6-a5583027e0ef-jukebox-bg-removed_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: surtr-p2-walk-1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 543
+        width: 396
+        height: 449
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13fb2c98108f3b770800000000000000
+      internalID: 8625510396834529073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty1
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 818
+        width: 29
+        height: 27
+      alignment: 9
+      pivot: {x: 1.3832903, y: 0.37350804}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 113e2e67475d0c050800000000000000
+      internalID: 5818885414750184209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-p2-walk-2
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 533
+        width: 405
+        height: 459
+      alignment: 9
+      pivot: {x: 0, y: 0.9789926}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41b103fffc6ed7d00800000000000000
+      internalID: 972186875595856660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty2
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 820
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35a825a6fc0ca3de0800000000000000
+      internalID: -1352556740996855213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-p2-walk-3
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 32
+        width: 412
+        height: 457
+      alignment: 9
+      pivot: {x: -0.00000016203204, y: 0.98417544}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc788e7691b310c70800000000000000
+      internalID: 8935488115983288271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty3
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 496
+        width: 23
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5435c66494c1e530800000000000000
+      internalID: 3882600495428482140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-p2-walk-4
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 35
+        width: 325
+        height: 454
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9aad5fcd9ea7009d0800000000000000
+      internalID: -2810111022626121047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty4
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 494
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 577d8dcd6ac690380800000000000000
+      internalID: -9004546516025026699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty5
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 316
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b523912ae00507f70800000000000000
+      internalID: 9182927663987765851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty6
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 41
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67554430957b13010800000000000000
+      internalID: 1166915371400451446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empty7
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 55
+        width: 14
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d9a0d55d378c124fb411c5b8e2eba96
+      internalID: 936129137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: df6d752b9edb4d449a5bceb176b44173
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      empty1: 5818885414750184209
+      empty2: -1352556740996855213
+      empty3: 3882600495428482140
+      empty4: -9004546516025026699
+      empty5: 9182927663987765851
+      empty6: 1166915371400451446
+      empty7: 936129137
+      surtr-p2-walk-1: 8625510396834529073
+      surtr-p2-walk-2: 972186875595856660
+      surtr-p2-walk-3: 8935488115983288271
+      surtr-p2-walk-4: -2810111022626121047
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -156,10 +156,12 @@ public class EnemyPerception2D
         int facing = owner.FacingDirection;
         Vector2 pos = owner.transform.position;
 
-        // Ground check
-        Vector2 groundOrigin = owner.GroundCheck != null
-            ? (Vector2)owner.GroundCheck.position
-            : pos + new Vector2(0f, -0.5f);
+        // Ground check — cast from body center, not front edge,
+        // so landing on a ledge with GroundCheck hanging over doesn't fail
+        float groundCheckY = owner.GroundCheck != null
+            ? owner.GroundCheck.position.y - pos.y
+            : -0.5f;
+        Vector2 groundOrigin = pos + new Vector2(0f, groundCheckY);
         ctx.isGrounded = Physics2D.Raycast(groundOrigin, Vector2.down, 0.1f, owner.GroundLayer);
 
         // Ledge check

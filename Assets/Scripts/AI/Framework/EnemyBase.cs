@@ -44,6 +44,7 @@ public abstract class EnemyBase : MonoBehaviour
     // Attack cooldowns
     private float[] attackCooldownTimers;
     private float defaultDrag;
+    private float defaultGravityScale;
 
     // Post-hitstun invulnerability
     private float invulnerabilityTimer;
@@ -66,6 +67,7 @@ public abstract class EnemyBase : MonoBehaviour
         Perception = new EnemyPerception2D(this, Ctx);
 
         defaultDrag = Rb.linearDamping;
+        defaultGravityScale = Rb.gravityScale;
 
         if (profile.attacks != null)
         {
@@ -113,6 +115,17 @@ public abstract class EnemyBase : MonoBehaviour
     {
         Perception.Update();
         FSM.FixedTick();
+        ClampFallVelocity();
+    }
+
+    private void ClampFallVelocity()
+    {
+        if (Rb.linearVelocity.y < 0f)
+        {
+            Rb.linearVelocity = new Vector2(
+                Rb.linearVelocity.x,
+                Mathf.Max(Rb.linearVelocity.y, -profile.maxFallVelocity));
+        }
     }
 
     protected virtual void OnDestroy()
@@ -186,6 +199,20 @@ public abstract class EnemyBase : MonoBehaviour
             return Vector2.Reflect(desiredDirection, hit.normal).normalized;
         }
         return desiredDirection;
+    }
+
+    // ---------------------------------------------------------------
+    //  Gravity Helpers
+    // ---------------------------------------------------------------
+
+    public void SetJumpHangGravity()
+    {
+        Rb.gravityScale = defaultGravityScale * profile.jumpHangGravityMultiplier;
+    }
+
+    public void RestoreGravity()
+    {
+        Rb.gravityScale = defaultGravityScale;
     }
 
     // ---------------------------------------------------------------

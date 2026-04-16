@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: d8533db7bc7d6a24aa32b7f315d554ba
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2586092664969420482
+    second: 80c35216-88a9-4a74-8b72-fef52839d81b-jukebox-bg-removed_0
+  - first:
+      213: -4507285698424443856
+    second: 80c35216-88a9-4a74-8b72-fef52839d81b-jukebox-bg-removed_1
+  - first:
+      213: -7059108832501062590
+    second: 80c35216-88a9-4a74-8b72-fef52839d81b-jukebox-bg-removed_2
+  - first:
+      213: 207596267132436209
+    second: 80c35216-88a9-4a74-8b72-fef52839d81b-jukebox-bg-removed_3
+  - first:
+      213: -3697670068657584708
+    second: 80c35216-88a9-4a74-8b72-fef52839d81b-jukebox-bg-removed_4
+  - first:
+      213: -6728996643124264655
+    second: 80c35216-88a9-4a74-8b72-fef52839d81b-jukebox-bg-removed_5
+  - first:
+      213: 5352612485077438433
+    second: 80c35216-88a9-4a74-8b72-fef52839d81b-jukebox-bg-removed_6
+  - first:
+      213: 1464028265891197056
+    second: 80c35216-88a9-4a74-8b72-fef52839d81b-jukebox-bg-removed_7
+  - first:
+      213: -4559668861044967871
+    second: 80c35216-88a9-4a74-8b72-fef52839d81b-jukebox-bg-removed_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 75
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tyr-spear-flurry_0
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 308
+        width: 281
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23f526b375174cf46b983420f02d9bc2
+      internalID: 223419212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-spear-flurry_1
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 308
+        width: 310
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e80b95220d9f9a48bcda89fdaf61146
+      internalID: -2032973542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-spear-flurry_2
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 308
+        width: 313
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c64c0a75d1ccd54591af9fc8ff4353d
+      internalID: -1598469212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-spear-flurry_3
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 525
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff08ac77cffec1a4e83070fc02e5a68c
+      internalID: -1352261815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-spear-flurry_4
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 21
+        width: 314
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 010f8973d09ef564f9ae96c68e947a5c
+      internalID: 139445766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-spear-flurry_5
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 22
+        width: 320
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76d69206b0b036e4981df63b5739364c
+      internalID: -898852144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-spear-flurry_6
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 266
+        width: 92
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee53303763c7e7445b3a580306dc45ea
+      internalID: 1558784497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-spear-flurry_7
+      rect:
+        serializedVersion: 2
+        x: 970
+        y: 261
+        width: 39
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaf03f0e38a1139499ddc20eeed525d5
+      internalID: -1637990198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-spear-flurry_8
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 21
+        width: 280
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d28005b833a6ec94aba96fb3d8081962
+      internalID: -1485094683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9a51edb63fe931242a3161c1a05474bb
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      tyr-spear-flurry_0: 223419212
+      tyr-spear-flurry_1: -2032973542
+      tyr-spear-flurry_2: -1598469212
+      tyr-spear-flurry_3: -1352261815
+      tyr-spear-flurry_4: 139445766
+      tyr-spear-flurry_5: -898852144
+      tyr-spear-flurry_6: 1558784497
+      tyr-spear-flurry_7: -1637990198
+      tyr-spear-flurry_8: -1485094683
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

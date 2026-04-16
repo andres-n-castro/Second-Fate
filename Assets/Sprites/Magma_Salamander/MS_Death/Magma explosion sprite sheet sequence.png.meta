@@ -1,0 +1,923 @@
+fileFormatVersion: 2
+guid: c94c758147d816e40a8df8a3e37948b7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4404923642471474363
+    second: Magma explosion sprite sheet sequence_0
+  - first:
+      213: 1487283251251494158
+    second: Magma explosion sprite sheet sequence_1
+  - first:
+      213: 2839760340309270230
+    second: Magma explosion sprite sheet sequence_2
+  - first:
+      213: 1097146195182817355
+    second: Magma explosion sprite sheet sequence_3
+  - first:
+      213: 8445508302948521936
+    second: Magma explosion sprite sheet sequence_4
+  - first:
+      213: -3807512050971189355
+    second: Magma explosion sprite sheet sequence_5
+  - first:
+      213: -4468903059806835077
+    second: Magma explosion sprite sheet sequence_6
+  - first:
+      213: -1074167150316073656
+    second: Magma explosion sprite sheet sequence_7
+  - first:
+      213: 1469460860417765918
+    second: Magma explosion sprite sheet sequence_8
+  - first:
+      213: 5401538936940979834
+    second: Magma explosion sprite sheet sequence_9
+  - first:
+      213: 5035113720293038127
+    second: Magma explosion sprite sheet sequence_10
+  - first:
+      213: 3812624659413838808
+    second: Magma explosion sprite sheet sequence_11
+  - first:
+      213: 1840269745550979219
+    second: Magma explosion sprite sheet sequence_12
+  - first:
+      213: 7195558806838882462
+    second: Magma explosion sprite sheet sequence_13
+  - first:
+      213: -8326043267739113667
+    second: Magma explosion sprite sheet sequence_14
+  - first:
+      213: -6206266308996861880
+    second: Magma explosion sprite sheet sequence_15
+  - first:
+      213: -7764839771415314005
+    second: Magma explosion sprite sheet sequence_16
+  - first:
+      213: -2943464986053318084
+    second: Magma explosion sprite sheet sequence_17
+  - first:
+      213: 4210455121941574893
+    second: Magma explosion sprite sheet sequence_18
+  - first:
+      213: 2065665080556685565
+    second: Magma explosion sprite sheet sequence_19
+  - first:
+      213: 1088628610306001972
+    second: Magma explosion sprite sheet sequence_20
+  - first:
+      213: 7699510035366354324
+    second: Magma explosion sprite sheet sequence_21
+  - first:
+      213: 4765258248936321189
+    second: Magma explosion sprite sheet sequence_22
+  - first:
+      213: 3096064861775619289
+    second: Magma explosion sprite sheet sequence_23
+  - first:
+      213: -6049895556492186090
+    second: Magma explosion sprite sheet sequence_24
+  - first:
+      213: 2948141943423661951
+    second: Magma explosion sprite sheet sequence_25
+  - first:
+      213: 9174376854100484096
+    second: Magma explosion sprite sheet sequence_26
+  - first:
+      213: -5637849886128532338
+    second: Magma explosion sprite sheet sequence_27
+  - first:
+      213: -4603568515377620909
+    second: Magma explosion sprite sheet sequence_28
+  - first:
+      213: -1973281749360901852
+    second: Magma explosion sprite sheet sequence_29
+  - first:
+      213: -4252240343694556354
+    second: Magma explosion sprite sheet sequence_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 150
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_0
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 550
+        width: 292
+        height: 286
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54b94c319419ed2c0800000000000000
+      internalID: -4404923642471474363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_1
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 549
+        width: 281
+        height: 243
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0dbb3fac34e3a410800000000000000
+      internalID: 1487283251251494158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_2
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 550
+        width: 346
+        height: 242
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6de506bdbfad86720800000000000000
+      internalID: 2839760340309270230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_3
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 731
+        width: 63
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b401b8ec6a8d93f00800000000000000
+      internalID: 1097146195182817355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_4
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 772
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d7dbd82e09743570800000000000000
+      internalID: 8445508302948521936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_5
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 720
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59fd7d376fff82bc0800000000000000
+      internalID: -3807512050971189355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_6
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 720
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7eae8828544bf1c0800000000000000
+      internalID: -4468903059806835077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_7
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 549
+        width: 312
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84d44000baac711f0800000000000000
+      internalID: -1074167150316073656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_8
+      rect:
+        serializedVersion: 2
+        x: 1256
+        y: 704
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e127a84fdd2946410800000000000000
+      internalID: 1469460860417765918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_9
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 267
+        width: 323
+        height: 161
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a76eec86b0f16fa40800000000000000
+      internalID: 5401538936940979834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_10
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 267
+        width: 321
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2813cd504150e540800000000000000
+      internalID: 5035113720293038127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_11
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 267
+        width: 342
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dba1467de929e430800000000000000
+      internalID: 3812624659413838808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_12
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 368
+        width: 72
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 390f67a5593f98910800000000000000
+      internalID: 1840269745550979219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_13
+      rect:
+        serializedVersion: 2
+        x: 1310
+        y: 393
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e90b0127c92cbd360800000000000000
+      internalID: 7195558806838882462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_14
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 365
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d37a0e1e2c3f37c80800000000000000
+      internalID: -8326043267739113667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_15
+      rect:
+        serializedVersion: 2
+        x: 1294
+        y: 346
+        width: 42
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84074c69ca9eed9a0800000000000000
+      internalID: -6206266308996861880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_16
+      rect:
+        serializedVersion: 2
+        x: 1384
+        y: 365
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba107f62e5fbd3490800000000000000
+      internalID: -7764839771415314005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_17
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 342
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3aed79b036b627d0800000000000000
+      internalID: -2943464986053318084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_18
+      rect:
+        serializedVersion: 2
+        x: 1349
+        y: 347
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de43d0e10aa8e6a30800000000000000
+      internalID: 4210455121941574893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_19
+      rect:
+        serializedVersion: 2
+        x: 1404
+        y: 337
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df882874277baac10800000000000000
+      internalID: 2065665080556685565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_20
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 344
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43ccd9904f59b1f00800000000000000
+      internalID: 1088628610306001972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_21
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 315
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49d119a55972ada60800000000000000
+      internalID: 7699510035366354324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_22
+      rect:
+        serializedVersion: 2
+        x: 1202
+        y: 267
+        width: 260
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a079d64129912240800000000000000
+      internalID: 4765258248936321189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_23
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 324
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d464bf869e67fa20800000000000000
+      internalID: 3096064861775619289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_24
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 280
+        width: 127
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61ea11b8b047a0ca0800000000000000
+      internalID: -6049895556492186090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_25
+      rect:
+        serializedVersion: 2
+        x: 1423
+        y: 298
+        width: 9
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7772354a77e9e820800000000000000
+      internalID: 2948141943423661951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_26
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 310
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 000a930142fe15f70800000000000000
+      internalID: 9174376854100484096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_27
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 282
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e841550366552c1b0800000000000000
+      internalID: -5637849886128532338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_28
+      rect:
+        serializedVersion: 2
+        x: 1432
+        y: 286
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3589eb573d6dc10c0800000000000000
+      internalID: -4603568515377620909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_29
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 285
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 421059f24be7d94e0800000000000000
+      internalID: -1973281749360901852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Magma explosion sprite sheet sequence_30
+      rect:
+        serializedVersion: 2
+        x: 1347
+        y: 266
+        width: 29
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e33408ecfe10df4c0800000000000000
+      internalID: -4252240343694556354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: ff8679ed013ab294aa0ab8006a12266d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Magma explosion sprite sheet sequence_0: -4404923642471474363
+      Magma explosion sprite sheet sequence_1: 1487283251251494158
+      Magma explosion sprite sheet sequence_10: 5035113720293038127
+      Magma explosion sprite sheet sequence_11: 3812624659413838808
+      Magma explosion sprite sheet sequence_12: 1840269745550979219
+      Magma explosion sprite sheet sequence_13: 7195558806838882462
+      Magma explosion sprite sheet sequence_14: -8326043267739113667
+      Magma explosion sprite sheet sequence_15: -6206266308996861880
+      Magma explosion sprite sheet sequence_16: -7764839771415314005
+      Magma explosion sprite sheet sequence_17: -2943464986053318084
+      Magma explosion sprite sheet sequence_18: 4210455121941574893
+      Magma explosion sprite sheet sequence_19: 2065665080556685565
+      Magma explosion sprite sheet sequence_2: 2839760340309270230
+      Magma explosion sprite sheet sequence_20: 1088628610306001972
+      Magma explosion sprite sheet sequence_21: 7699510035366354324
+      Magma explosion sprite sheet sequence_22: 4765258248936321189
+      Magma explosion sprite sheet sequence_23: 3096064861775619289
+      Magma explosion sprite sheet sequence_24: -6049895556492186090
+      Magma explosion sprite sheet sequence_25: 2948141943423661951
+      Magma explosion sprite sheet sequence_26: 9174376854100484096
+      Magma explosion sprite sheet sequence_27: -5637849886128532338
+      Magma explosion sprite sheet sequence_28: -4603568515377620909
+      Magma explosion sprite sheet sequence_29: -1973281749360901852
+      Magma explosion sprite sheet sequence_3: 1097146195182817355
+      Magma explosion sprite sheet sequence_30: -4252240343694556354
+      Magma explosion sprite sheet sequence_4: 8445508302948521936
+      Magma explosion sprite sheet sequence_5: -3807512050971189355
+      Magma explosion sprite sheet sequence_6: -4468903059806835077
+      Magma explosion sprite sheet sequence_7: -1074167150316073656
+      Magma explosion sprite sheet sequence_8: 1469460860417765918
+      Magma explosion sprite sheet sequence_9: 5401538936940979834
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

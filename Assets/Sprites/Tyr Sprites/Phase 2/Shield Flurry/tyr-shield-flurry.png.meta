@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: 8ee41e4b561886d46bc354937959e69c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1733639546733389727
+    second: 855fba13-7efd-4c18-b842-b076a882d33c-jukebox-bg-removed_0
+  - first:
+      213: -8785139972592462057
+    second: 855fba13-7efd-4c18-b842-b076a882d33c-jukebox-bg-removed_1
+  - first:
+      213: -2728072184837422846
+    second: 855fba13-7efd-4c18-b842-b076a882d33c-jukebox-bg-removed_2
+  - first:
+      213: 3069148775238751708
+    second: 855fba13-7efd-4c18-b842-b076a882d33c-jukebox-bg-removed_3
+  - first:
+      213: -7417881717730916578
+    second: 855fba13-7efd-4c18-b842-b076a882d33c-jukebox-bg-removed_4
+  - first:
+      213: 4302401636717733202
+    second: 855fba13-7efd-4c18-b842-b076a882d33c-jukebox-bg-removed_5
+  - first:
+      213: -1432132397411797097
+    second: 855fba13-7efd-4c18-b842-b076a882d33c-jukebox-bg-removed_6
+  - first:
+      213: -7480121112836470075
+    second: 855fba13-7efd-4c18-b842-b076a882d33c-jukebox-bg-removed_7
+  - first:
+      213: 1420470067643232105
+    second: 855fba13-7efd-4c18-b842-b076a882d33c-jukebox-bg-removed_8
+  - first:
+      213: 7843094997248025099
+    second: 855fba13-7efd-4c18-b842-b076a882d33c-jukebox-bg-removed_9
+  - first:
+      213: -2588012663685159887
+    second: 855fba13-7efd-4c18-b842-b076a882d33c-jukebox-bg-removed_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 78
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tyr-shield-flurry_0
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 533
+        width: 309
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3a60ebeef429e143ac9736e0ba869dc
+      internalID: 966151171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-flurry_1
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 533
+        width: 462
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6ceac409d21a2e488b49f08489e76f9
+      internalID: -1031959669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-flurry_2
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 255
+        width: 423
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 836b593301a02444c9c3fe375cb2ac39
+      internalID: -954254111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-flurry_3
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 321
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dac630d4778dd9e4989cb4ecf4e42d15
+      internalID: -470107604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-flurry_4
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 256
+        width: 371
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b171bd5f7f6e4a4996ad48cd7a7c5f6
+      internalID: -2076624203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-flurry_5
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 282
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb206324482c5eb459287d31a3a4d7a2
+      internalID: 1430592764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-flurry_6
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 289
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d45f8e514414f5d40a706fea37960e47
+      internalID: -50384218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-flurry_7
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 24
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8857f33bd21e34145a8cb53d01d20787
+      internalID: -661793852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-flurry_8
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 0
+        width: 479
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f9c7f02d7fac1e459420960d480378c
+      internalID: -1735363528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-flurry_9
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 0
+        width: 347
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b291abd2f797764a95bf788d8726799
+      internalID: 687125241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-flurry_10
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 26
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9309ac01d0651db41a6301a6970dad9a
+      internalID: -1183893972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 23f06e6cddfa25a4bb4530f53962fe2e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      tyr-shield-flurry_0: 966151171
+      tyr-shield-flurry_1: -1031959669
+      tyr-shield-flurry_10: -1183893972
+      tyr-shield-flurry_2: -954254111
+      tyr-shield-flurry_3: -470107604
+      tyr-shield-flurry_4: -2076624203
+      tyr-shield-flurry_5: 1430592764
+      tyr-shield-flurry_6: -50384218
+      tyr-shield-flurry_7: -661793852
+      tyr-shield-flurry_8: -1735363528
+      tyr-shield-flurry_9: 687125241
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

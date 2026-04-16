@@ -41,7 +41,7 @@ public class Draugr : EnemyBase
 
     // Outer override states
     public GroundHitstunState HitstunState { get; private set; }
-    public GroundDeadState DeadState { get; private set; }
+    public FallingDeadState DeadState { get; private set; }
 
     // Hitbox accessor for states
     public AttackHitbox MeleeHitbox => meleeHitbox;
@@ -70,7 +70,7 @@ public class Draugr : EnemyBase
         MeleeAttackState = new DraugrMeleeAttackState(this);
         BackstepState = new DraugrBackstepState(this);
         HitstunState = new GroundHitstunState(this);
-        DeadState = new GroundDeadState(this);
+        DeadState = new FallingDeadState(this);
 
         NonCombatSuper = new NonCombatSuperState(this);
         NonCombatSuper.SetInitialSubState(PatrolState);
@@ -135,14 +135,14 @@ public class Draugr : EnemyBase
             }
 
             // Facing deadzone — blue vertical lines either side of center
-            if (Profile.draugrFacingDeadzoneX > 0f)
+            if (Profile.facingDeadzoneX > 0f)
             {
                 Gizmos.color = Color.blue;
                 Vector2 dz = transform.position;
-                Gizmos.DrawLine(dz + new Vector2(-Profile.draugrFacingDeadzoneX, -0.5f),
-                                dz + new Vector2(-Profile.draugrFacingDeadzoneX,  0.5f));
-                Gizmos.DrawLine(dz + new Vector2( Profile.draugrFacingDeadzoneX, -0.5f),
-                                dz + new Vector2( Profile.draugrFacingDeadzoneX,  0.5f));
+                Gizmos.DrawLine(dz + new Vector2(-Profile.facingDeadzoneX, -0.5f),
+                                dz + new Vector2(-Profile.facingDeadzoneX,  0.5f));
+                Gizmos.DrawLine(dz + new Vector2( Profile.facingDeadzoneX, -0.5f),
+                                dz + new Vector2( Profile.facingDeadzoneX,  0.5f));
             }
 
             // Player-above threshold — white horizontal line above Draugr

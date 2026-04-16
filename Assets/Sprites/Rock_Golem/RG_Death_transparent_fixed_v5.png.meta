@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: dc4a14ac5f0544e4aa54e943e2d340fe
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1663612154889127557
+    second: RG_Death_transparent_fixed_v5_0
+  - first:
+      213: 4694095979825838908
+    second: RG_Death_transparent_fixed_v5_1
+  - first:
+      213: 1470411921418018642
+    second: RG_Death_transparent_fixed_v5_2
+  - first:
+      213: 792044439829534725
+    second: RG_Death_transparent_fixed_v5_3
+  - first:
+      213: 1462767801160896173
+    second: RG_Death_transparent_fixed_v5_4
+  - first:
+      213: -693271841899363096
+    second: RG_Death_transparent_fixed_v5_5
+  - first:
+      213: 851272239764293358
+    second: RG_Death_transparent_fixed_v5_6
+  - first:
+      213: -7488528380917560735
+    second: RG_Death_transparent_fixed_v5_7
+  - first:
+      213: 7850293107351157429
+    second: RG_Death_transparent_fixed_v5_8
+  - first:
+      213: -2801871686979649589
+    second: RG_Death_transparent_fixed_v5_9
+  - first:
+      213: -8972437563517798353
+    second: RG_Death_transparent_fixed_v5_10
+  - first:
+      213: 5872981813336145088
+    second: RG_Death_transparent_fixed_v5_11
+  - first:
+      213: 4409851521740402335
+    second: RG_Death_transparent_fixed_v5_12
+  - first:
+      213: -1866956957941991952
+    second: RG_Death_transparent_fixed_v5_13
+  - first:
+      213: -1721390745461359002
+    second: RG_Death_transparent_fixed_v5_14
+  - first:
+      213: 3274581363092994312
+    second: RG_Death_transparent_fixed_v5_15
+  - first:
+      213: 2261942583283056253
+    second: RG_Death_transparent_fixed_v5_16
+  - first:
+      213: -1863944782937075525
+    second: RG_Death_transparent_fixed_v5_17
+  - first:
+      213: -4723683997900896242
+    second: RG_Death_transparent_fixed_v5_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 80
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 823
+        width: 327
+        height: 306
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5864030d076561710800000000000000
+      internalID: 1663612154889127557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_1
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 823
+        width: 318
+        height: 289
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3bbb1b5c67c42140800000000000000
+      internalID: 4694095979825838908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_2
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 821
+        width: 313
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25fde991ad3f76410800000000000000
+      internalID: 1470411921418018642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_3
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 823
+        width: 320
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 508dc5ab838edfa00800000000000000
+      internalID: 792044439829534725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_4
+      rect:
+        serializedVersion: 2
+        x: 1383
+        y: 823
+        width: 315
+        height: 278
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dae0319a09bcc4410800000000000000
+      internalID: 1462767801160896173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_5
+      rect:
+        serializedVersion: 2
+        x: 1718
+        y: 823
+        width: 323
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e4cec2dee00166f0800000000000000
+      internalID: -693271841899363096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_6
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 410
+        width: 301
+        height: 333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee64d42879350db00800000000000000
+      internalID: 851272239764293358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_7
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 61
+        width: 326
+        height: 233
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16a4afc0d17631890800000000000000
+      internalID: -7488528380917560735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_8
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 62
+        width: 332
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bafc5e0df7d1fc60800000000000000
+      internalID: 7850293107351157429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_9
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 410
+        width: 295
+        height: 319
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcf7a5fab80cd19d0800000000000000
+      internalID: -2801871686979649589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_10
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 410
+        width: 304
+        height: 306
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f287621f29f7b7380800000000000000
+      internalID: -8972437563517798353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_11
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 62
+        width: 309
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ccfa34c7d5018150800000000000000
+      internalID: 5872981813336145088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_12
+      rect:
+        serializedVersion: 2
+        x: 1033
+        y: 410
+        width: 332
+        height: 351
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9e6d893890f23d30800000000000000
+      internalID: 4409851521740402335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_13
+      rect:
+        serializedVersion: 2
+        x: 1358
+        y: 410
+        width: 336
+        height: 328
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f57ceec98c3716e0800000000000000
+      internalID: -1866956957941991952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_14
+      rect:
+        serializedVersion: 2
+        x: 1715
+        y: 410
+        width: 320
+        height: 274
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66e7121cc346c18e0800000000000000
+      internalID: -1721390745461359002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_15
+      rect:
+        serializedVersion: 2
+        x: 1027
+        y: 64
+        width: 341
+        height: 163
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 809b5477666a17d20800000000000000
+      internalID: 3274581363092994312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_16
+      rect:
+        serializedVersion: 2
+        x: 1378
+        y: 64
+        width: 319
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7e7ae29bc8046f10800000000000000
+      internalID: 2261942583283056253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_17
+      rect:
+        serializedVersion: 2
+        x: 1711
+        y: 63
+        width: 319
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb0d7147810f126e0800000000000000
+      internalID: -1863944782937075525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Death_transparent_fixed_v5_18
+      rect:
+        serializedVersion: 2
+        x: 1950
+        y: 47
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e088be95e6a127eb0800000000000000
+      internalID: -4723683997900896242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: af6943b5ae1a2da40b959a96b85ed8d6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      RG_Death_transparent_fixed_v5_0: 1663612154889127557
+      RG_Death_transparent_fixed_v5_1: 4694095979825838908
+      RG_Death_transparent_fixed_v5_10: -8972437563517798353
+      RG_Death_transparent_fixed_v5_11: 5872981813336145088
+      RG_Death_transparent_fixed_v5_12: 4409851521740402335
+      RG_Death_transparent_fixed_v5_13: -1866956957941991952
+      RG_Death_transparent_fixed_v5_14: -1721390745461359002
+      RG_Death_transparent_fixed_v5_15: 3274581363092994312
+      RG_Death_transparent_fixed_v5_16: 2261942583283056253
+      RG_Death_transparent_fixed_v5_17: -1863944782937075525
+      RG_Death_transparent_fixed_v5_18: -4723683997900896242
+      RG_Death_transparent_fixed_v5_2: 1470411921418018642
+      RG_Death_transparent_fixed_v5_3: 792044439829534725
+      RG_Death_transparent_fixed_v5_4: 1462767801160896173
+      RG_Death_transparent_fixed_v5_5: -693271841899363096
+      RG_Death_transparent_fixed_v5_6: 851272239764293358
+      RG_Death_transparent_fixed_v5_7: -7488528380917560735
+      RG_Death_transparent_fixed_v5_8: 7850293107351157429
+      RG_Death_transparent_fixed_v5_9: -2801871686979649589
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

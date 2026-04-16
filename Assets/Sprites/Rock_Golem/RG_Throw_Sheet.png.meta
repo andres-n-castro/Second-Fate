@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: e7cc33143c83eac4a9266afbe1abf659
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7221521211387328205
+    second: RG_Throw_Sheet_0
+  - first:
+      213: -9215096239555515513
+    second: RG_Throw_Sheet_1
+  - first:
+      213: 521953645828258683
+    second: RG_Throw_Sheet_2
+  - first:
+      213: 4881363885425092562
+    second: RG_Throw_Sheet_3
+  - first:
+      213: -5149220973781208078
+    second: RG_Throw_Sheet_4
+  - first:
+      213: -1348107950167304677
+    second: RG_Throw_Sheet_5
+  - first:
+      213: 9161801249678313410
+    second: RG_Throw_Sheet_6
+  - first:
+      213: -3798549865656152790
+    second: RG_Throw_Sheet_7
+  - first:
+      213: 8429877039792692744
+    second: RG_Throw_Sheet_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 75
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RG_Throw_Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 11
+        width: 271
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc6b0bec74ff73460800000000000000
+      internalID: 7221521211387328205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Throw_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 11
+        width: 231
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78b61463bc66d1080800000000000000
+      internalID: -9215096239555515513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Throw_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 11
+        width: 217
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7b30d0531a5e3700800000000000000
+      internalID: 521953645828258683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Throw_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1029
+        y: 11
+        width: 292
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d7ee2a57961eb340800000000000000
+      internalID: 4881363885425092562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Throw_Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 11
+        width: 292
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f3b7cb5eca4a88b0800000000000000
+      internalID: -5149220973781208078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Throw_Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1660
+        y: 215
+        width: 40
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b16d56f36fe8a4de0800000000000000
+      internalID: -1348107950167304677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Throw_Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1739
+        y: 11
+        width: 231
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c74ecdf1b1452f70800000000000000
+      internalID: 9161801249678313410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Throw_Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 2059
+        y: 11
+        width: 271
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2d05f3d507d84bc0800000000000000
+      internalID: -3798549865656152790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RG_Throw_Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 2399
+        y: 11
+        width: 271
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80e90191180fcf470800000000000000
+      internalID: 8429877039792692744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      RG_Throw_Sheet_0: 7221521211387328205
+      RG_Throw_Sheet_1: -9215096239555515513
+      RG_Throw_Sheet_2: 521953645828258683
+      RG_Throw_Sheet_3: 4881363885425092562
+      RG_Throw_Sheet_4: -5149220973781208078
+      RG_Throw_Sheet_5: -1348107950167304677
+      RG_Throw_Sheet_6: 9161801249678313410
+      RG_Throw_Sheet_7: -3798549865656152790
+      RG_Throw_Sheet_8: 8429877039792692744
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

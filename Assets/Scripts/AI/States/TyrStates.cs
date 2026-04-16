@@ -4,7 +4,8 @@ using System.Collections.Generic;
 // =================================================================
 //  PHASE 1 SUPER STATE
 //  Hierarchical state that owns a sub-FSM for grounded spear combat.
-//  Sub-states: P1Approach, P1Decision, P1SpearThrust, P1SpearFlurry.
+//  Sub-states: P1Approach, P1Decision, P1SpearThrust, P1SpearFlurry,
+//              P1GapClose.
 // =================================================================
 public class TyrP1Super : HierarchicalState
 {
@@ -15,6 +16,7 @@ public class TyrP1Super : HierarchicalState
     public TyrP1DecisionState DecisionState { get; private set; }
     public TyrP1SpearThrustState SpearThrustState { get; private set; }
     public TyrP1SpearFlurryState SpearFlurryState { get; private set; }
+    public TyrP1GapCloseState GapCloseState { get; private set; }
 
     public TyrP1Super(TyrBoss tyr) : base(tyr)
     {
@@ -24,6 +26,7 @@ public class TyrP1Super : HierarchicalState
         DecisionState = new TyrP1DecisionState(tyr, this);
         SpearThrustState = new TyrP1SpearThrustState(tyr, this);
         SpearFlurryState = new TyrP1SpearFlurryState(tyr, this);
+        GapCloseState = new TyrP1GapCloseState(tyr, this);
     }
 
     public override void Enter()
@@ -238,11 +241,19 @@ public class TyrP1DecisionState : EnemyState
         this.p1 = p1;
     }
 
+    private const float StalkStopBuffer = 0.3f;
+
     public override void Enter()
     {
         owner.FacePlayer();
-        isStalking = false;
         pauseTimer = Random.Range(owner.Profile.minAttackCooldown, owner.Profile.maxAttackCooldown);
+
+        // Start stalking immediately if player is beyond close range
+        // so the walk animation carries over without a 1-frame idle flash
+        isStalking = owner.Ctx.playerDistance > owner.Profile.tyrCloseRange
+            && !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead;
+        if (isStalking && owner.Anim != null)
+            owner.Anim.SetBool(owner.AnimWalking, true);
     }
 
     public override void FixedTick()
@@ -253,7 +264,13 @@ public class TyrP1DecisionState : EnemyState
         if (pauseTimer > 0f)
         {
             pauseTimer -= Time.fixedDeltaTime;
-            bool shouldStalk = owner.Ctx.playerDistance > owner.Profile.tyrCloseRange
+
+            // Hysteresis: start stalking at tyrCloseRange, stop only when
+            // well inside (buffer prevents animation flicker at boundary)
+            float threshold = isStalking
+                ? owner.Profile.tyrCloseRange - StalkStopBuffer
+                : owner.Profile.tyrCloseRange;
+            bool shouldStalk = owner.Ctx.playerDistance > threshold
                 && !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead;
 
             if (shouldStalk)
@@ -317,6 +334,14 @@ public class TyrP1DecisionState : EnemyState
                 candidates.Add((p1.SpearFlurryState, flurryDef.selectionWeight));
         }
 
+        // If only thrust can reach, gap-close into flurry competes as an option
+        bool onlyThrustCanReach = candidates.Count == 1 && candidates[0].state == p1.SpearThrustState;
+        if (onlyThrustCanReach)
+        {
+            // Gap-close at 60% of thrust weight so thrust is favored (~62/38 split)
+            candidates.Add((p1.GapCloseState, candidates[0].weight * 0.6f));
+        }
+
         if (candidates.Count > 0)
         {
             // Weighted random pick
@@ -339,8 +364,20 @@ public class TyrP1DecisionState : EnemyState
             return;
         }
 
-        // Nothing in range — walk closer
-        p1.ChangeSubState(p1.ApproachState);
+        // Nothing in range — walk closer, occasionally gap-close
+        if (!TryGapClose(dist, p))
+            p1.ChangeSubState(p1.ApproachState);
+    }
+
+    private bool TryGapClose(float dist, EnemyProfile p)
+    {
+        if (dist >= p.p1ThrustCloseGapMinRange && dist <= p.p1ThrustCloseGapMaxRange
+            && Random.value < p.p1ThrustCloseGapChance)
+        {
+            p1.ChangeSubState(p1.GapCloseState);
+            return true;
+        }
+        return false;
     }
 
     public override void Exit()
@@ -545,6 +582,122 @@ public class TyrP1SpearFlurryState : EnemyState
     }
 }
 
+// ---------------------------------------------------------------
+//  P1 Gap Close — Sprint toward player, then launch a pre-chosen
+//  attack. Flurry is weighted as the primary target (~60/40 split
+//  over thrust), mirroring Valkyrie's gap-close pattern.
+// ---------------------------------------------------------------
+public class TyrP1GapCloseState : EnemyState
+{
+    private TyrBoss tyr;
+    private TyrP1Super p1;
+    private IState chosenAttack;
+    private float targetRange;
+
+    public TyrP1GapCloseState(TyrBoss tyr, TyrP1Super p1) : base(tyr)
+    {
+        this.tyr = tyr;
+        this.p1 = p1;
+    }
+
+    public override void Enter()
+    {
+        Debug.Log("Tyr: P1 Gap Close");
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, true);
+        PickAttack();
+    }
+
+    public override void FixedTick()
+    {
+        owner.FacePlayer();
+
+        // Abort if we hit a ledge/wall
+        if (owner.Ctx.nearLedgeAhead || owner.Ctx.nearWallAhead)
+        {
+            owner.StopHorizontal();
+            p1.ChangeSubState(p1.DecisionState);
+            return;
+        }
+
+        // Sprint toward player
+        owner.MoveGround(owner.Profile.p1GapCloseRunSpeed);
+
+        // In range for the chosen attack — launch it
+        if (owner.Ctx.playerDistance <= targetRange && owner.Ctx.hasLineOfSightToPlayer)
+        {
+            p1.ChangeSubState(chosenAttack);
+            return;
+        }
+
+        // Player escaped too far — fall back to approach
+        if (owner.Ctx.playerDistance > owner.Profile.p1ThrustCloseGapMaxRange * 1.5f)
+        {
+            p1.ChangeSubState(p1.ApproachState);
+        }
+    }
+
+    public override void Exit()
+    {
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
+        owner.StopHorizontal();
+    }
+
+    private void PickAttack()
+    {
+        List<(IState state, float weight, float range)> options = new List<(IState, float, float)>();
+
+        // Flurry — primary gap-close target, uses thrust's higher weight to get ~60/40
+        AttackDefinition flurryDef = tyr.GetAttackDef("SpearFlurry");
+        AttackDefinition thrustDef = tyr.GetAttackDef("SpearThrust");
+
+        if (flurryDef != null && owner.IsAttackReady("SpearFlurry"))
+        {
+            float flurryEffective = tyr.SpearFlurryReach + 0.3f;
+            // Swap weights: flurry gets the higher thrust weight (~60%)
+            float w = thrustDef != null ? thrustDef.selectionWeight : 1.5f;
+            options.Add((p1.SpearFlurryState, w, flurryEffective));
+        }
+
+        if (thrustDef != null && owner.IsAttackReady("SpearThrust"))
+        {
+            float thrustTravel = thrustDef.dashSpeed * thrustDef.activeDuration;
+            float thrustEffective = tyr.SpearThrustReach + 0.3f + thrustTravel;
+            // Swap weights: thrust gets the lower flurry weight (~40%)
+            float w = flurryDef != null ? flurryDef.selectionWeight : 1.0f;
+            options.Add((p1.SpearThrustState, w, thrustEffective));
+        }
+
+        if (options.Count == 0)
+        {
+            chosenAttack = p1.SpearFlurryState;
+            targetRange = tyr.SpearFlurryReach + 0.3f;
+            return;
+        }
+
+        // Weighted random pick
+        float totalWeight = 0f;
+        for (int i = 0; i < options.Count; i++)
+            totalWeight += options[i].weight;
+
+        float roll = Random.value * totalWeight;
+        float cumulative = 0f;
+        for (int i = 0; i < options.Count; i++)
+        {
+            cumulative += options[i].weight;
+            if (roll <= cumulative)
+            {
+                chosenAttack = options[i].state;
+                targetRange = options[i].range;
+                return;
+            }
+        }
+
+        var last = options[options.Count - 1];
+        chosenAttack = last.state;
+        targetRange = last.range;
+    }
+}
+
 // =================================================================
 //  PHASE 2 SUBSTATES
 // =================================================================
@@ -558,6 +711,9 @@ public class TyrP2PressureOrIdleState : EnemyState
     private TyrBoss tyr;
     private TyrP2Super p2;
     private float decisionDelay;
+    private bool isStalking;
+
+    private const float StalkStopBuffer = 0.3f;
 
     public TyrP2PressureOrIdleState(TyrBoss tyr, TyrP2Super p2) : base(tyr)
     {
@@ -570,12 +726,19 @@ public class TyrP2PressureOrIdleState : EnemyState
         p2.RequestedP2Action = null;
         // Brief delay before accepting BT requests
         decisionDelay = Random.Range(owner.Profile.minAttackCooldown, owner.Profile.maxAttackCooldown);
+
+        // Start stalking immediately if player is beyond close range
+        // so the walk animation carries over without a 1-frame idle flash
+        owner.FacePlayer();
+        isStalking = owner.Ctx.playerDistance > owner.Profile.tyrCloseRange
+            && !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead;
+        if (isStalking && owner.Anim != null)
+            owner.Anim.SetBool(owner.AnimWalking, true);
     }
 
     public override void FixedTick()
     {
-        float dt = Time.fixedDeltaTime;
-        decisionDelay -= dt;
+        decisionDelay -= Time.fixedDeltaTime;
 
         // Consume BT intent if ready
         if (decisionDelay <= 0f && p2.RequestedP2Action != null)
@@ -588,24 +751,39 @@ public class TyrP2PressureOrIdleState : EnemyState
 
         // Stalk toward player while waiting
         owner.FacePlayer();
-        float dist = owner.Ctx.playerDistance;
 
-        if (dist > owner.Profile.tyrCloseRange
-            && !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead)
+        // Hysteresis: start stalking at tyrCloseRange, stop only when
+        // well inside (buffer prevents animation flicker at boundary)
+        float threshold = isStalking
+            ? owner.Profile.tyrCloseRange - StalkStopBuffer
+            : owner.Profile.tyrCloseRange;
+        bool shouldStalk = owner.Ctx.playerDistance > threshold
+            && !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead;
+
+        if (shouldStalk)
         {
-            if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, true);
+            if (!isStalking)
+            {
+                isStalking = true;
+                if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, true);
+            }
             owner.MoveGround(owner.Profile.approachSpeed);
         }
         else
         {
-            if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
+            if (isStalking)
+            {
+                isStalking = false;
+                if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
+            }
             owner.StopHorizontal();
         }
     }
 
     public override void Exit()
     {
-        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
+        if (isStalking && owner.Anim != null)
+            owner.Anim.SetBool(owner.AnimWalking, false);
         owner.StopHorizontal();
     }
 }
@@ -623,6 +801,9 @@ public class TyrP2ShieldBlockState : EnemyState
     private Phase phase;
     private float timer;
 
+    // Attacks from above this Y offset relative to Tyr bypass the shield
+    private const float AboveBlockThreshold = 1.5f;
+
     public TyrP2ShieldBlockState(TyrBoss tyr, TyrP2Super p2) : base(tyr)
     {
         this.tyr = tyr;
@@ -637,7 +818,7 @@ public class TyrP2ShieldBlockState : EnemyState
         owner.FacePlayer();
 
         AttackDefinition atk = tyr.GetAttackDef("ShieldBlock");
-        timer = atk != null ? atk.windupDuration : 0.2f;
+        timer = atk != null ? atk.windupDuration : 0.5f;
 
         if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_ShieldBlock");
     }
@@ -653,18 +834,18 @@ public class TyrP2ShieldBlockState : EnemyState
                 {
                     phase = Phase.Active;
                     AttackDefinition atk = tyr.GetAttackDef("ShieldBlock");
-                    timer = atk != null ? atk.activeDuration : 1.0f;
+                    timer = atk != null ? atk.activeDuration : 0.5f;
 
-                    // Enable invulnerability for the block duration
-                    if (owner.Health != null) owner.Health.isInvulnerable = true;
+                    // Directional block: only blocks frontal, non-overhead attacks
+                    if (owner.Health != null)
+                        owner.Health.DamageFilter = BlockFilter;
                 }
                 break;
 
             case Phase.Active:
                 if (timer <= 0f)
                 {
-                    // End invulnerability
-                    if (owner.Health != null) owner.Health.isInvulnerable = false;
+                    ClearBlock();
 
                     phase = Phase.Recovery;
                     AttackDefinition atk = tyr.GetAttackDef("ShieldBlock");
@@ -685,8 +866,36 @@ public class TyrP2ShieldBlockState : EnemyState
 
     public override void Exit()
     {
-        // Safety net: always restore vulnerability on exit
-        if (owner.Health != null) owner.Health.isInvulnerable = false;
+        ClearBlock();
+    }
+
+    private void ClearBlock()
+    {
+        if (owner.Health != null && owner.Health.DamageFilter == BlockFilter)
+            owner.Health.DamageFilter = null;
+    }
+
+    /// <summary>
+    /// Returns true to block the hit.
+    /// Blocks frontal attacks only — attacks from above or behind pass through.
+    /// </summary>
+    private bool BlockFilter(int damage, UnityEngine.Vector2 knockback)
+    {
+        // Attacks from above bypass the shield
+        if (owner.Ctx.playerTransform != null)
+        {
+            float relY = owner.Ctx.playerTransform.position.y - owner.transform.position.y;
+            if (relY > AboveBlockThreshold)
+                return false;
+        }
+
+        // Purely vertical knockback (no horizontal component) — not a frontal hit
+        if (Mathf.Abs(knockback.x) < 0.01f)
+            return false;
+
+        // Block if the attack pushes Tyr away from his facing direction
+        // (meaning the attacker is in front of the shield)
+        return knockback.x * owner.FacingDirection < 0f;
     }
 }
 
@@ -701,6 +910,7 @@ public class TyrP2ShieldSlamState : EnemyState
     private TyrP2Super p2;
     private Phase phase;
     private float timer;
+    private float dashSpeed;
 
     public TyrP2ShieldSlamState(TyrBoss tyr, TyrP2Super p2) : base(tyr)
     {
@@ -716,7 +926,7 @@ public class TyrP2ShieldSlamState : EnemyState
         owner.FacePlayer();
 
         AttackDefinition atk = tyr.GetAttackDef("ShieldSlam");
-        timer = atk != null ? atk.windupDuration : 0.5f;
+        timer = atk != null ? atk.windupDuration : 0.3f;
 
         if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_ShieldSlam");
     }
@@ -728,32 +938,35 @@ public class TyrP2ShieldSlamState : EnemyState
         switch (phase)
         {
             case Phase.Windup:
+                owner.StopHorizontal();
                 if (timer <= 0f)
                 {
                     phase = Phase.Active;
                     AttackDefinition atk = tyr.GetAttackDef("ShieldSlam");
                     timer = atk != null ? atk.activeDuration : 0.3f;
+                    dashSpeed = atk != null ? atk.dashSpeed : 4f;
 
-                    // Short forward step during slam
-                    float slamSpeed = atk != null ? atk.dashSpeed : 4f;
-                    if (slamSpeed > 0f)
-                        owner.MoveGround(slamSpeed);
+                    // Lock direction toward player at start of dash
+                    owner.FacePlayer();
 
                     if (tyr.ShieldSlamHitbox != null) tyr.ShieldSlamHitbox.Activate();
                 }
                 break;
 
             case Phase.Active:
+                // Wall/ledge safety — end dash early
+                if (owner.Ctx.nearWallAhead || owner.Ctx.nearLedgeAhead)
+                {
+                    EndDash();
+                    break;
+                }
+
+                // Sustained dash toward player each tick
+                owner.MoveGround(dashSpeed);
+
                 if (timer <= 0f)
                 {
-                    owner.StopHorizontal();
-                    if (tyr.ShieldSlamHitbox != null) tyr.ShieldSlamHitbox.Deactivate();
-
-                    phase = Phase.Recovery;
-                    AttackDefinition atk = tyr.GetAttackDef("ShieldSlam");
-                    timer = atk != null ? atk.recoveryDuration : 0.6f;
-
-                    owner.StartCooldown("ShieldSlam");
+                    EndDash();
                 }
                 break;
 
@@ -770,6 +983,18 @@ public class TyrP2ShieldSlamState : EnemyState
     {
         if (tyr.ShieldSlamHitbox != null) tyr.ShieldSlamHitbox.Deactivate();
         owner.StopHorizontal();
+    }
+
+    private void EndDash()
+    {
+        owner.StopHorizontal();
+        if (tyr.ShieldSlamHitbox != null) tyr.ShieldSlamHitbox.Deactivate();
+
+        phase = Phase.Recovery;
+        AttackDefinition atk = tyr.GetAttackDef("ShieldSlam");
+        timer = atk != null ? atk.recoveryDuration : 0.6f;
+
+        owner.StartCooldown("ShieldSlam");
     }
 }
 
