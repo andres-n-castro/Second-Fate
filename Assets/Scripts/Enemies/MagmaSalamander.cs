@@ -124,9 +124,10 @@ public class MagmaSalamander : EnemyBase
     {
         // Ledge check ray — ahead (green)
         float gizmoGroundDist = Profile != null ? Profile.groundCheckDistance : 1f;
+        float extraOffset = 0.5f;
         Vector2 groundOrigin = GroundCheck != null
-            ? (Vector2)GroundCheck.position
-            : (Vector2)transform.position + new Vector2(FacingDirection * 0.5f, 0f);
+            ? (Vector2)GroundCheck.position + new Vector2(FacingDirection * extraOffset, 0f)
+            : (Vector2)transform.position + new Vector2(FacingDirection * (0.5f + extraOffset), 0f);
         Gizmos.color = Color.green;
         Gizmos.DrawLine(groundOrigin, groundOrigin + Vector2.down * gizmoGroundDist);
 
@@ -136,12 +137,12 @@ public class MagmaSalamander : EnemyBase
         {
             Vector2 gcWorld = GroundCheck.position;
             Vector2 center = transform.position;
-            float mirroredX = center.x - (gcWorld.x - center.x);
+            float mirroredX = center.x - (gcWorld.x - center.x) - FacingDirection * extraOffset;
             behindOrigin = new Vector2(mirroredX, gcWorld.y);
         }
         else
         {
-            behindOrigin = (Vector2)transform.position + new Vector2(-FacingDirection * 0.5f, 0f);
+            behindOrigin = (Vector2)transform.position + new Vector2(-FacingDirection * (0.5f + extraOffset), 0f);
         }
         Gizmos.color = new Color(0f, 0.5f, 0f);
         Gizmos.DrawLine(behindOrigin, behindOrigin + Vector2.down * gizmoGroundDist);

@@ -206,22 +206,24 @@ public class SalamanderPatrolState : EnemyState
 
     private bool HasGroundAhead()
     {
+        float extraOffset = 0.5f;
         Vector2 origin = owner.GroundCheck != null
-            ? (Vector2)owner.GroundCheck.position
-            : (Vector2)owner.transform.position + new Vector2(owner.FacingDirection * 0.5f, 0f);
+            ? (Vector2)owner.GroundCheck.position + new Vector2(owner.FacingDirection * extraOffset, 0f)
+            : (Vector2)owner.transform.position + new Vector2(owner.FacingDirection * (0.5f + extraOffset), 0f);
         return Physics2D.Raycast(origin, Vector2.down, owner.Profile.groundCheckDistance, owner.GroundLayer);
     }
 
     private bool HasGroundBehind()
     {
+        float extraOffset = 0.5f;
         if (owner.GroundCheck == null)
         {
-            Vector2 fallback = (Vector2)owner.transform.position + new Vector2(-owner.FacingDirection * 0.5f, 0f);
+            Vector2 fallback = (Vector2)owner.transform.position + new Vector2(-owner.FacingDirection * (0.5f + extraOffset), 0f);
             return Physics2D.Raycast(fallback, Vector2.down, owner.Profile.groundCheckDistance, owner.GroundLayer);
         }
         Vector2 gcWorld = owner.GroundCheck.position;
         Vector2 center = owner.transform.position;
-        float mirroredX = center.x - (gcWorld.x - center.x);
+        float mirroredX = center.x - (gcWorld.x - center.x) - owner.FacingDirection * extraOffset;
         return Physics2D.Raycast(new Vector2(mirroredX, gcWorld.y), Vector2.down, owner.Profile.groundCheckDistance, owner.GroundLayer);
     }
 }
@@ -337,6 +339,23 @@ public class SalamanderChaseState : EnemyState
         // cooldown on the ledge instead of the stuck timer giving up early.
         if (owner.Ctx.nearLedgeAhead || owner.Ctx.nearWallAhead)
         {
+            // Player is below — chasing horizontally won't help.
+            // Don't call FacePlayer here: flipping the facing direction
+            // moves GroundCheck to the other side, which makes
+            // nearLedgeAhead oscillate every frame and causes stutter.
+            if (owner.Ctx.playerRelativePos.y < -0.5f)
+            {
+                if (owner.Ctx.isGrounded && Time.time >= salamander.JumpCooldownUntil)
+                {
+                    owner.FacePlayer();
+                    salamander.CombatSuper.ForceSubState(salamander.JumpState);
+                    return;
+                }
+                owner.StopHorizontal();
+                if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
+                return;
+            }
+
             owner.FacePlayer();
 
             // Wall blocks the path toward the player — give up
@@ -438,9 +457,10 @@ public class SalamanderChaseState : EnemyState
     /// </summary>
     private bool HasGroundAhead()
     {
+        float extraOffset = 0.5f;
         Vector2 origin = owner.GroundCheck != null
-            ? (Vector2)owner.GroundCheck.position
-            : (Vector2)owner.transform.position + new Vector2(owner.FacingDirection * 0.5f, 0f);
+            ? (Vector2)owner.GroundCheck.position + new Vector2(owner.FacingDirection * extraOffset, 0f)
+            : (Vector2)owner.transform.position + new Vector2(owner.FacingDirection * (0.5f + extraOffset), 0f);
         return Physics2D.Raycast(origin, Vector2.down, owner.Profile.groundCheckDistance, owner.GroundLayer);
     }
 
@@ -449,14 +469,15 @@ public class SalamanderChaseState : EnemyState
     /// </summary>
     private bool HasGroundBehind()
     {
+        float extraOffset = 0.5f;
         if (owner.GroundCheck == null)
         {
-            Vector2 fallback = (Vector2)owner.transform.position + new Vector2(-owner.FacingDirection * 0.5f, 0f);
+            Vector2 fallback = (Vector2)owner.transform.position + new Vector2(-owner.FacingDirection * (0.5f + extraOffset), 0f);
             return Physics2D.Raycast(fallback, Vector2.down, owner.Profile.groundCheckDistance, owner.GroundLayer);
         }
         Vector2 gcWorld = owner.GroundCheck.position;
         Vector2 center = owner.transform.position;
-        float mirroredX = center.x - (gcWorld.x - center.x);
+        float mirroredX = center.x - (gcWorld.x - center.x) - owner.FacingDirection * extraOffset;
         return Physics2D.Raycast(new Vector2(mirroredX, gcWorld.y), Vector2.down, owner.Profile.groundCheckDistance, owner.GroundLayer);
     }
 
