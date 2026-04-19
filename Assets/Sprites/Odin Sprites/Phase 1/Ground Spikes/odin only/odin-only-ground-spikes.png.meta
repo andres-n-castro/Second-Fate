@@ -1,0 +1,325 @@
+fileFormatVersion: 2
+guid: a8e8e0c2c41b3514ea87dfd8f2f94638
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4335792845186214964
+    second: ebf474f3-2081-4420-8014-97122aa5c655-jukebox-bg-removed_0
+  - first:
+      213: 2567723722899716883
+    second: ebf474f3-2081-4420-8014-97122aa5c655-jukebox-bg-removed_1
+  - first:
+      213: 1243143726890949032
+    second: ebf474f3-2081-4420-8014-97122aa5c655-jukebox-bg-removed_2
+  - first:
+      213: 2752489160630533205
+    second: ebf474f3-2081-4420-8014-97122aa5c655-jukebox-bg-removed_3
+  - first:
+      213: 2186377116506735683
+    second: ebf474f3-2081-4420-8014-97122aa5c655-jukebox-bg-removed_4
+  - first:
+      213: 5146919233116309059
+    second: ebf474f3-2081-4420-8014-97122aa5c655-jukebox-bg-removed_5
+  - first:
+      213: 7935938284840665023
+    second: ebf474f3-2081-4420-8014-97122aa5c655-jukebox-bg-removed_6
+  - first:
+      213: -6522364540988288057
+    second: ebf474f3-2081-4420-8014-97122aa5c655-jukebox-bg-removed_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: empt1
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 784
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc3defa116b24d3c0800000000000000
+      internalID: -4335792845186214964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-only-gs1
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 656
+        width: 669
+        height: 322
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31bf7c02f1362a320800000000000000
+      internalID: 2567723722899716883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-only-gs2
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 367
+        width: 301
+        height: 280
+      alignment: 9
+      pivot: {x: 0.6687736, y: 0.4529625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a9171612a8804110800000000000000
+      internalID: 1243143726890949032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empt2
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 687
+        width: 25
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55cfe7bee4ec23620800000000000000
+      internalID: 2752489160630533205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-only-gs3
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 34
+        width: 319
+        height: 311
+      alignment: 9
+      pivot: {x: 0.6946393, y: 0.40320203}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3444d6e4762975e10800000000000000
+      internalID: 2186377116506735683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empt3
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 315
+        width: 25
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3460681e5c78d6740800000000000000
+      internalID: 5146919233116309059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empt4
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 258
+        width: 28
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbfb95bd2dd122e60800000000000000
+      internalID: 7935938284840665023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empt5
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 167
+        width: 28
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c31ac6c108eb75a0800000000000000
+      internalID: -6522364540988288057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: ed83cb0661e18974fbe002270b172684
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      empt1: -4335792845186214964
+      empt2: 2752489160630533205
+      empt3: 5146919233116309059
+      empt4: 7935938284840665023
+      empt5: -6522364540988288057
+      odin-only-gs1: 2567723722899716883
+      odin-only-gs2: 1243143726890949032
+      odin-only-gs3: 2186377116506735683
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
