@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: db53e34abb10bdb4486d42ef6e9a4ee0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2373131103883879865
+    second: SalamanderAttack_transparent_right_v2_0
+  - first:
+      213: -4728292941987319589
+    second: SalamanderAttack_transparent_right_v2_1
+  - first:
+      213: -810269036699711381
+    second: SalamanderAttack_transparent_right_v2_2
+  - first:
+      213: 1051698628283637829
+    second: SalamanderAttack_transparent_right_v2_3
+  - first:
+      213: 4367129428728788206
+    second: SalamanderAttack_transparent_right_v2_4
+  - first:
+      213: -1818891274340417129
+    second: SalamanderAttack_transparent_right_v2_5
+  - first:
+      213: -1954939812650664199
+    second: SalamanderAttack_transparent_right_v2_6
+  - first:
+      213: 8905934154115185894
+    second: SalamanderAttack_transparent_right_v2_7
+  - first:
+      213: 2834331920629534720
+    second: SalamanderAttack_transparent_right_v2_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 250
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SalamanderAttack_transparent_right_v2_0
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 777
+        width: 481
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b5ed646a2e0fe020800000000000000
+      internalID: 2373131103883879865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SalamanderAttack_transparent_right_v2_1
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 777
+        width: 474
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd0fbdeee9ab16eb0800000000000000
+      internalID: -4728292941987319589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SalamanderAttack_transparent_right_v2_2
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 775
+        width: 294
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b680407aa9851c4f0800000000000000
+      internalID: -810269036699711381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SalamanderAttack_transparent_right_v2_3
+      rect:
+        serializedVersion: 2
+        x: 1405
+        y: 775
+        width: 264
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 540ac9d8452689e00800000000000000
+      internalID: 1051698628283637829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SalamanderAttack_transparent_right_v2_4
+      rect:
+        serializedVersion: 2
+        x: 1730
+        y: 776
+        width: 275
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee4b88fc3192b9c30800000000000000
+      internalID: 4367129428728788206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SalamanderAttack_transparent_right_v2_5
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 387
+        width: 474
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 791c1ebd50002c6e0800000000000000
+      internalID: -1818891274340417129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SalamanderAttack_transparent_right_v2_6
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 385
+        width: 477
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fe30bd1998aed4e0800000000000000
+      internalID: -1954939812650664199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SalamanderAttack_transparent_right_v2_7
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 390
+        width: 511
+        height: 239
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ecfd017deb389b70800000000000000
+      internalID: 8905934154115185894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SalamanderAttack_transparent_right_v2_8
+      rect:
+        serializedVersion: 2
+        x: 1552
+        y: 379
+        width: 461
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0009ca86dd1955720800000000000000
+      internalID: 2834331920629534720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 2a3b078905a78394699ff429cab4416e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      SalamanderAttack_transparent_right_v2_0: 2373131103883879865
+      SalamanderAttack_transparent_right_v2_1: -4728292941987319589
+      SalamanderAttack_transparent_right_v2_2: -810269036699711381
+      SalamanderAttack_transparent_right_v2_3: 1051698628283637829
+      SalamanderAttack_transparent_right_v2_4: 4367129428728788206
+      SalamanderAttack_transparent_right_v2_5: -1818891274340417129
+      SalamanderAttack_transparent_right_v2_6: -1954939812650664199
+      SalamanderAttack_transparent_right_v2_7: 8905934154115185894
+      SalamanderAttack_transparent_right_v2_8: 2834331920629534720
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

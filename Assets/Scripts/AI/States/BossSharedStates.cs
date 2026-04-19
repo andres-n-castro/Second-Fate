@@ -109,7 +109,13 @@ public class BossDeadState : EnemyState
         if (enableGravityOnDeath)
             owner.Rb.gravityScale = 1f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger(owner.AnimDeath);
+        if (owner.Anim != null)
+        {
+            // Clear any pending hitstun trigger from the same-frame damage event
+            // so the AnyState→Hitstun transition can't steal us out of the death state.
+            owner.Anim.ResetTrigger(owner.AnimHitstun);
+            owner.Anim.SetTrigger(owner.AnimDeath);
+        }
 
         foreach (Collider2D col in owner.GetComponents<Collider2D>())
         {

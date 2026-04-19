@@ -1,17 +1,18 @@
-using System;
 using UnityEngine;
 
 public class CurrencyPickup : MonoBehaviour
 {
-    public static event Action PickupCurrency;
+    public int currencyValue = 2;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            PickupCurrency?.Invoke();
-            Destroy(gameObject);
-            Debug.Log("player picked up currency!");
+            if (PlayerManager.Instance != null && PlayerManager.Instance.playerStats != null)
+            {
+                PlayerManager.Instance.playerStats.currentCurrency += currencyValue;
+                Destroy(gameObject);
+            }
         }
     }
 }

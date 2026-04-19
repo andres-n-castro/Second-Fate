@@ -67,7 +67,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.1320563}
+  m_Offset: {x: 0.1606592, y: -0.13209534}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -77,7 +77,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.56, y: 2.1595635}
+  m_Size: {x: 1.8813183, y: 1.7373962}
   m_EdgeRadius: 0
 --- !u!114 &3870816164235377968
 MonoBehaviour:
@@ -91,6 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b527565a29f3c44a506503fb89a50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerHitbox: 1
+  causesPlayerBounce: 0
   damage: 1
   knockbackForce: {x: 5, y: 4}
   targetLayers:
@@ -163,7 +165,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.37867165, y: 0.25119352}
+  m_Offset: {x: 0.42284155, y: 0.4624306}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -173,7 +175,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.171751, y: 2.042387}
+  m_Size: {x: 2.2600908, y: 1.9293306}
   m_EdgeRadius: 0
 --- !u!114 &248779772361304298
 MonoBehaviour:
@@ -187,6 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b527565a29f3c44a506503fb89a50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerHitbox: 1
+  causesPlayerBounce: 0
   damage: 1
   knockbackForce: {x: 5, y: 4}
   targetLayers:
@@ -214,6 +218,8 @@ GameObject:
   - component: {fileID: -8272445519639693222}
   - component: {fileID: 8373966071862457301}
   - component: {fileID: 5018943049880396234}
+  - component: {fileID: 6747101455839077299}
+  - component: {fileID: 406233132003989414}
   m_Layer: 6
   m_Name: Vidar
   m_TagString: Player
@@ -338,7 +344,7 @@ MonoBehaviour:
   walkspeed: 10
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 264
   groundCheck: {fileID: 7035009867426231644}
   groundLengthY: 0.1
   groundLengthX: 0.4
@@ -348,6 +354,9 @@ MonoBehaviour:
   jumpHangThreshold: 2
   jumpHangGravity: 0.5
   defaultGravity: 9.8
+  dashForce: 30
+  dashDuration: 0.2
+  dashCooldown: 1
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 128
@@ -365,6 +374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 0.1
+  verticalAttackThreshold: 0.5
   sideHitbox: {fileID: 3870816164235377968}
   upHitbox: {fileID: 248779772361304298}
   downHitbox: {fileID: 1475694763970511265}
@@ -380,17 +390,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229c7b982491f594e93289a1270bc699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
-  currentHealth: 4
+  maxHealth: 5
+  currentHealth: 5
   playerHealthComponent: {fileID: 6032026495228990185}
   fullHearts:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  hasDoubleJump: 0
-  hasDash: 0
+  - {fileID: 0}
+  hasDoubleJump: 1
+  hasDash: 1
+  canDash: 1
+  unlockedDoubleJump: 1
   Charms: 
+  maxCharmSlots: 1
   currencyCountText: {fileID: 0}
   currentCurrency: 0
 --- !u!114 &521181045092576934
@@ -407,6 +421,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxSource: {fileID: 5018943049880396234}
   swordSwingSound: {fileID: 8300000, guid: ae440a880cd081b4ab2d101f3fbd17cd, type: 3}
+  pogoBounceForce: 30
+  deathAnimationLength: 1
   playerHud: {fileID: 0}
   spriteRenderer: {fileID: 8817541976399323753}
   timeScale: 1
@@ -525,6 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 521181045092576934}
+  playerMovement: {fileID: 3978086069148884822}
   playerStats: {fileID: 5027713525974910737}
   playerStates: {fileID: 5002829574089365646}
 --- !u!114 &8373966071862457301
@@ -638,6 +655,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6747101455839077299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348176465958162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 405bfd8011cf3f0459605931c25ed5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaxCharms: 1
+  unlockedCharms:
+  - {fileID: 11400000, guid: 720459df681f13149ae85dbad33ff41f, type: 2}
+  - {fileID: 11400000, guid: 3973a50ebcf93794a9d41980e9586779, type: 2}
+  - {fileID: 11400000, guid: 90d7b28a299aab04484854d0fb9acc8d, type: 2}
+  - {fileID: 11400000, guid: 005226afbbb129749bf3339afd67a3fd, type: 2}
+  equippedCharms: []
+--- !u!114 &406233132003989414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348176465958162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b425cdc497f4d694caf6e2e90de5971e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6323018574185074532
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +784,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.35397387, y: -0.08168638}
+  m_Offset: {x: 0.038894653, y: -0.64001656}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -746,7 +794,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.7230005, y: 1.6633728}
+  m_Size: {x: 3.1218567, y: 1.46558}
   m_EdgeRadius: 0
 --- !u!114 &1475694763970511265
 MonoBehaviour:
@@ -760,6 +808,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b527565a29f3c44a506503fb89a50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerHitbox: 1
+  causesPlayerBounce: 1
   damage: 1
   knockbackForce: {x: 5, y: 4}
   targetLayers:

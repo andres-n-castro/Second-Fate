@@ -14,10 +14,13 @@ public class PlayerController : MonoBehaviour
     public AudioSource sfxSource;
     public AudioClip swordSwingSound;
 
+    [Header("Combat Settings")]
+    public float pogoBounceForce = 15f;
+    public float deathAnimationLength = 1.5f;
+
     // Events for AI perception to track player actions
     public static event Action OnPlayerDashed;
     public static event Action OnPlayerAttacked;
-    public static event Action<UIManager.UIStates> OnInputInventory;
     public GameObject playerHud;
     private Rigidbody2D rb;
     private Animator anim;
@@ -56,11 +59,29 @@ public class PlayerController : MonoBehaviour
 
         playerMovement.defaultGravity = rb.gravityScale;
 
+        if (playerStats != null && playerStats.playerHealthComponent != null)
+        {
+            playerStats.playerHealthComponent.OnDeath += HandlePlayerDeath;
+        }
+    }
+
+    void OnDisable()
+    {
+        if (playerStats != null && playerStats.playerHealthComponent != null)
+        {
+            playerStats.playerHealthComponent.OnDeath -= HandlePlayerDeath;
+        }
     }
 
     void Update()
     {
         UpdateKnockback();
+        playerMovement.TickTimers();
+        if (playerStates != null && playerStates.isDead)
+        {
+            return;
+        }
+
         playerMovement.Flip(xAxis);
         playerMovement.MaxFall(rb);
 
@@ -73,7 +94,13 @@ public class PlayerController : MonoBehaviour
 
         playerAttack.Attack(playerStates.isAttacking, anim, yAxis, playerMovement);
 
-        Time.timeScale = timeScale;
+        if (GameManager.Instance == null ||
+            GameManager.Instance.currentState == GameManager.GameState.Exploration ||
+            GameManager.Instance.currentState == GameManager.GameState.BossFight ||
+            GameManager.Instance.currentState == GameManager.GameState.Respawning)
+        {
+            Time.timeScale = timeScale;
+        }
     }
 
     public void KnockBack(Vector2 force, float timer)
@@ -96,48 +123,138 @@ public class PlayerController : MonoBehaviour
 
     private void GetInputs()
     {
-        //movement input
-        xAxis = Input.GetAxisRaw("Horizontal");
-        yAxis = Input.GetAxisRaw("Vertical");
+        bool canControlCharacter = GameManager.Instance == null ||
+            GameManager.Instance.currentState == GameManager.GameState.Exploration ||
+            GameManager.Instance.currentState == GameManager.GameState.BossFight;
 
-        //attack input
-        playerStates.isAttacking = Input.GetButtonDown("Player Attack");
+        if (canControlCharacter)
+        {
+            xAxis = Input.GetAxisRaw("Horizontal");
+            yAxis = Input.GetAxisRaw("Vertical");
+            playerStates.isAttacking = Input.GetButtonDown("Player Attack");
+        }
+        else
+        {
+            xAxis = 0f;
+            yAxis = 0f;
+            playerStates.isAttacking = false;
+        }
+
         if (playerStates.isAttacking)
         {
             OnPlayerAttacked?.Invoke();
         }
 
-
-        //Inventory menu open input
-        if (Input.GetButtonDown("Open Inventory"))
+        bool dashPressed = Input.GetKeyDown(KeyCode.LeftShift) ||
+            Input.GetButtonDown("Player Dash") ||
+            Input.GetKeyDown(KeyCode.JoystickButton2);
+        if (canControlCharacter && dashPressed && PlayerManager.Instance != null && PlayerManager.Instance.playerMovement != null)
         {
-            Debug.Log("create button pressed!");
-
-            if (UIManager.uiManagerCurrentState == UIManager.UIStates.inventoryUI)
-            {
-                Debug.Log("sending playerUI state to turn off inventory!");
-                OnInputInventory?.Invoke(UIManager.UIStates.playerUI);
-            }
-            else
-            {
-                Debug.Log("sending inventoryUI state to turn on inventory!");
-                OnInputInventory?.Invoke(UIManager.UIStates.inventoryUI);
-            }
-
+            PlayerManager.Instance.playerMovement.AttemptDash();
         }
 
+        if (GameManager.Instance != null && Input.GetButtonDown("Open Inventory"))
+        {
+            if (GameManager.Instance.currentState == GameManager.GameState.Exploration)
+            {
+                GameManager.Instance.ChangeState(GameManager.GameState.InventoryMenu);
+            }
+            else if (GameManager.Instance.currentState == GameManager.GameState.InventoryMenu)
+            {
+                GameManager.Instance.RestorePreviousState();
+            }
+        }
 
+        bool pausePressed = Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton9);
+        if (GameManager.Instance != null && pausePressed)
+        {
+            if (GameManager.Instance.currentState == GameManager.GameState.Exploration ||
+                GameManager.Instance.currentState == GameManager.GameState.BossFight)
+            {
+                GameManager.Instance.ChangeState(GameManager.GameState.Paused);
+            }
+            else if (GameManager.Instance.currentState == GameManager.GameState.Paused)
+            {
+                GameManager.Instance.RestorePreviousState();
+            }
+        }
     }
 
-    void DisplayPlayerHud(UIManager.UIStates currentUIState)
+    public void NotifyDashTriggered()
     {
-        if (currentUIState == UIManager.UIStates.playerUI)
+        OnPlayerDashed?.Invoke();
+    }
+
+    private void HandlePlayerDeath()
+    {
+        if (playerStates != null && playerStates.isDead)
         {
-            playerHud.SetActive(true);
+            return;
         }
-        else
+
+        StartCoroutine(DeathRoutine());
+    }
+
+    private IEnumerator DeathRoutine()
+    {
+        if (playerStates != null)
         {
-            playerHud.SetActive(false);
+            playerStates.isDead = true;
+        }
+
+        if (anim != null)
+        {
+            anim.SetTrigger("Death");
+        }
+
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.simulated = false;
+        }
+
+        yield return new WaitForSeconds(deathAnimationLength);
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.TriggerDeathMenu();
+        }
+
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null) sr.enabled = false;
+
+        this.enabled = false;
+    }
+
+    public void ExecutePogoBounce()
+    {
+        if (rb != null)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, pogoBounceForce);
+
+            if (playerStates != null)
+            {
+                playerStates.isJumping = true;
+            }
+
+            if (anim != null)
+            {
+                anim.SetTrigger("JumpTrigger");
+            }
+
+            StartCoroutine(PogoInvulnerabilityRoutine());
+
+            Debug.Log("Pogo Bounce Executed! Velocity set to: " + pogoBounceForce);
+        }
+    }
+
+    private IEnumerator PogoInvulnerabilityRoutine()
+    {
+        if (playerStats != null && playerStats.playerHealthComponent != null)
+        {
+            playerStats.playerHealthComponent.isInvulnerable = true;
+            yield return new WaitForSeconds(0.15f);
+            playerStats.playerHealthComponent.isInvulnerable = false;
         }
     }
 
@@ -157,17 +274,6 @@ public class PlayerController : MonoBehaviour
 
         timeScale = 1f; // Unfreeze
         isHitStopping = false;
-    }
-
-
-    void OnEnable()
-    {
-        UIManager.UIStateChanged += DisplayPlayerHud;
-    }
-
-    void OnDisable()
-    {
-        UIManager.UIStateChanged -= DisplayPlayerHud;
     }
 
     public void PlaySwingSound()

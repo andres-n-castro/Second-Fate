@@ -202,7 +202,7 @@ public class DraugrChaseState : EnemyState
         }
 
         // Backstep — player too close but melee on cooldown
-        if (owner.Ctx.playerDistance < owner.Profile.draugrBackstepTriggerDistance
+        if (owner.Ctx.playerDistance < owner.Profile.backstepTriggerDistance
             && !owner.IsAttackReady("Melee")
             && owner.Ctx.isGrounded
             && Time.time >= draugr.BackstepAllowedTime)
@@ -213,12 +213,12 @@ public class DraugrChaseState : EnemyState
 
         // Stuck detection — if no meaningful horizontal progress, accumulate timer
         float currentX = owner.transform.position.x;
-        if (Mathf.Abs(currentX - lastX) < owner.Profile.draugrMinProgressThreshold)
+        if (Mathf.Abs(currentX - lastX) < owner.Profile.minProgressThreshold)
         {
             stuckTimer += Time.fixedDeltaTime;
-            if (stuckTimer >= owner.Profile.draugrStuckTimeout)
+            if (stuckTimer >= owner.Profile.stuckTimeout)
             {
-                draugr.BlockedReaggroLockUntil = Time.time + owner.Profile.draugrBlockedReaggroCooldown;
+                draugr.BlockedReaggroLockUntil = Time.time + owner.Profile.blockedReaggroCooldown;
                 draugr.CombatSuper.ForceSubState(draugr.GiveUpState);
                 return;
             }
@@ -233,7 +233,7 @@ public class DraugrChaseState : EnemyState
         // All three required: same platform + within horizontal deadzone + above Y threshold
         if (owner.Ctx.isPlayerOnSamePlatform
             && owner.Ctx.playerRelativePos.y > owner.Profile.playerAboveThresholdY
-            && Mathf.Abs(owner.Ctx.playerRelativePos.x) < owner.Profile.draugrFacingDeadzoneX)
+            && Mathf.Abs(owner.Ctx.playerRelativePos.x) < owner.Profile.facingDeadzoneX)
         {
             owner.StopHorizontal();
             if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
@@ -266,7 +266,7 @@ public class DraugrChaseState : EnemyState
         {
             // Deadzone-aware facing — only flip when player is clearly to one side
             float relX = owner.Ctx.playerRelativePos.x;
-            if (Mathf.Abs(relX) >= owner.Profile.draugrFacingDeadzoneX)
+            if (Mathf.Abs(relX) >= owner.Profile.facingDeadzoneX)
                 owner.FaceDirection(relX > 0 ? 1 : -1);
 
             owner.MoveGround(owner.Profile.chaseSpeed);
@@ -438,7 +438,7 @@ public class DraugrBackstepState : EnemyState
 
     public override void Enter()
     {
-        timer = owner.Profile.draugrBackstepDuration;
+        timer = owner.Profile.backstepDuration;
 
         // Face the player, retreat opposite
         owner.FacePlayer();
@@ -488,7 +488,7 @@ public class DraugrBackstepState : EnemyState
 
         // Move backward
         owner.Rb.linearVelocity = new Vector2(
-            retreatDir * owner.Profile.draugrBackstepSpeed,
+            retreatDir * owner.Profile.backstepSpeed,
             owner.Rb.linearVelocity.y);
     }
 
@@ -496,7 +496,7 @@ public class DraugrBackstepState : EnemyState
     {
         owner.StopHorizontal();
         if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
-        draugr.BackstepAllowedTime = Time.time + owner.Profile.draugrBackstepCooldown;
+        draugr.BackstepAllowedTime = Time.time + owner.Profile.backstepCooldown;
     }
 
     private void TransitionOut()

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c74c3cc6aa99347a4b387898af3f69, type: 3}
+  m_Name: Charm_Crit_Chance
+  m_EditorClassIdentifier: 
+  charmID: crit_chance_charm
+  charmName: Crit Chance
+  charmIcon: {fileID: 1014038847968675300, guid: 81c05a0d41f26c844bdbb955a0280d81, type: 3}
+  charmEffect: 4
+  description: Allows a 10% chance do to an extra hit point upon any attack

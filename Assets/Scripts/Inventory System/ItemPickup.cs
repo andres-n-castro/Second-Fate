@@ -6,14 +6,23 @@ public class ItemPickup : MonoBehaviour
     [SerializeField] public Item itemData;
     public static event Action<Item> PickUpItem;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        CheckPickup(other.gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        CheckPickup(collision.gameObject);
+    }
+
+    private void CheckPickup(GameObject otherObject)
+    {
+        if (otherObject.CompareTag("Player"))
         {
             PickUpItem?.Invoke(itemData);
             gameObject.SetActive(false);  
-            Debug.Log("Player picked up item");
+            Debug.Log("Player picked up item: " + itemData.itemName);
         }
     }
-
 }

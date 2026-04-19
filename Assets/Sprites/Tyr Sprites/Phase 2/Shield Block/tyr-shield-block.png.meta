@@ -91,7 +91,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -105,7 +105,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 103
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -129,7 +129,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -154,276 +154,166 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shield-block-1
+      name: tyr-shield-block_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 614
-        width: 313
-        height: 349
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 74c760f627dc455b0800000000000000
-      internalID: -5380449763428238265
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty14
-      rect:
-        serializedVersion: 2
-        x: 298
-        y: 871
-        width: 7
-        height: 151
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6797006d9dd9818f0800000000000000
-      internalID: -569531793938548362
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shield-block-2
-      rect:
-        serializedVersion: 2
-        x: 331
-        y: 614
-        width: 269
-        height: 349
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c8423907e6b1bd150800000000000000
-      internalID: 5898338298120840332
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shield-block-3
-      rect:
-        serializedVersion: 2
-        x: 612
+        x: 9
         y: 615
-        width: 289
+        width: 311
         height: 347
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8fc2ffc2ca5e51330800000000000000
-      internalID: 3681100798097304824
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty13
-      rect:
-        serializedVersion: 2
-        x: 598
-        y: 871
-        width: 6
-        height: 153
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e438ea454953fd110800000000000000
-      internalID: 1287806929643406158
+      spriteID: f0b739bccb8b8ca439d59786c8d992cc
+      internalID: -2036057364
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empty2
+      name: tyr-shield-block_1
       rect:
         serializedVersion: 2
-        x: 852
-        y: 969
-        width: 31
-        height: 53
-      alignment: 9
-      pivot: {x: 0.5, y: 1.0626509}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dd4364cc50dc6fd80800000000000000
-      internalID: -8217155045305207587
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty1
-      rect:
-        serializedVersion: 2
-        x: 797
-        y: 968
-        width: 25
-        height: 20
-      alignment: 9
-      pivot: {x: 0.5, y: 1.7556031}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b73901781b3f05590800000000000000
-      internalID: -7687376620120665221
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty3
-      rect:
-        serializedVersion: 2
-        x: 197
-        y: 563
-        width: 12
-        height: 24
+        x: 299
+        y: 872
+        width: 5
+        height: 149
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bf7769820e54184d0800000000000000
-      internalID: -3134147036617213957
+      spriteID: 530f00a8c89b46c42987fba4a0204976
+      internalID: -1529282171
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empty6
+      name: tyr-shield-block_2
       rect:
         serializedVersion: 2
-        x: 475
-        y: 561
-        width: 19
-        height: 25
+        x: 332
+        y: 615
+        width: 263
+        height: 347
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: dfd60f7c6c9a5fc90800000000000000
-      internalID: -7136611363275641347
+      spriteID: 2cbd99177e7964f4d9c27ce76792a41b
+      internalID: 1632755010
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_9
+      name: tyr-shield-block_3
       rect:
         serializedVersion: 2
-        x: 703
-        y: 546
-        width: 18
-        height: 25
+        x: 603
+        y: 616
+        width: 288
+        height: 345
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b16faaf8896768a60800000000000000
-      internalID: 7675953012517041691
+      spriteID: f7fc63bbee1c61f43bd28171f303d92a
+      internalID: -444043779
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shield-block-4
+      name: tyr-shield-block_4
       rect:
         serializedVersion: 2
-        x: 15
-        y: 39
-        width: 446
-        height: 464
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b710b7f42081e4080800000000000000
-      internalID: -9201390590468882053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty4
-      rect:
-        serializedVersion: 2
-        x: 302
-        y: 536
-        width: 68
-        height: 20
+        x: 599
+        y: 872
+        width: 4
+        height: 152
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c1dbbcfe609f694b0800000000000000
-      internalID: -5433882092187697892
+      spriteID: 80141a63652edf34facdc112f72bafbd
+      internalID: 1269745930
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empty5
+      name: tyr-shield-block_5
       rect:
         serializedVersion: 2
-        x: 414
-        y: 525
-        width: 41
+        x: 866
+        y: 852
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b110e5212cb32b549a5160128b5777bc
+      internalID: 451168680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-block_6
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 825
+        width: 23
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96774657008202d44865c4a627db6e25
+      internalID: -466534877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-block_7
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 576
+        width: 10
         height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -431,142 +321,252 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 27e5f9a91fbd5b0d0800000000000000
-      internalID: -3407575712308175246
+      spriteID: d5f21a3e9ec2eac4abc37e3750e8ca67
+      internalID: -36055001
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shield-block-5
+      name: tyr-shield-block_8
       rect:
         serializedVersion: 2
-        x: 513
-        y: 36
-        width: 371
-        height: 448
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f0edc6baf5ee39750800000000000000
-      internalID: 6310649597541539343
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty7
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 500
-        width: 33
-        height: 48
-      alignment: 9
-      pivot: {x: 1.0231684, y: 0.761584}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 420a83ab6a28b5730800000000000000
-      internalID: 3988925547567161380
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty11
-      rect:
-        serializedVersion: 2
-        x: 483
-        y: 181
-        width: 8
-        height: 252
+        x: 442
+        y: 576
+        width: 17
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5b77dba585a0d7230800000000000000
-      internalID: 3638075448580994997
+      spriteID: 78f9027fb0ea6274097acc07f6fee8c7
+      internalID: -1831377681
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empty12
+      name: tyr-shield-block_9
       rect:
         serializedVersion: 2
-        x: 448
-        y: 159
+        x: 742
+        y: 576
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9257483049273124fb3573e475e98e26
+      internalID: 1329638365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-block_10
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 40
+        width: 444
+        height: 443
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc99be992300dce49842c2672acd395f
+      internalID: -1726658254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-block_11
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 474
+        width: 66
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7102faeec49f2340af0a585afadf1ac
+      internalID: 669056008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-block_12
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 476
+        width: 39
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ecd54e1b854d0c4c82ccce7990262f8
+      internalID: -1943962661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-block_13
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 37
+        width: 369
+        height: 446
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 228b21b3ebf632043bc502ec876ed696
+      internalID: 670009379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-block_14
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 364
+        width: 31
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f780271f66e5c9c4da9d70b4f6a259f1
+      internalID: 2145927651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-block_15
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 173
         width: 6
-        height: 14
+        height: 250
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f3239c629224f98a0800000000000000
-      internalID: -6296241009528851905
+      spriteID: 520a18fff0d0a72449af5d824284c7d5
+      internalID: -1035776194
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empty9
+      name: tyr-shield-block_16
       rect:
         serializedVersion: 2
-        x: 235
-        y: 8
-        width: 18
-        height: 24
+        x: 449
+        y: 160
+        width: 4
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8a0b27923fb910620800000000000000
-      internalID: 2738641517092712616
+      spriteID: 36108da10376b4841aab52054fe5e0f9
+      internalID: -1475047274
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empty10
+      name: tyr-shield-block_17
       rect:
         serializedVersion: 2
-        x: 704
+        x: 202
         y: 9
-        width: 15
-        height: 14
+        width: 16
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 412334b16aaa7fe10800000000000000
-      internalID: 2231439770784051732
+      spriteID: c36740671b10c0749958bdc9b1b60b39
+      internalID: -620086373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-block_18
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 10
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3cd020b7787d9945b618bd3eb56ffbc
+      internalID: -1452519929
       vertices: []
       indices: 
       edges: []
@@ -585,25 +585,25 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1a6679f0-7586-4c34-a43a-81a9de6482d8-jukebox-bg-removed_9: 7675953012517041691
-      empty1: -7687376620120665221
-      empty10: 2231439770784051732
-      empty11: 3638075448580994997
-      empty12: -6296241009528851905
-      empty13: 1287806929643406158
-      empty14: -569531793938548362
-      empty2: -8217155045305207587
-      empty3: -3134147036617213957
-      empty4: -5433882092187697892
-      empty5: -3407575712308175246
-      empty6: -7136611363275641347
-      empty7: 3988925547567161380
-      empty9: 2738641517092712616
-      shield-block-1: -5380449763428238265
-      shield-block-2: 5898338298120840332
-      shield-block-3: 3681100798097304824
-      shield-block-4: -9201390590468882053
-      shield-block-5: 6310649597541539343
+      tyr-shield-block_0: -2036057364
+      tyr-shield-block_1: -1529282171
+      tyr-shield-block_10: -1726658254
+      tyr-shield-block_11: 669056008
+      tyr-shield-block_12: -1943962661
+      tyr-shield-block_13: 670009379
+      tyr-shield-block_14: 2145927651
+      tyr-shield-block_15: -1035776194
+      tyr-shield-block_16: -1475047274
+      tyr-shield-block_17: -620086373
+      tyr-shield-block_18: -1452519929
+      tyr-shield-block_2: 1632755010
+      tyr-shield-block_3: -444043779
+      tyr-shield-block_4: 1269745930
+      tyr-shield-block_5: 451168680
+      tyr-shield-block_6: -466534877
+      tyr-shield-block_7: -36055001
+      tyr-shield-block_8: -1831377681
+      tyr-shield-block_9: 1329638365
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -6,6 +6,11 @@ public abstract class EnemyBase : MonoBehaviour
     [Header("Profile")]
     [SerializeField] private EnemyProfile profile;
 
+    [Header("Economy")]
+    [SerializeField] private int baseCurrencyDrop = 10;
+    public GameObject coinPrefab;
+    private int currentCurrencyDrop;
+
     [Header("Environment Checks")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform wallCheck;
@@ -39,6 +44,7 @@ public abstract class EnemyBase : MonoBehaviour
     // Attack cooldowns
     private float[] attackCooldownTimers;
     private float defaultDrag;
+    private float defaultGravityScale;
 
     // Post-hitstun invulnerability
     private float invulnerabilityTimer;
@@ -61,6 +67,7 @@ public abstract class EnemyBase : MonoBehaviour
         Perception = new EnemyPerception2D(this, Ctx);
 
         defaultDrag = Rb.linearDamping;
+        defaultGravityScale = Rb.gravityScale;
 
         if (profile.attacks != null)
         {
@@ -75,6 +82,8 @@ public abstract class EnemyBase : MonoBehaviour
         }
 
         InitializeStates();
+
+        currentCurrencyDrop = baseCurrencyDrop;
     }
 
     protected abstract void InitializeStates();
@@ -106,6 +115,17 @@ public abstract class EnemyBase : MonoBehaviour
     {
         Perception.Update();
         FSM.FixedTick();
+        ClampFallVelocity();
+    }
+
+    private void ClampFallVelocity()
+    {
+        if (Rb.linearVelocity.y < 0f)
+        {
+            Rb.linearVelocity = new Vector2(
+                Rb.linearVelocity.x,
+                Mathf.Max(Rb.linearVelocity.y, -profile.maxFallVelocity));
+        }
     }
 
     protected virtual void OnDestroy()
@@ -179,6 +199,20 @@ public abstract class EnemyBase : MonoBehaviour
             return Vector2.Reflect(desiredDirection, hit.normal).normalized;
         }
         return desiredDirection;
+    }
+
+    // ---------------------------------------------------------------
+    //  Gravity Helpers
+    // ---------------------------------------------------------------
+
+    public void SetJumpHangGravity()
+    {
+        Rb.gravityScale = defaultGravityScale * profile.jumpHangGravityMultiplier;
+    }
+
+    public void RestoreGravity()
+    {
+        Rb.gravityScale = defaultGravityScale;
     }
 
     // ---------------------------------------------------------------
@@ -314,11 +348,41 @@ public abstract class EnemyBase : MonoBehaviour
     {
         StopAll();
 
+        currentCurrencyDrop = GameManager.Instance != null &&
+            GameManager.Instance.GetActiveAlignment() == GameManager.AlignmentType.CreatureBlood
+            ? 30
+            : 10;
+
         if (Anim != null) Anim.SetTrigger(AnimDeath);
 
         foreach (Collider2D col in GetComponents<Collider2D>())
         {
             col.enabled = false;
+        }
+
+        if (coinPrefab != null)
+        {
+            int valuePerCoin = 2;
+            if (GameManager.Instance != null && GameManager.Instance.GetActiveAlignment() == GameManager.AlignmentType.CreatureBlood)
+            {
+                valuePerCoin = 6;
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                GameObject spawnedCoin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
+
+                CurrencyPickup pickupScript = spawnedCoin.GetComponent<CurrencyPickup>();
+                if (pickupScript != null) pickupScript.currencyValue = valuePerCoin;
+
+                Rigidbody2D rb = spawnedCoin.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    float randomX = UnityEngine.Random.Range(-3f, 3f);
+                    float randomY = UnityEngine.Random.Range(3f, 6f);
+                    rb.AddForce(new Vector2(randomX, randomY), ForceMode2D.Impulse);
+                }
+            }
         }
 
         Destroy(gameObject, 2f);

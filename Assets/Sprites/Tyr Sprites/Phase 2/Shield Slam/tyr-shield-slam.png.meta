@@ -49,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -63,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 110
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -87,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -112,111 +112,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tyr-shield-slam1
+      name: tyr-shield-slam_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 583
-        width: 434
-        height: 351
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8d3894539063c2420800000000000000
-      internalID: 2606517697517290456
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tyr-shield-slam2
-      rect:
-        serializedVersion: 2
-        x: 513
-        y: 583
-        width: 358
-        height: 420
-      alignment: 9
-      pivot: {x: -0.04194931, y: 0.81610817}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 466c6f755d159c8d0800000000000000
-      internalID: -2825637314452601244
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tyr-shield-slam4
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 23
-        width: 482
-        height: 333
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 30f177657ec299920800000000000000
-      internalID: 2997476399091490563
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tyr-shield-slam3
-      rect:
-        serializedVersion: 2
-        x: 15
-        y: 377
-        width: 483
-        height: 180
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f5218b82884404140800000000000000
-      internalID: 4701833362564190815
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty1
-      rect:
-        serializedVersion: 2
-        x: 782
-        y: 463
-        width: 74
-        height: 83
+        x: 9
+        y: 584
+        width: 432
+        height: 349
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 52c3b0c663b3ef0f0800000000000000
-      internalID: -1081361755595391963
+      spriteID: b4389d2a76da2b3448226de76cef5f82
+      internalID: -338828838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-slam_1
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 584
+        width: 356
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59745c85d8a00b64680f1b69697ad3ff
+      internalID: 686759668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-slam_2
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 24
+        width: 459
+        height: 323
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53911a8a6e9533e448fa123517148d7d
+      internalID: 254488530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-slam_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 371
+        width: 481
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e121104b632108d439717171e738b910
+      internalID: 1698912761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tyr-shield-slam_4
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 24
+        width: 371
+        height: 442
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5b50d4c0b4d98645a6ee8cbedf1dd18
+      internalID: 604826219
       vertices: []
       indices: 
       edges: []
@@ -235,11 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      empty1: -1081361755595391963
-      tyr-shield-slam1: 2606517697517290456
-      tyr-shield-slam2: -2825637314452601244
-      tyr-shield-slam3: 4701833362564190815
-      tyr-shield-slam4: 2997476399091490563
+      tyr-shield-slam_0: -338828838
+      tyr-shield-slam_1: 686759668
+      tyr-shield-slam_2: 254488530
+      tyr-shield-slam_3: 1698912761
+      tyr-shield-slam_4: 604826219
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

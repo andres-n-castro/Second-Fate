@@ -23,6 +23,12 @@ public class Health : MonoBehaviour, IDamageable
 
     public bool isInvulnerable;
 
+    /// <summary>
+    /// Optional damage filter. Return true to block the hit.
+    /// Checked after isInvulnerable, before damage is applied.
+    /// </summary>
+    public Func<int, Vector2, bool> DamageFilter;
+
     /// <summary> Fires (currentHealth, maxHealth) whenever HP changes. </summary>
     public event Action<int, int> OnHealthChanged;
 
@@ -47,7 +53,29 @@ public class Health : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage, Vector2 knockbackForce)
     {
-        if (IsDead || isInvulnerable) return;
+        if (IsDead) return;
+        if (isInvulnerable)
+        {
+            Debug.Log($"{gameObject.name} was attacked but is invulnerable — damage blocked");
+            return;
+        }
+        if (DamageFilter != null && DamageFilter(damage, knockbackForce))
+        {
+            Debug.Log($"{gameObject.name} was attacked but DamageFilter blocked the hit");
+            return;
+        }
+
+        if (gameObject.CompareTag("Player") && CharmManager.Instance != null)
+        {
+            if (CharmManager.Instance.HasCharmEffect(CharmEffect.Protection))
+            {
+                if (UnityEngine.Random.value <= 0.50f)
+                {
+                    Debug.Log("Protection Charm Activated! Damage Negated.");
+                    return;
+                }
+            }
+        }
 
         currentHealth -= damage;
         Debug.Log($"{gameObject.name} took {damage} damage! HP left: {currentHealth}");
@@ -82,6 +110,13 @@ public class Health : MonoBehaviour, IDamageable
         maxHealth = savedMaxHealth;
         currentHealth = savedCurrentHealth;
 
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
+    public void ScaleMaxHealth(float multiplier)
+    {
+        maxHealth = Mathf.RoundToInt(maxHealth * multiplier);
+        currentHealth = maxHealth;
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 

@@ -15,6 +15,8 @@ using System.Collections.Generic;
 public class AttackHitbox : MonoBehaviour
 {
     [Header("Damage Settings")]
+    [SerializeField] private bool isPlayerHitbox = false;
+    [SerializeField] private bool causesPlayerBounce = false;
     [SerializeField] private int damage = 1;
     [SerializeField] private Vector2 knockbackForce = new Vector2(5f, 4f);
     [SerializeField] private LayerMask targetLayers;
@@ -64,10 +66,24 @@ public class AttackHitbox : MonoBehaviour
         Vector2 direction = (other.transform.position - transform.position).normalized;
         Vector2 kb = new Vector2(direction.x * knockbackForce.x, knockbackForce.y);
 
-        target.TakeDamage(damage, kb);
+        int finalDamage = damage;
+        if (isPlayerHitbox)
+        {
+            PlayerAttack playerAttack = GetComponentInParent<PlayerAttack>();
+            if (playerAttack != null)
+            {
+                finalDamage = playerAttack.GetCurrentSwingDamage();
+            }
+        }
+
+        target.TakeDamage(finalDamage, kb);
 
         // Trigger the hit stop exactly when the collider connects!
         PlayerController.Instance.TriggerHitStop(0.1f);
-        Debug.Log($"Hitbox connected with {other.name}! Hitstop triggered.");
+        if (isPlayerHitbox && causesPlayerBounce && PlayerController.Instance != null)
+        {
+            PlayerController.Instance.ExecutePogoBounce();
+        }
+        Debug.Log($"Hitbox '{gameObject.name}' hit {other.name}! isPlayer: {isPlayerHitbox}, causesBounce: {causesPlayerBounce}");
     }
 }

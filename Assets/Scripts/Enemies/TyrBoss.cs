@@ -31,6 +31,12 @@ public class TyrBoss : EnemyBase
     [SerializeField] private AttackHitbox shieldSlamHitbox;
     [SerializeField] private AttackHitbox shieldFlurryHitbox;
 
+    [Header("Phase 2 Body Collider")]
+    [SerializeField] private Vector2 p2BodyColliderSize = new Vector2(2.0f, 2.5f);
+    [SerializeField] private Vector2 p2BodyColliderOffset = new Vector2(0f, -0.25f);
+
+    private BoxCollider2D bodyCollider;
+
     // Hitbox accessors for states
     public AttackHitbox SpearThrustHitbox => spearThrustHitbox;
     public AttackHitbox SpearFlurryHitbox => spearFlurryHitbox;
@@ -59,6 +65,7 @@ public class TyrBoss : EnemyBase
     {
         base.Start();
 
+        bodyCollider = GetComponent<BoxCollider2D>();
         SpearThrustReach = ComputeHitboxReach(spearThrustHitbox);
         SpearFlurryReach = ComputeHitboxReach(spearFlurryHitbox);
     }
@@ -70,7 +77,7 @@ public class TyrBoss : EnemyBase
         float localX = Mathf.Abs(hitbox.transform.localPosition.x);
         var box = hitbox.GetComponent<BoxCollider2D>();
         if (box != null)
-            return localX + box.size.x * 0.5f;
+            return localX + box.offset.x + box.size.x * 0.5f;
 
         var col = hitbox.GetComponent<Collider2D>();
         if (col != null)
@@ -100,6 +107,7 @@ public class TyrBoss : EnemyBase
         {
             isPhase2 = true;
             DisableAllHitboxes();
+            SwapToP2BodyCollider();
             PhaseTransition.NextPhaseState = P2Super;
             FSM.ChangeState(PhaseTransition);
             return;
@@ -112,6 +120,7 @@ public class TyrBoss : EnemyBase
     {
         DisableAllHitboxes();
         FSM.ChangeState(DeadState);
+        base.HandleDeath();
     }
 
     public AttackDefinition GetAttackDef(string attackName)
@@ -123,6 +132,15 @@ public class TyrBoss : EnemyBase
                 return Profile.attacks[i];
         }
         return null;
+    }
+
+    private void SwapToP2BodyCollider()
+    {
+        if (bodyCollider != null)
+        {
+            bodyCollider.size = p2BodyColliderSize;
+            bodyCollider.offset = p2BodyColliderOffset;
+        }
     }
 
     private void DisableAllHitboxes()
@@ -167,6 +185,12 @@ public class TyrBoss : EnemyBase
             Gizmos.color = new Color(0f, 1f, 0f, 0.3f);
             Gizmos.DrawWireSphere(transform.position, Profile.tyrCloseRange);
         }
+
+        // P2 body collider preview (orange) — mirrors with facing direction like the real collider
+        Gizmos.color = new Color(1f, 0.5f, 0f, 0.6f);
+        float scaleSign = Mathf.Sign(transform.localScale.x);
+        Vector3 p2Center = transform.position + new Vector3(p2BodyColliderOffset.x * scaleSign, p2BodyColliderOffset.y, 0f);
+        Gizmos.DrawWireCube(p2Center, new Vector3(p2BodyColliderSize.x, p2BodyColliderSize.y, 0f));
 
         // LOS ray to player
         if (PlayerController.Instance != null)

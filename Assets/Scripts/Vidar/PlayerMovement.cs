@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -20,14 +21,47 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpHangGravity;
     public float defaultGravity;
 
+
     private float groundedRecallTimer;
+    private bool canDoubleJump;
+    private Rigidbody2D rb;
+    private Animator animator;
+
+    [Header("Dash Settings")]
+    public float dashForce = 20f;
+    public float dashDuration = 0.2f;
+    public float dashCooldown = 1.0f;
+
+    private bool isDashing;
+    private float dashCooldownTimer;
 
     [Header("Enemy Collision Settings")]
     [SerializeField] private LayerMask whatIsEnemy;
     [SerializeField] private float enemyCheckDistance = 0.6f;
 
+    private const float AgilityDashMultiplier = 0.5f;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
+
+    public void TickTimers()
+    {
+        if (dashCooldownTimer > 0f)
+        {
+            dashCooldownTimer -= Time.deltaTime;
+        }
+    }
+
     public void Move(Rigidbody2D rb, float xAxis, Animator anim)
     {
+        if (isDashing)
+        {
+            anim.SetBool("Walking", false);
+            return;
+        }
 
         float adjustedXAxis = xAxis;
 
@@ -46,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+
         // so player does not fall off moving platform when standing still
         Vector2 platformVelocity = Vector2.zero;
         if (TryGetComponent<PlatformRider>(out var rider))
@@ -55,18 +90,42 @@ public class PlayerMovement : MonoBehaviour
 
         float targetX = (walkspeed * adjustedXAxis) + platformVelocity.x;
 
-        rb.linearVelocity = new Vector2(targetX, rb.linearVelocity.y);
+        // Match platform's vertical velocity when grounded to stay locked to the platform
+        float targetY = rb.linearVelocity.y;
+        if (Grounded() && Mathf.Abs(platformVelocity.y) > 0.01f)
+        {
+            targetY = platformVelocity.y;
+        }
+
+        rb.linearVelocity = new Vector2(targetX, targetY);
 
         anim.SetBool("Walking", (walkspeed * adjustedXAxis) != 0 && Grounded());
     }
     public void Jump(Rigidbody2D rb, ref bool isJumping, Animator anim)
     {
+        if (isDashing)
+        {
+            return;
+        }
+
+
+        bool isGrounded = Grounded();
+        bool jumpPressed = Input.GetButtonDown("Jump");
+
+        // Calculate Y velocity relative to platform so platform motion
+        // doesn't interfere with ground state detection
+        float relativeYVelocity = rb.linearVelocity.y;
+        if (TryGetComponent<PlatformRider>(out var r))
+        {
+            relativeYVelocity -= r.GetPlatformVelocity().y;
+        }
 
         //coyote timer check tied to ground check
-        if (Grounded() && (rb.linearVelocity.y <= 0.5f || TryGetComponent<PlatformRider>(out var r) && r.GetPlatformVelocity().y > 0))
+        if (isGrounded && relativeYVelocity <= 0.5f)
         {
             coyoteTimeCounter = coyoteTime;
             isJumping = false;
+            canDoubleJump = true;
         }
         else
         {
@@ -74,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //jump buffer tied to jump input
-        if (Input.GetButtonDown("Jump"))
+        if (jumpPressed)
         {
             jumpTimeCounter = jumpTimeBuffer;
         }
@@ -94,10 +153,28 @@ public class PlayerMovement : MonoBehaviour
                 }
                 rb.linearVelocity = new Vector3(rb.linearVelocity.x, JumpForce + extraYVelocity);
                 isJumping = true;
+                canDoubleJump = true;
                 jumpTimeCounter = 0;
                 coyoteTimeCounter = 0;
                 anim.SetTrigger("JumpTrigger");
             }
+        }
+
+        bool canExecuteDoubleJump =
+            jumpPressed &&
+            !isGrounded &&
+            canDoubleJump &&
+            PlayerManager.Instance != null &&
+            PlayerManager.Instance.playerStats != null &&
+            PlayerManager.Instance.playerStats.unlockedDoubleJump;
+
+        if (canExecuteDoubleJump)
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, JumpForce);
+            isJumping = true;
+            canDoubleJump = false;
+            jumpTimeCounter = 0f;
+            anim.SetTrigger("JumpTrigger");
         }
 
         if (isJumping && Mathf.Abs(rb.linearVelocity.y) < jumpHangThreshold)
@@ -114,7 +191,7 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
 
-        if (Grounded())
+        if (isGrounded)
         {
             groundedRecallTimer = 0.1f;
         }
@@ -126,7 +203,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("isGrounded", groundedRecallTimer > 0);
         anim.SetBool("Jumping", isJumping && groundedRecallTimer <= 0);
         // anim.SetBool("Jumping", isJumping);
-        // anim.SetFloat("yVelocity", rb.linearVelocity.y);
+        anim.SetFloat("yVelocity", rb.linearVelocity.y);
         // anim.SetBool("isGrounded", Grounded());
 
     }
@@ -189,7 +266,59 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Dash()
     {
+        AttemptDash();
+    }
 
+    public void AttemptDash()
+    {
+        if (PlayerManager.Instance == null ||
+            PlayerManager.Instance.playerStats == null ||
+            !PlayerManager.Instance.playerStats.canDash ||
+            dashCooldownTimer > 0f ||
+            isDashing)
+        {
+            return;
+        }
+
+        StartCoroutine(DashRoutine());
+    }
+
+    private IEnumerator DashRoutine()
+    {
+        isDashing = true;
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Dash");
+        }
+
+        if (PlayerController.Instance != null)
+        {
+            PlayerController.Instance.NotifyDashTriggered();
+        }
+
+        float originalGravity = rb != null ? rb.gravityScale : defaultGravity;
+        if (rb != null)
+        {
+            rb.gravityScale = 0f;
+            float facingDirection = transform.localScale.x >= 0f ? 1f : -1f;
+            rb.linearVelocity = new Vector2(facingDirection * dashForce, 0f);
+        }
+
+        yield return new WaitForSeconds(dashDuration);
+
+        if (rb != null)
+        {
+            rb.gravityScale = originalGravity;
+            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+        }
+
+        isDashing = false;
+        dashCooldownTimer = dashCooldown;
+        if (CharmManager.Instance != null && CharmManager.Instance.HasCharmEffect(CharmEffect.Agility))
+        {
+            dashCooldownTimer *= AgilityDashMultiplier;
+        }
     }
     public void DoubleJump()
     {
