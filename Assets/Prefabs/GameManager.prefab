@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab31fd8a6f555c4ca458833cd29a709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSandboxMode: 0
+  isSandboxMode: 1
   currentSaveData:
     lastRestedBonfireID: 
     currentSceneName: TutorialScene
