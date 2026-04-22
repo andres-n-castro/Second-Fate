@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,177 +121,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1
+      name: surtr-transition_0
       rect:
         serializedVersion: 2
-        x: 74
-        y: 64
-        width: 436
-        height: 547
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 103
+        y: 65
+        width: 407
+        height: 546
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1794a54de3b25f280800000000000000
-      internalID: -9010247930634155663
+      spriteID: 8226ce331a0f81a4084423c5c8c53cb3
+      internalID: -1613687395
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2
+      name: surtr-transition_1
       rect:
         serializedVersion: 2
         x: 546
-        y: 63
-        width: 444
-        height: 552
-      alignment: 9
-      pivot: {x: -0.0048531196, y: 0.99219304}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6e77ce1619808dc00800000000000000
-      internalID: 925499143930804198
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empt3
-      rect:
-        serializedVersion: 2
-        x: 689
-        y: 646
-        width: 27
-        height: 20
+        y: 64
+        width: 443
+        height: 550
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 02bd1830e52333b80800000000000000
-      internalID: -8416327899258168544
+      spriteID: dd9feaf0dbf10fe468b60cc8f010f1a2
+      internalID: -1098952699
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3
+      name: surtr-transition_2
       rect:
         serializedVersion: 2
-        x: 1035
-        y: 64
-        width: 451
-        height: 553
-      alignment: 9
-      pivot: {x: 0, y: 0.9883107}
+        x: 690
+        y: 603
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d89b028ccaf2fe9b0800000000000000
-      internalID: -5048764238120568435
+      spriteID: d154f15706c56ca40abc7ec2a38edc4a
+      internalID: -2050181093
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 4
+      name: surtr-transition_3
       rect:
         serializedVersion: 2
-        x: 1535
-        y: 64
-        width: 491
+        x: 1065
+        y: 65
+        width: 420
         height: 552
-      alignment: 9
-      pivot: {x: -0.00000024861572, y: 0.98828954}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c0ae7c54b2eaf86f0800000000000000
-      internalID: -680133517832099316
+      spriteID: 6f385e7c1759c254eac285c0e11ebaf4
+      internalID: 1443800727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empt1
+      name: surtr-transition_4
       rect:
         serializedVersion: 2
-        x: 14
-        y: 6
-        width: 27
+        x: 1570
+        y: 65
+        width: 454
+        height: 550
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6181b23496841984ba322f819e321bc7
+      internalID: 1339694409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-transition_5
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 71
+        width: 25
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f9496d9746fa376c0800000000000000
-      internalID: -4146777985802398561
+      spriteID: ab88c9b0fba96b24dbecd1598339ad83
+      internalID: -1363819396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empt2
+      name: surtr-transition_6
       rect:
         serializedVersion: 2
-        x: 1052
-        y: 5
+        x: 1037
+        y: 71
+        width: 25
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2411594d7effcb448fa80536ad74d36
+      internalID: 736304262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-transition_7
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 71
         width: 26
-        height: 17
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 15ae727e43d6d59b0800000000000000
-      internalID: -5089791929874912687
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empt4
-      rect:
-        serializedVersion: 2
-        x: 1518
-        y: 0
-        width: 28
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7b30022f76e326f50800000000000000
-      internalID: 6873124597485536183
+      spriteID: bacc869b05f26d54c98d19d216054592
+      internalID: 163914306
       vertices: []
       indices: 
       edges: []
@@ -310,14 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1: -9010247930634155663
-      2: 925499143930804198
-      3: -5048764238120568435
-      4: -680133517832099316
-      empt1: -4146777985802398561
-      empt2: -5089791929874912687
-      empt3: -8416327899258168544
-      empt4: 6873124597485536183
+      surtr-transition_0: -1613687395
+      surtr-transition_1: -1098952699
+      surtr-transition_2: -2050181093
+      surtr-transition_3: 1443800727
+      surtr-transition_4: 1339694409
+      surtr-transition_5: -1363819396
+      surtr-transition_6: 736304262
+      surtr-transition_7: 163914306
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

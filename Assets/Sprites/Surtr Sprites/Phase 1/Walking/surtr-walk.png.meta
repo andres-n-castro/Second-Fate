@@ -55,7 +55,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 150
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -93,7 +93,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -118,155 +118,155 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: surtr-walk-1
+      name: surtr-walk_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 539
-        width: 384
-        height: 433
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 17d55a03809320150800000000000000
-      internalID: 5837290774364249457
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty1
-      rect:
-        serializedVersion: 2
-        x: 418
-        y: 808
-        width: 25
-        height: 25
+        x: 27
+        y: 540
+        width: 382
+        height: 431
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 01f19b3e61d8f7bc0800000000000000
-      internalID: -3783150032518570224
+      spriteID: 7550fcf173ee51740b5aebc87c28cc70
+      internalID: 1972663851
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-walk-2
+      name: surtr-walk_1
       rect:
         serializedVersion: 2
-        x: 460
-        y: 529
-        width: 390
-        height: 444
-      alignment: 9
-      pivot: {x: 0, y: 0.98371226}
+        x: 390
+        y: 809
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 20c2bc5077e560990800000000000000
-      internalID: -7420139470754993150
+      spriteID: 1cffd43ff6b514c4693c4bb979acebac
+      internalID: -82147157
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empty2
+      name: surtr-walk_2
       rect:
         serializedVersion: 2
-        x: 814
-        y: 991
-        width: 26
+        x: 461
+        y: 530
+        width: 388
+        height: 442
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53044d3c9fa92d1449d303b0520ef3c4
+      internalID: 457968297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-walk_3
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 809
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c39555316309e284eac0c9ec501f605a
+      internalID: 2129985705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-walk_4
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 37
+        width: 395
+        height: 451
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a483d66cf3fa2cf469699b54b5894b71
+      internalID: 1315531864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-walk_5
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 319
+        width: 23
         height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d5800dce1147b5160800000000000000
-      internalID: 7015328464896002141
+      spriteID: d982b78ec59883645b33df1558c32057
+      internalID: 2102166593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-walk-3
+      name: surtr-walk_6
       rect:
         serializedVersion: 2
-        x: 24
-        y: 34
-        width: 397
-        height: 453
-      alignment: 9
-      pivot: {x: 0.000000014413214, y: 0.9627505}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0d06c7205a4ea66f0800000000000000
-      internalID: -690488195485507376
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty3
-      rect:
-        serializedVersion: 2
-        x: 434
-        y: 318
-        width: 25
-        height: 26
+        x: 490
+        y: 38
+        width: 340
+        height: 450
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7c6e03443ffafb290800000000000000
-      internalID: -7872380164264368441
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-walk-
-      rect:
-        serializedVersion: 2
-        x: 489
-        y: 37
-        width: 342
-        height: 452
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bab13228c26de8250800000000000000
-      internalID: 5948927644453247915
+      spriteID: 8b61b32e5a7249747b5399256d78330a
+      internalID: -156223040
       vertices: []
       indices: 
       edges: []
@@ -285,13 +285,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      empty1: -3783150032518570224
-      empty2: 7015328464896002141
-      empty3: -7872380164264368441
-      surtr-walk-: 5948927644453247915
-      surtr-walk-1: 5837290774364249457
-      surtr-walk-2: -7420139470754993150
-      surtr-walk-3: -690488195485507376
+      surtr-walk_0: 1972663851
+      surtr-walk_1: -82147157
+      surtr-walk_2: 457968297
+      surtr-walk_3: 2129985705
+      surtr-walk_4: 1315531864
+      surtr-walk_5: 2102166593
+      surtr-walk_6: -156223040
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

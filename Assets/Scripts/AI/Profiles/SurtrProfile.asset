@@ -35,8 +35,8 @@ MonoBehaviour:
   - attackName: LavaSweep
     damage: 1
     knockbackForce: 8
-    windupDuration: 0.5
-    activeDuration: 0.3
+    windupDuration: 0.083
+    activeDuration: 0.250
     recoveryDuration: 0.6
     cooldown: 2
     dashSpeed: 0
@@ -47,8 +47,8 @@ MonoBehaviour:
   - attackName: HeavyThrust
     damage: 1
     knockbackForce: 10
-    windupDuration: 0.5
-    activeDuration: 0.4
+    windupDuration: 0.1
+    activeDuration: 0.3
     recoveryDuration: 0.6
     cooldown: 2.5
     dashSpeed: 8
@@ -59,8 +59,8 @@ MonoBehaviour:
   - attackName: FireBreath
     damage: 1
     knockbackForce: 4
-    windupDuration: 0.4
-    activeDuration: 0.8
+    windupDuration: 0.250
+    activeDuration: 0.583
     recoveryDuration: 0.6
     cooldown: 3
     dashSpeed: 0
@@ -71,9 +71,9 @@ MonoBehaviour:
   - attackName: GroundedThrust
     damage: 1
     knockbackForce: 10
-    windupDuration: 0.5
-    activeDuration: 0.4
-    recoveryDuration: 0.8
+    windupDuration: 0.167
+    activeDuration: 0.167
+    recoveryDuration: 0.250
     cooldown: 3
     dashSpeed: 12
     dashDuration: 0
@@ -83,8 +83,8 @@ MonoBehaviour:
   - attackName: LavaVomit
     damage: 1
     knockbackForce: 6
-    windupDuration: 0.6
-    activeDuration: 0.5
+    windupDuration: 0.250
+    activeDuration: 0.417
     recoveryDuration: 0.8
     cooldown: 2.5
     dashSpeed: 0
@@ -179,17 +179,9 @@ MonoBehaviour:
   surtrThrustWeightMultiplier: 2
   surtrFireBreathMaxRange: 4
   surtrFireBreathWeightMultiplier: 2
-  surtrSweepProjectileSpeed: 8
   surtrP2MinAttackCooldown: 0.3
   surtrP2MaxAttackCooldown: 0.9
-  surtrEruptionInterval: 3
-  surtrEruptionProjectileCount: 3
-  surtrEruptionSpreadAngle: 60
-  surtrEruptionProjectileSpeed: 7
   surtrGroundedThrustStuckDuration: 1.5
-  surtrVomitProjectileCount: 5
-  surtrVomitSpreadAngle: 90
-  surtrVomitProjectileSpeed: 6
   surtrGroundedThrustRange: 3.5
   surtrGroundedThrustWeightMultiplier: 3
   surtrVomitMaxRange: 6

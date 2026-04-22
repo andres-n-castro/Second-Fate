@@ -70,7 +70,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -84,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 171
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -108,7 +108,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -133,277 +133,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: surtr-gt-1
+      name: surtr-ground-thrust_0
       rect:
         serializedVersion: 2
         x: 85
-        y: 1679
-        width: 824
-        height: 502
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 200a80f987c165f60800000000000000
-      internalID: 8022631090596913154
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-gt-2
-      rect:
-        serializedVersion: 2
-        x: 1222
-        y: 1682
-        width: 615
-        height: 466
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2e3d11ae80bdbf110800000000000000
-      internalID: 1295870149132407778
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-gt-3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 1146
-        width: 941
-        height: 469
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3cd66857bd9063c10800000000000000
-      internalID: 2032823119978589635
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-gt-4
-      rect:
-        serializedVersion: 2
-        x: 1173
-        y: 1109
-        width: 631
-        height: 532
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fbca7e14d87b7f110800000000000000
-      internalID: 1294705235216280767
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty3
-      rect:
-        serializedVersion: 2
-        x: 1842
-        y: 1294
-        width: 26
-        height: 25
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 63671db24373fa590800000000000000
-      internalID: -7660843743920949706
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-gt-5
-      rect:
-        serializedVersion: 2
-        x: 75
-        y: 555
-        width: 444
-        height: 539
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 62e29e01ae9e08440800000000000000
-      internalID: 4936202383113399846
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty2
-      rect:
-        serializedVersion: 2
-        x: 838
-        y: 1102
-        width: 15
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f2f3a128e861a3630800000000000000
-      internalID: 3907460428021251887
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-gt-6
-      rect:
-        serializedVersion: 2
-        x: 932
-        y: 545
-        width: 537
-        height: 558
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 52f51bfc3a2e80f30800000000000000
-      internalID: 4542129417395199781
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-gt-7
-      rect:
-        serializedVersion: 2
-        x: 1483
-        y: 576
-        width: 397
-        height: 513
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7054f6e75c41924b0800000000000000
-      internalID: -5464813834375052025
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-gt-8
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 25
-        width: 434
-        height: 502
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d131e3f6339c36390800000000000000
-      internalID: -7826190504692935907
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-gt-9
-      rect:
-        serializedVersion: 2
-        x: 502
-        y: 24
-        width: 441
-        height: 503
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f3b931bdfcf4bca20800000000000000
-      internalID: 3083646124017556287
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-gt-10
-      rect:
-        serializedVersion: 2
-        x: 975
-        y: 24
-        width: 436
-        height: 509
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1e7f90c8f4258d0d0800000000000000
-      internalID: -3397875417245681695
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty1
-      rect:
-        serializedVersion: 2
-        x: 784
-        y: 1107
-        width: 20
-        height: 20
+        y: 1680
+        width: 823
+        height: 500
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -412,8 +148,250 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8179df230abeeb440a24210e6d0bbd87
-      internalID: 1593974254
+      spriteID: 5f4d8d760ac6f8a40bd54d173f898f6d
+      internalID: -1884192198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-ground-thrust_1
+      rect:
+        serializedVersion: 2
+        x: 1223
+        y: 1683
+        width: 613
+        height: 464
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a61871ecb5208ae47a828072d4389838
+      internalID: 1414022295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-ground-thrust_2
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 1147
+        width: 939
+        height: 467
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0d7d2dd76c816d4c854610616caca76
+      internalID: -1108790340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-ground-thrust_3
+      rect:
+        serializedVersion: 2
+        x: 1174
+        y: 1119
+        width: 629
+        height: 521
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 932e37a55a9d81249ba969a69f85c72d
+      internalID: 899198300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-ground-thrust_4
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 579
+        width: 380
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76ae3fa66300de24ba6c3169162d95b1
+      internalID: -866983301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-ground-thrust_5
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 555
+        width: 451
+        height: 538
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eb127a3a8b06c44bb65cdf1f47131e5
+      internalID: -14478769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-ground-thrust_6
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 1085
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 289f8441882d99342a9865bfbbb0908a
+      internalID: -1405006317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-ground-thrust_7
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 573
+        width: 533
+        height: 530
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d84ccc17fe54644095139ee5152cd60
+      internalID: -717853662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-ground-thrust_8
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 577
+        width: 404
+        height: 510
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3d365cdc64c8aa44a2bfa073dae8189
+      internalID: 1293247209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-ground-thrust_9
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 26
+        width: 432
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cbf96adf20841b45ac74c26bca26d10
+      internalID: -1949581255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-ground-thrust_10
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 25
+        width: 439
+        height: 501
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f03e99536faeaf4e924c2fa0fc51f63
+      internalID: 25472767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-ground-thrust_11
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 25
+        width: 435
+        height: 507
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12ccc088536e5c34085ef80decb8a64d
+      internalID: 610253718
       vertices: []
       indices: 
       edges: []
@@ -432,19 +410,18 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      empty1: 1593974254
-      empty2: 3907460428021251887
-      empty3: -7660843743920949706
-      surtr-gt-1: 8022631090596913154
-      surtr-gt-10: -3397875417245681695
-      surtr-gt-2: 1295870149132407778
-      surtr-gt-3: 2032823119978589635
-      surtr-gt-4: 1294705235216280767
-      surtr-gt-5: 4936202383113399846
-      surtr-gt-6: 4542129417395199781
-      surtr-gt-7: -5464813834375052025
-      surtr-gt-8: -7826190504692935907
-      surtr-gt-9: 3083646124017556287
+      surtr-ground-thrust_0: -1884192198
+      surtr-ground-thrust_1: 1414022295
+      surtr-ground-thrust_10: 25472767
+      surtr-ground-thrust_11: 610253718
+      surtr-ground-thrust_2: -1108790340
+      surtr-ground-thrust_3: 899198300
+      surtr-ground-thrust_4: -866983301
+      surtr-ground-thrust_5: -14478769
+      surtr-ground-thrust_6: -1405006317
+      surtr-ground-thrust_7: -717853662
+      surtr-ground-thrust_8: 1293247209
+      surtr-ground-thrust_9: -1949581255
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

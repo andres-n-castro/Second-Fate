@@ -64,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -78,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 154
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,7 +102,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -127,243 +127,221 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: surtr-p2-walk-1
+      name: surtr-phase2-walk_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 543
-        width: 396
-        height: 449
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 13fb2c98108f3b770800000000000000
-      internalID: 8625510396834529073
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty1
-      rect:
-        serializedVersion: 2
-        x: 436
-        y: 818
-        width: 29
-        height: 27
-      alignment: 9
-      pivot: {x: 1.3832903, y: 0.37350804}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 113e2e67475d0c050800000000000000
-      internalID: 5818885414750184209
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-walk-2
-      rect:
-        serializedVersion: 2
-        x: 492
-        y: 533
-        width: 405
-        height: 459
-      alignment: 9
-      pivot: {x: 0, y: 0.9789926}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 41b103fffc6ed7d00800000000000000
-      internalID: 972186875595856660
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty2
-      rect:
-        serializedVersion: 2
-        x: 914
-        y: 820
-        width: 28
-        height: 27
+        x: 31
+        y: 544
+        width: 394
+        height: 447
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 35a825a6fc0ca3de0800000000000000
-      internalID: -1352556740996855213
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-walk-3
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 32
-        width: 412
-        height: 457
-      alignment: 9
-      pivot: {x: -0.00000016203204, y: 0.98417544}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fc788e7691b310c70800000000000000
-      internalID: 8935488115983288271
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty3
-      rect:
-        serializedVersion: 2
-        x: 233
-        y: 496
-        width: 23
-        height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c5435c66494c1e530800000000000000
-      internalID: 3882600495428482140
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-walk-4
-      rect:
-        serializedVersion: 2
-        x: 549
-        y: 35
-        width: 325
-        height: 454
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9aad5fcd9ea7009d0800000000000000
-      internalID: -2810111022626121047
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty4
-      rect:
-        serializedVersion: 2
-        x: 661
-        y: 494
-        width: 24
-        height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 577d8dcd6ac690380800000000000000
-      internalID: -9004546516025026699
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty5
-      rect:
-        serializedVersion: 2
-        x: 473
-        y: 316
-        width: 26
-        height: 25
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b523912ae00507f70800000000000000
-      internalID: 9182927663987765851
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty6
-      rect:
-        serializedVersion: 2
-        x: 478
-        y: 41
-        width: 20
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 67554430957b13010800000000000000
-      internalID: 1166915371400451446
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty7
-      rect:
-        serializedVersion: 2
-        x: 524
-        y: 55
-        width: 14
-        height: 37
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d9a0d55d378c124fb411c5b8e2eba96
-      internalID: 936129137
+      spriteID: 11a16db09f8906345ac8e0bb61ae076b
+      internalID: 907895211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-walk_1
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 821
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a979f91aae0035f48bb210e73dfd8fe4
+      internalID: -151987405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-walk_2
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 534
+        width: 403
+        height: 457
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 271a9d4fcb6e64d42b42c43f859c0911
+      internalID: 1142987652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-walk_3
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 821
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ca0f60a5b845b44bbc819c137b303ee
+      internalID: -671904722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-walk_4
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 33
+        width: 410
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9565e6a5c70676419ba64c8854010f6
+      internalID: -1072661078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-walk_5
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 472
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c3a892129448474ea299573f26548b1
+      internalID: -195976324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-walk_6
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 36
+        width: 323
+        height: 452
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 710fc8c7209250d4cbe1cf405f1652e1
+      internalID: -411593248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-walk_7
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 472
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cf7c8972115832498465bab07a70788
+      internalID: 1688591325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-walk_8
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 317
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a18921f4439342b41a90a377c6c913d1
+      internalID: 836002735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-walk_9
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 40
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a5f6e2ce3d13e74596cae99f6cb99bc
+      internalID: 740855915
       vertices: []
       indices: 
       edges: []
@@ -382,17 +360,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      empty1: 5818885414750184209
-      empty2: -1352556740996855213
-      empty3: 3882600495428482140
-      empty4: -9004546516025026699
-      empty5: 9182927663987765851
-      empty6: 1166915371400451446
-      empty7: 936129137
-      surtr-p2-walk-1: 8625510396834529073
-      surtr-p2-walk-2: 972186875595856660
-      surtr-p2-walk-3: 8935488115983288271
-      surtr-p2-walk-4: -2810111022626121047
+      surtr-phase2-walk_0: 907895211
+      surtr-phase2-walk_1: -151987405
+      surtr-phase2-walk_2: 1142987652
+      surtr-phase2-walk_3: -671904722
+      surtr-phase2-walk_4: -1072661078
+      surtr-phase2-walk_5: -195976324
+      surtr-phase2-walk_6: -411593248
+      surtr-phase2-walk_7: 1688591325
+      surtr-phase2-walk_8: 836002735
+      surtr-phase2-walk_9: 740855915
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

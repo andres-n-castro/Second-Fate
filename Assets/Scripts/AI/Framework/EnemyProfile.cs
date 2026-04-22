@@ -161,20 +161,10 @@ public class EnemyProfile : ScriptableObject
     public float surtrFireBreathMaxRange = 4.0f;
     public float surtrFireBreathWeightMultiplier = 2f;
 
-    [Header("Surtr Lava Sweep")]
-    public float surtrSweepProjectileSpeed = 8f;
-
     [Header("Surtr P2")]
     public float surtrP2MinAttackCooldown = 0.3f;
     public float surtrP2MaxAttackCooldown = 0.9f;
-    public float surtrEruptionInterval = 3.0f;
-    public int surtrEruptionProjectileCount = 3;
-    public float surtrEruptionSpreadAngle = 60f;
-    public float surtrEruptionProjectileSpeed = 7f;
     public float surtrGroundedThrustStuckDuration = 1.5f;
-    public int surtrVomitProjectileCount = 5;
-    public float surtrVomitSpreadAngle = 90f;
-    public float surtrVomitProjectileSpeed = 6f;
 
     [Header("Surtr P2 Attack Selection")]
     public float surtrGroundedThrustRange = 3.5f;

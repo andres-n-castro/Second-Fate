@@ -41,10 +41,9 @@ public class SurtrP1Super : HierarchicalState
 
 // =================================================================
 //  PHASE 2 SUPER STATE
-//  Hierarchical state that owns a Phase 2 sub-FSM for eruptive combat.
+//  Hierarchical state that owns a Phase 2 sub-FSM for shield combat.
 //  A Behavior Tree selects the next attack, but ONLY when the
 //  sub-FSM is in P2Idle. The BT sets an intent; P2Idle consumes it.
-//  Passive lava eruption periodically spawns projectiles.
 // =================================================================
 public class SurtrP2Super : HierarchicalState
 {
@@ -58,9 +57,6 @@ public class SurtrP2Super : HierarchicalState
 
     // BT intent — set by BT, consumed by P2Idle
     public IState RequestedP2Attack { get; set; }
-
-    // Passive eruption timer
-    private float eruptionTimer;
 
     public SurtrP2Super(SurtrBoss surtr) : base(surtr)
     {
@@ -77,7 +73,6 @@ public class SurtrP2Super : HierarchicalState
     {
         Debug.Log("Surtr: Entering Phase 2");
         RequestedP2Attack = null;
-        eruptionTimer = owner.Profile.surtrEruptionInterval;
         subMachine.ChangeState(IdleState);
     }
 
@@ -89,48 +84,12 @@ public class SurtrP2Super : HierarchicalState
             attackSelectorBT.Tick(owner.Ctx);
         }
 
-        // Passive eruption: periodically spawn lava projectiles
-        eruptionTimer -= Time.deltaTime;
-        if (eruptionTimer <= 0f)
-        {
-            eruptionTimer = owner.Profile.surtrEruptionInterval;
-            SpawnEruptionProjectiles();
-        }
-
         base.Tick();
     }
 
     public void ChangeSubState(IState state)
     {
         subMachine.ChangeState(state);
-    }
-
-    private void SpawnEruptionProjectiles()
-    {
-        EnemyProfile p = owner.Profile;
-        int count = p.surtrEruptionProjectileCount;
-        float spreadAngle = p.surtrEruptionSpreadAngle;
-        float speed = p.surtrEruptionProjectileSpeed;
-
-        // Spawn projectiles in a fan upward from the boss
-        float startAngle = 90f - spreadAngle * 0.5f; // center around straight up (90 degrees)
-
-        for (int i = 0; i < count; i++)
-        {
-            float angle;
-            if (count > 1)
-                angle = startAngle + spreadAngle * ((float)i / (count - 1));
-            else
-                angle = 90f;
-
-            float rad = angle * Mathf.Deg2Rad;
-            Vector2 dir = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
-            // Add small random variation
-            dir += Random.insideUnitCircle * 0.15f;
-            dir.Normalize();
-
-            surtr.SpawnLavaProjectile(dir * speed);
-        }
     }
 
     // ----- Behavior Tree Construction -----
@@ -406,8 +365,7 @@ public class SurtrP1DecisionState : EnemyState
 }
 
 // ---------------------------------------------------------------
-//  P1 Lava Sweep — Wide sword swing that sends lava across the floor.
-//  Windup → Active (hitbox + spawn ground projectile) → Recovery.
+//  P1 Lava Sweep — Wide fiery sword sweep. Windup → Active → Recovery.
 // ---------------------------------------------------------------
 public class SurtrP1LavaSweepState : EnemyState
 {
@@ -417,7 +375,6 @@ public class SurtrP1LavaSweepState : EnemyState
     private SurtrP1Super p1;
     private Phase phase;
     private float timer;
-    private bool projectileSpawned;
 
     public SurtrP1LavaSweepState(SurtrBoss surtr, SurtrP1Super p1) : base(surtr)
     {
@@ -431,7 +388,6 @@ public class SurtrP1LavaSweepState : EnemyState
         phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
-        projectileSpawned = false;
 
         AttackDefinition atk = surtr.GetAttackDef("LavaSweep");
         timer = atk != null ? atk.windupDuration : 0.5f;
@@ -453,15 +409,6 @@ public class SurtrP1LavaSweepState : EnemyState
                     timer = atk != null ? atk.activeDuration : 0.3f;
 
                     if (surtr.LavaSweepHitbox != null) surtr.LavaSweepHitbox.Activate();
-
-                    // Spawn ground-traveling lava projectile
-                    if (!projectileSpawned)
-                    {
-                        projectileSpawned = true;
-                        Vector2 velocity = new Vector2(
-                            owner.FacingDirection * owner.Profile.surtrSweepProjectileSpeed, 0f);
-                        surtr.SpawnLavaProjectile(velocity);
-                    }
                 }
                 break;
 
@@ -848,8 +795,6 @@ public class SurtrP2GroundedThrustState : EnemyState
                     phase = Phase.Stuck;
                     timer = owner.Profile.surtrGroundedThrustStuckDuration;
 
-                    // TODO: Play "Surtr_Stuck" animation if available
-                    if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_ThrustStuck");
                 }
                 break;
 
@@ -860,9 +805,6 @@ public class SurtrP2GroundedThrustState : EnemyState
                     phase = Phase.Recovery;
                     AttackDefinition atk = surtr.GetAttackDef("GroundedThrust");
                     timer = atk != null ? atk.recoveryDuration : 0.8f;
-
-                    // TODO: Play "Surtr_PullFree" animation if available
-                    if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_ThrustRecover");
 
                     owner.StartCooldown("GroundedThrust");
                 }
@@ -885,9 +827,9 @@ public class SurtrP2GroundedThrustState : EnemyState
 }
 
 // ---------------------------------------------------------------
-//  P2 Lava Vomit — Surtr lurches forward and spews lava projectiles.
-//  Windup → Active (spawn projectiles in arc + hitbox) → Recovery.
-//  Projectiles arc forward and leave lava hazards on impact (if configured on prefab).
+//  P2 Lava Vomit — Surtr vomits lava that pools at his feet.
+//  Windup → Active (hitbox zone at feet) → Recovery.
+//  The lava pool is part of the sprite animation, no projectiles.
 // ---------------------------------------------------------------
 public class SurtrP2LavaVomitState : EnemyState
 {
@@ -897,7 +839,6 @@ public class SurtrP2LavaVomitState : EnemyState
     private SurtrP2Super p2;
     private Phase phase;
     private float timer;
-    private bool projectilesSpawned;
 
     public SurtrP2LavaVomitState(SurtrBoss surtr, SurtrP2Super p2) : base(surtr)
     {
@@ -911,7 +852,6 @@ public class SurtrP2LavaVomitState : EnemyState
         phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
-        projectilesSpawned = false;
 
         AttackDefinition atk = surtr.GetAttackDef("LavaVomit");
         timer = atk != null ? atk.windupDuration : 0.6f;
@@ -933,13 +873,6 @@ public class SurtrP2LavaVomitState : EnemyState
                     timer = atk != null ? atk.activeDuration : 0.5f;
 
                     if (surtr.LavaVomitHitbox != null) surtr.LavaVomitHitbox.Activate();
-
-                    // Spawn lava projectiles in a forward arc
-                    if (!projectilesSpawned)
-                    {
-                        projectilesSpawned = true;
-                        SpawnVomitProjectiles();
-                    }
                 }
                 break;
 
@@ -968,37 +901,5 @@ public class SurtrP2LavaVomitState : EnemyState
     public override void Exit()
     {
         if (surtr.LavaVomitHitbox != null) surtr.LavaVomitHitbox.Deactivate();
-    }
-
-    private void SpawnVomitProjectiles()
-    {
-        EnemyProfile p = owner.Profile;
-        int count = p.surtrVomitProjectileCount;
-        float spreadAngle = p.surtrVomitSpreadAngle;
-        float speed = p.surtrVomitProjectileSpeed;
-        float facing = owner.FacingDirection;
-
-        // Forward arc: center around 45 degrees in the facing direction (lobbed forward)
-        float centerAngle = facing > 0 ? 45f : 135f;
-        float startAngle = centerAngle - spreadAngle * 0.5f;
-
-        for (int i = 0; i < count; i++)
-        {
-            float angle;
-            if (count > 1)
-                angle = startAngle + spreadAngle * ((float)i / (count - 1));
-            else
-                angle = centerAngle;
-
-            float rad = angle * Mathf.Deg2Rad;
-            Vector2 dir = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
-            // Slight random spread for visual variety
-            dir += Random.insideUnitCircle * 0.1f;
-            dir.Normalize();
-
-            // Vary speed slightly per projectile
-            float projSpeed = speed * Random.Range(0.85f, 1.15f);
-            surtr.SpawnLavaProjectile(dir * projSpeed);
-        }
     }
 }

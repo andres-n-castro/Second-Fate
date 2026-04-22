@@ -55,7 +55,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 154
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -93,7 +93,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -118,155 +118,155 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: surtr-death-1
+      name: surtr-death_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 543
-        width: 396
-        height: 448
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a22513a33ec169500800000000000000
-      internalID: 402540978955702826
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty2
-      rect:
-        serializedVersion: 2
-        x: 457
-        y: 979
-        width: 24
-        height: 20
+        x: 31
+        y: 544
+        width: 394
+        height: 446
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 271bfc1a36dc33bd0800000000000000
-      internalID: -2651549927790890638
+      spriteID: d28cd595e67154a45a1ded0710f697f4
+      internalID: 368106951
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-death-2
+      name: surtr-death_1
       rect:
         serializedVersion: 2
-        x: 493
-        y: 533
-        width: 385
-        height: 445
-      alignment: 9
-      pivot: {x: 0.00000023779931, y: 1.0070417}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9ac5a99c19121edf0800000000000000
-      internalID: -152804002317574999
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty1
-      rect:
-        serializedVersion: 2
-        x: 439
-        y: 820
-        width: 27
-        height: 27
+        x: 227
+        y: 973
+        width: 22
+        height: 18
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d5dc0d83e92cf8ba0800000000000000
-      internalID: -6084430586740421283
+      spriteID: b852df6c45d77d34eb5d354af8b6e475
+      internalID: -888067166
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-death-3
+      name: surtr-death_2
       rect:
         serializedVersion: 2
-        x: 122
-        y: 7
-        width: 329
-        height: 478
-      alignment: 9
-      pivot: {x: 0.00000002318965, y: 1.0229433}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1e00980f8dd743c20800000000000000
-      internalID: 3185309207159701729
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-death-
-      rect:
-        serializedVersion: 2
-        x: 471
-        y: 25
-        width: 430
-        height: 135
-      alignment: 9
-      pivot: {x: -0.0109299775, y: 3.3442333}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 550b653d79727f4e0800000000000000
-      internalID: -1948044780775231403
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty3
-      rect:
-        serializedVersion: 2
-        x: 910
-        y: 80
-        width: 18
-        height: 19
+        x: 494
+        y: 534
+        width: 383
+        height: 443
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d5fb5ea26e8c1c700800000000000000
-      internalID: 558948719658385245
+      spriteID: ead629fd33a29f54ab754e9325e1cb35
+      internalID: -1539123699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-death_3
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 821
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 955f3c7291361d24fa93862174474f37
+      internalID: 1674818592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-death_4
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 8
+        width: 327
+        height: 476
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60747c783e72cba46b54652a01a6a5c4
+      internalID: 142959459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-death_5
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 26
+        width: 428
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88777a3f3513c3f4d94e8c780b384c06
+      internalID: 1894825802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-death_6
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 50
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2072940b92485fb408cf04e31a6534e8
+      internalID: -1075702390
       vertices: []
       indices: 
       edges: []
@@ -285,13 +285,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      empty1: -6084430586740421283
-      empty2: -2651549927790890638
-      empty3: 558948719658385245
-      surtr-death-: -1948044780775231403
-      surtr-death-1: 402540978955702826
-      surtr-death-2: -152804002317574999
-      surtr-death-3: 3185309207159701729
+      surtr-death_0: 368106951
+      surtr-death_1: -888067166
+      surtr-death_2: -1539123699
+      surtr-death_3: 1674818592
+      surtr-death_4: 142959459
+      surtr-death_5: 1894825802
+      surtr-death_6: -1075702390
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
