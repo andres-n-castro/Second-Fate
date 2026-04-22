@@ -41,6 +41,12 @@ public class GameManager : MonoBehaviour
         CreatureBlood
     }
 
+    public enum FinalBossType
+    {
+        Odin,
+        Heimdall
+    }
+
     public static GameManager Instance;
     public static event Action<GameState> OnStateChanged;
     public static event Action OnDashUnlocked;
@@ -218,6 +224,33 @@ public class GameManager : MonoBehaviour
         }
 
         return GetBonfireAlignment(lastInteractedBonfireID);
+    }
+
+    public FinalBossType DetermineFinalBoss()
+    {
+        int essenceCount = 0;
+        int bloodCount = 0;
+
+        foreach (AlignmentType alignment in imbuedBonfires.Values)
+        {
+            if (alignment == AlignmentType.TreeEssence)
+            {
+                essenceCount++;
+            }
+            else if (alignment == AlignmentType.CreatureBlood)
+            {
+                bloodCount++;
+            }
+        }
+
+        if (essenceCount >= bloodCount)
+        {
+            Debug.Log("Final Boss Decided: Odin (Tree Essence path)");
+            return FinalBossType.Odin;
+        }
+
+        Debug.Log("Final Boss Decided: Heimdall (Creature Blood path)");
+        return FinalBossType.Heimdall;
     }
 
     public void UnlockBonfire(string bonfireID)

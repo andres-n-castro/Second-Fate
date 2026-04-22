@@ -25,6 +25,9 @@ using UnityEngine;
 /// </summary>
 public class TyrBoss : EnemyBase
 {
+    public override bool IsBoss => true;
+    public override string BossDisplayName => "Tyr";
+
     [Header("Hitbox References")]
     [SerializeField] private AttackHitbox spearThrustHitbox;
     [SerializeField] private AttackHitbox spearFlurryHitbox;

@@ -22,11 +22,14 @@ public class BossIntroState : EnemyState
 
     public override void FixedTick()
     {
-        // Wait until player has line of sight before starting countdown
+        // Wait until the player is close enough to truly aggro the boss.
         if (!activated)
         {
-            if (owner.Ctx.hasLineOfSightToPlayer)
+            if (owner.Ctx.isPlayerInAggroRange)
+            {
                 activated = true;
+                owner.BeginBossEncounter();
+            }
             else
                 return;
         }

@@ -11,6 +11,9 @@ public abstract class EnemyBase : MonoBehaviour
     public GameObject coinPrefab;
     private int currentCurrencyDrop;
 
+    [Header("Boss Settings")]
+    public string deathDescriptionText = "A Great Foe Has Fallen.";
+
     [Header("Environment Checks")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform wallCheck;
@@ -25,6 +28,8 @@ public abstract class EnemyBase : MonoBehaviour
     public EnemyContext Ctx { get; private set; }
     public StateMachine FSM { get; private set; }
     public EnemyPerception2D Perception { get; private set; }
+    public virtual bool IsBoss => false;
+    public virtual string BossDisplayName => gameObject.name;
 
     // Accessors for perception
     public Transform GroundCheck => groundCheck;
@@ -51,6 +56,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     // Contact damage
     private float _lastContactDamageTime = -999f;
+    private bool bossEncounterStarted;
 
     protected virtual void Awake()
     {
@@ -336,17 +342,59 @@ public abstract class EnemyBase : MonoBehaviour
     private void OnDeath()
     {
         Ctx.isDead = true;
+
+        if (IsBoss)
+        {
+            if (BossUIManager.Instance != null)
+            {
+                BossUIManager.Instance.UpdateBossHealth(0);
+            }
+
+            if (GameManager.Instance != null &&
+                GameManager.Instance.currentState == GameManager.GameState.BossFight)
+            {
+                GameManager.Instance.ChangeState(GameManager.GameState.Exploration);
+            }
+        }
+
         HandleDeath();
     }
 
     private void OnDamageTaken(int damage, Vector2 knockback)
     {
+        if (IsBoss && bossEncounterStarted && Health != null && BossUIManager.Instance != null)
+        {
+            BossUIManager.Instance.UpdateBossHealth(Health.CurrentHealth);
+        }
+
         HandleDamageTaken(damage, knockback);
+    }
+
+    public void BeginBossEncounter()
+    {
+        if (!IsBoss || bossEncounterStarted) return;
+
+        bossEncounterStarted = true;
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ChangeState(GameManager.GameState.BossFight);
+        }
+
+        if (Health != null && BossUIManager.Instance != null)
+        {
+            BossUIManager.Instance.InitializeBossFight(BossDisplayName, Health.MaxHealth);
+        }
     }
 
     protected virtual void HandleDeath()
     {
         StopAll();
+
+        if (IsBoss && BossUIManager.Instance != null)
+        {
+            BossUIManager.Instance.TriggerBossDeath(deathDescriptionText);
+        }
 
         currentCurrencyDrop = GameManager.Instance != null &&
             GameManager.Instance.GetActiveAlignment() == GameManager.AlignmentType.CreatureBlood

@@ -16,4 +16,5 @@ MonoBehaviour:
   charmName: Protection
   charmIcon: {fileID: 5688942289803288367, guid: 8b602e47476a5bc449c1548048f2ec39, type: 3}
   charmEffect: 3
-  description: Tank 2 hits from enemies
+  charmCost: 2000
+  description: Have a 30% percent chance to negate damage

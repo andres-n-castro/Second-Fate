@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32402216779075941898ced861a64f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bonfireID: Midgard_Caves_Bonfire
+  bonfireID: Tutorial_Bonfire
   proximityPopup: {fileID: 3165135860806135115}
 --- !u!95 &5108114915918038295
 Animator:
