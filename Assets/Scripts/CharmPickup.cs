@@ -19,6 +19,11 @@ public class CharmPickup : MonoBehaviour
                     Debug.Log("Unlocked Charm: " + charmToGrant.charmName);
                 }
 
+                if (UIManager.Instance != null)
+                {
+                    UIManager.Instance.ShowNotification("Item added to inventory");
+                }
+
                 // Destroy the physical drop regardless
                 Destroy(gameObject);
             }

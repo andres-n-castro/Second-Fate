@@ -46,9 +46,20 @@ public class PlayerStats : MonoBehaviour
         UpdateDisplayCurrencyCount();
     }
 
-    void DecreaseCurrency(int amount)
+    public bool SpendCurrency(int amount)
     {
-        currentCurrency -= amount;
+        if (amount < 0)
+        {
+            return false;
+        }
+
+        if (currentCurrency >= amount)
+        {
+            currentCurrency -= amount;
+            return true;
+        }
+
+        return false;
     }
 
     void UpdateDisplayCurrencyCount()

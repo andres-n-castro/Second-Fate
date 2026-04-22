@@ -51,12 +51,14 @@ public class InteriorShopManager : MonoBehaviour
 
         ClearDetailPanel();
         UpdateCurrencyUI();
+        RefreshShopItems();
     }
 
     void OnEnable()
     {
         // Refresh currency display every time the shop panel is shown
         UpdateCurrencyUI();
+        RefreshShopItems();
         ClearDetailPanel();
         selectedItem = null;
     }
@@ -67,6 +69,11 @@ public class InteriorShopManager : MonoBehaviour
 
     public void SelectItem(ShopItemButton item)
     {
+        if (item == null || !item.gameObject.activeInHierarchy)
+        {
+            return;
+        }
+
         selectedItem = item;
         UpdateDetailPanel(item);
     }
@@ -84,7 +91,7 @@ public class InteriorShopManager : MonoBehaviour
             confirmPurchasePanel.SetActive(true);
 
         if (confirmText != null)
-            confirmText.text = "Purchase " + selectedItem.itemName + " for " + selectedItem.price + " coins?";
+            confirmText.text = "Purchase " + selectedItem.DisplayName + " for " + selectedItem.DisplayPrice + " coins?";
     }
 
     void OnYesClicked()
@@ -95,12 +102,14 @@ public class InteriorShopManager : MonoBehaviour
         if (confirmPurchasePanel != null)
             confirmPurchasePanel.SetActive(false);
 
-        int playerCurrency = GetPlayerCurrency();
-
-        if (playerCurrency >= selectedItem.price)
+        PlayerStats playerStats = PlayerManager.Instance != null ? PlayerManager.Instance.playerStats : null;
+        if (playerStats != null && playerStats.SpendCurrency(selectedItem.DisplayPrice))
         {
-            // Deduct from the real currency
-            SetPlayerCurrency(playerCurrency - selectedItem.price);
+            if (selectedItem.charmData != null && CharmManager.Instance != null)
+            {
+                CharmManager.Instance.UnlockCharm(selectedItem.charmData);
+            }
+
             UpdateCurrencyUI();
 
             if (purchaseMessageText != null)
@@ -109,8 +118,15 @@ public class InteriorShopManager : MonoBehaviour
             if (purchaseMessagePanel != null)
                 purchaseMessagePanel.SetActive(true);
 
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowNotification("Purchased: " + selectedItem.DisplayName);
+
+            if (SaveManager.Instance != null)
+                SaveManager.Instance.SaveGame(0);
+
             selectedItem.gameObject.SetActive(false);
             selectedItem = null;
+            RefreshShopItems();
             ClearDetailPanel();
         }
         else
@@ -120,6 +136,9 @@ public class InteriorShopManager : MonoBehaviour
 
             if (purchaseMessagePanel != null)
                 purchaseMessagePanel.SetActive(true);
+
+            if (UIManager.Instance != null)
+                UIManager.Instance.ShowNotification("Not enough currency!");
         }
     }
 
@@ -164,12 +183,6 @@ public class InteriorShopManager : MonoBehaviour
         return 0;
     }
 
-    private void SetPlayerCurrency(int amount)
-    {
-        if (PlayerManager.Instance != null && PlayerManager.Instance.playerStats != null)
-            PlayerManager.Instance.playerStats.currentCurrency = amount;
-    }
-
     void UpdateCurrencyUI()
     {
         if (currencyText != null)
@@ -186,18 +199,18 @@ public class InteriorShopManager : MonoBehaviour
             detailPanel.SetActive(true);
 
         if (detailNameText != null)
-            detailNameText.text = item.itemName;
+            detailNameText.text = item.DisplayName;
 
         if (detailDescriptionText != null)
-            detailDescriptionText.text = item.description;
+            detailDescriptionText.text = item.DisplayDescription;
 
         if (detailPriceText != null)
-            detailPriceText.text = "Price: " + item.price;
+            detailPriceText.text = "Price: " + item.DisplayPrice;
 
         if (detailImage != null)
         {
-            detailImage.sprite = item.itemSprite;
-            detailImage.enabled = item.itemSprite != null;
+            detailImage.sprite = item.DisplaySprite;
+            detailImage.enabled = item.DisplaySprite != null;
         }
     }
 
@@ -216,6 +229,25 @@ public class InteriorShopManager : MonoBehaviour
         {
             detailImage.sprite = null;
             detailImage.enabled = false;
+        }
+    }
+
+    private void RefreshShopItems()
+    {
+        ShopItemButton[] shopItems = GetComponentsInChildren<ShopItemButton>(true);
+        foreach (ShopItemButton item in shopItems)
+        {
+            if (item == null)
+            {
+                continue;
+            }
+
+            item.RefreshVisualState();
+
+            if (item.IsOwned())
+            {
+                item.gameObject.SetActive(false);
+            }
         }
     }
 }

@@ -21,6 +21,12 @@ public class ItemPickup : MonoBehaviour
         if (otherObject.CompareTag("Player"))
         {
             PickUpItem?.Invoke(itemData);
+
+            if (UIManager.Instance != null)
+            {
+                UIManager.Instance.ShowNotification("Item added to inventory");
+            }
+
             gameObject.SetActive(false);  
             Debug.Log("Player picked up item: " + itemData.itemName);
         }

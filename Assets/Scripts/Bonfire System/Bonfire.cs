@@ -3,6 +3,9 @@ using UnityEngine;
 public class Bonfire : MonoBehaviour
 {
     public string bonfireID;
+    [Header("Proximity Popup")]
+    [SerializeField] private GameObject proximityPopup;
+
     private Animator anim;
     private bool isPlayerInRange = false;
 
@@ -10,16 +13,37 @@ public class Bonfire : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         UpdateVisualState();
+
+        if (proximityPopup != null)
+        {
+            proximityPopup.SetActive(false);
+        }
+    }
+
+    void OnEnable()
+    {
+        GameManager.OnStateChanged += HandleGameStateChanged;
+    }
+
+    void OnDisable()
+    {
+        GameManager.OnStateChanged -= HandleGameStateChanged;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) isPlayerInRange = true;
+        if (!other.CompareTag("Player")) return;
+
+        isPlayerInRange = true;
+        UpdatePopupVisibility();
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) isPlayerInRange = false;
+        if (!other.CompareTag("Player")) return;
+
+        isPlayerInRange = false;
+        UpdatePopupVisibility();
     }
 
     void Update()
@@ -27,9 +51,33 @@ public class Bonfire : MonoBehaviour
         bool interactPressed = Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton3);
         if (isPlayerInRange && interactPressed && GameManager.Instance.currentState == GameManager.GameState.Exploration)
         {
+            if (proximityPopup != null)
+            {
+                proximityPopup.SetActive(false);
+            }
+
             GameManager.Instance.lastInteractedBonfireID = bonfireID;
             GameManager.Instance.ChangeState(GameManager.GameState.BonfireMenu);
         }
+    }
+
+    private void HandleGameStateChanged(GameManager.GameState state)
+    {
+        UpdatePopupVisibility();
+    }
+
+    private void UpdatePopupVisibility()
+    {
+        if (proximityPopup == null)
+        {
+            return;
+        }
+
+        bool canShowPopup = isPlayerInRange &&
+                            GameManager.Instance != null &&
+                            GameManager.Instance.currentState == GameManager.GameState.Exploration;
+
+        proximityPopup.SetActive(canShowPopup);
     }
 
     public void UpdateVisualState()

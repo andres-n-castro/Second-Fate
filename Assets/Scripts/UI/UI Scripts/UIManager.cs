@@ -29,6 +29,11 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI abilityDescriptionText;
     public CanvasGroup fadeScreenGroup;
 
+    [Header("Item Notifications")]
+    public CanvasGroup notificationGroup;
+    public TextMeshProUGUI notificationText;
+    private Coroutine notificationCoroutine;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -45,6 +50,13 @@ public class UIManager : MonoBehaviour
         if (fadeScreenGroup != null)
         {
             fadeScreenGroup.alpha = 0f;
+        }
+
+        if (notificationGroup != null)
+        {
+            notificationGroup.alpha = 0f;
+            notificationGroup.interactable = false;
+            notificationGroup.blocksRaycasts = false;
         }
 
         if (abilityUnlockPanel != null)
@@ -79,6 +91,7 @@ public class UIManager : MonoBehaviour
 
     private void HandleGameStateChange(GameManager.GameState state)
     {
+        HideNotification();
         SetAllCanvasesInactive();
 
         switch (state)
@@ -159,6 +172,65 @@ public class UIManager : MonoBehaviour
         }
 
         fadeScreenGroup.alpha = 0f;
+    }
+
+    public void ShowNotification(string message)
+    {
+        if (notificationGroup == null || notificationText == null) return;
+
+        if (notificationCoroutine != null)
+        {
+            StopCoroutine(notificationCoroutine);
+        }
+
+        notificationCoroutine = StartCoroutine(FadeNotification(message));
+    }
+
+    private IEnumerator FadeNotification(string message)
+    {
+        notificationText.text = message;
+        notificationGroup.alpha = 0f;
+        notificationGroup.interactable = false;
+        notificationGroup.blocksRaycasts = false;
+
+        while (notificationGroup.alpha < 1f)
+        {
+            notificationGroup.alpha += Time.unscaledDeltaTime * 4f;
+            yield return null;
+        }
+
+        notificationGroup.alpha = 1f;
+
+        yield return new WaitForSecondsRealtime(2f);
+
+        while (notificationGroup.alpha > 0f)
+        {
+            notificationGroup.alpha -= Time.unscaledDeltaTime * 2f;
+            yield return null;
+        }
+
+        notificationGroup.alpha = 0f;
+        notificationGroup.interactable = false;
+        notificationGroup.blocksRaycasts = false;
+        notificationCoroutine = null;
+    }
+
+    private void HideNotification()
+    {
+        if (notificationGroup == null)
+        {
+            return;
+        }
+
+        if (notificationCoroutine != null)
+        {
+            StopCoroutine(notificationCoroutine);
+            notificationCoroutine = null;
+        }
+
+        notificationGroup.alpha = 0f;
+        notificationGroup.interactable = false;
+        notificationGroup.blocksRaycasts = false;
     }
 
     private void ShowDashUnlockedUI()
