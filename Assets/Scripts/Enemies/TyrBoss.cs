@@ -186,12 +186,6 @@ public class TyrBoss : EnemyBase
             Gizmos.DrawWireSphere(transform.position, Profile.tyrCloseRange);
         }
 
-        // P2 body collider preview (orange) — mirrors with facing direction like the real collider
-        Gizmos.color = new Color(1f, 0.5f, 0f, 0.6f);
-        float scaleSign = Mathf.Sign(transform.localScale.x);
-        Vector3 p2Center = transform.position + new Vector3(p2BodyColliderOffset.x * scaleSign, p2BodyColliderOffset.y, 0f);
-        Gizmos.DrawWireCube(p2Center, new Vector3(p2BodyColliderSize.x, p2BodyColliderSize.y, 0f));
-
         // LOS ray to player
         if (PlayerController.Instance != null)
         {

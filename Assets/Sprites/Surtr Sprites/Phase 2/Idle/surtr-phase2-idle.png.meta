@@ -91,7 +91,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -105,7 +105,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 79
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -129,7 +129,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -154,419 +154,419 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: surtr-p2-idle-1
-      rect:
-        serializedVersion: 2
-        x: 14
-        y: 769
-        width: 194
-        height: 228
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8eab20bc4e03c0370800000000000000
-      internalID: 8290054773298871016
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-idle-2
-      rect:
-        serializedVersion: 2
-        x: 233
-        y: 768
-        width: 196
-        height: 227
-      alignment: 9
-      pivot: {x: 0, y: 1.011608}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 03d1e5159b6330d30800000000000000
-      internalID: 4396417830805708080
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-idle-3
-      rect:
-        serializedVersion: 2
-        x: 453
-        y: 768
-        width: 196
-        height: 233
-      alignment: 9
-      pivot: {x: 0.00000015570193, y: 0.9844237}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 31ff2489fdcf4a5e0800000000000000
-      internalID: -1899115105581072621
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-idle-4
-      rect:
-        serializedVersion: 2
-        x: 668
-        y: 769
-        width: 195
-        height: 231
-      alignment: 9
-      pivot: {x: 0.0000003130008, y: 0.98942345}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f4e1d575adc8055d0800000000000000
-      internalID: -3075803676097569201
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-idle-5
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 516
-        width: 200
-        height: 235
-      alignment: 9
-      pivot: {x: 0.011549511, y: 0.9772058}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bad50e0e075610cd0800000000000000
-      internalID: -2593680374905152085
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-idle-6
-      rect:
-        serializedVersion: 2
-        x: 230
-        y: 517
-        width: 202
-        height: 228
-      alignment: 9
-      pivot: {x: 0.022984797, y: 1.002534}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 112b7c08e93bf0550800000000000000
-      internalID: 6129315111221309969
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-idle-7
-      rect:
-        serializedVersion: 2
-        x: 447
-        y: 514
-        width: 205
-        height: 239
-      alignment: 9
-      pivot: {x: 0.022536116, y: 0.9729487}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e9ccb37a44bcab5c0800000000000000
-      internalID: -4198820206845637474
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-idle-8
-      rect:
-        serializedVersion: 2
-        x: 662
-        y: 516
-        width: 203
-        height: 235
-      alignment: 9
-      pivot: {x: 0.02253612, y: 0.9729487}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 91d9e3af5a9fb87f0800000000000000
-      internalID: -609118833315242727
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty3
-      rect:
-        serializedVersion: 2
-        x: 752
-        y: 506
-        width: 25
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 6, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: eecb0de76614f30a0800000000000000
-      internalID: -6899724195638231826
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-idle-9
-      rect:
-        serializedVersion: 2
-        x: 14
-        y: 263
-        width: 205
-        height: 234
-      alignment: 9
-      pivot: {x: 0.02253612, y: 0.9729487}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 53d0446a0fd9be910800000000000000
-      internalID: 1867760127382392117
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-idle-10
-      rect:
-        serializedVersion: 2
-        x: 230
-        y: 263
-        width: 203
-        height: 239
-      alignment: 9
-      pivot: {x: 0.029616183, y: 0.9549063}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 14d9677248904ce90800000000000000
-      internalID: -7006464657079231167
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty1
-      rect:
-        serializedVersion: 2
-        x: 318
-        y: 252
-        width: 33
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 50895bdaa394da9b0800000000000000
-      internalID: -5067313489350649851
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-idle-11
-      rect:
-        serializedVersion: 2
-        x: 447
-        y: 261
-        width: 201
-        height: 234
-      alignment: 9
-      pivot: {x: 0.025329286, y: 0.9854993}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8fd829424b1586490800000000000000
-      internalID: -7752856924368761352
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-idle-12
-      rect:
-        serializedVersion: 2
-        x: 662
-        y: 263
-        width: 198
-        height: 237
-      alignment: 9
-      pivot: {x: 0.03599841, y: 0.9643479}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f3b4a949de756bc70800000000000000
-      internalID: 8986466784376408895
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-idle-13
+      name: surtr-phase2-idle_0
       rect:
         serializedVersion: 2
         x: 15
-        y: 12
-        width: 200
-        height: 234
-      alignment: 9
-      pivot: {x: 0.05091202, y: 0.9680936}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5f1df28f47f347310800000000000000
-      internalID: 1401815155631706613
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty2
-      rect:
-        serializedVersion: 2
-        x: 101
-        y: 4
-        width: 27
-        height: 5
+        y: 770
+        width: 192
+        height: 226
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 64b694914afed1bc0800000000000000
-      internalID: -3810626221607654586
+      spriteID: a47bc5ba9764a36469ac63140491749b
+      internalID: 1202970005
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-p2-idle-14
+      name: surtr-phase2-idle_1
       rect:
         serializedVersion: 2
-        x: 230
-        y: 6
-        width: 201
-        height: 242
-      alignment: 9
-      pivot: {x: 0.06079041, y: 0.9653244}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aa0fbb59d5dc768f0800000000000000
-      internalID: -547243027874451286
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-idle-15
-      rect:
-        serializedVersion: 2
-        x: 441
-        y: 6
-        width: 205
-        height: 239
-      alignment: 9
-      pivot: {x: 0.079472385, y: 0.9732644}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d4c479d08a1b4fbe0800000000000000
-      internalID: -1444334245138445235
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-p2-idle-16
-      rect:
-        serializedVersion: 2
-        x: 666
-        y: 7
+        x: 234
+        y: 769
         width: 194
-        height: 238
-      alignment: 9
-      pivot: {x: 0.041989356, y: 0.97738147}
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 98b437f30da8dbc90800000000000000
-      internalID: -7152408006172128375
+      spriteID: c75b02934c08cb744a1dd17a508d485f
+      internalID: -1842289703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_2
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 769
+        width: 194
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d716c9b163a818244ba91335d9f140bd
+      internalID: 496160822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_3
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 770
+        width: 193
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 583f6911fb6805f4f86e6b83d2d3c6a8
+      internalID: -41656840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_4
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 517
+        width: 198
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d9f750dbbcec0c40aed2987747e00e2
+      internalID: -1778467580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_5
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 518
+        width: 200
+        height: 226
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9089abaf3cf954842a704ce40103bc3f
+      internalID: -1108175492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_6
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 515
+        width: 203
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fad250943f3f2f542afa23e00b0c19fc
+      internalID: 336815354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_7
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 517
+        width: 201
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0426376bb188994297e0a9629d13049
+      internalID: -893465328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_8
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 516
+        width: 23
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fb0543e3a0071140882df469c76f75b
+      internalID: 294071994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_9
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 264
+        width: 203
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0617764d6d907594fa574a852da80e0f
+      internalID: -690173297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_10
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 264
+        width: 201
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55c952d4cac1366479ec76fa1222315d
+      internalID: 80966871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_11
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 263
+        width: 31
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4eba1823a5b03946ba0aac132ebabba
+      internalID: -1550973662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_12
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 262
+        width: 199
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b981b32c4e0657b4bb53b8772e7c5b8a
+      internalID: -1213992298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_13
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 264
+        width: 196
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b5f58b05c93c724794bc7e9f55b13b9
+      internalID: 1153808087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_14
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 13
+        width: 198
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77fec965a9267414a89cc06548c8c95f
+      internalID: 1335560175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_15
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 11
+        width: 25
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d05b34e3239148b4ca17683bd0b5da87
+      internalID: 1410325850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_16
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 7
+        width: 199
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8ee80cdae2758042a9b4de0cf3c2500
+      internalID: -301661955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_17
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 7
+        width: 203
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61362405bfef83e4bbe98d17156a0bda
+      internalID: 1958140035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-phase2-idle_18
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 8
+        width: 192
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 189ded5e15f69ca44aac6c836cb6fe96
+      internalID: -1383215698
       vertices: []
       indices: 
       edges: []
@@ -585,25 +585,25 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      empty1: -5067313489350649851
-      empty2: -3810626221607654586
-      empty3: -6899724195638231826
-      surtr-p2-idle-1: 8290054773298871016
-      surtr-p2-idle-10: -7006464657079231167
-      surtr-p2-idle-11: -7752856924368761352
-      surtr-p2-idle-12: 8986466784376408895
-      surtr-p2-idle-13: 1401815155631706613
-      surtr-p2-idle-14: -547243027874451286
-      surtr-p2-idle-15: -1444334245138445235
-      surtr-p2-idle-16: -7152408006172128375
-      surtr-p2-idle-2: 4396417830805708080
-      surtr-p2-idle-3: -1899115105581072621
-      surtr-p2-idle-4: -3075803676097569201
-      surtr-p2-idle-5: -2593680374905152085
-      surtr-p2-idle-6: 6129315111221309969
-      surtr-p2-idle-7: -4198820206845637474
-      surtr-p2-idle-8: -609118833315242727
-      surtr-p2-idle-9: 1867760127382392117
+      surtr-phase2-idle_0: 1202970005
+      surtr-phase2-idle_1: -1842289703
+      surtr-phase2-idle_10: 80966871
+      surtr-phase2-idle_11: -1550973662
+      surtr-phase2-idle_12: -1213992298
+      surtr-phase2-idle_13: 1153808087
+      surtr-phase2-idle_14: 1335560175
+      surtr-phase2-idle_15: 1410325850
+      surtr-phase2-idle_16: -301661955
+      surtr-phase2-idle_17: 1958140035
+      surtr-phase2-idle_18: -1383215698
+      surtr-phase2-idle_2: 496160822
+      surtr-phase2-idle_3: -41656840
+      surtr-phase2-idle_4: -1778467580
+      surtr-phase2-idle_5: -1108175492
+      surtr-phase2-idle_6: 336815354
+      surtr-phase2-idle_7: -893465328
+      surtr-phase2-idle_8: 294071994
+      surtr-phase2-idle_9: -690173297
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

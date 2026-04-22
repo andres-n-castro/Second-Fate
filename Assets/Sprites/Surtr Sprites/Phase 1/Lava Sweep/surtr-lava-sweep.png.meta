@@ -55,7 +55,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 112
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -93,7 +93,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -118,155 +118,155 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: surtr-ls-1
+      name: surtr-lava-sweep_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 676
-        width: 247
-        height: 338
-      alignment: 9
-      pivot: {x: 0.08783365, y: 0.8573623}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7d823e51660908490800000000000000
-      internalID: -7746032590948980521
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty1
-      rect:
-        serializedVersion: 2
-        x: 360
-        y: 987
-        width: 19
-        height: 19
+        x: 31
+        y: 677
+        width: 224
+        height: 336
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 00fa48d204da24360800000000000000
-      internalID: 7152469649370951424
+      spriteID: 27b288ab7244e4243be3f1f45c266bde
+      internalID: -229414089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-ls-2
+      name: surtr-lava-sweep_1
       rect:
         serializedVersion: 2
-        x: 307
-        y: 676
-        width: 296
+        x: 543
+        y: 41
+        width: 267
+        height: 326
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42f00b40e706b4a4fa824d070b952d91
+      internalID: -534902631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-lava-sweep_2
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 677
+        width: 294
+        height: 290
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75f31cb2ea675084baa3bbfbd1c96106
+      internalID: -1923983425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-lava-sweep_3
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 677
+        width: 238
         height: 292
-      alignment: 9
-      pivot: {x: 0.00814376, y: 0.9888548}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c0934d60ab99c50f0800000000000000
-      internalID: -1126856782491928308
+      spriteID: 7ab612b4685d7ac43887ff14643a935f
+      internalID: -1521567788
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-ls-3
+      name: surtr-lava-sweep_4
       rect:
         serializedVersion: 2
-        x: 609
-        y: 676
-        width: 240
-        height: 294
-      alignment: 9
-      pivot: {x: 0, y: 0.98401356}
+        x: 42
+        y: 373
+        width: 402
+        height: 280
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a47cf9da99926d650800000000000000
-      internalID: 6257234472297547594
+      spriteID: 11c50adc6c78f52409f7986f4d0fa3fe
+      internalID: 912780247
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-ls-4
+      name: surtr-lava-sweep_5
       rect:
         serializedVersion: 2
-        x: 39
-        y: 374
-        width: 404
+        x: 449
+        y: 373
+        width: 420
         height: 282
-      alignment: 9
-      pivot: {x: 0.008055479, y: 1.040176}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6b64ee604a5b447a0800000000000000
-      internalID: -6393785854863718730
+      spriteID: f21acffc9963d4e4198250499c4947e0
+      internalID: -913765362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-ls-5
+      name: surtr-lava-sweep_6
       rect:
         serializedVersion: 2
-        x: 452
-        y: 369
-        width: 417
-        height: 285
-      alignment: 9
-      pivot: {x: 0.13151364, y: 1.0482122}
+        x: 55
+        y: 22
+        width: 430
+        height: 313
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 28d923d63aef7ec80800000000000000
-      internalID: -8293380210914321022
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-ls-6
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 19
-        width: 432
-        height: 315
-      alignment: 9
-      pivot: {x: 0.09457935, y: 0.9850792}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: efb1f557524fee1f0800000000000000
-      internalID: -1013604424391648258
+      spriteID: d08e2217367ae4742aed93c656ca16e1
+      internalID: 2138282885
       vertices: []
       indices: 
       edges: []
@@ -285,13 +285,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      empty1: 7152469649370951424
-      surtr-ls-1: -7746032590948980521
-      surtr-ls-2: -1126856782491928308
-      surtr-ls-3: 6257234472297547594
-      surtr-ls-4: -6393785854863718730
-      surtr-ls-5: -8293380210914321022
-      surtr-ls-6: -1013604424391648258
+      surtr-lava-sweep_0: -229414089
+      surtr-lava-sweep_1: -534902631
+      surtr-lava-sweep_2: -1923983425
+      surtr-lava-sweep_3: -1521567788
+      surtr-lava-sweep_4: 912780247
+      surtr-lava-sweep_5: -913765362
+      surtr-lava-sweep_6: 2138282885
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
