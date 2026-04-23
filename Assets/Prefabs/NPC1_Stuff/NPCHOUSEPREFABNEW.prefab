@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &397741878966219214
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 89.20874, y: 0}
+  m_AnchoredPosition: {x: 201, y: -37}
   m_SizeDelta: {x: 378.4175, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6293364874906880079
@@ -65,10 +65,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press M to enter
+  m_text: Press M or Triangle to enter
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1e8156d94a3461e4482fda212564ab2f, type: 2}
+  m_sharedMaterial: {fileID: 8239252559932051202, guid: 1e8156d94a3461e4482fda212564ab2f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -92,20 +92,20 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 50
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -349.1129, y: 0, z: 46.55493, w: -81.02728}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -553,7 +553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 318696782429949742, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
       propertyPath: m_Name
-      value: NPCHOUSEPREFAB 1
+      value: NPCHOUSEPREFABNEW
       objectReference: {fileID: 0}
     - target: {fileID: 484170297384292026, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
       propertyPath: playerFreeze
@@ -623,13 +623,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2291404108970268401, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291404108970268401, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5688942289803288367, guid: 8b602e47476a5bc449c1548048f2ec39, type: 3}
     - target: {fileID: 2374913343821061230, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
       propertyPath: m_Volume
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2455024674506965634, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.2642856
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 2455024674506965634, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -666,6 +674,34 @@ PrefabInstance:
     - target: {fileID: 2455024674506965634, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2975765827069422598, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
+      propertyPath: price
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2975765827069422598, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
+      propertyPath: itemName
+      value: Charm of Protection
+      objectReference: {fileID: 0}
+    - target: {fileID: 2975765827069422598, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
+      propertyPath: charmData
+      value: 
+      objectReference: {fileID: 11400000, guid: 005226afbbb129749bf3339afd67a3fd, type: 2}
+    - target: {fileID: 3020225640771432308, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
+      propertyPath: price
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3020225640771432308, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
+      propertyPath: itemName
+      value: Charm of Crit Chance
+      objectReference: {fileID: 0}
+    - target: {fileID: 3020225640771432308, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
+      propertyPath: charmData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3973a50ebcf93794a9d41980e9586779, type: 2}
+    - target: {fileID: 3020225640771432308, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
+      propertyPath: description
+      value: Allows a 10% chance do to an extra hit point upon any attack
       objectReference: {fileID: 0}
     - target: {fileID: 3177294625699071671, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
       propertyPath: m_IsActive
@@ -717,7 +753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4602172739014896534, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
       propertyPath: interactKey
-      value: 109
+      value: 101
       objectReference: {fileID: 0}
     - target: {fileID: 4877256758495653130, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
       propertyPath: m_IsActive
@@ -761,7 +797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5442793058729884260, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5570423573839607907, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
       propertyPath: m_Color.b
@@ -907,6 +943,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -179.83
       objectReference: {fileID: 0}
+    - target: {fileID: 8682615396496569253, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8682615396496569253, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1014038847968675300, guid: 81c05a0d41f26c844bdbb955a0280d81, type: 3}
     - target: {fileID: 9167098025230228907, guid: 607776d8a25b7ea41ae9c0efc95aa1b9, type: 3}
       propertyPath: m_SizeDelta.x
       value: 583.432
