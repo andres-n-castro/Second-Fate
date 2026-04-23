@@ -48,6 +48,9 @@ public class MagmaSalamander : EnemyBase
     // Hitbox accessor for states
     public AttackHitbox LaunchHitbox => launchHitbox;
 
+    // Cached attack definition
+    public AttackDefinition LaunchAttack { get; private set; }
+
     // Animation parameter names
     public override string AnimWalking => "MagmaSalamander_Walking";
     public override string AnimAttack => "MagmaSalamander_Attack";
@@ -86,6 +89,15 @@ public class MagmaSalamander : EnemyBase
 
     protected override void InitializeStates()
     {
+        // Cache attack definition
+        if (Profile.attacks != null)
+        {
+            foreach (var atk in Profile.attacks)
+            {
+                if (atk.attackName == "Launch") { LaunchAttack = atk; break; }
+            }
+        }
+
         PatrolState = new SalamanderPatrolState(this);
         ChaseState = new SalamanderChaseState(this);
         JumpState = new SalamanderJumpState(this);
@@ -120,29 +132,106 @@ public class MagmaSalamander : EnemyBase
         FSM.ChangeState(DeadState);
     }
 
+    // ---------------------------------------------------------------
+    //  Shared Raycast Helpers
+    //  Used by Patrol and Chase states for ledge/wall checks with
+    //  profile-configurable offsets (beyond what the perception system
+    //  provides at the GroundCheck position).
+    // ---------------------------------------------------------------
+
+    public bool HasGroundAhead()
+    {
+        float offset = Profile.ledgeCheckAheadOffset;
+        Vector2 origin = GroundCheck != null
+            ? (Vector2)GroundCheck.position + new Vector2(FacingDirection * offset, 0f)
+            : (Vector2)transform.position + new Vector2(FacingDirection * (0.5f + offset), 0f);
+        return Physics2D.Raycast(origin, Vector2.down, Profile.groundCheckDistance, GroundLayer);
+    }
+
+    public bool HasGroundBehind()
+    {
+        float offset = Profile.ledgeCheckBehindOffset;
+        if (GroundCheck == null)
+        {
+            Vector2 fallback = (Vector2)transform.position + new Vector2(-FacingDirection * (0.5f + offset), 0f);
+            return Physics2D.Raycast(fallback, Vector2.down, Profile.groundCheckDistance, GroundLayer);
+        }
+        Vector2 gcWorld = GroundCheck.position;
+        Vector2 center = transform.position;
+        float mirroredX = center.x - (gcWorld.x - center.x) - FacingDirection * offset;
+        return Physics2D.Raycast(new Vector2(mirroredX, gcWorld.y), Vector2.down, Profile.groundCheckDistance, GroundLayer);
+    }
+
+    public bool HasWallAhead()
+    {
+        Vector2 origin = WallCheck != null
+            ? (Vector2)WallCheck.position
+            : (Vector2)transform.position;
+        return Physics2D.Raycast(origin, Vector2.right * FacingDirection,
+            Profile.wallCheckDistance, GroundLayer);
+    }
+
+    /// <summary>
+    /// Shared partial-overhang recovery. When the collider rests on a surface
+    /// edge (not grounded by raycast but vertical velocity near zero for several
+    /// frames), walks toward the nearest direction with ground.
+    /// Returns true if recovery is active (caller should skip normal logic).
+    /// </summary>
+    public bool TryPartialOverhangRecovery(ref int frameCounter)
+    {
+        if (!Ctx.isGrounded && Mathf.Abs(Rb.linearVelocity.y) < 0.3f)
+            frameCounter++;
+        else
+            frameCounter = 0;
+
+        if (frameCounter < 3) return false;
+
+        bool groundAhead = HasGroundAhead();
+        bool groundBehind = HasGroundBehind();
+
+        if (groundAhead)
+            MoveGround(Profile.moveSpeed);
+        else if (groundBehind)
+        {
+            FlipFacing();
+            MoveGround(Profile.moveSpeed);
+        }
+        else
+            StopHorizontal();
+
+        SetWalkingAnim(groundAhead || groundBehind);
+        return true;
+    }
+
+    public void SetWalkingAnim(bool walking)
+    {
+        if (Anim != null) Anim.SetBool(AnimWalking, walking);
+    }
+
     private void OnDrawGizmosSelected()
     {
         // Ledge check ray — ahead (green)
         float gizmoGroundDist = Profile != null ? Profile.groundCheckDistance : 1f;
-        float extraOffset = 0.5f;
+        float aheadOffset = Profile != null ? Profile.ledgeCheckAheadOffset : 0.5f;
         Vector2 groundOrigin = GroundCheck != null
-            ? (Vector2)GroundCheck.position + new Vector2(FacingDirection * extraOffset, 0f)
-            : (Vector2)transform.position + new Vector2(FacingDirection * (0.5f + extraOffset), 0f);
+            ? (Vector2)GroundCheck.position + new Vector2(FacingDirection * aheadOffset, 0f)
+            : (Vector2)transform.position + new Vector2(FacingDirection * (0.5f + aheadOffset), 0f);
         Gizmos.color = Color.green;
         Gizmos.DrawLine(groundOrigin, groundOrigin + Vector2.down * gizmoGroundDist);
 
         // Ledge check ray — behind (dark green)
+        float behindOffset = Profile != null ? Profile.ledgeCheckBehindOffset : 0.5f;
         Vector2 behindOrigin;
         if (GroundCheck != null)
         {
             Vector2 gcWorld = GroundCheck.position;
             Vector2 center = transform.position;
-            float mirroredX = center.x - (gcWorld.x - center.x) - FacingDirection * extraOffset;
+            float mirroredX = center.x - (gcWorld.x - center.x) - FacingDirection * behindOffset;
             behindOrigin = new Vector2(mirroredX, gcWorld.y);
         }
         else
         {
-            behindOrigin = (Vector2)transform.position + new Vector2(-FacingDirection * (0.5f + extraOffset), 0f);
+            behindOrigin = (Vector2)transform.position + new Vector2(-FacingDirection * (0.5f + behindOffset), 0f);
         }
         Gizmos.color = new Color(0f, 0.5f, 0f);
         Gizmos.DrawLine(behindOrigin, behindOrigin + Vector2.down * gizmoGroundDist);
@@ -199,4 +288,5 @@ public class MagmaSalamander : EnemyBase
             }
         }
     }
+
 }

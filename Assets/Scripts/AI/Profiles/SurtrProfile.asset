@@ -136,8 +136,8 @@ MonoBehaviour:
   jumpCooldown: 2
   bossIntroDuration: 1
   approachSpeed: 2.5
-  minAttackCooldown: 0.5
-  maxAttackCooldown: 1.2
+  minAttackCooldown: 0.2
+  maxAttackCooldown: 0.6
   phase2HealthPercent: 0.5
   phaseTransitionDuration: 2
   p1CloseRange: 2
@@ -146,7 +146,7 @@ MonoBehaviour:
   p1OptimalSpacing: 3.5
   p1ThrustCloseGapMinRange: 3.5
   p1ThrustCloseGapMaxRange: 6
-  p1ThrustCloseGapChance: 0.15
+  p1ThrustCloseGapChance: 0.4
   p1GapCloseRunSpeed: 6
   p1SlashMicroLungeSpeed: 3
   p1SlashMicroLungeDuration: 0.2

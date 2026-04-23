@@ -48,7 +48,6 @@ public class SurtrBoss : EnemyBase
     // Animation parameter names matching Surtr animator
     public override string AnimWalking => "Surtr_Walking";
     public override string AnimDeath => "Surtr_Dies";
-    public override string AnimHitstun => isPhase2 ? "Surtr_Hitstun_P2" : "Surtr_Hitstun_P1";
 
     // Outer FSM states
     public BossIntroState IntroState { get; private set; }
@@ -56,10 +55,6 @@ public class SurtrBoss : EnemyBase
     public SurtrP2Super P2Super { get; private set; }
     public PhaseTransitionState PhaseTransition { get; private set; }
     public BossDeadState DeadState { get; private set; }
-
-    // Hitstun states (grounded in both phases)
-    public GroundHitstunState P1HitstunState { get; private set; }
-    public GroundHitstunState P2HitstunState { get; private set; }
 
     // Phase tracking
     private bool isPhase2;
@@ -97,9 +92,6 @@ public class SurtrBoss : EnemyBase
         PhaseTransition = new PhaseTransitionState(this, "Surtr_Phase_Transition");
         DeadState = new BossDeadState(this, DisableAllHitboxes);
 
-        P1HitstunState = new GroundHitstunState(this) { ReturnState = P1Super };
-        P2HitstunState = new GroundHitstunState(this) { ReturnState = P2Super };
-
         IntroState.NextState = P1Super;
         FSM.ChangeState(IntroState);
     }
@@ -120,11 +112,6 @@ public class SurtrBoss : EnemyBase
 
         // Don't interrupt phase transition
         if (FSM.CurrentState == PhaseTransition) return;
-
-        // Hitstun
-        DisableAllHitboxes();
-        if (Rb != null) Rb.linearVelocity = Vector2.zero;
-        FSM.ChangeState(isPhase2 ? (IState)P2HitstunState : P1HitstunState);
     }
 
     protected override void HandleDeath()

@@ -35,9 +35,9 @@ MonoBehaviour:
   - attackName: RockThrow
     damage: 1
     knockbackForce: 0
-    windupDuration: 0.7
+    windupDuration: 0.333
     activeDuration: 0
-    recoveryDuration: 0.5
+    recoveryDuration: 0.250
     cooldown: 2.5
     dashSpeed: 0
     dashDuration: 0

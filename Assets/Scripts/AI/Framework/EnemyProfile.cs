@@ -21,6 +21,8 @@ public class EnemyProfile : ScriptableObject
     [Header("Environment Checks")]
     public float groundCheckDistance = 1f;
     public float wallCheckDistance = 0.5f;
+    public float ledgeCheckAheadOffset = 0.5f;
+    public float ledgeCheckBehindOffset = 0.5f;
 
     [Header("Line of Sight")]
     public float losEyeOffsetY = 0.5f;

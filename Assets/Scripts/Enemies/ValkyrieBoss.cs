@@ -56,7 +56,6 @@ public class ValkyrieBoss : EnemyBase
     // Animation parameter names matching Valkyrie animator
     public override string AnimWalking => "Valk_Walking";
     public override string AnimDeath => "Valk_Dies";
-    public override string AnimHitstun => isPhase2 ? "Valk_Hitstun_P2" : "Valk_Hitstun_P1";
 
     // Outer FSM states
     public BossIntroState IntroState { get; private set; }
@@ -64,10 +63,6 @@ public class ValkyrieBoss : EnemyBase
     public ValkP2Super P2Super { get; private set; }
     public PhaseTransitionState PhaseTransition { get; private set; }
     public BossDeadState DeadState { get; private set; }
-
-    // Hitstun states (no-knockback variant — boss plays anim in place)
-    public GroundHitstunState P1HitstunState { get; private set; }
-    public AirHitstunState P2HitstunState { get; private set; }
 
     // Phase tracking
     private bool isPhase2;
@@ -111,9 +106,6 @@ public class ValkyrieBoss : EnemyBase
         PhaseTransition = new PhaseTransitionState(this, "Valk_Phase_Transition");
         DeadState = new BossDeadState(this, DisableAllHitboxes, enableGravityOnDeath: true);
 
-        P1HitstunState = new GroundHitstunState(this) { ReturnState = P1Super };
-        P2HitstunState = new AirHitstunState(this)    { ReturnState = P2Super };
-
         IntroState.NextState = P1Super;
         FSM.ChangeState(IntroState);
     }
@@ -134,14 +126,6 @@ public class ValkyrieBoss : EnemyBase
 
         // Don't interrupt the phase transition itself
         if (FSM.CurrentState == PhaseTransition) return;
-
-        // Hitstun without knockback — disable any active hitboxes so she can't
-        // still damage the player mid-flinch, zero out residual velocity, then
-        // hand off to the shared hitstun state (no ApplyKnockback call).
-        DisableAllHitboxes();
-        if (Rb != null) Rb.linearVelocity = Vector2.zero;
-
-        FSM.ChangeState(isPhase2 ? (IState)P2HitstunState : P1HitstunState);
     }
 
     protected override void HandleDeath()

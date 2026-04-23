@@ -306,10 +306,13 @@ public class ValkP1DecisionState : EnemyState
         float dist = owner.Ctx.playerDistance;
         EnemyProfile p = owner.Profile;
 
-        // Player moved beyond max engage range — walk closer
+        // Player moved beyond max engage range — gap-close 80%, approach 20%
         if (dist > p.p1MaxEngageRange || !owner.Ctx.hasLineOfSightToPlayer)
         {
-            p1.ChangeSubState(p1.ApproachState);
+            if (Random.value < 0.80f)
+                p1.ChangeSubState(p1.GapCloseState);
+            else
+                p1.ChangeSubState(p1.ApproachState);
             return;
         }
 
@@ -382,25 +385,11 @@ public class ValkP1DecisionState : EnemyState
             return;
         }
 
-        // No attack can reach — walk closer, occasionally gap-close
-        if (!TryThrustGapClose(dist, p))
-            p1.ChangeSubState(p1.ApproachState);
-    }
-
-    /// <summary>
-    /// Attempts a thrust gap-close if the player is in the gap-close range band
-    /// and the random roll succeeds. Returns true if thrust was initiated.
-    /// </summary>
-    private bool TryThrustGapClose(float dist, EnemyProfile p)
-    {
-        if (dist >= p.p1ThrustCloseGapMinRange && dist <= p.p1ThrustCloseGapMaxRange
-            && owner.IsAttackReady("Thrust")
-            && Random.value < p.p1ThrustCloseGapChance)
-        {
+        // No attack can reach — thrust 50%, gap-close 50%
+        if (Random.value < 0.50f && owner.IsAttackReady("Thrust"))
+            p1.ChangeSubState(p1.ThrustState);
+        else
             p1.ChangeSubState(p1.GapCloseState);
-            return true;
-        }
-        return false;
     }
 
     public override void Exit()
@@ -476,7 +465,6 @@ public class ValkP1GapCloseState : EnemyState
         EnemyProfile p = owner.Profile;
         List<(IState state, float weight, float range)> options = new List<(IState, float, float)>();
 
-        // Gap-close only picks slash or flurry — thrust is handled separately in Decision
         AttackDefinition slashDef = valk.GetAttackDef("Slash");
         if (slashDef != null && owner.IsAttackReady("Slash"))
         {
@@ -490,6 +478,14 @@ public class ValkP1GapCloseState : EnemyState
         {
             float flurryEffective = valk.FlurryReach + 0.3f;
             options.Add((p1.FlurryState, flurryDef.selectionWeight, flurryEffective));
+        }
+
+        AttackDefinition thrustDef = valk.GetAttackDef("Thrust");
+        if (thrustDef != null && owner.IsAttackReady("Thrust"))
+        {
+            float thrustTravel = thrustDef.dashSpeed * thrustDef.activeDuration;
+            float thrustEffective = valk.ThrustReach + 0.3f + thrustTravel;
+            options.Add((p1.ThrustState, thrustDef.selectionWeight, thrustEffective));
         }
 
         if (options.Count == 0)
