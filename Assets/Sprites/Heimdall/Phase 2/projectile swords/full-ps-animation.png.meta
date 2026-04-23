@@ -1,0 +1,400 @@
+fileFormatVersion: 2
+guid: abd5e6a392d87ab4dba11e3ba2f67b37
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4381468291027168156
+    second: 50d8bbe0-a5a9-4074-b089-975f57df7e60-jukebox-bg-removed_0
+  - first:
+      213: -3010927738716156257
+    second: 50d8bbe0-a5a9-4074-b089-975f57df7e60-jukebox-bg-removed_1
+  - first:
+      213: 1653252443027794076
+    second: 50d8bbe0-a5a9-4074-b089-975f57df7e60-jukebox-bg-removed_2
+  - first:
+      213: -4580942770685407045
+    second: 50d8bbe0-a5a9-4074-b089-975f57df7e60-jukebox-bg-removed_3
+  - first:
+      213: -5958255944070262040
+    second: 50d8bbe0-a5a9-4074-b089-975f57df7e60-jukebox-bg-removed_4
+  - first:
+      213: -8994834244581445923
+    second: 50d8bbe0-a5a9-4074-b089-975f57df7e60-jukebox-bg-removed_5
+  - first:
+      213: -6315152941477855707
+    second: 50d8bbe0-a5a9-4074-b089-975f57df7e60-jukebox-bg-removed_6
+  - first:
+      213: 5847668570625471925
+    second: 50d8bbe0-a5a9-4074-b089-975f57df7e60-jukebox-bg-removed_7
+  - first:
+      213: 5900203384169805828
+    second: 50d8bbe0-a5a9-4074-b089-975f57df7e60-jukebox-bg-removed_8
+  - first:
+      213: -8368630310417387762
+    second: 50d8bbe0-a5a9-4074-b089-975f57df7e60-jukebox-bg-removed_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: heimdall-ps-1
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 805
+        width: 240
+        height: 176
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46410b6adc5e133c0800000000000000
+      internalID: -4381468291027168156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-ps-2
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 645
+        width: 382
+        height: 161
+      alignment: 9
+      pivot: {x: -0.15450206, y: 1.0935919}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9e04799c290736d0800000000000000
+      internalID: -3010927738716156257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: none5
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 781
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c98e7be665881f610800000000000000
+      internalID: 1653252443027794076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: none4
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 572
+        width: 88
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 65, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb017e822d83d60c0800000000000000
+      internalID: -4580942770685407045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-ps-4
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 330
+        width: 607
+        height: 160
+      alignment: 9
+      pivot: {x: -0.09930063, y: 1.1020262}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e215dc79c5005da0800000000000000
+      internalID: -5958255944070262040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: none3
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 467
+        width: 144
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dde243649edeb2380800000000000000
+      internalID: -8994834244581445923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-ps-5
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 171
+        width: 830
+        height: 156
+      alignment: 9
+      pivot: {x: -0.07564693, y: 1.1287926}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52ef2fcdbd11c58a0800000000000000
+      internalID: -6315152941477855707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: none1
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 246
+        width: 2
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b5f85c2597172150800000000000000
+      internalID: 5847668570625471925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-ps-6
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 2
+        width: 889
+        height: 158
+      alignment: 9
+      pivot: {x: -0.070626505, y: 1.1033201}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 408bfff97bbb1e150800000000000000
+      internalID: 5900203384169805828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: none2
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 155
+        width: 4
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0f21035217acdb80800000000000000
+      internalID: -8368630310417387762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-ps-3
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 493
+        width: 483
+        height: 152
+      alignment: 9
+      pivot: {x: -0.11179456, y: 1.1239195}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5262ba57471c134ca0f47cde7321654
+      internalID: -1288522180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 80db8c938f00d484f8d4a3f89e10b4c5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      heimdall-ps-1: -4381468291027168156
+      heimdall-ps-2: -3010927738716156257
+      heimdall-ps-3: -1288522180
+      heimdall-ps-4: -5958255944070262040
+      heimdall-ps-5: -6315152941477855707
+      heimdall-ps-6: 5900203384169805828
+      none1: 5847668570625471925
+      none2: -8368630310417387762
+      none3: -8994834244581445923
+      none4: -4580942770685407045
+      none5: 1653252443027794076
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
