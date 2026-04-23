@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 109
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,177 +121,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: surtr-ht-1
+      name: surtr-heavy-thrust_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 675
-        width: 255
-        height: 319
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d3fbb7e9beaad96a0800000000000000
-      internalID: -6440803963116994755
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty2
-      rect:
-        serializedVersion: 2
-        x: 341
-        y: 708
-        width: 17
-        height: 11
+        x: 42
+        y: 676
+        width: 253
+        height: 317
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 68fa860ea0a42dc20800000000000000
-      internalID: 3229725293353152390
+      spriteID: 8b1a91bfc26607945804a33b3e7e34f6
+      internalID: -2119262578
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-ht-2
+      name: surtr-heavy-thrust_1
       rect:
         serializedVersion: 2
-        x: 392
-        y: 683
-        width: 463
-        height: 316
-      alignment: 9
-      pivot: {x: -0.030349368, y: 0.99582547}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 28dfb20a2598c6d10800000000000000
-      internalID: 2120220512552222082
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-ht-3
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 357
-        width: 726
-        height: 288
-      alignment: 9
-      pivot: {x: -0.02288583, y: 1.0721152}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3d52a8a4767d0b340800000000000000
-      internalID: 4877635235074418131
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty1
-      rect:
-        serializedVersion: 2
-        x: 316
-        y: 652
-        width: 20
-        height: 17
+        x: 375
+        y: 684
+        width: 15
+        height: 9
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4d059256c8d11dbf0800000000000000
-      internalID: -301427211227279148
+      spriteID: 37ef82bb95de9fe4e8c849ab33190a7c
+      internalID: -2116072981
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empty3
+      name: surtr-heavy-thrust_2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 347
-        width: 7
-        height: 18
+        x: 395
+        y: 682
+        width: 461
+        height: 314
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0fae8ce99101eb640800000000000000
-      internalID: 5097529530454174448
+      spriteID: 3e09d8c79dffa3a4fb4de5d3ac1a045a
+      internalID: -1967889169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-ht-5
+      name: surtr-heavy-thrust_3
       rect:
         serializedVersion: 2
-        x: 572
-        y: 27
-        width: 262
-        height: 329
-      alignment: 9
-      pivot: {x: 0, y: 0.9670961}
+        x: 66
+        y: 355
+        width: 724
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 85b21e306b3427930800000000000000
-      internalID: 4139445456535104344
+      spriteID: 278722f5be9255841becc759908168a9
+      internalID: 1903566821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-ht-4
+      name: surtr-heavy-thrust_4
       rect:
         serializedVersion: 2
-        x: 30
+        x: 272
+        y: 634
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cbcb7f30810b0d4789edf720bd4114f
+      internalID: -1533217242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-heavy-thrust_5
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 356
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 202f18b3a00c2604492a934150c6c0f1
+      internalID: -2028299151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-heavy-thrust_6
+      rect:
+        serializedVersion: 2
+        x: 573
         y: 28
-        width: 538
-        height: 297
-      alignment: 9
-      pivot: {x: -0.022996051, y: 1.0468632}
+        width: 260
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0cf115a04080f8e70800000000000000
-      internalID: 9119516583894523840
+      spriteID: 7c378da9b271e5e468a5f9c83596e1ab
+      internalID: -2108666451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-heavy-thrust_7
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 29
+        width: 536
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 248cbb22f2d3c3a4c8fe42569a30a51b
+      internalID: 767249648
       vertices: []
       indices: 
       edges: []
@@ -310,14 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      empty1: -301427211227279148
-      empty2: 3229725293353152390
-      empty3: 5097529530454174448
-      surtr-ht-1: -6440803963116994755
-      surtr-ht-2: 2120220512552222082
-      surtr-ht-3: 4877635235074418131
-      surtr-ht-4: 9119516583894523840
-      surtr-ht-5: 4139445456535104344
+      surtr-heavy-thrust_0: -2119262578
+      surtr-heavy-thrust_1: -2116072981
+      surtr-heavy-thrust_2: -1967889169
+      surtr-heavy-thrust_3: 1903566821
+      surtr-heavy-thrust_4: -1533217242
+      surtr-heavy-thrust_5: -2028299151
+      surtr-heavy-thrust_6: -2108666451
+      surtr-heavy-thrust_7: 767249648
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

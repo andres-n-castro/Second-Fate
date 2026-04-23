@@ -1,0 +1,299 @@
+fileFormatVersion: 2
+guid: 1e4d536000cfb7f45a9de9e619f12636
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2220850511030130274
+    second: Heimdall_Idle_Phase1_Sheet_taller_skinnier_0
+  - first:
+      213: 1063281448088997681
+    second: Heimdall_Idle_Phase1_Sheet_taller_skinnier_1
+  - first:
+      213: -729293378304774599
+    second: Heimdall_Idle_Phase1_Sheet_taller_skinnier_2
+  - first:
+      213: -7988194496695639140
+    second: Heimdall_Idle_Phase1_Sheet_taller_skinnier_3
+  - first:
+      213: 8311637711599432370
+    second: Heimdall_Idle_Phase1_Sheet_taller_skinnier_4
+  - first:
+      213: -4184535164067991966
+    second: Heimdall_Idle_Phase1_Sheet_taller_skinnier_5
+  - first:
+      213: 900060747421845421
+    second: Heimdall_Idle_Phase1_Sheet_taller_skinnier_6
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Heimdall_Idle_Phase1_Sheet_taller_skinnier_0
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 243
+        width: 1105
+        height: 1075
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2661231f5cb02de10800000000000000
+      internalID: 2220850511030130274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heimdall_Idle_Phase1_Sheet_taller_skinnier_1
+      rect:
+        serializedVersion: 2
+        x: 2422
+        y: 244
+        width: 1118
+        height: 1079
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13f8b91f7d881ce00800000000000000
+      internalID: 1063281448088997681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heimdall_Idle_Phase1_Sheet_taller_skinnier_2
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 244
+        width: 1089
+        height: 1074
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93e6911598701e5f0800000000000000
+      internalID: -729293378304774599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heimdall_Idle_Phase1_Sheet_taller_skinnier_3
+      rect:
+        serializedVersion: 2
+        x: 6581
+        y: 241
+        width: 1111
+        height: 1118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c93e9b3bd6b342190800000000000000
+      internalID: -7988194496695639140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heimdall_Idle_Phase1_Sheet_taller_skinnier_4
+      rect:
+        serializedVersion: 2
+        x: 7496
+        y: 1318
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b2ff95367ed85370800000000000000
+      internalID: 8311637711599432370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heimdall_Idle_Phase1_Sheet_taller_skinnier_5
+      rect:
+        serializedVersion: 2
+        x: 8663
+        y: 244
+        width: 1119
+        height: 1078
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26ea89b507b8de5c0800000000000000
+      internalID: -4184535164067991966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heimdall_Idle_Phase1_Sheet_taller_skinnier_6
+      rect:
+        serializedVersion: 2
+        x: 10744
+        y: 244
+        width: 1121
+        height: 1073
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da70a562b78ad7c00800000000000000
+      internalID: 900060747421845421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Heimdall_Idle_Phase1_Sheet_taller_skinnier_0: 2220850511030130274
+      Heimdall_Idle_Phase1_Sheet_taller_skinnier_1: 1063281448088997681
+      Heimdall_Idle_Phase1_Sheet_taller_skinnier_2: -729293378304774599
+      Heimdall_Idle_Phase1_Sheet_taller_skinnier_3: -7988194496695639140
+      Heimdall_Idle_Phase1_Sheet_taller_skinnier_4: 8311637711599432370
+      Heimdall_Idle_Phase1_Sheet_taller_skinnier_5: -4184535164067991966
+      Heimdall_Idle_Phase1_Sheet_taller_skinnier_6: 900060747421845421
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

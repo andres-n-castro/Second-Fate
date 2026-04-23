@@ -52,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -66,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 83
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -90,7 +90,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,177 +115,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: surtr-lv-1
+      name: surtr-lava-vomit_0
       rect:
         serializedVersion: 2
-        x: 56
-        y: 742
-        width: 202
-        height: 257
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 57
+        y: 743
+        width: 200
+        height: 255
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a9b4f547d4e8cdee0800000000000000
-      internalID: -1234955734490330214
+      spriteID: fe1d6de586b1ea24dabe39bb7532bc69
+      internalID: 70994861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-lv-2
+      name: surtr-lava-vomit_1
       rect:
         serializedVersion: 2
-        x: 495
-        y: 749
-        width: 259
-        height: 237
+        x: 496
+        y: 750
+        width: 257
+        height: 235
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8949ac97d390244cad518a847119811
+      internalID: 687112889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-lava-vomit_2
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 509
+        width: 306
+        height: 220
       alignment: 9
-      pivot: {x: -0.074457705, y: 1.0915383}
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b46068e5b7ff60cc0800000000000000
-      internalID: -3745025134780086709
+      spriteID: eb5d9e62bfc481a4ab4764591626b08f
+      internalID: 436398150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-lv-3
+      name: surtr-lava-vomit_3
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 507
+        width: 389
+        height: 230
+      alignment: 9
+      pivot: {x: 0.35, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8df6c0192f3790488289f9b01dc4e7d
+      internalID: -1866088514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: surtr-lava-vomit_4
       rect:
         serializedVersion: 2
         x: 37
-        y: 508
-        width: 308
-        height: 222
+        y: 258
+        width: 399
+        height: 236
       alignment: 9
-      pivot: {x: -0.06261163, y: 1.1628726}
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b8ab3774f6c07cc90800000000000000
-      internalID: -7149732211347703157
+      spriteID: 162529d77d056b642a5e528299eacfce
+      internalID: 1224408329
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-lv-4
+      name: surtr-lava-vomit_5
       rect:
         serializedVersion: 2
-        x: 478
-        y: 506
-        width: 391
-        height: 232
+        x: 449
+        y: 254
+        width: 424
+        height: 251
       alignment: 9
-      pivot: {x: -0.061650973, y: 1.1246804}
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9d4210350140cb2a0800000000000000
-      internalID: -6720492075785050919
+      spriteID: 28abe10dae8ddea45852fe3992ce662c
+      internalID: 2125251352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-lv-5
-      rect:
-        serializedVersion: 2
-        x: 14
-        y: 255
-        width: 425
-        height: 240
-      alignment: 9
-      pivot: {x: 0.000000015707577, y: 1.110483}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 339fe5bd25bdba050800000000000000
-      internalID: 5812980892965992755
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-lv-6
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 256
-        width: 426
-        height: 250
-      alignment: 9
-      pivot: {x: -0.005658575, y: 1.0674939}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 978d43a8f7b0c7c70800000000000000
-      internalID: 8970057200222656633
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: surtr-lv-7
+      name: surtr-lava-vomit_6
       rect:
         serializedVersion: 2
         x: 17
-        y: 3
-        width: 423
-        height: 250
+        y: 12
+        width: 417
+        height: 240
       alignment: 9
-      pivot: {x: -0.005698727, y: 1.0674943}
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b246722082ef394a9eecfaab43895f0
-      internalID: 1524401846
+      spriteID: 887a7113ee1047440b6a9a846c11bf02
+      internalID: -745414368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: surtr-lv-8
+      name: surtr-lava-vomit_7
       rect:
         serializedVersion: 2
-        x: 451
-        y: 3
-        width: 422
-        height: 245
+        x: 448
+        y: 11
+        width: 424
+        height: 240
       alignment: 9
-      pivot: {x: -0.011424494, y: 1.0885484}
+      pivot: {x: 0.3, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f36975a3c2550d046a4247f33b4e28db
-      internalID: -1740621182
+      spriteID: a96372f05fabd994aa0319d1d600bc89
+      internalID: 1872078448
       vertices: []
       indices: 
       edges: []
@@ -304,14 +304,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      surtr-lv-1: -1234955734490330214
-      surtr-lv-2: -3745025134780086709
-      surtr-lv-3: -7149732211347703157
-      surtr-lv-4: -6720492075785050919
-      surtr-lv-5: 5812980892965992755
-      surtr-lv-6: 8970057200222656633
-      surtr-lv-7: 1524401846
-      surtr-lv-8: -1740621182
+      surtr-lava-vomit_0: 70994861
+      surtr-lava-vomit_1: 687112889
+      surtr-lava-vomit_2: 436398150
+      surtr-lava-vomit_3: -1866088514
+      surtr-lava-vomit_4: 1224408329
+      surtr-lava-vomit_5: 2125251352
+      surtr-lava-vomit_6: -745414368
+      surtr-lava-vomit_7: 1872078448
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

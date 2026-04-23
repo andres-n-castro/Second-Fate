@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: d3d63112e2ea0ca4ab30a580075f03d2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -282915080214885272
+    second: 7ad26db9-5940-4d2b-96af-b7cdb2020bd0-jukebox-bg-removed (1)_edited_0
+  - first:
+      213: -296477674245892714
+    second: 7ad26db9-5940-4d2b-96af-b7cdb2020bd0-jukebox-bg-removed (1)_edited_1
+  - first:
+      213: -661221666199506294
+    second: 7ad26db9-5940-4d2b-96af-b7cdb2020bd0-jukebox-bg-removed (1)_edited_2
+  - first:
+      213: -2234165571240674004
+    second: 7ad26db9-5940-4d2b-96af-b7cdb2020bd0-jukebox-bg-removed (1)_edited_3
+  - first:
+      213: -2239771830312037578
+    second: 7ad26db9-5940-4d2b-96af-b7cdb2020bd0-jukebox-bg-removed (1)_edited_4
+  - first:
+      213: 4470438425546673213
+    second: 7ad26db9-5940-4d2b-96af-b7cdb2020bd0-jukebox-bg-removed (1)_edited_5
+  - first:
+      213: 2963707544458389119
+    second: 7ad26db9-5940-4d2b-96af-b7cdb2020bd0-jukebox-bg-removed (1)_edited_6
+  - first:
+      213: 4296139287777494683
+    second: 7ad26db9-5940-4d2b-96af-b7cdb2020bd0-jukebox-bg-removed (1)_edited_7
+  - first:
+      213: 2855263373476659156
+    second: 7ad26db9-5940-4d2b-96af-b7cdb2020bd0-jukebox-bg-removed (1)_edited_8
+  - first:
+      213: -6872991569985666924
+    second: 7ad26db9-5940-4d2b-96af-b7cdb2020bd0-jukebox-bg-removed (1)_edited_9
+  - first:
+      213: 9089389457054166478
+    second: 7ad26db9-5940-4d2b-96af-b7cdb2020bd0-jukebox-bg-removed (1)_edited_10
+  - first:
+      213: 3742818349903463772
+    second: 7ad26db9-5940-4d2b-96af-b7cdb2020bd0-jukebox-bg-removed (1)_edited_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ocs1
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 401
+        width: 281
+        height: 152
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86cc036cb32e21cf0800000000000000
+      internalID: -282915080214885272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empt6
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 536
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6955db64023b2ebf0800000000000000
+      internalID: -296477674245892714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ocs2
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 397
+        width: 548
+        height: 164
+      alignment: 9
+      pivot: {x: -0.00000011137802, y: 0.94812906}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a82f26cd56ed2d6f0800000000000000
+      internalID: -661221666199506294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empt7
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 535
+        width: 20
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2dbac40046aef0e0800000000000000
+      internalID: -2234165571240674004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7ad26db9-5940-4d2b-96af-b7cdb2020bd0-jukebox-bg-removed (1)_edited_4
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 411
+        width: 1
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 633135c136bbae0e0800000000000000
+      internalID: -2239771830312037578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ocs3
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 206
+        width: 711
+        height: 179
+      alignment: 9
+      pivot: {x: -0.0000000026826281, y: 0.8514878}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3c47f800103a0e30800000000000000
+      internalID: 4470438425546673213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empt1
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 442
+        width: 46
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f76669d2f44312920800000000000000
+      internalID: 2963707544458389119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empt2
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 425
+        width: 49
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b96c3999be3fe9b30800000000000000
+      internalID: 4296139287777494683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empt5
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 276
+        width: 27
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4df724c09eeef9720800000000000000
+      internalID: 2855263373476659156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ocs4
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1
+        width: 976
+        height: 201
+      alignment: 9
+      pivot: {x: 0.0010894889, y: 0.75135744}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49000cee49a3e90a0800000000000000
+      internalID: -6872991569985666924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empt3
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 259
+        width: 56
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecde4e4bd8ff32e70800000000000000
+      internalID: 9089389457054166478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: empt4
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 225
+        width: 35
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c554fcc757921f330800000000000000
+      internalID: 3742818349903463772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 545711eb4b1f08d41b64bd8c6ef6852b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      7ad26db9-5940-4d2b-96af-b7cdb2020bd0-jukebox-bg-removed (1)_edited_4: -2239771830312037578
+      empt1: 2963707544458389119
+      empt2: 4296139287777494683
+      empt3: 9089389457054166478
+      empt4: 3742818349903463772
+      empt5: 2855263373476659156
+      empt6: -296477674245892714
+      empt7: -2234165571240674004
+      ocs1: -282915080214885272
+      ocs2: -661221666199506294
+      ocs3: 4470438425546673213
+      ocs4: -6872991569985666924
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

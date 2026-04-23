@@ -22,6 +22,8 @@ MonoBehaviour:
   attackRange: 3
   groundCheckDistance: 1
   wallCheckDistance: 0.5
+  ledgeCheckAheadOffset: 2
+  ledgeCheckBehindOffset: 0.9
   losEyeOffsetY: 0.2
   losCastRadius: 0.1
   requireLOSForAggro: 1
@@ -82,9 +84,9 @@ MonoBehaviour:
   maxFallVelocity: 28
   jumpHangThreshold: 2
   jumpHangGravityMultiplier: 0.5
-  jumpForce: 12
-  jumpForwardForce: 3
-  jumpHeightThreshold: 5
+  jumpForce: 18
+  jumpForwardForce: 6
+  jumpHeightThreshold: 1
   jumpCooldown: 1
   bossIntroDuration: 1
   approachSpeed: 3
@@ -131,17 +133,9 @@ MonoBehaviour:
   surtrThrustWeightMultiplier: 2
   surtrFireBreathMaxRange: 4
   surtrFireBreathWeightMultiplier: 2
-  surtrSweepProjectileSpeed: 8
   surtrP2MinAttackCooldown: 0.3
   surtrP2MaxAttackCooldown: 0.9
-  surtrEruptionInterval: 3
-  surtrEruptionProjectileCount: 3
-  surtrEruptionSpreadAngle: 60
-  surtrEruptionProjectileSpeed: 7
   surtrGroundedThrustStuckDuration: 1.5
-  surtrVomitProjectileCount: 5
-  surtrVomitSpreadAngle: 90
-  surtrVomitProjectileSpeed: 6
   surtrGroundedThrustRange: 3.5
   surtrGroundedThrustWeightMultiplier: 3
   surtrVomitMaxRange: 6
@@ -181,3 +175,37 @@ MonoBehaviour:
   odinConsecutiveSpikesWeightMultiplier: 2
   odinLargeSlashMaxRange: 5
   odinLargeSlashWeightMultiplier: 3
+  heimdallCloseRange: 2
+  heimdallMaxEngageRange: 6
+  heimdallShockwaveSlashMaxRange: 5
+  heimdallShockwaveSlashWeightMultiplier: 2
+  heimdallSwordTornadoMaxRange: 2.5
+  heimdallSwordTornadoWeightMultiplier: 3
+  heimdallSwordBeamMaxRange: 6
+  heimdallSwordBeamMinRange: 2.5
+  heimdallSwordBeamWeightMultiplier: 2
+  heimdallShockwaveSpeed: 10
+  heimdallShockwaveHeight: 0.5
+  heimdallBeamSpeed: 12
+  heimdallProjectileSwordSpeed: 8
+  heimdallProjectileSwordCurveDelay: 0.25
+  heimdallProjectileSwordCurveStrength: 5
+  heimdallProjectileSwordLifetime: 5
+  heimdallPlungeLeapForceY: 12
+  heimdallPlungeForwardForce: 3
+  heimdallPlungeFallSpeed: 18
+  heimdallFloorImpactRadius: 4
+  heimdallFloorImpactDuration: 0.4
+  heimdallP2MinAttackCooldown: 0.3
+  heimdallP2MaxAttackCooldown: 0.8
+  heimdallProjectileSwordCount: 3
+  heimdallProjectileSwordSpreadAngle: 40
+  heimdallGiantSlashSpeed: 12
+  heimdallGiantSlashHeight: 0.5
+  heimdallProjectileSwordsMaxRange: 8
+  heimdallProjectileSwordsMinRange: 3
+  heimdallProjectileSwordsWeightMultiplier: 2
+  heimdallSwordPlungeMaxRange: 6
+  heimdallSwordPlungeWeightMultiplier: 3
+  heimdallGiantSlashMaxRange: 5
+  heimdallGiantSlashWeightMultiplier: 2
