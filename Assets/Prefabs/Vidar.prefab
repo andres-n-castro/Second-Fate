@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 5018943049880396234}
   - component: {fileID: 6747101455839077299}
   - component: {fileID: 406233132003989414}
+  - component: {fileID: 2746560030634156472}
   m_Layer: 6
   m_Name: Vidar
   m_TagString: Player
@@ -668,11 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultMaxCharms: 1
-  unlockedCharms:
-  - {fileID: 11400000, guid: 720459df681f13149ae85dbad33ff41f, type: 2}
-  - {fileID: 11400000, guid: 3973a50ebcf93794a9d41980e9586779, type: 2}
-  - {fileID: 11400000, guid: 90d7b28a299aab04484854d0fb9acc8d, type: 2}
-  - {fileID: 11400000, guid: 005226afbbb129749bf3339afd67a3fd, type: 2}
+  unlockedCharms: []
   equippedCharms: []
 --- !u!114 &406233132003989414
 MonoBehaviour:
@@ -684,6 +681,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b425cdc497f4d694caf6e2e90de5971e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2746560030634156472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348176465958162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 087e693e4688d484aa2ac27066158a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6323018574185074532
