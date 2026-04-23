@@ -59,6 +59,9 @@ MonoBehaviour:
   - bonfireID: Swamp_Bonfire
     displayName: Swamp
     sceneName: biome1_subarea2
+  - bonfireID: Lava_Bonfire
+    displayName: Lava
+    sceneName: biome2_subarea1
   pendingTeleportBonfireID: 
   masterBonfireRegistry: []
   unlockedBonfires: []

@@ -15,13 +15,7 @@ MonoBehaviour:
   npcName: Old Man
   npcPortrait: {fileID: 21300000, guid: 6dec5c53ddfb4414b95f16b2cdde7280, type: 3}
   dialogueLines:
-  - "\"Strange\u2026 the air shifts when you approach.\""
-  - '"I have not felt that in many years."'
-  - "\"Most travelers wander these ruins lost\u2026 yet you walk as though the land
-    remembers you.\""
-  - "\"Ragnarok killed the gods and shattered the realms\u2026 or so we believed.\""
-  - '"And yet when I look at you, I feel something ancient stirring."'
-  - "\"Hmm\u2026 perhaps these charms will reveal the truth.\""
+  - '"When I look at you, I feel something ancient stirring."'
   autoProgressLines: 
   autoProgressDelay: 4
   typeSpeed: 0.5
