@@ -115,20 +115,29 @@ public class BossUIManager : MonoBehaviour
         GrantReward(treeEssenceReward);
         GrantReward(creatureBloodReward);
 
-        if (bossDeathPopUp != null)
-        {
-            bossDeathPopUp.SetActive(true);
-        }
-
-        if (EventSystem.current != null && resumeButton != null)
-        {
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(resumeButton.gameObject);
-        }
-
         if (UIManager.Instance != null)
         {
             UIManager.Instance.ShowNotification("Blood and Essence Recovered");
+        }
+
+        // Only freeze the game if we actually have a popup/resume button to un-freeze it.
+        // Without them the player would be softlocked.
+        bool canShowPopup = bossDeathPopUp != null && resumeButton != null;
+        if (!canShowPopup)
+        {
+            if (SaveManager.Instance != null)
+            {
+                SaveManager.Instance.SaveGame(0);
+            }
+            return;
+        }
+
+        bossDeathPopUp.SetActive(true);
+
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(resumeButton.gameObject);
         }
 
         if (PlayerController.Instance != null)
