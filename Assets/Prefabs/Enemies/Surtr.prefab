@@ -95,7 +95,7 @@ MonoBehaviour:
   knockbackForce: {x: 5, y: 4}
   targetLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!1 &1309456440141296004
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
   knockbackForce: {x: 5, y: 4}
   targetLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!1 &2883429803446115210
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +553,7 @@ MonoBehaviour:
   knockbackForce: {x: 5, y: 4}
   targetLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!1 &7524635920207441221
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +649,7 @@ MonoBehaviour:
   knockbackForce: {x: 5, y: 4}
   targetLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!1 &8080363945455991105
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,4 +776,4 @@ MonoBehaviour:
   knockbackForce: {x: 5, y: 4}
   targetLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64

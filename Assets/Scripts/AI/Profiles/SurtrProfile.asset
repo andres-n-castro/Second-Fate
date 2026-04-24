@@ -35,8 +35,8 @@ MonoBehaviour:
   - attackName: LavaSweep
     damage: 1
     knockbackForce: 8
-    windupDuration: 0.083
-    activeDuration: 0.250
+    windupDuration: 0.1
+    activeDuration: 0.4
     recoveryDuration: 0.6
     cooldown: 2
     dashSpeed: 0
@@ -47,8 +47,8 @@ MonoBehaviour:
   - attackName: HeavyThrust
     damage: 1
     knockbackForce: 10
-    windupDuration: 0.1
-    activeDuration: 0.3
+    windupDuration: 0.2
+    activeDuration: 0.2
     recoveryDuration: 0.6
     cooldown: 2.5
     dashSpeed: 8
@@ -59,20 +59,20 @@ MonoBehaviour:
   - attackName: FireBreath
     damage: 1
     knockbackForce: 4
-    windupDuration: 0.250
-    activeDuration: 0.583
+    windupDuration: 0.3
+    activeDuration: 0.4
     recoveryDuration: 0.6
     cooldown: 3
     dashSpeed: 0
     dashDuration: 0
     hitCount: 4
-    hitInterval: 0.2
+    hitInterval: 0.1
     selectionWeight: 1
   - attackName: GroundedThrust
     damage: 1
     knockbackForce: 10
-    windupDuration: 0.167
-    activeDuration: 0.167
+    windupDuration: 0.2
+    activeDuration: 0.2
     recoveryDuration: 0.250
     cooldown: 3
     dashSpeed: 12
