@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 73f513481cc46194fb97d791d55c4859
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8923100390634503589
+    second: 395d862a-c368-44cb-91ff-2d82055b828a-jukebox-bg-removed_0
+  - first:
+      213: -2757744097618241372
+    second: 395d862a-c368-44cb-91ff-2d82055b828a-jukebox-bg-removed_1
+  - first:
+      213: 4635035070034778535
+    second: 395d862a-c368-44cb-91ff-2d82055b828a-jukebox-bg-removed_2
+  - first:
+      213: -9191912706530403172
+    second: 395d862a-c368-44cb-91ff-2d82055b828a-jukebox-bg-removed_3
+  - first:
+      213: 3240114048227920491
+    second: 395d862a-c368-44cb-91ff-2d82055b828a-jukebox-bg-removed_4
+  - first:
+      213: 1099824208986260216
+    second: 395d862a-c368-44cb-91ff-2d82055b828a-jukebox-bg-removed_5
+  - first:
+      213: -2577518050160680776
+    second: 395d862a-c368-44cb-91ff-2d82055b828a-jukebox-bg-removed_6
+  - first:
+      213: -4151308520716376296
+    second: 395d862a-c368-44cb-91ff-2d82055b828a-jukebox-bg-removed_7
+  - first:
+      213: 8411015227081313664
+    second: 395d862a-c368-44cb-91ff-2d82055b828a-jukebox-bg-removed_8
+  - first:
+      213: 216211990337515701
+    second: 395d862a-c368-44cb-91ff-2d82055b828a-jukebox-bg-removed_9
+  - first:
+      213: -902961725618841208
+    second: 395d862a-c368-44cb-91ff-2d82055b828a-jukebox-bg-removed_10
+  - first:
+      213: 4735194246791400430
+    second: 395d862a-c368-44cb-91ff-2d82055b828a-jukebox-bg-removed_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 99
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: odin-walk_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 819
+        width: 31
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 937283a20543d3a45b87afe903a3564d
+      internalID: 1819051908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-walk_1
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 658
+        width: 287
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 411a195805df339478d796e3f064cb7c
+      internalID: 1166282344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-walk_2
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 827
+        width: 31
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dbf3525719a159438c235be260c499b
+      internalID: 1981707339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-walk_3
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 667
+        width: 100
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8ff6ae8f4a9bc147b970458befcf62a
+      internalID: 980566785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-walk_4
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 663
+        width: 274
+        height: 336
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a353b135eccde054a91851fada2ee945
+      internalID: 1606236211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-walk_5
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 350
+        width: 242
+        height: 298
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cede7cfdb0c29b4a94f30910b275592
+      internalID: 34676312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-walk_6
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 501
+        width: 25
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c228b3769777b69469a56f98099ff1f8
+      internalID: -2008152645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-walk_7
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 345
+        width: 215
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c201263de8d3a34b8de00bd30f81ea7
+      internalID: 680519875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-walk_8
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 442
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 138ae4613bdbaad46b4b7443a0785fee
+      internalID: 387535434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-walk_9
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 174
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a97a737f0f624604b92198adcc0324ae
+      internalID: -161897247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-walk_10
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 8
+        width: 275
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 520927cba9efb5b428401750e0d0c9ad
+      internalID: -703781865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-walk_11
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 11
+        width: 284
+        height: 317
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9efb173c479ad754eb7c6a720a856ad7
+      internalID: 1066332759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 97ff56e90be61ae48aab4d25561381a6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      odin-walk_0: 1819051908
+      odin-walk_1: 1166282344
+      odin-walk_10: -703781865
+      odin-walk_11: 1066332759
+      odin-walk_2: 1981707339
+      odin-walk_3: 980566785
+      odin-walk_4: 1606236211
+      odin-walk_5: 34676312
+      odin-walk_6: -2008152645
+      odin-walk_7: 680519875
+      odin-walk_8: 387535434
+      odin-walk_9: -161897247
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

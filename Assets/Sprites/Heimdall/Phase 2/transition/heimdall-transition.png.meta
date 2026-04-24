@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 120
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -109,133 +109,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ht1
+      name: heimdall-transition_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 556
-        width: 329
-        height: 332
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7786fd3ab6c12d4f0800000000000000
-      internalID: -805550134709491593
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ht2
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 556
+        x: 3
+        y: 557
         width: 327
-        height: 328
-      alignment: 9
-      pivot: {x: 0.4813795, y: 0.49999982}
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8a72694fc225fb710800000000000000
-      internalID: 1711176736459597736
+      spriteID: 672808ff224a42547bab052ff9119121
+      internalID: 2144044736
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ht3
+      name: heimdall-transition_1
       rect:
         serializedVersion: 2
-        x: 674
-        y: 556
-        width: 331
-        height: 331
-      alignment: 9
-      pivot: {x: 0.4786543, y: 0.49661762}
+        x: 337
+        y: 557
+        width: 325
+        height: 326
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 101c2e0fd010918a0800000000000000
-      internalID: -6334030241532296959
+      spriteID: 7e50870630f15604087a6a6d1fd50ac9
+      internalID: 1853726857
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ht4
+      name: heimdall-transition_2
       rect:
         serializedVersion: 2
-        x: 8
-        y: 89
-        width: 321
-        height: 341
-      alignment: 9
-      pivot: {x: 0.49221778, y: 0.48534834}
+        x: 675
+        y: 557
+        width: 329
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f28ad70ca16753d00800000000000000
-      internalID: 951796753529415727
+      spriteID: 52b0b5f43a235db4aa83b676565869b1
+      internalID: 592731861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ht5
+      name: heimdall-transition_3
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 90
+        width: 322
+        height: 339
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5797b1614216e874a9ec97e2dfe93c40
+      internalID: 1258507954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-transition_4
       rect:
         serializedVersion: 2
         x: 333
-        y: 90
+        y: 92
         width: 317
-        height: 339
-      alignment: 9
-      pivot: {x: 0.48686647, y: 0.4852619}
+        height: 336
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf2e669528af2364d93609725699d74d
-      internalID: -1635543855
+      spriteID: 242a932cc72da554cbca1b4b2c5fa4ff
+      internalID: -408554776
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ht6
+      name: heimdall-transition_5
       rect:
         serializedVersion: 2
         x: 653
-        y: 89
+        y: 91
         width: 324
-        height: 338
-      alignment: 9
-      pivot: {x: 0.47943982, y: 0.487682}
+        height: 335
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f3917546be693543ae872e88173cd5d
-      internalID: -2092245779
+      spriteID: 38d2450df7d9e7b42a8172179494f209
+      internalID: -1438533029
       vertices: []
       indices: 
       edges: []
@@ -254,12 +254,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ht1: -805550134709491593
-      ht2: 1711176736459597736
-      ht3: -6334030241532296959
-      ht4: 951796753529415727
-      ht5: -1635543855
-      ht6: -2092245779
+      heimdall-transition_0: 2144044736
+      heimdall-transition_1: 1853726857
+      heimdall-transition_2: 592731861
+      heimdall-transition_3: 1258507954
+      heimdall-transition_4: -408554776
+      heimdall-transition_5: -1438533029
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

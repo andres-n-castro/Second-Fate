@@ -82,7 +82,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -96,7 +96,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 140
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -120,7 +120,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -145,144 +145,100 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: odin-idle-1
+      name: odin-idle_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 548
-        width: 327
-        height: 439
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f4cdde66ea04cc170800000000000000
-      internalID: 8200000139330182223
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: odin-idle-2
-      rect:
-        serializedVersion: 2
-        x: 359
+        x: 18
         y: 549
-        width: 316
-        height: 438
-      alignment: 9
-      pivot: {x: -0.026749913, y: 1.0000005}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d54fcdc9cf2d26730800000000000000
-      internalID: 3990984202208998493
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 05
-      rect:
-        serializedVersion: 2
-        x: 634
-        y: 468
-        width: 34
-        height: 71
+        width: 330
+        height: 437
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 69ac79c03fc81f100800000000000000
-      internalID: 140048038941411990
+      spriteID: 65b165a2c6a1d8341b600c2e33d53098
+      internalID: 1502499148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: odin-idle-3
+      name: odin-idle_1
       rect:
         serializedVersion: 2
-        x: 692
-        y: 549
-        width: 320
-        height: 438
-      alignment: 9
-      pivot: {x: -0.031698417, y: 1.0000002}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 433cc0c0353311320800000000000000
-      internalID: 2526857297709024052
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 07
-      rect:
-        serializedVersion: 2
-        x: 865
-        y: 474
-        width: 35
-        height: 72
+        x: 355
+        y: 550
+        width: 325
+        height: 436
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f240a568adcff5220800000000000000
-      internalID: 2476976335564178479
+      spriteID: a3348f43d84ce514d962aa341c7e260a
+      internalID: -644507817
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01
+      name: odin-idle_2
       rect:
         serializedVersion: 2
-        x: 222
-        y: 473
-        width: 36
-        height: 71
+        x: 620
+        y: 868
+        width: 32
+        height: 69
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c8948d309c36d1470800000000000000
-      internalID: 8366953397728332172
+      spriteID: 677f8c1a6e9ce2a41bd73571d4bfd8ec
+      internalID: -1366098120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 06
+      name: odin-idle_3
       rect:
         serializedVersion: 2
-        x: 731
-        y: 441
-        width: 36
+        x: 680
+        y: 550
+        width: 332
+        height: 436
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51d0e8b39e75bc34a903c82f12f2c498
+      internalID: -757967173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-idle_4
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 867
+        width: 33
         height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -290,108 +246,20 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0804b7312fa947e60800000000000000
-      internalID: 7959156805970116736
+      spriteID: d9bd24b33c68af7429a991ff729cc416
+      internalID: 843958343
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 08
+      name: odin-idle_5
       rect:
         serializedVersion: 2
-        x: 924
-        y: 469
-        width: 34
-        height: 71
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2c8f751300f07a2e0800000000000000
-      internalID: -2114705006524892990
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: odin-idle-4
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 15
-        width: 324
-        height: 445
-      alignment: 9
-      pivot: {x: 0.0000000058868785, y: 0.9848036}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0542fe2511f70efa0800000000000000
-      internalID: -5773475009906400176
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 02
-      rect:
-        serializedVersion: 2
-        x: 286
-        y: 468
-        width: 34
-        height: 70
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8b6b775db9e8ac560800000000000000
-      internalID: 7334831743078741688
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: odin-idle-5
-      rect:
-        serializedVersion: 2
-        x: 359
-        y: 15
-        width: 316
-        height: 445
-      alignment: 9
-      pivot: {x: -0.032100048, y: 0.98480445}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e6ed1dec5a7f8c610800000000000000
-      internalID: 1641834355688070766
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 03
-      rect:
-        serializedVersion: 2
-        x: 492
-        y: 466
+        x: 319
+        y: 775
         width: 34
         height: 69
       alignment: 0
@@ -400,98 +268,230 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 831a45d6439b41840800000000000000
-      internalID: 5193979905088725304
+      spriteID: 5bcaf13604c74d44ab6ec1fe4cd8b92d
+      internalID: 819160095
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: odin-idle-6
+      name: odin-idle_6
       rect:
         serializedVersion: 2
-        x: 684
-        y: 15
-        width: 328
-        height: 445
-      alignment: 9
-      pivot: {x: -0.020616857, y: 0.98480374}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 677e663559a2f5400800000000000000
-      internalID: 315017319776970614
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 00
-      rect:
-        serializedVersion: 2
-        x: 136
-        y: 470
-        width: 35
-        height: 72
+        x: 647
+        y: 777
+        width: 34
+        height: 68
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 01974b7c216bdc6b0800000000000000
-      internalID: -5274359396804822768
+      spriteID: 903aaca9620609a4b933a9702b2088fd
+      internalID: -857374706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 04
+      name: odin-idle_7
       rect:
         serializedVersion: 2
-        x: 564
-        y: 465
-        width: 35
-        height: 72
+        x: 979
+        y: 776
+        width: 33
+        height: 69
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: be69203521c0c7870800000000000000
-      internalID: 8681827454505096939
+      spriteID: ff33043d3cedbad409537da72f71cf1e
+      internalID: -500007406
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 09
+      name: odin-idle_8
       rect:
         serializedVersion: 2
-        x: 976
-        y: 473
-        width: 35
-        height: 72
+        x: 22
+        y: 16
+        width: 325
+        height: 443
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9de53efae78d2af70800000000000000
-      internalID: 9197151427672366809
+      spriteID: 0b3d8a9d7166c1545ab6b302029279a5
+      internalID: 1193780262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-idle_9
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 334
+        width: 32
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baab7ac285c678a4a910c68054f4c44e
+      internalID: 1098341144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-idle_10
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 16
+        width: 319
+        height: 443
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a23970b48d7f25349886b795e53212fa
+      internalID: 557863457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-idle_11
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 335
+        width: 32
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5e73af10a3b34141a59170f92abb111
+      internalID: -834233667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-idle_12
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 16
+        width: 322
+        height: 443
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 237e0a8f69caef0448c1de161d101d1c
+      internalID: -79007975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-idle_13
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 246
+        width: 33
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46358d6fe03ae784dbc5b4e513af12e7
+      internalID: -539054702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-idle_14
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 246
+        width: 33
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 398ff2fa6a3c6bc42b1b14fd5f335040
+      internalID: -932417770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-idle_15
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 246
+        width: 33
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b217d30cb8f6b2f4d91d144dbad9738c
+      internalID: -15805794
       vertices: []
       indices: 
       edges: []
@@ -510,22 +510,22 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      00: -5274359396804822768
-      01: 8366953397728332172
-      02: 7334831743078741688
-      03: 5193979905088725304
-      04: 8681827454505096939
-      05: 140048038941411990
-      06: 7959156805970116736
-      07: 2476976335564178479
-      08: -2114705006524892990
-      09: 9197151427672366809
-      odin-idle-1: 8200000139330182223
-      odin-idle-2: 3990984202208998493
-      odin-idle-3: 2526857297709024052
-      odin-idle-4: -5773475009906400176
-      odin-idle-5: 1641834355688070766
-      odin-idle-6: 315017319776970614
+      odin-idle_0: 1502499148
+      odin-idle_1: -644507817
+      odin-idle_10: 557863457
+      odin-idle_11: -834233667
+      odin-idle_12: -79007975
+      odin-idle_13: -539054702
+      odin-idle_14: -932417770
+      odin-idle_15: -15805794
+      odin-idle_2: -1366098120
+      odin-idle_3: -757967173
+      odin-idle_4: 843958343
+      odin-idle_5: 819160095
+      odin-idle_6: -857374706
+      odin-idle_7: -500007406
+      odin-idle_8: 1193780262
+      odin-idle_9: 1098341144
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

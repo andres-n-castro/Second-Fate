@@ -97,7 +97,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -111,7 +111,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 58
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -135,7 +135,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -160,78 +160,122 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1
+      name: heimdall-shockwave-slash_0
       rect:
         serializedVersion: 2
-        x: 62
-        y: 760
-        width: 209
-        height: 170
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 99ea94d3ab2211c50800000000000000
-      internalID: 6634121909380951705
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2
-      rect:
-        serializedVersion: 2
-        x: 106
-        y: 565
-        width: 415
-        height: 175
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dbca0d05721768140800000000000000
-      internalID: 4721585673018059965
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_2
-      rect:
-        serializedVersion: 2
-        x: 886
-        y: 795
-        width: 21
-        height: 52
+        x: 63
+        y: 761
+        width: 207
+        height: 168
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ae337ae9ff71aecb0800000000000000
-      internalID: -4834024863382948886
+      spriteID: cb750971dcabd1b4dbcfc5c6ef8494e5
+      internalID: -102639282
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_3
+      name: heimdall-shockwave-slash_1
       rect:
         serializedVersion: 2
-        x: 837
-        y: 723
-        width: 10
+        x: 107
+        y: 566
+        width: 376
+        height: 173
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa2e92b788f8aee4cb78f6ad57d4db04
+      internalID: -2005947070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-shockwave-slash_2
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 584
+        width: 19
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c395d6890e649942b572a333bbe72c3
+      internalID: 151623061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-shockwave-slash_3
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 597
+        width: 8
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9184996c4fc145408560166c2c87924
+      internalID: -1818030511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-shockwave-slash_4
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 379
+        width: 229
+        height: 173
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdf52308c63cbe14c8a3245750b75502
+      internalID: 541765402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-shockwave-slash_5
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 447
+        width: 11
         height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -239,241 +283,219 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: db5625f4d9065ff50800000000000000
-      internalID: 6914539031654196669
+      spriteID: a00f856eecfbb294996e47547132cde6
+      internalID: 141738262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3
+      name: heimdall-shockwave-slash_6
       rect:
         serializedVersion: 2
-        x: 52
-        y: 372
-        width: 560
-        height: 181
-      alignment: 9
-      pivot: {x: -0.098027155, y: 0.9740064}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 10c32b01d160f8f60800000000000000
-      internalID: 8038650581783559169
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_5
-      rect:
-        serializedVersion: 2
-        x: 594
-        y: 600
-        width: 13
-        height: 26
+        x: 437
+        y: 434
+        width: 36
+        height: 52
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d1662bbff5285c3a0800000000000000
-      internalID: -6645762326359022051
+      spriteID: 9bb6b2aee026d144b8ca6862332c2a90
+      internalID: 1372285607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_6
+      name: heimdall-shockwave-slash_7
       rect:
         serializedVersion: 2
-        x: 701
-        y: 640
-        width: 38
-        height: 54
+        x: 481
+        y: 423
+        width: 41
+        height: 76
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 316db3e1e9241e620800000000000000
-      internalID: 2801593690080663059
+      spriteID: f28b8d04dab42bd468e15c44bb042d0b
+      internalID: -1855024629
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_7
+      name: heimdall-shockwave-slash_8
       rect:
         serializedVersion: 2
-        x: 797
-        y: 590
-        width: 43
-        height: 78
+        x: 526
+        y: 403
+        width: 82
+        height: 119
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4ba86cdc4faeb3de0800000000000000
-      internalID: -1352228925949441356
+      spriteID: 6de1a0f090f3f9b41b7fd9050763ef2c
+      internalID: 2135548002
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_8
+      name: heimdall-shockwave-slash_9
       rect:
         serializedVersion: 2
-        x: 906
-        y: 596
-        width: 84
-        height: 121
+        x: 515
+        y: 256
+        width: 20
+        height: 35
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 053a3646bffa6f3e0800000000000000
-      internalID: -2020233888573185200
+      spriteID: f6bf5f5c0d7f1dc48b47ae012fbcfcea
+      internalID: -1727580207
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_9
+      name: heimdall-shockwave-slash_10
       rect:
         serializedVersion: 2
-        x: 1002
-        y: 493
-        width: 22
-        height: 37
+        x: 547
+        y: 246
+        width: 50
+        height: 57
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ef31f00fd6071aac0800000000000000
-      internalID: -3845668989316426754
+      spriteID: af2ee56c7163526408a2fa32be5c17f6
+      internalID: -1768427642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_10
+      name: heimdall-shockwave-slash_11
       rect:
         serializedVersion: 2
-        x: 972
-        y: 444
-        width: 52
-        height: 59
+        x: 608
+        y: 263
+        width: 11
+        height: 25
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b120b1db1dc0fe330800000000000000
-      internalID: 3742223910328533531
+      spriteID: 9d3798349ce22224e8f9a6c346c340ba
+      internalID: 885378126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_11
+      name: heimdall-shockwave-slash_12
       rect:
         serializedVersion: 2
-        x: 1002
-        y: 480
-        width: 13
-        height: 27
+        x: 615
+        y: 207
+        width: 115
+        height: 140
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3a9f886f0b7736dc0800000000000000
-      internalID: -3646939671305848413
+      spriteID: e52f67c3129fdc54ca05127b3b90ef65
+      internalID: -537947240
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_12
+      name: heimdall-shockwave-slash_13
       rect:
         serializedVersion: 2
-        x: 907
-        y: 394
-        width: 117
-        height: 142
+        x: 724
+        y: 192
+        width: 136
+        height: 173
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 431a2034aa46c8e00800000000000000
-      internalID: 1048323495701946676
+      spriteID: 4b39e5e85afd01a44a2df1ce13cee03c
+      internalID: -284377820
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_13
+      name: heimdall-shockwave-slash_14
       rect:
         serializedVersion: 2
-        x: 886
-        y: 448
-        width: 138
-        height: 175
+        x: 854
+        y: 195
+        width: 10
+        height: 6
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8147df49be05e10a0800000000000000
-      internalID: -6908995805592587240
+      spriteID: 8afbead55ba7c5b4a96efb5b79227b99
+      internalID: -1644752080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_14
+      name: heimdall-shockwave-slash_15
       rect:
         serializedVersion: 2
-        x: 977
-        y: 301
-        width: 12
+        x: 899
+        y: 189
+        width: 14
         height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -481,20 +503,64 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: dbf5edcc6c8cf97f0800000000000000
-      internalID: -603543068878151747
+      spriteID: 0fa5f1ab0e35410429a1f6a2f77cd36a
+      internalID: -1809432731
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_15
+      name: heimdall-shockwave-slash_16
       rect:
         serializedVersion: 2
-        x: 964
-        y: 326
+        x: 592
+        y: 0
+        width: 394
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 290e455286168ff499018131565ea05d
+      internalID: -1144997822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-shockwave-slash_17
+      rect:
+        serializedVersion: 2
+        x: 965
+        y: 152
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b68fc949b88c73841bf700b6f6721a7c
+      internalID: 26145166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-shockwave-slash_18
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 105
         width: 16
         height: 10
       alignment: 0
@@ -503,142 +569,98 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 60130577e27569850800000000000000
-      internalID: 6383385378926113030
+      spriteID: 43419170770296748b1d89001c129e35
+      internalID: 1518054914
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 5
+      name: heimdall-shockwave-slash_19
       rect:
         serializedVersion: 2
-        x: 57
-        y: 0
-        width: 940
-        height: 191
-      alignment: 9
-      pivot: {x: -0.03670805, y: 0.876825}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 754f6a842e87966f0800000000000000
-      internalID: -690888154547817385
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_17
-      rect:
-        serializedVersion: 2
-        x: 981
-        y: 264
-        width: 26
-        height: 26
+        x: 526
+        y: 85
+        width: 43
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3d39a26cbfac31c90800000000000000
-      internalID: -7200188196525009965
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_18
-      rect:
-        serializedVersion: 2
-        x: 1006
-        y: 308
-        width: 18
-        height: 12
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1005e2a87ab24efc0800000000000000
-      internalID: -3466597814590615551
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_19
-      rect:
-        serializedVersion: 2
-        x: 979
-        y: 280
-        width: 45
-        height: 17
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e3b44999fba66aad0800000000000000
-      internalID: -2691346356159362242
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_20
-      rect:
-        serializedVersion: 2
-        x: 942
-        y: 305
-        width: 26
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dd84184c53795c4f0800000000000000
-      internalID: -809074300857268003
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 4
-      rect:
-        serializedVersion: 2
-        x: 56
-        y: 186
-        width: 812
-        height: 182
-      alignment: 9
-      pivot: {x: -0.061810184, y: 0.96553105}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2a37843a5d9abf46ae5d4ce1476f186
-      internalID: -1296827417
+      spriteID: 80f29553aa5650c47befe3e45a8d8e59
+      internalID: 49865132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-shockwave-slash_20
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 63
+        width: 24
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98cef4267532d9c4c97abbe52fa514f9
+      internalID: -1371427812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-shockwave-slash_21
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 186
+        width: 221
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 696f521eb27648a4fbd533c63331e511
+      internalID: -566968699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-shockwave-slash_22
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 4
+        width: 220
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 429dcbf623e1d5a4288e883556e80de2
+      internalID: 1528089689
       vertices: []
       indices: 
       edges: []
@@ -657,28 +679,29 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1: 6634121909380951705
-      2: 4721585673018059965
-      3: 8038650581783559169
-      4: -1296827417
-      5: -690888154547817385
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_10: 3742223910328533531
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_11: -3646939671305848413
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_12: 1048323495701946676
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_13: -6908995805592587240
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_14: -603543068878151747
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_15: 6383385378926113030
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_17: -7200188196525009965
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_18: -3466597814590615551
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_19: -2691346356159362242
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_2: -4834024863382948886
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_20: -809074300857268003
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_3: 6914539031654196669
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_5: -6645762326359022051
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_6: 2801593690080663059
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_7: -1352228925949441356
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_8: -2020233888573185200
-      6d64cc65-ff28-402b-9131-b29855aefa8c-jukebox-bg-removed_9: -3845668989316426754
+      heimdall-shockwave-slash_0: -102639282
+      heimdall-shockwave-slash_1: -2005947070
+      heimdall-shockwave-slash_10: -1768427642
+      heimdall-shockwave-slash_11: 885378126
+      heimdall-shockwave-slash_12: -537947240
+      heimdall-shockwave-slash_13: -284377820
+      heimdall-shockwave-slash_14: -1644752080
+      heimdall-shockwave-slash_15: -1809432731
+      heimdall-shockwave-slash_16: -1144997822
+      heimdall-shockwave-slash_17: 26145166
+      heimdall-shockwave-slash_18: 1518054914
+      heimdall-shockwave-slash_19: 49865132
+      heimdall-shockwave-slash_2: 151623061
+      heimdall-shockwave-slash_20: -1371427812
+      heimdall-shockwave-slash_21: -566968699
+      heimdall-shockwave-slash_22: 1528089689
+      heimdall-shockwave-slash_3: -1818030511
+      heimdall-shockwave-slash_4: 541765402
+      heimdall-shockwave-slash_5: 141738262
+      heimdall-shockwave-slash_6: 1372285607
+      heimdall-shockwave-slash_7: -1855024629
+      heimdall-shockwave-slash_8: 2135548002
+      heimdall-shockwave-slash_9: -1727580207
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 120
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -109,89 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1
+      name: heimdal-p2-idle_0
       rect:
         serializedVersion: 2
-        x: 79
-        y: 441
-        width: 358
-        height: 373
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 80
+        y: 442
+        width: 356
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1200f661524fc0f00800000000000000
-      internalID: 1084510050416787489
+      spriteID: 76eb96a9062a2c947b816fa7277cc101
+      internalID: 2059082618
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2
+      name: heimdal-p2-idle_1
       rect:
         serializedVersion: 2
-        x: 583
-        y: 441
-        width: 367
-        height: 373
-      alignment: 9
-      pivot: {x: -0.011471449, y: 1.0037621}
+        x: 584
+        y: 442
+        width: 365
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 003a68e1d342c0b90800000000000000
-      internalID: -7274399453186448640
+      spriteID: 44188fc8ef7404444bc1274342b59075
+      internalID: -952023526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3
+      name: heimdal-p2-idle_2
       rect:
         serializedVersion: 2
-        x: 84
-        y: 25
-        width: 373
-        height: 364
-      alignment: 9
-      pivot: {x: 0.015049155, y: 1.0308422}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cef7444ba6c699920800000000000000
-      internalID: 2997546232538497004
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 4
-      rect:
-        serializedVersion: 2
-        x: 607
+        x: 85
         y: 26
-        width: 374
-        height: 369
-      alignment: 9
-      pivot: {x: 0.01876113, y: 1.0190147}
+        width: 371
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 90e21b56afdcf6d40800000000000000
-      internalID: 5579904938666962441
+      spriteID: 320c853ed7f2a904cb1288a2d8206961
+      internalID: 1798367611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdal-p2-idle_3
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 27
+        width: 372
+        height: 367
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 873941355c6e9624faa5c4f3c5cdaab9
+      internalID: 1007017282
       vertices: []
       indices: 
       edges: []
@@ -210,10 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1: 1084510050416787489
-      2: -7274399453186448640
-      3: 2997546232538497004
-      4: 5579904938666962441
+      heimdal-p2-idle_0: 2059082618
+      heimdal-p2-idle_1: -952023526
+      heimdal-p2-idle_2: 1798367611
+      heimdal-p2-idle_3: 1007017282
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

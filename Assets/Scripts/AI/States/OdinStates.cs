@@ -434,7 +434,7 @@ public class OdinP1StaffProjectileState : EnemyState
         projectileSpawned = false;
 
         AttackDefinition atk = odin.GetAttackDef("StaffProjectile");
-        timer = atk != null ? atk.windupDuration : 0.4f;
+        timer = atk != null ? atk.windupDuration : 0.167f;
 
         if (owner.Anim != null) owner.Anim.SetTrigger("Odin_StaffProjectile");
     }
@@ -450,7 +450,7 @@ public class OdinP1StaffProjectileState : EnemyState
                 {
                     phase = Phase.Active;
                     AttackDefinition atk = odin.GetAttackDef("StaffProjectile");
-                    timer = atk != null ? atk.activeDuration : 0.2f;
+                    timer = atk != null ? atk.activeDuration : 0.083f;
 
                     if (!projectileSpawned)
                     {
@@ -465,7 +465,7 @@ public class OdinP1StaffProjectileState : EnemyState
                 {
                     phase = Phase.Recovery;
                     AttackDefinition atk = odin.GetAttackDef("StaffProjectile");
-                    timer = atk != null ? atk.recoveryDuration : 0.5f;
+                    timer = atk != null ? atk.recoveryDuration : 0.167f;
 
                     owner.StartCooldown("StaffProjectile");
                 }
@@ -483,10 +483,13 @@ public class OdinP1StaffProjectileState : EnemyState
     private void SpawnProjectile()
     {
         EnemyProfile p = owner.Profile;
-        Vector2 fireDir = new Vector2(owner.FacingDirection, 0.1f).normalized;
         Vector2 targetPos = owner.Ctx.playerTransform != null
             ? (Vector2)owner.Ctx.playerTransform.position
             : owner.Ctx.lastSeenPlayerPos;
+
+        // Fire along LOS toward the player, not just horizontal
+        Vector2 odinPos = (Vector2)owner.transform.position;
+        Vector2 fireDir = (targetPos - odinPos).normalized;
 
         odin.SpawnOdinProjectile(
             fireDir * p.odinProjectileSpeed,
@@ -494,7 +497,7 @@ public class OdinP1StaffProjectileState : EnemyState
             2,
             p.odinProjectileCurveDelay,
             p.odinProjectileCurveStrength,
-            p.odinProjectileLifetime);
+            owner.Ctx.playerTransform);
     }
 
     private void ReturnToDecisionOrApproach()
@@ -539,7 +542,7 @@ public class OdinP1GroundSpikesState : EnemyState
         spikeDelayTimer = 0f;
 
         AttackDefinition atk = odin.GetAttackDef("GroundSpikes");
-        timer = atk != null ? atk.windupDuration : 0.5f;
+        timer = atk != null ? atk.windupDuration : 0.1f;
 
         if (owner.Anim != null) owner.Anim.SetTrigger("Odin_GroundSpikes");
     }
@@ -555,7 +558,7 @@ public class OdinP1GroundSpikesState : EnemyState
                 {
                     phase = Phase.Active;
                     AttackDefinition atk = odin.GetAttackDef("GroundSpikes");
-                    timer = atk != null ? atk.activeDuration : 1.0f;
+                    timer = atk != null ? atk.activeDuration : 0.75f;
                     spikeDelayTimer = 0f;
                 }
                 break;
@@ -574,7 +577,7 @@ public class OdinP1GroundSpikesState : EnemyState
                 {
                     phase = Phase.Recovery;
                     AttackDefinition atk = odin.GetAttackDef("GroundSpikes");
-                    timer = atk != null ? atk.recoveryDuration : 0.6f;
+                    timer = atk != null ? atk.recoveryDuration : 0.1f;
 
                     owner.StartCooldown("GroundSpikes");
                 }
@@ -592,21 +595,22 @@ public class OdinP1GroundSpikesState : EnemyState
     private void SpawnSpikeAtIndex(int index)
     {
         EnemyProfile p = owner.Profile;
-        int facing = owner.FacingDirection;
 
-        // Spikes spawn in a line ahead of Odin with gaps:
-        // spike at positions 1, 3, 5... (skip even positions for gaps)
-        float offset = (index * 2 + 1) * p.odinSpikeSpacing * 0.5f;
-        Vector2 spawnPos = (Vector2)owner.transform.position + new Vector2(facing * offset, 0f);
+        // Use the player's X position only
+        Vector2 playerPos = owner.Ctx.playerTransform != null
+            ? (Vector2)owner.Ctx.playerTransform.position
+            : owner.Ctx.lastSeenPlayerPos;
 
-        // Raycast down to find ground surface
-        RaycastHit2D groundHit = Physics2D.Raycast(spawnPos + Vector2.up * 2f, Vector2.down, 6f, owner.GroundLayer);
-        if (groundHit.collider != null)
-        {
-            spawnPos = groundHit.point;
-        }
+        float halfCount = (p.odinSpikeCount - 1) * 0.5f;
+        float offset = (index - halfCount) * p.odinSpikeSpacing;
+        float spawnX = playerPos.x + offset;
 
-        odin.SpawnGroundSpike(spawnPos, p.odinSpikeActiveDuration);
+        // Raycast down to find ground — only spawn if ground is found
+        RaycastHit2D groundHit = Physics2D.Raycast(
+            new Vector2(spawnX, playerPos.y + 2f), Vector2.down, 6f, owner.GroundLayer);
+        if (groundHit.collider == null) return;
+
+        odin.SpawnGroundSpike(groundHit.point, p.odinSpikeActiveDuration);
     }
 
     private void ReturnToDecisionOrApproach()
@@ -646,7 +650,7 @@ public class OdinP1StaffMeleeState : EnemyState
         owner.FacePlayer();
 
         AttackDefinition atk = odin.GetAttackDef("StaffMelee");
-        timer = atk != null ? atk.windupDuration : 0.3f;
+        timer = atk != null ? atk.windupDuration : 0.083f;
 
         if (owner.Anim != null) owner.Anim.SetTrigger("Odin_StaffMelee");
     }
@@ -662,7 +666,7 @@ public class OdinP1StaffMeleeState : EnemyState
                 {
                     phase = Phase.Active;
                     AttackDefinition atk = odin.GetAttackDef("StaffMelee");
-                    timer = atk != null ? atk.activeDuration : 0.3f;
+                    timer = atk != null ? atk.activeDuration : 0.5f;
 
                     if (odin.StaffMeleeHitbox != null) odin.StaffMeleeHitbox.Activate();
                 }
@@ -675,7 +679,7 @@ public class OdinP1StaffMeleeState : EnemyState
 
                     phase = Phase.Recovery;
                     AttackDefinition atk = odin.GetAttackDef("StaffMelee");
-                    timer = atk != null ? atk.recoveryDuration : 0.5f;
+                    timer = atk != null ? atk.recoveryDuration : 0.167f;
 
                     owner.StartCooldown("StaffMelee");
                 }
@@ -838,7 +842,7 @@ public class OdinP2TripleProjectileState : EnemyState
         projectilesSpawned = false;
 
         AttackDefinition atk = odin.GetAttackDef("TripleProjectile");
-        timer = atk != null ? atk.windupDuration : 0.4f;
+        timer = atk != null ? atk.windupDuration : 0.2f;
 
         if (owner.Anim != null) owner.Anim.SetTrigger("Odin_TripleProjectile");
     }
@@ -854,7 +858,7 @@ public class OdinP2TripleProjectileState : EnemyState
                 {
                     phase = Phase.Active;
                     AttackDefinition atk = odin.GetAttackDef("TripleProjectile");
-                    timer = atk != null ? atk.activeDuration : 0.3f;
+                    timer = atk != null ? atk.activeDuration : 0.1f;
 
                     if (!projectilesSpawned)
                     {
@@ -869,7 +873,7 @@ public class OdinP2TripleProjectileState : EnemyState
                 {
                     phase = Phase.Recovery;
                     AttackDefinition atk = odin.GetAttackDef("TripleProjectile");
-                    timer = atk != null ? atk.recoveryDuration : 0.6f;
+                    timer = atk != null ? atk.recoveryDuration : 0.2f;
 
                     owner.StartCooldown("TripleProjectile");
                 }
@@ -887,17 +891,18 @@ public class OdinP2TripleProjectileState : EnemyState
     private void SpawnTripleProjectiles()
     {
         EnemyProfile p = owner.Profile;
-        int count = p.odinTripleProjectileCount;
+        int count = Mathf.Max(p.odinTripleProjectileCount, 3);
         float spreadAngle = p.odinTripleProjectileSpreadAngle;
         float speed = p.odinProjectileSpeed;
-        int facing = owner.FacingDirection;
 
         Vector2 targetPos = owner.Ctx.playerTransform != null
             ? (Vector2)owner.Ctx.playerTransform.position
             : owner.Ctx.lastSeenPlayerPos;
 
-        // Center direction: toward player with slight upward arc
-        float centerAngle = facing > 0 ? 0f : 180f;
+        // Center direction: aim at the player (LOS), not just horizontal
+        Vector2 odinPos = (Vector2)owner.transform.position;
+        Vector2 toPlayer = (targetPos - odinPos).normalized;
+        float centerAngle = Mathf.Atan2(toPlayer.y, toPlayer.x) * Mathf.Rad2Deg;
         float startAngle = centerAngle - spreadAngle * 0.5f;
 
         for (int i = 0; i < count; i++)
@@ -911,16 +916,13 @@ public class OdinP2TripleProjectileState : EnemyState
             float rad = angle * Mathf.Deg2Rad;
             Vector2 fireDir = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)).normalized;
 
-            // Each projectile targets slightly different positions for spread
-            Vector2 offsetTarget = targetPos + Random.insideUnitCircle * 0.5f;
-
             odin.SpawnOdinProjectile(
                 fireDir * speed,
-                offsetTarget,
+                targetPos,
                 3, // 3 hearts damage
                 p.odinProjectileCurveDelay,
                 p.odinProjectileCurveStrength,
-                p.odinProjectileLifetime);
+                owner.Ctx.playerTransform);
         }
     }
 }
@@ -960,7 +962,7 @@ public class OdinP2ConsecutiveSpikesState : EnemyState
         spikeDelayTimer = 0f;
 
         AttackDefinition atk = odin.GetAttackDef("ConsecutiveSpikes");
-        timer = atk != null ? atk.windupDuration : 0.5f;
+        timer = atk != null ? atk.windupDuration : 0.083f;
 
         if (owner.Anim != null) owner.Anim.SetTrigger("Odin_ConsecutiveSpikes");
     }
@@ -976,7 +978,7 @@ public class OdinP2ConsecutiveSpikesState : EnemyState
                 {
                     phase = Phase.Active;
                     AttackDefinition atk = odin.GetAttackDef("ConsecutiveSpikes");
-                    timer = atk != null ? atk.activeDuration : 2.0f;
+                    timer = atk != null ? atk.activeDuration : 2.7f;
                     waveDelayTimer = 0f;
                     StartNewWave();
                 }
@@ -989,7 +991,7 @@ public class OdinP2ConsecutiveSpikesState : EnemyState
                 {
                     phase = Phase.Recovery;
                     AttackDefinition atk = odin.GetAttackDef("ConsecutiveSpikes");
-                    timer = atk != null ? atk.recoveryDuration : 0.6f;
+                    timer = atk != null ? atk.recoveryDuration : 0.083f;
 
                     owner.StartCooldown("ConsecutiveSpikes");
                 }
@@ -1043,28 +1045,28 @@ public class OdinP2ConsecutiveSpikesState : EnemyState
     private void SpawnSpikeForWave(int waveIndex, int spikeIndex)
     {
         EnemyProfile p = owner.Profile;
-        int facing = owner.FacingDirection;
 
-        // Each wave starts slightly further out to create a chasing pattern
-        float waveOffset = waveIndex * p.odinSpikeSpacing * 2f;
-        float spikeOffset = (spikeIndex * 2 + 1) * p.odinSpikeSpacing * 0.5f + waveOffset;
+        // Use the player's X position only
+        Vector2 playerPos = owner.Ctx.playerTransform != null
+            ? (Vector2)owner.Ctx.playerTransform.position
+            : owner.Ctx.lastSeenPlayerPos;
 
-        Vector2 spawnPos = (Vector2)owner.transform.position + new Vector2(facing * spikeOffset, 0f);
+        float halfCount = (p.odinSpikeCount - 1) * 0.5f;
+        float offset = (spikeIndex - halfCount) * p.odinSpikeSpacing;
+        float spawnX = playerPos.x + offset;
 
-        // Raycast to find ground
-        RaycastHit2D groundHit = Physics2D.Raycast(spawnPos + Vector2.up * 2f, Vector2.down, 6f, owner.GroundLayer);
-        if (groundHit.collider != null)
-        {
-            spawnPos = groundHit.point;
-        }
+        // Raycast down to find ground — only spawn if ground is found
+        RaycastHit2D groundHit = Physics2D.Raycast(
+            new Vector2(spawnX, playerPos.y + 2f), Vector2.down, 6f, owner.GroundLayer);
+        if (groundHit.collider == null) return;
 
-        odin.SpawnGroundSpike(spawnPos, p.odinSpikeActiveDuration);
+        odin.SpawnGroundSpike(groundHit.point, p.odinSpikeActiveDuration);
     }
 }
 
 // ---------------------------------------------------------------
-//  P2 Large Slash — Heavy horizontal slash wave the player jumps over.
-//  Windup → Active (spawn slash projectile + melee hitbox) → Recovery.
+//  P2 Large Slash — Heavy melee slash.
+//  Windup → Active (melee hitbox) → Recovery.
 // ---------------------------------------------------------------
 public class OdinP2LargeSlashState : EnemyState
 {
@@ -1074,7 +1076,6 @@ public class OdinP2LargeSlashState : EnemyState
     private OdinP2Super p2;
     private Phase phase;
     private float timer;
-    private bool slashSpawned;
 
     public OdinP2LargeSlashState(OdinBoss odin, OdinP2Super p2) : base(odin)
     {
@@ -1088,7 +1089,6 @@ public class OdinP2LargeSlashState : EnemyState
         phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
-        slashSpawned = false;
 
         AttackDefinition atk = odin.GetAttackDef("LargeSlash");
         timer = atk != null ? atk.windupDuration : 0.5f;
@@ -1107,28 +1107,20 @@ public class OdinP2LargeSlashState : EnemyState
                 {
                     phase = Phase.Active;
                     AttackDefinition atk = odin.GetAttackDef("LargeSlash");
-                    timer = atk != null ? atk.activeDuration : 0.3f;
+                    timer = atk != null ? atk.activeDuration : 0.5f;
 
-                    // Activate melee hitbox at source
-                    if (odin.StaffMeleeHitbox != null) odin.StaffMeleeHitbox.Activate();
-
-                    // Spawn slash wave projectile
-                    if (!slashSpawned)
-                    {
-                        slashSpawned = true;
-                        SpawnSlashWave();
-                    }
+                    if (odin.LargeSlashHitbox != null) odin.LargeSlashHitbox.Activate();
                 }
                 break;
 
             case Phase.Active:
                 if (timer <= 0f)
                 {
-                    if (odin.StaffMeleeHitbox != null) odin.StaffMeleeHitbox.Deactivate();
+                    if (odin.LargeSlashHitbox != null) odin.LargeSlashHitbox.Deactivate();
 
                     phase = Phase.Recovery;
                     AttackDefinition atk = odin.GetAttackDef("LargeSlash");
-                    timer = atk != null ? atk.recoveryDuration : 0.8f;
+                    timer = atk != null ? atk.recoveryDuration : 0.167f;
 
                     owner.StartCooldown("LargeSlash");
                 }
@@ -1145,18 +1137,6 @@ public class OdinP2LargeSlashState : EnemyState
 
     public override void Exit()
     {
-        if (odin.StaffMeleeHitbox != null) odin.StaffMeleeHitbox.Deactivate();
-    }
-
-    private void SpawnSlashWave()
-    {
-        EnemyProfile p = owner.Profile;
-        int facing = owner.FacingDirection;
-
-        Vector2 spawnPos = (Vector2)owner.transform.position
-            + new Vector2(facing * 1f, p.odinSlashProjectileHeight);
-        Vector2 velocity = new Vector2(facing * p.odinSlashProjectileSpeed, 0f);
-
-        odin.SpawnSlashProjectile(spawnPos, velocity);
+        if (odin.LargeSlashHitbox != null) odin.LargeSlashHitbox.Deactivate();
     }
 }

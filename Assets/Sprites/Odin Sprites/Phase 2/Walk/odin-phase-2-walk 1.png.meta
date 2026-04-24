@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 49b1021476da6b14c8811ccb41331a5b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8327830322694559637
+    second: 93a162c9-527d-4071-b360-8b7f0f3bada5-jukebox-bg-removed_0
+  - first:
+      213: -6245288774786664901
+    second: 93a162c9-527d-4071-b360-8b7f0f3bada5-jukebox-bg-removed_1
+  - first:
+      213: 4906845489281188435
+    second: 93a162c9-527d-4071-b360-8b7f0f3bada5-jukebox-bg-removed_2
+  - first:
+      213: -5172494447304979646
+    second: 93a162c9-527d-4071-b360-8b7f0f3bada5-jukebox-bg-removed_3
+  - first:
+      213: -9119871934025680521
+    second: 93a162c9-527d-4071-b360-8b7f0f3bada5-jukebox-bg-removed_4
+  - first:
+      213: 5993318462555713991
+    second: 93a162c9-527d-4071-b360-8b7f0f3bada5-jukebox-bg-removed_5
+  - first:
+      213: 661455677543058449
+    second: 93a162c9-527d-4071-b360-8b7f0f3bada5-jukebox-bg-removed_6
+  - first:
+      213: -977906996387259933
+    second: 93a162c9-527d-4071-b360-8b7f0f3bada5-jukebox-bg-removed_7
+  - first:
+      213: 2774268665215117453
+    second: 93a162c9-527d-4071-b360-8b7f0f3bada5-jukebox-bg-removed_8
+  - first:
+      213: 811037068079449321
+    second: 93a162c9-527d-4071-b360-8b7f0f3bada5-jukebox-bg-removed_9
+  - first:
+      213: 4818851276621680448
+    second: 93a162c9-527d-4071-b360-8b7f0f3bada5-jukebox-bg-removed_10
+  - first:
+      213: 1059779997334806106
+    second: 93a162c9-527d-4071-b360-8b7f0f3bada5-jukebox-bg-removed_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 99
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: odin-phase-2-walk_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 662
+        width: 260
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e1177bcdbdf1634eb5eef3cb88d4ca4
+      internalID: 805162064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-phase-2-walk_1
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 823
+        width: 26
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97cfb3979cefb1b4da316caafb6b9555
+      internalID: -1884151390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-phase-2-walk_2
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 671
+        width: 92
+        height: 317
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d8856ded9a860b4ba0c1168730bf7e2
+      internalID: -1091327519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-phase-2-walk_3
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 667
+        width: 252
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fcfd7acbca4924418fc8e79757d0e53
+      internalID: -2030497058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-phase-2-walk_4
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 370
+        width: 222
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f78ad3068db9154e908634d52ee2d53
+      internalID: -1390931457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-phase-2-walk_5
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 516
+        width: 20
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1c8504e0e50de2428a450c5c1191149
+      internalID: 868887521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-phase-2-walk_6
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 366
+        width: 192
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 844a0f21a80368145b373ccbe6f24211
+      internalID: -1934622675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-phase-2-walk_7
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 459
+        width: 19
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93250b4ca01c42c41b5c14641931da10
+      internalID: 547967995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-phase-2-walk_8
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 372
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a1793c5620baac4fb34bd4f1f1bf194
+      internalID: 444638756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-phase-2-walk_9
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 202
+        width: 23
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1f82a91f1393cc4bad919673f001492
+      internalID: 260118057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-phase-2-walk_10
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 43
+        width: 254
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 941920411bf78a749abf2bf28f4eaa44
+      internalID: 1818251777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-phase-2-walk_11
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 46
+        width: 252
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96959f2f57287554dac691842741af17
+      internalID: 634920923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d771324c55615074abcae4050d12b0dc
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      odin-phase-2-walk_0: 805162064
+      odin-phase-2-walk_1: -1884151390
+      odin-phase-2-walk_10: 1818251777
+      odin-phase-2-walk_11: 634920923
+      odin-phase-2-walk_2: -1091327519
+      odin-phase-2-walk_3: -2030497058
+      odin-phase-2-walk_4: -1390931457
+      odin-phase-2-walk_5: 868887521
+      odin-phase-2-walk_6: -1934622675
+      odin-phase-2-walk_7: 547967995
+      odin-phase-2-walk_8: 444638756
+      odin-phase-2-walk_9: 260118057
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

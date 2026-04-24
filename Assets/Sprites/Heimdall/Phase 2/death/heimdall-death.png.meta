@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 125
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -109,89 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hd1
+      name: heimdall-death_0
       rect:
         serializedVersion: 2
-        x: 96
-        y: 519
-        width: 449
-        height: 406
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 97
+        y: 520
+        width: 447
+        height: 404
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 84f443f80e0c88610800000000000000
-      internalID: 1623759736374841160
+      spriteID: 06816a4af770dcf40b3665309279f87d
+      internalID: -496815250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hd2
+      name: heimdall-death_1
       rect:
         serializedVersion: 2
-        x: 560
-        y: 524
-        width: 449
-        height: 302
-      alignment: 9
-      pivot: {x: -0.043462876, y: 1.3553975}
+        x: 561
+        y: 525
+        width: 447
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d173b6bba9779f910800000000000000
-      internalID: 1871658626602186525
+      spriteID: 1dbd8b3e9b850f7498026e17fffb0580
+      internalID: -550457274
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hd3
+      name: heimdall-death_2
       rect:
         serializedVersion: 2
-        x: 77
-        y: 26
-        width: 406
-        height: 296
-      alignment: 9
-      pivot: {x: -0.18425114, y: 1.5878552}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8c609d5a7333c1de0800000000000000
-      internalID: -1361156673274050872
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hd4
-      rect:
-        serializedVersion: 2
-        x: 550
+        x: 78
         y: 27
-        width: 452
-        height: 205
-      alignment: 9
-      pivot: {x: -0.20147854, y: 2.269243}
+        width: 404
+        height: 294
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9b51be3eefda2eb70800000000000000
-      internalID: 8926888721658877369
+      spriteID: 21682970212cab4448178071bc49d5a8
+      internalID: 1984259495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-death_3
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 28
+        width: 450
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa662b9fb428a1a4f8774383fd45d620
+      internalID: -1426830460
       vertices: []
       indices: 
       edges: []
@@ -210,10 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      hd1: 1623759736374841160
-      hd2: 1871658626602186525
-      hd3: -1361156673274050872
-      hd4: 8926888721658877369
+      heimdall-death_0: -496815250
+      heimdall-death_1: -550457274
+      heimdall-death_2: 1984259495
+      heimdall-death_3: -1426830460
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

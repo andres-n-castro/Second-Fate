@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 127
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -109,89 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1
+      name: heimdall-walk_0
       rect:
         serializedVersion: 2
-        x: 63
-        y: 526
-        width: 396
-        height: 381
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e526c0f826b4c3730800000000000000
-      internalID: 3980139057367507550
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2
-      rect:
-        serializedVersion: 2
-        x: 536
+        x: 64
         y: 527
-        width: 402
-        height: 378
-      alignment: 9
-      pivot: {x: -0.36407897, y: 1.0129058}
+        width: 394
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 13898b88ca19866e0800000000000000
-      internalID: -1844063877194016719
+      spriteID: 7bbbd9f3fc8641b4d80efb065029e032
+      internalID: -1127736096
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3
+      name: heimdall-walk_1
       rect:
         serializedVersion: 2
-        x: 55
-        y: 42
-        width: 384
-        height: 387
-      alignment: 9
-      pivot: {x: -0.9316869, y: 0.98319143}
+        x: 537
+        y: 528
+        width: 400
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fd4531096d10e18a0800000000000000
-      internalID: -6332622004984523553
+      spriteID: 29e06aa488f3e0a45ad01c1db725efbb
+      internalID: 367054760
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 4
+      name: heimdall-walk_2
       rect:
         serializedVersion: 2
-        x: 543
-        y: 42
-        width: 414
-        height: 384
-      alignment: 9
-      pivot: {x: -0.42815927, y: 0.9957649}
+        x: 56
+        y: 43
+        width: 382
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 17a2200e7b9ab00d0800000000000000
-      internalID: -3455481681874376079
+      spriteID: 61da48e33681fc1439987dcc84796762
+      internalID: -1686579062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-walk_3
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 43
+        width: 412
+        height: 382
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9a8405cdbe430b488fd2a846e0f78d8
+      internalID: -975873876
       vertices: []
       indices: 
       edges: []
@@ -210,10 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1: 3980139057367507550
-      2: -1844063877194016719
-      3: -6332622004984523553
-      4: -3455481681874376079
+      heimdall-walk_0: -1127736096
+      heimdall-walk_1: 367054760
+      heimdall-walk_2: -1686579062
+      heimdall-walk_3: -975873876
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

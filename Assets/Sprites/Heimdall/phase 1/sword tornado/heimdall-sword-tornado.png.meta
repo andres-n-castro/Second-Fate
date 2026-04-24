@@ -64,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -78,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 95
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,7 +102,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -127,221 +127,221 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1
+      name: heimdall-sword-tornado_0
       rect:
         serializedVersion: 2
-        x: 32
+        x: 33
+        y: 669
+        width: 304
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64d04d38d0c23fc498d155004cd9dce0
+      internalID: -39728366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-sword-tornado_1
+      rect:
+        serializedVersion: 2
+        x: 336
         y: 668
-        width: 306
-        height: 248
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b13aae819c7006660800000000000000
-      internalID: 7376904749920723739
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2
-      rect:
-        serializedVersion: 2
-        x: 343
-        y: 667
-        width: 452
-        height: 252
-      alignment: 9
-      pivot: {x: -0.01040987, y: 1.0000005}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5a04ece6a70f73450800000000000000
-      internalID: 6068583431540719781
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: none1
-      rect:
-        serializedVersion: 2
-        x: 935
-        y: 860
-        width: 9
-        height: 13
+        width: 458
+        height: 250
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9e82dee71cdcc1f30800000000000000
-      internalID: 4547735954679212265
+      spriteID: 3b82f1149c49cb941b72dbea403adb4d
+      internalID: -802404721
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: none3
+      name: heimdall-sword-tornado_2
       rect:
         serializedVersion: 2
-        x: 927
-        y: 783
-        width: 14
-        height: 19
+        x: 792
+        y: 859
+        width: 7
+        height: 11
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 28682cb063339daa0800000000000000
-      internalID: -6135816710097041790
+      spriteID: 2e9b1e6da7715ab45b9a0ffecbf6dd54
+      internalID: 1040174605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3
+      name: heimdall-sword-tornado_3
       rect:
         serializedVersion: 2
-        x: 119
-        y: 359
-        width: 330
-        height: 249
-      alignment: 9
-      pivot: {x: -0.19486597, y: 1.0000019}
+        x: 784
+        y: 749
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f32bf372e05340bf0800000000000000
-      internalID: -359103735378496961
+      spriteID: b095b0e016868854183720bba82b4a82
+      internalID: -1002170335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 4
+      name: heimdall-sword-tornado_4
       rect:
         serializedVersion: 2
-        x: 595
-        y: 345
-        width: 345
+        x: 120
+        y: 360
+        width: 328
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e6c7c7177f50a94c821f4e7bef518cf
+      internalID: -2010447912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-sword-tornado_5
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 346
+        width: 343
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d542de5a0b615644f8b843b83405013a
+      internalID: -1760606991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-sword-tornado_6
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 37
+        width: 286
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a34d75db000ae824d86fe565adc16584
+      internalID: -772047295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-sword-tornado_7
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 32
+        width: 305
+        height: 293
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7324f181b296835469dfb2528c927a16
+      internalID: -1528553418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-sword-tornado_8
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 126
+        width: 40
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d16307349f0e8c148916d73d9f48ee0a
+      internalID: 1741256257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-sword-tornado_9
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 60
+        width: 284
         height: 268
-      alignment: 9
-      pivot: {x: -0.12274524, y: 0.94733053}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8ecc860e52f5c0fe0800000000000000
-      internalID: -1221496782640853784
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 5
-      rect:
-        serializedVersion: 2
-        x: 41
-        y: 36
-        width: 288
-        height: 290
-      alignment: 9
-      pivot: {x: -0.29408157, y: 0.87560785}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a41cf600c8c19c0c0800000000000000
-      internalID: -4555078160480222902
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 6
-      rect:
-        serializedVersion: 2
-        x: 350
-        y: 31
-        width: 307
-        height: 295
-      alignment: 9
-      pivot: {x: -0.23500901, y: 0.8670825}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0d53f338d6637b0b0800000000000000
-      internalID: -5713037758314891824
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: none2
-      rect:
-        serializedVersion: 2
-        x: 949
-        y: 419
-        width: 42
-        height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 58d08b0e180777150800000000000000
-      internalID: 5870284342423981445
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 7
-      rect:
-        serializedVersion: 2
-        x: 669
-        y: 59
-        width: 296
-        height: 270
-      alignment: 9
-      pivot: {x: 0.000001443399, y: 0.9361016}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3d54adac8aae50170800000000000000
-      internalID: 8144173511848117715
+      spriteID: e0e0018291e3ef94f939a37ff0265c16
+      internalID: -875159613
       vertices: []
       indices: 
       edges: []
@@ -360,16 +360,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1: 7376904749920723739
-      2: 6068583431540719781
-      3: -359103735378496961
-      4: -1221496782640853784
-      5: -4555078160480222902
-      6: -5713037758314891824
-      7: 8144173511848117715
-      none1: 4547735954679212265
-      none2: 5870284342423981445
-      none3: -6135816710097041790
+      heimdall-sword-tornado_0: -39728366
+      heimdall-sword-tornado_1: -802404721
+      heimdall-sword-tornado_2: 1040174605
+      heimdall-sword-tornado_3: -1002170335
+      heimdall-sword-tornado_4: -2010447912
+      heimdall-sword-tornado_5: -1760606991
+      heimdall-sword-tornado_6: -772047295
+      heimdall-sword-tornado_7: -1528553418
+      heimdall-sword-tornado_8: 1741256257
+      heimdall-sword-tornado_9: -875159613
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

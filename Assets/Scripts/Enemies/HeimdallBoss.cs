@@ -22,10 +22,7 @@ using UnityEngine;
 ///
 /// Prefab references:
 ///   - shockwavePrefab (SlashProjectile) — jumpable horizontal wave
-///   - swordBeamPrefab (SwordBeamProjectile) — concentrated beam
 ///   - projectileSwordPrefab (OdinProjectile) — curve-to-last-known projectile
-///   - floorImpactPrefab (FloorImpact) — floor-level plunge hit
-///   - giantSlashPrefab (SlashProjectile) — massive slash wave
 ///
 /// Transform references: projectileSpawnPoint (projectile fire origin).
 ///

@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 127
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -109,89 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1
+      name: heimdall-p2-walk_0
       rect:
         serializedVersion: 2
-        x: 61
-        y: 526
-        width: 402
-        height: 380
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 62
+        y: 527
+        width: 400
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 24773141ce186d0d0800000000000000
-      internalID: -3398386017855375550
+      spriteID: 399f3148089e03a438aa555e408f2946
+      internalID: -2134132884
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2
+      name: heimdall-p2-walk_1
       rect:
         serializedVersion: 2
-        x: 540
-        y: 526
-        width: 399
-        height: 375
-      alignment: 9
-      pivot: {x: -0.3627405, y: 1.0130091}
+        x: 541
+        y: 527
+        width: 397
+        height: 373
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 15f82ebdabe583420800000000000000
-      internalID: 2609940140707188561
+      spriteID: 7e47a377d7ffbe6418b3505d02657618
+      internalID: -1123265693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3
+      name: heimdall-p2-walk_2
       rect:
         serializedVersion: 2
-        x: 52
-        y: 40
-        width: 388
-        height: 393
-      alignment: 9
-      pivot: {x: -0.8340651, y: 0.9668962}
+        x: 53
+        y: 41
+        width: 386
+        height: 391
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2858dd17e68325530800000000000000
-      internalID: 3842195479108355458
+      spriteID: 854c883ab50895c4a81009fd7e2446fe
+      internalID: 178103822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 4
+      name: heimdall-p2-walk_3
       rect:
         serializedVersion: 2
-        x: 555
-        y: 37
-        width: 374
-        height: 384
-      alignment: 9
-      pivot: {x: -0.48264775, y: 0.9999998}
+        x: 546
+        y: 43
+        width: 372
+        height: 382
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bcd626b0b971c93f0800000000000000
-      internalID: -892812671447831093
+      spriteID: 8485abeebac8c504f98cbf7ae2f91368
+      internalID: -451785994
       vertices: []
       indices: 
       edges: []
@@ -210,10 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1: -3398386017855375550
-      2: 2609940140707188561
-      3: 3842195479108355458
-      4: -892812671447831093
+      heimdall-p2-walk_0: -2134132884
+      heimdall-p2-walk_1: -1123265693
+      heimdall-p2-walk_2: 178103822
+      heimdall-p2-walk_3: -451785994
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,8 +1,8 @@
 using UnityEngine;
 
 /// <summary>
-/// Staff projectile that fires outward first, then loosely curves toward
-/// the player's last-known position. NOT a perfect homing missile.
+/// Staff projectile that fires toward the player, then continuously
+/// tracks the player's live position.
 ///
 /// Setup (on prefab):
 ///   - Rigidbody2D with gravityScale = 0.
@@ -12,10 +12,9 @@ using UnityEngine;
 ///     or overridden via Initialize().
 ///
 /// Behavior:
-///   1. Flies straight in its initial velocity direction for curveDelay seconds.
-///   2. After the delay, begins applying a steering force toward the captured
-///      lastKnownTarget position. The force is NOT continuous re-tracking —
-///      the target is locked at fire time.
+///   1. Flies straight toward the player for curveDelay seconds.
+///   2. After the delay, continuously steers toward the player's live
+///      position. Can reverse direction if the player moves behind it.
 ///   3. Destroys on collision with anything, dealing damage to IDamageables.
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
@@ -36,6 +35,8 @@ public class OdinProjectile : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 lastKnownTarget;
+    private Transform playerTarget;
+    private float moveSpeed;
     private float aliveTimer;
     private bool isCurving;
 
@@ -53,6 +54,7 @@ public class OdinProjectile : MonoBehaviour
     {
         rb.linearVelocity = velocity;
         lastKnownTarget = targetPosition;
+        moveSpeed = velocity.magnitude;
 
         if (overrideDamage > 0) damage = overrideDamage;
         if (overrideCurveDelay >= 0f) curveDelay = overrideCurveDelay;
@@ -71,6 +73,15 @@ public class OdinProjectile : MonoBehaviour
         Destroy(gameObject, maxLifetime);
     }
 
+    /// <summary>
+    /// Set a live Transform to track. The projectile will continuously
+    /// steer toward this target after the curveDelay expires.
+    /// </summary>
+    public void SetPlayerTarget(Transform target)
+    {
+        playerTarget = target;
+    }
+
     private void FixedUpdate()
     {
         aliveTimer += Time.fixedDeltaTime;
@@ -82,26 +93,27 @@ public class OdinProjectile : MonoBehaviour
 
         if (isCurving)
         {
-            Vector2 toTarget = (lastKnownTarget - (Vector2)transform.position);
-            float dist = toTarget.magnitude;
+            // Use live player position if available, otherwise fallback to locked position
+            Vector2 targetPos = (playerTarget != null)
+                ? (Vector2)playerTarget.position
+                : lastKnownTarget;
 
-            if (dist > 0.5f)
+            Vector2 toTarget = targetPos - (Vector2)transform.position;
+
+            if (toTarget.sqrMagnitude > 0.01f)
             {
-                Vector2 desired = toTarget.normalized * rb.linearVelocity.magnitude;
-                Vector2 steering = (desired - rb.linearVelocity).normalized * curveStrength;
-                rb.linearVelocity += steering * Time.fixedDeltaTime;
-
-                // Clamp speed so steering doesn't accelerate indefinitely
-                float speed = rb.linearVelocity.magnitude;
-                float maxSpeed = curveStrength * 3f;
-                if (speed > maxSpeed)
-                    rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
+                // Set velocity directly toward the player at constant speed.
+                // This allows full reversal if the player moves behind the projectile.
+                rb.linearVelocity = toTarget.normalized * moveSpeed;
             }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Ignore collisions with other projectiles (prevents triple-projectile self-destruction)
+        if (collision.gameObject.GetComponent<OdinProjectile>() != null) return;
+
         if ((targetLayers.value & (1 << collision.gameObject.layer)) != 0)
         {
             IDamageable target = collision.collider.GetComponent<IDamageable>();

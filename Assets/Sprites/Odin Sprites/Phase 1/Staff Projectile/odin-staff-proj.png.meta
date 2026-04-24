@@ -157,441 +157,441 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1
+      name: odin-staff-proj_0
       rect:
         serializedVersion: 2
         x: 27
-        y: 817
+        y: 819
         width: 481
-        height: 189
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c2dde28c1c98e8a00800000000000000
-      internalID: 760696852452400428
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empt9
-      rect:
-        serializedVersion: 2
-        x: 654
-        y: 953
-        width: 28
-        height: 49
+        height: 191
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: df706dce4cdb56c70800000000000000
-      internalID: 8963779286835529725
+      spriteID: 3bbac0255f38bd444bee34f548f34741
+      internalID: -674587790
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empt10
+      name: odin-staff-proj_1
       rect:
         serializedVersion: 2
-        x: 796
-        y: 946
-        width: 103
-        height: 35
+        x: 209
+        y: 963
+        width: 25
+        height: 46
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6f096c6de7a4f6b90800000000000000
-      internalID: -7246491366786166538
+      spriteID: f3281fbc3d15964489a36d94ee5983e6
+      internalID: -1730886666
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empt11
+      name: odin-staff-proj_2
       rect:
         serializedVersion: 2
-        x: 679
-        y: 852
-        width: 27
-        height: 49
+        x: 399
+        y: 940
+        width: 100
+        height: 33
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a661e22284c7882e0800000000000000
-      internalID: -2123310575052253590
+      spriteID: 8c4af864b60a3fe4492ee8d8324fcf99
+      internalID: 963270004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 610
-        width: 595
-        height: 185
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0bb43b712e2e474d0800000000000000
-      internalID: -3137633579682280528
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empt2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 642
-        width: 28
-        height: 49
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e6bee34c81cbf2f50800000000000000
-      internalID: 6858907572066249582
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: c1a6e265-b3c2-4ab2-a39c-0759e9ed839c-jukebox-bg-removed_6
-      rect:
-        serializedVersion: 2
-        x: 709
-        y: 719
-        width: 3
-        height: 37
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 1, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 325f83c49147e92c0800000000000000
-      internalID: -4422970132029442781
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empt1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 717
-        width: 27
-        height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e56fe06a8d310a930800000000000000
-      internalID: 4152340677655459422
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 3
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 407
-        width: 757
-        height: 184
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8df218586093e4690800000000000000
-      internalID: -7616087219664506920
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empt3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 555
-        width: 29
-        height: 50
-      alignment: 9
-      pivot: {x: 0.56418526, y: 1.877423}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7750ae1a9800dc710800000000000000
-      internalID: 1715027624225015159
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empt5
-      rect:
-        serializedVersion: 2
-        x: 9
-        y: 564
-        width: 27
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4a98fbc71d64a5790800000000000000
-      internalID: -7540636760523437660
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: c1a6e265-b3c2-4ab2-a39c-0759e9ed839c-jukebox-bg-removed_11
-      rect:
-        serializedVersion: 2
-        x: 824
-        y: 512
-        width: 2
-        height: 27
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d230fc75f2167af60800000000000000
-      internalID: 8045506115285222189
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 4
+      name: odin-staff-proj_3
       rect:
         serializedVersion: 2
         x: 27
-        y: 207
-        width: 899
-        height: 182
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5a7cf31fd559994b0800000000000000
-      internalID: -5433147244733806683
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empt4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 389
-        width: 28
-        height: 50
+        y: 906
+        width: 25
+        height: 46
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 052128185125e3a10800000000000000
-      internalID: 1891039145862763088
+      spriteID: d84a231e6e67f234199fd4a09245fc58
+      internalID: 484409027
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empt6
+      name: odin-staff-proj_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 305
-        width: 26
+        x: 30
+        y: 611
+        width: 594
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c94b88b8b961b2f4b90fcabf3db3a21b
+      internalID: -697483261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-staff-proj_5
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 755
+        width: 25
         height: 47
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b79b8340ad2b7c0a0800000000000000
-      internalID: -6861318857832220293
+      spriteID: f4ae5642288d67143a2b12f15f6dd630
+      internalID: 733213859
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: c1a6e265-b3c2-4ab2-a39c-0759e9ed839c-jukebox-bg-removed_15
+      name: odin-staff-proj_6
       rect:
         serializedVersion: 2
-        x: 1007
-        y: 299
-        width: 5
-        height: 36
+        x: 27
+        y: 699
+        width: 25
+        height: 47
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 4, y: 0, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 89bd5ea5dcf180dc0800000000000000
-      internalID: -3672650529266869352
+      spriteID: cb6cb974cf7bd46449a89519bc795022
+      internalID: 1610441503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 5
+      name: odin-staff-proj_7
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 720
+        width: 187
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa553c8545b9fbc48b86ede60bc29a0b
+      internalID: -690755481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-staff-proj_8
       rect:
         serializedVersion: 2
         x: 29
+        y: 408
+        width: 748
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 778351fda46c1c44abe69b4133ae6277
+      internalID: 2022133816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-staff-proj_9
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 551
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2645fd80602ed5b4ba3aa930c9e841b6
+      internalID: 1285277991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-staff-proj_10
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 496
+        width: 25
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 613bb6ee28ee66248a6955d702e442c7
+      internalID: 991126868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-staff-proj_11
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 504
+        width: 265
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f95abb305e42104ab5a8200bc27a73e
+      internalID: -361557206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-staff-proj_12
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 209
+        width: 895
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1f21b6426aeb4942a38b2ecd422bfc7
+      internalID: -802876494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-staff-proj_13
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 347
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6b0cb93a947e0b4a91e1fb24a48436c
+      internalID: 879099991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-staff-proj_14
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 291
+        width: 24
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef46a45b3d2e9b4469cf6732d48cc17d
+      internalID: 453062582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-staff-proj_15
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 300
+        width: 298
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bfbcf6f661f80d4b9767fbf41d4dace
+      internalID: -199689709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-staff-proj_16
+      rect:
+        serializedVersion: 2
+        x: 28
         y: 0
         width: 983
-        height: 186
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 15b3eca98202fa3f0800000000000000
-      internalID: -887455242800710831
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empt7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 220
-        width: 28
-        height: 50
+        height: 191
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8f665a2ae7b4ec370800000000000000
-      internalID: 8344690166830819064
+      spriteID: dab2cbe54f969c54d90816d22957a4e0
+      internalID: -450479578
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empt8
+      name: odin-staff-proj_17
       rect:
         serializedVersion: 2
-        x: 0
-        y: 87
-        width: 27
+        x: 208
+        y: 143
+        width: 26
         height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a0b430ad5306f1d60800000000000000
-      internalID: 7863109258819357450
+      spriteID: 0cfce6ebd1546fe4e87c8a5f3d6648b3
+      internalID: -669239400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: c1a6e265-b3c2-4ab2-a39c-0759e9ed839c-jukebox-bg-removed_19
+      name: odin-staff-proj_18
       rect:
         serializedVersion: 2
-        x: 1011
-        y: 97
-        width: 1
-        height: 36
+        x: 27
+        y: 87
+        width: 24
+        height: 44
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 1, y: 0, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ea038e97bdf4ba050800000000000000
-      internalID: 5812827548113449134
+      spriteID: 11c70263fbcfb8f41adffc3473794696
+      internalID: -1897157720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-staff-proj_19
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 99
+        width: 365
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11bd81af5a79b9b4ba5b2e722e16be87
+      internalID: -1214203915
       vertices: []
       indices: 
       edges: []
@@ -610,26 +610,26 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1: 760696852452400428
-      2: -3137633579682280528
-      3: -7616087219664506920
-      4: -5433147244733806683
-      5: -887455242800710831
-      c1a6e265-b3c2-4ab2-a39c-0759e9ed839c-jukebox-bg-removed_11: 8045506115285222189
-      c1a6e265-b3c2-4ab2-a39c-0759e9ed839c-jukebox-bg-removed_15: -3672650529266869352
-      c1a6e265-b3c2-4ab2-a39c-0759e9ed839c-jukebox-bg-removed_19: 5812827548113449134
-      c1a6e265-b3c2-4ab2-a39c-0759e9ed839c-jukebox-bg-removed_6: -4422970132029442781
-      empt1: 4152340677655459422
-      empt10: -7246491366786166538
-      empt11: -2123310575052253590
-      empt2: 6858907572066249582
-      empt3: 1715027624225015159
-      empt4: 1891039145862763088
-      empt5: -7540636760523437660
-      empt6: -6861318857832220293
-      empt7: 8344690166830819064
-      empt8: 7863109258819357450
-      empt9: 8963779286835529725
+      odin-staff-proj_0: -674587790
+      odin-staff-proj_1: -1730886666
+      odin-staff-proj_10: 991126868
+      odin-staff-proj_11: -361557206
+      odin-staff-proj_12: -802876494
+      odin-staff-proj_13: 879099991
+      odin-staff-proj_14: 453062582
+      odin-staff-proj_15: -199689709
+      odin-staff-proj_16: -450479578
+      odin-staff-proj_17: -669239400
+      odin-staff-proj_18: -1897157720
+      odin-staff-proj_19: -1214203915
+      odin-staff-proj_2: 963270004
+      odin-staff-proj_3: 484409027
+      odin-staff-proj_4: -697483261
+      odin-staff-proj_5: 733213859
+      odin-staff-proj_6: 1610441503
+      odin-staff-proj_7: -690755481
+      odin-staff-proj_8: 2022133816
+      odin-staff-proj_9: 1285277991
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

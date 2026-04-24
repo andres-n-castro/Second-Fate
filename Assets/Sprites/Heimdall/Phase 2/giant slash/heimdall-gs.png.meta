@@ -52,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -66,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 120
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -90,7 +90,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -115,133 +115,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hgs1
+      name: heimdall-gs_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 519
-        width: 389
-        height: 423
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7d0b04650aff5da90800000000000000
-      internalID: -7289639357722349353
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hgs2
-      rect:
-        serializedVersion: 2
-        x: 464
-        y: 503
-        width: 560
-        height: 403
-      alignment: 9
-      pivot: {x: -0.13528192, y: 1.1015116}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d0e6132cdb75a1600800000000000000
-      internalID: 439760386140499469
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hgs3
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 33
-        width: 605
-        height: 450
-      alignment: 9
-      pivot: {x: 0.047583323, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4a089d48b7dc33290800000000000000
-      internalID: -7911754189966311260
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: db540da8-c9e9-48d7-8874-ed69214ad389-jukebox-bg-removed_3
-      rect:
-        serializedVersion: 2
-        x: 647
-        y: 99
-        width: 17
-        height: 29
+        x: 40
+        y: 520
+        width: 387
+        height: 421
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4cbf1caa216b60b80800000000000000
-      internalID: -8428849461286798396
+      spriteID: 264d7b99099d2504b9aa809fa3a08a41
+      internalID: -698414049
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hgs4
+      name: heimdall-gs_1
       rect:
         serializedVersion: 2
-        x: 672
-        y: 49
-        width: 324
-        height: 417
-      alignment: 9
-      pivot: {x: -0.21979137, y: 1.0290679}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 45b6736d16125f6a0800000000000000
-      internalID: -6416185390029903020
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: db540da8-c9e9-48d7-8874-ed69214ad389-jukebox-bg-removed_5
-      rect:
-        serializedVersion: 2
-        x: 618
-        y: 22
-        width: 46
-        height: 46
+        x: 465
+        y: 504
+        width: 559
+        height: 401
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b65fca47e49de39a0800000000000000
-      internalID: -6251320301755501205
+      spriteID: 1982527e507132a43afe680ada46ec9d
+      internalID: -1115453518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-gs_2
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 34
+        width: 583
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09e39255ed2b39744b6bd7df72dc8803
+      internalID: -1437340739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-gs_3
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 217
+        width: 15
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 220f854b5df4b684fab958ad270f20c3
+      internalID: 252406126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-gs_4
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 50
+        width: 322
+        height: 415
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32069b672e8dcc64e824a41ea52f95ce
+      internalID: 60818809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heimdall-gs_5
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 138
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b9469376d0e8f149917ff1ca91bdda6
+      internalID: -1309701127
       vertices: []
       indices: 
       edges: []
@@ -260,12 +260,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      db540da8-c9e9-48d7-8874-ed69214ad389-jukebox-bg-removed_3: -8428849461286798396
-      db540da8-c9e9-48d7-8874-ed69214ad389-jukebox-bg-removed_5: -6251320301755501205
-      hgs1: -7289639357722349353
-      hgs2: 439760386140499469
-      hgs3: -7911754189966311260
-      hgs4: -6416185390029903020
+      heimdall-gs_0: -698414049
+      heimdall-gs_1: -1115453518
+      heimdall-gs_2: -1437340739
+      heimdall-gs_3: 252406126
+      heimdall-gs_4: 60818809
+      heimdall-gs_5: -1309701127
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

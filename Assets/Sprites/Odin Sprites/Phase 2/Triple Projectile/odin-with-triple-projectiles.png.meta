@@ -106,7 +106,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -144,7 +144,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -169,573 +169,529 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_0
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 814
-        width: 493
-        height: 187
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6a6ffd631179723c0800000000000000
-      internalID: -4384369612031002970
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 961
-        width: 1
-        height: 41
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9f95db56d1c3339f0800000000000000
-      internalID: -489981837494625799
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_2
-      rect:
-        serializedVersion: 2
-        x: 397
-        y: 1002
-        width: 120
-        height: 22
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c830104fd7665a5f0800000000000000
-      internalID: -746077472109296756
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_3
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 610
-        width: 587
-        height: 186
-      alignment: 9
-      pivot: {x: -0.0051518884, y: 1.0080668}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2a6e95988c3802ae0800000000000000
-      internalID: -1576114972258605406
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 768
-        width: 1
-        height: 41
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a0c4cd32ced9a2820800000000000000
-      internalID: 2894299348078447626
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_5
-      rect:
-        serializedVersion: 2
-        x: 620
-        y: 856
-        width: 122
-        height: 82
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a2b90ca9697340360800000000000000
-      internalID: 7134888829642644266
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_6
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 404
-        width: 700
-        height: 185
-      alignment: 9
-      pivot: {x: 0.002143304, y: 1.0262623}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e5fc4c070abb0e790800000000000000
-      internalID: -7502790681438138530
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 562
-        width: 6
-        height: 42
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a45dfc71952918110800000000000000
-      internalID: 1261450281989690698
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_8
-      rect:
-        serializedVersion: 2
-        x: 801
-        y: 977
-        width: 125
-        height: 44
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8a5304f7f2bdc9e10800000000000000
-      internalID: 2205878914549560744
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_9
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 488
-        width: 16
-        height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 10, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: eb9ad03e2e4237720800000000000000
-      internalID: 2842656346691447230
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_10
-      rect:
-        serializedVersion: 2
-        x: 744
-        y: 849
-        width: 125
-        height: 45
-      alignment: 9
-      pivot: {x: 0.51352537, y: 0.8005534}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0210756679e20f2d0800000000000000
-      internalID: -3247044103542210272
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_11
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 914
-        width: 128
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 64b5345cb4cc464a0800000000000000
-      internalID: -6600926528014165178
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_12
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 202
-        width: 844
-        height: 183
-      alignment: 9
-      pivot: {x: -0.013507239, y: 1.025976}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f3948eb9c64b43af0800000000000000
-      internalID: -417510486873454273
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_13
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 334
-        width: 24
-        height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0f35c8d9adc4f7880800000000000000
-      internalID: -8611079460679298064
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_14
-      rect:
-        serializedVersion: 2
-        x: 873
-        y: 927
-        width: 123
-        height: 2
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0ed4c8ed6c7cd93c0800000000000000
-      internalID: -4351102008018842144
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_15
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 362
-        width: 1
-        height: 47
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dc37eeade18d1d1d0800000000000000
-      internalID: -3327641022616407091
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_16
-      rect:
-        serializedVersion: 2
-        x: 559
-        y: 952
-        width: 122
-        height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7f8b0155ef68fef70800000000000000
-      internalID: 9218735389157669111
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_17
-      rect:
-        serializedVersion: 2
-        x: 883
-        y: 872
-        width: 129
-        height: 27
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1b25c2a5f61068910800000000000000
-      internalID: 1839159075593278129
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_18
+      name: odin-with-triple-projectiles_0
       rect:
         serializedVersion: 2
         x: 22
-        y: 0
-        width: 974
-        height: 183
-      alignment: 9
-      pivot: {x: -0.000000007833054, y: 1.0163974}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2f64ea1ab6f4696b0800000000000000
-      internalID: -5289953388607420686
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_19
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 216
-        width: 6
-        height: 35
+        y: 815
+        width: 493
+        height: 189
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a60525b70fdcf8860800000000000000
-      internalID: 7534467134358966378
+      spriteID: 243b93bb556ca304383c672059c8b21e
+      internalID: 1411806805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_20
+      name: odin-with-triple-projectiles_1
       rect:
         serializedVersion: 2
-        x: 542
-        y: 876
+        x: 73
+        y: 967
+        width: 21
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49d51da2ae25b3d4bacda836e0dbabca
+      internalID: -1458680425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_2
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 925
+        width: 118
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54f5b24cca0717041b7f38e0bbcb00ab
+      internalID: 544886051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_3
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 611
+        width: 587
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e20e639417c13c4594ee34f80a9b777
+      internalID: 307807385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_4
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 761
+        width: 20
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3496a869d19fea428d528185fe95076
+      internalID: -1058164164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_5
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 696
+        width: 120
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 038504fa96c883b44b8ead1b53e9932e
+      internalID: -1913942776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_6
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 405
+        width: 693
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd8ceb571db79d04fb6b5e7c66f326c4
+      internalID: 458070407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_7
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 555
+        width: 21
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 545429b1e746ab64f960062eeadb4030
+      internalID: -1638566702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_8
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 525
+        width: 123
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 589a52f4a80efa24098b3450bd4b046a
+      internalID: -1050661752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_9
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 494
+        width: 24
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a149a009a0217c41bff60c6cadc28f5
+      internalID: 1155854807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_10
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 465
+        width: 123
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6dc27b6a0457ab4f8e4310a43d88ca2
+      internalID: 16056802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_11
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 504
         width: 126
-        height: 46
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f465490a7adab4080800000000000000
-      internalID: -9202070478136256945
+      spriteID: eaf724f0133d9ab48b80bab61cd06569
+      internalID: -1370238490
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_21
+      name: odin-with-triple-projectiles_12
       rect:
         serializedVersion: 2
-        x: 0
-        y: 151
-        width: 1
+        x: 28
+        y: 203
+        width: 836
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 810170a0ad692b847940d983ea6f2b84
+      internalID: -1163744729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_13
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 349
+        width: 22
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c78c7327e7c0db1428c6cf463031abf9
+      internalID: -619862421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_14
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 326
+        width: 121
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36f39064665e5504c934b6605cde4010
+      internalID: 806671608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_15
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 289
+        width: 25
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64cd1a6b8666b5a47b7a79cd9df78a8c
+      internalID: -85798884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_16
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 253
+        width: 120
         height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 49fbc261e8f9b49a0800000000000000
-      internalID: -6247724625440227436
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_22
-      rect:
-        serializedVersion: 2
-        x: 660
-        y: 880
-        width: 127
-        height: 27
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 60742175600bae9e0800000000000000
-      internalID: -1591265977044941050
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_23
-      rect:
-        serializedVersion: 2
-        x: 733
-        y: 926
-        width: 127
-        height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1e443606ebb3eabd0800000000000000
-      internalID: -2617088644608736031
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_24
-      rect:
-        serializedVersion: 2
-        x: 678
-        y: 959
-        width: 58
-        height: 27
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3565e1864859414199e61da81e0c931
-      internalID: -79081179
+      spriteID: d16e0a44fb56dca4fb7fccaf2bd2d82a
+      internalID: 787725903
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: unnamed (8)-jukebox-bg-removed_25
+      name: odin-with-triple-projectiles_17
       rect:
         serializedVersion: 2
-        x: 792
-        y: 934
-        width: 45
-        height: 15
+        x: 736
+        y: 300
+        width: 127
+        height: 25
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09f2871a8bdc84545a42d4afb0ae9c46
-      internalID: 1744123138
+      spriteID: 59b5fe18bf2c1dd4b8f2c8ef3802ab34
+      internalID: 1863515990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_18
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 0
+        width: 972
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eea8ff66c70270448be28fae2ca4e43
+      internalID: 1462300152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_19
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 146
+        width: 23
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87b69bfee938a554180f573458ee395f
+      internalID: -1692210938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_20
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 125
+        width: 124
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e494cc0f255fb8a478024596a93ae17b
+      internalID: 1165166253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_21
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 84
+        width: 25
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84cb4c987ca088f44a3b5ecd78389a91
+      internalID: 1441226972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_22
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 95
+        width: 125
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 074dee727e8e1074bb49cff467b6e2c7
+      internalID: 1178117222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-with-triple-projectiles_23
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 46
+        width: 125
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f8a10a0ffdee91479d4d13372a2ec36
+      internalID: 2097190857
       vertices: []
       indices: 
       edges: []
@@ -754,32 +710,30 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      unnamed (8)-jukebox-bg-removed_0: -4384369612031002970
-      unnamed (8)-jukebox-bg-removed_1: -489981837494625799
-      unnamed (8)-jukebox-bg-removed_10: -3247044103542210272
-      unnamed (8)-jukebox-bg-removed_11: -6600926528014165178
-      unnamed (8)-jukebox-bg-removed_12: -417510486873454273
-      unnamed (8)-jukebox-bg-removed_13: -8611079460679298064
-      unnamed (8)-jukebox-bg-removed_14: -4351102008018842144
-      unnamed (8)-jukebox-bg-removed_15: -3327641022616407091
-      unnamed (8)-jukebox-bg-removed_16: 9218735389157669111
-      unnamed (8)-jukebox-bg-removed_17: 1839159075593278129
-      unnamed (8)-jukebox-bg-removed_18: -5289953388607420686
-      unnamed (8)-jukebox-bg-removed_19: 7534467134358966378
-      unnamed (8)-jukebox-bg-removed_2: -746077472109296756
-      unnamed (8)-jukebox-bg-removed_20: -9202070478136256945
-      unnamed (8)-jukebox-bg-removed_21: -6247724625440227436
-      unnamed (8)-jukebox-bg-removed_22: -1591265977044941050
-      unnamed (8)-jukebox-bg-removed_23: -2617088644608736031
-      unnamed (8)-jukebox-bg-removed_24: -79081179
-      unnamed (8)-jukebox-bg-removed_25: 1744123138
-      unnamed (8)-jukebox-bg-removed_3: -1576114972258605406
-      unnamed (8)-jukebox-bg-removed_4: 2894299348078447626
-      unnamed (8)-jukebox-bg-removed_5: 7134888829642644266
-      unnamed (8)-jukebox-bg-removed_6: -7502790681438138530
-      unnamed (8)-jukebox-bg-removed_7: 1261450281989690698
-      unnamed (8)-jukebox-bg-removed_8: 2205878914549560744
-      unnamed (8)-jukebox-bg-removed_9: 2842656346691447230
+      odin-with-triple-projectiles_0: 1411806805
+      odin-with-triple-projectiles_1: -1458680425
+      odin-with-triple-projectiles_10: 16056802
+      odin-with-triple-projectiles_11: -1370238490
+      odin-with-triple-projectiles_12: -1163744729
+      odin-with-triple-projectiles_13: -619862421
+      odin-with-triple-projectiles_14: 806671608
+      odin-with-triple-projectiles_15: -85798884
+      odin-with-triple-projectiles_16: 787725903
+      odin-with-triple-projectiles_17: 1863515990
+      odin-with-triple-projectiles_18: 1462300152
+      odin-with-triple-projectiles_19: -1692210938
+      odin-with-triple-projectiles_2: 544886051
+      odin-with-triple-projectiles_20: 1165166253
+      odin-with-triple-projectiles_21: 1441226972
+      odin-with-triple-projectiles_22: 1178117222
+      odin-with-triple-projectiles_23: 2097190857
+      odin-with-triple-projectiles_3: 307807385
+      odin-with-triple-projectiles_4: -1058164164
+      odin-with-triple-projectiles_5: -1913942776
+      odin-with-triple-projectiles_6: 458070407
+      odin-with-triple-projectiles_7: -1638566702
+      odin-with-triple-projectiles_8: -1050661752
+      odin-with-triple-projectiles_9: 1155854807
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

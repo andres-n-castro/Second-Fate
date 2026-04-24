@@ -91,6 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b527565a29f3c44a506503fb89a50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerHitbox: 0
+  causesPlayerBounce: 0
   damage: 1
   knockbackForce: {x: 5, y: 4}
   targetLayers:
@@ -187,6 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b527565a29f3c44a506503fb89a50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerHitbox: 0
+  causesPlayerBounce: 0
   damage: 1
   knockbackForce: {x: 5, y: 4}
   targetLayers:
@@ -326,6 +330,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 6e8f9dc49b96c1a4eb5120efb0be284e, type: 2}
+  baseCurrencyDrop: 10
+  coinPrefab: {fileID: 0}
   groundCheck: {fileID: 5494277317145419413}
   wallCheck: {fileID: 5767055302132714079}
   groundLayer:
@@ -400,7 +406,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.09713256, y: -0.1993773}
+  m_Offset: {x: -0.04292053, y: -0.14432907}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -410,7 +416,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.7386744, y: 2.9812455}
+  m_Size: {x: 1.6302503, y: 2.6233244}
   m_EdgeRadius: 0
 --- !u!114 &4646341060698910203
 MonoBehaviour:
@@ -549,6 +555,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b527565a29f3c44a506503fb89a50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerHitbox: 0
+  causesPlayerBounce: 0
   damage: 1
   knockbackForce: {x: 5, y: 4}
   targetLayers:
@@ -621,7 +629,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 2, y: 0.3}
+  m_Offset: {x: 0.7376363, y: -0.45122433}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -631,7 +639,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3, y: 1.5}
+  m_Size: {x: 2.7057085, y: 1.2057085}
   m_EdgeRadius: 0
 --- !u!114 &2548339698926564450
 MonoBehaviour:
@@ -645,6 +653,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b527565a29f3c44a506503fb89a50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerHitbox: 0
+  causesPlayerBounce: 0
   damage: 1
   knockbackForce: {x: 5, y: 4}
   targetLayers:
@@ -772,6 +782,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b527565a29f3c44a506503fb89a50f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerHitbox: 0
+  causesPlayerBounce: 0
   damage: 1
   knockbackForce: {x: 5, y: 4}
   targetLayers:

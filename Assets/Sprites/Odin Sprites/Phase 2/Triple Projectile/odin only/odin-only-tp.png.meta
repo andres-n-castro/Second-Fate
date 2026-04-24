@@ -73,7 +73,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -87,7 +87,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 45
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -111,7 +111,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -136,78 +136,188 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: odin-only-tp1
+      name: odin-only-tp_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 509
-        width: 214
-        height: 117
+        x: 16
+        y: 510
+        width: 212
+        height: 118
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e4010866cd44bc47a174ccb133866a1
+      internalID: -1525148383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-only-tp_1
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 605
+        width: 12
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e36b22ddae6726770800000000000000
-      internalID: 8602568989335533118
+      spriteID: c06f74766bbd0954b8a323405b97d3da
+      internalID: -1943809632
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empty1
+      name: odin-only-tp_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 600
+        x: 20
+        y: 382
+        width: 220
+        height: 115
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1acc6d6ddb831eb49a67dd59d155c3d1
+      internalID: -1872104520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-only-tp_3
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 477
+        width: 12
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36e99798886b0644488fb9fae1319171
+      internalID: -721654907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-only-tp_4
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 253
+        width: 208
+        height: 116
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34dc6dd271dd21b48bd2141894d8c2aa
+      internalID: 397332385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-only-tp_5
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 347
+        width: 13
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca71e05fdc9cf2b43b099a679ed750cb
+      internalID: -1596213537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-only-tp_6
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 309
         width: 14
-        height: 25
+        height: 26
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6d561271fdb9a6c60800000000000000
-      internalID: 7812227886095623638
+      spriteID: 31ea5de66c38e1a4c844afb602a1d05c
+      internalID: -2116527715
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: odin-only-tp2
+      name: odin-only-tp_7
       rect:
         serializedVersion: 2
-        x: 19
-        y: 381
-        width: 222
-        height: 117
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 20
+        y: 126
+        width: 217
+        height: 115
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c39913e8f8bae6c10800000000000000
-      internalID: 2048763513554442556
+      spriteID: cb03efb3f76cc904e9f53f1a5f6995a7
+      internalID: -991815232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empty2
+      name: odin-only-tp_8
       rect:
         serializedVersion: 2
-        x: 1
-        y: 476
-        width: 14
+        x: 47
+        y: 218
+        width: 13
         height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -215,208 +325,98 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5ae8cff26724a8280800000000000000
-      internalID: -9040340226614194523
+      spriteID: de05a8b266da9dd4697626b6b47944cb
+      internalID: -1485928838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: odin-only-tp3
+      name: odin-only-tp_9
       rect:
         serializedVersion: 2
         x: 20
-        y: 252
-        width: 209
-        height: 116
+        y: 181
+        width: 14
+        height: 26
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8823b52ee5c2e9630800000000000000
-      internalID: 3935631910404567688
+      spriteID: d9438216c5df4234c870c08f86cf52b8
+      internalID: -250239007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empty3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 346
-        width: 15
-        height: 25
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0714d23b3e8071760800000000000000
-      internalID: 7428415884427608432
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 308
-        width: 9
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 06c880f482d919fa0800000000000000
-      internalID: -5795678448998904736
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: odin-only-tp4
+      name: odin-only-tp_10
       rect:
         serializedVersion: 2
         x: 19
-        y: 125
-        width: 219
-        height: 115
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: de7a21e485954ec70800000000000000
-      internalID: 8999416191194933229
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 222
-        width: 7
-        height: 26
-      alignment: 9
-      pivot: {x: -3.398521, y: 0.62268007}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6992d958855605870800000000000000
-      internalID: 8669540713561401750
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 180
-        width: 8
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 25901a70ebd161e40800000000000000
-      internalID: 5626717486454999378
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: odin-only-tp5
-      rect:
-        serializedVersion: 2
-        x: 21
         y: 0
-        width: 213
-        height: 113
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8208f1dee8a3f7240800000000000000
-      internalID: 4791612914083528744
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 90
-        width: 15
-        height: 26
+        width: 214
+        height: 116
       alignment: 9
-      pivot: {x: -3.256756, y: 0.5000003}
+      pivot: {x: 0.4, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 99ad64706ce8d5950800000000000000
-      internalID: 6439460023386430105
+      spriteID: 935bd4c17925e7741ade5873eccf3922
+      internalID: -587147359
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empty8
+      name: odin-only-tp_11
       rect:
         serializedVersion: 2
-        x: 0
-        y: 51
-        width: 12
-        height: 29
+        x: 46
+        y: 91
+        width: 13
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 12, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b2dfede7c418007b0800000000000000
-      internalID: -5260062199222698709
+      spriteID: 2c83617aee1b8714cb2f7793a05e1ce5
+      internalID: 51452210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-only-tp_12
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 52
+        width: 15
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed80785e897dfd54898780b4f727fd55
+      internalID: -1618516679
       vertices: []
       indices: 
       edges: []
@@ -435,19 +435,19 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      empty1: 7812227886095623638
-      empty2: -9040340226614194523
-      empty3: 7428415884427608432
-      empty4: -5795678448998904736
-      empty5: 8669540713561401750
-      empty6: 5626717486454999378
-      empty7: 6439460023386430105
-      empty8: -5260062199222698709
-      odin-only-tp1: 8602568989335533118
-      odin-only-tp2: 2048763513554442556
-      odin-only-tp3: 3935631910404567688
-      odin-only-tp4: 8999416191194933229
-      odin-only-tp5: 4791612914083528744
+      odin-only-tp_0: -1525148383
+      odin-only-tp_1: -1943809632
+      odin-only-tp_10: -587147359
+      odin-only-tp_11: 51452210
+      odin-only-tp_12: -1618516679
+      odin-only-tp_2: -1872104520
+      odin-only-tp_3: -721654907
+      odin-only-tp_4: 397332385
+      odin-only-tp_5: -1596213537
+      odin-only-tp_6: -2116527715
+      odin-only-tp_7: -991815232
+      odin-only-tp_8: -1485928838
+      odin-only-tp_9: -250239007
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
