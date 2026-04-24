@@ -22,6 +22,8 @@ MonoBehaviour:
   attackRange: 12
   groundCheckDistance: 1
   wallCheckDistance: 0.5
+  ledgeCheckAheadOffset: 0.5
+  ledgeCheckBehindOffset: 0.5
   losEyeOffsetY: 0.5
   losCastRadius: 0.1
   requireLOSForAggro: 1
@@ -37,7 +39,7 @@ MonoBehaviour:
     knockbackForce: 0
     windupDuration: 0.333
     activeDuration: 0
-    recoveryDuration: 0.250
+    recoveryDuration: 0.25
     cooldown: 2.5
     dashSpeed: 0
     dashDuration: 0
@@ -78,7 +80,10 @@ MonoBehaviour:
   repositionDecisionCooldown: 0.4
   fwsMinRepositionDistFromPlayer: 1.5
   fwsPlayerPathExclusionRadius: 1.2
-  projectileSpeed: 8
+  projectileSpeed: 30
+  maxFallVelocity: 28
+  jumpHangThreshold: 2
+  jumpHangGravityMultiplier: 0.5
   jumpForce: 14
   jumpForwardForce: 3
   jumpHeightThreshold: 1.5
@@ -128,19 +133,79 @@ MonoBehaviour:
   surtrThrustWeightMultiplier: 2
   surtrFireBreathMaxRange: 4
   surtrFireBreathWeightMultiplier: 2
-  surtrSweepProjectileSpeed: 8
   surtrP2MinAttackCooldown: 0.3
   surtrP2MaxAttackCooldown: 0.9
-  surtrEruptionInterval: 3
-  surtrEruptionProjectileCount: 3
-  surtrEruptionSpreadAngle: 60
-  surtrEruptionProjectileSpeed: 7
   surtrGroundedThrustStuckDuration: 1.5
-  surtrVomitProjectileCount: 5
-  surtrVomitSpreadAngle: 90
-  surtrVomitProjectileSpeed: 6
   surtrGroundedThrustRange: 3.5
   surtrGroundedThrustWeightMultiplier: 3
   surtrVomitMaxRange: 6
   surtrVomitMinRange: 2
   surtrVomitWeightMultiplier: 2
+  odinCloseRange: 2.5
+  odinMidRange: 5
+  odinMaxEngageRange: 8
+  odinOptimalSpacing: 5
+  odinStaffProjectileMaxRange: 7
+  odinStaffProjectileMinRange: 3
+  odinStaffProjectileWeightMultiplier: 2
+  odinGroundSpikesMaxRange: 6
+  odinGroundSpikesWeightMultiplier: 2
+  odinStaffMeleeMaxRange: 3
+  odinStaffMeleeWeightMultiplier: 3
+  odinProjectileSpeed: 8
+  odinProjectileCurveDelay: 0.3
+  odinProjectileCurveStrength: 4
+  odinProjectileLifetime: 5
+  odinSpikeCount: 5
+  odinSpikeSpacing: 1.5
+  odinSpikeDelay: 0.15
+  odinSpikeActiveDuration: 0.5
+  odinP2MinAttackCooldown: 0.3
+  odinP2MaxAttackCooldown: 0.8
+  odinTripleProjectileCount: 3
+  odinTripleProjectileSpreadAngle: 30
+  odinConsecutiveSpikeWaves: 3
+  odinConsecutiveSpikeWaveDelay: 0.4
+  odinSlashProjectileSpeed: 10
+  odinSlashProjectileHeight: 1
+  odinTripleProjectileMaxRange: 8
+  odinTripleProjectileMinRange: 3
+  odinTripleProjectileWeightMultiplier: 2
+  odinConsecutiveSpikesMaxRange: 6
+  odinConsecutiveSpikesWeightMultiplier: 2
+  odinLargeSlashMaxRange: 5
+  odinLargeSlashWeightMultiplier: 3
+  heimdallCloseRange: 2
+  heimdallMaxEngageRange: 6
+  heimdallShockwaveSlashMaxRange: 5
+  heimdallShockwaveSlashWeightMultiplier: 2
+  heimdallSwordTornadoMaxRange: 2.5
+  heimdallSwordTornadoWeightMultiplier: 3
+  heimdallSwordBeamMaxRange: 6
+  heimdallSwordBeamMinRange: 2.5
+  heimdallSwordBeamWeightMultiplier: 2
+  heimdallShockwaveSpeed: 10
+  heimdallShockwaveHeight: 0.5
+  heimdallBeamSpeed: 12
+  heimdallProjectileSwordSpeed: 8
+  heimdallProjectileSwordCurveDelay: 0.25
+  heimdallProjectileSwordCurveStrength: 5
+  heimdallProjectileSwordLifetime: 5
+  heimdallPlungeLeapForceY: 12
+  heimdallPlungeForwardForce: 3
+  heimdallPlungeFallSpeed: 18
+  heimdallFloorImpactRadius: 4
+  heimdallFloorImpactDuration: 0.4
+  heimdallP2MinAttackCooldown: 0.3
+  heimdallP2MaxAttackCooldown: 0.8
+  heimdallProjectileSwordCount: 3
+  heimdallProjectileSwordSpreadAngle: 40
+  heimdallGiantSlashSpeed: 12
+  heimdallGiantSlashHeight: 0.5
+  heimdallProjectileSwordsMaxRange: 8
+  heimdallProjectileSwordsMinRange: 3
+  heimdallProjectileSwordsWeightMultiplier: 2
+  heimdallSwordPlungeMaxRange: 6
+  heimdallSwordPlungeWeightMultiplier: 3
+  heimdallGiantSlashMaxRange: 5
+  heimdallGiantSlashWeightMultiplier: 2
