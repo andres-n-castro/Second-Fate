@@ -70,7 +70,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -108,7 +108,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -133,265 +133,265 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ocs1
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 401
-        width: 281
-        height: 152
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 86cc036cb32e21cf0800000000000000
-      internalID: -282915080214885272
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empt6
-      rect:
-        serializedVersion: 2
-        x: 940
-        y: 536
-        width: 20
-        height: 34
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6955db64023b2ebf0800000000000000
-      internalID: -296477674245892714
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ocs2
-      rect:
-        serializedVersion: 2
-        x: 385
-        y: 397
-        width: 548
-        height: 164
-      alignment: 9
-      pivot: {x: -0.00000011137802, y: 0.94812906}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a82f26cd56ed2d6f0800000000000000
-      internalID: -661221666199506294
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empt7
-      rect:
-        serializedVersion: 2
-        x: 1000
-        y: 535
-        width: 20
-        height: 35
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c2dbac40046aef0e0800000000000000
-      internalID: -2234165571240674004
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 7ad26db9-5940-4d2b-96af-b7cdb2020bd0-jukebox-bg-removed (1)_edited_4
-      rect:
-        serializedVersion: 2
-        x: 1023
-        y: 411
-        width: 1
-        height: 107
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 633135c136bbae0e0800000000000000
-      internalID: -2239771830312037578
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ocs3
+      name: odin-original-consecutive-spikes_0
       rect:
         serializedVersion: 2
         x: 21
-        y: 206
+        y: 402
+        width: 279
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dad8ef9842a24a645b488fc82ade3940
+      internalID: 1332581934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-original-consecutive-spikes_1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 529
+        width: 18
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c8add3826847ff46b0a3ae397209e0e
+      internalID: 762094703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-original-consecutive-spikes_2
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 401
+        width: 547
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15f05090f2652354b83c366cf20bf02e
+      internalID: 1094169890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-original-consecutive-spikes_3
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 527
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a50bf15714c0f9a4e8aae4049dfd63b0
+      internalID: 722463036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-original-consecutive-spikes_4
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 397
+        width: 133
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23b895c83259b684d8c0387d2d776ddd
+      internalID: -1708506774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-original-consecutive-spikes_5
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 207
         width: 711
-        height: 179
-      alignment: 9
-      pivot: {x: -0.0000000026826281, y: 0.8514878}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d3c47f800103a0e30800000000000000
-      internalID: 4470438425546673213
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empt1
-      rect:
-        serializedVersion: 2
-        x: 321
-        y: 442
-        width: 46
-        height: 48
+        height: 177
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f76669d2f44312920800000000000000
-      internalID: 2963707544458389119
+      spriteID: 875503cc1481abb47964783ee3a8961c
+      internalID: -1089996972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empt2
+      name: odin-original-consecutive-spikes_6
       rect:
         serializedVersion: 2
-        x: 318
-        y: 425
-        width: 49
-        height: 19
+        x: 407
+        y: 213
+        width: 44
+        height: 46
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b96c3999be3fe9b30800000000000000
-      internalID: 4296139287777494683
+      spriteID: 8b58ee5690a5ab146935bbdc453db658
+      internalID: 1068718171
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empt5
+      name: odin-original-consecutive-spikes_7
       rect:
         serializedVersion: 2
-        x: 964
-        y: 276
-        width: 27
-        height: 130
+        x: 477
+        y: 212
+        width: 47
+        height: 65
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4df724c09eeef9720800000000000000
-      internalID: 2855263373476659156
+      spriteID: 29434b6737eb036438f55f856889397a
+      internalID: -1985511160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ocs4
+      name: odin-original-consecutive-spikes_8
       rect:
         serializedVersion: 2
-        x: 23
-        y: 1
-        width: 976
-        height: 201
-      alignment: 9
-      pivot: {x: 0.0010894889, y: 0.75135744}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 49000cee49a3e90a0800000000000000
-      internalID: -6872991569985666924
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empt3
-      rect:
-        serializedVersion: 2
-        x: 835
-        y: 259
-        width: 56
-        height: 63
+        x: 518
+        y: 212
+        width: 214
+        height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ecde4e4bd8ff32e70800000000000000
-      internalID: 9089389457054166478
+      spriteID: 84a1f0670f16812429649ea76073e76b
+      internalID: 547272676
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empt4
+      name: odin-original-consecutive-spikes_9
       rect:
         serializedVersion: 2
-        x: 902
-        y: 225
-        width: 35
-        height: 138
+        x: 24
+        y: 2
+        width: 973
+        height: 199
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c554fcc757921f330800000000000000
-      internalID: 3742818349903463772
+      spriteID: da031d8affc24e64cbe30791da8c64f7
+      internalID: 1009911095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-original-consecutive-spikes_10
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 5
+        width: 54
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ea858cc3ce5b0a48abf2705f3a2d0d3
+      internalID: 355601948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-original-consecutive-spikes_11
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 3
+        width: 367
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8d8763559187864ebeeeddbafb68a3b
+      internalID: -633589008
       vertices: []
       indices: 
       edges: []
@@ -410,18 +410,18 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      7ad26db9-5940-4d2b-96af-b7cdb2020bd0-jukebox-bg-removed (1)_edited_4: -2239771830312037578
-      empt1: 2963707544458389119
-      empt2: 4296139287777494683
-      empt3: 9089389457054166478
-      empt4: 3742818349903463772
-      empt5: 2855263373476659156
-      empt6: -296477674245892714
-      empt7: -2234165571240674004
-      ocs1: -282915080214885272
-      ocs2: -661221666199506294
-      ocs3: 4470438425546673213
-      ocs4: -6872991569985666924
+      odin-original-consecutive-spikes_0: 1332581934
+      odin-original-consecutive-spikes_1: 762094703
+      odin-original-consecutive-spikes_10: 355601948
+      odin-original-consecutive-spikes_11: -633589008
+      odin-original-consecutive-spikes_2: 1094169890
+      odin-original-consecutive-spikes_3: 722463036
+      odin-original-consecutive-spikes_4: -1708506774
+      odin-original-consecutive-spikes_5: -1089996972
+      odin-original-consecutive-spikes_6: 1068718171
+      odin-original-consecutive-spikes_7: -1985511160
+      odin-original-consecutive-spikes_8: 547272676
+      odin-original-consecutive-spikes_9: 1009911095
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

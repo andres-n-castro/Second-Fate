@@ -19,12 +19,11 @@ using UnityEngine;
 /// Exception: Phase 2 Triple Projectile deals 3 hearts.
 ///
 /// Required components: Rigidbody2D, Collider2D, Health.
-/// Child references: staffMeleeHitbox (AttackHitbox on child GO with trigger collider).
+/// Child references: staffMeleeHitbox, largeSlashHitbox (AttackHitbox on child GOs with trigger colliders).
 ///
 /// Prefab references:
 ///   - odinProjectilePrefab (OdinProjectile) — curving staff projectile
 ///   - groundSpikePrefab (GroundSpike) — ground spike hazard
-///   - slashProjectilePrefab (SlashProjectile) — horizontal slash wave
 ///
 /// Transform references: projectileSpawnPoint (projectile fire origin).
 ///
@@ -36,15 +35,16 @@ public class OdinBoss : EnemyBase
 {
     [Header("Hitbox References")]
     [SerializeField] private AttackHitbox staffMeleeHitbox;
+    [SerializeField] private AttackHitbox largeSlashHitbox;
 
     [Header("Projectiles & Hazards")]
     [SerializeField] private GameObject odinProjectilePrefab;
     [SerializeField] private GameObject groundSpikePrefab;
-    [SerializeField] private GameObject slashProjectilePrefab;
     [SerializeField] private Transform projectileSpawnPoint;
 
-    // Hitbox accessor for states
+    // Hitbox accessors for states
     public AttackHitbox StaffMeleeHitbox => staffMeleeHitbox;
+    public AttackHitbox LargeSlashHitbox => largeSlashHitbox;
 
     // Cached hitbox reach
     public float StaffMeleeReach { get; private set; }
@@ -139,10 +139,12 @@ public class OdinBoss : EnemyBase
     }
 
     /// <summary>
-    /// Spawn a curving staff projectile.
+    /// Spawn a tracking staff projectile aimed at the player.
+    /// Lifetime is controlled by the maxLifetime field on the prefab's OdinProjectile component.
     /// </summary>
     public void SpawnOdinProjectile(Vector2 velocity, Vector2 targetPosition,
-        int damage, float curveDelay, float curveStrength, float lifetime)
+        int damage, float curveDelay, float curveStrength,
+        Transform playerTarget = null)
     {
         if (odinProjectilePrefab == null) return;
 
@@ -156,7 +158,9 @@ public class OdinBoss : EnemyBase
         if (odinProj != null)
         {
             odinProj.Initialize(velocity, targetPosition, GetComponents<Collider2D>(),
-                damage, curveDelay, curveStrength, lifetime);
+                damage, curveDelay, curveStrength);
+            if (playerTarget != null)
+                odinProj.SetPlayerTarget(playerTarget);
         }
         else
         {
@@ -181,30 +185,10 @@ public class OdinBoss : EnemyBase
         }
     }
 
-    /// <summary>
-    /// Spawn a horizontal slash wave projectile.
-    /// </summary>
-    public void SpawnSlashProjectile(Vector2 position, Vector2 velocity)
-    {
-        if (slashProjectilePrefab == null) return;
-
-        GameObject slash = Instantiate(slashProjectilePrefab, position, Quaternion.identity);
-
-        SlashProjectile sp = slash.GetComponent<SlashProjectile>();
-        if (sp != null)
-        {
-            sp.Initialize(velocity, GetComponents<Collider2D>());
-        }
-        else
-        {
-            Rigidbody2D slashRb = slash.GetComponent<Rigidbody2D>();
-            if (slashRb != null) slashRb.linearVelocity = velocity;
-        }
-    }
-
     private void DisableAllHitboxes()
     {
         if (staffMeleeHitbox != null) staffMeleeHitbox.Deactivate();
+        if (largeSlashHitbox != null) largeSlashHitbox.Deactivate();
     }
 
     private void OnDrawGizmosSelected()

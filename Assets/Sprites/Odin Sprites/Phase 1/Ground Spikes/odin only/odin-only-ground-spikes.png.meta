@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 112
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,177 +121,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: empt1
-      rect:
-        serializedVersion: 2
-        x: 73
-        y: 784
-        width: 24
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cc3defa116b24d3c0800000000000000
-      internalID: -4335792845186214964
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: odin-only-gs1
+      name: odin-only-ground-spikes_0
       rect:
         serializedVersion: 2
         x: 195
-        y: 656
-        width: 669
-        height: 322
+        y: 763
+        width: 22
+        height: 18
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 31bf7c02f1362a320800000000000000
-      internalID: 2567723722899716883
+      spriteID: a2bc1cc05dcaca5438c57a395b940bd3
+      internalID: 1644033117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: odin-only-gs2
+      name: odin-only-ground-spikes_1
       rect:
         serializedVersion: 2
-        x: 31
-        y: 367
-        width: 301
-        height: 280
-      alignment: 9
-      pivot: {x: 0.6687736, y: 0.4529625}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8a9171612a8804110800000000000000
-      internalID: 1243143726890949032
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empt2
-      rect:
-        serializedVersion: 2
-        x: 58
-        y: 687
-        width: 25
-        height: 48
+        x: 196
+        y: 642
+        width: 667
+        height: 335
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 55cfe7bee4ec23620800000000000000
-      internalID: 2752489160630533205
+      spriteID: 95878c9ead7fe264291f139bbd0e8ea4
+      internalID: 1695343382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: odin-only-gs3
+      name: odin-only-ground-spikes_2
       rect:
         serializedVersion: 2
-        x: 24
-        y: 34
-        width: 319
-        height: 311
-      alignment: 9
-      pivot: {x: 0.6946393, y: 0.40320203}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3444d6e4762975e10800000000000000
-      internalID: 2186377116506735683
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empt3
-      rect:
-        serializedVersion: 2
-        x: 500
-        y: 315
-        width: 25
-        height: 48
+        x: 32
+        y: 368
+        width: 299
+        height: 271
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3460681e5c78d6740800000000000000
-      internalID: 5146919233116309059
+      spriteID: 47ce916b6110a874b82e28aa5a1bef42
+      internalID: 1123041256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empt4
+      name: odin-only-ground-spikes_3
       rect:
         serializedVersion: 2
-        x: 497
-        y: 258
-        width: 28
-        height: 49
+        x: 94
+        y: 599
+        width: 23
+        height: 46
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fbfb95bd2dd122e60800000000000000
-      internalID: 7935938284840665023
+      spriteID: c5a859aede8fffe4fbda5be5218b3ee4
+      internalID: -1549957672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empt5
+      name: odin-only-ground-spikes_4
       rect:
         serializedVersion: 2
-        x: 520
-        y: 167
-        width: 28
-        height: 55
+        x: 25
+        y: 35
+        width: 250
+        height: 284
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7c31ac6c108eb75a0800000000000000
-      internalID: -6522364540988288057
+      spriteID: cd8409ae128b25a4aa93405b8924d617
+      internalID: 1225737663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-only-ground-spikes_5
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 297
+        width: 23
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94aefbe3f3f94aa4fad339e52f9ae216
+      internalID: 514853435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-only-ground-spikes_6
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 225
+        width: 26
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09c878e45f393414e9aacbb9c05c62f0
+      internalID: -1670674177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-only-ground-spikes_7
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 164
+        width: 26
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5912aa1ceee16aa4e870605058f9e1a2
+      internalID: -659384868
       vertices: []
       indices: 
       edges: []
@@ -310,14 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      empt1: -4335792845186214964
-      empt2: 2752489160630533205
-      empt3: 5146919233116309059
-      empt4: 7935938284840665023
-      empt5: -6522364540988288057
-      odin-only-gs1: 2567723722899716883
-      odin-only-gs2: 1243143726890949032
-      odin-only-gs3: 2186377116506735683
+      odin-only-ground-spikes_0: 1644033117
+      odin-only-ground-spikes_1: 1695343382
+      odin-only-ground-spikes_2: 1123041256
+      odin-only-ground-spikes_3: -1549957672
+      odin-only-ground-spikes_4: 1225737663
+      odin-only-ground-spikes_5: 514853435
+      odin-only-ground-spikes_6: -1670674177
+      odin-only-ground-spikes_7: -659384868
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

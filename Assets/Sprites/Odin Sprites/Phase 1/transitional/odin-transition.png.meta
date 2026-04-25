@@ -76,7 +76,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -90,7 +90,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 87
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,7 +114,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,309 +139,309 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: empty7
+      name: odin-transition_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 720
-        width: 23
-        height: 44
-      alignment: 9
-      pivot: {x: -0.4555595, y: 0.30788767}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9abad8fa237201d70800000000000000
-      internalID: 9011745953015507881
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1
-      rect:
-        serializedVersion: 2
-        x: 19
-        y: 728
-        width: 218
-        height: 269
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 636862b15c26c0410800000000000000
-      internalID: 1444638179182675510
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty6
-      rect:
-        serializedVersion: 2
-        x: 382
-        y: 631
-        width: 23
-        height: 45
+        x: 22
+        y: 865
+        width: 21
+        height: 42
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b253e0af5f14ca9b0800000000000000
-      internalID: -5067602955980622549
+      spriteID: 870f06e26660b624ba923cb6cf4abb75
+      internalID: -556237035
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2
+      name: odin-transition_1
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 729
+        width: 214
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1d62d12c2213fb46ba0ca29c8fd1bc8
+      internalID: 1420281480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-transition_2
       rect:
         serializedVersion: 2
         x: 271
-        y: 728
-        width: 226
-        height: 275
-      alignment: 9
-      pivot: {x: -0.014960635, y: 0.97541016}
+        y: 865
+        width: 21
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 92f151aa9fd87de20800000000000000
-      internalID: 3375322549177360169
+      spriteID: 1f7006d0b6f66544ebdba58ba7f60c24
+      internalID: 2002654362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 3
+      name: odin-transition_3
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 729
+        width: 232
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb0f6633bccd703469a19a6713fb0339
+      internalID: 864807867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-transition_4
       rect:
         serializedVersion: 2
         x: 502
-        y: 727
+        y: 728
         width: 233
-        height: 270
-      alignment: 9
-      pivot: {x: 0.05079068, y: 0.9937391}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 63f634473b531f9e0800000000000000
-      internalID: -1589430148619079882
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 4
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 390
-        width: 265
-        height: 294
-      alignment: 9
-      pivot: {x: 0.08293538, y: 0.9079949}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b2e01cac3a32076c0800000000000000
-      internalID: -4147776070419935701
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty5
-      rect:
-        serializedVersion: 2
-        x: 403
-        y: 589
-        width: 26
-        height: 45
+        height: 268
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f6d27b8fcda387280800000000000000
-      internalID: -9045415130833670801
+      spriteID: 42bb572cb2a6d4340bc26a3e3e3d07fc
+      internalID: -424943996
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 5
+      name: odin-transition_5
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 391
+        width: 263
+        height: 292
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2fd213085185d147ba50be5aea8c0e1
+      internalID: 509846118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-transition_6
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 605
+        width: 24
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4c83acf5bb22654495ac1b5235db731
+      internalID: 1490702442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-transition_7
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 392
+        width: 244
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e4924ce81635ad40b7c05a0b127b968
+      internalID: -1459728453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-transition_8
       rect:
         serializedVersion: 2
         x: 438
-        y: 391
-        width: 245
-        height: 276
-      alignment: 9
-      pivot: {x: 0.0069007096, y: 0.96324843}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8025c48375d36bba0800000000000000
-      internalID: -6073599602646560248
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty3
-      rect:
-        serializedVersion: 2
-        x: 391
-        y: 525
-        width: 25
-        height: 48
+        y: 522
+        width: 23
+        height: 46
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 56c86e1c22653ecb0800000000000000
-      internalID: -4835926867583792027
+      spriteID: 10e3678b9d41da84aaacebf96bbad7dc
+      internalID: 910656416
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empty4
+      name: odin-transition_9
       rect:
         serializedVersion: 2
-        x: 702
-        y: 518
-        width: 33
-        height: 47
+        x: 647
+        y: 512
+        width: 31
+        height: 45
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 19c0d82c37739f380800000000000000
-      internalID: -8937051015215248239
+      spriteID: 8d726453bf6ea2d4aacba6e57a693aab
+      internalID: -1874614898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: empty1
+      name: odin-transition_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 208
-        width: 30
-        height: 56
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3c517baa9f43edc60800000000000000
-      internalID: 7844765847841609155
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dont use1
-      rect:
-        serializedVersion: 2
-        x: 56
-        y: 352
-        width: 74
-        height: 15
-      alignment: 9
-      pivot: {x: 0.064796716, y: 0.7696862}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c09bca7f2c0209530800000000000000
-      internalID: 3859620902407551244
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: empty
-      rect:
-        serializedVersion: 2
-        x: 379
+        x: 58
         y: 213
-        width: 30
-        height: 55
+        width: 28
+        height: 54
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 61d6285f59fae6550800000000000000
-      internalID: 6156050799266000150
+      spriteID: d3059f4535de0084a8c4b5607d3263bd
+      internalID: 701059583
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dontuse2
+      name: odin-transition_11
       rect:
         serializedVersion: 2
-        x: 442
-        y: 362
-        width: 143
-        height: 12
-      alignment: 1
-      pivot: {x: 0, y: 1}
+        x: 55
+        y: 31
+        width: 287
+        height: 343
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4d4db2355745f31c0800000000000000
-      internalID: -4521802637973400364
+      spriteID: 12e21196073f922478ce4d3c0192c282
+      internalID: 1736332726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-transition_12
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 214
+        width: 28
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ecae17cc351a0440b0164e4767165ae
+      internalID: 451719560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: odin-transition_13
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 33
+        width: 270
+        height: 340
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59541fd5eefb5624095ac2844b7ff549
+      internalID: -1805754189
       vertices: []
       indices: 
       edges: []
@@ -460,20 +460,20 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1: 1444638179182675510
-      2: 3375322549177360169
-      3: -1589430148619079882
-      4: -4147776070419935701
-      5: -6073599602646560248
-      dont use1: 3859620902407551244
-      dontuse2: -4521802637973400364
-      empty: 6156050799266000150
-      empty1: 7844765847841609155
-      empty3: -4835926867583792027
-      empty4: -8937051015215248239
-      empty5: -9045415130833670801
-      empty6: -5067602955980622549
-      empty7: 9011745953015507881
+      odin-transition_0: -556237035
+      odin-transition_1: 1420281480
+      odin-transition_10: 701059583
+      odin-transition_11: 1736332726
+      odin-transition_12: 451719560
+      odin-transition_13: -1805754189
+      odin-transition_2: 2002654362
+      odin-transition_3: 864807867
+      odin-transition_4: -424943996
+      odin-transition_5: 509846118
+      odin-transition_6: 1490702442
+      odin-transition_7: -1459728453
+      odin-transition_8: 910656416
+      odin-transition_9: -1874614898
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
