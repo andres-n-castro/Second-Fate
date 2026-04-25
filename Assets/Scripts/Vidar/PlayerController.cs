@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     // Events for AI perception to track player actions
     public static event Action OnPlayerDashed;
     public static event Action OnPlayerAttacked;
+    public static event Action OnPlayerJumped;
     public GameObject playerHud;
     private Rigidbody2D rb;
     private Animator anim;
@@ -184,6 +185,11 @@ public class PlayerController : MonoBehaviour
     public void NotifyDashTriggered()
     {
         OnPlayerDashed?.Invoke();
+    }
+
+    public void NotifyJumpTriggered()
+    {
+        OnPlayerJumped?.Invoke();
     }
 
     private void HandlePlayerDeath()
