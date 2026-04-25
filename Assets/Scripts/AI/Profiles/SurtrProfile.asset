@@ -22,6 +22,8 @@ MonoBehaviour:
   attackRange: 3
   groundCheckDistance: 1.2
   wallCheckDistance: 0.6
+  ledgeCheckAheadOffset: 0.5
+  ledgeCheckBehindOffset: 0.5
   losEyeOffsetY: 1
   losCastRadius: 0.1
   requireLOSForAggro: 1
@@ -36,7 +38,7 @@ MonoBehaviour:
     damage: 1
     knockbackForce: 8
     windupDuration: 0.083
-    activeDuration: 0.250
+    activeDuration: 0.25
     recoveryDuration: 0.6
     cooldown: 2
     dashSpeed: 0
@@ -59,7 +61,7 @@ MonoBehaviour:
   - attackName: FireBreath
     damage: 1
     knockbackForce: 4
-    windupDuration: 0.250
+    windupDuration: 0.25
     activeDuration: 0.583
     recoveryDuration: 0.6
     cooldown: 3
@@ -73,7 +75,7 @@ MonoBehaviour:
     knockbackForce: 10
     windupDuration: 0.167
     activeDuration: 0.167
-    recoveryDuration: 0.250
+    recoveryDuration: 0.25
     cooldown: 3
     dashSpeed: 12
     dashDuration: 0
@@ -83,7 +85,7 @@ MonoBehaviour:
   - attackName: LavaVomit
     damage: 1
     knockbackForce: 6
-    windupDuration: 0.250
+    windupDuration: 0.25
     activeDuration: 0.417
     recoveryDuration: 0.8
     cooldown: 2.5
@@ -171,7 +173,7 @@ MonoBehaviour:
   tyrFlurryWeightMultiplier: 3
   surtrCloseRange: 2.5
   surtrMidRange: 5
-  surtrMaxEngageRange: 7
+  surtrMaxEngageRange: 20
   surtrSweepMaxRange: 5
   surtrSweepMinRange: 1.5
   surtrSweepWeightMultiplier: 2

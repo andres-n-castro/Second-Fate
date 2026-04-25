@@ -141,6 +141,7 @@ public class FallingDeadState : EnemyState
         owner.Ctx.isDead = true;
         owner.RestoreDrag();
         owner.StopHorizontal();
+        owner.SetLayerRecursively(0);
 
         if (owner.Anim != null)
         {
@@ -177,6 +178,7 @@ public class GroundDeadState : EnemyState
         owner.RestoreDrag();
         owner.StopAll();
         owner.Rb.gravityScale = 0f;
+        owner.SetLayerRecursively(0);
 
         if (owner.Anim != null)
         {
@@ -220,6 +222,7 @@ public class AirDeadState : EnemyState
         owner.RestoreDrag();
         owner.StopAll();
         owner.Rb.gravityScale = 1f;
+        owner.SetLayerRecursively(0);
 
         if (owner.Anim != null)
         {

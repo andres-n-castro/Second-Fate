@@ -45,6 +45,7 @@ public abstract class EnemyBase : MonoBehaviour
     public virtual string AnimAttack => "Attack";
     public virtual string AnimHitstun => "Hitstun";
     public virtual string AnimDeath => "Die";
+    protected virtual bool DisableOwnCollidersOnDeath => true;
 
     // Attack cooldowns
     private float[] attackCooldownTimers;
@@ -255,6 +256,26 @@ public abstract class EnemyBase : MonoBehaviour
         Rb.linearDamping = defaultDrag;
     }
 
+    public void SetLayerRecursively(int layer)
+    {
+        gameObject.layer = layer;
+
+        foreach (Transform child in transform)
+        {
+            SetLayerRecursively(child, layer);
+        }
+    }
+
+    private void SetLayerRecursively(Transform target, int layer)
+    {
+        target.gameObject.layer = layer;
+
+        foreach (Transform child in target)
+        {
+            SetLayerRecursively(child, layer);
+        }
+    }
+
     // ---------------------------------------------------------------
     //  Attack Cooldowns
     // ---------------------------------------------------------------
@@ -403,9 +424,12 @@ public abstract class EnemyBase : MonoBehaviour
 
         if (Anim != null) Anim.SetTrigger(AnimDeath);
 
-        foreach (Collider2D col in GetComponents<Collider2D>())
+        if (DisableOwnCollidersOnDeath)
         {
-            col.enabled = false;
+            foreach (Collider2D col in GetComponents<Collider2D>())
+            {
+                col.enabled = false;
+            }
         }
 
         if (coinPrefab != null)

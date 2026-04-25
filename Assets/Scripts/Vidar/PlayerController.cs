@@ -189,6 +189,11 @@ public class PlayerController : MonoBehaviour
 
     public void NotifyJumpTriggered()
     {
+        if (playerAttack != null)
+        {
+            playerAttack.DeactivateAllHitboxes();
+        }
+
         OnPlayerJumped?.Invoke();
     }
 

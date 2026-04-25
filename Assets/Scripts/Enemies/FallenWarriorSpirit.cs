@@ -18,6 +18,7 @@ public class FallenWarriorSpirit : EnemyBase
 {
     [Header("FWS References")]
     [SerializeField] private AttackHitbox dashHitbox;
+    protected override bool DisableOwnCollidersOnDeath => false;
 
     // Outer FSM superstates
     public NonCombatSuperState NonCombatSuper { get; private set; }

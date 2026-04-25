@@ -106,6 +106,7 @@ public class BossDeadState : EnemyState
         owner.Ctx.isDead = true;
         owner.RestoreDrag();
         owner.StopAll();
+        owner.SetLayerRecursively(0);
 
         disableHitboxes?.Invoke();
 

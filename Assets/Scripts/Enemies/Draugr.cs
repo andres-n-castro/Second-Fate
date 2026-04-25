@@ -27,6 +27,7 @@ public class Draugr : EnemyBase
 {
     [Header("Combat")]
     [SerializeField] private AttackHitbox meleeHitbox;
+    protected override bool DisableOwnCollidersOnDeath => false;
 
     // Outer FSM superstates
     public NonCombatSuperState NonCombatSuper { get; private set; }
