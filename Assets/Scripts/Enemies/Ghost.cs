@@ -38,6 +38,7 @@ public class GhostDeadState : EnemyState
         owner.Ctx.isDead = true;
         owner.RestoreDrag();
         owner.StopAll();
+        owner.SetLayerRecursively(0);
 
         if (owner.Anim != null)
         {

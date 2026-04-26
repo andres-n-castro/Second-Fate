@@ -26,6 +26,9 @@ using UnityEngine;
 /// </summary>
 public class ValkyrieBoss : EnemyBase
 {
+    public override bool IsBoss => true;
+    public override string BossDisplayName => "Valkyrie";
+
     [Header("Hitbox References")]
     [SerializeField] private AttackHitbox slashHitbox;
     [SerializeField] private AttackHitbox flurryHitbox;

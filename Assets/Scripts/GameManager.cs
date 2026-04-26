@@ -41,6 +41,12 @@ public class GameManager : MonoBehaviour
         CreatureBlood
     }
 
+    public enum FinalBossType
+    {
+        Odin,
+        Heimdall
+    }
+
     public static GameManager Instance;
     public static event Action<GameState> OnStateChanged;
     public static event Action OnDashUnlocked;
@@ -58,6 +64,10 @@ public class GameManager : MonoBehaviour
     [Header("Fast Travel Registry")]
     public List<BonfireLocation> masterBonfireList = new List<BonfireLocation>();
     public string pendingTeleportBonfireID = "";
+
+    // Used for checkpoint respawn (tutorial scene) across a scene reload.
+    private bool hasPendingCheckpointRespawn;
+    private Vector2 pendingCheckpointPosition;
 
     public List<BonfireTravelData> masterBonfireRegistry;
     public List<string> unlockedBonfires = new List<string>();
@@ -168,6 +178,37 @@ public class GameManager : MonoBehaviour
     public void RetryFromCheckpoint()
     {
         Time.timeScale = 1f;
+
+        // Decide respawn target: checkpoint (tutorial scene only) or last rested bonfire.
+        PlayerRespawn respawnScript = null;
+        if (PlayerController.Instance != null)
+        {
+            respawnScript = PlayerController.Instance.GetComponent<PlayerRespawn>();
+        }
+
+        bool useCheckpoint = respawnScript != null
+            && respawnScript.useCheckpointRespawn
+            && respawnScript.currentCheckpoint != null;
+
+        if (useCheckpoint)
+        {
+            hasPendingCheckpointRespawn = true;
+            pendingCheckpointPosition = respawnScript.currentCheckpoint.position;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            ChangeState(GameState.Exploration);
+            return;
+        }
+
+        if (!string.IsNullOrEmpty(lastRestedBonfireID))
+        {
+            // FastTravelTo handles scene loading (including reloading the current scene)
+            // and positions the player at the bonfire via OnSceneLoaded.
+            FastTravelTo(lastRestedBonfireID);
+            ChangeState(GameState.Exploration);
+            return;
+        }
+
+        // Fallback: just reload the current scene.
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         ChangeState(GameState.Exploration);
     }
@@ -179,7 +220,17 @@ public class GameManager : MonoBehaviour
 
         yield return StartCoroutine(UIManager.Instance.FadeToBlack(1f));
 
-        PlayerController.Instance.transform.position = currentRespawnPoint;
+        // Pick respawn position: checkpoint (first scene only) or last rested bonfire.
+        Vector2 respawnPos = currentRespawnPoint;
+        PlayerRespawn respawnScript = PlayerController.Instance.GetComponent<PlayerRespawn>();
+        if (respawnScript != null
+            && respawnScript.useCheckpointRespawn
+            && respawnScript.currentCheckpoint != null)
+        {
+            respawnPos = respawnScript.currentCheckpoint.position;
+        }
+
+        PlayerController.Instance.transform.position = respawnPos;
         PlayerManager.Instance.playerStats.currentHealth = PlayerManager.Instance.playerStats.maxHealth;
         PlayerManager.Instance.playerStats.SyncHealthForSaving(PlayerManager.Instance.playerStats.maxHealth, PlayerManager.Instance.playerStats.maxHealth);
 
@@ -218,6 +269,33 @@ public class GameManager : MonoBehaviour
         }
 
         return GetBonfireAlignment(lastInteractedBonfireID);
+    }
+
+    public FinalBossType DetermineFinalBoss()
+    {
+        int essenceCount = 0;
+        int bloodCount = 0;
+
+        foreach (AlignmentType alignment in imbuedBonfires.Values)
+        {
+            if (alignment == AlignmentType.TreeEssence)
+            {
+                essenceCount++;
+            }
+            else if (alignment == AlignmentType.CreatureBlood)
+            {
+                bloodCount++;
+            }
+        }
+
+        if (essenceCount >= bloodCount)
+        {
+            Debug.Log("Final Boss Decided: Odin (Tree Essence path)");
+            return FinalBossType.Odin;
+        }
+
+        Debug.Log("Final Boss Decided: Heimdall (Creature Blood path)");
+        return FinalBossType.Heimdall;
     }
 
     public void UnlockBonfire(string bonfireID)
@@ -278,6 +356,16 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (hasPendingCheckpointRespawn)
+        {
+            if (PlayerManager.Instance != null)
+            {
+                PlayerManager.Instance.transform.position = pendingCheckpointPosition;
+            }
+            currentRespawnPoint = pendingCheckpointPosition;
+            hasPendingCheckpointRespawn = false;
+        }
+
         if (!string.IsNullOrEmpty(pendingTeleportBonfireID))
         {
             Bonfire[] bonfires = FindObjectsByType<Bonfire>(FindObjectsSortMode.None);

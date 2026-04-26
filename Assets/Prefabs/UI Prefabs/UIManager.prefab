@@ -47,11 +47,15 @@ MonoBehaviour:
   playerHUDCanvas: {fileID: 0}
   inventoryCanvas: {fileID: 0}
   pauseCanvas: {fileID: 0}
+  resumeButtonObject: {fileID: 0}
   bonfireCanvas: {fileID: 0}
   deathCanvas: {fileID: 0}
   deathMenuPanel: {fileID: 0}
   retryButtonObject: {fileID: 0}
+  mainMenuSceneName: main_menu_scene
   abilityUnlockPanel: {fileID: 0}
   abilityIcon: {fileID: 0}
   abilityDescriptionText: {fileID: 0}
   fadeScreenGroup: {fileID: 0}
+  notificationGroup: {fileID: 0}
+  notificationText: {fileID: 0}

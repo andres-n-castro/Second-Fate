@@ -30,6 +30,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (isAttacking && timeSinceAttack >= currentAttackCooldown)
         {
+            DeactivateAllHitboxes();
             timeSinceAttack = 0; 
             currentSwingDamage = CalculateSwingDamage();
             anim.SetFloat("AttackSpeedMultiplier", currentAnimSpeed);
@@ -94,4 +95,11 @@ public class PlayerAttack : MonoBehaviour
     // Down Attack
     public void EnableDownHitbox() => downHitbox.Activate();
     public void DisableDownHitbox() => downHitbox.Deactivate();
+
+    public void DeactivateAllHitboxes()
+    {
+        if (sideHitbox != null) sideHitbox.Deactivate();
+        if (upHitbox != null) upHitbox.Deactivate();
+        if (downHitbox != null) downHitbox.Deactivate();
+    }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class UIManager : MonoBehaviour
     [Header("Death Menu")]
     public GameObject deathMenuPanel;
     public GameObject retryButtonObject;
+
+    [Header("Scene Navigation")]
+    public string mainMenuSceneName = "main_menu_scene";
 
     public GameObject abilityUnlockPanel;
     public Image abilityIcon;
@@ -288,5 +292,27 @@ public class UIManager : MonoBehaviour
         {
             deathMenuPanel.SetActive(false);
         }
+    }
+
+    public void OnReturnToMainMenuClicked()
+    {
+        Time.timeScale = 1f;
+
+        if (pauseCanvas != null)
+        {
+            pauseCanvas.SetActive(false);
+        }
+
+        if (deathMenuPanel != null)
+        {
+            deathMenuPanel.SetActive(false);
+        }
+
+        if (deathCanvas != null)
+        {
+            deathCanvas.SetActive(false);
+        }
+
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 }

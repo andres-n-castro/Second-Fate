@@ -217,9 +217,11 @@ GameObject:
   - component: {fileID: 6032026495228990185}
   - component: {fileID: -8272445519639693222}
   - component: {fileID: 8373966071862457301}
-  - component: {fileID: 5018943049880396234}
   - component: {fileID: 6747101455839077299}
   - component: {fileID: 406233132003989414}
+  - component: {fileID: 2746560030634156472}
+  - component: {fileID: 362026227949850068}
+  - component: {fileID: 6591952116699693463}
   m_Layer: 6
   m_Name: Vidar
   m_TagString: Player
@@ -419,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d728c957470c65e4abea17893eeaa51f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxSource: {fileID: 5018943049880396234}
+  sfxSource: {fileID: 6591952116699693463}
   swordSwingSound: {fileID: 8300000, guid: ae440a880cd081b4ab2d101f3fbd17cd, type: 3}
   pogoBounceForce: 30
   deathAnimationLength: 1
@@ -556,9 +558,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fb15f6069c28814492836ab1a2d2175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useCheckpointRespawn: 0
   currentCheckpoint: {fileID: 0}
   fadeDelay: 0.2
---- !u!82 &5018943049880396234
+  hazardDamagePerTick: 1
+  hazardTickInterval: 1
+--- !u!114 &6747101455839077299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348176465958162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 405bfd8011cf3f0459605931c25ed5e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaxCharms: 1
+  unlockedCharms: []
+  equippedCharms: []
+--- !u!114 &406233132003989414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348176465958162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b425cdc497f4d694caf6e2e90de5971e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2746560030634156472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348176465958162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 087e693e4688d484aa2ac27066158a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &362026227949850068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069348176465958162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa067d0d3e480e44aba1743bc41e696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 6591952116699693463}
+  damageSounds:
+  - {fileID: 8300000, guid: ed6f9372f7546274d96a9042a7c000f7, type: 3}
+  - {fileID: 8300000, guid: 6e9e937c85133ce4a92edbc1f943b84a, type: 3}
+  damageVolume: 1
+  damageMinPitch: 0.9
+  damageMaxPitch: 1.1
+  deathSounds:
+  - {fileID: 8300000, guid: 5d3860ef97d08c34ab4689834a767b34, type: 3}
+  deathVolume: 1
+  jumpSounds: []
+  jumpVolume: 1
+  jumpMinPitch: 1
+  jumpMaxPitch: 1
+  dashSounds:
+  - {fileID: 8300000, guid: aada27ae8ec64c04ea46292d23f58a8b, type: 3}
+  dashVolume: 1
+  dashMinPitch: 1
+  dashMaxPitch: 1
+--- !u!82 &6591952116699693463
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -569,8 +644,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: ae440a880cd081b4ab2d101f3fbd17cd, type: 3}
-  m_PlayOnAwake: 1
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -655,37 +730,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6747101455839077299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4069348176465958162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 405bfd8011cf3f0459605931c25ed5e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultMaxCharms: 1
-  unlockedCharms:
-  - {fileID: 11400000, guid: 720459df681f13149ae85dbad33ff41f, type: 2}
-  - {fileID: 11400000, guid: 3973a50ebcf93794a9d41980e9586779, type: 2}
-  - {fileID: 11400000, guid: 90d7b28a299aab04484854d0fb9acc8d, type: 2}
-  - {fileID: 11400000, guid: 005226afbbb129749bf3339afd67a3fd, type: 2}
-  equippedCharms: []
---- !u!114 &406233132003989414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4069348176465958162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b425cdc497f4d694caf6e2e90de5971e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6323018574185074532
 GameObject:
   m_ObjectHideFlags: 0

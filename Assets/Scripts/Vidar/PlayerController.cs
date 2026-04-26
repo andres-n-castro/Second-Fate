@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     // Events for AI perception to track player actions
     public static event Action OnPlayerDashed;
     public static event Action OnPlayerAttacked;
+    public static event Action OnPlayerJumped;
     public GameObject playerHud;
     private Rigidbody2D rb;
     private Animator anim;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private PlayerStates playerStates;
     public SpriteRenderer spriteRenderer;
     private bool isHitStopping = false;
+    private bool isExternallyFrozen = false;
     private float xAxis, yAxis;
 
     [SerializeField] public float timeScale = 1f;
@@ -99,7 +101,7 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.currentState == GameManager.GameState.BossFight ||
             GameManager.Instance.currentState == GameManager.GameState.Respawning)
         {
-            Time.timeScale = timeScale;
+            Time.timeScale = isExternallyFrozen ? 0f : timeScale;
         }
     }
 
@@ -124,8 +126,8 @@ public class PlayerController : MonoBehaviour
     private void GetInputs()
     {
         bool canControlCharacter = GameManager.Instance == null ||
-            GameManager.Instance.currentState == GameManager.GameState.Exploration ||
-            GameManager.Instance.currentState == GameManager.GameState.BossFight;
+            ((GameManager.Instance.currentState == GameManager.GameState.Exploration ||
+            GameManager.Instance.currentState == GameManager.GameState.BossFight) && !isExternallyFrozen);
 
         if (canControlCharacter)
         {
@@ -183,6 +185,16 @@ public class PlayerController : MonoBehaviour
     public void NotifyDashTriggered()
     {
         OnPlayerDashed?.Invoke();
+    }
+
+    public void NotifyJumpTriggered()
+    {
+        if (playerAttack != null)
+        {
+            playerAttack.DeactivateAllHitboxes();
+        }
+
+        OnPlayerJumped?.Invoke();
     }
 
     private void HandlePlayerDeath()
@@ -261,6 +273,7 @@ public class PlayerController : MonoBehaviour
     // Call this from anywhere to freeze the game
     public void TriggerHitStop(float duration)
     {
+        if (isExternallyFrozen) return;
         if (isHitStopping) return; // Prevents overlapping hitstops from breaking the timer
         StartCoroutine(HitStopRoutine(duration));
     }
@@ -272,8 +285,27 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(duration); // Wait in real-world milliseconds
 
-        timeScale = 1f; // Unfreeze
+        if (!isExternallyFrozen)
+        {
+            timeScale = 1f; // Unfreeze
+        }
         isHitStopping = false;
+    }
+
+    public void SetExternalFreeze(bool frozen)
+    {
+        isExternallyFrozen = frozen;
+
+        if (frozen)
+        {
+            timeScale = 0f;
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            timeScale = 1f;
+            Time.timeScale = 1f;
+        }
     }
 
     public void PlaySwingSound()

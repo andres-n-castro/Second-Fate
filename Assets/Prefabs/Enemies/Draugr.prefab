@@ -144,6 +144,8 @@ GameObject:
   - component: {fileID: 8225500277300325547}
   - component: {fileID: 4390957367813160247}
   - component: {fileID: 8090253633899776455}
+  - component: {fileID: 5433837121233693303}
+  - component: {fileID: 7755789030080008233}
   m_Layer: 7
   m_Name: Draugr
   m_TagString: Untagged
@@ -327,6 +329,7 @@ MonoBehaviour:
   profile: {fileID: 11400000, guid: c8e942ee487de6e4eb51ef63bf44832a, type: 2}
   baseCurrencyDrop: 10
   coinPrefab: {fileID: 3793789415224784273, guid: 57c1c479742e7a84097a97d62615b3b6, type: 3}
+  deathDescriptionText: A Great Foe Has Fallen.
   groundCheck: {fileID: 5382814415021426512}
   wallCheck: {fileID: 2950593330845929865}
   groundLayer:
@@ -358,6 +361,134 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &5433837121233693303
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8564081621458512004}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &7755789030080008233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8564081621458512004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf3a61f3aa32c64db4164a45e15dd05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 5433837121233693303}
+  idleSounds:
+  - {fileID: 8300000, guid: 6b316f8e858c4bd4d8c2a666b7bd170d, type: 3}
+  growlMinPitch: 0.6
+  growlMaxPitch: 0.9
+  growlMinVolume: 0.4
+  growlMaxVolume: 1
+  damageSounds:
+  - {fileID: 8300000, guid: e265380206b403f4f94e1ff44c2f9ce7, type: 3}
+  damageVolume: 1
+  damageMinPitch: 0.95
+  damageMaxPitch: 1.05
+  deathSounds:
+  - {fileID: 8300000, guid: 6ce9f3e0b1a7c674bab891681d21ad3c, type: 3}
+  deathVolume: 1
+  player: {fileID: 0}
+  detectionRange: 6
+  minDelay: 2
+  maxDelay: 5
 --- !u!1 &8658429991674896866
 GameObject:
   m_ObjectHideFlags: 0

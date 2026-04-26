@@ -4,6 +4,7 @@ public sealed class MapController : MonoBehaviour
 {
     [SerializeField] private GameObject mapOverlay; // Drag your UI Raw Image here
     [SerializeField] private KeyCode mapKey = KeyCode.M;
+    [SerializeField] private KeyCode controllerMapButton = KeyCode.JoystickButton13;
 
     void Start()
     {
@@ -13,8 +14,10 @@ public sealed class MapController : MonoBehaviour
 
     void Update()
     {
-        // Detects if the key is being held down
-        if (Input.GetKey(mapKey))
+        if (mapOverlay == null) return;
+
+        // Hold keyboard M or the PlayStation touchpad click to show the minimap.
+        if (Input.GetKey(mapKey) || Input.GetKey(controllerMapButton))
         {
             mapOverlay.SetActive(true);
         }

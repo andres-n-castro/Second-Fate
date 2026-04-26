@@ -157,6 +157,11 @@ public class PlayerMovement : MonoBehaviour
                 jumpTimeCounter = 0;
                 coyoteTimeCounter = 0;
                 anim.SetTrigger("JumpTrigger");
+
+                if (PlayerController.Instance != null)
+                {
+                    PlayerController.Instance.NotifyJumpTriggered();
+                }
             }
         }
 
@@ -175,6 +180,11 @@ public class PlayerMovement : MonoBehaviour
             canDoubleJump = false;
             jumpTimeCounter = 0f;
             anim.SetTrigger("JumpTrigger");
+
+            if (PlayerController.Instance != null)
+            {
+                PlayerController.Instance.NotifyJumpTriggered();
+            }
         }
 
         if (isJumping && Mathf.Abs(rb.linearVelocity.y) < jumpHangThreshold)
