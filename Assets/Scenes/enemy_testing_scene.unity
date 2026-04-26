@@ -613,6 +613,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1016885133019610540, guid: efebabd8431d6b64eb99b75ba695b11b, type: 3}
   m_PrefabInstance: {fileID: 1074482319}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1209426595 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5872376026459286877, guid: bb7b4694cbc06204195d58dca25be225, type: 3}
+  m_PrefabInstance: {fileID: 3478751013888648161}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7b527565a29f3c44a506503fb89a50f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1348125778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,7 +1488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6530975260314521157, guid: 553ad76beb6e8bc4c919926c9db5d84f, type: 3}
       propertyPath: maxHealth
-      value: 6
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8883091108054074015, guid: 553ad76beb6e8bc4c919926c9db5d84f, type: 3}
       propertyPath: m_Name
@@ -1485,7 +1496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8883091108054074015, guid: 553ad76beb6e8bc4c919926c9db5d84f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1504,6 +1515,10 @@ PrefabInstance:
       propertyPath: shockwavePrefab
       value: 
       objectReference: {fileID: 7745170078530317973, guid: 05bdb247155d7b244bb2e1e625364ee5, type: 3}
+    - target: {fileID: 2435272307679137243, guid: bb7b4694cbc06204195d58dca25be225, type: 3}
+      propertyPath: swordBeamHitbox
+      value: 
+      objectReference: {fileID: 1209426595}
     - target: {fileID: 2876447996334251713, guid: bb7b4694cbc06204195d58dca25be225, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.03
@@ -1544,6 +1559,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4508087270295627130, guid: bb7b4694cbc06204195d58dca25be225, type: 3}
+      propertyPath: m_GravityScale
+      value: 9.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5217469495218928081, guid: bb7b4694cbc06204195d58dca25be225, type: 3}
+      propertyPath: maxHealth
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5232326584613621322, guid: bb7b4694cbc06204195d58dca25be225, type: 3}
       propertyPath: m_Size.y
       value: 2.7670245
@@ -1558,7 +1581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5742404037562111415, guid: bb7b4694cbc06204195d58dca25be225, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

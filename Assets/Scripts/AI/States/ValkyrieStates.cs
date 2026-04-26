@@ -260,8 +260,14 @@ public class ValkP1DecisionState : EnemyState
     public override void Enter()
     {
         owner.FacePlayer();
-        isStalking = false;
         pauseTimer = Random.Range(owner.Profile.minAttackCooldown, owner.Profile.maxAttackCooldown);
+
+        // Start stalking immediately if player is beyond close range
+        // so the walk animation carries over without a 1-frame idle flash
+        isStalking = owner.Ctx.playerDistance > owner.Profile.p1CloseRange
+            && !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead;
+        if (isStalking && owner.Anim != null)
+            owner.Anim.SetBool(owner.AnimWalking, true);
     }
 
     public override void FixedTick()

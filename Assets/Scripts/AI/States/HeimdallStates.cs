@@ -408,7 +408,7 @@ public class HeimdallP1ShockwaveSlashState : EnemyState
         shockwaveSpawned = false;
 
         AttackDefinition atk = heimdall.GetAttackDef("ShockwaveSlash");
-        timer = atk != null ? atk.windupDuration : 0.4f;
+        timer = atk != null ? atk.windupDuration : 0.25f;
 
         if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_ShockwaveSlash");
     }
@@ -424,7 +424,7 @@ public class HeimdallP1ShockwaveSlashState : EnemyState
                 {
                     phase = Phase.Active;
                     AttackDefinition atk = heimdall.GetAttackDef("ShockwaveSlash");
-                    timer = atk != null ? atk.activeDuration : 0.3f;
+                    timer = atk != null ? atk.activeDuration : 0.25f;
 
                     if (heimdall.ShockwaveSlashHitbox != null) heimdall.ShockwaveSlashHitbox.Activate();
 
@@ -444,7 +444,7 @@ public class HeimdallP1ShockwaveSlashState : EnemyState
 
                     phase = Phase.Recovery;
                     AttackDefinition atk = heimdall.GetAttackDef("ShockwaveSlash");
-                    timer = atk != null ? atk.recoveryDuration : 0.5f;
+                    timer = atk != null ? atk.recoveryDuration : 0.125f;
 
                     owner.StartCooldown("ShockwaveSlash");
                 }
@@ -515,7 +515,7 @@ public class HeimdallP1SwordTornadoState : EnemyState
         owner.FacePlayer();
 
         AttackDefinition atk = heimdall.GetAttackDef("SwordTornado");
-        timer = atk != null ? atk.windupDuration : 0.3f;
+        timer = atk != null ? atk.windupDuration : 0.083f;
 
         if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_SwordTornado");
     }
@@ -531,7 +531,7 @@ public class HeimdallP1SwordTornadoState : EnemyState
                 {
                     phase = Phase.Active;
                     AttackDefinition atk = heimdall.GetAttackDef("SwordTornado");
-                    timer = atk != null ? atk.activeDuration : 0.8f;
+                    timer = atk != null ? atk.activeDuration : 0.417f;
                     hitsRemaining = atk != null ? atk.hitCount : 4;
                     hitIntervalTimer = 0f;
 
@@ -560,7 +560,7 @@ public class HeimdallP1SwordTornadoState : EnemyState
 
                     phase = Phase.Recovery;
                     AttackDefinition atk = heimdall.GetAttackDef("SwordTornado");
-                    timer = atk != null ? atk.recoveryDuration : 0.5f;
+                    timer = atk != null ? atk.recoveryDuration : 0.083f;
 
                     owner.StartCooldown("SwordTornado");
                 }
@@ -591,8 +591,9 @@ public class HeimdallP1SwordTornadoState : EnemyState
 }
 
 // ---------------------------------------------------------------
-//  P1 Sword Beam — Concentrated beam projectile from sword swing.
-//  Windup → Active (spawn beam projectile) → Recovery.
+//  P1 Sword Beam — Concentrated beam attack using hitbox.
+//  Windup → Active (hitbox active) → Recovery.
+//  The animation resizes the SwordBeamHitbox collider to match the beam visual.
 // ---------------------------------------------------------------
 public class HeimdallP1SwordBeamState : EnemyState
 {
@@ -602,7 +603,6 @@ public class HeimdallP1SwordBeamState : EnemyState
     private HeimdallP1Super p1;
     private Phase phase;
     private float timer;
-    private bool beamSpawned;
 
     public HeimdallP1SwordBeamState(HeimdallBoss heimdall, HeimdallP1Super p1) : base(heimdall)
     {
@@ -616,10 +616,9 @@ public class HeimdallP1SwordBeamState : EnemyState
         phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
-        beamSpawned = false;
 
         AttackDefinition atk = heimdall.GetAttackDef("SwordBeam");
-        timer = atk != null ? atk.windupDuration : 0.5f;
+        timer = atk != null ? atk.windupDuration : 0.1f;
 
         if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_SwordBeam");
     }
@@ -635,22 +634,20 @@ public class HeimdallP1SwordBeamState : EnemyState
                 {
                     phase = Phase.Active;
                     AttackDefinition atk = heimdall.GetAttackDef("SwordBeam");
-                    timer = atk != null ? atk.activeDuration : 0.2f;
+                    timer = atk != null ? atk.activeDuration : 0.3f;
 
-                    if (!beamSpawned)
-                    {
-                        beamSpawned = true;
-                        SpawnBeam();
-                    }
+                    if (heimdall.SwordBeamHitbox != null) heimdall.SwordBeamHitbox.Activate();
                 }
                 break;
 
             case Phase.Active:
                 if (timer <= 0f)
                 {
+                    if (heimdall.SwordBeamHitbox != null) heimdall.SwordBeamHitbox.Deactivate();
+
                     phase = Phase.Recovery;
                     AttackDefinition atk = heimdall.GetAttackDef("SwordBeam");
-                    timer = atk != null ? atk.recoveryDuration : 0.5f;
+                    timer = atk != null ? atk.recoveryDuration : 0.1f;
 
                     owner.StartCooldown("SwordBeam");
                 }
@@ -665,24 +662,9 @@ public class HeimdallP1SwordBeamState : EnemyState
         }
     }
 
-    private void SpawnBeam()
+    public override void Exit()
     {
-        EnemyProfile p = owner.Profile;
-
-        // Aim toward the player's current position
-        Vector2 targetPos = owner.Ctx.playerTransform != null
-            ? (Vector2)owner.Ctx.playerTransform.position
-            : owner.Ctx.lastSeenPlayerPos;
-
-        Vector2 spawnPos = heimdall.ProjectileSpawnPoint != null
-            ? (Vector2)heimdall.ProjectileSpawnPoint.position
-            : (Vector2)owner.transform.position + new Vector2(owner.FacingDirection * 0.5f, 0.5f);
-
-        Vector2 dir = (targetPos - spawnPos).normalized;
-        Vector2 velocity = dir * p.heimdallBeamSpeed;
-
-        AttackDefinition atk = heimdall.GetAttackDef("SwordBeam");
-        heimdall.SpawnSwordBeam(spawnPos, velocity, atk != null ? atk.damage : 1);
+        if (heimdall.SwordBeamHitbox != null) heimdall.SwordBeamHitbox.Deactivate();
     }
 
     private void ReturnToDecisionOrApproach()
@@ -814,7 +796,7 @@ public class HeimdallP2ProjectileSwordsState : EnemyState
         projectilesSpawned = false;
 
         AttackDefinition atk = heimdall.GetAttackDef("ProjectileSwords");
-        timer = atk != null ? atk.windupDuration : 0.4f;
+        timer = atk != null ? atk.windupDuration : 0.2f;
 
         if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_ProjectileSwords");
     }
@@ -830,7 +812,7 @@ public class HeimdallP2ProjectileSwordsState : EnemyState
                 {
                     phase = Phase.Active;
                     AttackDefinition atk = heimdall.GetAttackDef("ProjectileSwords");
-                    timer = atk != null ? atk.activeDuration : 0.3f;
+                    timer = atk != null ? atk.activeDuration : 0.2f;
 
                     if (!projectilesSpawned)
                     {
@@ -845,7 +827,7 @@ public class HeimdallP2ProjectileSwordsState : EnemyState
                 {
                     phase = Phase.Recovery;
                     AttackDefinition atk = heimdall.GetAttackDef("ProjectileSwords");
-                    timer = atk != null ? atk.recoveryDuration : 0.6f;
+                    timer = atk != null ? atk.recoveryDuration : 0.2f;
 
                     owner.StartCooldown("ProjectileSwords");
                 }
@@ -933,7 +915,7 @@ public class HeimdallP2SwordPlungeState : EnemyState
         hasPeaked = false;
 
         AttackDefinition atk = heimdall.GetAttackDef("SwordPlunge");
-        timer = atk != null ? atk.windupDuration : 0.4f;
+        timer = atk != null ? atk.windupDuration : 0.1f;
 
         if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_SwordPlunge");
     }
@@ -982,18 +964,10 @@ public class HeimdallP2SwordPlungeState : EnemyState
                     owner.StopAll();
 
                     AttackDefinition atk = heimdall.GetAttackDef("SwordPlunge");
-                    timer = atk != null ? atk.activeDuration : 0.3f;
+                    timer = atk != null ? atk.activeDuration : 0.2f;
 
                     // Activate plunge hitbox at landing
                     if (heimdall.SwordPlungeHitbox != null) heimdall.SwordPlungeHitbox.Activate();
-
-                    // Spawn floor impact to punish grounded players
-                    AttackDefinition plungeAtk = heimdall.GetAttackDef("SwordPlunge");
-                    heimdall.SpawnFloorImpact(
-                        (Vector2)owner.transform.position,
-                        owner.Profile.heimdallFloorImpactRadius,
-                        owner.Profile.heimdallFloorImpactDuration,
-                        plungeAtk != null ? plungeAtk.damage : 1);
                 }
                 break;
 
@@ -1004,7 +978,7 @@ public class HeimdallP2SwordPlungeState : EnemyState
 
                     phase = Phase.Recovery;
                     AttackDefinition atk = heimdall.GetAttackDef("SwordPlunge");
-                    timer = atk != null ? atk.recoveryDuration : 0.8f;
+                    timer = atk != null ? atk.recoveryDuration : 0.1f;
 
                     owner.StartCooldown("SwordPlunge");
                 }
@@ -1027,9 +1001,9 @@ public class HeimdallP2SwordPlungeState : EnemyState
 }
 
 // ---------------------------------------------------------------
-//  P2 Giant Slash — Massive slash with a large slash wave.
+//  P2 Giant Slash — Massive slash using hitbox.
 //  Stronger, broader version of Phase 1 shockwave slash.
-//  Windup → Active (hitbox + spawn giant slash wave) → Recovery.
+//  Windup → Active (hitbox active) → Recovery.
 // ---------------------------------------------------------------
 public class HeimdallP2GiantSlashState : EnemyState
 {
@@ -1039,7 +1013,6 @@ public class HeimdallP2GiantSlashState : EnemyState
     private HeimdallP2Super p2;
     private Phase phase;
     private float timer;
-    private bool slashSpawned;
 
     public HeimdallP2GiantSlashState(HeimdallBoss heimdall, HeimdallP2Super p2) : base(heimdall)
     {
@@ -1053,10 +1026,9 @@ public class HeimdallP2GiantSlashState : EnemyState
         phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
-        slashSpawned = false;
 
         AttackDefinition atk = heimdall.GetAttackDef("GiantSlash");
-        timer = atk != null ? atk.windupDuration : 0.6f;
+        timer = atk != null ? atk.windupDuration : 0.083f;
 
         if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_GiantSlash");
     }
@@ -1072,17 +1044,9 @@ public class HeimdallP2GiantSlashState : EnemyState
                 {
                     phase = Phase.Active;
                     AttackDefinition atk = heimdall.GetAttackDef("GiantSlash");
-                    timer = atk != null ? atk.activeDuration : 0.3f;
+                    timer = atk != null ? atk.activeDuration : 0.167f;
 
-                    // Activate melee hitbox at source
                     if (heimdall.GiantSlashHitbox != null) heimdall.GiantSlashHitbox.Activate();
-
-                    // Spawn giant slash wave
-                    if (!slashSpawned)
-                    {
-                        slashSpawned = true;
-                        SpawnGiantSlash();
-                    }
                 }
                 break;
 
@@ -1093,7 +1057,7 @@ public class HeimdallP2GiantSlashState : EnemyState
 
                     phase = Phase.Recovery;
                     AttackDefinition atk = heimdall.GetAttackDef("GiantSlash");
-                    timer = atk != null ? atk.recoveryDuration : 0.8f;
+                    timer = atk != null ? atk.recoveryDuration : 0.083f;
 
                     owner.StartCooldown("GiantSlash");
                 }
@@ -1111,17 +1075,5 @@ public class HeimdallP2GiantSlashState : EnemyState
     public override void Exit()
     {
         if (heimdall.GiantSlashHitbox != null) heimdall.GiantSlashHitbox.Deactivate();
-    }
-
-    private void SpawnGiantSlash()
-    {
-        EnemyProfile p = owner.Profile;
-        AttackDefinition atk = heimdall.GetAttackDef("GiantSlash");
-        int facing = owner.FacingDirection;
-        Vector2 spawnPos = (Vector2)owner.transform.position
-            + new Vector2(facing * 1f, p.heimdallGiantSlashHeight);
-        Vector2 velocity = new Vector2(facing * p.heimdallGiantSlashSpeed, 0f);
-
-        heimdall.SpawnGiantSlashWave(spawnPos, velocity, atk != null ? atk.damage : 1);
     }
 }

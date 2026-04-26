@@ -230,8 +230,14 @@ public class SurtrP1DecisionState : EnemyState
     public override void Enter()
     {
         owner.FacePlayer();
-        isStalking = false;
         pauseTimer = Random.Range(owner.Profile.minAttackCooldown, owner.Profile.maxAttackCooldown);
+
+        // Start stalking immediately if player is beyond close range
+        // so the walk animation carries over without a 1-frame idle flash
+        isStalking = owner.Ctx.playerDistance > owner.Profile.surtrCloseRange
+            && !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead;
+        if (isStalking && owner.Anim != null)
+            owner.Anim.SetBool(owner.AnimWalking, true);
     }
 
     public override void FixedTick()
@@ -674,11 +680,18 @@ public class SurtrP2IdleState : EnemyState
     public override void Enter()
     {
         p2.RequestedP2Attack = null;
-        isWalking = false;
         // Shorter delay than P1 — P2 Surtr is more aggressive
         decisionDelay = Random.Range(
             owner.Profile.surtrP2MinAttackCooldown,
             owner.Profile.surtrP2MaxAttackCooldown);
+
+        // Start stalking immediately if player is beyond close range
+        // so the walk animation carries over without a 1-frame idle flash
+        owner.FacePlayer();
+        isWalking = owner.Ctx.playerDistance > owner.Profile.surtrCloseRange
+            && !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead;
+        if (isWalking && owner.Anim != null)
+            owner.Anim.SetBool(owner.AnimWalking, true);
     }
 
     public override void FixedTick()

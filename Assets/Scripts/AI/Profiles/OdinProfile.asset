@@ -49,8 +49,8 @@ MonoBehaviour:
   - attackName: GroundSpikes
     damage: 2
     knockbackForce: 4
-    windupDuration: 0.1
-    activeDuration: 0.75
+    windupDuration: 0.4
+    activeDuration: 0.1
     recoveryDuration: 0.1
     cooldown: 5
     dashSpeed: 0
@@ -223,10 +223,11 @@ MonoBehaviour:
   odinP2MinAttackCooldown: 0.3
   odinP2MaxAttackCooldown: 0.8
   odinTripleProjectileCount: 3
-  odinTripleProjectileSpreadAngle: 30
-  odinConsecutiveSpikeWaves: 3
-  odinConsecutiveSpikeWaveDelay: 0.4
-  odinSlashProjectileSpeed: 10
+  odinTripleProjectileSpreadAngle: 0
+  odinTripleProjectileSpawnDelay: 0.4
+  odinConsecutiveSpikeWaves: 0
+  odinConsecutiveSpikeWaveDelay: 0
+  odinSlashProjectileSpeed: 5
   odinSlashProjectileHeight: 1
   odinTripleProjectileMaxRange: 8
   odinTripleProjectileMinRange: 3

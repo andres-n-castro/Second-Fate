@@ -124,9 +124,13 @@ public class OdinP2Super : HierarchicalState
                 candidates.Add((TripleProjectileState, w));
             }
 
-            // --- Consecutive Spikes: favored when player is grounded ---
+            // --- Consecutive Spikes: favored when player is grounded, requires X distance ---
+            float xDist = Mathf.Abs(owner.Ctx.playerTransform != null
+                ? owner.Ctx.playerTransform.position.x - owner.transform.position.x
+                : owner.Ctx.lastSeenPlayerPos.x - owner.transform.position.x);
             AttackDefinition conSpikes = odin.GetAttackDef("ConsecutiveSpikes");
-            if (conSpikes != null && owner.IsAttackReady("ConsecutiveSpikes"))
+            if (conSpikes != null && owner.IsAttackReady("ConsecutiveSpikes")
+                && xDist >= p.odinGroundSpikesMinXDistance)
             {
                 float w = conSpikes.selectionWeight;
                 if (dist <= p.odinConsecutiveSpikesMaxRange && owner.Ctx.isPlayerOnSamePlatform)
@@ -338,9 +342,13 @@ public class OdinP1DecisionState : EnemyState
             candidates.Add((p1.StaffProjectileState, w));
         }
 
-        // --- Ground Spikes: mid range, grounded player preferred ---
+        // --- Ground Spikes: mid range, requires X distance from boss ---
+        float xDistToPlayer = Mathf.Abs(owner.Ctx.playerTransform != null
+            ? owner.Ctx.playerTransform.position.x - owner.transform.position.x
+            : owner.Ctx.lastSeenPlayerPos.x - owner.transform.position.x);
         AttackDefinition spikesDef = odin.GetAttackDef("GroundSpikes");
-        if (spikesDef != null && owner.IsAttackReady("GroundSpikes"))
+        if (spikesDef != null && owner.IsAttackReady("GroundSpikes")
+            && xDistToPlayer >= p.odinGroundSpikesMinXDistance)
         {
             float w = spikesDef.selectionWeight;
             if (finalDist <= p.odinGroundSpikesMaxRange && owner.Ctx.isPlayerOnSamePlatform)
@@ -523,8 +531,7 @@ public class OdinP1GroundSpikesState : EnemyState
     private OdinP1Super p1;
     private Phase phase;
     private float timer;
-    private int spikesSpawned;
-    private float spikeDelayTimer;
+    private bool spikeSpawned;
 
     public OdinP1GroundSpikesState(OdinBoss odin, OdinP1Super p1) : base(odin)
     {
@@ -538,11 +545,10 @@ public class OdinP1GroundSpikesState : EnemyState
         phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
-        spikesSpawned = 0;
-        spikeDelayTimer = 0f;
+        spikeSpawned = false;
 
         AttackDefinition atk = odin.GetAttackDef("GroundSpikes");
-        timer = atk != null ? atk.windupDuration : 0.1f;
+        timer = atk != null ? atk.windupDuration : 0.4f;
 
         if (owner.Anim != null) owner.Anim.SetTrigger("Odin_GroundSpikes");
     }
@@ -558,21 +564,17 @@ public class OdinP1GroundSpikesState : EnemyState
                 {
                     phase = Phase.Active;
                     AttackDefinition atk = odin.GetAttackDef("GroundSpikes");
-                    timer = atk != null ? atk.activeDuration : 0.75f;
-                    spikeDelayTimer = 0f;
+                    timer = atk != null ? atk.activeDuration : 0.1f;
+
+                    if (!spikeSpawned)
+                    {
+                        spikeSpawned = true;
+                        SpawnSingleSpike();
+                    }
                 }
                 break;
 
             case Phase.Active:
-                spikeDelayTimer -= Time.fixedDeltaTime;
-
-                if (spikeDelayTimer <= 0f && spikesSpawned < owner.Profile.odinSpikeCount)
-                {
-                    SpawnSpikeAtIndex(spikesSpawned);
-                    spikesSpawned++;
-                    spikeDelayTimer = owner.Profile.odinSpikeDelay;
-                }
-
                 if (timer <= 0f)
                 {
                     phase = Phase.Recovery;
@@ -592,22 +594,20 @@ public class OdinP1GroundSpikesState : EnemyState
         }
     }
 
-    private void SpawnSpikeAtIndex(int index)
+    private void SpawnSingleSpike()
     {
         EnemyProfile p = owner.Profile;
 
-        // Use the player's X position only
         Vector2 playerPos = owner.Ctx.playerTransform != null
             ? (Vector2)owner.Ctx.playerTransform.position
             : owner.Ctx.lastSeenPlayerPos;
+        Vector2 odinPos = (Vector2)owner.transform.position;
 
-        float halfCount = (p.odinSpikeCount - 1) * 0.5f;
-        float offset = (index - halfCount) * p.odinSpikeSpacing;
-        float spawnX = playerPos.x + offset;
+        // Start raycast from well above either character so it always reaches the ground
+        float rayOriginY = Mathf.Max(odinPos.y, playerPos.y) + 10f;
 
-        // Raycast down to find ground — only spawn if ground is found
         RaycastHit2D groundHit = Physics2D.Raycast(
-            new Vector2(spawnX, playerPos.y + 2f), Vector2.down, 6f, owner.GroundLayer);
+            new Vector2(playerPos.x, rayOriginY), Vector2.down, 30f, owner.GroundLayer);
         if (groundHit.collider == null) return;
 
         odin.SpawnGroundSpike(groundHit.point, p.odinSpikeActiveDuration);
@@ -825,7 +825,9 @@ public class OdinP2TripleProjectileState : EnemyState
     private OdinP2Super p2;
     private Phase phase;
     private float timer;
-    private bool projectilesSpawned;
+    private int projectilesSpawned;
+    private int totalProjectiles;
+    private float spawnDelayTimer;
 
     public OdinP2TripleProjectileState(OdinBoss odin, OdinP2Super p2) : base(odin)
     {
@@ -839,7 +841,9 @@ public class OdinP2TripleProjectileState : EnemyState
         phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
-        projectilesSpawned = false;
+        projectilesSpawned = 0;
+        totalProjectiles = Mathf.Max(owner.Profile.odinTripleProjectileCount, 3);
+        spawnDelayTimer = 0f;
 
         AttackDefinition atk = odin.GetAttackDef("TripleProjectile");
         timer = atk != null ? atk.windupDuration : 0.2f;
@@ -857,19 +861,21 @@ public class OdinP2TripleProjectileState : EnemyState
                 if (timer <= 0f)
                 {
                     phase = Phase.Active;
-                    AttackDefinition atk = odin.GetAttackDef("TripleProjectile");
-                    timer = atk != null ? atk.activeDuration : 0.1f;
-
-                    if (!projectilesSpawned)
-                    {
-                        projectilesSpawned = true;
-                        SpawnTripleProjectiles();
-                    }
+                    spawnDelayTimer = 0f; // spawn first projectile immediately
                 }
                 break;
 
             case Phase.Active:
-                if (timer <= 0f)
+                spawnDelayTimer -= Time.fixedDeltaTime;
+
+                if (spawnDelayTimer <= 0f && projectilesSpawned < totalProjectiles)
+                {
+                    SpawnProjectile(projectilesSpawned);
+                    projectilesSpawned++;
+                    spawnDelayTimer = owner.Profile.odinTripleProjectileSpawnDelay;
+                }
+
+                if (projectilesSpawned >= totalProjectiles)
                 {
                     phase = Phase.Recovery;
                     AttackDefinition atk = odin.GetAttackDef("TripleProjectile");
@@ -888,42 +894,38 @@ public class OdinP2TripleProjectileState : EnemyState
         }
     }
 
-    private void SpawnTripleProjectiles()
+    private void SpawnProjectile(int index)
     {
         EnemyProfile p = owner.Profile;
-        int count = Mathf.Max(p.odinTripleProjectileCount, 3);
         float spreadAngle = p.odinTripleProjectileSpreadAngle;
         float speed = p.odinProjectileSpeed;
 
+        // Re-aim toward player's current position each time
         Vector2 targetPos = owner.Ctx.playerTransform != null
             ? (Vector2)owner.Ctx.playerTransform.position
             : owner.Ctx.lastSeenPlayerPos;
 
-        // Center direction: aim at the player (LOS), not just horizontal
         Vector2 odinPos = (Vector2)owner.transform.position;
         Vector2 toPlayer = (targetPos - odinPos).normalized;
         float centerAngle = Mathf.Atan2(toPlayer.y, toPlayer.x) * Mathf.Rad2Deg;
         float startAngle = centerAngle - spreadAngle * 0.5f;
 
-        for (int i = 0; i < count; i++)
-        {
-            float angle;
-            if (count > 1)
-                angle = startAngle + spreadAngle * ((float)i / (count - 1));
-            else
-                angle = centerAngle;
+        float angle;
+        if (totalProjectiles > 1)
+            angle = startAngle + spreadAngle * ((float)index / (totalProjectiles - 1));
+        else
+            angle = centerAngle;
 
-            float rad = angle * Mathf.Deg2Rad;
-            Vector2 fireDir = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)).normalized;
+        float rad = angle * Mathf.Deg2Rad;
+        Vector2 fireDir = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)).normalized;
 
-            odin.SpawnOdinProjectile(
-                fireDir * speed,
-                targetPos,
-                3, // 3 hearts damage
-                p.odinProjectileCurveDelay,
-                p.odinProjectileCurveStrength,
-                owner.Ctx.playerTransform);
-        }
+        odin.SpawnOdinProjectile(
+            fireDir * speed,
+            targetPos,
+            3, // 3 hearts damage
+            p.odinProjectileCurveDelay,
+            p.odinProjectileCurveStrength,
+            owner.Ctx.playerTransform);
     }
 }
 
@@ -1015,7 +1017,7 @@ public class OdinP2ConsecutiveSpikesState : EnemyState
         spikeDelayTimer -= dt;
         if (spikeDelayTimer <= 0f && spikesInCurrentWave < p.odinSpikeCount)
         {
-            SpawnSpikeForWave(wavesSpawned - 1, spikesInCurrentWave);
+            SpawnSpikeTowardPlayer(spikesInCurrentWave);
             spikesInCurrentWave++;
             spikeDelayTimer = p.odinSpikeDelay;
         }
@@ -1042,22 +1044,23 @@ public class OdinP2ConsecutiveSpikesState : EnemyState
         owner.FacePlayer();
     }
 
-    private void SpawnSpikeForWave(int waveIndex, int spikeIndex)
+    private void SpawnSpikeTowardPlayer(int spikeIndex)
     {
         EnemyProfile p = owner.Profile;
 
-        // Use the player's X position only
+        // Spikes march from Odin toward the player, one spacing apart
+        Vector2 odinPos = (Vector2)owner.transform.position;
+        int facing = owner.FacingDirection;
+        float spawnX = odinPos.x + facing * p.odinSpikeSpacing * (spikeIndex + 1);
+
+        // Start raycast from well above either character so it always reaches the ground
         Vector2 playerPos = owner.Ctx.playerTransform != null
             ? (Vector2)owner.Ctx.playerTransform.position
             : owner.Ctx.lastSeenPlayerPos;
+        float rayOriginY = Mathf.Max(odinPos.y, playerPos.y) + 10f;
 
-        float halfCount = (p.odinSpikeCount - 1) * 0.5f;
-        float offset = (spikeIndex - halfCount) * p.odinSpikeSpacing;
-        float spawnX = playerPos.x + offset;
-
-        // Raycast down to find ground — only spawn if ground is found
         RaycastHit2D groundHit = Physics2D.Raycast(
-            new Vector2(spawnX, playerPos.y + 2f), Vector2.down, 6f, owner.GroundLayer);
+            new Vector2(spawnX, rayOriginY), Vector2.down, 30f, owner.GroundLayer);
         if (groundHit.collider == null) return;
 
         odin.SpawnGroundSpike(groundHit.point, p.odinSpikeActiveDuration);

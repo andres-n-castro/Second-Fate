@@ -186,6 +186,7 @@ public class EnemyProfile : ScriptableObject
     public float odinStaffProjectileMinRange = 3.0f;
     public float odinStaffProjectileWeightMultiplier = 2f;
     public float odinGroundSpikesMaxRange = 6.0f;
+    public float odinGroundSpikesMinXDistance = 2.0f;
     public float odinGroundSpikesWeightMultiplier = 2f;
     public float odinStaffMeleeMaxRange = 3.0f;
     public float odinStaffMeleeWeightMultiplier = 3f;
@@ -207,6 +208,7 @@ public class EnemyProfile : ScriptableObject
     public float odinP2MaxAttackCooldown = 0.8f;
     public int odinTripleProjectileCount = 3;
     public float odinTripleProjectileSpreadAngle = 30f;
+    public float odinTripleProjectileSpawnDelay = 0.15f;
     public int odinConsecutiveSpikeWaves = 3;
     public float odinConsecutiveSpikeWaveDelay = 0.4f;
     public float odinSlashProjectileSpeed = 10f;
