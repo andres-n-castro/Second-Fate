@@ -209,6 +209,7 @@ MonoBehaviour:
   odinStaffProjectileMinRange: 3
   odinStaffProjectileWeightMultiplier: 2
   odinGroundSpikesMaxRange: 6
+  odinGroundSpikesMinXDistance: 2
   odinGroundSpikesWeightMultiplier: 2
   odinStaffMeleeMaxRange: 3
   odinStaffMeleeWeightMultiplier: 3
@@ -250,10 +251,12 @@ MonoBehaviour:
   heimdallBeamSpeed: 12
   heimdallProjectileSwordSpeed: 8
   heimdallProjectileSwordCurveDelay: 0.25
-  heimdallProjectileSwordCurveStrength: 5
-  heimdallProjectileSwordLifetime: 5
-  heimdallPlungeLeapForceY: 12
-  heimdallPlungeForwardForce: 3
+  heimdallProjectileSwordCurveStrength: 4
+  heimdallProjectileSwordLifetime: 2.5
+  heimdallPlungeDashSpeed: 15
+  heimdallPlungeHeightAbovePlayer: 4
+  heimdallPlungeDashTimeout: 1
+  heimdallPlungeArriveThreshold: 1
   heimdallPlungeFallSpeed: 18
   heimdallFloorImpactRadius: 4
   heimdallFloorImpactDuration: 0.4

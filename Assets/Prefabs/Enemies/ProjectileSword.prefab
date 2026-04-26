@@ -126,8 +126,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   curveDelay: 0.3
-  curveStrength: 10
-  maxLifetime: 5
+  curveStrength: 4
+  maxLifetime: 3
 --- !u!212 &3312981160512972024
 SpriteRenderer:
   m_ObjectHideFlags: 0

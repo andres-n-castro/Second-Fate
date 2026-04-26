@@ -6,11 +6,13 @@ using UnityEngine;
 ///
 /// Setup (on prefab):
 ///   - Rigidbody2D with gravityScale = 0, constraints freeze Y position.
-///   - Collider2D set as trigger (tall enough to require a jump, but not full screen).
+///   - Collider2D (NOT trigger) tall enough to require a jump.
 ///   - Set targetLayers to the Player layer.
 ///   - Damage and knockback configured in inspector.
 ///
-/// Destroys on hitting a wall (groundLayers) or after maxLifetime.
+/// Destroys on collision with anything (like OdinProjectile).
+/// Deals damage + knockback to entities on targetLayers.
+/// Spawner colliders are ignored via Physics2D.IgnoreCollision.
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 public class SlashProjectile : MonoBehaviour
@@ -19,9 +21,6 @@ public class SlashProjectile : MonoBehaviour
     [SerializeField] private int damage = 2;
     [SerializeField] private Vector2 knockbackForce = new Vector2(8f, 4f);
     [SerializeField] private LayerMask targetLayers;
-
-    [Header("Environment")]
-    [SerializeField] private LayerMask groundLayers;
 
     [Header("Lifetime")]
     [SerializeField] private float maxLifetime = 4f;
@@ -42,6 +41,10 @@ public class SlashProjectile : MonoBehaviour
     {
         rb.linearVelocity = velocity;
 
+        // Flip sprite to face movement direction
+        if (velocity.x < 0f)
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
         if (overrideDamage > 0) damage = overrideDamage;
 
         Collider2D myCol = GetComponent<Collider2D>();
@@ -56,31 +59,29 @@ public class SlashProjectile : MonoBehaviour
         Destroy(gameObject, maxLifetime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void SetTargetLayers(LayerMask layers) { targetLayers = layers; }
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Destroy on wall/ground
-        if ((groundLayers.value & (1 << other.gameObject.layer)) != 0)
+        // Ignore collisions with other slash projectiles
+        if (collision.gameObject.GetComponent<SlashProjectile>() != null) return;
+
+        // Damage target on matching layer
+        if (!hasHit && (targetLayers.value & (1 << collision.gameObject.layer)) != 0)
         {
-            Destroy(gameObject);
-            return;
+            IDamageable target = collision.collider.GetComponent<IDamageable>();
+            if (target == null)
+                target = collision.collider.GetComponentInParent<IDamageable>();
+
+            if (target != null)
+            {
+                hasHit = true;
+                Vector2 kb = new Vector2(Mathf.Sign(rb.linearVelocity.x) * knockbackForce.x, knockbackForce.y);
+                target.TakeDamage(damage, kb);
+            }
         }
 
-        // Damage target
-        if (hasHit) return;
-        if ((targetLayers.value & (1 << other.gameObject.layer)) == 0) return;
-
-        IDamageable target = other.GetComponent<IDamageable>();
-        if (target == null)
-            target = other.GetComponentInParent<IDamageable>();
-
-        if (target == null) return;
-
-        hasHit = true;
-
-        Vector2 direction = (other.transform.position - transform.position).normalized;
-        Vector2 kb = new Vector2(Mathf.Sign(rb.linearVelocity.x) * knockbackForce.x, knockbackForce.y);
-        target.TakeDamage(damage, kb);
-
+        // Always destroy on collision (spawner collisions already ignored)
         Destroy(gameObject);
     }
 }

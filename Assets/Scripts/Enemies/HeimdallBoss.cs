@@ -17,7 +17,7 @@ using UnityEngine;
 ///
 /// Required components: Rigidbody2D, Collider2D, Health.
 /// Child references:
-///   - shockwaveSlashHitbox, swordTornadoHitbox, swordBeamHitbox,
+///   - swordTornadoHitbox, swordBeamHitbox,
 ///     swordPlungeHitbox, giantSlashHitbox
 ///     (each an AttackHitbox on a child GO with trigger collider).
 ///
@@ -34,7 +34,6 @@ using UnityEngine;
 public class HeimdallBoss : EnemyBase
 {
     [Header("Hitbox References")]
-    [SerializeField] private AttackHitbox shockwaveSlashHitbox;
     [SerializeField] private AttackHitbox swordTornadoHitbox;
     [SerializeField] private AttackHitbox swordBeamHitbox;
     [SerializeField] private AttackHitbox swordPlungeHitbox;
@@ -44,9 +43,9 @@ public class HeimdallBoss : EnemyBase
     [SerializeField] private GameObject shockwavePrefab;
     [SerializeField] private GameObject projectileSwordPrefab;
     [SerializeField] private Transform projectileSpawnPoint;
+    [SerializeField] private LayerMask shockwaveTargetLayers;
 
     // Hitbox accessors for states
-    public AttackHitbox ShockwaveSlashHitbox => shockwaveSlashHitbox;
     public AttackHitbox SwordTornadoHitbox => swordTornadoHitbox;
     public AttackHitbox SwordBeamHitbox => swordBeamHitbox;
     public AttackHitbox SwordPlungeHitbox => swordPlungeHitbox;
@@ -56,7 +55,6 @@ public class HeimdallBoss : EnemyBase
     public Transform ProjectileSpawnPoint => projectileSpawnPoint;
 
     // Cached hitbox reaches
-    public float ShockwaveSlashReach { get; private set; }
     public float SwordTornadoReach { get; private set; }
 
     // Animation parameter names matching Heimdall animator
@@ -79,7 +77,6 @@ public class HeimdallBoss : EnemyBase
     {
         base.Start();
 
-        ShockwaveSlashReach = ComputeHitboxReach(shockwaveSlashHitbox);
         SwordTornadoReach = ComputeHitboxReach(swordTornadoHitbox);
     }
 
@@ -161,6 +158,7 @@ public class HeimdallBoss : EnemyBase
         if (sp != null)
         {
             sp.Initialize(velocity, GetComponents<Collider2D>(), damage);
+            if (shockwaveTargetLayers.value != 0) sp.SetTargetLayers(shockwaveTargetLayers);
         }
         else
         {
@@ -173,10 +171,10 @@ public class HeimdallBoss : EnemyBase
     /// Spawn a projectile sword that curves toward the last-known position.
     /// Reuses OdinProjectile for the curve-to-target behavior.
     /// </summary>
-    public void SpawnProjectileSword(Vector2 velocity, Vector2 targetPosition,
+    public GameObject SpawnProjectileSword(Vector2 velocity, Vector2 targetPosition,
         int damage, float curveDelay, float curveStrength, float lifetime)
     {
-        if (projectileSwordPrefab == null) return;
+        if (projectileSwordPrefab == null) return null;
 
         Vector2 spawnPos = projectileSpawnPoint != null
             ? (Vector2)projectileSpawnPoint.position
@@ -189,17 +187,22 @@ public class HeimdallBoss : EnemyBase
         {
             odinProj.Initialize(velocity, targetPosition, GetComponents<Collider2D>(),
                 damage, curveDelay, curveStrength, lifetime);
+
+            // Track the player's live position so swords keep homing until they despawn
+            if (Ctx.playerTransform != null)
+                odinProj.SetPlayerTarget(Ctx.playerTransform);
         }
         else
         {
             Rigidbody2D projRb = proj.GetComponent<Rigidbody2D>();
             if (projRb != null) projRb.linearVelocity = velocity;
         }
+
+        return proj;
     }
 
     private void DisableAllHitboxes()
     {
-        if (shockwaveSlashHitbox != null) shockwaveSlashHitbox.Deactivate();
         if (swordTornadoHitbox != null) swordTornadoHitbox.Deactivate();
         if (swordBeamHitbox != null) swordBeamHitbox.Deactivate();
         if (swordPlungeHitbox != null) swordPlungeHitbox.Deactivate();
