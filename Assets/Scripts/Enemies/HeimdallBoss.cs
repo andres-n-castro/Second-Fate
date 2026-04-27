@@ -32,6 +32,9 @@ using UnityEngine;
 /// </summary>
 public class HeimdallBoss : EnemyBase
 {
+    public override bool IsBoss => true;
+    public override string BossDisplayName => "Heimdall";
+
     [Header("Hitbox References")]
     [SerializeField] private AttackHitbox shockwaveSlashHitbox;
     [SerializeField] private AttackHitbox swordTornadoHitbox;

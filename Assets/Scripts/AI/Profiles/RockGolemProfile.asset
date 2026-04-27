@@ -80,11 +80,11 @@ MonoBehaviour:
   repositionDecisionCooldown: 0.4
   fwsMinRepositionDistFromPlayer: 1.5
   fwsPlayerPathExclusionRadius: 1.2
-  projectileSpeed: 30
+  projectileSpeed: 100
   maxFallVelocity: 28
   jumpHangThreshold: 2
   jumpHangGravityMultiplier: 0.5
-  jumpForce: 14
+  jumpForce: 10
   jumpForwardForce: 3
   jumpHeightThreshold: 1.5
   jumpCooldown: 2

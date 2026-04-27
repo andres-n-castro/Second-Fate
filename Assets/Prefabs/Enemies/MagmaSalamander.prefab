@@ -132,7 +132,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 7
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -220,6 +220,7 @@ MonoBehaviour:
   profile: {fileID: 11400000, guid: 2ba720b168ec0964faab795699713cdd, type: 2}
   baseCurrencyDrop: 10
   coinPrefab: {fileID: 0}
+  deathDescriptionText: A Great Foe Has Fallen.
   groundCheck: {fileID: 4300360275963622466}
   wallCheck: {fileID: 4636725294003091579}
   groundLayer:

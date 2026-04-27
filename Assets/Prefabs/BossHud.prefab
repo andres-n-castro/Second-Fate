@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5640545348588917011
 RectTransform:
   m_ObjectHideFlags: 0
@@ -119,6 +119,11 @@ MonoBehaviour:
   bossHudPanel: {fileID: 971504163205394431}
   bossNameText: {fileID: 98866905122570592}
   healthBarFill: {fileID: 7115823815659328436}
+  bossDeathPopUp: {fileID: 0}
+  deathDescriptionText: {fileID: 0}
+  resumeButton: {fileID: 0}
+  treeEssenceReward: {fileID: 11400000, guid: 72b82c0dd24b00f4dbe52a104e43a4a4, type: 2}
+  creatureBloodReward: {fileID: 11400000, guid: 04e582c258c19c94087ed96aa131e151, type: 2}
 --- !u!1 &3672556733176395901
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,11 +438,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 6db596305ae01cb458f1251a2316503a, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0

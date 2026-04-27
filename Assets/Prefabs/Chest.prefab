@@ -179,5 +179,8 @@ MonoBehaviour:
   coinPrefab: {fileID: 3793789415224784273, guid: 57c1c479742e7a84097a97d62615b3b6, type: 3}
   coinsToSpawn: 10
   currencyPerCoin: 5
+  bonusLootPrefab: {fileID: 0}
+  bonusLootForceMin: {x: -1.5, y: 4}
+  bonusLootForceMax: {x: 1.5, y: 6}
   shakeDuration: 0.15
   shakeMagnitude: 0.1

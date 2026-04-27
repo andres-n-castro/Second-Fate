@@ -22,6 +22,8 @@ public struct BonfireLocation
 
 public class GameManager : MonoBehaviour
 {
+    private const string TutorialFallbackCheckpointName = "Checkpoint_Midpoint01";
+
     public enum GameState
     {
         Exploration,
@@ -60,6 +62,14 @@ public class GameManager : MonoBehaviour
     public Vector2 currentRespawnPoint;
     public string lastInteractedBonfireID;
     public string lastRestedBonfireID;
+
+    [Header("Boss HUD")]
+    [SerializeField] private GameObject bossHudPrefab;
+
+    [Header("Final Boss Inspector Testing")]
+    [SerializeField] private bool useInspectorFinalBossCounts;
+    [SerializeField] private int inspectorTreeEssenceCount;
+    [SerializeField] private int inspectorCreatureBloodCount;
 
     [Header("Fast Travel Registry")]
     public List<BonfireLocation> masterBonfireList = new List<BonfireLocation>();
@@ -104,6 +114,8 @@ public class GameManager : MonoBehaviour
         {
             b.UpdateVisualState();
         }
+
+        ConfigureSceneBosses(SceneManager.GetActiveScene());
     }
 
     void OnEnable()
@@ -179,22 +191,12 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        // Decide respawn target: checkpoint (tutorial scene only) or last rested bonfire.
-        PlayerRespawn respawnScript = null;
-        if (PlayerController.Instance != null)
+        // No rested bonfire yet: use the tutorial checkpoint if available.
+        if (!LastRestedBonfireExistsInActiveScene() && TryGetCheckpointRespawnPosition(out Vector2 checkpointPosition))
         {
-            respawnScript = PlayerController.Instance.GetComponent<PlayerRespawn>();
-        }
-
-        bool useCheckpoint = respawnScript != null
-            && respawnScript.useCheckpointRespawn
-            && respawnScript.currentCheckpoint != null;
-
-        if (useCheckpoint)
-        {
-            hasPendingCheckpointRespawn = true;
-            pendingCheckpointPosition = respawnScript.currentCheckpoint.position;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            RevivePlayerAt(checkpointPosition);
+            currentRespawnPoint = checkpointPosition;
+            TriggerWorldReset();
             ChangeState(GameState.Exploration);
             return;
         }
@@ -211,6 +213,49 @@ public class GameManager : MonoBehaviour
         // Fallback: just reload the current scene.
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         ChangeState(GameState.Exploration);
+    }
+
+    private bool TryGetCheckpointRespawnPosition(out Vector2 checkpointPosition)
+    {
+        checkpointPosition = Vector2.zero;
+
+        if (PlayerController.Instance != null)
+        {
+            PlayerRespawn respawnScript = PlayerController.Instance.GetComponent<PlayerRespawn>();
+            if (respawnScript != null && respawnScript.useCheckpointRespawn && respawnScript.currentCheckpoint != null)
+            {
+                checkpointPosition = respawnScript.currentCheckpoint.position;
+                return true;
+            }
+        }
+
+        GameObject fallbackCheckpoint = FindSceneObjectByName(TutorialFallbackCheckpointName);
+        if (fallbackCheckpoint != null)
+        {
+            checkpointPosition = fallbackCheckpoint.transform.position;
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool LastRestedBonfireExistsInActiveScene()
+    {
+        if (string.IsNullOrEmpty(lastRestedBonfireID))
+        {
+            return false;
+        }
+
+        Bonfire[] bonfires = FindObjectsByType<Bonfire>(FindObjectsSortMode.None);
+        for (int i = 0; i < bonfires.Length; i++)
+        {
+            if (bonfires[i] != null && bonfires[i].bonfireID == lastRestedBonfireID)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private IEnumerator RespawnSequence()
@@ -230,18 +275,7 @@ public class GameManager : MonoBehaviour
             respawnPos = respawnScript.currentCheckpoint.position;
         }
 
-        PlayerController.Instance.transform.position = respawnPos;
-        PlayerManager.Instance.playerStats.currentHealth = PlayerManager.Instance.playerStats.maxHealth;
-        PlayerManager.Instance.playerStats.SyncHealthForSaving(PlayerManager.Instance.playerStats.maxHealth, PlayerManager.Instance.playerStats.maxHealth);
-
-        if (PlayerManager.Instance.playerStats.playerHealthComponent != null)
-        {
-            PlayerManager.Instance.playerStats.playerHealthComponent.InitializeHealth(
-                PlayerManager.Instance.playerStats.maxHealth,
-                PlayerManager.Instance.playerStats.maxHealth);
-        }
-
-        PlayerManager.Instance.playerStates.isDead = false;
+        RevivePlayerAt(respawnPos);
 
         yield return StartCoroutine(UIManager.Instance.FadeToClear(1f));
         // TODO: Trigger the World Reset logic (respawning non-boss enemies).
@@ -273,28 +307,15 @@ public class GameManager : MonoBehaviour
 
     public FinalBossType DetermineFinalBoss()
     {
-        int essenceCount = 0;
-        int bloodCount = 0;
-
-        foreach (AlignmentType alignment in imbuedBonfires.Values)
-        {
-            if (alignment == AlignmentType.TreeEssence)
-            {
-                essenceCount++;
-            }
-            else if (alignment == AlignmentType.CreatureBlood)
-            {
-                bloodCount++;
-            }
-        }
+        GetFinalBossAlignmentCounts(out int essenceCount, out int bloodCount);
 
         if (essenceCount >= bloodCount)
         {
-            Debug.Log("Final Boss Decided: Odin (Tree Essence path)");
+            Debug.Log($"Final Boss Decided: Odin (Tree Essence path) | Tree Essence={essenceCount}, Creature Blood={bloodCount}");
             return FinalBossType.Odin;
         }
 
-        Debug.Log("Final Boss Decided: Heimdall (Creature Blood path)");
+        Debug.Log($"Final Boss Decided: Heimdall (Creature Blood path) | Tree Essence={essenceCount}, Creature Blood={bloodCount}");
         return FinalBossType.Heimdall;
     }
 
@@ -356,13 +377,11 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        ConfigureSceneBosses(scene);
+
         if (hasPendingCheckpointRespawn)
         {
-            if (PlayerManager.Instance != null)
-            {
-                PlayerManager.Instance.transform.position = pendingCheckpointPosition;
-            }
-            currentRespawnPoint = pendingCheckpointPosition;
+            StartCoroutine(RevivePlayerAtCheckpointAfterSceneLoad(pendingCheckpointPosition));
             hasPendingCheckpointRespawn = false;
         }
 
@@ -375,7 +394,7 @@ public class GameManager : MonoBehaviour
                 {
                     if (PlayerManager.Instance != null)
                     {
-                        PlayerManager.Instance.transform.position = b.transform.position;
+                        RevivePlayerAt(b.transform.position);
                         currentRespawnPoint = b.transform.position;
                         lastInteractedBonfireID = b.bonfireID;
                         lastRestedBonfireID = b.bonfireID;
@@ -393,6 +412,159 @@ public class GameManager : MonoBehaviour
             pendingTeleportBonfireID = "";
             TriggerWorldReset();
         }
+    }
+
+    private IEnumerator RevivePlayerAtCheckpointAfterSceneLoad(Vector2 checkpointPosition)
+    {
+        for (int i = 0; i < 10 && GetScenePlayerManager() == null; i++)
+        {
+            yield return null;
+        }
+
+        RevivePlayerAt(checkpointPosition);
+        currentRespawnPoint = checkpointPosition;
+        TriggerWorldReset();
+    }
+
+    private void RevivePlayerAt(Vector2 position)
+    {
+        PlayerManager playerManager = GetScenePlayerManager();
+        if (playerManager == null)
+        {
+            Debug.LogWarning("[GameManager] Could not revive player because no PlayerManager exists in the loaded scene.");
+            return;
+        }
+
+        PlayerManager.Instance = playerManager;
+        PlayerController playerController = playerManager.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            PlayerController.Instance = playerController;
+        }
+
+        playerManager.gameObject.SetActive(true);
+        playerManager.transform.position = position;
+
+        Rigidbody2D rb = playerManager.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.simulated = true;
+        }
+
+        SpriteRenderer spriteRenderer = playerManager.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = true;
+        }
+
+        Animator animator = playerManager.GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.Rebind();
+            animator.Update(0f);
+        }
+
+        if (playerManager.playerController == null)
+        {
+            playerManager.playerController = playerController;
+        }
+
+        if (playerManager.playerMovement == null)
+        {
+            playerManager.playerMovement = playerManager.GetComponent<PlayerMovement>();
+        }
+
+        if (playerManager.playerStats == null)
+        {
+            playerManager.playerStats = playerManager.GetComponent<PlayerStats>();
+        }
+
+        if (playerManager.playerStates == null)
+        {
+            playerManager.playerStates = playerManager.GetComponent<PlayerStates>();
+        }
+
+        if (playerManager.playerController != null)
+        {
+            playerManager.playerController.enabled = true;
+        }
+
+        if (playerManager.playerMovement != null)
+        {
+            playerManager.playerMovement.enabled = true;
+        }
+
+        PlayerAttack playerAttack = playerManager.GetComponent<PlayerAttack>();
+        if (playerAttack != null)
+        {
+            playerAttack.enabled = true;
+            playerAttack.DeactivateAllHitboxes();
+        }
+
+        if (playerManager.playerStates != null)
+        {
+            playerManager.playerStates.isDead = false;
+            playerManager.playerStates.isInvincible = false;
+        }
+
+        if (playerManager.playerStats != null)
+        {
+            playerManager.playerStats.currentHealth = playerManager.playerStats.maxHealth;
+            playerManager.playerStats.SyncHealthForSaving(playerManager.playerStats.maxHealth, playerManager.playerStats.maxHealth);
+
+            if (playerManager.playerStats.playerHealthComponent != null)
+            {
+                playerManager.playerStats.playerHealthComponent.InitializeHealth(
+                    playerManager.playerStats.maxHealth,
+                    playerManager.playerStats.maxHealth);
+                playerManager.playerStats.playerHealthComponent.isInvulnerable = false;
+            }
+        }
+    }
+
+    private PlayerManager GetScenePlayerManager()
+    {
+        if (PlayerManager.Instance != null)
+        {
+            return PlayerManager.Instance;
+        }
+
+        PlayerManager[] players = Resources.FindObjectsOfTypeAll<PlayerManager>();
+        Scene activeScene = SceneManager.GetActiveScene();
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            PlayerManager candidate = players[i];
+            if (candidate != null && candidate.gameObject.scene == activeScene)
+            {
+                return candidate;
+            }
+        }
+
+        return null;
+    }
+
+    private GameObject FindSceneObjectByName(string objectName)
+    {
+        GameObject[] sceneObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+        Scene activeScene = SceneManager.GetActiveScene();
+
+        for (int i = 0; i < sceneObjects.Length; i++)
+        {
+            GameObject candidate = sceneObjects[i];
+            if (candidate == null || candidate.scene != activeScene)
+            {
+                continue;
+            }
+
+            if (string.Equals(candidate.name, objectName, StringComparison.OrdinalIgnoreCase))
+            {
+                return candidate;
+            }
+        }
+
+        return null;
     }
 
     public void SetBonfireAlignment(string bonfireID, AlignmentType type)
@@ -417,5 +589,107 @@ public class GameManager : MonoBehaviour
 
         globalGoodMultiplier = 1.0f + (goodCount * 0.1f);
         globalBadMultiplier = 1.0f + (badCount * 0.1f);
+    }
+
+    private void GetFinalBossAlignmentCounts(out int essenceCount, out int bloodCount)
+    {
+        if (useInspectorFinalBossCounts)
+        {
+            essenceCount = Mathf.Max(0, inspectorTreeEssenceCount);
+            bloodCount = Mathf.Max(0, inspectorCreatureBloodCount);
+            return;
+        }
+
+        essenceCount = 0;
+        bloodCount = 0;
+
+        foreach (AlignmentType alignment in imbuedBonfires.Values)
+        {
+            if (alignment == AlignmentType.TreeEssence)
+            {
+                essenceCount++;
+            }
+            else if (alignment == AlignmentType.CreatureBlood)
+            {
+                bloodCount++;
+            }
+        }
+    }
+
+    private void ConfigureSceneBosses(Scene scene)
+    {
+        if (!scene.IsValid())
+        {
+            return;
+        }
+
+        EnsureBossHudForScene(scene);
+
+        if (scene.name == "biome3_fight")
+        {
+            ConfigureFinalBossScene(scene);
+        }
+    }
+
+    private void EnsureBossHudForScene(Scene scene)
+    {
+        if (!SceneNeedsBossHud(scene.name) || bossHudPrefab == null)
+        {
+            return;
+        }
+
+        BossUIManager existingBossUi = FindSceneObjectOfType<BossUIManager>(scene);
+        if (existingBossUi != null || BossUIManager.Instance != null)
+        {
+            return;
+        }
+
+        GameObject bossHudInstance = Instantiate(bossHudPrefab);
+        bossHudInstance.name = bossHudPrefab.name;
+        SceneManager.MoveGameObjectToScene(bossHudInstance, scene);
+    }
+
+    private static bool SceneNeedsBossHud(string sceneName)
+    {
+        return sceneName == "biome2_subarea1" || sceneName == "biome3_fight";
+    }
+
+    private void ConfigureFinalBossScene(Scene scene)
+    {
+        OdinBoss odin = FindSceneObjectOfType<OdinBoss>(scene);
+        HeimdallBoss heimdall = FindSceneObjectOfType<HeimdallBoss>(scene);
+
+        if (odin == null || heimdall == null)
+        {
+            Debug.LogWarning($"[GameManager] Could not configure final boss in '{scene.name}' because Odin or Heimdall is missing.");
+            return;
+        }
+
+        FinalBossType selectedBoss = DetermineFinalBoss();
+        bool spawnOdin = selectedBoss == FinalBossType.Odin;
+
+        odin.gameObject.SetActive(spawnOdin);
+        heimdall.gameObject.SetActive(!spawnOdin);
+    }
+
+    private static T FindSceneObjectOfType<T>(Scene scene) where T : Component
+    {
+        T[] objects = Resources.FindObjectsOfTypeAll<T>();
+        for (int i = 0; i < objects.Length; i++)
+        {
+            T candidate = objects[i];
+            if (candidate == null)
+            {
+                continue;
+            }
+
+            GameObject candidateObject = candidate.gameObject;
+            if (candidateObject.scene == scene)
+            {
+                return candidate;
+            }
+        }
+
+        return null;
     }
 }

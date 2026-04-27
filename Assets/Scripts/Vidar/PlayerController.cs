@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     private bool isHitStopping = false;
     private bool isExternallyFrozen = false;
+    private bool deathHandlerSubscribed;
     private float xAxis, yAxis;
 
     [SerializeField] public float timeScale = 1f;
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
         else
         {
@@ -61,17 +63,49 @@ public class PlayerController : MonoBehaviour
 
         playerMovement.defaultGravity = rb.gravityScale;
 
-        if (playerStats != null && playerStats.playerHealthComponent != null)
-        {
-            playerStats.playerHealthComponent.OnDeath += HandlePlayerDeath;
-        }
+        SubscribeToDeathEvent();
+    }
+
+    private void OnEnable()
+    {
+        SubscribeToDeathEvent();
     }
 
     void OnDisable()
     {
-        if (playerStats != null && playerStats.playerHealthComponent != null)
+        UnsubscribeFromDeathEvent();
+    }
+
+    private void OnDestroy()
+    {
+        UnsubscribeFromDeathEvent();
+
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
+
+    private void SubscribeToDeathEvent()
+    {
+        if (playerStats == null)
+        {
+            playerStats = GetComponent<PlayerStats>();
+        }
+
+        if (playerStats != null && playerStats.playerHealthComponent != null && !deathHandlerSubscribed)
+        {
+            playerStats.playerHealthComponent.OnDeath += HandlePlayerDeath;
+            deathHandlerSubscribed = true;
+        }
+    }
+
+    private void UnsubscribeFromDeathEvent()
+    {
+        if (playerStats != null && playerStats.playerHealthComponent != null && deathHandlerSubscribed)
         {
             playerStats.playerHealthComponent.OnDeath -= HandlePlayerDeath;
+            deathHandlerSubscribed = false;
         }
     }
 

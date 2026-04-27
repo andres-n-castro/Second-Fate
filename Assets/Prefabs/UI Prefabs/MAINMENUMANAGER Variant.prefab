@@ -75,7 +75,7 @@ MonoBehaviour:
   m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_DeselectOnBackgroundClick: 1
+  m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
@@ -87,6 +87,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 917083157080505559, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 917083157080505559, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -10.9609375
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486734197500816278, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2077837771222323813, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -127,6 +139,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5099053518066179980, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
+      propertyPath: m_text
+      value: 'Now Entering your Second Fate...
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143089058240107782, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -16.445068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606944203860555925, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5561665765474925660, guid: 5dd1bbee7bb943c48b7706cf26cea95b, type: 3}
     - target: {fileID: 6356772634542307024, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
       propertyPath: m_Name
       value: MAINMENUMANAGER Variant
@@ -135,8 +161,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -2.571289
       objectReference: {fileID: 0}
+    - target: {fileID: 7148547498970531799, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0024414062
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148547498970531799, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -16.445068
+      objectReference: {fileID: 0}
+    - target: {fileID: 9162567394928247995, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00024414062
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7562807388170724237, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
+    - {fileID: 3724843151312583791, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2077837771222323813, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
       insertIndex: -1

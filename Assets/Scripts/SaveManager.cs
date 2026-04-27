@@ -29,6 +29,9 @@ public class SaveManager : MonoBehaviour
         if (isSandboxMode) return;
 
         currentSlotIndex = slotIndex;
+        List<string> previousInventoryItemIDs = new List<string>(currentSaveData.inventoryItemIDs);
+        List<int> previousInventoryItemAmounts = new List<int>(currentSaveData.inventoryItemAmounts);
+        List<bool> previousInventoryItemReadStates = new List<bool>(currentSaveData.inventoryItemReadStates);
         currentSaveData = new GameData();
 
         if (PlayerManager.Instance != null && PlayerManager.Instance.playerStats != null)
@@ -38,7 +41,7 @@ public class SaveManager : MonoBehaviour
             currentSaveData.maxHealth = playerStats.maxHealth;
             currentSaveData.currentCurrency = playerStats.currentCurrency;
             currentSaveData.hasDash = playerStats.canDash;
-            currentSaveData.hasDoubleJump = playerStats.hasDoubleJump;
+            currentSaveData.hasDoubleJump = playerStats.hasDoubleJump || playerStats.unlockedDoubleJump;
         }
 
         if (GameManager.Instance != null)
@@ -84,6 +87,12 @@ public class SaveManager : MonoBehaviour
                 currentSaveData.inventoryItemReadStates.Add(slot.isRead);
             }
         }
+        else
+        {
+            currentSaveData.inventoryItemIDs = previousInventoryItemIDs;
+            currentSaveData.inventoryItemAmounts = previousInventoryItemAmounts;
+            currentSaveData.inventoryItemReadStates = previousInventoryItemReadStates;
+        }
 
         string json = JsonUtility.ToJson(currentSaveData, true);
         File.WriteAllText(GetSavePath(slotIndex), json);
@@ -112,6 +121,7 @@ public class SaveManager : MonoBehaviour
                 PlayerStats playerStats = PlayerManager.Instance.playerStats;
                 playerStats.currentCurrency = currentSaveData.currentCurrency;
                 playerStats.hasDoubleJump = currentSaveData.hasDoubleJump;
+                playerStats.unlockedDoubleJump = currentSaveData.hasDoubleJump;
                 playerStats.canDash = currentSaveData.hasDash;
                 playerStats.hasDash = currentSaveData.hasDash;
                 playerStats.SyncHealthForSaving(currentSaveData.currentHealth, currentSaveData.maxHealth);

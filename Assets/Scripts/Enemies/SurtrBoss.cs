@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Surtr — Muspelheim fire giant mini-boss using the AI framework.
@@ -26,12 +27,24 @@ using UnityEngine;
 /// </summary>
 public class SurtrBoss : EnemyBase
 {
+    private const string SurtrSceneName = "biome2_subarea1";
+    private const string SurtrKeyItemID = "Surtr_key";
+    private const float KeyPopDuration = 0.3f;
+
+    public override bool IsBoss => true;
+    public override string BossDisplayName => "Surtr";
+
     [Header("Hitbox References")]
     [SerializeField] private AttackHitbox lavaSweepHitbox;
     [SerializeField] private AttackHitbox heavyThrustHitbox;
     [SerializeField] private AttackHitbox fireBreathHitbox;
     [SerializeField] private AttackHitbox groundedThrustHitbox;
     [SerializeField] private AttackHitbox lavaVomitHitbox;
+
+    [Header("Scene Reward Drop")]
+    [SerializeField] private string sceneKeyObjectName = "key_to_second_part";
+    [SerializeField] private Item sceneKeyItemReward;
+    [SerializeField] private Vector2 sceneKeyDropOffset = new Vector2(1f, 1.2f);
 
     // Hitbox accessors for states
     public AttackHitbox LavaSweepHitbox => lavaSweepHitbox;
@@ -58,6 +71,13 @@ public class SurtrBoss : EnemyBase
 
     // Phase tracking
     private bool isPhase2;
+    private GameObject sceneKeyDropObject;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        CacheSceneKeyDrop();
+    }
 
     protected override void Start()
     {
@@ -117,6 +137,7 @@ public class SurtrBoss : EnemyBase
     protected override void HandleDeath()
     {
         DisableAllHitboxes();
+        DropSceneKey();
         FSM.ChangeState(DeadState);
     }
 
@@ -142,6 +163,114 @@ public class SurtrBoss : EnemyBase
         if (fireBreathHitbox != null) fireBreathHitbox.Deactivate();
         if (groundedThrustHitbox != null) groundedThrustHitbox.Deactivate();
         if (lavaVomitHitbox != null) lavaVomitHitbox.Deactivate();
+    }
+
+    private void CacheSceneKeyDrop()
+    {
+        if (SceneManager.GetActiveScene().name != SurtrSceneName || string.IsNullOrWhiteSpace(sceneKeyObjectName))
+        {
+            return;
+        }
+
+        sceneKeyDropObject = FindSceneObjectByName(sceneKeyObjectName);
+        if (sceneKeyDropObject != null)
+        {
+            sceneKeyDropObject.SetActive(false);
+        }
+    }
+
+    private void DropSceneKey()
+    {
+        if (sceneKeyDropObject == null)
+        {
+            return;
+        }
+
+        ApplySceneKeyRewardItem();
+
+        sceneKeyDropObject.transform.SetParent(null);
+        sceneKeyDropObject.SetActive(true);
+
+        Collider2D keyCollider = sceneKeyDropObject.GetComponent<Collider2D>();
+        if (keyCollider != null)
+        {
+            keyCollider.enabled = false;
+        }
+
+        StartCoroutine(AnimateSceneKeyDrop(keyCollider));
+    }
+
+    private void ApplySceneKeyRewardItem()
+    {
+        ItemPickup itemPickup = sceneKeyDropObject.GetComponent<ItemPickup>();
+        if (itemPickup == null)
+        {
+            return;
+        }
+
+        Item rewardItem = sceneKeyItemReward != null ? sceneKeyItemReward : ResolveSurtrKeyReward();
+        if (rewardItem != null)
+        {
+            itemPickup.itemData = rewardItem;
+        }
+    }
+
+    private Item ResolveSurtrKeyReward()
+    {
+        if (GameDatabase.Instance == null)
+        {
+            return null;
+        }
+
+        return GameDatabase.Instance.GetItemByID(SurtrKeyItemID);
+    }
+
+    private System.Collections.IEnumerator AnimateSceneKeyDrop(Collider2D keyCollider)
+    {
+        Transform keyTransform = sceneKeyDropObject.transform;
+        Vector2 startPosition = transform.position;
+        Vector2 targetPosition = startPosition + sceneKeyDropOffset;
+
+        keyTransform.position = startPosition;
+
+        float elapsed = 0f;
+        while (elapsed < KeyPopDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / KeyPopDuration);
+            float arc = Mathf.Sin(t * Mathf.PI) * 0.35f;
+            keyTransform.position = Vector2.Lerp(startPosition, targetPosition, t) + Vector2.up * arc;
+            yield return null;
+        }
+
+        keyTransform.position = targetPosition;
+
+        if (keyCollider != null)
+        {
+            keyCollider.enabled = true;
+        }
+    }
+
+    private GameObject FindSceneObjectByName(string objectName)
+    {
+        GameObject[] sceneObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+        Scene activeScene = SceneManager.GetActiveScene();
+
+        for (int i = 0; i < sceneObjects.Length; i++)
+        {
+            GameObject candidate = sceneObjects[i];
+            if (candidate == null || candidate.scene != activeScene)
+            {
+                continue;
+            }
+
+            if (candidate.name == objectName)
+            {
+                return candidate;
+            }
+        }
+
+        return null;
     }
 
     private void OnDrawGizmosSelected()

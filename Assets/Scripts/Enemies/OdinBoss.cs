@@ -33,6 +33,9 @@ using UnityEngine;
 /// </summary>
 public class OdinBoss : EnemyBase
 {
+    public override bool IsBoss => true;
+    public override string BossDisplayName => "Odin";
+
     [Header("Hitbox References")]
     [SerializeField] private AttackHitbox staffMeleeHitbox;
     [SerializeField] private AttackHitbox largeSlashHitbox;

@@ -194,6 +194,11 @@ MonoBehaviour:
   bossHudPanel: {fileID: 5766373718696660935}
   bossNameText: {fileID: 908555742316911853}
   healthBarFill: {fileID: 525752846860821403}
+  bossDeathPopUp: {fileID: 0}
+  deathDescriptionText: {fileID: 0}
+  resumeButton: {fileID: 0}
+  treeEssenceReward: {fileID: 11400000, guid: 72b82c0dd24b00f4dbe52a104e43a4a4, type: 2}
+  creatureBloodReward: {fileID: 11400000, guid: 04e582c258c19c94087ed96aa131e151, type: 2}
 --- !u!1 &5793632152774652276
 GameObject:
   m_ObjectHideFlags: 0

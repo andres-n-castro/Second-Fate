@@ -16,6 +16,7 @@ public class MainMenuManager : MonoBehaviour
 
     [Header("References")]
     public OptionsManager optionsMenuPrefab; // Reference to the OptionsUI in scene
+    public GameObject controlsCanvasPrefab;
 
     [Header("Level Loader")]
     public RectTransform levelLoaderPanel;
@@ -26,6 +27,7 @@ public class MainMenuManager : MonoBehaviour
     public float loaderSlideDuration = 0.8f;
     private bool isLevelLoading = false;
     private bool isPaused = false;
+    private GameObject controlsCanvasInstance;
     void Start()
     {
         if (levelLoaderPanel != null)
@@ -35,20 +37,30 @@ public class MainMenuManager : MonoBehaviour
         }
 
         if (loadingSpinner != null) loadingSpinner.SetActive(false);
+        DisableStartupBlockers();
 
         SetupButtonNavigation();
         
         // Setup button clicks
         if (startButton != null)
+        {
+            startButton.onClick.RemoveListener(OnStartClicked);
             startButton.onClick.AddListener(OnStartClicked);
+        }
         
-        if (settingsButton != null && optionsMenuPrefab != null)
-            settingsButton.onClick.AddListener(() => optionsMenuPrefab.OpenOptions());
+        if (settingsButton != null)
+        {
+            settingsButton.onClick.RemoveListener(OpenControls);
+            settingsButton.onClick.AddListener(OpenControls);
+        }
         
         if (quitButton != null)
+        {
+            quitButton.onClick.RemoveListener(OnQuitClicked);
             quitButton.onClick.AddListener(OnQuitClicked);
+        }
 
-        EventSystem.current.SetSelectedGameObject(startButton.gameObject);
+        SelectDefaultButton();
 
         // If this menu starts active, pause the game immediately
         if (gameObject.activeSelf)
@@ -64,11 +76,14 @@ public class MainMenuManager : MonoBehaviour
         // Arrow Movement
         if (arrowSelect != null)
         {
-            GameObject selected = EventSystem.current.currentSelectedGameObject;
-            if (selected != null && (selected == startButton.gameObject || 
-                selected == settingsButton.gameObject || 
-                selected == loadGameButton.gameObject ||
-                selected == quitButton.gameObject))
+            GameObject selected = EventSystem.current != null ? EventSystem.current.currentSelectedGameObject : null;
+            if (ShouldReclaimMenuSelection(selected))
+            {
+                SelectDefaultButton();
+                selected = EventSystem.current != null ? EventSystem.current.currentSelectedGameObject : null;
+            }
+
+            if (IsMenuButton(selected))
             {
                 RectTransform buttonRect = selected.GetComponent<RectTransform>();
                 arrowSelect.transform.position = new Vector3(
@@ -95,8 +110,7 @@ public void PauseGame()
         gameObject.SetActive(true);
         
         // Force the EventSystem to focus on the start button for keyboard/controller support
-        if (startButton != null)
-            EventSystem.current.SetSelectedGameObject(startButton.gameObject);
+        SelectDefaultButton();
             
         // Optional: Cursor.lockState = CursorLockMode.None; 
         // Optional: Cursor.visible = true;
@@ -120,6 +134,41 @@ public void PauseGame()
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
+    }
+
+    public void ToggleOptions()
+    {
+        OpenControls();
+    }
+
+    public void OpenControls()
+    {
+        if (controlsCanvasInstance == null)
+        {
+            GameObject existingControls = GameObject.Find("ControlsCanvas");
+            if (existingControls != null)
+            {
+                controlsCanvasInstance = existingControls;
+            }
+            else if (controlsCanvasPrefab != null)
+            {
+                controlsCanvasInstance = Instantiate(controlsCanvasPrefab);
+            }
+        }
+
+        if (controlsCanvasInstance != null)
+        {
+            ControlsCanvasController controlsCanvasController = controlsCanvasInstance.GetComponent<ControlsCanvasController>();
+            if (controlsCanvasController != null)
+            {
+                GameObject selected = EventSystem.current != null ? EventSystem.current.currentSelectedGameObject : null;
+                Button fallbackButton = GetFirstAvailableButton();
+                controlsCanvasController.Open(selected != null ? selected : fallbackButton != null ? fallbackButton.gameObject : null);
+                return;
+            }
+
+            controlsCanvasInstance.SetActive(true);
+        }
     }
 
     IEnumerator TransitionToLevel()
@@ -166,6 +215,136 @@ public void PauseGame()
 
     void SetupButtonNavigation()
     {
-        // Setup your button navigation here
+        Button[] buttons = GetMenuButtons();
+        if (buttons.Length == 0)
+        {
+            return;
+        }
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            Navigation navigation = buttons[i].navigation;
+            navigation.mode = Navigation.Mode.Explicit;
+            navigation.selectOnUp = buttons[(i - 1 + buttons.Length) % buttons.Length];
+            navigation.selectOnDown = buttons[(i + 1) % buttons.Length];
+            buttons[i].navigation = navigation;
+        }
+    }
+
+    private Button[] GetMenuButtons()
+    {
+        System.Collections.Generic.List<Button> buttons = new System.Collections.Generic.List<Button>();
+
+        if (startButton != null)
+        {
+            buttons.Add(startButton);
+        }
+
+        if (loadGameButton != null)
+        {
+            buttons.Add(loadGameButton);
+        }
+
+        if (settingsButton != null)
+        {
+            buttons.Add(settingsButton);
+        }
+
+        if (quitButton != null)
+        {
+            buttons.Add(quitButton);
+        }
+
+        return buttons.ToArray();
+    }
+
+    private bool IsMenuButton(GameObject selected)
+    {
+        if (selected == null)
+        {
+            return false;
+        }
+
+        Button[] buttons = GetMenuButtons();
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            if (buttons[i].gameObject == selected)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void SelectDefaultButton()
+    {
+        Button defaultButton = startButton != null ? startButton : GetFirstAvailableButton();
+        if (EventSystem.current == null || defaultButton == null)
+        {
+            return;
+        }
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(defaultButton.gameObject);
+    }
+
+    private Button GetFirstAvailableButton()
+    {
+        Button[] buttons = GetMenuButtons();
+        return buttons.Length > 0 ? buttons[0] : null;
+    }
+
+    private bool ShouldReclaimMenuSelection(GameObject selected)
+    {
+        if (!gameObject.activeInHierarchy || isLevelLoading)
+        {
+            return false;
+        }
+
+        if (controlsCanvasInstance != null && controlsCanvasInstance.activeInHierarchy)
+        {
+            return false;
+        }
+
+        return selected == null || !IsMenuButton(selected);
+    }
+
+    private void DisableStartupBlockers()
+    {
+        if (levelLoaderPanel != null)
+        {
+            levelLoaderPanel.gameObject.SetActive(false);
+        }
+
+        DisableChildBlocker("OptionsDimmer");
+        DisableChildBlocker("ControlsCanvas");
+    }
+
+    private void DisableChildBlocker(string childName)
+    {
+        Transform[] children = GetComponentsInChildren<Transform>(true);
+        for (int i = 0; i < children.Length; i++)
+        {
+            if (children[i].name != childName)
+            {
+                continue;
+            }
+
+            CanvasGroup canvasGroup = children[i].GetComponent<CanvasGroup>();
+            if (canvasGroup != null)
+            {
+                canvasGroup.interactable = false;
+                canvasGroup.blocksRaycasts = false;
+            }
+
+            Graphic graphic = children[i].GetComponent<Graphic>();
+            if (graphic != null)
+            {
+                graphic.raycastTarget = false;
+            }
+
+            children[i].gameObject.SetActive(false);
+        }
     }
 }

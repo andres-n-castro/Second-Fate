@@ -65,6 +65,10 @@ MonoBehaviour:
   pendingTeleportBonfireID: 
   masterBonfireRegistry: []
   unlockedBonfires: []
+  bossHudPrefab: {fileID: 971504163205394431, guid: a4c65b4d0a3601842ba6d5621d96519e, type: 3}
+  useInspectorFinalBossCounts: 0
+  inspectorTreeEssenceCount: 0
+  inspectorCreatureBloodCount: 0
 --- !u!114 &5170489122950427786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,7 +81,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e146718fa8cc2046be96d83733e615c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allItems: []
+  allItems:
+  - {fileID: 11400000, guid: 72b82c0dd24b00f4dbe52a104e43a4a4, type: 2}
+  - {fileID: 11400000, guid: 04e582c258c19c94087ed96aa131e151, type: 2}
+  - {fileID: 11400000, guid: a609146f28033734489fd1a7bc4a9059, type: 2}
   allCharms: []
 --- !u!114 &535721923152968432
 MonoBehaviour:

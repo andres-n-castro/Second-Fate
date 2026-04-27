@@ -20,6 +20,7 @@ public class PlayerManager : MonoBehaviour
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
 
         if (GetComponent<CharmManager>() == null)
@@ -33,6 +34,14 @@ public class PlayerManager : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerStats = GetComponent<PlayerStats>();
         playerStates = GetComponent<PlayerStates>();
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
     }
 
 
@@ -126,7 +135,6 @@ public class PlayerManager : MonoBehaviour
             playerStats.playerHealthComponent.OnDamageTaken += HandleDamage;
         }
     }
-
     void OnDisable()
     {
         if (playerStats.playerHealthComponent != null)

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7498452335008187319}
   - component: {fileID: 2038584581105009393}
   m_Layer: 3
-  m_Name: currency
+  m_Name: Currency
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d68712624b961bd43b9e1ef7e99c1149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currencyValue: 2
 --- !u!58 &2038584581105009393
 CircleCollider2D:
   m_ObjectHideFlags: 0

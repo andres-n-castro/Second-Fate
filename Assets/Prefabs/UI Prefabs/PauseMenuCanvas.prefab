@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 6478339727503528942}
   - component: {fileID: 721560669249826137}
   m_Layer: 5
-  m_Name: OptionsButton
+  m_Name: ControlsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,9 +110,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7212730874392511497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -65}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 260, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4242478817927661397
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4376529351027246628, guid: 69bd1356bcadd5e4d9aabded0c8e7978, type: 3}
+  m_Sprite: {fileID: 6782813536761691038, guid: b850744e56addc24086588d15a6517e5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -196,7 +196,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1662941051502959574}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 681670383044833086}
+        m_TargetAssemblyTypeName: PauseMenuManager, Assembly-CSharp
+        m_MethodName: OpenControls
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &721560669249826137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,9 +321,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7212730874392511497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -115}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 260, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &249964950232601404
@@ -455,9 +467,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7212730874392511497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -15}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 260, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7863227927914697894
@@ -586,7 +598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4597151323393448061
 RectTransform:
   m_ObjectHideFlags: 0
@@ -682,3 +694,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2851e38eb9da76c4d9b7e1537936fef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsCanvasPrefab: {fileID: 9155304763386263623, guid: 45fa5d4a9469ac54ab3899a2a7faad6f, type: 3}

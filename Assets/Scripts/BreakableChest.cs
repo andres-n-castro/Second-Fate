@@ -11,6 +11,9 @@ public class BreakableChest : MonoBehaviour, IDamageable
     public GameObject coinPrefab;
     public int coinsToSpawn = 10;
     public int currencyPerCoin = 5;
+    [SerializeField] private GameObject bonusLootPrefab;
+    [SerializeField] private Vector2 bonusLootForceMin = new Vector2(-1.5f, 4f);
+    [SerializeField] private Vector2 bonusLootForceMax = new Vector2(1.5f, 6f);
 
     [Header("Hit Feedback")]
     public float shakeDuration = 0.15f;
@@ -96,7 +99,23 @@ public class BreakableChest : MonoBehaviour, IDamageable
             }
         }
 
+        SpawnBonusLoot();
+
         Destroy(gameObject);
+    }
+
+    private void SpawnBonusLoot()
+    {
+        if (bonusLootPrefab == null) return;
+
+        GameObject spawnedLoot = Instantiate(bonusLootPrefab, transform.position, Quaternion.identity);
+        Rigidbody2D lootRb = spawnedLoot.GetComponent<Rigidbody2D>();
+        if (lootRb != null)
+        {
+            float randomX = Random.Range(bonusLootForceMin.x, bonusLootForceMax.x);
+            float randomY = Random.Range(bonusLootForceMin.y, bonusLootForceMax.y);
+            lootRb.AddForce(new Vector2(randomX, randomY), ForceMode2D.Impulse);
+        }
     }
 
     private IEnumerator ShakeRoutine()
