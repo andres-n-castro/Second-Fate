@@ -16,6 +16,7 @@ public class SurtrP1Super : HierarchicalState
     public SurtrP1LavaSweepState LavaSweepState { get; private set; }
     public SurtrP1HeavyThrustState HeavyThrustState { get; private set; }
     public SurtrP1FireBreathState FireBreathState { get; private set; }
+    public SurtrP1GapCloseState GapCloseState { get; private set; }
 
     public SurtrP1Super(SurtrBoss surtr) : base(surtr)
     {
@@ -26,6 +27,7 @@ public class SurtrP1Super : HierarchicalState
         LavaSweepState = new SurtrP1LavaSweepState(surtr, this);
         HeavyThrustState = new SurtrP1HeavyThrustState(surtr, this);
         FireBreathState = new SurtrP1FireBreathState(surtr, this);
+        GapCloseState = new SurtrP1GapCloseState(surtr, this);
     }
 
     public override void Enter()
@@ -336,6 +338,12 @@ public class SurtrP1DecisionState : EnemyState
             }
         }
 
+        // If only one attack can reach, gap-close competes at 60% of that weight
+        if (candidates.Count == 1)
+        {
+            candidates.Add((p1.GapCloseState, candidates[0].weight * 0.6f));
+        }
+
         if (candidates.Count > 0)
         {
             // Weighted random pick
@@ -358,8 +366,20 @@ public class SurtrP1DecisionState : EnemyState
             return;
         }
 
-        // No attack can reach — walk closer
-        p1.ChangeSubState(p1.ApproachState);
+        // No attack can reach — gap-close or walk closer
+        if (!TryGapClose(dist, p))
+            p1.ChangeSubState(p1.ApproachState);
+    }
+
+    private bool TryGapClose(float dist, EnemyProfile p)
+    {
+        if (dist >= p.p1ThrustCloseGapMinRange && dist <= p.p1ThrustCloseGapMaxRange
+            && Random.value < p.p1ThrustCloseGapChance)
+        {
+            p1.ChangeSubState(p1.GapCloseState);
+            return true;
+        }
+        return false;
     }
 
     public override void Exit()
@@ -652,6 +672,121 @@ public class SurtrP1FireBreathState : EnemyState
             p1.ChangeSubState(p1.DecisionState);
         else
             p1.ChangeSubState(p1.ApproachState);
+    }
+}
+
+// ---------------------------------------------------------------
+//  P1 Gap Close — Sprint toward player, then launch a pre-chosen
+//  attack from all three P1 options. Weights use base selectionWeight.
+// ---------------------------------------------------------------
+public class SurtrP1GapCloseState : EnemyState
+{
+    private SurtrBoss surtr;
+    private SurtrP1Super p1;
+    private IState chosenAttack;
+    private float targetRange;
+
+    public SurtrP1GapCloseState(SurtrBoss surtr, SurtrP1Super p1) : base(surtr)
+    {
+        this.surtr = surtr;
+        this.p1 = p1;
+    }
+
+    public override void Enter()
+    {
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, true);
+        PickAttack();
+    }
+
+    public override void FixedTick()
+    {
+        owner.FacePlayer();
+
+        // Abort if we hit a ledge/wall
+        if (owner.Ctx.nearLedgeAhead || owner.Ctx.nearWallAhead)
+        {
+            owner.StopHorizontal();
+            p1.ChangeSubState(p1.DecisionState);
+            return;
+        }
+
+        // Sprint toward player
+        owner.MoveGround(owner.Profile.p1GapCloseRunSpeed);
+
+        // In range for the chosen attack — launch it
+        if (owner.Ctx.playerDistance <= targetRange && owner.Ctx.hasLineOfSightToPlayer)
+        {
+            p1.ChangeSubState(chosenAttack);
+            return;
+        }
+
+        // Player escaped too far — fall back to approach
+        if (owner.Ctx.playerDistance > owner.Profile.p1ThrustCloseGapMaxRange * 1.5f)
+        {
+            p1.ChangeSubState(p1.ApproachState);
+        }
+    }
+
+    public override void Exit()
+    {
+        if (owner.Anim != null) owner.Anim.SetBool(owner.AnimWalking, false);
+        owner.StopHorizontal();
+    }
+
+    private void PickAttack()
+    {
+        List<(IState state, float weight, float range)> options = new List<(IState, float, float)>();
+
+        AttackDefinition sweepDef = surtr.GetAttackDef("LavaSweep");
+        if (sweepDef != null && owner.IsAttackReady("LavaSweep"))
+        {
+            float sweepEffective = surtr.LavaSweepReach + 0.3f;
+            options.Add((p1.LavaSweepState, sweepDef.selectionWeight, sweepEffective));
+        }
+
+        AttackDefinition thrustDef = surtr.GetAttackDef("HeavyThrust");
+        if (thrustDef != null && owner.IsAttackReady("HeavyThrust"))
+        {
+            float thrustTravel = thrustDef.dashSpeed * thrustDef.activeDuration;
+            float thrustEffective = surtr.HeavyThrustReach + 0.3f + thrustTravel;
+            options.Add((p1.HeavyThrustState, thrustDef.selectionWeight, thrustEffective));
+        }
+
+        AttackDefinition breathDef = surtr.GetAttackDef("FireBreath");
+        if (breathDef != null && owner.IsAttackReady("FireBreath"))
+        {
+            float breathEffective = surtr.FireBreathReach + 0.3f;
+            options.Add((p1.FireBreathState, breathDef.selectionWeight, breathEffective));
+        }
+
+        if (options.Count == 0)
+        {
+            chosenAttack = p1.LavaSweepState;
+            targetRange = surtr.LavaSweepReach + 0.3f;
+            return;
+        }
+
+        // Weighted random pick
+        float totalWeight = 0f;
+        for (int i = 0; i < options.Count; i++)
+            totalWeight += options[i].weight;
+
+        float roll = Random.value * totalWeight;
+        float cumulative = 0f;
+        for (int i = 0; i < options.Count; i++)
+        {
+            cumulative += options[i].weight;
+            if (roll <= cumulative)
+            {
+                chosenAttack = options[i].state;
+                targetRange = options[i].range;
+                return;
+            }
+        }
+
+        var last = options[options.Count - 1];
+        chosenAttack = last.state;
+        targetRange = last.range;
     }
 }
 

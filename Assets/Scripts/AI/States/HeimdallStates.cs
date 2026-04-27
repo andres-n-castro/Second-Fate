@@ -238,8 +238,6 @@ public class HeimdallP1DecisionState : EnemyState
     private float pauseTimer;
     private bool isStalking;
 
-    private const float StalkStopBuffer = 0.3f;
-
     public HeimdallP1DecisionState(HeimdallBoss heimdall, HeimdallP1Super p1) : base(heimdall)
     {
         this.heimdall = heimdall;
@@ -251,9 +249,7 @@ public class HeimdallP1DecisionState : EnemyState
         owner.FacePlayer();
         pauseTimer = Random.Range(owner.Profile.minAttackCooldown, owner.Profile.maxAttackCooldown);
 
-        // Start stalking immediately if player is beyond close range
-        isStalking = owner.Ctx.playerDistance > owner.Profile.heimdallCloseRange
-            && !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead;
+        isStalking = !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead;
         if (isStalking && owner.Anim != null)
             owner.Anim.SetBool(owner.AnimWalking, true);
     }
@@ -262,18 +258,14 @@ public class HeimdallP1DecisionState : EnemyState
     {
         owner.FacePlayer();
 
-        // Stalk while waiting
+        // Always approach while waiting for cooldown
         if (pauseTimer > 0f)
         {
             pauseTimer -= Time.fixedDeltaTime;
 
-            float threshold = isStalking
-                ? owner.Profile.heimdallCloseRange - StalkStopBuffer
-                : owner.Profile.heimdallCloseRange;
-            bool shouldStalk = owner.Ctx.playerDistance > threshold
-                && !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead;
+            bool canMove = !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead;
 
-            if (shouldStalk)
+            if (canMove)
             {
                 if (!isStalking)
                 {
@@ -304,10 +296,10 @@ public class HeimdallP1DecisionState : EnemyState
         float dist = owner.Ctx.playerDistance;
         EnemyProfile p = owner.Profile;
 
-        // Player moved beyond max engage range — walk closer
+        // Outside engage range or no LOS — walk closer
         if (dist > p.heimdallMaxEngageRange || !owner.Ctx.hasLineOfSightToPlayer)
         {
-            p1.ChangeSubState(p1.DecisionState);
+            p1.ChangeSubState(p1.ApproachState);
             return;
         }
 
@@ -366,8 +358,8 @@ public class HeimdallP1DecisionState : EnemyState
             return;
         }
 
-        // No attack can reach — walk closer
-        p1.ChangeSubState(p1.DecisionState);
+        // No attack ready — walk closer
+        p1.ChangeSubState(p1.ApproachState);
     }
 
     public override void Exit()
@@ -696,8 +688,6 @@ public class HeimdallP2IdleState : EnemyState
     private float decisionDelay;
     private bool isWalking;
 
-    private const float StalkStopBuffer = 0.3f;
-
     public HeimdallP2IdleState(HeimdallBoss heimdall, HeimdallP2Super p2) : base(heimdall)
     {
         this.heimdall = heimdall;
@@ -712,8 +702,7 @@ public class HeimdallP2IdleState : EnemyState
             owner.Profile.heimdallP2MaxAttackCooldown);
 
         owner.FacePlayer();
-        isWalking = owner.Ctx.playerDistance > owner.Profile.heimdallCloseRange
-            && !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead;
+        isWalking = !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead;
         if (isWalking && owner.Anim != null)
             owner.Anim.SetBool(owner.AnimWalking, true);
     }
@@ -735,14 +724,10 @@ public class HeimdallP2IdleState : EnemyState
             return;
         }
 
-        // Aggressive stalking toward player
-        float threshold = isWalking
-            ? owner.Profile.heimdallCloseRange - StalkStopBuffer
-            : owner.Profile.heimdallCloseRange;
-        bool shouldWalk = owner.Ctx.playerDistance > threshold
-            && !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead;
+        // Always approach player, only stop for environment
+        bool canMove = !owner.Ctx.nearLedgeAhead && !owner.Ctx.nearWallAhead;
 
-        if (shouldWalk)
+        if (canMove)
         {
             SetWalking(true);
             owner.MoveGround(owner.Profile.approachSpeed);
