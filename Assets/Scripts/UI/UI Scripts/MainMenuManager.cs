@@ -378,7 +378,7 @@ public void PauseGame()
 
     private void ContinueOrStartDefaultGame()
     {
-        SaveManager.EnsureInstance().StartNewGame(0);
+        SaveManager.EnsureInstance().ContinueOrStartDefaultGame();
     }
 
     public void LoadGameFromSlot(int slotIndex)

@@ -45,6 +45,11 @@ public class AttackHitbox : MonoBehaviour
     /// </summary>
     public void Deactivate()
     {
+        if (col == null)
+        {
+            col = GetComponent<Collider2D>();
+        }
+
         col.enabled = false;
     }
 

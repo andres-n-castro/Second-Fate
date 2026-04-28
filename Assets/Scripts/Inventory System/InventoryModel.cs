@@ -14,6 +14,11 @@ public class InventoryModel : MonoBehaviour
         {
             if (existingSlot.itemData == item)
             {
+                if (!item.isStackable)
+                {
+                    return;
+                }
+
                 existingSlot.amount += 1;
                 return;
             }

@@ -15,3 +15,4 @@ MonoBehaviour:
   itemName: Key
   itemSprite: {fileID: 1248028271034907059, guid: f00be796c507c6e4fa05900d81d4592d, type: 3}
   itemInfo: Opens the door to a place holding something powerful yet dying
+  isStackable: 0

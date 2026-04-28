@@ -16,3 +16,4 @@ MonoBehaviour:
   itemSprite: {fileID: 1248028271034907059, guid: f00be796c507c6e4fa05900d81d4592d, type: 3}
   itemInfo: Opens door to a warrior longing for an end to their eternal servitude
     as warrior
+  isStackable: 0

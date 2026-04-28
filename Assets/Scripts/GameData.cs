@@ -33,4 +33,7 @@ public class GameData
     public List<string> inventoryItemIDs = new List<string>();
     public List<int> inventoryItemAmounts = new List<int>();
     public List<bool> inventoryItemReadStates = new List<bool>();
+
+    // --- KEYS / DOORS ---
+    public List<string> collectedKeyIDs = new List<string>();
 }

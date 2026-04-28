@@ -9,8 +9,9 @@ public class TutorialKey : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            TutorialManager.Instance.AddKey(keyID);
+            TutorialManager.EnsureInstance().AddKey(keyID);
             Debug.Log($"Picked up key: {keyID}");
+            SaveManager.Instance?.SaveCurrentSlot();
             Destroy(gameObject);
         }
     }

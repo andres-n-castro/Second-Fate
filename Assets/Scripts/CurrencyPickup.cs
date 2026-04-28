@@ -11,6 +11,7 @@ public class CurrencyPickup : MonoBehaviour
             if (PlayerManager.Instance != null && PlayerManager.Instance.playerStats != null)
             {
                 PlayerManager.Instance.playerStats.currentCurrency += currencyValue;
+                SaveManager.Instance?.SaveCurrentSlot();
                 Destroy(gameObject);
             }
         }

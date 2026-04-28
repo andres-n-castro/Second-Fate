@@ -242,7 +242,8 @@ public class GameManager : MonoBehaviour
         Bonfire[] bonfires = FindObjectsByType<Bonfire>(FindObjectsSortMode.None);
         for (int i = 0; i < bonfires.Length; i++)
         {
-            if (bonfires[i] != null && bonfires[i].bonfireID == lastRestedBonfireID)
+            if (bonfires[i] != null
+                && (bonfires[i].SaveID == lastRestedBonfireID || bonfires[i].bonfireID == lastRestedBonfireID))
             {
                 return true;
             }
@@ -286,6 +287,18 @@ public class GameManager : MonoBehaviour
         }
 
         return AlignmentType.None;
+    }
+
+    public static string GetBonfireSaveID(string sceneName, string bonfireID)
+    {
+        if (string.IsNullOrWhiteSpace(bonfireID))
+        {
+            return string.Empty;
+        }
+
+        return string.IsNullOrWhiteSpace(sceneName) || bonfireID.Contains(":")
+            ? bonfireID
+            : $"{sceneName}:{bonfireID}";
     }
 
     public AlignmentType GetActiveAlignment()
@@ -348,9 +361,10 @@ public class GameManager : MonoBehaviour
     {
         foreach (BonfireLocation location in masterBonfireList)
         {
-            if (location.bonfireID == bonfireID)
+            string locationSaveID = GetBonfireSaveID(location.sceneName, location.bonfireID);
+            if (location.bonfireID == bonfireID || locationSaveID == bonfireID)
             {
-                FastTravelTo(bonfireID, location.sceneName);
+                FastTravelTo(locationSaveID, location.sceneName);
                 return;
             }
         }
@@ -358,10 +372,10 @@ public class GameManager : MonoBehaviour
 
     public void FastTravelTo(string bonfireID, string targetSceneName)
     {
-        pendingTeleportBonfireID = bonfireID;
+        pendingTeleportBonfireID = GetBonfireSaveID(targetSceneName, bonfireID);
         if (SaveManager.Instance != null)
         {
-            SaveManager.Instance.currentSaveData.lastRestedBonfireID = bonfireID;
+            SaveManager.Instance.currentSaveData.lastRestedBonfireID = pendingTeleportBonfireID;
             SaveManager.Instance.SaveCurrentSlot();
         }
 
@@ -428,18 +442,18 @@ public class GameManager : MonoBehaviour
             Bonfire[] bonfires = FindObjectsByType<Bonfire>(FindObjectsSortMode.None);
             foreach (Bonfire b in bonfires)
             {
-                if (b.bonfireID == pendingTeleportBonfireID)
+                if (b.SaveID == pendingTeleportBonfireID || b.bonfireID == pendingTeleportBonfireID)
                 {
                     if (PlayerManager.Instance != null)
                     {
                         RevivePlayerAt(b.transform.position);
                         currentRespawnPoint = b.transform.position;
-                        lastInteractedBonfireID = b.bonfireID;
-                        lastRestedBonfireID = b.bonfireID;
+                        lastInteractedBonfireID = b.SaveID;
+                        lastRestedBonfireID = b.SaveID;
 
                         if (SaveManager.Instance != null)
                         {
-                            SaveManager.Instance.currentSaveData.lastRestedBonfireID = b.bonfireID;
+                            SaveManager.Instance.currentSaveData.lastRestedBonfireID = b.SaveID;
                             SaveManager.Instance.SaveCurrentSlot();
                         }
                     }
@@ -549,7 +563,8 @@ public class GameManager : MonoBehaviour
         Bonfire[] bonfires = FindObjectsByType<Bonfire>(FindObjectsSortMode.None);
         foreach (Bonfire bonfire in bonfires)
         {
-            if (bonfire != null && bonfire.bonfireID == lastRestedBonfireID)
+            if (bonfire != null
+                && (bonfire.SaveID == lastRestedBonfireID || bonfire.bonfireID == lastRestedBonfireID))
             {
                 bonfirePosition = bonfire.transform.position;
                 return true;

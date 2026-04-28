@@ -428,6 +428,11 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void HandleDeath()
     {
+        foreach (AttackHitbox hitbox in GetComponentsInChildren<AttackHitbox>(true))
+        {
+            hitbox.Deactivate();
+        }
+
         StopAll();
 
         currentCurrencyDrop = GameManager.Instance != null &&

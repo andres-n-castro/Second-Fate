@@ -33,11 +33,12 @@ public class LockerDoor : MonoBehaviour
         if (hasBeenUnlocked) return;
         if (!collision.gameObject.CompareTag("Player")) return;
 
-        if (TutorialManager.Instance.HasKey(doorID))
+        if (TutorialManager.EnsureInstance().HasKey(doorID))
         {
             Debug.Log($"Door {doorID} unlocked!");
             hasBeenUnlocked = true;
             SaveManager.Instance?.MarkInteractableLooted(RuntimePersistentID);
+            SaveManager.Instance?.SaveCurrentSlot();
 
             if (disableInsteadOfDestroy)
                 gameObject.SetActive(false);

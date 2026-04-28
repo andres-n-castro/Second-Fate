@@ -332,6 +332,8 @@ MonoBehaviour:
   profile: {fileID: 11400000, guid: 6e8f9dc49b96c1a4eb5120efb0be284e, type: 2}
   baseCurrencyDrop: 10
   coinPrefab: {fileID: 0}
+  bossID: 
+  deathDescriptionText: A Great Foe Has Fallen.
   groundCheck: {fileID: 5494277317145419413}
   wallCheck: {fileID: 5767055302132714079}
   groundLayer:
@@ -345,6 +347,9 @@ MonoBehaviour:
   fireBreathHitbox: {fileID: 2548339698926564450}
   groundedThrustHitbox: {fileID: 8182076689017602867}
   lavaVomitHitbox: {fileID: 3511534206314847935}
+  sceneKeyObjectName: key_to_second_part
+  sceneKeyItemReward: {fileID: 0}
+  sceneKeyDropOffset: {x: 1, y: 1.2}
 --- !u!50 &4430953564352674286
 Rigidbody2D:
   serializedVersion: 5
@@ -430,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e5bcc32e947684ea6d3ad710f54fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 2
   isInvulnerable: 0
   handleKnockbackExternally: 0
 --- !u!1 &5963163312784448396

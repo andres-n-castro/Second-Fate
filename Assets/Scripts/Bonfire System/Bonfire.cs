@@ -3,6 +3,8 @@ using UnityEngine;
 public class Bonfire : MonoBehaviour
 {
     public string bonfireID;
+    public string SaveID => GameManager.GetBonfireSaveID(gameObject.scene.name, bonfireID);
+
     [Header("Proximity Popup")]
     [SerializeField] private GameObject proximityPopup;
 
@@ -56,7 +58,7 @@ public class Bonfire : MonoBehaviour
                 proximityPopup.SetActive(false);
             }
 
-            GameManager.Instance.lastInteractedBonfireID = bonfireID;
+            GameManager.Instance.lastInteractedBonfireID = SaveID;
             GameManager.Instance.ChangeState(GameManager.GameState.BonfireMenu);
         }
     }
@@ -84,7 +86,7 @@ public class Bonfire : MonoBehaviour
     {
         if (anim == null) return;
 
-        GameManager.AlignmentType currentAlignment = GameManager.Instance.GetBonfireAlignment(bonfireID);
+        GameManager.AlignmentType currentAlignment = GameManager.Instance.GetBonfireAlignment(SaveID);
         if (currentAlignment == GameManager.AlignmentType.None) anim.SetInteger("BonfireState", 0);
         else if (currentAlignment == GameManager.AlignmentType.TreeEssence) anim.SetInteger("BonfireState", 1);
         else if (currentAlignment == GameManager.AlignmentType.CreatureBlood) anim.SetInteger("BonfireState", 2);

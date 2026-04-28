@@ -21,6 +21,11 @@ public class SceneTeleporter : MonoBehaviour
         bool interactPressed = Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(PortalInteractButton);
         if (_isPlayerInZone && interactPressed)
         {
+            if (SaveManager.Instance != null)
+            {
+                SaveManager.Instance.SaveCurrentSlotForScene(sceneToLoad);
+            }
+
             SceneManager.LoadScene(sceneToLoad);
         }
     }

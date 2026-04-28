@@ -8,6 +8,7 @@ public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance { get; private set; }
     private const string DefaultSceneName = "tutorial_hub";
+    private const int MaxSaveSlotsToScan = 10;
 
     [Header("Testing Tools")]
     public bool isSandboxMode = false;
@@ -38,14 +39,17 @@ public class SaveManager : MonoBehaviour
 
     private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (!isSandboxMode && applySaveDataOnNextSceneLoad)
+        if (isSandboxMode || scene.name == "main_menu_scene")
         {
-            StartCoroutine(ApplyLoadedGameAfterSceneLoad());
-            applySaveDataOnNextSceneLoad = false;
+            return;
         }
+
+        bool placePlayerAfterLoad = applySaveDataOnNextSceneLoad;
+        applySaveDataOnNextSceneLoad = false;
+        StartCoroutine(ApplyLoadedGameAfterSceneLoad(scene, placePlayerAfterLoad));
     }
 
-    private IEnumerator ApplyLoadedGameAfterSceneLoad()
+    private IEnumerator ApplyLoadedGameAfterSceneLoad(Scene scene, bool placePlayerAfterLoad)
     {
         for (int i = 0; i < 30 && GameManager.Instance == null; i++)
         {
@@ -54,10 +58,13 @@ public class SaveManager : MonoBehaviour
 
         ApplyCurrentSaveDataToRuntime();
 
-        if (GameManager.Instance != null)
+        if (placePlayerAfterLoad && GameManager.Instance != null)
         {
             GameManager.Instance.PlaceLoadedGamePlayer();
         }
+
+        currentSaveData.currentSceneName = scene.name;
+        WriteCurrentSaveDataToDisk();
     }
 
     public static SaveManager EnsureInstance()
@@ -94,11 +101,15 @@ public class SaveManager : MonoBehaviour
         List<string> previousDefeatedBossIDs = new List<string>(currentSaveData.defeatedBossIDs);
         List<string> previousUnlockedCharmIDs = new List<string>(currentSaveData.unlockedCharmIDs);
         List<string> previousEquippedCharmIDs = new List<string>(currentSaveData.equippedCharmIDs);
+        List<string> previousCollectedKeyIDs = new List<string>(currentSaveData.collectedKeyIDs);
         bool previousHasDash = currentSaveData.hasDash;
         bool previousHasDoubleJump = currentSaveData.hasDoubleJump;
         currentSaveData = new GameData();
         currentSaveData.lootedInteractableIDs = previousLootedInteractableIDs;
         currentSaveData.defeatedBossIDs = previousDefeatedBossIDs;
+        currentSaveData.collectedKeyIDs = TutorialManager.Instance != null
+            ? TutorialManager.Instance.GetCollectedKeys()
+            : previousCollectedKeyIDs;
 
         if (PlayerManager.Instance != null && PlayerManager.Instance.playerStats != null)
         {
@@ -180,6 +191,17 @@ public class SaveManager : MonoBehaviour
         SaveGame(currentSlotIndex);
     }
 
+    public void SaveCurrentSlotForScene(string sceneName)
+    {
+        SaveGame(currentSlotIndex);
+
+        if (!string.IsNullOrEmpty(sceneName))
+        {
+            currentSaveData.currentSceneName = sceneName;
+            WriteCurrentSaveDataToDisk();
+        }
+    }
+
     public void WriteCurrentSaveDataToDisk()
     {
         if (isSandboxMode) return;
@@ -235,13 +257,37 @@ public class SaveManager : MonoBehaviour
 
     public void ContinueOrStartDefaultGame()
     {
-        if (HasSaveFile(0))
+        if (TryGetMostRecentSaveSlot(out int slotIndex))
         {
-            LoadGameAndScene(0);
+            LoadGameAndScene(slotIndex);
             return;
         }
 
         StartNewGame(0);
+    }
+
+    private bool TryGetMostRecentSaveSlot(out int slotIndex)
+    {
+        slotIndex = -1;
+        System.DateTime newestWriteTime = System.DateTime.MinValue;
+
+        for (int i = 0; i < MaxSaveSlotsToScan; i++)
+        {
+            string path = GetSavePath(i);
+            if (!File.Exists(path))
+            {
+                continue;
+            }
+
+            System.DateTime writeTime = File.GetLastWriteTimeUtc(path);
+            if (slotIndex == -1 || writeTime > newestWriteTime)
+            {
+                slotIndex = i;
+                newestWriteTime = writeTime;
+            }
+        }
+
+        return slotIndex >= 0;
     }
 
     public void StartNewGame(int slotIndex = 0)
@@ -412,7 +458,9 @@ public class SaveManager : MonoBehaviour
 
             foreach (BonfireTravelData bonfireData in GameManager.Instance.masterBonfireRegistry)
             {
-                if (bonfireData.bonfireID == currentSaveData.lastRestedBonfireID)
+                string bonfireSaveID = GameManager.GetBonfireSaveID(bonfireData.sceneName, bonfireData.bonfireID);
+                if (bonfireData.bonfireID == currentSaveData.lastRestedBonfireID
+                    || bonfireSaveID == currentSaveData.lastRestedBonfireID)
                 {
                     GameManager.Instance.currentRespawnPoint = bonfireData.spawnPosition;
                     break;
@@ -423,6 +471,7 @@ public class SaveManager : MonoBehaviour
         }
 
         ApplyCharmData();
+        TutorialManager.EnsureInstance().SetCollectedKeys(currentSaveData.collectedKeyIDs);
         ApplyInventoryData();
     }
 
@@ -511,6 +560,7 @@ public class SaveManager : MonoBehaviour
         if (currentSaveData.inventoryItemIDs == null) currentSaveData.inventoryItemIDs = new List<string>();
         if (currentSaveData.inventoryItemAmounts == null) currentSaveData.inventoryItemAmounts = new List<int>();
         if (currentSaveData.inventoryItemReadStates == null) currentSaveData.inventoryItemReadStates = new List<bool>();
+        if (currentSaveData.collectedKeyIDs == null) currentSaveData.collectedKeyIDs = new List<string>();
     }
 
     public void DeleteSave(int slotIndex)

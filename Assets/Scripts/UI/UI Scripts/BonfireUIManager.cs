@@ -107,7 +107,7 @@ public class BonfireUIManager : MonoBehaviour
         ConsumeItem(treeEssence);
         ConsumeItem(creatureBlood);
 
-        Bonfire activeBonfire = Object.FindFirstObjectByType<Bonfire>();
+        Bonfire activeBonfire = FindInteractedBonfire();
         if (activeBonfire != null) activeBonfire.UpdateVisualState();
 
         if (CharmManager.Instance != null)
@@ -146,7 +146,7 @@ public class BonfireUIManager : MonoBehaviour
         }
 
         PlayerManager.Instance.ResetProtectionCharmCharges();
-        Bonfire activeBonfire = Object.FindFirstObjectByType<Bonfire>();
+        Bonfire activeBonfire = FindInteractedBonfire();
         if (activeBonfire != null)
         {
             GameManager.Instance.currentRespawnPoint = activeBonfire.transform.position;
@@ -174,9 +174,12 @@ public class BonfireUIManager : MonoBehaviour
 
             map.uiButton.onClick.RemoveAllListeners();
 
-            bool isUnlocked = GameManager.Instance.unlockedBonfires.Contains(map.targetBonfireID);
+            string targetBonfireID = GameManager.GetBonfireSaveID(map.targetSceneName, map.targetBonfireID);
+            bool isUnlocked = GameManager.Instance.unlockedBonfires.Contains(targetBonfireID)
+                || GameManager.Instance.unlockedBonfires.Contains(map.targetBonfireID);
 
-            if (map.targetBonfireID == GameManager.Instance.lastInteractedBonfireID)
+            if (targetBonfireID == GameManager.Instance.lastInteractedBonfireID
+                || map.targetBonfireID == GameManager.Instance.lastInteractedBonfireID)
             {
                 isUnlocked = false;
             }
@@ -185,7 +188,6 @@ public class BonfireUIManager : MonoBehaviour
 
             if (isUnlocked)
             {
-                string targetBonfireID = map.targetBonfireID;
                 string targetSceneName = map.targetSceneName;
                 map.uiButton.onClick.AddListener(() => GameManager.Instance.FastTravelTo(targetBonfireID, targetSceneName));
 
@@ -194,6 +196,27 @@ public class BonfireUIManager : MonoBehaviour
         }
 
         ShowPanel(fastTravelPanel, firstValidButton != null ? firstValidButton : closeFastTravelBtn);
+    }
+
+    private Bonfire FindInteractedBonfire()
+    {
+        if (GameManager.Instance == null)
+        {
+            return null;
+        }
+
+        Bonfire[] bonfires = Object.FindObjectsByType<Bonfire>(FindObjectsSortMode.None);
+        foreach (Bonfire bonfire in bonfires)
+        {
+            if (bonfire != null
+                && (bonfire.SaveID == GameManager.Instance.lastInteractedBonfireID
+                    || bonfire.bonfireID == GameManager.Instance.lastInteractedBonfireID))
+            {
+                return bonfire;
+            }
+        }
+
+        return null;
     }
 
     public void CloseMenu()
