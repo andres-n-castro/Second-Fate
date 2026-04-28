@@ -803,6 +803,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7502304126730345517, guid: 6902d27d45dafd44cb0fbb6f59b19f29, type: 3}
+      propertyPath: maxHealth
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1160,6 +1164,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1589089897160074203, guid: cef3c1c031beb3a4791cce574f37201e, type: 3}
+      propertyPath: maxHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017167415323168927, guid: cef3c1c031beb3a4791cce574f37201e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4855009401576971506, guid: cef3c1c031beb3a4791cce574f37201e, type: 3}
       propertyPath: m_Name
       value: Tyr
@@ -1423,6 +1435,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6530975260314521157, guid: 553ad76beb6e8bc4c919926c9db5d84f, type: 3}
+      propertyPath: maxHealth
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8883091108054074015, guid: 553ad76beb6e8bc4c919926c9db5d84f, type: 3}
       propertyPath: m_Name
       value: Odin
@@ -1484,9 +1500,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5217469495218928081, guid: bb7b4694cbc06204195d58dca25be225, type: 3}
+      propertyPath: maxHealth
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5742404037562111415, guid: bb7b4694cbc06204195d58dca25be225, type: 3}
       propertyPath: m_Name
       value: Heimdall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742404037562111415, guid: bb7b4694cbc06204195d58dca25be225, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

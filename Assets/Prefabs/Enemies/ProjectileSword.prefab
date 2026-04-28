@@ -127,7 +127,7 @@ MonoBehaviour:
     m_Bits: 64
   curveDelay: 0.3
   curveStrength: 4
-  maxLifetime: 3
+  maxLifetime: 1.75
 --- !u!212 &3312981160512972024
 SpriteRenderer:
   m_ObjectHideFlags: 0

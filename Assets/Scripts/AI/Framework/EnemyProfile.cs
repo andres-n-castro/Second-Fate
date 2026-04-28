@@ -227,6 +227,10 @@ public class EnemyProfile : ScriptableObject
     public float heimdallCloseRange = 2.0f;
     public float heimdallMaxEngageRange = 8.0f;
 
+    [Header("Heimdall P1 Cooldown")]
+    public float heimdallP1MinAttackCooldown = 0.2f;
+    public float heimdallP1MaxAttackCooldown = 0.5f;
+
     [Header("Heimdall P1 Attack Selection")]
     public float heimdallShockwaveSlashMaxRange = 7.0f;
     public float heimdallShockwaveSlashWeightMultiplier = 3f;
@@ -247,6 +251,7 @@ public class EnemyProfile : ScriptableObject
 
     [Header("Heimdall Sword Plunge")]
     public float heimdallPlungeDashSpeed = 15f;
+    public float heimdallPlungeMaxHorizontalDist = 8f;
     public float heimdallPlungeHeightAbovePlayer = 4f;
     public float heimdallPlungeDashTimeout = 1.0f;
     public float heimdallPlungeArriveThreshold = 1.0f;

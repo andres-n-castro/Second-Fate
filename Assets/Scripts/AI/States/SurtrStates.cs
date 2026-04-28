@@ -740,7 +740,7 @@ public class SurtrP1GapCloseState : EnemyState
         AttackDefinition sweepDef = surtr.GetAttackDef("LavaSweep");
         if (sweepDef != null && owner.IsAttackReady("LavaSweep"))
         {
-            float sweepEffective = surtr.LavaSweepReach + 0.3f;
+            float sweepEffective = surtr.LavaSweepReach + 0.75f;
             options.Add((p1.LavaSweepState, sweepDef.selectionWeight, sweepEffective));
         }
 
@@ -748,21 +748,21 @@ public class SurtrP1GapCloseState : EnemyState
         if (thrustDef != null && owner.IsAttackReady("HeavyThrust"))
         {
             float thrustTravel = thrustDef.dashSpeed * thrustDef.activeDuration;
-            float thrustEffective = surtr.HeavyThrustReach + 0.3f + thrustTravel;
+            float thrustEffective = surtr.HeavyThrustReach + 0.5f + thrustTravel;
             options.Add((p1.HeavyThrustState, thrustDef.selectionWeight, thrustEffective));
         }
 
         AttackDefinition breathDef = surtr.GetAttackDef("FireBreath");
         if (breathDef != null && owner.IsAttackReady("FireBreath"))
         {
-            float breathEffective = surtr.FireBreathReach + 0.3f;
+            float breathEffective = surtr.FireBreathReach + 0.75f;
             options.Add((p1.FireBreathState, breathDef.selectionWeight, breathEffective));
         }
 
         if (options.Count == 0)
         {
             chosenAttack = p1.LavaSweepState;
-            targetRange = surtr.LavaSweepReach + 0.3f;
+            targetRange = surtr.LavaSweepReach + 0.75f;
             return;
         }
 
