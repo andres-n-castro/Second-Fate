@@ -249,6 +249,7 @@ public class SaveManager : MonoBehaviour
         currentSlotIndex = slotIndex;
         currentSaveData = new GameData();
         DeleteSave(slotIndex);
+        WriteCurrentSaveDataToDisk();
         applySaveDataOnNextSceneLoad = true;
         SceneManager.LoadScene(DefaultSceneName);
     }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerManager))]
@@ -14,13 +15,31 @@ public class CharmManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (IsDuplicateInSameScene())
         {
+            Debug.LogWarning($"[CharmManager] Destroying duplicate player '{name}' in scene '{gameObject.scene.name}'. Existing instance is '{Instance.name}'.");
             Destroy(gameObject);
             return;
         }
 
         Instance = this;
+        Debug.Log($"[CharmManager] Registered '{name}' in scene '{gameObject.scene.name}'.");
+    }
+
+    private bool IsDuplicateInSameScene()
+    {
+        return Instance != null
+            && Instance != this
+            && Instance.gameObject.scene == gameObject.scene;
+    }
+
+    private void OnDestroy()
+    {
+        Debug.LogWarning($"[CharmManager] Destroyed '{name}' in scene '{gameObject.scene.name}'. Is singleton: {Instance == this}. Stack:\n{Environment.StackTrace}");
+        if (Instance == this)
+        {
+            Instance = null;
+        }
     }
 
     public void UnlockCharm(CharmData newCharm)

@@ -23,6 +23,7 @@ public struct BonfireLocation
 public class GameManager : MonoBehaviour
 {
     private const string TutorialFallbackCheckpointName = "Checkpoint_Midpoint01";
+    private const string TutorialSceneName = "tutorial_hub";
     private const string MainMenuSceneName = "main_menu_scene";
 
     public enum GameState
@@ -80,6 +81,7 @@ public class GameManager : MonoBehaviour
     private bool hasPendingCheckpointRespawn;
     private Vector2 pendingCheckpointPosition;
     private bool placePlayerFromSaveOnNextGameplayLoad;
+    private bool isLoadedGamePlacementRunning;
 
     public List<BonfireTravelData> masterBonfireRegistry;
     public List<string> unlockedBonfires = new List<string>();
@@ -209,7 +211,8 @@ public class GameManager : MonoBehaviour
     {
         checkpointPosition = Vector2.zero;
 
-        if (PlayerController.Instance != null)
+        if (PlayerController.Instance != null
+            && PlayerController.Instance.gameObject.scene == SceneManager.GetActiveScene())
         {
             PlayerRespawn respawnScript = PlayerController.Instance.GetComponent<PlayerRespawn>();
             if (respawnScript != null && respawnScript.useCheckpointRespawn && respawnScript.currentCheckpoint != null)
@@ -387,11 +390,14 @@ public class GameManager : MonoBehaviour
 
     public void PlaceLoadedGamePlayer()
     {
+        isLoadedGamePlacementRunning = true;
         StartCoroutine(PlaceLoadedPlayerAfterSceneLoad());
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log($"[GameManager] Scene loaded: '{scene.name}' mode={mode}. Active scene='{SceneManager.GetActiveScene().name}'. placeLoaded={placePlayerFromSaveOnNextGameplayLoad}, pendingCheckpoint={hasPendingCheckpointRespawn}, pendingBonfire='{pendingTeleportBonfireID}'.");
+
         if (IsGameplayScene(scene.name))
         {
             ResetStateForGameplayScene();
@@ -399,6 +405,11 @@ public class GameManager : MonoBehaviour
 
         ConfigureSceneBosses(scene);
         RefreshSceneBonfires();
+
+        if (ShouldPlaceTutorialPlayerAtCheckpoint(scene))
+        {
+            StartCoroutine(PlaceTutorialPlayerAtCheckpointAfterSceneLoad());
+        }
 
         if (hasPendingCheckpointRespawn)
         {
@@ -454,6 +465,35 @@ public class GameManager : MonoBehaviour
         return !string.Equals(sceneName, MainMenuSceneName, StringComparison.OrdinalIgnoreCase);
     }
 
+    private bool ShouldPlaceTutorialPlayerAtCheckpoint(Scene scene)
+    {
+        return string.Equals(scene.name, TutorialSceneName, StringComparison.OrdinalIgnoreCase)
+            && !hasPendingCheckpointRespawn
+            && !isLoadedGamePlacementRunning
+            && string.IsNullOrEmpty(pendingTeleportBonfireID);
+    }
+
+    private IEnumerator PlaceTutorialPlayerAtCheckpointAfterSceneLoad()
+    {
+        Debug.Log("[GameManager] Tutorial checkpoint placement started.");
+
+        for (int i = 0; i < 10 && GetScenePlayerManager() == null; i++)
+        {
+            yield return null;
+        }
+
+        if (TryGetCheckpointRespawnPosition(out Vector2 checkpointPosition))
+        {
+            Debug.Log($"[GameManager] Placing tutorial player at checkpoint {checkpointPosition}.");
+            RevivePlayerAt(checkpointPosition);
+            currentRespawnPoint = checkpointPosition;
+        }
+        else
+        {
+            Debug.LogWarning("[GameManager] Tutorial checkpoint placement failed because no checkpoint was found.");
+        }
+    }
+
     private IEnumerator RevivePlayerAtCheckpointAfterSceneLoad(Vector2 checkpointPosition)
     {
         for (int i = 0; i < 10 && GetScenePlayerManager() == null; i++)
@@ -468,6 +508,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator PlaceLoadedPlayerAfterSceneLoad()
     {
+        Debug.Log("[GameManager] Loaded-save player placement started.");
+
         // Let SaveManager apply loaded bonfire/player state before choosing a spawn point.
         yield return null;
 
@@ -481,6 +523,7 @@ public class GameManager : MonoBehaviour
             RevivePlayerAt(bonfirePosition);
             currentRespawnPoint = bonfirePosition;
             TriggerWorldReset();
+            isLoadedGamePlacementRunning = false;
             yield break;
         }
 
@@ -490,6 +533,8 @@ public class GameManager : MonoBehaviour
             currentRespawnPoint = checkpointPosition;
             TriggerWorldReset();
         }
+
+        isLoadedGamePlacementRunning = false;
     }
 
     private bool TryGetLastRestedBonfirePosition(out Vector2 bonfirePosition)
@@ -519,7 +564,7 @@ public class GameManager : MonoBehaviour
         PlayerManager playerManager = GetScenePlayerManager();
         if (playerManager == null)
         {
-            Debug.LogWarning("[GameManager] Could not revive player because no PlayerManager exists in the loaded scene.");
+            Debug.LogWarning($"[GameManager] Could not revive player because no PlayerManager exists in scene '{SceneManager.GetActiveScene().name}'.");
             return;
         }
 
@@ -616,18 +661,67 @@ public class GameManager : MonoBehaviour
 
     private PlayerManager GetScenePlayerManager()
     {
-        if (PlayerManager.Instance != null)
+        Scene activeScene = SceneManager.GetActiveScene();
+        if (PlayerManager.Instance != null && PlayerManager.Instance.gameObject.scene == activeScene)
         {
+            Debug.Log($"[GameManager] Found PlayerManager from singleton on '{PlayerManager.Instance.name}' in scene '{activeScene.name}'.");
             return PlayerManager.Instance;
         }
 
         PlayerManager[] players = Resources.FindObjectsOfTypeAll<PlayerManager>();
-        Scene activeScene = SceneManager.GetActiveScene();
 
         for (int i = 0; i < players.Length; i++)
         {
             PlayerManager candidate = players[i];
             if (candidate != null && candidate.gameObject.scene == activeScene)
+            {
+                Debug.Log($"[GameManager] Found PlayerManager by scene scan on '{candidate.name}' in scene '{activeScene.name}'.");
+                return candidate;
+            }
+        }
+
+        PlayerController playerController = FindSceneObjectOfType<PlayerController>(activeScene);
+        if (playerController != null)
+        {
+            Debug.LogWarning($"[GameManager] Found PlayerController on '{playerController.name}' without PlayerManager in scene '{activeScene.name}'. Adding PlayerManager to the player.");
+            return EnsurePlayerManager(playerController.gameObject);
+        }
+
+        GameObject taggedPlayer = FindSceneObjectWithTag(activeScene, "Player");
+        if (taggedPlayer != null)
+        {
+            Debug.LogWarning($"[GameManager] Found tagged Player object '{taggedPlayer.name}' without PlayerManager in scene '{activeScene.name}'. Adding PlayerManager to the player.");
+            return EnsurePlayerManager(taggedPlayer);
+        }
+
+        Debug.LogWarning($"[GameManager] Player scan failed in scene '{activeScene.name}'. PlayerManagers found: {players.Length}.");
+        return null;
+    }
+
+    private PlayerManager EnsurePlayerManager(GameObject playerObject)
+    {
+        PlayerManager playerManager = playerObject.GetComponent<PlayerManager>();
+        if (playerManager == null)
+        {
+            playerManager = playerObject.AddComponent<PlayerManager>();
+        }
+
+        PlayerManager.Instance = playerManager;
+        return playerManager;
+    }
+
+    private GameObject FindSceneObjectWithTag(Scene scene, string tag)
+    {
+        GameObject[] sceneObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+        for (int i = 0; i < sceneObjects.Length; i++)
+        {
+            GameObject candidate = sceneObjects[i];
+            if (candidate == null || candidate.scene != scene)
+            {
+                continue;
+            }
+
+            if (candidate.CompareTag(tag))
             {
                 return candidate;
             }

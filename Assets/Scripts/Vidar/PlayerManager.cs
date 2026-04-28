@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,8 +18,9 @@ public class PlayerManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (IsDuplicateInSameScene())
         {
+            Debug.LogWarning($"[PlayerManager] Destroying duplicate player '{name}' in scene '{gameObject.scene.name}'. Existing instance is '{Instance.name}'.");
             Destroy(gameObject);
             return;
         }
@@ -29,6 +31,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         Instance = this;
+        Debug.Log($"[PlayerManager] Registered '{name}' in scene '{gameObject.scene.name}'.");
 
         playerController = GetComponent<PlayerController>();
         playerMovement = GetComponent<PlayerMovement>();
@@ -36,8 +39,16 @@ public class PlayerManager : MonoBehaviour
         playerStates = GetComponent<PlayerStates>();
     }
 
+    private bool IsDuplicateInSameScene()
+    {
+        return Instance != null
+            && Instance != this
+            && Instance.gameObject.scene == gameObject.scene;
+    }
+
     private void OnDestroy()
     {
+        Debug.LogWarning($"[PlayerManager] Destroyed '{name}' in scene '{gameObject.scene.name}'. Is singleton: {Instance == this}. Stack:\n{Environment.StackTrace}");
         if (Instance == this)
         {
             Instance = null;

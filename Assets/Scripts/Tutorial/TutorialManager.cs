@@ -9,8 +9,22 @@ public class TutorialManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            return;
+        }
+
+        Debug.LogWarning($"[TutorialManager] Duplicate TutorialManager found on '{name}'. Removing the component only.");
+        Destroy(this);
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
     }
 
     public void AddKey(string id)
