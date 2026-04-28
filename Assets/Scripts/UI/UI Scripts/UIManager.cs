@@ -297,6 +297,7 @@ public class UIManager : MonoBehaviour
     public void OnReturnToMainMenuClicked()
     {
         Time.timeScale = 1f;
+        SetAllCanvasesInactive();
 
         if (pauseCanvas != null)
         {
@@ -311,6 +312,11 @@ public class UIManager : MonoBehaviour
         if (deathCanvas != null)
         {
             deathCanvas.SetActive(false);
+        }
+
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
         }
 
         SceneManager.LoadScene(mainMenuSceneName);

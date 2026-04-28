@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public abstract class EnemyBase : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public abstract class EnemyBase : MonoBehaviour
     public EnemyPerception2D Perception { get; private set; }
     public virtual bool IsBoss => false;
     public virtual string BossDisplayName => gameObject.name;
+    public virtual string BossPersistentID => $"{SceneManager.GetActiveScene().name}:{BossDisplayName}";
 
     // Accessors for perception
     public Transform GroundCheck => groundCheck;
@@ -69,6 +71,12 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void Start()
     {
+        if (IsBoss && SaveManager.Instance != null && SaveManager.Instance.IsBossDefeated(BossPersistentID))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Ctx = new EnemyContext();
         FSM = new StateMachine();
         Perception = new EnemyPerception2D(this, Ctx);
@@ -376,6 +384,13 @@ public abstract class EnemyBase : MonoBehaviour
             {
                 GameManager.Instance.ChangeState(GameManager.GameState.Exploration);
             }
+
+            SaveManager.Instance?.MarkBossDefeated(BossPersistentID);
+
+            if (BossUIManager.Instance != null)
+            {
+                BossUIManager.Instance.TriggerBossDeath(deathDescriptionText);
+            }
         }
 
         HandleDeath();
@@ -411,11 +426,6 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void HandleDeath()
     {
         StopAll();
-
-        if (IsBoss && BossUIManager.Instance != null)
-        {
-            BossUIManager.Instance.TriggerBossDeath(deathDescriptionText);
-        }
 
         currentCurrencyDrop = GameManager.Instance != null &&
             GameManager.Instance.GetActiveAlignment() == GameManager.AlignmentType.CreatureBlood

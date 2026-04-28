@@ -64,11 +64,6 @@ public class ShopItemUI : MonoBehaviour
                 UIManager.Instance.ShowNotification("Purchased: " + charmToSell.charmName);
             }
 
-            if (SaveManager.Instance != null)
-            {
-                SaveManager.Instance.SaveGame(0);
-            }
-
             gameObject.SetActive(false);
         }
         else if (UIManager.Instance != null)

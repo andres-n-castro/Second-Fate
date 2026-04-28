@@ -17,11 +17,13 @@ public class GameDatabase : MonoBehaviour
 
     public Item GetItemByID(string itemID)
     {
-        return allItems.Find(item => item.name == itemID);
+        return allItems.Find(item => item != null && item.name == itemID);
     }
 
     public CharmData GetCharmByID(string charmID)
     {
-        return allCharms.Find(charm => charm.name == charmID);
+        return allCharms.Find(charm =>
+            charm != null &&
+            (charm.name == charmID || charm.charmID == charmID));
     }
 }

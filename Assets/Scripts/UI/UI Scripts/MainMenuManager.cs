@@ -53,6 +53,12 @@ public class MainMenuManager : MonoBehaviour
             settingsButton.onClick.RemoveListener(OpenControls);
             settingsButton.onClick.AddListener(OpenControls);
         }
+
+        if (loadGameButton != null)
+        {
+            loadGameButton.onClick.RemoveListener(OnLoadGameClicked);
+            loadGameButton.onClick.AddListener(OnLoadGameClicked);
+        }
         
         if (quitButton != null)
         {
@@ -128,6 +134,16 @@ public void PauseGame()
         if (!isLevelLoading) StartCoroutine(TransitionToLevel());
     }
 
+    public void OnLoadGameClicked()
+    {
+        if (isLevelLoading)
+        {
+            return;
+        }
+
+        Debug.Log("Load Game UI is not hooked up yet.");
+    }
+
     public void OnQuitClicked()
     {
         Application.Quit();
@@ -195,7 +211,7 @@ public void PauseGame()
     // 3. Load the level
     // Since this script is likely on a prefab, ensure you don't have 'DontDestroyOnLoad' 
     // on the UI if you want it to disappear completely.
-    SceneManager.LoadScene("tutorial_hub"); 
+    ContinueOrStartDefaultGame();
 }
 
     IEnumerator SlidePanel(RectTransform panel, float targetX, float duration)
@@ -319,6 +335,7 @@ public void PauseGame()
 
         DisableChildBlocker("OptionsDimmer");
         DisableChildBlocker("ControlsCanvas");
+        DisableChildBlocker("LoadGameSectionCanvas");
     }
 
     private void DisableChildBlocker(string childName)
@@ -345,6 +362,18 @@ public void PauseGame()
             }
 
             children[i].gameObject.SetActive(false);
+        }
+    }
+
+    private void ContinueOrStartDefaultGame()
+    {
+        if (SaveManager.Instance != null)
+        {
+            SaveManager.Instance.ContinueOrStartDefaultGame();
+        }
+        else
+        {
+            SceneManager.LoadScene("tutorial_hub");
         }
     }
 }

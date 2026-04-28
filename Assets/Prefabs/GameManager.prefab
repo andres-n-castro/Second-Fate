@@ -85,7 +85,37 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 72b82c0dd24b00f4dbe52a104e43a4a4, type: 2}
   - {fileID: 11400000, guid: 04e582c258c19c94087ed96aa131e151, type: 2}
   - {fileID: 11400000, guid: a609146f28033734489fd1a7bc4a9059, type: 2}
-  allCharms: []
+  - {fileID: 11400000, guid: 7a4400f6fd64082428a7eedcf97894dc, type: 2}
+  - {fileID: 11400000, guid: 4997f0008abd0d94898cd745ec2c259d, type: 2}
+  - {fileID: 11400000, guid: c6129c2cfecbb6c4b834a856bb729764, type: 2}
+  - {fileID: 11400000, guid: da0e1b33e8f3ae24695de8c50580eb8a, type: 2}
+  - {fileID: 11400000, guid: 59dc177db49b5ea4dbddbaf7e4f57ec7, type: 2}
+  - {fileID: 11400000, guid: 8a94f4ea3a7fa184cb3bb50b25d2e9a6, type: 2}
+  - {fileID: 11400000, guid: 15865fa563515d54bb581eaa76b2b4e5, type: 2}
+  - {fileID: 11400000, guid: 8f7b34198b8c15b48b55146d89a1992c, type: 2}
+  - {fileID: 11400000, guid: 3a6a72d68d68d254ea0296dd63553a6c, type: 2}
+  - {fileID: 11400000, guid: 936270538baaa724fa6bd6814404691b, type: 2}
+  - {fileID: 11400000, guid: 6aa7dba820d282948af19dc8f18a873f, type: 2}
+  - {fileID: 11400000, guid: e32a6422d96a05b45ad8290173eec38a, type: 2}
+  - {fileID: 11400000, guid: c2cd23a7cb9e7cf46b4f984bef397600, type: 2}
+  - {fileID: 11400000, guid: b92f86f40fb28f04a8b7066a40de79a4, type: 2}
+  - {fileID: 11400000, guid: e622ad2c25f4d0a4a830c8983c7b64a6, type: 2}
+  - {fileID: 11400000, guid: d776a77d44423374cb165fe7e3ac69b5, type: 2}
+  - {fileID: 11400000, guid: 74fbc469128877549ae51d0d7e24d09f, type: 2}
+  - {fileID: 11400000, guid: cdf80fab6803ccf4aa2dd302082bfd4c, type: 2}
+  - {fileID: 11400000, guid: 9ca10729dd23a384f99684491cc8175f, type: 2}
+  - {fileID: 11400000, guid: 3aff61986e351c94cab7be11e99c67a5, type: 2}
+  - {fileID: 11400000, guid: 80f48ee88305bbb4db4769516dd14fe5, type: 2}
+  - {fileID: 11400000, guid: 522a882385a4eb0498197c99e4a8a1f5, type: 2}
+  - {fileID: 11400000, guid: 6ad2814523d6a4a4aac9c5790b3d9e01, type: 2}
+  - {fileID: 11400000, guid: 0e727988b120aba4a971e3d0959d159a, type: 2}
+  - {fileID: 11400000, guid: 8d9d904e82326f64dad895adbe9313e3, type: 2}
+  - {fileID: 11400000, guid: 24675c69b283af44c85af75a7efe4728, type: 2}
+  allCharms:
+  - {fileID: 11400000, guid: 90d7b28a299aab04484854d0fb9acc8d, type: 2}
+  - {fileID: 11400000, guid: 720459df681f13149ae85dbad33ff41f, type: 2}
+  - {fileID: 11400000, guid: 005226afbbb129749bf3339afd67a3fd, type: 2}
+  - {fileID: 11400000, guid: 3973a50ebcf93794a9d41980e9586779, type: 2}
 --- !u!114 &535721923152968432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab31fd8a6f555c4ca458833cd29a709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSandboxMode: 1
+  isSandboxMode: 0
   currentSaveData:
     lastRestedBonfireID: 
     currentSceneName: TutorialScene

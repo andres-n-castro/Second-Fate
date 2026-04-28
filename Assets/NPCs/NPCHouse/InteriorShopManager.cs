@@ -121,9 +121,6 @@ public class InteriorShopManager : MonoBehaviour
             if (UIManager.Instance != null)
                 UIManager.Instance.ShowNotification("Purchased: " + selectedItem.DisplayName);
 
-            if (SaveManager.Instance != null)
-                SaveManager.Instance.SaveGame(0);
-
             selectedItem.gameObject.SetActive(false);
             selectedItem = null;
             RefreshShopItems();

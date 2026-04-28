@@ -131,10 +131,6 @@ public class BossUIManager : MonoBehaviour
         bool canShowPopup = bossDeathPopUp != null && resumeButton != null;
         if (!canShowPopup)
         {
-            if (SaveManager.Instance != null)
-            {
-                SaveManager.Instance.SaveGame(0);
-            }
             return;
         }
 
@@ -172,11 +168,6 @@ public class BossUIManager : MonoBehaviour
         if (EventSystem.current != null)
         {
             EventSystem.current.SetSelectedGameObject(null);
-        }
-
-        if (SaveManager.Instance != null)
-        {
-            SaveManager.Instance.SaveGame(0);
         }
     }
 

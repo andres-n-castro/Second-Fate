@@ -4,6 +4,19 @@ public class CharmPickup : MonoBehaviour
 {
     [Header("The Charm to Unlock")]
     public CharmData charmToGrant;
+    [SerializeField] private string persistentID;
+
+    private string RuntimePersistentID => string.IsNullOrEmpty(persistentID) && SaveManager.Instance != null
+        ? SaveManager.Instance.BuildSceneObjectID(gameObject)
+        : persistentID;
+
+    private void Start()
+    {
+        if (SaveManager.Instance != null && SaveManager.Instance.IsInteractableLooted(RuntimePersistentID))
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -25,6 +38,7 @@ public class CharmPickup : MonoBehaviour
                 }
 
                 // Destroy the physical drop regardless
+                SaveManager.Instance?.MarkInteractableLooted(RuntimePersistentID);
                 Destroy(gameObject);
             }
         }

@@ -14,6 +14,7 @@ public class BreakableChest : MonoBehaviour, IDamageable
     [SerializeField] private GameObject bonusLootPrefab;
     [SerializeField] private Vector2 bonusLootForceMin = new Vector2(-1.5f, 4f);
     [SerializeField] private Vector2 bonusLootForceMax = new Vector2(1.5f, 6f);
+    [SerializeField] private string persistentID;
 
     [Header("Hit Feedback")]
     public float shakeDuration = 0.15f;
@@ -23,6 +24,9 @@ public class BreakableChest : MonoBehaviour, IDamageable
     private Coroutine shakeCoroutine;
     private bool isBroken = false;
     private Rigidbody2D rb;
+    private string RuntimePersistentID => string.IsNullOrEmpty(persistentID) && SaveManager.Instance != null
+        ? SaveManager.Instance.BuildSceneObjectID(gameObject)
+        : persistentID;
 
     private void Awake()
     {
@@ -34,6 +38,14 @@ public class BreakableChest : MonoBehaviour, IDamageable
     private void OnEnable()
     {
         originalPosition = transform.position;
+    }
+
+    private void Start()
+    {
+        if (SaveManager.Instance != null && SaveManager.Instance.IsInteractableLooted(RuntimePersistentID))
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnDisable()
@@ -71,6 +83,7 @@ public class BreakableChest : MonoBehaviour, IDamageable
         }
 
         SetPosition(originalPosition);
+        SaveManager.Instance?.MarkInteractableLooted(RuntimePersistentID);
 
         foreach (Collider2D col in GetComponents<Collider2D>())
         {

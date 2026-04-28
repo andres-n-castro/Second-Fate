@@ -115,7 +115,7 @@ public class BonfireUIManager : MonoBehaviour
             CharmManager.Instance.EnforceEquippedCharmLimit();
         }
 
-        if (SaveManager.Instance != null) SaveManager.Instance.SaveGame(0);
+        if (SaveManager.Instance != null) SaveManager.Instance.SaveCurrentSlot();
 
         GameManager.Instance.RestorePreviousState();
     }
@@ -159,7 +159,7 @@ public class BonfireUIManager : MonoBehaviour
 
         GameManager.Instance.TriggerWorldReset();
 
-        if (SaveManager.Instance != null) SaveManager.Instance.SaveGame(0);
+        if (SaveManager.Instance != null) SaveManager.Instance.SaveCurrentSlot();
 
         GameManager.Instance.RestorePreviousState();
     }

@@ -5,7 +5,7 @@ public class GameData
 {
     // --- LOCATION & RESPAWN ---
     public string lastRestedBonfireID = "";
-    public string currentSceneName = "TutorialScene";
+    public string currentSceneName = "tutorial_hub";
 
     // --- PLAYER STATS ---
     public int currentHealth;

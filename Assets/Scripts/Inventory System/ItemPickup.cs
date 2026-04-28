@@ -4,6 +4,7 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     [SerializeField] public Item itemData;
+    [SerializeField] private string persistentID;
 
     [Header("Pickup SFX")]
     [Tooltip("Optional sound played when this item is picked up. If multiple are provided, one is chosen at random.")]
@@ -13,6 +14,17 @@ public class ItemPickup : MonoBehaviour
     [SerializeField] private float pickupMaxPitch = 1.05f;
 
     public static event Action<Item> PickUpItem;
+    private string RuntimePersistentID => string.IsNullOrEmpty(persistentID) && SaveManager.Instance != null
+        ? SaveManager.Instance.BuildSceneObjectID(gameObject)
+        : persistentID;
+
+    private void Start()
+    {
+        if (SaveManager.Instance != null && SaveManager.Instance.IsInteractableLooted(RuntimePersistentID))
+        {
+            gameObject.SetActive(false);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -37,6 +49,7 @@ public class ItemPickup : MonoBehaviour
 
             PlayPickupSound();
 
+            SaveManager.Instance?.MarkInteractableLooted(RuntimePersistentID);
             gameObject.SetActive(false);
             Debug.Log("Player picked up item: " + itemData.itemName);
         }

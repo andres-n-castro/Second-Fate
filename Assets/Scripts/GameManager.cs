@@ -23,6 +23,7 @@ public struct BonfireLocation
 public class GameManager : MonoBehaviour
 {
     private const string TutorialFallbackCheckpointName = "Checkpoint_Midpoint01";
+    private const string MainMenuSceneName = "main_menu_scene";
 
     public enum GameState
     {
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
     // Used for checkpoint respawn (tutorial scene) across a scene reload.
     private bool hasPendingCheckpointRespawn;
     private Vector2 pendingCheckpointPosition;
+    private bool placePlayerFromSaveOnNextGameplayLoad;
 
     public List<BonfireTravelData> masterBonfireRegistry;
     public List<string> unlockedBonfires = new List<string>();
@@ -101,11 +103,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (SaveManager.Instance != null)
-        {
-            SaveManager.Instance.LoadGame(0);
-        }
-
         Bonfire[] bonfires = UnityEngine.Object.FindFirstObjectByType<Bonfire>() != null
             ? UnityEngine.Object.FindObjectsByType<Bonfire>(FindObjectsSortMode.None)
             : new Bonfire[0];
@@ -369,20 +366,36 @@ public class GameManager : MonoBehaviour
         if (SaveManager.Instance != null)
         {
             SaveManager.Instance.currentSaveData.lastRestedBonfireID = bonfireID;
-            SaveManager.Instance.SaveGame(0);
+            SaveManager.Instance.SaveCurrentSlot();
         }
 
         SceneManager.LoadScene(targetSceneName);
     }
 
+    public void QueueLoadedGamePlacement()
+    {
+        placePlayerFromSaveOnNextGameplayLoad = true;
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (IsGameplayScene(scene.name))
+        {
+            ResetStateForGameplayScene();
+        }
+
         ConfigureSceneBosses(scene);
 
         if (hasPendingCheckpointRespawn)
         {
             StartCoroutine(RevivePlayerAtCheckpointAfterSceneLoad(pendingCheckpointPosition));
             hasPendingCheckpointRespawn = false;
+        }
+
+        if (placePlayerFromSaveOnNextGameplayLoad && IsGameplayScene(scene.name))
+        {
+            StartCoroutine(PlaceLoadedPlayerAfterSceneLoad());
+            placePlayerFromSaveOnNextGameplayLoad = false;
         }
 
         if (!string.IsNullOrEmpty(pendingTeleportBonfireID))
@@ -402,7 +415,7 @@ public class GameManager : MonoBehaviour
                         if (SaveManager.Instance != null)
                         {
                             SaveManager.Instance.currentSaveData.lastRestedBonfireID = b.bonfireID;
-                            SaveManager.Instance.SaveGame(0);
+                            SaveManager.Instance.SaveCurrentSlot();
                         }
                     }
                     break;
@@ -412,6 +425,19 @@ public class GameManager : MonoBehaviour
             pendingTeleportBonfireID = "";
             TriggerWorldReset();
         }
+    }
+
+    private void ResetStateForGameplayScene()
+    {
+        previousState = GameState.Exploration;
+        currentState = GameState.Exploration;
+        Time.timeScale = 1f;
+        OnStateChanged?.Invoke(currentState);
+    }
+
+    private bool IsGameplayScene(string sceneName)
+    {
+        return !string.Equals(sceneName, MainMenuSceneName, StringComparison.OrdinalIgnoreCase);
     }
 
     private IEnumerator RevivePlayerAtCheckpointAfterSceneLoad(Vector2 checkpointPosition)
@@ -424,6 +450,54 @@ public class GameManager : MonoBehaviour
         RevivePlayerAt(checkpointPosition);
         currentRespawnPoint = checkpointPosition;
         TriggerWorldReset();
+    }
+
+    private IEnumerator PlaceLoadedPlayerAfterSceneLoad()
+    {
+        // Let SaveManager apply loaded bonfire/player state before choosing a spawn point.
+        yield return null;
+
+        for (int i = 0; i < 10 && GetScenePlayerManager() == null; i++)
+        {
+            yield return null;
+        }
+
+        if (TryGetLastRestedBonfirePosition(out Vector2 bonfirePosition))
+        {
+            RevivePlayerAt(bonfirePosition);
+            currentRespawnPoint = bonfirePosition;
+            TriggerWorldReset();
+            yield break;
+        }
+
+        if (TryGetCheckpointRespawnPosition(out Vector2 checkpointPosition))
+        {
+            RevivePlayerAt(checkpointPosition);
+            currentRespawnPoint = checkpointPosition;
+            TriggerWorldReset();
+        }
+    }
+
+    private bool TryGetLastRestedBonfirePosition(out Vector2 bonfirePosition)
+    {
+        bonfirePosition = Vector2.zero;
+
+        if (string.IsNullOrEmpty(lastRestedBonfireID))
+        {
+            return false;
+        }
+
+        Bonfire[] bonfires = FindObjectsByType<Bonfire>(FindObjectsSortMode.None);
+        foreach (Bonfire bonfire in bonfires)
+        {
+            if (bonfire != null && bonfire.bonfireID == lastRestedBonfireID)
+            {
+                bonfirePosition = bonfire.transform.position;
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void RevivePlayerAt(Vector2 position)

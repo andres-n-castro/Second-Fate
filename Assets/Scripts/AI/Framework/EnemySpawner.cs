@@ -8,6 +8,9 @@ public class EnemySpawner : MonoBehaviour
     public string bossID = "";
 
     private GameObject currentEnemyInstance;
+    private string RuntimeBossID => !string.IsNullOrEmpty(bossID)
+        ? bossID
+        : $"{gameObject.scene.name}:{(enemyPrefab != null ? enemyPrefab.name : gameObject.name)}";
 
     private void Start()
     {
@@ -21,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        if (isBoss && SaveManager.Instance != null && SaveManager.Instance.currentSaveData.defeatedBossIDs.Contains(bossID))
+        if (isBoss && SaveManager.Instance != null && SaveManager.Instance.IsBossDefeated(RuntimeBossID))
         {
             return;
         }
