@@ -177,6 +177,8 @@ public class BonfireUIManager : MonoBehaviour
             string targetBonfireID = GameManager.GetBonfireSaveID(map.targetSceneName, map.targetBonfireID);
             bool isUnlocked = GameManager.Instance.unlockedBonfires.Contains(targetBonfireID)
                 || GameManager.Instance.unlockedBonfires.Contains(map.targetBonfireID);
+            bool isEssenceBonfire = GameManager.Instance.GetBonfireAlignment(targetBonfireID) == GameManager.AlignmentType.TreeEssence
+                || GameManager.Instance.GetBonfireAlignment(map.targetBonfireID) == GameManager.AlignmentType.TreeEssence;
 
             if (targetBonfireID == GameManager.Instance.lastInteractedBonfireID
                 || map.targetBonfireID == GameManager.Instance.lastInteractedBonfireID)
@@ -184,6 +186,7 @@ public class BonfireUIManager : MonoBehaviour
                 isUnlocked = false;
             }
 
+            isUnlocked = isUnlocked && isEssenceBonfire;
             map.uiButton.interactable = isUnlocked;
 
             if (isUnlocked)

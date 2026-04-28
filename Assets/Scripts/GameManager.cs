@@ -193,6 +193,15 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        if (TryGetLastRestedBonfirePosition(out Vector2 bonfirePosition))
+        {
+            RevivePlayerAt(bonfirePosition);
+            currentRespawnPoint = bonfirePosition;
+            TriggerWorldReset();
+            ChangeState(GameState.Exploration);
+            return;
+        }
+
         if (!string.IsNullOrEmpty(lastRestedBonfireID))
         {
             // FastTravelTo handles scene loading (including reloading the current scene)

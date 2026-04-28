@@ -143,7 +143,19 @@ public class BossArenaController : MonoBehaviour
         if (barrierDoors == null) return;
         for (int i = 0; i < barrierDoors.Length; i++)
         {
-            if (barrierDoors[i] != null) barrierDoors[i].SetActive(active);
+            if (barrierDoors[i] == null)
+            {
+                continue;
+            }
+
+            LockerDoor lockerDoor = barrierDoors[i].GetComponent<LockerDoor>();
+            if (lockerDoor != null)
+            {
+                lockerDoor.SetBossBarrierActive(active);
+                continue;
+            }
+
+            barrierDoors[i].SetActive(active);
         }
     }
 

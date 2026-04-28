@@ -92,13 +92,11 @@ public class PhaseTransitionState : EnemyState
 public class BossDeadState : EnemyState
 {
     private System.Action disableHitboxes;
-    private bool enableGravityOnDeath;
 
     public BossDeadState(EnemyBase owner, System.Action disableHitboxes, bool enableGravityOnDeath = false)
         : base(owner)
     {
         this.disableHitboxes = disableHitboxes;
-        this.enableGravityOnDeath = enableGravityOnDeath;
     }
 
     public override void Enter()
@@ -110,8 +108,13 @@ public class BossDeadState : EnemyState
 
         disableHitboxes?.Invoke();
 
-        if (enableGravityOnDeath)
-            owner.Rb.gravityScale = 1f;
+        if (owner.Rb != null)
+        {
+            owner.Rb.linearVelocity = Vector2.zero;
+            owner.Rb.angularVelocity = 0f;
+            owner.Rb.gravityScale = 0f;
+            owner.Rb.bodyType = RigidbodyType2D.Kinematic;
+        }
 
         if (owner.Anim != null)
         {
