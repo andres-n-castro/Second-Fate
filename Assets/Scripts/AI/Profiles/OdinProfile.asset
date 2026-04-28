@@ -49,9 +49,9 @@ MonoBehaviour:
   - attackName: GroundSpikes
     damage: 2
     knockbackForce: 4
-    windupDuration: 0.1
-    activeDuration: 0.75
-    recoveryDuration: 0.1
+    windupDuration: 0.5
+    activeDuration: 0.167
+    recoveryDuration: 0.583
     cooldown: 5
     dashSpeed: 0
     dashDuration: 0
@@ -97,9 +97,9 @@ MonoBehaviour:
   - attackName: LargeSlash
     damage: 2
     knockbackForce: 8
-    windupDuration: 0.5
-    activeDuration: 0.5
-    recoveryDuration: 0.167
+    windupDuration: 0.583
+    activeDuration: 0.333
+    recoveryDuration: 0.667
     cooldown: 3
     dashSpeed: 0
     dashDuration: 0
@@ -209,6 +209,7 @@ MonoBehaviour:
   odinStaffProjectileMinRange: 3
   odinStaffProjectileWeightMultiplier: 2
   odinGroundSpikesMaxRange: 6
+  odinGroundSpikesMinXDistance: 2
   odinGroundSpikesWeightMultiplier: 2
   odinStaffMeleeMaxRange: 3
   odinStaffMeleeWeightMultiplier: 3
@@ -223,9 +224,10 @@ MonoBehaviour:
   odinP2MinAttackCooldown: 0.3
   odinP2MaxAttackCooldown: 0.8
   odinTripleProjectileCount: 3
-  odinTripleProjectileSpreadAngle: 30
-  odinConsecutiveSpikeWaves: 3
-  odinConsecutiveSpikeWaveDelay: 0.4
+  odinTripleProjectileSpreadAngle: 0
+  odinTripleProjectileSpawnDelay: 0.4
+  odinConsecutiveSpikeWaves: 0
+  odinConsecutiveSpikeWaveDelay: 0
   odinSlashProjectileSpeed: 10
   odinSlashProjectileHeight: 1
   odinTripleProjectileMaxRange: 8
@@ -249,10 +251,12 @@ MonoBehaviour:
   heimdallBeamSpeed: 12
   heimdallProjectileSwordSpeed: 8
   heimdallProjectileSwordCurveDelay: 0.25
-  heimdallProjectileSwordCurveStrength: 5
-  heimdallProjectileSwordLifetime: 5
-  heimdallPlungeLeapForceY: 12
-  heimdallPlungeForwardForce: 3
+  heimdallProjectileSwordCurveStrength: 4
+  heimdallProjectileSwordLifetime: 2.5
+  heimdallPlungeDashSpeed: 15
+  heimdallPlungeHeightAbovePlayer: 4
+  heimdallPlungeDashTimeout: 1
+  heimdallPlungeArriveThreshold: 1
   heimdallPlungeFallSpeed: 18
   heimdallFloorImpactRadius: 4
   heimdallFloorImpactDuration: 0.4

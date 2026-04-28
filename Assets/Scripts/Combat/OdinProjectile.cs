@@ -56,6 +56,9 @@ public class OdinProjectile : MonoBehaviour
         lastKnownTarget = targetPosition;
         moveSpeed = velocity.magnitude;
 
+        // Face initial movement direction
+        FaceVelocity(velocity);
+
         if (overrideDamage > 0) damage = overrideDamage;
         if (overrideCurveDelay >= 0f) curveDelay = overrideCurveDelay;
         if (overrideCurveStrength >= 0f) curveStrength = overrideCurveStrength;
@@ -102,10 +105,24 @@ public class OdinProjectile : MonoBehaviour
 
             if (toTarget.sqrMagnitude > 0.01f)
             {
-                // Set velocity directly toward the player at constant speed.
-                // This allows full reversal if the player moves behind the projectile.
-                rb.linearVelocity = toTarget.normalized * moveSpeed;
+                // Gradually steer toward target using curveStrength as turn rate.
+                // Prevents jitter from instant velocity reversal near the target.
+                Vector2 desiredDir = toTarget.normalized;
+                Vector2 currentDir = rb.linearVelocity.normalized;
+                Vector2 newDir = Vector2.MoveTowards(currentDir, desiredDir, curveStrength * Time.fixedDeltaTime);
+                rb.linearVelocity = newDir.normalized * moveSpeed;
             }
+        }
+
+        FaceVelocity(rb.linearVelocity);
+    }
+
+    private void FaceVelocity(Vector2 velocity)
+    {
+        if (velocity.sqrMagnitude > 0.01f)
+        {
+            float angle = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
     }
 

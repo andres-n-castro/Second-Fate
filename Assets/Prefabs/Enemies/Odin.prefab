@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 427250856464975915}
   - component: {fileID: 5490810268633745515}
   - component: {fileID: 7804571204993967963}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: StaffMeleeHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.8690686, y: 0.42953968}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -139,7 +139,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5005355, y: 1.8590794}
   m_EdgeRadius: 0
 --- !u!114 &7804571204993967963
 MonoBehaviour:
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 344088658653876147}
   - component: {fileID: 5628568437511927028}
   - component: {fileID: 1168942257657961705}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: LargeSlashHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +407,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.114468575, y: -0.1125381}
+  m_Offset: {x: 0.114468575, y: -0.16787171}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -417,7 +417,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.3192973, y: 2.8736796}
+  m_Size: {x: 1.3192973, y: 2.7630124}
   m_EdgeRadius: 0
 --- !u!114 &6530975260314521157
 MonoBehaviour:
@@ -471,6 +471,7 @@ MonoBehaviour:
   profile: {fileID: 11400000, guid: 90d194ceccd4aac4989e1b877e0c3a19, type: 2}
   baseCurrencyDrop: 10
   coinPrefab: {fileID: 0}
+  deathDescriptionText: A Great Foe Has Fallen.
   groundCheck: {fileID: 5817607976212203764}
   wallCheck: {fileID: 401454129948570633}
   groundLayer:

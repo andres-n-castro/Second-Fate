@@ -17,7 +17,8 @@ using UnityEngine;
 ///
 /// Required components: Rigidbody2D, Collider2D, Health.
 /// Child references:
-///   - shockwaveSlashHitbox, swordTornadoHitbox, swordPlungeHitbox, giantSlashHitbox
+///   - swordTornadoHitbox, swordBeamHitbox,
+///     swordPlungeHitbox, giantSlashHitbox
 ///     (each an AttackHitbox on a child GO with trigger collider).
 ///
 /// Prefab references:
@@ -36,22 +37,20 @@ public class HeimdallBoss : EnemyBase
     public override string BossDisplayName => "Heimdall";
 
     [Header("Hitbox References")]
-    [SerializeField] private AttackHitbox shockwaveSlashHitbox;
     [SerializeField] private AttackHitbox swordTornadoHitbox;
+    [SerializeField] private AttackHitbox swordBeamHitbox;
     [SerializeField] private AttackHitbox swordPlungeHitbox;
     [SerializeField] private AttackHitbox giantSlashHitbox;
 
     [Header("Projectiles & Hazards")]
     [SerializeField] private GameObject shockwavePrefab;
-    [SerializeField] private GameObject swordBeamPrefab;
     [SerializeField] private GameObject projectileSwordPrefab;
-    [SerializeField] private GameObject floorImpactPrefab;
-    [SerializeField] private GameObject giantSlashPrefab;
     [SerializeField] private Transform projectileSpawnPoint;
+    [SerializeField] private LayerMask shockwaveTargetLayers;
 
     // Hitbox accessors for states
-    public AttackHitbox ShockwaveSlashHitbox => shockwaveSlashHitbox;
     public AttackHitbox SwordTornadoHitbox => swordTornadoHitbox;
+    public AttackHitbox SwordBeamHitbox => swordBeamHitbox;
     public AttackHitbox SwordPlungeHitbox => swordPlungeHitbox;
     public AttackHitbox GiantSlashHitbox => giantSlashHitbox;
 
@@ -59,7 +58,6 @@ public class HeimdallBoss : EnemyBase
     public Transform ProjectileSpawnPoint => projectileSpawnPoint;
 
     // Cached hitbox reaches
-    public float ShockwaveSlashReach { get; private set; }
     public float SwordTornadoReach { get; private set; }
 
     // Animation parameter names matching Heimdall animator
@@ -82,7 +80,6 @@ public class HeimdallBoss : EnemyBase
     {
         base.Start();
 
-        ShockwaveSlashReach = ComputeHitboxReach(shockwaveSlashHitbox);
         SwordTornadoReach = ComputeHitboxReach(swordTornadoHitbox);
     }
 
@@ -164,6 +161,7 @@ public class HeimdallBoss : EnemyBase
         if (sp != null)
         {
             sp.Initialize(velocity, GetComponents<Collider2D>(), damage);
+            if (shockwaveTargetLayers.value != 0) sp.SetTargetLayers(shockwaveTargetLayers);
         }
         else
         {
@@ -173,34 +171,13 @@ public class HeimdallBoss : EnemyBase
     }
 
     /// <summary>
-    /// Spawn a concentrated sword beam projectile.
-    /// </summary>
-    public void SpawnSwordBeam(Vector2 position, Vector2 velocity, int damage)
-    {
-        if (swordBeamPrefab == null) return;
-
-        GameObject beam = Instantiate(swordBeamPrefab, position, Quaternion.identity);
-
-        SwordBeamProjectile sbp = beam.GetComponent<SwordBeamProjectile>();
-        if (sbp != null)
-        {
-            sbp.Initialize(velocity, GetComponents<Collider2D>(), damage);
-        }
-        else
-        {
-            Rigidbody2D beamRb = beam.GetComponent<Rigidbody2D>();
-            if (beamRb != null) beamRb.linearVelocity = velocity;
-        }
-    }
-
-    /// <summary>
     /// Spawn a projectile sword that curves toward the last-known position.
     /// Reuses OdinProjectile for the curve-to-target behavior.
     /// </summary>
-    public void SpawnProjectileSword(Vector2 velocity, Vector2 targetPosition,
+    public GameObject SpawnProjectileSword(Vector2 velocity, Vector2 targetPosition,
         int damage, float curveDelay, float curveStrength, float lifetime)
     {
-        if (projectileSwordPrefab == null) return;
+        if (projectileSwordPrefab == null) return null;
 
         Vector2 spawnPos = projectileSpawnPoint != null
             ? (Vector2)projectileSpawnPoint.position
@@ -213,55 +190,24 @@ public class HeimdallBoss : EnemyBase
         {
             odinProj.Initialize(velocity, targetPosition, GetComponents<Collider2D>(),
                 damage, curveDelay, curveStrength, lifetime);
+
+            // Track the player's live position so swords keep homing until they despawn
+            if (Ctx.playerTransform != null)
+                odinProj.SetPlayerTarget(Ctx.playerTransform);
         }
         else
         {
             Rigidbody2D projRb = proj.GetComponent<Rigidbody2D>();
             if (projRb != null) projRb.linearVelocity = velocity;
         }
-    }
 
-    /// <summary>
-    /// Spawn a floor impact at the plunge landing position.
-    /// </summary>
-    public void SpawnFloorImpact(Vector2 position, float radius, float duration, int damage)
-    {
-        if (floorImpactPrefab == null) return;
-
-        GameObject impact = Instantiate(floorImpactPrefab, position, Quaternion.identity);
-
-        FloorImpact fi = impact.GetComponent<FloorImpact>();
-        if (fi != null)
-        {
-            fi.Initialize(radius, duration, damage);
-        }
-    }
-
-    /// <summary>
-    /// Spawn a giant slash wave (reuses SlashProjectile).
-    /// </summary>
-    public void SpawnGiantSlashWave(Vector2 position, Vector2 velocity, int damage)
-    {
-        if (giantSlashPrefab == null) return;
-
-        GameObject slash = Instantiate(giantSlashPrefab, position, Quaternion.identity);
-
-        SlashProjectile sp = slash.GetComponent<SlashProjectile>();
-        if (sp != null)
-        {
-            sp.Initialize(velocity, GetComponents<Collider2D>(), damage);
-        }
-        else
-        {
-            Rigidbody2D slashRb = slash.GetComponent<Rigidbody2D>();
-            if (slashRb != null) slashRb.linearVelocity = velocity;
-        }
+        return proj;
     }
 
     private void DisableAllHitboxes()
     {
-        if (shockwaveSlashHitbox != null) shockwaveSlashHitbox.Deactivate();
         if (swordTornadoHitbox != null) swordTornadoHitbox.Deactivate();
+        if (swordBeamHitbox != null) swordBeamHitbox.Deactivate();
         if (swordPlungeHitbox != null) swordPlungeHitbox.Deactivate();
         if (giantSlashHitbox != null) giantSlashHitbox.Deactivate();
     }
@@ -299,10 +245,6 @@ public class HeimdallBoss : EnemyBase
             // Max engage range (magenta)
             Gizmos.color = new Color(1f, 0f, 1f, 0.3f);
             Gizmos.DrawWireSphere(transform.position, Profile.heimdallMaxEngageRange);
-
-            // Sword plunge floor impact radius (white)
-            Gizmos.color = new Color(1f, 1f, 1f, 0.2f);
-            Gizmos.DrawWireSphere(transform.position, Profile.heimdallFloorImpactRadius);
         }
 
         // LOS ray to player (cyan = clear, magenta = blocked)

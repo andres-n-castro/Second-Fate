@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1200442466999106710}
   - component: {fileID: 6458569642214880082}
   - component: {fileID: 4001645340386876311}
-  - component: {fileID: 1494885083837123510}
+  - component: {fileID: 3032449132832191093}
   m_Layer: 0
   m_Name: ShockwaveProjectile
   m_TagString: Untagged
@@ -116,7 +116,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!114 &4001645340386876311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   maxLifetime: 4
---- !u!61 &1494885083837123510
+--- !u!61 &3032449132832191093
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,15 +172,15 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.091961145, y: -0.01724267}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.82, y: 1.19}
+    oldSize: {x: 1.4137931, y: 2.0517242}
     newSize: {x: 0.82, y: 1.19}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.82, y: 1.19}
+  m_Size: {x: 0.9080062, y: 1.902287}
   m_EdgeRadius: 0

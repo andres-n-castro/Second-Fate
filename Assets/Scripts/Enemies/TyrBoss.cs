@@ -123,7 +123,6 @@ public class TyrBoss : EnemyBase
     {
         DisableAllHitboxes();
         FSM.ChangeState(DeadState);
-        base.HandleDeath();
     }
 
     public AttackDefinition GetAttackDef(string attackName)

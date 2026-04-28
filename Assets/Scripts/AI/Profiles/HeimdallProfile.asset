@@ -38,8 +38,8 @@ MonoBehaviour:
     damage: 1
     knockbackForce: 6
     windupDuration: 0.4
-    activeDuration: 0.3
-    recoveryDuration: 0.5
+    activeDuration: 0.125
+    recoveryDuration: 0.875
     cooldown: 2
     dashSpeed: 0
     dashDuration: 0
@@ -49,10 +49,10 @@ MonoBehaviour:
   - attackName: SwordTornado
     damage: 1
     knockbackForce: 4
-    windupDuration: 0.3
-    activeDuration: 0.8
-    recoveryDuration: 0.5
-    cooldown: 3
+    windupDuration: 0.083
+    activeDuration: 0.417
+    recoveryDuration: 0.417
+    cooldown: 2
     dashSpeed: 0
     dashDuration: 0
     hitCount: 4
@@ -62,9 +62,9 @@ MonoBehaviour:
     damage: 1
     knockbackForce: 6
     windupDuration: 0.5
-    activeDuration: 0.2
-    recoveryDuration: 0.5
-    cooldown: 2
+    activeDuration: 0.3
+    recoveryDuration: 0.8
+    cooldown: 3
     dashSpeed: 0
     dashDuration: 0
     hitCount: 1
@@ -76,7 +76,7 @@ MonoBehaviour:
     windupDuration: 0.4
     activeDuration: 0.3
     recoveryDuration: 0.6
-    cooldown: 2.5
+    cooldown: 5
     dashSpeed: 0
     dashDuration: 0
     hitCount: 1
@@ -85,10 +85,10 @@ MonoBehaviour:
   - attackName: SwordPlunge
     damage: 1
     knockbackForce: 6
-    windupDuration: 0.4
-    activeDuration: 0.3
-    recoveryDuration: 0.8
-    cooldown: 3
+    windupDuration: 0
+    activeDuration: 0
+    recoveryDuration: 0
+    cooldown: 5
     dashSpeed: 0
     dashDuration: 0
     hitCount: 1
@@ -97,10 +97,10 @@ MonoBehaviour:
   - attackName: GiantSlash
     damage: 1
     knockbackForce: 8
-    windupDuration: 0.6
-    activeDuration: 0.3
-    recoveryDuration: 0.8
-    cooldown: 3
+    windupDuration: 0.083
+    activeDuration: 0.167
+    recoveryDuration: 0.083
+    cooldown: 2.5
     dashSpeed: 0
     dashDuration: 0
     hitCount: 1
@@ -209,6 +209,7 @@ MonoBehaviour:
   odinStaffProjectileMinRange: 3
   odinStaffProjectileWeightMultiplier: 2
   odinGroundSpikesMaxRange: 6
+  odinGroundSpikesMinXDistance: 2
   odinGroundSpikesWeightMultiplier: 2
   odinStaffMeleeMaxRange: 3
   odinStaffMeleeWeightMultiplier: 3
@@ -224,6 +225,7 @@ MonoBehaviour:
   odinP2MaxAttackCooldown: 0.8
   odinTripleProjectileCount: 3
   odinTripleProjectileSpreadAngle: 30
+  odinTripleProjectileSpawnDelay: 0.15
   odinConsecutiveSpikeWaves: 3
   odinConsecutiveSpikeWaveDelay: 0.4
   odinSlashProjectileSpeed: 10
@@ -237,6 +239,8 @@ MonoBehaviour:
   odinLargeSlashWeightMultiplier: 3
   heimdallCloseRange: 2
   heimdallMaxEngageRange: 6
+  heimdallP1MinAttackCooldown: 0.2
+  heimdallP1MaxAttackCooldown: 0.5
   heimdallShockwaveSlashMaxRange: 5
   heimdallShockwaveSlashWeightMultiplier: 2
   heimdallSwordTornadoMaxRange: 2.5
@@ -245,14 +249,17 @@ MonoBehaviour:
   heimdallSwordBeamMinRange: 2.5
   heimdallSwordBeamWeightMultiplier: 2
   heimdallShockwaveSpeed: 10
-  heimdallShockwaveHeight: 0.5
+  heimdallShockwaveHeight: -0.25
   heimdallBeamSpeed: 12
-  heimdallProjectileSwordSpeed: 8
+  heimdallProjectileSwordSpeed: 6
   heimdallProjectileSwordCurveDelay: 0.25
   heimdallProjectileSwordCurveStrength: 5
-  heimdallProjectileSwordLifetime: 5
-  heimdallPlungeLeapForceY: 12
-  heimdallPlungeForwardForce: 3
+  heimdallProjectileSwordLifetime: 1.75
+  heimdallPlungeDashSpeed: 15
+  heimdallPlungeMaxHorizontalDist: 6
+  heimdallPlungeHeightAbovePlayer: 4
+  heimdallPlungeDashTimeout: 1
+  heimdallPlungeArriveThreshold: 1
   heimdallPlungeFallSpeed: 18
   heimdallFloorImpactRadius: 4
   heimdallFloorImpactDuration: 0.4

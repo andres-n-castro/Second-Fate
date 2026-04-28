@@ -22,6 +22,8 @@ MonoBehaviour:
   attackRange: 3
   groundCheckDistance: 1.2
   wallCheckDistance: 0.6
+  ledgeCheckAheadOffset: 0.5
+  ledgeCheckBehindOffset: 0.5
   losEyeOffsetY: 1
   losCastRadius: 0.1
   requireLOSForAggro: 1
@@ -73,7 +75,7 @@ MonoBehaviour:
     knockbackForce: 10
     windupDuration: 0.2
     activeDuration: 0.2
-    recoveryDuration: 0.250
+    recoveryDuration: 0.25
     cooldown: 3
     dashSpeed: 12
     dashDuration: 0
@@ -83,8 +85,8 @@ MonoBehaviour:
   - attackName: LavaVomit
     damage: 1
     knockbackForce: 6
-    windupDuration: 0.250
-    activeDuration: 0.417
+    windupDuration: 0.167
+    activeDuration: 0.75
     recoveryDuration: 0.8
     cooldown: 2.5
     dashSpeed: 0
@@ -195,6 +197,7 @@ MonoBehaviour:
   odinStaffProjectileMinRange: 3
   odinStaffProjectileWeightMultiplier: 2
   odinGroundSpikesMaxRange: 6
+  odinGroundSpikesMinXDistance: 2
   odinGroundSpikesWeightMultiplier: 2
   odinStaffMeleeMaxRange: 3
   odinStaffMeleeWeightMultiplier: 3
@@ -210,6 +213,7 @@ MonoBehaviour:
   odinP2MaxAttackCooldown: 0.8
   odinTripleProjectileCount: 3
   odinTripleProjectileSpreadAngle: 30
+  odinTripleProjectileSpawnDelay: 0.15
   odinConsecutiveSpikeWaves: 3
   odinConsecutiveSpikeWaveDelay: 0.4
   odinSlashProjectileSpeed: 10
@@ -237,8 +241,10 @@ MonoBehaviour:
   heimdallProjectileSwordCurveDelay: 0.25
   heimdallProjectileSwordCurveStrength: 5
   heimdallProjectileSwordLifetime: 5
-  heimdallPlungeLeapForceY: 12
-  heimdallPlungeForwardForce: 3
+  heimdallPlungeDashSpeed: 15
+  heimdallPlungeHeightAbovePlayer: 4
+  heimdallPlungeDashTimeout: 1
+  heimdallPlungeArriveThreshold: 1
   heimdallPlungeFallSpeed: 18
   heimdallFloorImpactRadius: 4
   heimdallFloorImpactDuration: 0.4

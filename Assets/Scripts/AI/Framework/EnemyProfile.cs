@@ -139,7 +139,7 @@ public class EnemyProfile : ScriptableObject
 
     [Header("Tyr Range Bands")]
     public float tyrCloseRange = 2.0f;
-    public float tyrMaxEngageRange = 5.0f;
+    public float tyrMaxEngageRange = 6.0f;
 
     [Header("Tyr P2 Reactive Behavior")]
     public float tyrReactiveBlockWindow = 1.0f;
@@ -164,8 +164,8 @@ public class EnemyProfile : ScriptableObject
     public float surtrFireBreathWeightMultiplier = 2f;
 
     [Header("Surtr P2")]
-    public float surtrP2MinAttackCooldown = 0.3f;
-    public float surtrP2MaxAttackCooldown = 0.9f;
+    public float surtrP2MinAttackCooldown = 0.1f;
+    public float surtrP2MaxAttackCooldown = 0.4f;
     public float surtrGroundedThrustStuckDuration = 1.5f;
 
     [Header("Surtr P2 Attack Selection")]
@@ -186,6 +186,7 @@ public class EnemyProfile : ScriptableObject
     public float odinStaffProjectileMinRange = 3.0f;
     public float odinStaffProjectileWeightMultiplier = 2f;
     public float odinGroundSpikesMaxRange = 6.0f;
+    public float odinGroundSpikesMinXDistance = 2.0f;
     public float odinGroundSpikesWeightMultiplier = 2f;
     public float odinStaffMeleeMaxRange = 3.0f;
     public float odinStaffMeleeWeightMultiplier = 3f;
@@ -207,6 +208,7 @@ public class EnemyProfile : ScriptableObject
     public float odinP2MaxAttackCooldown = 0.8f;
     public int odinTripleProjectileCount = 3;
     public float odinTripleProjectileSpreadAngle = 30f;
+    public float odinTripleProjectileSpawnDelay = 0.15f;
     public int odinConsecutiveSpikeWaves = 3;
     public float odinConsecutiveSpikeWaveDelay = 0.4f;
     public float odinSlashProjectileSpeed = 10f;
@@ -223,16 +225,20 @@ public class EnemyProfile : ScriptableObject
 
     [Header("Heimdall Range Bands")]
     public float heimdallCloseRange = 2.0f;
-    public float heimdallMaxEngageRange = 6.0f;
+    public float heimdallMaxEngageRange = 8.0f;
+
+    [Header("Heimdall P1 Cooldown")]
+    public float heimdallP1MinAttackCooldown = 0.2f;
+    public float heimdallP1MaxAttackCooldown = 0.5f;
 
     [Header("Heimdall P1 Attack Selection")]
-    public float heimdallShockwaveSlashMaxRange = 5.0f;
-    public float heimdallShockwaveSlashWeightMultiplier = 2f;
+    public float heimdallShockwaveSlashMaxRange = 7.0f;
+    public float heimdallShockwaveSlashWeightMultiplier = 3f;
     public float heimdallSwordTornadoMaxRange = 2.5f;
-    public float heimdallSwordTornadoWeightMultiplier = 3f;
-    public float heimdallSwordBeamMaxRange = 6.0f;
-    public float heimdallSwordBeamMinRange = 2.5f;
-    public float heimdallSwordBeamWeightMultiplier = 2f;
+    public float heimdallSwordTornadoWeightMultiplier = 6f;
+    public float heimdallSwordBeamMaxRange = 8.0f;
+    public float heimdallSwordBeamMinRange = 3.0f;
+    public float heimdallSwordBeamWeightMultiplier = 3f;
 
     [Header("Heimdall Projectile")]
     public float heimdallShockwaveSpeed = 10f;
@@ -244,15 +250,18 @@ public class EnemyProfile : ScriptableObject
     public float heimdallProjectileSwordLifetime = 5f;
 
     [Header("Heimdall Sword Plunge")]
-    public float heimdallPlungeLeapForceY = 12f;
-    public float heimdallPlungeForwardForce = 3f;
+    public float heimdallPlungeDashSpeed = 15f;
+    public float heimdallPlungeMaxHorizontalDist = 8f;
+    public float heimdallPlungeHeightAbovePlayer = 4f;
+    public float heimdallPlungeDashTimeout = 1.0f;
+    public float heimdallPlungeArriveThreshold = 1.0f;
     public float heimdallPlungeFallSpeed = 18f;
     public float heimdallFloorImpactRadius = 4f;
     public float heimdallFloorImpactDuration = 0.4f;
 
     [Header("Heimdall P2")]
-    public float heimdallP2MinAttackCooldown = 0.3f;
-    public float heimdallP2MaxAttackCooldown = 0.8f;
+    public float heimdallP2MinAttackCooldown = 0.1f;
+    public float heimdallP2MaxAttackCooldown = 0.4f;
     public int heimdallProjectileSwordCount = 3;
     public float heimdallProjectileSwordSpreadAngle = 40f;
     public float heimdallGiantSlashSpeed = 12f;
