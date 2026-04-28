@@ -1631,7 +1631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4146360992496560107
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2827,7 +2827,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8789165101188648926
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2877,10 +2877,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Provides:
 
+    
 
-    - Increased Enemy Currency Drop
+    - Fast Travel
 
-    - Extra Charm Slot'
+    - Increased Player Damage (2
+    hitpoints)
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1e8156d94a3461e4482fda212564ab2f, type: 2}
   m_sharedMaterial: {fileID: 8239252559932051202, guid: 1e8156d94a3461e4482fda212564ab2f, type: 2}
@@ -4057,9 +4061,9 @@ MonoBehaviour:
   m_text: 'Provides:
 
 
-    - Fast Travel
+    - Increased Enemy Currency Drop
 
-    - Increased Player Damage (2 hitpoints)'
+    - Extra Charm Slot'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1e8156d94a3461e4482fda212564ab2f, type: 2}
   m_sharedMaterial: {fileID: 8239252559932051202, guid: 1e8156d94a3461e4482fda212564ab2f, type: 2}

@@ -24,6 +24,7 @@ public class Ghost : FallenWarriorSpirit
         if (DashHitbox != null) DashHitbox.Deactivate();
         FacePlayer();
         FSM.ChangeState(ghostDeadState);
+        DropCurrency();
     }
 }
 

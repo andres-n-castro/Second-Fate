@@ -80,6 +80,7 @@ public class Thing : EnemyBase
     protected override void HandleDeath()
     {
         FSM.ChangeState(DeadState);
+        DropCurrency();
     }
 
     private void OnDrawGizmosSelected()

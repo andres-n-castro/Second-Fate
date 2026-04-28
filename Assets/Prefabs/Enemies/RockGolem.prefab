@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 3018251323443438523}
   - component: {fileID: 3853815974075988900}
   - component: {fileID: 8792740515514060073}
+  - component: {fileID: 9187141581982408103}
   m_Layer: 7
   m_Name: RockGolem
   m_TagString: Untagged
@@ -289,6 +290,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 8e9f78f3d0142374894110616bb78679, type: 2}
+  baseCurrencyDrop: 10
+  coinPrefab: {fileID: 3793789415224784273, guid: 57c1c479742e7a84097a97d62615b3b6, type: 3}
+  bossID: 
+  deathDescriptionText: A Great Foe Has Fallen.
   groundCheck: {fileID: 7001462605158348781}
   wallCheck: {fileID: 5176783947271187738}
   groundLayer:
@@ -299,6 +304,20 @@ MonoBehaviour:
     m_Bits: 8
   rockPrefab: {fileID: 9187976826256769493, guid: db76efbd6bc6d744d8386b291db19dbc, type: 3}
   rockSpawnPoint: {fileID: 234733497694781008}
+  audioSource: {fileID: 9187141581982408103}
+  damageSounds:
+  - {fileID: 8300000, guid: e265380206b403f4f94e1ff44c2f9ce7, type: 3}
+  damageVolume: 1
+  damageMinPitch: 0.95
+  damageMaxPitch: 1.05
+  deathSounds:
+  - {fileID: 8300000, guid: 9125cbc9d0925bf469168099a553ab31, type: 3}
+  deathVolume: 1
+  throwSounds:
+  - {fileID: 8300000, guid: 5d93fe6ae8daaba45a6cebad66c91a08, type: 3}
+  throwVolume: 1
+  throwMinPitch: 0.95
+  throwMaxPitch: 1.05
 --- !u!95 &8792740515514060073
 Animator:
   serializedVersion: 7
@@ -321,3 +340,100 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &9187141581982408103
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932243689428385011}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

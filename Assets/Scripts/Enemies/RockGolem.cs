@@ -32,6 +32,25 @@ public class RockGolem : EnemyBase
     [SerializeField] private GameObject rockPrefab;
     [SerializeField] private Transform rockSpawnPoint;
 
+    [Header("Audio Source")]
+    [SerializeField] private AudioSource audioSource;
+
+    [Header("Damage SFX")]
+    [SerializeField] private AudioClip[] damageSounds;
+    [SerializeField] private float damageVolume = 1f;
+    [SerializeField] private float damageMinPitch = 0.95f;
+    [SerializeField] private float damageMaxPitch = 1.05f;
+
+    [Header("Death SFX")]
+    [SerializeField] private AudioClip[] deathSounds;
+    [SerializeField] private float deathVolume = 1f;
+
+    [Header("Throw SFX")]
+    [SerializeField] private AudioClip[] throwSounds;
+    [SerializeField] private float throwVolume = 1f;
+    [SerializeField] private float throwMinPitch = 0.95f;
+    [SerializeField] private float throwMaxPitch = 1.05f;
+
     // Outer FSM superstates
     public NonCombatSuperState NonCombatSuper { get; private set; }
     public CombatSuperState CombatSuper { get; private set; }
@@ -55,6 +74,40 @@ public class RockGolem : EnemyBase
     public override string AnimAttack => "RockGolem_Attack";
     public override string AnimHitstun => "RockGolem_Takes_Damage";
     public override string AnimDeath => "RockGolem_Dies";
+
+    private bool hasPlayedDeathSound;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+        }
+
+        if (Health != null)
+        {
+            Health.OnDamageTaken += HandleAudioDamageTaken;
+            Health.OnDeath += HandleAudioDeath;
+        }
+    }
+
+    protected override void OnDestroy()
+    {
+        if (Health != null)
+        {
+            Health.OnDamageTaken -= HandleAudioDamageTaken;
+            Health.OnDeath -= HandleAudioDeath;
+        }
+
+        base.OnDestroy();
+    }
 
     protected override void InitializeStates()
     {
@@ -89,6 +142,36 @@ public class RockGolem : EnemyBase
     protected override void HandleDeath()
     {
         FSM.ChangeState(DeadState);
+        DropCurrency();
+    }
+
+    public void PlayThrowSound()
+    {
+        PlayRandomSound(throwSounds, throwVolume, throwMinPitch, throwMaxPitch);
+    }
+
+    private void HandleAudioDamageTaken(int damage, Vector2 knockback)
+    {
+        if (hasPlayedDeathSound) return;
+        PlayRandomSound(damageSounds, damageVolume, damageMinPitch, damageMaxPitch);
+    }
+
+    private void HandleAudioDeath()
+    {
+        if (hasPlayedDeathSound) return;
+        hasPlayedDeathSound = true;
+        PlayRandomSound(deathSounds, deathVolume, 1f, 1f);
+    }
+
+    private void PlayRandomSound(AudioClip[] clips, float volume, float minPitch, float maxPitch)
+    {
+        if (audioSource == null || clips == null || clips.Length == 0) return;
+
+        AudioClip clip = clips[Random.Range(0, clips.Length)];
+        if (clip == null) return;
+
+        audioSource.pitch = Random.Range(minPitch, maxPitch);
+        audioSource.PlayOneShot(clip, volume);
     }
 
     /// <summary>

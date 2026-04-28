@@ -30,6 +30,25 @@ public class MagmaSalamander : EnemyBase
     [Header("Combat")]
     [SerializeField] private AttackHitbox launchHitbox;
 
+    [Header("Audio Source")]
+    [SerializeField] private AudioSource audioSource;
+
+    [Header("Damage SFX")]
+    [SerializeField] private AudioClip[] damageSounds;
+    [SerializeField] private float damageVolume = 1f;
+    [SerializeField] private float damageMinPitch = 0.95f;
+    [SerializeField] private float damageMaxPitch = 1.05f;
+
+    [Header("Death SFX")]
+    [SerializeField] private AudioClip[] deathSounds;
+    [SerializeField] private float deathVolume = 1f;
+
+    [Header("Launch SFX")]
+    [SerializeField] private AudioClip[] launchSounds;
+    [SerializeField] private float launchVolume = 1f;
+    [SerializeField] private float launchMinPitch = 0.95f;
+    [SerializeField] private float launchMaxPitch = 1.05f;
+
     // Outer FSM superstates
     public NonCombatSuperState NonCombatSuper { get; private set; }
     public CombatSuperState CombatSuper { get; private set; }
@@ -70,6 +89,40 @@ public class MagmaSalamander : EnemyBase
 
     // Jump tracking — gravity is managed in FixedUpdate like Vidar
     public bool IsJumping { get; set; }
+
+    private bool hasPlayedDeathSound;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+        }
+
+        if (Health != null)
+        {
+            Health.OnDamageTaken += HandleAudioDamageTaken;
+            Health.OnDeath += HandleAudioDeath;
+        }
+    }
+
+    protected override void OnDestroy()
+    {
+        if (Health != null)
+        {
+            Health.OnDamageTaken -= HandleAudioDamageTaken;
+            Health.OnDeath -= HandleAudioDeath;
+        }
+
+        base.OnDestroy();
+    }
 
     protected override void FixedUpdate()
     {
@@ -130,6 +183,36 @@ public class MagmaSalamander : EnemyBase
     {
         if (launchHitbox != null) launchHitbox.Deactivate();
         FSM.ChangeState(DeadState);
+        DropCurrency();
+    }
+
+    public void PlayLaunchSound()
+    {
+        PlayRandomSound(launchSounds, launchVolume, launchMinPitch, launchMaxPitch);
+    }
+
+    private void HandleAudioDamageTaken(int damage, Vector2 knockback)
+    {
+        if (hasPlayedDeathSound) return;
+        PlayRandomSound(damageSounds, damageVolume, damageMinPitch, damageMaxPitch);
+    }
+
+    private void HandleAudioDeath()
+    {
+        if (hasPlayedDeathSound) return;
+        hasPlayedDeathSound = true;
+        PlayRandomSound(deathSounds, deathVolume, 1f, 1f);
+    }
+
+    private void PlayRandomSound(AudioClip[] clips, float volume, float minPitch, float maxPitch)
+    {
+        if (audioSource == null || clips == null || clips.Length == 0) return;
+
+        AudioClip clip = clips[Random.Range(0, clips.Length)];
+        if (clip == null) return;
+
+        audioSource.pitch = Random.Range(minPitch, maxPitch);
+        audioSource.PlayOneShot(clip, volume);
     }
 
     // ---------------------------------------------------------------

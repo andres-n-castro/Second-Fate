@@ -182,5 +182,10 @@ MonoBehaviour:
   bonusLootPrefab: {fileID: 0}
   bonusLootForceMin: {x: -1.5, y: 4}
   bonusLootForceMax: {x: 1.5, y: 6}
+  uniqueInteractionID: 
   shakeDuration: 0.15
   shakeMagnitude: 0.1
+  hitSound: {fileID: 8300000, guid: b48fc3be8e0502d40983ef9b653e72a0, type: 3}
+  hitSoundVolume: 1
+  breakSound: {fileID: 8300000, guid: 615c7b7dc9c3a574f86be96dd3b6eb5b, type: 3}
+  breakSoundVolume: 1

@@ -445,32 +445,36 @@ public abstract class EnemyBase : MonoBehaviour
             }
         }
 
-        if (coinPrefab != null)
-        {
-            int valuePerCoin = 2;
-            if (GameManager.Instance != null && GameManager.Instance.GetActiveAlignment() == GameManager.AlignmentType.CreatureBlood)
-            {
-                valuePerCoin = 6;
-            }
-
-            for (int i = 0; i < 5; i++)
-            {
-                GameObject spawnedCoin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
-
-                CurrencyPickup pickupScript = spawnedCoin.GetComponent<CurrencyPickup>();
-                if (pickupScript != null) pickupScript.currencyValue = valuePerCoin;
-
-                Rigidbody2D rb = spawnedCoin.GetComponent<Rigidbody2D>();
-                if (rb != null)
-                {
-                    float randomX = UnityEngine.Random.Range(-3f, 3f);
-                    float randomY = UnityEngine.Random.Range(3f, 6f);
-                    rb.AddForce(new Vector2(randomX, randomY), ForceMode2D.Impulse);
-                }
-            }
-        }
+        DropCurrency();
 
         Destroy(gameObject, 2f);
+    }
+
+    protected void DropCurrency()
+    {
+        if (coinPrefab == null) return;
+
+        int valuePerCoin = 2;
+        if (GameManager.Instance != null && GameManager.Instance.GetActiveAlignment() == GameManager.AlignmentType.CreatureBlood)
+        {
+            valuePerCoin = 6;
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject spawnedCoin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
+
+            CurrencyPickup pickupScript = spawnedCoin.GetComponent<CurrencyPickup>();
+            if (pickupScript != null) pickupScript.currencyValue = valuePerCoin;
+
+            Rigidbody2D rb = spawnedCoin.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                float randomX = UnityEngine.Random.Range(-3f, 3f);
+                float randomY = UnityEngine.Random.Range(3f, 6f);
+                rb.AddForce(new Vector2(randomX, randomY), ForceMode2D.Impulse);
+            }
+        }
     }
 
     protected virtual void HandleDamageTaken(int damage, Vector2 knockback)

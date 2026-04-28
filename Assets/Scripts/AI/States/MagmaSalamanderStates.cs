@@ -497,6 +497,8 @@ public class SalamanderJumpState : EnemyState
         float vertBoost = Mathf.Max(0f, owner.Ctx.playerRelativePos.y * 0.5f);
         owner.Rb.linearVelocity = new Vector2(forwardForce, jumpForce + vertBoost);
 
+        salamander.PlayLaunchSound();
+
         if (owner.Anim != null) owner.Anim.SetTrigger(salamander.AnimJump);
     }
 

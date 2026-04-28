@@ -204,6 +204,8 @@ public class RockGolemThrowState : EnemyState
     {
         if (golem.RockPrefab == null) return;
 
+        golem.PlayThrowSound();
+
         Vector2 spawnPos = golem.RockSpawnPoint != null
             ? (Vector2)golem.RockSpawnPoint.position
             : (Vector2)owner.transform.position + new Vector2(owner.FacingDirection * 0.5f, 0.5f);

@@ -219,7 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 2d697b72a7a20974282b06c60cd07cbe, type: 2}
   baseCurrencyDrop: 10
-  coinPrefab: {fileID: 0}
+  coinPrefab: {fileID: 3793789415224784273, guid: 57c1c479742e7a84097a97d62615b3b6, type: 3}
   deathDescriptionText: A Great Foe Has Fallen.
   groundCheck: {fileID: 0}
   wallCheck: {fileID: 0}

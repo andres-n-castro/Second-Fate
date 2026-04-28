@@ -21,6 +21,10 @@ public class BreakableChest : MonoBehaviour, IDamageable
     [Header("Hit Feedback")]
     public float shakeDuration = 0.15f;
     public float shakeMagnitude = 0.1f;
+    [SerializeField] private AudioClip hitSound;
+    [SerializeField, Range(0f, 1f)] private float hitSoundVolume = 1f;
+    [SerializeField] private AudioClip breakSound;
+    [SerializeField, Range(0f, 1f)] private float breakSoundVolume = 1f;
     private bool isShaking = false;
     private Vector3 originalPosition;
     private Coroutine shakeCoroutine;
@@ -70,6 +74,7 @@ public class BreakableChest : MonoBehaviour, IDamageable
         }
         else if (!isShaking)
         {
+            PlayHitSound();
             shakeCoroutine = StartCoroutine(ShakeRoutine());
         }
     }
@@ -85,6 +90,7 @@ public class BreakableChest : MonoBehaviour, IDamageable
         }
 
         SetPosition(originalPosition);
+        PlayBreakSound();
         SaveManager.Instance?.MarkInteractableLooted(RuntimePersistentID);
 
         foreach (Collider2D col in GetComponents<Collider2D>())
@@ -117,6 +123,32 @@ public class BreakableChest : MonoBehaviour, IDamageable
         SpawnBonusLoot();
 
         Destroy(gameObject);
+    }
+
+    private void PlayHitSound()
+    {
+        PlaySound(hitSound, hitSoundVolume, "ChestHitSFX");
+    }
+
+    private void PlayBreakSound()
+    {
+        PlaySound(breakSound, breakSoundVolume, "ChestBreakSFX");
+    }
+
+    private void PlaySound(AudioClip clip, float volume, string objectNamePrefix)
+    {
+        if (clip == null) return;
+
+        GameObject sfx = new GameObject($"{objectNamePrefix}_{clip.name}");
+        sfx.transform.position = transform.position;
+
+        AudioSource source = sfx.AddComponent<AudioSource>();
+        source.clip = clip;
+        source.volume = volume;
+        source.spatialBlend = 0f;
+        source.Play();
+
+        Destroy(sfx, clip.length + 0.1f);
     }
 
     private void SpawnBonusLoot()
