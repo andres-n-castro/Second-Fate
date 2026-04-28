@@ -17,6 +17,7 @@ public class MainMenuManager : MonoBehaviour
     [Header("References")]
     public OptionsManager optionsMenuPrefab; // Reference to the OptionsUI in scene
     public GameObject controlsCanvasPrefab;
+    [SerializeField] private GameObject loadGameSectionScene;
 
     [Header("Level Loader")]
     public RectTransform levelLoaderPanel;
@@ -28,6 +29,7 @@ public class MainMenuManager : MonoBehaviour
     private bool isLevelLoading = false;
     private bool isPaused = false;
     private GameObject controlsCanvasInstance;
+    private SaveLoadMenuController saveLoadMenuController;
     void Start()
     {
         if (levelLoaderPanel != null)
@@ -38,6 +40,11 @@ public class MainMenuManager : MonoBehaviour
 
         if (loadingSpinner != null) loadingSpinner.SetActive(false);
         DisableStartupBlockers();
+        CacheLoadGameSection();
+        if (loadGameSectionScene != null)
+        {
+            loadGameSectionScene.SetActive(false);
+        }
 
         SetupButtonNavigation();
         
@@ -141,7 +148,7 @@ public void PauseGame()
             return;
         }
 
-        Debug.Log("Load Game UI is not hooked up yet.");
+        OpenLoadGameSection();
     }
 
     public void OnQuitClicked()
@@ -195,7 +202,6 @@ public void PauseGame()
     if (levelLoaderPanel != null)
     {
         levelLoaderPanel.gameObject.SetActive(true);
-        if (biomeNameText != null) biomeNameText.text = "Traveling to: Midgard...";
         yield return StartCoroutine(SlidePanel(levelLoaderPanel, 0, loaderSlideDuration));
     }
 
@@ -323,6 +329,11 @@ public void PauseGame()
             return false;
         }
 
+        if (loadGameSectionScene != null && loadGameSectionScene.activeInHierarchy)
+        {
+            return false;
+        }
+
         return selected == null || !IsMenuButton(selected);
     }
 
@@ -367,13 +378,102 @@ public void PauseGame()
 
     private void ContinueOrStartDefaultGame()
     {
-        if (SaveManager.Instance != null)
+        SaveManager.EnsureInstance().ContinueOrStartDefaultGame();
+    }
+
+    public void LoadGameFromSlot(int slotIndex)
+    {
+        if (isLevelLoading)
         {
-            SaveManager.Instance.ContinueOrStartDefaultGame();
+            return;
         }
-        else
+
+        Time.timeScale = 1f;
+        if (SaveManager.EnsureInstance().LoadGameAndScene(slotIndex))
         {
-            SceneManager.LoadScene("tutorial_hub");
+            isLevelLoading = true;
         }
+    }
+
+    public void CreateNewGameInSlot(int slotIndex)
+    {
+        if (isLevelLoading)
+        {
+            return;
+        }
+
+        Time.timeScale = 1f;
+        isLevelLoading = true;
+
+        SaveManager.EnsureInstance().StartNewGame(slotIndex);
+    }
+
+    private void OpenLoadGameSection()
+    {
+        CacheLoadGameSection();
+
+        if (loadGameSectionScene == null)
+        {
+            Debug.LogWarning("LoadGameSectionScene was not found in main_menu_scene.");
+            return;
+        }
+
+        saveLoadMenuController = loadGameSectionScene.GetComponent<SaveLoadMenuController>();
+        if (saveLoadMenuController == null)
+        {
+            saveLoadMenuController = loadGameSectionScene.AddComponent<SaveLoadMenuController>();
+        }
+
+        GameObject selected = EventSystem.current != null ? EventSystem.current.currentSelectedGameObject : null;
+        Button fallbackButton = loadGameButton != null ? loadGameButton : GetFirstAvailableButton();
+        loadGameSectionScene.SetActive(true);
+        saveLoadMenuController.Open(this, selected != null ? selected : fallbackButton != null ? fallbackButton.gameObject : null);
+    }
+
+    private void CacheLoadGameSection()
+    {
+        if (loadGameSectionScene == null)
+        {
+            loadGameSectionScene = FindSceneObjectByName("LoadGameSectionScene");
+        }
+
+        if (loadGameSectionScene == null)
+        {
+            loadGameSectionScene = FindSceneObjectByName("LoadGameSectionCanvas");
+        }
+    }
+
+    private GameObject FindSceneObjectByName(string objectName)
+    {
+        GameObject[] roots = SceneManager.GetActiveScene().GetRootGameObjects();
+        for (int i = 0; i < roots.Length; i++)
+        {
+            GameObject match = FindChildByName(roots[i].transform, objectName);
+            if (match != null)
+            {
+                return match;
+            }
+        }
+
+        return null;
+    }
+
+    private GameObject FindChildByName(Transform parent, string objectName)
+    {
+        if (parent.name == objectName)
+        {
+            return parent.gameObject;
+        }
+
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            GameObject match = FindChildByName(parent.GetChild(i), objectName);
+            if (match != null)
+            {
+                return match;
+            }
+        }
+
+        return null;
     }
 }

@@ -13,6 +13,7 @@ public abstract class EnemyBase : MonoBehaviour
     private int currentCurrencyDrop;
 
     [Header("Boss Settings")]
+    [SerializeField] public string bossID;
     public string deathDescriptionText = "A Great Foe Has Fallen.";
 
     [Header("Environment Checks")]
@@ -31,7 +32,9 @@ public abstract class EnemyBase : MonoBehaviour
     public EnemyPerception2D Perception { get; private set; }
     public virtual bool IsBoss => false;
     public virtual string BossDisplayName => gameObject.name;
-    public virtual string BossPersistentID => $"{SceneManager.GetActiveScene().name}:{BossDisplayName}";
+    public virtual string BossPersistentID => string.IsNullOrEmpty(bossID)
+        ? $"{SceneManager.GetActiveScene().name}:{BossDisplayName}"
+        : bossID;
 
     // Accessors for perception
     public Transform GroundCheck => groundCheck;

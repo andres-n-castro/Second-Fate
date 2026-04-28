@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BreakableChest : MonoBehaviour, IDamageable
 {
@@ -14,7 +15,8 @@ public class BreakableChest : MonoBehaviour, IDamageable
     [SerializeField] private GameObject bonusLootPrefab;
     [SerializeField] private Vector2 bonusLootForceMin = new Vector2(-1.5f, 4f);
     [SerializeField] private Vector2 bonusLootForceMax = new Vector2(1.5f, 6f);
-    [SerializeField] private string persistentID;
+    [FormerlySerializedAs("persistentID")]
+    [SerializeField] public string uniqueInteractionID;
 
     [Header("Hit Feedback")]
     public float shakeDuration = 0.15f;
@@ -24,9 +26,9 @@ public class BreakableChest : MonoBehaviour, IDamageable
     private Coroutine shakeCoroutine;
     private bool isBroken = false;
     private Rigidbody2D rb;
-    private string RuntimePersistentID => string.IsNullOrEmpty(persistentID) && SaveManager.Instance != null
+    private string RuntimePersistentID => string.IsNullOrEmpty(uniqueInteractionID) && SaveManager.Instance != null
         ? SaveManager.Instance.BuildSceneObjectID(gameObject)
-        : persistentID;
+        : uniqueInteractionID;
 
     private void Awake()
     {

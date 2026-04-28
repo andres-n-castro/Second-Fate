@@ -1,14 +1,16 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CharmPickup : MonoBehaviour
 {
     [Header("The Charm to Unlock")]
     public CharmData charmToGrant;
-    [SerializeField] private string persistentID;
+    [FormerlySerializedAs("persistentID")]
+    [SerializeField] public string uniqueInteractionID;
 
-    private string RuntimePersistentID => string.IsNullOrEmpty(persistentID) && SaveManager.Instance != null
+    private string RuntimePersistentID => string.IsNullOrEmpty(uniqueInteractionID) && SaveManager.Instance != null
         ? SaveManager.Instance.BuildSceneObjectID(gameObject)
-        : persistentID;
+        : uniqueInteractionID;
 
     private void Start()
     {
@@ -39,6 +41,7 @@ public class CharmPickup : MonoBehaviour
 
                 // Destroy the physical drop regardless
                 SaveManager.Instance?.MarkInteractableLooted(RuntimePersistentID);
+                SaveManager.Instance?.SaveCurrentSlot();
                 Destroy(gameObject);
             }
         }

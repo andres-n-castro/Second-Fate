@@ -1,5 +1,6 @@
 using System.IO;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,8 +18,12 @@ public class SaveManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else Destroy(this);
     }
 
     private void OnEnable()
@@ -35,14 +40,45 @@ public class SaveManager : MonoBehaviour
     {
         if (!isSandboxMode && applySaveDataOnNextSceneLoad)
         {
-            ApplyCurrentSaveDataToRuntime();
+            StartCoroutine(ApplyLoadedGameAfterSceneLoad());
             applySaveDataOnNextSceneLoad = false;
         }
     }
 
-    private string GetSavePath(int slotIndex)
+    private IEnumerator ApplyLoadedGameAfterSceneLoad()
+    {
+        for (int i = 0; i < 30 && GameManager.Instance == null; i++)
+        {
+            yield return null;
+        }
+
+        ApplyCurrentSaveDataToRuntime();
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.PlaceLoadedGamePlayer();
+        }
+    }
+
+    public static SaveManager EnsureInstance()
+    {
+        if (Instance != null)
+        {
+            return Instance;
+        }
+
+        GameObject saveManagerObject = new GameObject("SaveManager");
+        return saveManagerObject.AddComponent<SaveManager>();
+    }
+
+    private static string GetSavePathForSlot(int slotIndex)
     {
         return Path.Combine(Application.persistentDataPath, $"save_slot_{slotIndex}.json");
+    }
+
+    private string GetSavePath(int slotIndex)
+    {
+        return GetSavePathForSlot(slotIndex);
     }
 
     public void SaveGame(int slotIndex)
@@ -56,6 +92,10 @@ public class SaveManager : MonoBehaviour
         List<bool> previousInventoryItemReadStates = new List<bool>(currentSaveData.inventoryItemReadStates);
         List<string> previousLootedInteractableIDs = new List<string>(currentSaveData.lootedInteractableIDs);
         List<string> previousDefeatedBossIDs = new List<string>(currentSaveData.defeatedBossIDs);
+        List<string> previousUnlockedCharmIDs = new List<string>(currentSaveData.unlockedCharmIDs);
+        List<string> previousEquippedCharmIDs = new List<string>(currentSaveData.equippedCharmIDs);
+        bool previousHasDash = currentSaveData.hasDash;
+        bool previousHasDoubleJump = currentSaveData.hasDoubleJump;
         currentSaveData = new GameData();
         currentSaveData.lootedInteractableIDs = previousLootedInteractableIDs;
         currentSaveData.defeatedBossIDs = previousDefeatedBossIDs;
@@ -68,6 +108,11 @@ public class SaveManager : MonoBehaviour
             currentSaveData.currentCurrency = playerStats.currentCurrency;
             currentSaveData.hasDash = playerStats.canDash;
             currentSaveData.hasDoubleJump = playerStats.hasDoubleJump || playerStats.unlockedDoubleJump;
+        }
+        else
+        {
+            currentSaveData.hasDash = previousHasDash;
+            currentSaveData.hasDoubleJump = previousHasDoubleJump;
         }
 
         if (GameManager.Instance != null)
@@ -96,6 +141,11 @@ public class SaveManager : MonoBehaviour
                     currentSaveData.equippedCharmIDs.Add(charm.name);
                 }
             }
+        }
+        else
+        {
+            currentSaveData.unlockedCharmIDs = previousUnlockedCharmIDs;
+            currentSaveData.equippedCharmIDs = previousEquippedCharmIDs;
         }
 
         if (InventoryController.Instance != null && InventoryController.Instance.inventoryModel != null)
@@ -128,6 +178,16 @@ public class SaveManager : MonoBehaviour
     public void SaveCurrentSlot()
     {
         SaveGame(currentSlotIndex);
+    }
+
+    public void WriteCurrentSaveDataToDisk()
+    {
+        if (isSandboxMode) return;
+
+        NormalizeCurrentSaveData();
+        string json = JsonUtility.ToJson(currentSaveData, true);
+        File.WriteAllText(GetSavePath(currentSlotIndex), json);
+        Debug.Log($"Current save data written to Slot {currentSlotIndex}");
     }
 
     public bool LoadGame(int slotIndex)
@@ -169,7 +229,6 @@ public class SaveManager : MonoBehaviour
             : currentSaveData.currentSceneName;
 
         applySaveDataOnNextSceneLoad = true;
-        GameManager.Instance?.QueueLoadedGamePlacement();
         SceneManager.LoadScene(sceneName);
         return true;
     }
@@ -191,13 +250,55 @@ public class SaveManager : MonoBehaviour
         currentSaveData = new GameData();
         DeleteSave(slotIndex);
         applySaveDataOnNextSceneLoad = true;
-        GameManager.Instance?.QueueLoadedGamePlacement();
         SceneManager.LoadScene(DefaultSceneName);
     }
 
     public bool HasSaveFile(int slotIndex)
     {
-        return File.Exists(GetSavePath(slotIndex));
+        return DoesSaveFileExist(slotIndex);
+    }
+
+    public bool DoesSaveExist(int slotIndex)
+    {
+        return HasSaveFile(slotIndex);
+    }
+
+    public static bool DoesSaveFileExist(int slotIndex)
+    {
+        return File.Exists(GetSavePathForSlot(slotIndex));
+    }
+
+    public string GetSaveSlotSummary(int slotIndex)
+    {
+        return GetSaveSlotSummaryText(slotIndex);
+    }
+
+    public static string GetSaveSlotSummaryText(int slotIndex)
+    {
+        string path = GetSavePathForSlot(slotIndex);
+        if (!File.Exists(path))
+        {
+            return "Empty Slot";
+        }
+
+        try
+        {
+            string json = File.ReadAllText(path);
+            GameData saveData = JsonUtility.FromJson<GameData>(json);
+            if (saveData == null)
+            {
+                return "Data Found";
+            }
+
+            string sceneName = string.IsNullOrEmpty(saveData.currentSceneName) ? "Unknown Scene" : saveData.currentSceneName;
+            string bonfireName = string.IsNullOrEmpty(saveData.lastRestedBonfireID) ? "No Bonfire" : saveData.lastRestedBonfireID;
+            return $"{sceneName} - {bonfireName}";
+        }
+        catch (System.Exception exception)
+        {
+            Debug.LogWarning($"Could not read save slot {slotIndex}: {exception.Message}");
+            return "Data Found";
+        }
     }
 
     public void MarkInteractableLooted(string persistentID)
@@ -210,6 +311,7 @@ public class SaveManager : MonoBehaviour
         }
 
         currentSaveData.lootedInteractableIDs.Add(persistentID);
+        WriteCurrentSaveDataToDisk();
     }
 
     public bool IsInteractableLooted(string persistentID)
@@ -228,6 +330,7 @@ public class SaveManager : MonoBehaviour
         }
 
         currentSaveData.defeatedBossIDs.Add(bossID);
+        WriteCurrentSaveDataToDisk();
     }
 
     public bool IsBossDefeated(string bossID)
@@ -314,6 +417,8 @@ public class SaveManager : MonoBehaviour
                     break;
                 }
             }
+
+            GameManager.Instance.RefreshSceneBonfires();
         }
 
         ApplyCharmData();

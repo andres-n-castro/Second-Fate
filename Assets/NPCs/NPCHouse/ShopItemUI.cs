@@ -10,6 +10,13 @@ public class ShopItemUI : MonoBehaviour
 
     private void Start()
     {
+        HideIfAlreadyPurchased();
+
+        if (!gameObject.activeSelf)
+        {
+            return;
+        }
+
         if (buyButton == null)
         {
             buyButton = GetComponent<Button>();
@@ -25,7 +32,31 @@ public class ShopItemUI : MonoBehaviour
 
     private void OnEnable()
     {
+        HideIfAlreadyPurchased();
         RefreshUI();
+    }
+
+    private void HideIfAlreadyPurchased()
+    {
+        if (charmToSell == null)
+        {
+            return;
+        }
+
+        if (CharmManager.Instance != null && CharmManager.Instance.unlockedCharms.Contains(charmToSell))
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        if (SaveManager.Instance != null &&
+            SaveManager.Instance.currentSaveData != null &&
+            SaveManager.Instance.currentSaveData.unlockedCharmIDs != null &&
+            (SaveManager.Instance.currentSaveData.unlockedCharmIDs.Contains(charmToSell.name) ||
+             SaveManager.Instance.currentSaveData.unlockedCharmIDs.Contains(charmToSell.charmID)))
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void RefreshUI()
@@ -57,6 +88,15 @@ public class ShopItemUI : MonoBehaviour
             if (CharmManager.Instance != null && !CharmManager.Instance.unlockedCharms.Contains(charmToSell))
             {
                 CharmManager.Instance.unlockedCharms.Add(charmToSell);
+            }
+
+            if (SaveManager.Instance != null)
+            {
+                if (SaveManager.Instance.currentSaveData.unlockedCharmIDs != null &&
+                    !SaveManager.Instance.currentSaveData.unlockedCharmIDs.Contains(charmToSell.name))
+                {
+                    SaveManager.Instance.currentSaveData.unlockedCharmIDs.Add(charmToSell.name);
+                }
             }
 
             if (UIManager.Instance != null)

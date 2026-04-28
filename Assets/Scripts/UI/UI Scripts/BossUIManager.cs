@@ -121,6 +121,11 @@ public class BossUIManager : MonoBehaviour
         GrantReward(ResolveReward(treeEssenceReward, TreeEssenceItemID));
         GrantReward(ResolveReward(creatureBloodReward, CreatureBloodItemID));
 
+        if (SaveManager.Instance != null)
+        {
+            SaveManager.Instance.SaveCurrentSlot();
+        }
+
         if (UIManager.Instance != null)
         {
             UIManager.Instance.ShowNotification("Blood and Essence Recovered");

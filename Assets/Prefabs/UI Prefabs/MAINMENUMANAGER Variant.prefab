@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1486734197500816278, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2077837771222323813, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -139,11 +139,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2137567886437771645, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1026.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137567886437771645, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2137567886437771645, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5099053518066179980, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
       propertyPath: m_text
       value: 'Now Entering your Second Fate...
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099053518066179980, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
+      propertyPath: m_margin.z
+      value: -1.1993408
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099053518066179980, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099053518066179980, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5143089058240107782, guid: 84145e28c5ad5ab4ba9a5f78a38db11e, type: 3}
       propertyPath: m_AnchoredPosition.y

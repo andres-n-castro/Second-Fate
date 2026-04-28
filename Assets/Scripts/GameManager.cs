@@ -103,14 +103,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Bonfire[] bonfires = UnityEngine.Object.FindFirstObjectByType<Bonfire>() != null
-            ? UnityEngine.Object.FindObjectsByType<Bonfire>(FindObjectsSortMode.None)
-            : new Bonfire[0];
-
-        foreach (Bonfire b in bonfires)
-        {
-            b.UpdateVisualState();
-        }
+        RefreshSceneBonfires();
 
         ConfigureSceneBosses(SceneManager.GetActiveScene());
     }
@@ -377,6 +370,26 @@ public class GameManager : MonoBehaviour
         placePlayerFromSaveOnNextGameplayLoad = true;
     }
 
+    public void RefreshSceneBonfires()
+    {
+        Bonfire[] bonfires = UnityEngine.Object.FindFirstObjectByType<Bonfire>() != null
+            ? UnityEngine.Object.FindObjectsByType<Bonfire>(FindObjectsSortMode.None)
+            : new Bonfire[0];
+
+        foreach (Bonfire b in bonfires)
+        {
+            if (b != null)
+            {
+                b.UpdateVisualState();
+            }
+        }
+    }
+
+    public void PlaceLoadedGamePlayer()
+    {
+        StartCoroutine(PlaceLoadedPlayerAfterSceneLoad());
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (IsGameplayScene(scene.name))
@@ -385,6 +398,7 @@ public class GameManager : MonoBehaviour
         }
 
         ConfigureSceneBosses(scene);
+        RefreshSceneBonfires();
 
         if (hasPendingCheckpointRespawn)
         {
@@ -562,6 +576,7 @@ public class GameManager : MonoBehaviour
         if (playerManager.playerController != null)
         {
             playerManager.playerController.enabled = true;
+            playerManager.playerController.SetExternalFreeze(false);
         }
 
         if (playerManager.playerMovement != null)
@@ -595,6 +610,8 @@ public class GameManager : MonoBehaviour
                 playerManager.playerStats.playerHealthComponent.isInvulnerable = false;
             }
         }
+
+        ChangeState(GameState.Exploration);
     }
 
     private PlayerManager GetScenePlayerManager()

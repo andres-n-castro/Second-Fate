@@ -56,6 +56,15 @@ public class BossArenaController : MonoBehaviour
     private bool fightEnded;
     private Coroutine fadeRoutine;
 
+    private void Start()
+    {
+        if (IsBossPermanentlyDefeated())
+        {
+            fightEnded = true;
+            ActivateBarriers(false);
+        }
+    }
+
     private void Reset()
     {
         var col = GetComponent<Collider2D>();
@@ -73,6 +82,13 @@ public class BossArenaController : MonoBehaviour
     private void StartFight()
     {
         if (fightStarted) return;
+        if (IsBossPermanentlyDefeated())
+        {
+            fightEnded = true;
+            ActivateBarriers(false);
+            return;
+        }
+
         fightStarted = true;
 
         ActivateBarriers(true);
@@ -129,6 +145,13 @@ public class BossArenaController : MonoBehaviour
         {
             if (barrierDoors[i] != null) barrierDoors[i].SetActive(active);
         }
+    }
+
+    private bool IsBossPermanentlyDefeated()
+    {
+        return boss != null &&
+               SaveManager.Instance != null &&
+               SaveManager.Instance.IsBossDefeated(boss.BossPersistentID);
     }
 
     private void PauseExplorationMusic()
