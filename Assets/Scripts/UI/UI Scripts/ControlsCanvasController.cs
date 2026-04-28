@@ -5,13 +5,20 @@ using UnityEngine.UI;
 
 public class ControlsCanvasController : MonoBehaviour
 {
+    private const string ModalBlockerName = "Controls Modal Blocker";
+
     [SerializeField] private Button exitButton;
     private GameObject returnSelection;
+    private Image modalBlocker;
     private static SelectionRestorer selectionRestorer;
+    private static int activeControlsCount;
+
+    public static bool IsAnyOpen => activeControlsCount > 0;
 
     private void Awake()
     {
         CacheExitButton();
+        EnsureModalBlocker();
 
         if (exitButton != null)
         {
@@ -29,8 +36,15 @@ public class ControlsCanvasController : MonoBehaviour
 
     private void OnEnable()
     {
+        activeControlsCount++;
         CacheExitButton();
+        EnsureModalBlocker();
         StartCoroutine(SelectExitButtonNextFrame());
+    }
+
+    private void OnDisable()
+    {
+        activeControlsCount = Mathf.Max(0, activeControlsCount - 1);
     }
 
     private void Update()
@@ -90,6 +104,38 @@ public class ControlsCanvasController : MonoBehaviour
     public void SetReturnSelection(GameObject selection)
     {
         returnSelection = selection;
+    }
+
+    private void EnsureModalBlocker()
+    {
+        Transform blockerTransform = transform.Find(ModalBlockerName);
+
+        if (blockerTransform == null)
+        {
+            GameObject blockerObject = new GameObject(ModalBlockerName, typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+            blockerTransform = blockerObject.transform;
+            blockerTransform.SetParent(transform, false);
+        }
+
+        blockerTransform.SetAsFirstSibling();
+
+        RectTransform blockerRect = blockerTransform as RectTransform;
+        if (blockerRect != null)
+        {
+            blockerRect.anchorMin = Vector2.zero;
+            blockerRect.anchorMax = Vector2.one;
+            blockerRect.offsetMin = Vector2.zero;
+            blockerRect.offsetMax = Vector2.zero;
+        }
+
+        modalBlocker = blockerTransform.GetComponent<Image>();
+        if (modalBlocker == null)
+        {
+            modalBlocker = blockerTransform.gameObject.AddComponent<Image>();
+        }
+
+        modalBlocker.color = Color.clear;
+        modalBlocker.raycastTarget = true;
     }
 
     private void CacheExitButton()

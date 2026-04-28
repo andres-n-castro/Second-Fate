@@ -9,6 +9,11 @@ public class PauseMenuManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        if (ControlsCanvasController.IsAnyOpen)
+        {
+            return;
+        }
+
         GameManager.Instance.RestorePreviousState();
     }
 
