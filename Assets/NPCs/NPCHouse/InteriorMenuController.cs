@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
@@ -17,6 +18,14 @@ public class InteriorMenuController : MonoBehaviour
     [SerializeField] private GameObject interactMenuPanel;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private GameObject shopPanel;
+
+    [Header("Controller Focus Buttons")]
+    [Tooltip("Default button to focus when the interaction menu (Talk/Shop/Leave) is shown.")]
+    [SerializeField] private Button talkButton;
+    [Tooltip("Default button to focus when the dialogue panel is shown.")]
+    [SerializeField] private Button dialogueBackButton;
+    [Tooltip("Default button to focus when the shop panel is shown.")]
+    [SerializeField] private Button shopBackButton;
 
     [Header("Dialogue UI")]
     [SerializeField] private TMP_Text dialogueText;
@@ -59,6 +68,8 @@ public class InteriorMenuController : MonoBehaviour
         if (interactMenuPanel != null) interactMenuPanel.SetActive(true);
         if (dialoguePanel != null) dialoguePanel.SetActive(false);
         if (shopPanel != null) shopPanel.SetActive(false);
+
+        SetControllerFocus(talkButton);
     }
 
     /// <summary>
@@ -77,6 +88,8 @@ public class InteriorMenuController : MonoBehaviour
         // Advance to the next dialogue for the next Talk press
         if (dialogueRotation != null && dialogueRotation.Length > 0)
             currentDialogueIndex = (currentDialogueIndex + 1) % dialogueRotation.Length;
+
+        SetControllerFocus(dialogueBackButton);
     }
 
     /// <summary>
@@ -90,6 +103,8 @@ public class InteriorMenuController : MonoBehaviour
         if (interactMenuPanel != null) interactMenuPanel.SetActive(false);
         if (dialoguePanel != null) dialoguePanel.SetActive(false);
         if (shopPanel != null) shopPanel.SetActive(true);
+
+        SetControllerFocus(shopBackButton);
     }
 
     /// <summary>
@@ -208,6 +223,18 @@ public class InteriorMenuController : MonoBehaviour
         if (selectAudio != null && selectAudio.clip != null && selectAudio.enabled && selectAudio.gameObject.activeInHierarchy)
         {
             selectAudio.PlayOneShot(selectAudio.clip, sfxVolume);
+        }
+    }
+
+    /// <summary>
+    /// Sets the EventSystem's selected GameObject so the controller stick can navigate from it.
+    /// </summary>
+    private void SetControllerFocus(Button button)
+    {
+        if (EventSystem.current != null && button != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(button.gameObject);
         }
     }
 }

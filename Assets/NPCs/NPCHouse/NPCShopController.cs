@@ -44,7 +44,8 @@ public class NPCShopController : MonoBehaviour
 
     void Update()
     {
-        if (!Input.GetKeyDown(toggleKey)) return;
+        bool togglePressed = Input.GetKeyDown(toggleKey) || Input.GetKeyDown(KeyCode.JoystickButton3);
+        if (!togglePressed) return;
         if (GameManager.Instance == null) return;
 
         var state = GameManager.Instance.currentState;

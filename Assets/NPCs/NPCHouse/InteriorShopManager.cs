@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
@@ -32,6 +33,10 @@ public class InteriorShopManager : MonoBehaviour
     public Button buyButton;
     public Button backButton;
 
+    [Header("Controller Focus")]
+    [Tooltip("The first shop item button to focus when the shop panel opens for controller navigation.")]
+    public Button firstShopItemButton;
+
     [Header("Back Navigation")]
     [Tooltip("Reference to the InteriorMenuController so the Back button can return to the main menu.")]
     public InteriorMenuController menuController;
@@ -61,6 +66,7 @@ public class InteriorShopManager : MonoBehaviour
         RefreshShopItems();
         ClearDetailPanel();
         selectedItem = null;
+        SetControllerFocus(firstShopItemButton);
     }
 
     // ------------------------------------------------------------------
@@ -92,6 +98,8 @@ public class InteriorShopManager : MonoBehaviour
 
         if (confirmText != null)
             confirmText.text = "Purchase " + selectedItem.DisplayName + " for " + selectedItem.DisplayPrice + " coins?";
+
+        SetControllerFocus(yesButton);
     }
 
     void OnYesClicked()
@@ -137,18 +145,24 @@ public class InteriorShopManager : MonoBehaviour
             if (UIManager.Instance != null)
                 UIManager.Instance.ShowNotification("Not enough currency!");
         }
+
+        SetControllerFocus(okButton);
     }
 
     void OnNoClicked()
     {
         if (confirmPurchasePanel != null)
             confirmPurchasePanel.SetActive(false);
+
+        SetControllerFocus(firstShopItemButton);
     }
 
     void OnOkClicked()
     {
         if (purchaseMessagePanel != null)
             purchaseMessagePanel.SetActive(false);
+
+        SetControllerFocus(firstShopItemButton);
     }
 
     // ------------------------------------------------------------------
@@ -245,6 +259,18 @@ public class InteriorShopManager : MonoBehaviour
             {
                 item.gameObject.SetActive(false);
             }
+        }
+    }
+
+    /// <summary>
+    /// Sets the EventSystem's selected GameObject so the controller stick can navigate from it.
+    /// </summary>
+    private void SetControllerFocus(Button button)
+    {
+        if (EventSystem.current != null && button != null && button.gameObject.activeInHierarchy)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(button.gameObject);
         }
     }
 }
