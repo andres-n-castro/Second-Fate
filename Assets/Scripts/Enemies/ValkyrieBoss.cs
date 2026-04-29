@@ -40,10 +40,7 @@ public class ValkyrieBoss : EnemyBase
     [SerializeField] private AttackHitbox erraticSlashBurstHitbox;
     [SerializeField] private AttackHitbox erraticFlurryHitbox;
 
-    [Header("Scene Reward Drop")]
-    [SerializeField] private GameObject dashCollectiblePrefab;
-    [SerializeField] private Vector2 dashCollectibleDropForceMin = new Vector2(-1.5f, 4f);
-    [SerializeField] private Vector2 dashCollectibleDropForceMax = new Vector2(1.5f, 6f);
+
 
     // Hitbox accessors for states
     public AttackHitbox SlashHitbox => slashHitbox;
@@ -139,23 +136,7 @@ public class ValkyrieBoss : EnemyBase
     protected override void HandleDeath()
     {
         DisableAllHitboxes();
-        DropDashCollectible();
         FSM.ChangeState(DeadState);
-        base.HandleDeath();
-    }
-
-    private void DropDashCollectible()
-    {
-        if (dashCollectiblePrefab == null) return;
-
-        GameObject spawnedCollectible = Instantiate(dashCollectiblePrefab, transform.position, Quaternion.identity);
-        Rigidbody2D collectibleRb = spawnedCollectible.GetComponent<Rigidbody2D>();
-        if (collectibleRb != null)
-        {
-            float randomX = Random.Range(dashCollectibleDropForceMin.x, dashCollectibleDropForceMax.x);
-            float randomY = Random.Range(dashCollectibleDropForceMin.y, dashCollectibleDropForceMax.y);
-            collectibleRb.AddForce(new Vector2(randomX, randomY), ForceMode2D.Impulse);
-        }
     }
 
     /// <summary>
