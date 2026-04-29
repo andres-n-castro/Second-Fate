@@ -49,6 +49,10 @@ MonoBehaviour:
   currentRespawnPoint: {x: 0, y: 0}
   lastInteractedBonfireID: 
   lastRestedBonfireID: 
+  bossHudPrefab: {fileID: 971504163205394431, guid: a4c65b4d0a3601842ba6d5621d96519e, type: 3}
+  useInspectorFinalBossCounts: 1
+  inspectorTreeEssenceCount: 2
+  inspectorCreatureBloodCount: 3
   masterBonfireList:
   - bonfireID: Tutorial_Bonfire
     displayName: Tutorial
@@ -62,13 +66,12 @@ MonoBehaviour:
   - bonfireID: Lava_Bonfire
     displayName: Lava
     sceneName: biome2_subarea1
+  - bonfireID: End_of_Time_Bonfire
+    displayName: End of Time
+    sceneName: biome3_fight
   pendingTeleportBonfireID: 
   masterBonfireRegistry: []
   unlockedBonfires: []
-  bossHudPrefab: {fileID: 971504163205394431, guid: a4c65b4d0a3601842ba6d5621d96519e, type: 3}
-  useInspectorFinalBossCounts: 0
-  inspectorTreeEssenceCount: 0
-  inspectorCreatureBloodCount: 0
 --- !u!114 &5170489122950427786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,10 +131,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab31fd8a6f555c4ca458833cd29a709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSandboxMode: 0
+  isSandboxMode: 1
   currentSaveData:
     lastRestedBonfireID: 
-    currentSceneName: TutorialScene
+    currentSceneName: 
     currentHealth: 0
     maxHealth: 0
     currentCurrency: 0
@@ -147,3 +150,4 @@ MonoBehaviour:
     inventoryItemIDs: []
     inventoryItemAmounts: 
     inventoryItemReadStates: 
+    collectedKeyIDs: []

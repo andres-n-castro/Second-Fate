@@ -4,8 +4,24 @@ public class DashCollectiblePickup : MonoBehaviour
 {
     [SerializeField] private string uiCanvasName = "DashCollectedUICanvas";
     [SerializeField] private GameObject uiCanvasPrefab;
+    [SerializeField] private float collectDelay = 1.5f;
 
     private bool collected;
+    private bool collectEnabled;
+
+    private void Start()
+    {
+        // Disable collection briefly so the collectible can visually pop out
+        // before the player can pick it up (prevents UI overlap with boss death popup).
+        collectEnabled = false;
+        StartCoroutine(EnableCollectionAfterDelay());
+    }
+
+    private System.Collections.IEnumerator EnableCollectionAfterDelay()
+    {
+        yield return new WaitForSecondsRealtime(collectDelay);
+        collectEnabled = true;
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -17,9 +33,14 @@ public class DashCollectiblePickup : MonoBehaviour
         TryCollect(collision.gameObject);
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        TryCollect(other.gameObject);
+    }
+
     private void TryCollect(GameObject other)
     {
-        if (collected || !other.CompareTag("Player")) return;
+        if (collected || !collectEnabled || !other.CompareTag("Player")) return;
 
         PlayerStats playerStats = PlayerManager.Instance != null ? PlayerManager.Instance.playerStats : null;
         if (playerStats == null) return;

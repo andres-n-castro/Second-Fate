@@ -530,6 +530,9 @@ MonoBehaviour:
   spearFlurryHitbox: {fileID: 2351073141413106653}
   shieldSlamHitbox: {fileID: 7814306850707897044}
   shieldFlurryHitbox: {fileID: 3059108313269438505}
+  dashCollectiblePrefab: {fileID: 1013028143733309685, guid: 0c11208376c7a224282e152a2e812698, type: 3}
+  dashCollectibleDropForceMin: {x: -1.5, y: 4}
+  dashCollectibleDropForceMax: {x: 1.5, y: 6}
 --- !u!95 &310407099081039875
 Animator:
   serializedVersion: 7
