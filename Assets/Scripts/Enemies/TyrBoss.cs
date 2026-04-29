@@ -38,11 +38,6 @@ public class TyrBoss : EnemyBase
     [SerializeField] private Vector2 p2BodyColliderSize = new Vector2(2.0f, 2.5f);
     [SerializeField] private Vector2 p2BodyColliderOffset = new Vector2(0f, -0.25f);
 
-    [Header("Scene Reward Drop")]
-    [SerializeField] private GameObject dashCollectiblePrefab;
-    [SerializeField] private Vector2 dashCollectibleDropForceMin = new Vector2(-1.5f, 4f);
-    [SerializeField] private Vector2 dashCollectibleDropForceMax = new Vector2(1.5f, 6f);
-
     private BoxCollider2D bodyCollider;
 
     // Hitbox accessors for states
@@ -127,22 +122,7 @@ public class TyrBoss : EnemyBase
     protected override void HandleDeath()
     {
         DisableAllHitboxes();
-        DropDashCollectible();
         FSM.ChangeState(DeadState);
-    }
-
-    private void DropDashCollectible()
-    {
-        if (dashCollectiblePrefab == null) return;
-
-        GameObject spawnedCollectible = Instantiate(dashCollectiblePrefab, transform.position, Quaternion.identity);
-        Rigidbody2D collectibleRb = spawnedCollectible.GetComponent<Rigidbody2D>();
-        if (collectibleRb != null)
-        {
-            float randomX = Random.Range(dashCollectibleDropForceMin.x, dashCollectibleDropForceMax.x);
-            float randomY = Random.Range(dashCollectibleDropForceMin.y, dashCollectibleDropForceMax.y);
-            collectibleRb.AddForce(new Vector2(randomX, randomY), ForceMode2D.Impulse);
-        }
     }
 
     public AttackDefinition GetAttackDef(string attackName)

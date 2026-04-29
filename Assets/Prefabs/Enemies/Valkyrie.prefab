@@ -317,6 +317,9 @@ MonoBehaviour:
   erraticSlashLowHitbox: {fileID: 6630508109505028323}
   erraticSlashBurstHitbox: {fileID: 69040146314873266}
   erraticFlurryHitbox: {fileID: 2973835416902015292}
+  dashCollectiblePrefab: {fileID: 0}
+  dashCollectibleDropForceMin: {x: -1.5, y: 4}
+  dashCollectibleDropForceMax: {x: 1.5, y: 6}
 --- !u!95 &1646993658409993325
 Animator:
   serializedVersion: 7

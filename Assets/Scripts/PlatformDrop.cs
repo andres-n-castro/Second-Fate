@@ -7,13 +7,7 @@ public class PlatformDrop : MonoBehaviour
     [SerializeField] private float dropDelay = 0.3f;
     [SerializeField] private LayerMask platformLayer;
 
-    private Collider2D currentPlatformCollider;
-    private Collider2D[] playerColliders;
-
-    private void Awake()
-    {
-        playerColliders = GetComponentsInChildren<Collider2D>();
-    }
+    private PlatformEffector2D _currentEffector;
 
     void Update()
     {
@@ -22,7 +16,7 @@ public class PlatformDrop : MonoBehaviour
         {
             if (CheckForPlatform())
             {
-                StartCoroutine(DropRoutine(currentPlatformCollider));
+                StartCoroutine(DropRoutine());
             }
         }
     }
@@ -34,38 +28,19 @@ public class PlatformDrop : MonoBehaviour
 
         if (hit.collider != null)
         {
-            currentPlatformCollider = hit.collider;
-            return currentPlatformCollider.GetComponent<PlatformEffector2D>() != null
-                || currentPlatformCollider.GetComponentInParent<PlatformEffector2D>() != null;
+            // Try to find the effector on the object we hit or its parent
+            _currentEffector = hit.collider.gameObject.GetComponent<PlatformEffector2D>();
+            return _currentEffector != null;
         }
         return false;
     }
 
-    private IEnumerator DropRoutine(Collider2D platformCollider)
+    private IEnumerator DropRoutine()
     {
-        if (platformCollider == null)
-        {
-            yield break;
-        }
-
-        foreach (Collider2D playerCollider in playerColliders)
-        {
-            if (playerCollider != null)
-            {
-                Physics2D.IgnoreCollision(playerCollider, platformCollider, true);
-            }
-        }
-
+        // Flip the effector
+        _currentEffector.rotationalOffset = 180f;
         yield return new WaitForSeconds(dropDelay);
-
-        foreach (Collider2D playerCollider in playerColliders)
-        {
-            if (playerCollider != null && platformCollider != null)
-            {
-                Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
-            }
-        }
-
-        currentPlatformCollider = null;
+        _currentEffector.rotationalOffset = 0f;
+        _currentEffector = null;
     }
 }

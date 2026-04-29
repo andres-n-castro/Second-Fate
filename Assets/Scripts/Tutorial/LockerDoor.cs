@@ -9,30 +9,14 @@ public class LockerDoor : MonoBehaviour
     public bool disableInsteadOfDestroy;
 
     private bool hasBeenUnlocked;
-    private bool isBossBarrierActive;
     private string RuntimePersistentID => string.IsNullOrEmpty(uniqueInteractionID) && SaveManager.Instance != null
         ? SaveManager.Instance.BuildSceneObjectID(gameObject)
         : uniqueInteractionID;
 
     private void Start()
     {
-        ApplyPersistentUnlockState();
-    }
-
-    private void OnEnable()
-    {
-        ApplyPersistentUnlockState();
-    }
-
-    private void ApplyPersistentUnlockState()
-    {
         if (SaveManager.Instance != null && SaveManager.Instance.IsInteractableLooted(RuntimePersistentID))
         {
-            if (isBossBarrierActive)
-            {
-                return;
-            }
-
             if (disableInsteadOfDestroy)
             {
                 gameObject.SetActive(false);
@@ -48,7 +32,6 @@ public class LockerDoor : MonoBehaviour
     {
         if (hasBeenUnlocked) return;
         if (!collision.gameObject.CompareTag("Player")) return;
-        if (isBossBarrierActive) return;
 
         if (TutorialManager.EnsureInstance().HasKey(doorID))
         {
@@ -66,11 +49,5 @@ public class LockerDoor : MonoBehaviour
         {
             Debug.Log("Door is locked. You need a specific key.");
         }
-    }
-
-    public void SetBossBarrierActive(bool active)
-    {
-        isBossBarrierActive = active;
-        gameObject.SetActive(active);
     }
 }

@@ -1950,11 +1950,11 @@ MonoBehaviour:
     targetBonfireID: Midgard_Caves_Bonfire
     targetSceneName: biome1_subarea1
   - uiButton: {fileID: 4958061323105133294}
-    targetBonfireID: Swamp_Bonfire
-    targetSceneName: biome1_subarea2
+    targetBonfireID: 
+    targetSceneName: 
   - uiButton: {fileID: 8635081217906442684}
-    targetBonfireID: Lava_Bonfire
-    targetSceneName: biome2_subarea1
+    targetBonfireID: 
+    targetSceneName: 
   goodBtnComponent: {fileID: 4722589806582786232}
   badBtnComponent: {fileID: 3397986102252191342}
 --- !u!1 &2846414499687587767
