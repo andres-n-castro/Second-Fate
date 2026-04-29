@@ -72,7 +72,7 @@ MonoBehaviour:
   maxFallVelocity: 28
   jumpHangThreshold: 2
   jumpHangGravityMultiplier: 0.5
-  jumpForce: 5
+  jumpForce: 2
   jumpForwardForce: 3
   jumpHeightThreshold: 1.5
   jumpCooldown: 2
@@ -137,6 +137,7 @@ MonoBehaviour:
   odinStaffProjectileMinRange: 3
   odinStaffProjectileWeightMultiplier: 2
   odinGroundSpikesMaxRange: 6
+  odinGroundSpikesMinXDistance: 2
   odinGroundSpikesWeightMultiplier: 2
   odinStaffMeleeMaxRange: 3
   odinStaffMeleeWeightMultiplier: 3
@@ -152,6 +153,7 @@ MonoBehaviour:
   odinP2MaxAttackCooldown: 0.8
   odinTripleProjectileCount: 3
   odinTripleProjectileSpreadAngle: 30
+  odinTripleProjectileSpawnDelay: 0.15
   odinConsecutiveSpikeWaves: 3
   odinConsecutiveSpikeWaveDelay: 0.4
   odinSlashProjectileSpeed: 10
@@ -165,6 +167,8 @@ MonoBehaviour:
   odinLargeSlashWeightMultiplier: 3
   heimdallCloseRange: 2
   heimdallMaxEngageRange: 6
+  heimdallP1MinAttackCooldown: 0.2
+  heimdallP1MaxAttackCooldown: 0.5
   heimdallShockwaveSlashMaxRange: 5
   heimdallShockwaveSlashWeightMultiplier: 2
   heimdallSwordTornadoMaxRange: 2.5
@@ -179,8 +183,11 @@ MonoBehaviour:
   heimdallProjectileSwordCurveDelay: 0.25
   heimdallProjectileSwordCurveStrength: 5
   heimdallProjectileSwordLifetime: 5
-  heimdallPlungeLeapForceY: 12
-  heimdallPlungeForwardForce: 3
+  heimdallPlungeDashSpeed: 15
+  heimdallPlungeMaxHorizontalDist: 8
+  heimdallPlungeHeightAbovePlayer: 4
+  heimdallPlungeDashTimeout: 1
+  heimdallPlungeArriveThreshold: 1
   heimdallPlungeFallSpeed: 18
   heimdallFloorImpactRadius: 4
   heimdallFloorImpactDuration: 0.4
