@@ -79,6 +79,10 @@ public class ValkP2Super : HierarchicalState
         // Boss becomes airborne in Phase 2
         owner.Rb.gravityScale = 0f;
         RequestedP2Attack = null;
+
+        // Shift telegraph indicator up slightly to match airborne sprite
+        owner.OffsetTelegraphY(0.6f);
+
         subMachine.ChangeState(HoverState);
     }
 
@@ -531,7 +535,7 @@ public class ValkP1GapCloseState : EnemyState
 // ---------------------------------------------------------------
 public class ValkP1SlashState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private ValkyrieBoss valk;
     private ValkP1Super p1;
@@ -548,18 +552,25 @@ public class ValkP1SlashState : EnemyState
     public override void Enter()
     {
         Debug.Log("Valkyrie: P1 Slash");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = valk.GetAttackDef("Slash");
-        float windupDur = atk != null ? atk.windupDuration : 0.4f;
-        timer = windupDur;
-
-        // Micro-lunge: slide forward during early windup (capped to windup duration)
-        microLungeTimer = Mathf.Min(owner.Profile.p1SlashMicroLungeDuration, windupDur);
-
-        if (owner.Anim != null) owner.Anim.SetTrigger("Valk_Slash");
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            float windupDur = atk != null ? atk.windupDuration : 0.4f;
+            timer = windupDur;
+            microLungeTimer = Mathf.Min(owner.Profile.p1SlashMicroLungeDuration, windupDur);
+            if (owner.Anim != null) owner.Anim.SetTrigger("Valk_Slash");
+        }
     }
 
     public override void FixedTick()
@@ -568,6 +579,19 @@ public class ValkP1SlashState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = valk.GetAttackDef("Slash");
+                    float windupDur = atk != null ? atk.windupDuration : 0.4f;
+                    timer = windupDur;
+                    microLungeTimer = Mathf.Min(owner.Profile.p1SlashMicroLungeDuration, windupDur);
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Valk_Slash");
+                }
+                break;
+
             case Phase.Windup:
                 // Micro-lunge: slide forward unless near ledge/wall
                 if (microLungeTimer > 0f)
@@ -617,6 +641,7 @@ public class ValkP1SlashState : EnemyState
 
     public override void Exit()
     {
+        owner.HideTelegraph();
         if (valk.SlashHitbox != null) valk.SlashHitbox.Deactivate();
     }
 
@@ -635,7 +660,7 @@ public class ValkP1SlashState : EnemyState
 // ---------------------------------------------------------------
 public class ValkP1FlurryState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private ValkyrieBoss valk;
     private ValkP1Super p1;
@@ -653,14 +678,23 @@ public class ValkP1FlurryState : EnemyState
     public override void Enter()
     {
         Debug.Log("Valkyrie: P1 Flurry");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = valk.GetAttackDef("Flurry");
-        timer = atk != null ? atk.windupDuration : 0.3f;
-
-        if (owner.Anim != null) owner.Anim.SetTrigger("Valk_Flurry");
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.3f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Valk_Flurry");
+        }
     }
 
     public override void FixedTick()
@@ -669,6 +703,17 @@ public class ValkP1FlurryState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = valk.GetAttackDef("Flurry");
+                    timer = atk != null ? atk.windupDuration : 0.3f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Valk_Flurry");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -720,6 +765,7 @@ public class ValkP1FlurryState : EnemyState
 
     public override void Exit()
     {
+        owner.HideTelegraph();
         if (valk.FlurryHitbox != null) valk.FlurryHitbox.Deactivate();
     }
 
@@ -738,12 +784,16 @@ public class ValkP1FlurryState : EnemyState
 // ---------------------------------------------------------------
 public class ValkP1ThrustState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private ValkyrieBoss valk;
     private ValkP1Super p1;
     private Phase phase;
     private float timer;
+    private float dashTimer;
+    private bool dashing;
+
+    private const float DashStopTime = 0.5f;
 
     public ValkP1ThrustState(ValkyrieBoss valk, ValkP1Super p1) : base(valk)
     {
@@ -754,14 +804,23 @@ public class ValkP1ThrustState : EnemyState
     public override void Enter()
     {
         Debug.Log("Valkyrie: P1 Thrust");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = valk.GetAttackDef("Thrust");
-        timer = atk != null ? atk.windupDuration : 0.5f;
-
-        if (owner.Anim != null) owner.Anim.SetTrigger("Valk_Thrust");
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.5f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Valk_Thrust");
+        }
     }
 
     public override void FixedTick()
@@ -770,12 +829,25 @@ public class ValkP1ThrustState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = valk.GetAttackDef("Thrust");
+                    timer = atk != null ? atk.windupDuration : 0.5f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Valk_Thrust");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
                     phase = Phase.Active;
                     AttackDefinition atk = valk.GetAttackDef("Thrust");
-                    timer = atk != null ? atk.activeDuration : 0.3f;
+                    timer = atk != null ? atk.activeDuration : 0.875f;
+                    dashTimer = DashStopTime;
+                    dashing = true;
 
                     // Thrust lunges forward
                     float thrustSpeed = atk != null ? atk.dashSpeed : 8f;
@@ -786,9 +858,20 @@ public class ValkP1ThrustState : EnemyState
                 break;
 
             case Phase.Active:
+                // Stop the dash after DashStopTime but keep hitbox active
+                if (dashing)
+                {
+                    dashTimer -= Time.fixedDeltaTime;
+                    if (dashTimer <= 0f)
+                    {
+                        owner.StopHorizontal();
+                        dashing = false;
+                    }
+                }
+
                 if (timer <= 0f)
                 {
-                    owner.StopHorizontal();
+                    if (dashing) owner.StopHorizontal();
                     if (valk.ThrustHitbox != null) valk.ThrustHitbox.Deactivate();
 
                     phase = Phase.Recovery;
@@ -961,7 +1044,7 @@ public class ValkP2HoverState : EnemyState
 // ---------------------------------------------------------------
 public class ValkP2ErraticSlashState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private ValkyrieBoss valk;
     private ValkP2Super p2;
@@ -986,13 +1069,23 @@ public class ValkP2ErraticSlashState : EnemyState
     public override void Enter()
     {
         Debug.Log("Valkyrie: P2 Erratic Slash");
-        phase = Phase.Windup;
         owner.FacePlayer();
         erraticOffset = Random.insideUnitCircle * owner.Profile.erraticIntensity;
         currentSlashPhase = -1;
 
         AttackDefinition atk = valk.GetAttackDef("P2Slash");
-        timer = atk != null ? atk.windupDuration : 0.25f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.25f;
+        }
     }
 
     public override void FixedTick()
@@ -1001,6 +1094,16 @@ public class ValkP2ErraticSlashState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = valk.GetAttackDef("P2Slash");
+                    timer = atk != null ? atk.windupDuration : 0.25f;
+                }
+                break;
+
             case Phase.Windup:
                 // Erratic approach toward player during windup
                 if (owner.Ctx.playerTransform != null)
@@ -1055,6 +1158,7 @@ public class ValkP2ErraticSlashState : EnemyState
     public override void Exit()
     {
         DeactivateAllSlashHitboxes();
+        owner.HideTelegraph();
         owner.StopAll();
     }
 
@@ -1109,7 +1213,7 @@ public class ValkP2ErraticSlashState : EnemyState
 // ---------------------------------------------------------------
 public class ValkP2ErraticFlurryState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private ValkyrieBoss valk;
     private ValkP2Super p2;
@@ -1128,12 +1232,22 @@ public class ValkP2ErraticFlurryState : EnemyState
     public override void Enter()
     {
         Debug.Log("Valkyrie: P2 Erratic Flurry");
-        phase = Phase.Windup;
         owner.FacePlayer();
         erraticOffset = Random.insideUnitCircle * owner.Profile.erraticIntensity;
 
         AttackDefinition atk = valk.GetAttackDef("P2Flurry");
-        timer = atk != null ? atk.windupDuration : 0.2f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.2f;
+        }
     }
 
     public override void FixedTick()
@@ -1142,6 +1256,16 @@ public class ValkP2ErraticFlurryState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = valk.GetAttackDef("P2Flurry");
+                    timer = atk != null ? atk.windupDuration : 0.2f;
+                }
+                break;
+
             case Phase.Windup:
                 // Erratic approach during windup
                 if (owner.Ctx.playerTransform != null)
@@ -1208,6 +1332,7 @@ public class ValkP2ErraticFlurryState : EnemyState
     public override void Exit()
     {
         if (valk.ErraticFlurryHitbox != null) valk.ErraticFlurryHitbox.Deactivate();
+        owner.HideTelegraph();
         owner.StopAll();
     }
 }
@@ -1218,7 +1343,7 @@ public class ValkP2ErraticFlurryState : EnemyState
 // ---------------------------------------------------------------
 public class ValkP2PlungeState : EnemyState
 {
-    private enum Phase { Rise, Dive, LandingImpact, Recovery }
+    private enum Phase { Telegraph, Rise, Dive, LandingImpact, Recovery }
 
     private ValkyrieBoss valk;
     private ValkP2Super p2;
@@ -1242,21 +1367,29 @@ public class ValkP2PlungeState : EnemyState
     public override void Enter()
     {
         Debug.Log("Valkyrie: P2 Plunge");
-        phase = Phase.Rise;
         owner.StopAll();
         owner.FacePlayer();
 
         riseStartY = owner.transform.position.y;
         riseHeight = owner.Profile.hoverHeight + 2f;
 
-        // Rise duration — use windup as rise time
         AttackDefinition atk = valk.GetAttackDef("P2Plunge");
-        timer = atk != null ? atk.windupDuration : 0.333f;
-
-        if (owner.Anim != null)
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
+        if (telegraph > 0f)
         {
-            owner.Anim.speed = 1f;
-            owner.Anim.SetTrigger("Valk_Plunge");
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Rise;
+            timer = atk != null ? atk.windupDuration : 0.333f;
+            if (owner.Anim != null)
+            {
+                owner.Anim.speed = 1f;
+                owner.Anim.SetTrigger("Valk_Plunge");
+            }
         }
     }
 
@@ -1266,6 +1399,21 @@ public class ValkP2PlungeState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Rise;
+                    AttackDefinition atk = valk.GetAttackDef("P2Plunge");
+                    timer = atk != null ? atk.windupDuration : 0.333f;
+                    if (owner.Anim != null)
+                    {
+                        owner.Anim.speed = 1f;
+                        owner.Anim.SetTrigger("Valk_Plunge");
+                    }
+                }
+                break;
+
             case Phase.Rise:
                 // Fly upward
                 owner.Rb.linearVelocity = Vector2.up * owner.Profile.flySpeed * 1.5f;
@@ -1337,6 +1485,7 @@ public class ValkP2PlungeState : EnemyState
     {
         if (valk.PlungeHitbox != null) valk.PlungeHitbox.Deactivate();
         if (valk.PlungeLandingHitbox != null) valk.PlungeLandingHitbox.Deactivate();
+        owner.HideTelegraph();
         // Always restore animator speed in case we froze it during dive
         if (owner.Anim != null) owner.Anim.speed = 1f;
         owner.StopAll();

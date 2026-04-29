@@ -393,7 +393,7 @@ public class TyrP1DecisionState : EnemyState
 // ---------------------------------------------------------------
 public class TyrP1SpearThrustState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private TyrBoss tyr;
     private TyrP1Super p1;
@@ -409,14 +409,24 @@ public class TyrP1SpearThrustState : EnemyState
     public override void Enter()
     {
         Debug.Log("Tyr: P1 Spear Thrust");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = tyr.GetAttackDef("SpearThrust");
-        timer = atk != null ? atk.windupDuration : 0.4f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_SpearThrust");
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.4f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_SpearThrust");
+        }
     }
 
     public override void FixedTick()
@@ -425,6 +435,17 @@ public class TyrP1SpearThrustState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atkT = tyr.GetAttackDef("SpearThrust");
+                    timer = atkT != null ? atkT.windupDuration : 0.4f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_SpearThrust");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -465,6 +486,7 @@ public class TyrP1SpearThrustState : EnemyState
 
     public override void Exit()
     {
+        owner.HideTelegraph();
         if (tyr.SpearThrustHitbox != null) tyr.SpearThrustHitbox.Deactivate();
         owner.StopHorizontal();
     }
@@ -484,7 +506,7 @@ public class TyrP1SpearThrustState : EnemyState
 // ---------------------------------------------------------------
 public class TyrP1SpearFlurryState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private TyrBoss tyr;
     private TyrP1Super p1;
@@ -502,14 +524,24 @@ public class TyrP1SpearFlurryState : EnemyState
     public override void Enter()
     {
         Debug.Log("Tyr: P1 Spear Flurry");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = tyr.GetAttackDef("SpearFlurry");
-        timer = atk != null ? atk.windupDuration : 0.3f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_SpearFlurry");
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.3f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_SpearFlurry");
+        }
     }
 
     public override void FixedTick()
@@ -518,6 +550,17 @@ public class TyrP1SpearFlurryState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atkT = tyr.GetAttackDef("SpearFlurry");
+                    timer = atkT != null ? atkT.windupDuration : 0.3f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_SpearFlurry");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -569,6 +612,7 @@ public class TyrP1SpearFlurryState : EnemyState
 
     public override void Exit()
     {
+        owner.HideTelegraph();
         if (tyr.SpearFlurryHitbox != null) tyr.SpearFlurryHitbox.Deactivate();
     }
 
@@ -794,7 +838,7 @@ public class TyrP2PressureOrIdleState : EnemyState
 // ---------------------------------------------------------------
 public class TyrP2ShieldBlockState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private TyrBoss tyr;
     private TyrP2Super p2;
@@ -813,14 +857,24 @@ public class TyrP2ShieldBlockState : EnemyState
     public override void Enter()
     {
         Debug.Log("Tyr: P2 Shield Block");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = tyr.GetAttackDef("ShieldBlock");
-        timer = atk != null ? atk.windupDuration : 0.5f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_ShieldBlock");
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.5f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_ShieldBlock");
+        }
     }
 
     public override void FixedTick()
@@ -829,6 +883,17 @@ public class TyrP2ShieldBlockState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atkT = tyr.GetAttackDef("ShieldBlock");
+                    timer = atkT != null ? atkT.windupDuration : 0.5f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_ShieldBlock");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -866,6 +931,7 @@ public class TyrP2ShieldBlockState : EnemyState
 
     public override void Exit()
     {
+        owner.HideTelegraph();
         ClearBlock();
     }
 
@@ -904,7 +970,7 @@ public class TyrP2ShieldBlockState : EnemyState
 // ---------------------------------------------------------------
 public class TyrP2ShieldSlamState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private TyrBoss tyr;
     private TyrP2Super p2;
@@ -921,14 +987,24 @@ public class TyrP2ShieldSlamState : EnemyState
     public override void Enter()
     {
         Debug.Log("Tyr: P2 Shield Slam");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = tyr.GetAttackDef("ShieldSlam");
-        timer = atk != null ? atk.windupDuration : 0.3f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_ShieldSlam");
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.3f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_ShieldSlam");
+        }
     }
 
     public override void FixedTick()
@@ -937,6 +1013,17 @@ public class TyrP2ShieldSlamState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atkT = tyr.GetAttackDef("ShieldSlam");
+                    timer = atkT != null ? atkT.windupDuration : 0.3f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_ShieldSlam");
+                }
+                break;
+
             case Phase.Windup:
                 owner.StopHorizontal();
                 if (timer <= 0f)
@@ -981,6 +1068,7 @@ public class TyrP2ShieldSlamState : EnemyState
 
     public override void Exit()
     {
+        owner.HideTelegraph();
         if (tyr.ShieldSlamHitbox != null) tyr.ShieldSlamHitbox.Deactivate();
         owner.StopHorizontal();
     }
@@ -1004,7 +1092,7 @@ public class TyrP2ShieldSlamState : EnemyState
 // ---------------------------------------------------------------
 public class TyrP2ShieldFlurryState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private TyrBoss tyr;
     private TyrP2Super p2;
@@ -1022,14 +1110,24 @@ public class TyrP2ShieldFlurryState : EnemyState
     public override void Enter()
     {
         Debug.Log("Tyr: P2 Shield Flurry");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = tyr.GetAttackDef("ShieldFlurry");
-        timer = atk != null ? atk.windupDuration : 0.3f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_ShieldFlurry");
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.3f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_ShieldFlurry");
+        }
     }
 
     public override void FixedTick()
@@ -1038,6 +1136,17 @@ public class TyrP2ShieldFlurryState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atkT = tyr.GetAttackDef("ShieldFlurry");
+                    timer = atkT != null ? atkT.windupDuration : 0.3f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Tyr_ShieldFlurry");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -1088,6 +1197,7 @@ public class TyrP2ShieldFlurryState : EnemyState
 
     public override void Exit()
     {
+        owner.HideTelegraph();
         if (tyr.ShieldFlurryHitbox != null) tyr.ShieldFlurryHitbox.Deactivate();
     }
 }

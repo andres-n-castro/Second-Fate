@@ -377,7 +377,7 @@ public class HeimdallP1DecisionState : EnemyState
 // ---------------------------------------------------------------
 public class HeimdallP1ShockwaveSlashState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private HeimdallBoss heimdall;
     private HeimdallP1Super p1;
@@ -394,15 +394,24 @@ public class HeimdallP1ShockwaveSlashState : EnemyState
     public override void Enter()
     {
         Debug.Log("Heimdall: P1 Shockwave Slash");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
         shockwaveSpawned = false;
 
         AttackDefinition atk = heimdall.GetAttackDef("ShockwaveSlash");
-        timer = atk != null ? atk.windupDuration : 0.25f;
-
-        if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_ShockwaveSlash");
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.25f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_ShockwaveSlash");
+        }
     }
 
     public override void FixedTick()
@@ -411,6 +420,17 @@ public class HeimdallP1ShockwaveSlashState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = heimdall.GetAttackDef("ShockwaveSlash");
+                    timer = atk != null ? atk.windupDuration : 0.25f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_ShockwaveSlash");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -447,7 +467,10 @@ public class HeimdallP1ShockwaveSlashState : EnemyState
         }
     }
 
-    public override void Exit() { }
+    public override void Exit()
+    {
+        owner.HideTelegraph();
+    }
 
     private void SpawnShockwave()
     {
@@ -480,7 +503,7 @@ public class HeimdallP1ShockwaveSlashState : EnemyState
 // ---------------------------------------------------------------
 public class HeimdallP1SwordTornadoState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private HeimdallBoss heimdall;
     private HeimdallP1Super p1;
@@ -498,14 +521,23 @@ public class HeimdallP1SwordTornadoState : EnemyState
     public override void Enter()
     {
         Debug.Log("Heimdall: P1 Sword Tornado");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = heimdall.GetAttackDef("SwordTornado");
-        timer = atk != null ? atk.windupDuration : 0.083f;
-
-        if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_SwordTornado");
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.083f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_SwordTornado");
+        }
     }
 
     public override void FixedTick()
@@ -514,6 +546,17 @@ public class HeimdallP1SwordTornadoState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = heimdall.GetAttackDef("SwordTornado");
+                    timer = atk != null ? atk.windupDuration : 0.083f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_SwordTornado");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -575,6 +618,7 @@ public class HeimdallP1SwordTornadoState : EnemyState
     public override void Exit()
     {
         if (heimdall.SwordTornadoHitbox != null) heimdall.SwordTornadoHitbox.Deactivate();
+        owner.HideTelegraph();
     }
 
     private void ReturnToDecisionOrApproach()
@@ -597,7 +641,7 @@ public class HeimdallP1SwordTornadoState : EnemyState
 // ---------------------------------------------------------------
 public class HeimdallP1SwordBeamState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private HeimdallBoss heimdall;
     private HeimdallP1Super p1;
@@ -613,14 +657,23 @@ public class HeimdallP1SwordBeamState : EnemyState
     public override void Enter()
     {
         Debug.Log("Heimdall: P1 Sword Beam");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = heimdall.GetAttackDef("SwordBeam");
-        timer = atk != null ? atk.windupDuration : 0.5f;
-
-        if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_SwordBeam");
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.5f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_SwordBeam");
+        }
     }
 
     public override void FixedTick()
@@ -629,6 +682,17 @@ public class HeimdallP1SwordBeamState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = heimdall.GetAttackDef("SwordBeam");
+                    timer = atk != null ? atk.windupDuration : 0.5f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_SwordBeam");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -665,6 +729,7 @@ public class HeimdallP1SwordBeamState : EnemyState
     public override void Exit()
     {
         if (heimdall.SwordBeamHitbox != null) heimdall.SwordBeamHitbox.Deactivate();
+        owner.HideTelegraph();
     }
 
     private void ReturnToDecisionOrApproach()
@@ -766,7 +831,7 @@ public class HeimdallP2IdleState : EnemyState
 // ---------------------------------------------------------------
 public class HeimdallP2ProjectileSwordsState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private HeimdallBoss heimdall;
     private HeimdallP2Super p2;
@@ -783,15 +848,24 @@ public class HeimdallP2ProjectileSwordsState : EnemyState
     public override void Enter()
     {
         Debug.Log("Heimdall: P2 Projectile Swords");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
         projectilesSpawned = false;
 
         AttackDefinition atk = heimdall.GetAttackDef("ProjectileSwords");
-        timer = atk != null ? atk.windupDuration : 0.2f;
-
-        if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_ProjectileSwords");
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.2f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_ProjectileSwords");
+        }
     }
 
     public override void FixedTick()
@@ -800,6 +874,17 @@ public class HeimdallP2ProjectileSwordsState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = heimdall.GetAttackDef("ProjectileSwords");
+                    timer = atk != null ? atk.windupDuration : 0.2f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_ProjectileSwords");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -911,7 +996,7 @@ public class HeimdallP2ProjectileSwordsState : EnemyState
 // ---------------------------------------------------------------
 public class HeimdallP2SwordPlungeState : EnemyState
 {
-    private enum Phase { Dash, Plunge, Impact }
+    private enum Phase { Telegraph, Dash, Plunge, Impact }
 
     private HeimdallBoss heimdall;
     private HeimdallP2Super p2;
@@ -942,6 +1027,22 @@ public class HeimdallP2SwordPlungeState : EnemyState
         owner.StopAll();
         owner.FacePlayer();
 
+        AttackDefinition atk = heimdall.GetAttackDef("SwordPlunge");
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            BeginDash();
+        }
+    }
+
+    private void BeginDash()
+    {
         EnemyProfile p = owner.Profile;
 
         // Lock dash target to a point above the player, clamped horizontally
@@ -970,6 +1071,14 @@ public class HeimdallP2SwordPlungeState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    BeginDash();
+                }
+                break;
+
             case Phase.Dash:
             {
                 EnemyProfile p = owner.Profile;
@@ -1047,6 +1156,7 @@ public class HeimdallP2SwordPlungeState : EnemyState
         if (heimdall.SwordPlungeHitbox != null) heimdall.SwordPlungeHitbox.Deactivate();
         if (owner.Anim != null) owner.Anim.speed = 1f;
         owner.StopHorizontal();
+        owner.HideTelegraph();
     }
 }
 
@@ -1060,7 +1170,7 @@ public class HeimdallP2SwordPlungeState : EnemyState
 // ---------------------------------------------------------------
 public class HeimdallP2GiantSlashState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private HeimdallBoss heimdall;
     private HeimdallP2Super p2;
@@ -1076,14 +1186,23 @@ public class HeimdallP2GiantSlashState : EnemyState
     public override void Enter()
     {
         Debug.Log("Heimdall: P2 Giant Slash");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = heimdall.GetAttackDef("GiantSlash");
-        timer = atk != null ? atk.windupDuration : 0.083f;
-
-        if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_GiantSlash");
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.083f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_GiantSlash");
+        }
     }
 
     public override void FixedTick()
@@ -1092,6 +1211,17 @@ public class HeimdallP2GiantSlashState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = heimdall.GetAttackDef("GiantSlash");
+                    timer = atk != null ? atk.windupDuration : 0.083f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Heimdall_GiantSlash");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -1132,5 +1262,6 @@ public class HeimdallP2GiantSlashState : EnemyState
     public override void Exit()
     {
         if (heimdall.GiantSlashHitbox != null) heimdall.GiantSlashHitbox.Deactivate();
+        owner.HideTelegraph();
     }
 }

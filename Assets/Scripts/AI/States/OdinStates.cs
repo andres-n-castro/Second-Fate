@@ -419,7 +419,7 @@ public class OdinP1DecisionState : EnemyState
 // ---------------------------------------------------------------
 public class OdinP1StaffProjectileState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private OdinBoss odin;
     private OdinP1Super p1;
@@ -436,15 +436,25 @@ public class OdinP1StaffProjectileState : EnemyState
     public override void Enter()
     {
         Debug.Log("Odin: P1 Staff Projectile");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
         projectileSpawned = false;
 
         AttackDefinition atk = odin.GetAttackDef("StaffProjectile");
-        timer = atk != null ? atk.windupDuration : 0.167f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Odin_StaffProjectile");
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.167f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Odin_StaffProjectile");
+        }
     }
 
     public override void FixedTick()
@@ -453,6 +463,17 @@ public class OdinP1StaffProjectileState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = odin.GetAttackDef("StaffProjectile");
+                    timer = atk != null ? atk.windupDuration : 0.167f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Odin_StaffProjectile");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -486,6 +507,11 @@ public class OdinP1StaffProjectileState : EnemyState
                 }
                 break;
         }
+    }
+
+    public override void Exit()
+    {
+        owner.HideTelegraph();
     }
 
     private void SpawnProjectile()
@@ -525,7 +551,7 @@ public class OdinP1StaffProjectileState : EnemyState
 // ---------------------------------------------------------------
 public class OdinP1GroundSpikesState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private OdinBoss odin;
     private OdinP1Super p1;
@@ -542,15 +568,25 @@ public class OdinP1GroundSpikesState : EnemyState
     public override void Enter()
     {
         Debug.Log("Odin: P1 Ground Spikes");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
         spikeSpawned = false;
 
         AttackDefinition atk = odin.GetAttackDef("GroundSpikes");
-        timer = atk != null ? atk.windupDuration : 0.4f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Odin_GroundSpikes");
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.4f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Odin_GroundSpikes");
+        }
     }
 
     public override void FixedTick()
@@ -559,6 +595,17 @@ public class OdinP1GroundSpikesState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = odin.GetAttackDef("GroundSpikes");
+                    timer = atk != null ? atk.windupDuration : 0.4f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Odin_GroundSpikes");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -592,6 +639,11 @@ public class OdinP1GroundSpikesState : EnemyState
                 }
                 break;
         }
+    }
+
+    public override void Exit()
+    {
+        owner.HideTelegraph();
     }
 
     private void SpawnSingleSpike()
@@ -629,7 +681,7 @@ public class OdinP1GroundSpikesState : EnemyState
 // ---------------------------------------------------------------
 public class OdinP1StaffMeleeState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private OdinBoss odin;
     private OdinP1Super p1;
@@ -645,14 +697,24 @@ public class OdinP1StaffMeleeState : EnemyState
     public override void Enter()
     {
         Debug.Log("Odin: P1 Staff Melee");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = odin.GetAttackDef("StaffMelee");
-        timer = atk != null ? atk.windupDuration : 0.083f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Odin_StaffMelee");
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.083f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Odin_StaffMelee");
+        }
     }
 
     public override void FixedTick()
@@ -661,6 +723,17 @@ public class OdinP1StaffMeleeState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = odin.GetAttackDef("StaffMelee");
+                    timer = atk != null ? atk.windupDuration : 0.083f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Odin_StaffMelee");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -696,6 +769,7 @@ public class OdinP1StaffMeleeState : EnemyState
 
     public override void Exit()
     {
+        owner.HideTelegraph();
         if (odin.StaffMeleeHitbox != null) odin.StaffMeleeHitbox.Deactivate();
     }
 
@@ -819,7 +893,7 @@ public class OdinP2IdleState : EnemyState
 // ---------------------------------------------------------------
 public class OdinP2TripleProjectileState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private OdinBoss odin;
     private OdinP2Super p2;
@@ -838,7 +912,6 @@ public class OdinP2TripleProjectileState : EnemyState
     public override void Enter()
     {
         Debug.Log("Odin: P2 Triple Projectile");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
         projectilesSpawned = 0;
@@ -846,9 +919,20 @@ public class OdinP2TripleProjectileState : EnemyState
         spawnDelayTimer = 0f;
 
         AttackDefinition atk = odin.GetAttackDef("TripleProjectile");
-        timer = atk != null ? atk.windupDuration : 0.2f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Odin_TripleProjectile");
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.2f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Odin_TripleProjectile");
+        }
     }
 
     public override void FixedTick()
@@ -857,6 +941,17 @@ public class OdinP2TripleProjectileState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = odin.GetAttackDef("TripleProjectile");
+                    timer = atk != null ? atk.windupDuration : 0.2f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Odin_TripleProjectile");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -892,6 +987,11 @@ public class OdinP2TripleProjectileState : EnemyState
                 }
                 break;
         }
+    }
+
+    public override void Exit()
+    {
+        owner.HideTelegraph();
     }
 
     private void SpawnProjectile(int index)
@@ -935,7 +1035,7 @@ public class OdinP2TripleProjectileState : EnemyState
 // ---------------------------------------------------------------
 public class OdinP2ConsecutiveSpikesState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private OdinBoss odin;
     private OdinP2Super p2;
@@ -955,7 +1055,6 @@ public class OdinP2ConsecutiveSpikesState : EnemyState
     public override void Enter()
     {
         Debug.Log("Odin: P2 Consecutive Spikes");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
         wavesSpawned = 0;
@@ -964,9 +1063,20 @@ public class OdinP2ConsecutiveSpikesState : EnemyState
         spikeDelayTimer = 0f;
 
         AttackDefinition atk = odin.GetAttackDef("ConsecutiveSpikes");
-        timer = atk != null ? atk.windupDuration : 0.083f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Odin_ConsecutiveSpikes");
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.083f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Odin_ConsecutiveSpikes");
+        }
     }
 
     public override void FixedTick()
@@ -975,6 +1085,17 @@ public class OdinP2ConsecutiveSpikesState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = odin.GetAttackDef("ConsecutiveSpikes");
+                    timer = atk != null ? atk.windupDuration : 0.083f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Odin_ConsecutiveSpikes");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -1006,6 +1127,11 @@ public class OdinP2ConsecutiveSpikesState : EnemyState
                 }
                 break;
         }
+    }
+
+    public override void Exit()
+    {
+        owner.HideTelegraph();
     }
 
     private void ProcessWaveSpawning()
@@ -1073,7 +1199,7 @@ public class OdinP2ConsecutiveSpikesState : EnemyState
 // ---------------------------------------------------------------
 public class OdinP2LargeSlashState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private OdinBoss odin;
     private OdinP2Super p2;
@@ -1089,14 +1215,24 @@ public class OdinP2LargeSlashState : EnemyState
     public override void Enter()
     {
         Debug.Log("Odin: P2 Large Slash");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = odin.GetAttackDef("LargeSlash");
-        timer = atk != null ? atk.windupDuration : 0.5f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Odin_LargeSlash");
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.5f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Odin_LargeSlash");
+        }
     }
 
     public override void FixedTick()
@@ -1105,6 +1241,17 @@ public class OdinP2LargeSlashState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = odin.GetAttackDef("LargeSlash");
+                    timer = atk != null ? atk.windupDuration : 0.5f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Odin_LargeSlash");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -1140,6 +1287,7 @@ public class OdinP2LargeSlashState : EnemyState
 
     public override void Exit()
     {
+        owner.HideTelegraph();
         if (odin.LargeSlashHitbox != null) odin.LargeSlashHitbox.Deactivate();
     }
 }
