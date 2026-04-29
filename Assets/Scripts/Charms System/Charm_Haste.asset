@@ -16,6 +16,7 @@ MonoBehaviour:
   charmName: Haste
   charmIcon: {fileID: -6961462197886576414, guid: f92945b400e3d384eb1db181db7d4029, type: 3}
   charmEffect: 1
+  charmCost: 500
   description: 'Increases attack speed
 
 '
