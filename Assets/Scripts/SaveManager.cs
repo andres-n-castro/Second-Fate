@@ -246,13 +246,36 @@ public class SaveManager : MonoBehaviour
             return false;
         }
 
-        string sceneName = string.IsNullOrEmpty(currentSaveData.currentSceneName)
-            ? DefaultSceneName
-            : currentSaveData.currentSceneName;
+        // Prefer the scene that contains the last rested bonfire so the
+        // player spawns at that bonfire, not wherever they happened to quit.
+        string sceneName = GetSceneForLastRestedBonfire();
+        if (string.IsNullOrEmpty(sceneName))
+        {
+            sceneName = string.IsNullOrEmpty(currentSaveData.currentSceneName)
+                ? DefaultSceneName
+                : currentSaveData.currentSceneName;
+        }
 
         applySaveDataOnNextSceneLoad = true;
         SceneManager.LoadScene(sceneName);
         return true;
+    }
+
+    private string GetSceneForLastRestedBonfire()
+    {
+        if (string.IsNullOrEmpty(currentSaveData.lastRestedBonfireID))
+        {
+            return null;
+        }
+
+        // Bonfire save IDs use the format "sceneName:bonfireID"
+        int colonIndex = currentSaveData.lastRestedBonfireID.IndexOf(':');
+        if (colonIndex > 0)
+        {
+            return currentSaveData.lastRestedBonfireID.Substring(0, colonIndex);
+        }
+
+        return null;
     }
 
     public void ContinueOrStartDefaultGame()

@@ -419,6 +419,13 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"[GameManager] Scene loaded: '{scene.name}' mode={mode}. Active scene='{SceneManager.GetActiveScene().name}'. placeLoaded={placePlayerFromSaveOnNextGameplayLoad}, pendingCheckpoint={hasPendingCheckpointRespawn}, pendingBonfire='{pendingTeleportBonfireID}'.");
 
+        // Mark loaded-game placement as running BEFORE any placement
+        // coroutines so ShouldPlaceTutorialPlayerAtCheckpoint sees it.
+        if (placePlayerFromSaveOnNextGameplayLoad && IsGameplayScene(scene.name))
+        {
+            isLoadedGamePlacementRunning = true;
+        }
+
         if (IsGameplayScene(scene.name))
         {
             ResetStateForGameplayScene();
