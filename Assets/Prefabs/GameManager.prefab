@@ -50,9 +50,9 @@ MonoBehaviour:
   lastInteractedBonfireID: 
   lastRestedBonfireID: 
   bossHudPrefab: {fileID: 971504163205394431, guid: a4c65b4d0a3601842ba6d5621d96519e, type: 3}
-  useInspectorFinalBossCounts: 1
-  inspectorTreeEssenceCount: 2
-  inspectorCreatureBloodCount: 3
+  useInspectorFinalBossCounts: 0
+  inspectorTreeEssenceCount: 0
+  inspectorCreatureBloodCount: 0
   masterBonfireList:
   - bonfireID: Tutorial_Bonfire
     displayName: Tutorial
