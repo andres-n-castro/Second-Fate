@@ -667,21 +667,26 @@ public class GameManager : MonoBehaviour
 
         if (playerManager.playerStates != null)
         {
+            // Only restore full health when the player is actually dead (respawn).
+            // During live scene transitions (portals), health is already persisted
+            // by SaveManager and should not be reset to max.
+            bool shouldRestoreFullHealth = playerManager.playerStates.isDead;
+
             playerManager.playerStates.isDead = false;
             playerManager.playerStates.isInvincible = false;
-        }
 
-        if (playerManager.playerStats != null)
-        {
-            playerManager.playerStats.currentHealth = playerManager.playerStats.maxHealth;
-            playerManager.playerStats.SyncHealthForSaving(playerManager.playerStats.maxHealth, playerManager.playerStats.maxHealth);
-
-            if (playerManager.playerStats.playerHealthComponent != null)
+            if (shouldRestoreFullHealth && playerManager.playerStats != null)
             {
-                playerManager.playerStats.playerHealthComponent.InitializeHealth(
-                    playerManager.playerStats.maxHealth,
-                    playerManager.playerStats.maxHealth);
-                playerManager.playerStats.playerHealthComponent.isInvulnerable = false;
+                playerManager.playerStats.currentHealth = playerManager.playerStats.maxHealth;
+                playerManager.playerStats.SyncHealthForSaving(playerManager.playerStats.maxHealth, playerManager.playerStats.maxHealth);
+
+                if (playerManager.playerStats.playerHealthComponent != null)
+                {
+                    playerManager.playerStats.playerHealthComponent.InitializeHealth(
+                        playerManager.playerStats.maxHealth,
+                        playerManager.playerStats.maxHealth);
+                    playerManager.playerStats.playerHealthComponent.isInvulnerable = false;
+                }
             }
         }
 
