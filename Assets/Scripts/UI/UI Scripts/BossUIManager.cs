@@ -293,6 +293,32 @@ public class BossUIManager : MonoBehaviour
         }
     }
 
+    public void AssignBossDeathPopUp(GameObject popup)
+    {
+        bossDeathPopUp = popup;
+
+        if (bossDeathPopUp == null) return;
+
+        // Ensure the popup starts hidden.
+        bossDeathPopUp.SetActive(false);
+
+        // Bind the text and button from the new popup.
+        TextMeshProUGUI[] popupTexts = bossDeathPopUp.GetComponentsInChildren<TextMeshProUGUI>(true);
+        Button[] popupButtons = bossDeathPopUp.GetComponentsInChildren<Button>(true);
+
+        deathDescriptionText = FindTextByName(popupTexts, "DeathDescription")
+            ?? FindTextByName(popupTexts, "EnemyDeadText")
+            ?? FindFirst(popupTexts);
+
+        resumeButton = FindButtonByName(popupButtons, "Close Button") ?? FindFirst(popupButtons);
+
+        if (resumeButton != null)
+        {
+            resumeButton.onClick.RemoveListener(ResumeGame);
+            resumeButton.onClick.AddListener(ResumeGame);
+        }
+    }
+
     private void PrepareBossDeathPopUpForDisplay()
     {
         if (bossDeathPopUp == null)

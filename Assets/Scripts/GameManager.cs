@@ -871,11 +871,19 @@ public class GameManager : MonoBehaviour
         odin.gameObject.SetActive(spawnOdin);
         heimdall.gameObject.SetActive(!spawnOdin);
 
-        // Activate the correct boss music trigger and death UI.
+        // Activate the correct boss music trigger.
         SetSceneObjectActive(scene, "OdinTrigger", spawnOdin);
-        SetSceneObjectActive(scene, "OdinDeathUI", spawnOdin);
         SetSceneObjectActive(scene, "HeimdalTrigger", !spawnOdin);
-        SetSceneObjectActive(scene, "HeimdallDeathUI", !spawnOdin);
+
+        // Find the correct death UI for the active boss and assign it to BossUIManager.
+        // Both death UIs stay deactivated until the boss actually dies.
+        string deathUIName = spawnOdin ? "OdinDeathUI" : "HeimdalDeathUI";
+        GameObject deathUI = FindSceneObjectByName(scene, deathUIName);
+
+        if (deathUI != null && BossUIManager.Instance != null)
+        {
+            BossUIManager.Instance.AssignBossDeathPopUp(deathUI);
+        }
     }
 
     private void SetSceneObjectActive(Scene scene, string objectName, bool active)
