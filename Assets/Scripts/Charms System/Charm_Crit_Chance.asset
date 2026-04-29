@@ -17,4 +17,4 @@ MonoBehaviour:
   charmIcon: {fileID: 1014038847968675300, guid: 81c05a0d41f26c844bdbb955a0280d81, type: 3}
   charmEffect: 4
   charmCost: 500
-  description: Allows a 10% chance do to an extra hit point upon any attack
+  description: Allows a 50% chance do to an extra hit point upon any attack

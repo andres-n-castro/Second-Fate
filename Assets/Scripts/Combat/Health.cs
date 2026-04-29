@@ -69,7 +69,7 @@ public class Health : MonoBehaviour, IDamageable
         {
             if (CharmManager.Instance.HasCharmEffect(CharmEffect.Protection))
             {
-                if (UnityEngine.Random.value <= 0.50f)
+                if (UnityEngine.Random.value <= 0.80f)
                 {
                     Debug.Log("Protection Charm Activated! Damage Negated.");
                     return;

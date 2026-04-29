@@ -70,7 +70,7 @@ public class PlayerAttack : MonoBehaviour
         if (CharmManager.Instance != null && CharmManager.Instance.HasCharmEffect(CharmEffect.CritChance))
         {
             swingCount++;
-            if (swingCount >= 10 || Random.value <= 0.1f)
+            if (swingCount >= 10 || Random.value <= 0.5f)
             {
                 damageToDeal += 1;
                 swingCount = 0;
