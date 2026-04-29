@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e5bcc32e947684ea6d3ad710f54fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 4
+  maxHealth: 5
   isInvulnerable: 0
   handleKnockbackExternally: 0
 --- !u!114 &3853815974075988900
@@ -294,6 +294,7 @@ MonoBehaviour:
   coinPrefab: {fileID: 3793789415224784273, guid: 57c1c479742e7a84097a97d62615b3b6, type: 3}
   bossID: 
   deathDescriptionText: A Great Foe Has Fallen.
+  telegraphIndicator: {fileID: 0}
   groundCheck: {fileID: 7001462605158348781}
   wallCheck: {fileID: 5176783947271187738}
   groundLayer:

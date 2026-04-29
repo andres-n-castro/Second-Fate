@@ -303,12 +303,19 @@ public class GameManager : MonoBehaviour
 
     public AlignmentType GetActiveAlignment()
     {
-        if (string.IsNullOrEmpty(lastInteractedBonfireID))
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        // Only return an alignment if the current scene has an imbued bonfire.
+        foreach (var kvp in imbuedBonfires)
         {
-            return AlignmentType.None;
+            // Bonfire save IDs use the format "sceneName:bonfireID"
+            if (kvp.Key.StartsWith(currentScene + ":"))
+            {
+                return kvp.Value;
+            }
         }
 
-        return GetBonfireAlignment(lastInteractedBonfireID);
+        return AlignmentType.None;
     }
 
     public FinalBossType DetermineFinalBoss()
