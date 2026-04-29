@@ -18,7 +18,7 @@ MonoBehaviour:
   roamRadius: 3
   roamChangeInterval: 2
   aggroRange: 10
-  deaggroRange: 15
+  deaggroRange: 0
   attackRange: 3
   groundCheckDistance: 1
   wallCheckDistance: 0.5
@@ -37,6 +37,7 @@ MonoBehaviour:
   - attackName: SpearThrust
     damage: 1
     knockbackForce: 8
+    telegraphDuration: 0.3
     windupDuration: 0.25
     activeDuration: 0.25
     recoveryDuration: 0.5
@@ -49,6 +50,7 @@ MonoBehaviour:
   - attackName: SpearFlurry
     damage: 1
     knockbackForce: 4
+    telegraphDuration: 0.3
     windupDuration: 0.083
     activeDuration: 0.417
     recoveryDuration: 0.5
@@ -61,6 +63,7 @@ MonoBehaviour:
   - attackName: ShieldBlock
     damage: 0
     knockbackForce: 0
+    telegraphDuration: 0.3
     windupDuration: 0.5
     activeDuration: 0.9
     recoveryDuration: 0.3
@@ -73,6 +76,7 @@ MonoBehaviour:
   - attackName: ShieldSlam
     damage: 1
     knockbackForce: 10
+    telegraphDuration: 0.3
     windupDuration: 0.083
     activeDuration: 0.333
     recoveryDuration: 0.6
@@ -85,6 +89,7 @@ MonoBehaviour:
   - attackName: ShieldFlurry
     damage: 1
     knockbackForce: 5
+    telegraphDuration: 0.3
     windupDuration: 0.1
     activeDuration: 0.4
     recoveryDuration: 0.5
@@ -171,9 +176,9 @@ MonoBehaviour:
   tyrSlamWeightMultiplier: 3
   tyrFlurryRange: 2.5
   tyrFlurryWeightMultiplier: 3
-  surtrCloseRange: 2.5
+  surtrCloseRange: 5
   surtrMidRange: 5
-  surtrMaxEngageRange: 7
+  surtrMaxEngageRange: 10
   surtrSweepMaxRange: 5
   surtrSweepMinRange: 1.5
   surtrSweepWeightMultiplier: 2
@@ -227,6 +232,8 @@ MonoBehaviour:
   odinLargeSlashWeightMultiplier: 3
   heimdallCloseRange: 2
   heimdallMaxEngageRange: 8
+  heimdallP1MinAttackCooldown: 0.2
+  heimdallP1MaxAttackCooldown: 0.5
   heimdallShockwaveSlashMaxRange: 7
   heimdallShockwaveSlashWeightMultiplier: 3
   heimdallSwordTornadoMaxRange: 2.5
@@ -242,6 +249,7 @@ MonoBehaviour:
   heimdallProjectileSwordCurveStrength: 5
   heimdallProjectileSwordLifetime: 5
   heimdallPlungeDashSpeed: 15
+  heimdallPlungeMaxHorizontalDist: 8
   heimdallPlungeHeightAbovePlayer: 4
   heimdallPlungeDashTimeout: 1
   heimdallPlungeArriveThreshold: 1
