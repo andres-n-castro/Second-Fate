@@ -22,6 +22,8 @@ MonoBehaviour:
   attackRange: 2.5
   groundCheckDistance: 1
   wallCheckDistance: 0.5
+  ledgeCheckAheadOffset: 0.5
+  ledgeCheckBehindOffset: 0.5
   losEyeOffsetY: 0.5
   losCastRadius: 0.1
   requireLOSForAggro: 1
@@ -35,6 +37,7 @@ MonoBehaviour:
   - attackName: Slash
     damage: 1
     knockbackForce: 6
+    telegraphDuration: 0.3
     windupDuration: 0.083
     activeDuration: 0.167
     recoveryDuration: 0.4
@@ -47,6 +50,7 @@ MonoBehaviour:
   - attackName: Flurry
     damage: 1
     knockbackForce: 4
+    telegraphDuration: 0.3
     windupDuration: 0.167
     activeDuration: 0.5
     recoveryDuration: 0.6
@@ -59,9 +63,10 @@ MonoBehaviour:
   - attackName: Thrust
     damage: 1
     knockbackForce: 8
+    telegraphDuration: 0.3
     windupDuration: 0.125
-    activeDuration: 0.5
-    recoveryDuration: 0.5
+    activeDuration: 0.875
+    recoveryDuration: 1.25
     cooldown: 2
     dashSpeed: 10
     dashDuration: 0
@@ -71,6 +76,7 @@ MonoBehaviour:
   - attackName: P2Slash
     damage: 1
     knockbackForce: 7
+    telegraphDuration: 0.3
     windupDuration: 0.25
     activeDuration: 0.6
     recoveryDuration: 0.35
@@ -83,6 +89,7 @@ MonoBehaviour:
   - attackName: P2Flurry
     damage: 1
     knockbackForce: 5
+    telegraphDuration: 0.3
     windupDuration: 0.2
     activeDuration: 0.933
     recoveryDuration: 0.45
@@ -95,6 +102,7 @@ MonoBehaviour:
   - attackName: P2Plunge
     damage: 1
     knockbackForce: 10
+    telegraphDuration: 0.3
     windupDuration: 0.333
     activeDuration: 0.3
     recoveryDuration: 0.8
@@ -191,17 +199,9 @@ MonoBehaviour:
   surtrThrustWeightMultiplier: 2
   surtrFireBreathMaxRange: 4
   surtrFireBreathWeightMultiplier: 2
-  surtrSweepProjectileSpeed: 8
   surtrP2MinAttackCooldown: 0.3
   surtrP2MaxAttackCooldown: 0.9
-  surtrEruptionInterval: 3
-  surtrEruptionProjectileCount: 3
-  surtrEruptionSpreadAngle: 60
-  surtrEruptionProjectileSpeed: 7
   surtrGroundedThrustStuckDuration: 1.5
-  surtrVomitProjectileCount: 5
-  surtrVomitSpreadAngle: 90
-  surtrVomitProjectileSpeed: 6
   surtrGroundedThrustRange: 3.5
   surtrGroundedThrustWeightMultiplier: 3
   surtrVomitMaxRange: 6
@@ -215,6 +215,7 @@ MonoBehaviour:
   odinStaffProjectileMinRange: 3
   odinStaffProjectileWeightMultiplier: 2
   odinGroundSpikesMaxRange: 6
+  odinGroundSpikesMinXDistance: 2
   odinGroundSpikesWeightMultiplier: 2
   odinStaffMeleeMaxRange: 3
   odinStaffMeleeWeightMultiplier: 3
@@ -230,6 +231,7 @@ MonoBehaviour:
   odinP2MaxAttackCooldown: 0.8
   odinTripleProjectileCount: 3
   odinTripleProjectileSpreadAngle: 30
+  odinTripleProjectileSpawnDelay: 0.15
   odinConsecutiveSpikeWaves: 3
   odinConsecutiveSpikeWaveDelay: 0.4
   odinSlashProjectileSpeed: 10
@@ -241,3 +243,42 @@ MonoBehaviour:
   odinConsecutiveSpikesWeightMultiplier: 2
   odinLargeSlashMaxRange: 5
   odinLargeSlashWeightMultiplier: 3
+  heimdallCloseRange: 2
+  heimdallMaxEngageRange: 8
+  heimdallP1MinAttackCooldown: 0.2
+  heimdallP1MaxAttackCooldown: 0.5
+  heimdallShockwaveSlashMaxRange: 7
+  heimdallShockwaveSlashWeightMultiplier: 3
+  heimdallSwordTornadoMaxRange: 2.5
+  heimdallSwordTornadoWeightMultiplier: 6
+  heimdallSwordBeamMaxRange: 8
+  heimdallSwordBeamMinRange: 3
+  heimdallSwordBeamWeightMultiplier: 3
+  heimdallShockwaveSpeed: 10
+  heimdallShockwaveHeight: 0.5
+  heimdallBeamSpeed: 12
+  heimdallProjectileSwordSpeed: 8
+  heimdallProjectileSwordCurveDelay: 0.25
+  heimdallProjectileSwordCurveStrength: 5
+  heimdallProjectileSwordLifetime: 5
+  heimdallPlungeDashSpeed: 15
+  heimdallPlungeMaxHorizontalDist: 8
+  heimdallPlungeHeightAbovePlayer: 4
+  heimdallPlungeDashTimeout: 1
+  heimdallPlungeArriveThreshold: 1
+  heimdallPlungeFallSpeed: 18
+  heimdallFloorImpactRadius: 4
+  heimdallFloorImpactDuration: 0.4
+  heimdallP2MinAttackCooldown: 0.1
+  heimdallP2MaxAttackCooldown: 0.4
+  heimdallProjectileSwordCount: 3
+  heimdallProjectileSwordSpreadAngle: 40
+  heimdallGiantSlashSpeed: 12
+  heimdallGiantSlashHeight: 0.5
+  heimdallProjectileSwordsMaxRange: 8
+  heimdallProjectileSwordsMinRange: 3
+  heimdallProjectileSwordsWeightMultiplier: 2
+  heimdallSwordPlungeMaxRange: 6
+  heimdallSwordPlungeWeightMultiplier: 3
+  heimdallGiantSlashMaxRange: 5
+  heimdallGiantSlashWeightMultiplier: 2

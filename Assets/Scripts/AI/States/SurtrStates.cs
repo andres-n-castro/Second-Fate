@@ -395,7 +395,7 @@ public class SurtrP1DecisionState : EnemyState
 // ---------------------------------------------------------------
 public class SurtrP1LavaSweepState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private SurtrBoss surtr;
     private SurtrP1Super p1;
@@ -411,14 +411,24 @@ public class SurtrP1LavaSweepState : EnemyState
     public override void Enter()
     {
         Debug.Log("Surtr: P1 Lava Sweep");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = surtr.GetAttackDef("LavaSweep");
-        timer = atk != null ? atk.windupDuration : 0.5f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_LavaSweep");
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.5f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_LavaSweep");
+        }
     }
 
     public override void FixedTick()
@@ -427,6 +437,17 @@ public class SurtrP1LavaSweepState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = surtr.GetAttackDef("LavaSweep");
+                    timer = atk != null ? atk.windupDuration : 0.5f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_LavaSweep");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -462,6 +483,7 @@ public class SurtrP1LavaSweepState : EnemyState
 
     public override void Exit()
     {
+        owner.HideTelegraph();
         if (surtr.LavaSweepHitbox != null) surtr.LavaSweepHitbox.Deactivate();
     }
 
@@ -481,7 +503,7 @@ public class SurtrP1LavaSweepState : EnemyState
 // ---------------------------------------------------------------
 public class SurtrP1HeavyThrustState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private SurtrBoss surtr;
     private SurtrP1Super p1;
@@ -497,14 +519,24 @@ public class SurtrP1HeavyThrustState : EnemyState
     public override void Enter()
     {
         Debug.Log("Surtr: P1 Heavy Thrust");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = surtr.GetAttackDef("HeavyThrust");
-        timer = atk != null ? atk.windupDuration : 0.5f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_HeavyThrust");
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.5f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_HeavyThrust");
+        }
     }
 
     public override void FixedTick()
@@ -513,6 +545,17 @@ public class SurtrP1HeavyThrustState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = surtr.GetAttackDef("HeavyThrust");
+                    timer = atk != null ? atk.windupDuration : 0.5f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_HeavyThrust");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -557,6 +600,7 @@ public class SurtrP1HeavyThrustState : EnemyState
 
     public override void Exit()
     {
+        owner.HideTelegraph();
         if (surtr.HeavyThrustHitbox != null) surtr.HeavyThrustHitbox.Deactivate();
         owner.StopHorizontal();
     }
@@ -577,7 +621,7 @@ public class SurtrP1HeavyThrustState : EnemyState
 // ---------------------------------------------------------------
 public class SurtrP1FireBreathState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private SurtrBoss surtr;
     private SurtrP1Super p1;
@@ -595,14 +639,24 @@ public class SurtrP1FireBreathState : EnemyState
     public override void Enter()
     {
         Debug.Log("Surtr: P1 Fire Breath");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = surtr.GetAttackDef("FireBreath");
-        timer = atk != null ? atk.windupDuration : 0.4f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_FireBreath");
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.4f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_FireBreath");
+        }
     }
 
     public override void FixedTick()
@@ -611,6 +665,17 @@ public class SurtrP1FireBreathState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = surtr.GetAttackDef("FireBreath");
+                    timer = atk != null ? atk.windupDuration : 0.4f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_FireBreath");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -662,6 +727,7 @@ public class SurtrP1FireBreathState : EnemyState
 
     public override void Exit()
     {
+        owner.HideTelegraph();
         if (surtr.FireBreathHitbox != null) surtr.FireBreathHitbox.Deactivate();
     }
 
@@ -882,7 +948,7 @@ public class SurtrP2IdleState : EnemyState
 // ---------------------------------------------------------------
 public class SurtrP2GroundedThrustState : EnemyState
 {
-    private enum Phase { Windup, Active, Stuck, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Stuck, Recovery }
 
     private SurtrBoss surtr;
     private SurtrP2Super p2;
@@ -898,14 +964,24 @@ public class SurtrP2GroundedThrustState : EnemyState
     public override void Enter()
     {
         Debug.Log("Surtr: P2 Grounded Thrust");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = surtr.GetAttackDef("GroundedThrust");
-        timer = atk != null ? atk.windupDuration : 0.5f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_GroundedThrust");
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.5f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_GroundedThrust");
+        }
     }
 
     public override void FixedTick()
@@ -914,6 +990,17 @@ public class SurtrP2GroundedThrustState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = surtr.GetAttackDef("GroundedThrust");
+                    timer = atk != null ? atk.windupDuration : 0.5f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_GroundedThrust");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -969,6 +1056,7 @@ public class SurtrP2GroundedThrustState : EnemyState
 
     public override void Exit()
     {
+        owner.HideTelegraph();
         if (surtr.GroundedThrustHitbox != null) surtr.GroundedThrustHitbox.Deactivate();
         owner.StopHorizontal();
     }
@@ -981,7 +1069,7 @@ public class SurtrP2GroundedThrustState : EnemyState
 // ---------------------------------------------------------------
 public class SurtrP2LavaVomitState : EnemyState
 {
-    private enum Phase { Windup, Active, Recovery }
+    private enum Phase { Telegraph, Windup, Active, Recovery }
 
     private SurtrBoss surtr;
     private SurtrP2Super p2;
@@ -997,14 +1085,24 @@ public class SurtrP2LavaVomitState : EnemyState
     public override void Enter()
     {
         Debug.Log("Surtr: P2 Lava Vomit");
-        phase = Phase.Windup;
         owner.StopHorizontal();
         owner.FacePlayer();
 
         AttackDefinition atk = surtr.GetAttackDef("LavaVomit");
-        timer = atk != null ? atk.windupDuration : 0.6f;
+        float telegraph = atk != null ? atk.telegraphDuration : 0.3f;
 
-        if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_LavaVomit");
+        if (telegraph > 0f)
+        {
+            phase = Phase.Telegraph;
+            timer = telegraph;
+            owner.ShowTelegraph();
+        }
+        else
+        {
+            phase = Phase.Windup;
+            timer = atk != null ? atk.windupDuration : 0.6f;
+            if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_LavaVomit");
+        }
     }
 
     public override void FixedTick()
@@ -1013,6 +1111,17 @@ public class SurtrP2LavaVomitState : EnemyState
 
         switch (phase)
         {
+            case Phase.Telegraph:
+                if (timer <= 0f)
+                {
+                    owner.HideTelegraph();
+                    phase = Phase.Windup;
+                    AttackDefinition atk = surtr.GetAttackDef("LavaVomit");
+                    timer = atk != null ? atk.windupDuration : 0.6f;
+                    if (owner.Anim != null) owner.Anim.SetTrigger("Surtr_LavaVomit");
+                }
+                break;
+
             case Phase.Windup:
                 if (timer <= 0f)
                 {
@@ -1048,6 +1157,7 @@ public class SurtrP2LavaVomitState : EnemyState
 
     public override void Exit()
     {
+        owner.HideTelegraph();
         if (surtr.LavaVomitHitbox != null) surtr.LavaVomitHitbox.Deactivate();
     }
 }

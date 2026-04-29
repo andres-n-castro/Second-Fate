@@ -16,6 +16,9 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField] public string bossID;
     public string deathDescriptionText = "A Great Foe Has Fallen.";
 
+    [Header("Telegraph Indicator")]
+    [SerializeField] private GameObject telegraphIndicator;
+
     [Header("Environment Checks")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform wallCheck;
@@ -217,6 +220,26 @@ public abstract class EnemyBase : MonoBehaviour
             return Vector2.Reflect(desiredDirection, hit.normal).normalized;
         }
         return desiredDirection;
+    }
+
+    // ---------------------------------------------------------------
+    //  Telegraph Indicator
+    // ---------------------------------------------------------------
+
+    public void ShowTelegraph()
+    {
+        if (telegraphIndicator != null) telegraphIndicator.SetActive(true);
+    }
+
+    public void HideTelegraph()
+    {
+        if (telegraphIndicator != null) telegraphIndicator.SetActive(false);
+    }
+
+    public void OffsetTelegraphY(float offset)
+    {
+        if (telegraphIndicator != null)
+            telegraphIndicator.transform.localPosition += new Vector3(0f, offset, 0f);
     }
 
     // ---------------------------------------------------------------

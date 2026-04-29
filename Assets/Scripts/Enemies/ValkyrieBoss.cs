@@ -133,8 +133,11 @@ public class ValkyrieBoss : EnemyBase
         if (FSM.CurrentState == PhaseTransition) return;
     }
 
+    protected override bool DisableOwnCollidersOnDeath => false;
+
     protected override void HandleDeath()
     {
+        // Keep body collider active so Valkyrie falls to the ground on death
         DisableAllHitboxes();
         FSM.ChangeState(DeadState);
     }

@@ -283,6 +283,7 @@ public class AttackDefinition
     public string attackName;
     public int damage = 1;
     public float knockbackForce = 5f;
+    public float telegraphDuration = 0.3f;
     public float windupDuration = 0.4f;
     public float activeDuration = 0.2f;
     public float recoveryDuration = 0.5f;
