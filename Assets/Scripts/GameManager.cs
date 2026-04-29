@@ -870,6 +870,42 @@ public class GameManager : MonoBehaviour
 
         odin.gameObject.SetActive(spawnOdin);
         heimdall.gameObject.SetActive(!spawnOdin);
+
+        // Activate the correct boss music trigger and death UI.
+        SetSceneObjectActive(scene, "OdinTrigger", spawnOdin);
+        SetSceneObjectActive(scene, "OdinDeathUI", spawnOdin);
+        SetSceneObjectActive(scene, "HeimdalTrigger", !spawnOdin);
+        SetSceneObjectActive(scene, "HeimdallDeathUI", !spawnOdin);
+    }
+
+    private void SetSceneObjectActive(Scene scene, string objectName, bool active)
+    {
+        GameObject obj = FindSceneObjectByName(scene, objectName);
+        if (obj != null)
+        {
+            obj.SetActive(active);
+        }
+        else
+        {
+            Debug.LogWarning($"[GameManager] Could not find '{objectName}' in scene '{scene.name}'.");
+        }
+    }
+
+    private static GameObject FindSceneObjectByName(Scene scene, string objectName)
+    {
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+        for (int i = 0; i < allObjects.Length; i++)
+        {
+            GameObject candidate = allObjects[i];
+            if (candidate != null
+                && candidate.scene == scene
+                && string.Equals(candidate.name, objectName, System.StringComparison.OrdinalIgnoreCase))
+            {
+                return candidate;
+            }
+        }
+
+        return null;
     }
 
     private static T FindSceneObjectOfType<T>(Scene scene) where T : Component
