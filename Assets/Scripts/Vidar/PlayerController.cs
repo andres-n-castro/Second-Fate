@@ -34,6 +34,11 @@ public class PlayerController : MonoBehaviour
     private bool isExternallyFrozen = false;
     private bool deathHandlerSubscribed;
     private float xAxis, yAxis;
+    private float _prevVerticalAxisRaw;
+    private Coroutine _oneWayPlatformDropCoroutine;
+
+    private const float OneWayPlatformDropHoldDuration = 0.3f;
+    private const float OneWayDropStickThreshold = 0.5f;
 
     [SerializeField] public float timeScale = 1f;
 
@@ -172,11 +177,29 @@ public class PlayerController : MonoBehaviour
             ((GameManager.Instance.currentState == GameManager.GameState.Exploration ||
             GameManager.Instance.currentState == GameManager.GameState.BossFight) && !isExternallyFrozen);
 
+        float verticalRaw = Input.GetAxisRaw("Vertical");
+
         if (canControlCharacter)
         {
             xAxis = Input.GetAxisRaw("Horizontal");
-            yAxis = Input.GetAxisRaw("Vertical");
+            yAxis = verticalRaw;
             playerStates.isAttacking = Input.GetButtonDown("Player Attack");
+
+            bool stickDownJustPressed = verticalRaw < -OneWayDropStickThreshold
+                && _prevVerticalAxisRaw >= -OneWayDropStickThreshold;
+            bool wantsOneWayDrop = Input.GetKeyDown(KeyCode.S) || stickDownJustPressed;
+
+            if (wantsOneWayDrop
+                && playerMovement != null
+                && playerMovement.TryFindOneWayPlatformUnderFeet(out PlatformEffector2D oneWay))
+            {
+                if (_oneWayPlatformDropCoroutine != null)
+                {
+                    StopCoroutine(_oneWayPlatformDropCoroutine);
+                }
+
+                _oneWayPlatformDropCoroutine = StartCoroutine(OneWayPlatformDropRoutine(oneWay));
+            }
         }
         else
         {
@@ -184,6 +207,8 @@ public class PlayerController : MonoBehaviour
             yAxis = 0f;
             playerStates.isAttacking = false;
         }
+
+        _prevVerticalAxisRaw = verticalRaw;
 
         if (playerStates.isAttacking)
         {
@@ -238,6 +263,25 @@ public class PlayerController : MonoBehaviour
         }
 
         OnPlayerJumped?.Invoke();
+    }
+
+    private IEnumerator OneWayPlatformDropRoutine(PlatformEffector2D effector)
+    {
+        if (effector == null)
+        {
+            _oneWayPlatformDropCoroutine = null;
+            yield break;
+        }
+
+        float original = effector.rotationalOffset;
+        effector.rotationalOffset = 180f;
+        yield return new WaitForSeconds(OneWayPlatformDropHoldDuration);
+        if (effector != null)
+        {
+            effector.rotationalOffset = original;
+        }
+
+        _oneWayPlatformDropCoroutine = null;
     }
 
     private void HandlePlayerDeath()

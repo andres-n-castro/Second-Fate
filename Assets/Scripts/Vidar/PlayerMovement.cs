@@ -120,7 +120,6 @@ public class PlayerMovement : MonoBehaviour
             relativeYVelocity -= r.GetPlatformVelocity().y;
         }
 
-        //coyote timer check tied to ground check
         if (isGrounded && relativeYVelocity <= 0.5f)
         {
             coyoteTimeCounter = coyoteTime;
@@ -151,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     extraYVelocity = Mathf.Max(0, rider.GetPlatformVelocity().y);
                 }
+
                 rb.linearVelocity = new Vector3(rb.linearVelocity.x, JumpForce + extraYVelocity);
                 isJumping = true;
                 canDoubleJump = true;
@@ -227,6 +227,28 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return false;
+    }
+
+    public bool TryFindOneWayPlatformUnderFeet(out PlatformEffector2D effector)
+    {
+        effector = null;
+        if (groundCheck == null || !Grounded())
+        {
+            return false;
+        }
+
+        const float upBias = 0.08f;
+        const float castDistance = 0.75f;
+        Vector2 origin = (Vector2)groundCheck.position + Vector2.up * upBias;
+        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, upBias + castDistance, whatIsGround);
+        if (hit.collider == null)
+        {
+            return false;
+        }
+
+        effector = hit.collider.GetComponent<PlatformEffector2D>()
+            ?? hit.collider.GetComponentInParent<PlatformEffector2D>();
+        return effector != null;
     }
     public void MaxFall(Rigidbody2D rb)
     {

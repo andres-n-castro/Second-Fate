@@ -37,4 +37,3 @@ public class PlatformRider : MonoBehaviour
 
     public Vector2 GetPlatformVelocity() => platformVelocity;
 }
-
