@@ -47,7 +47,12 @@ public class BonfireUIManager : MonoBehaviour
             bool allowFastTravel = currentAlignment == GameManager.AlignmentType.TreeEssence;
             if (fastTravelButtonObject != null)
             {
-                fastTravelButtonObject.SetActive(allowFastTravel);
+                fastTravelButtonObject.SetActive(true);
+                Button fastTravelBtn = fastTravelButtonObject.GetComponent<Button>();
+                if (fastTravelBtn != null)
+                {
+                    fastTravelBtn.interactable = allowFastTravel;
+                }
             }
 
             ShowPanel(litBonfirePanel, restBtn);

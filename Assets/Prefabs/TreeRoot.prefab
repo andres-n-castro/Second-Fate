@@ -2078,7 +2078,7 @@ MonoBehaviour:
   goodAlignmentBtn: {fileID: 435600206141599707}
   restBtn: {fileID: 8519509830197329102}
   closeFastTravelBtn: {fileID: 2846414499687587767}
-  fastTravelButtonObject: {fileID: 0}
+  fastTravelButtonObject: {fileID: 1883974875699090019}
   fastTravelButtons:
   - uiButton: {fileID: 8645527837708592566}
     targetBonfireID: Tutorial_Bonfire
