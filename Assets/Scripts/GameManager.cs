@@ -184,7 +184,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
 
         // No rested bonfire yet: use the tutorial checkpoint if available.
-        if (!LastRestedBonfireExistsInActiveScene() && TryGetCheckpointRespawnPosition(out Vector2 checkpointPosition))
+        // Only fall back to checkpoints when the player has never rested at ANY
+        // bonfire, not just when the last rested bonfire isn't in the current scene.
+        if (string.IsNullOrEmpty(lastRestedBonfireID) && TryGetCheckpointRespawnPosition(out Vector2 checkpointPosition))
         {
             RevivePlayerAt(checkpointPosition);
             currentRespawnPoint = checkpointPosition;
@@ -498,7 +500,8 @@ public class GameManager : MonoBehaviour
         return string.Equals(scene.name, TutorialSceneName, StringComparison.OrdinalIgnoreCase)
             && !hasPendingCheckpointRespawn
             && !isLoadedGamePlacementRunning
-            && string.IsNullOrEmpty(pendingTeleportBonfireID);
+            && string.IsNullOrEmpty(pendingTeleportBonfireID)
+            && string.IsNullOrEmpty(lastRestedBonfireID);
     }
 
     private IEnumerator PlaceTutorialPlayerAtCheckpointAfterSceneLoad()
