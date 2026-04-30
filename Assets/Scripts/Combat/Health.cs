@@ -69,7 +69,7 @@ public class Health : MonoBehaviour, IDamageable
         {
             if (CharmManager.Instance.HasCharmEffect(CharmEffect.Protection))
             {
-                if (UnityEngine.Random.value <= 0.80f)
+                if (UnityEngine.Random.value <= 0.40f)
                 {
                     Debug.Log("Protection Charm Activated! Damage Negated.");
                     return;
@@ -120,7 +120,7 @@ public class Health : MonoBehaviour, IDamageable
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
-private IEnumerator Flash(float duration)
+    private IEnumerator Flash(float duration)
     {
         sprite.material.SetFloat("_FlashAmount", 1f);
         yield return new WaitForSeconds(duration);

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Key
   itemSprite: {fileID: 1248028271034907059, guid: f00be796c507c6e4fa05900d81d4592d, type: 3}
-  itemInfo: Opens Cave Door
+  itemInfo: Opens door
   isStackable: 0

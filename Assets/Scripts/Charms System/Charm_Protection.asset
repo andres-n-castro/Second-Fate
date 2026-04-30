@@ -17,4 +17,4 @@ MonoBehaviour:
   charmIcon: {fileID: 5688942289803288367, guid: 8b602e47476a5bc449c1548048f2ec39, type: 3}
   charmEffect: 3
   charmCost: 500
-  description: Have a 80% percent chance to negate damage
+  description: Have a 40% percent chance to negate damage
